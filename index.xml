@@ -309,8 +309,8 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
 slave1：192.168.56.102
 
 slave2：192.168.56.103&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;如何搭建虚拟机集群环境，可以参考：&lt;a href=&#34;http://flygopher.top/2018/09/27/Vagrant搭建虚拟机集群/&#34;&gt;Vagrant搭建虚拟机集群&lt;/a&gt;&lt;br /&gt;
-如何部署Redis单机服务，可以参考：&lt;a href=&#34;http://flygopher.top/2018/10/18/Redis深入学习-一-Linux-CentOS-7-安装Redis-4.0.11/&#34;&gt;Redis深入学习（一）：Linux CentOS 7 安装Redis 4.0.11&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;如何搭建虚拟机集群环境，可以参考：&lt;a href=&#34;http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/&#34;&gt;Vagrant搭建虚拟机集群&lt;/a&gt;&lt;br /&gt;
+如何部署Redis单机服务，可以参考：&lt;a href=&#34;http://flygopher.top/post/redis-install-on-centos7/&#34;&gt;Redis深入学习（一）：Linux CentOS 7 安装Redis 4.0.11&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
