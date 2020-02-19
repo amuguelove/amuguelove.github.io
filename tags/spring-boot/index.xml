@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring Boot on 梁波的技术博客</title>
+    <link>http://flygopher.top/tags/spring-boot/</link>
+    <description>Recent content in Spring Boot on 梁波的技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 26 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://flygopher.top/tags/spring-boot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SpringBoot2干货系列 | 第二篇：Spring AOP 哪些事儿</title>
+      <link>http://flygopher.top/post/springboot2-aop/</link>
+      <pubDate>Wed, 26 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://flygopher.top/post/springboot2-aop/</guid>
+      <description>&lt;p&gt;AOP(Aspect-Oriented Programming) 即面向方面编程.  它是一种在运行时,动态地将代码切入到类的指定方法、指定位置上的编程思想. 用于切入到指定类指定方法的代码片段叫做切面, 而切入到哪些类中的哪些方法叫做切入点.&lt;/p&gt;
+
+&lt;p&gt;AOP是OOP的有益补充，OOP从横向上区分出了一个个类，AOP则从纵向上向指定类的指定方法中动态地切入代码. 它使OOP变得更加立体.&lt;/p&gt;
+
+&lt;p&gt;Java中的动态代理或CGLib就是AOP的体现.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>SpringBoot2干货系列 | 第一篇：Spring Boot Admin 2 监控</title>
+      <link>http://flygopher.top/post/spring-boot-admin/</link>
+      <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://flygopher.top/post/spring-boot-admin/</guid>
+      <description>&lt;p&gt;Spring Boot Admin 在 Spring Boot Actuator 的基础上提供简洁的可视化 WEB UI，是用来管理 Spring Boot 应用程序的一个简单的界面，提供的功能参考：&lt;a href=&#34;https://github.com/codecentric/spring-boot-admin&#34;&gt;Spring Boot Admin Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;在本文中，我们将介绍配置 Spring Boot Admin（以下简称 SBA）服务端的步骤以及如何将一个 Spring Boot 应用注册为它的客户端。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

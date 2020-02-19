@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  
+  <title>Http性能压测工具 | wrk-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="Http性能压测工具 | wrk" />
+  <meta name="twitter:title" content="Http性能压测工具 | wrk" />
+  
+  <meta name="description" content="简单的 http 性能测试工具，记录一下使用方法。
+
+安装
+
+MacOS
+brew install wrk
+Ubuntu/Debian
+sudo apt-get install build-essential libssl-dev git -y
+git clone https://github.com/wg/wrk.git wrk
+cd wrk
+sudo make
+# move the executable to somewhere in your PATH, ex:
+sudo cp wrk /usr/local/bin
+CentOS / RedHat / Fedora
+sudo yum groupinstall &#39;Development Tools&#39;
+sudo yum install openssl-devel
+sudo yum install git
+git clone https://github.com/wg/wrk.git wrk
+cd wrk
+make
+# move the executable to somewhere in your PATH
+sudo cp wrk /somewhere/in/your/PATH">
+  <meta property="og:description" content="简单的 http 性能测试工具，记录一下使用方法。
+
+安装
+
+MacOS
+brew install wrk
+Ubuntu/Debian
+sudo apt-get install build-essential libssl-dev git -y
+git clone https://github.com/wg/wrk.git wrk
+cd wrk
+sudo make
+# move the executable to somewhere in your PATH, ex:
+sudo cp wrk /usr/local/bin
+CentOS / RedHat / Fedora
+sudo yum groupinstall &#39;Development Tools&#39;
+sudo yum install openssl-devel
+sudo yum install git
+git clone https://github.com/wg/wrk.git wrk
+cd wrk
+make
+# move the executable to somewhere in your PATH
+sudo cp wrk /somewhere/in/your/PATH">
+  <meta name="twitter:description" content="简单的 http 性能测试工具，记录一下使用方法。
+
+安装
+
+MacOS
+brew install wrk
+Ubuntu/Debian
+sudo apt-get install build-essential libssl-dev git -y
+git clone https://github.com/wg/wrk.git wrk
+cd wrk
+sudo make
+# move the …">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="http://flygopher.top/post/http-performance-tool-wrk/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="梁波的技术博客" />
+  
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="canonical" href="http://flygopher.top/post/http-performance-tool-wrk/" />
+  <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-118696048-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://flygopher.top" title="梁波的技术博客">
+
+        梁波的技术博客
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="http://flygopher.top/">首页</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="http://flygopher.top/archives">Archive</a>
+                
+                  <a href="http://flygopher.top/categories">Categories</a>
+                
+                  <a href="http://flygopher.top/tags">tags</a>
+                
+                  <a href="http://flygopher.top/tags/java">java</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">书籍</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/">k8s基础知识</a>
+                
+                  <a href="https://k8s.imroc.io/">Kubernetes实践指南</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="关于" href="http://flygopher.top/page/about/">关于</a>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Http性能压测工具 | wrk</h1>
+                
+                
+                  <span class="post-meta">
+  
+    发表于 April 7, 2018
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="http://flygopher.toptags/wrk/">wrk</a> &nbsp;
+              
+                  <a href="http://flygopher.toptags/performance/">performance</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#安装">安装</a>
+<ul>
+<li><a href="#macos">MacOS</a></li>
+<li><a href="#ubuntu-debian">Ubuntu/Debian</a></li>
+<li><a href="#centos-redhat-fedora">CentOS / RedHat / Fedora</a></li>
+</ul></li>
+<li><a href="#简单使用">简单使用</a></li>
+<li><a href="#使用lua脚本进行个性化wrk压测">使用lua脚本进行个性化wrk压测</a>
+<ul>
+<li><a href="#lua脚本如何交互的">Lua脚本如何交互的</a></li>
+<li><a href="#使用-post-请求">使用 POST 请求</a></li>
+</ul></li>
+<li><a href="#升级到wrk2-update-2019-03-06">升级到wrk2（update：2019-03-06）</a>
+<ul>
+<li><a href="#via-homebrew">Via Homebrew：</a></li>
+<li><a href="#wrk2-拥有如下选项">wrk2 拥有如下选项：</a></li>
+<li><a href="#以post测试为例-编写如下lua脚本">以post测试为例,编写如下lua脚本：</a></li>
+<li><a href="#简单测试命令">简单测试命令:</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+          
+          
+          
+
+          <p>简单的 http 性能测试工具，记录一下使用方法。</p>
+
+<h3 id="安装">安装</h3>
+
+<h4 id="macos">MacOS</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">brew install wrk</pre></div>
+<h4 id="ubuntu-debian">Ubuntu/Debian</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">sudo apt-get install build-essential libssl-dev git -y
+git clone https://github.com/wg/wrk.git wrk
+cd wrk
+sudo make
+# move the executable to somewhere in your PATH, ex:
+sudo cp wrk /usr/local/bin</pre></div>
+<h4 id="centos-redhat-fedora">CentOS / RedHat / Fedora</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">sudo yum groupinstall &#39;Development Tools&#39;
+sudo yum install openssl-devel
+sudo yum install git
+git clone https://github.com/wg/wrk.git wrk
+cd wrk
+make
+# move the executable to somewhere in your PATH
+sudo cp wrk /somewhere/in/your/PATH</pre></div>
+<h3 id="简单使用">简单使用</h3>
+
+<p>1.命令行敲下wrk，可以看到使用帮助</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Usage: wrk &lt;options&gt; &lt;url&gt;                            
+  Options:                                            
+    -c, --connections &lt;N&gt;  Connections to keep open   
+    -d, --duration    &lt;T&gt;  Duration of test           
+    -t, --threads     &lt;N&gt;  Number of threads to use   
+                                                      
+    -s, --script      &lt;S&gt;  Load Lua script file       
+    -H, --header      &lt;H&gt;  Add header to request      
+        --latency          Print latency statistics   
+        --timeout     &lt;T&gt;  Socket/request timeout     
+    -v, --version          Print version details      
+                                                      
+  Numeric arguments may include a SI unit (1k, 1M, 1G)
+  Time arguments may include a time unit (2s, 2m, 2h)</pre></div>
+<p>翻译成中文：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">使用方法: wrk &lt;选项&gt; &lt;被测HTTP服务的URL&gt;                            
+  Options:                                            
+    -c, --connections &lt;N&gt;  跟服务器建立并保持的TCP连接数量  
+    -d, --duration    &lt;T&gt;  压测时间           
+    -t, --threads     &lt;N&gt;  使用多少个线程进行压测   
+                                                      
+    -s, --script      &lt;S&gt;  指定Lua脚本路径
+    # 添加请求头，如 &#34;User-Agent: wrk&#34;
+    -H, --header      &lt;H&gt;  为每一个HTTP请求添加HTTP头      
+        --latency          在压测结束后，打印延迟统计信息   
+        --timeout     &lt;T&gt;  超时时间     
+    -v, --version          打印正在使用的wrk的详细版本信息
+                                                      
+  &lt;N&gt;代表数字参数，支持国际单位 (1k, 1M, 1G)
+  &lt;T&gt;代表时间参数，支持时间单位 (2s, 2m, 2h)</pre></div>
+<p>2.查看下版本</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">wrk 4.1.0 [epoll] Copyright (C) 2012 Will Glozer</pre></div>
+<p>3.一次简单压测，分析一下结果</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">wrk -t8 -c200 -d30s --latency  &#34;http://www.bing.com&#34;
+
+输出：
+Running 30s test @ http://www.bing.com
+  8 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    46.67ms  215.38ms   1.67s    95.59%
+    Req/Sec     7.91k     1.15k   10.26k    70.77%
+  Latency Distribution
+     50%    2.93ms
+     75%    3.78ms
+     90%    4.73ms
+     99%    1.35s 
+  1790465 requests in 30.01s, 684.08MB read
+Requests/sec:  59658.29
+Transfer/sec:     22.79MB</pre></div>
+<p>以上使用8个线程200个连接，对bing首页进行了30秒的压测，并要求在压测结果中输出响应延迟信息。以下对压测结果进行简单注释：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Running 30s test @ http://www.bing.com （压测时间30s）
+  8 threads and 200 connections （共8个测试线程，200个连接）
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+              （平均值） （标准差）（最大值）（正负一个标准差所占比例）
+    Latency    46.67ms  215.38ms   1.67s    95.59%
+    （延迟）
+    Req/Sec     7.91k     1.15k   10.26k    70.77%
+    （处理中的请求数）
+  Latency Distribution （延迟分布）
+     50%    2.93ms
+     75%    3.78ms
+     90%    4.73ms
+     99%    1.35s （99分位的延迟）
+  1790465 requests in 30.01s, 684.08MB read （30.01秒内共处理完成了1790465个请求，读取了684.08MB数据）
+Requests/sec:  59658.29 （平均每秒处理完成59658.29个请求）
+Transfer/sec:     22.79MB （平均每秒读取数据22.79MB）</pre></div>
+<h3 id="使用lua脚本进行个性化wrk压测">使用lua脚本进行个性化wrk压测</h3>
+
+<p>简单的压测可能不能满足我们的需求。比如我们可能需要使用POST METHOD跟服务器交互；可能需要为每一次请求使用不同的参数，以更好的模拟服务的实际使用场景等。wrk支持用户使用<code>-s</code>或<code>--script</code>指定Lua脚本，来定制压测过程，满足个性化需求。</p>
+
+<h4 id="lua脚本如何交互的">Lua脚本如何交互的</h4>
+
+<p>wrk支持在三个阶段对压测进行个性化，分别是启动阶段、运行阶段和结束阶段。每个测试线程，都拥有独立的Lua运行环境。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Overview
+
+  wrk supports executing a LuaJIT script during three distinct phases: setup,
+  running, and done. Each wrk thread has an independent scripting environment
+  and the setup &amp; done phases execute in a separate environment which does
+  not participate in the running phase.
+
+  The public Lua API consists of a global table and a number of global
+  functions:
+
+  wrk = {
+    scheme  = &#34;http&#34;,
+    host    = &#34;localhost&#34;,
+    port    = nil,
+    method  = &#34;GET&#34;,
+    path    = &#34;/&#34;,
+    headers = {},
+    body    = nil,
+    thread  = &lt;userdata&gt;,
+  }
+
+  function wrk.format(method, path, headers, body)
+
+    wrk.format returns a HTTP request string containing the passed parameters
+    merged with values from the wrk table.
+
+  function wrk.lookup(host, service)
+
+    wrk.lookup returns a table containing all known addresses for the host
+    and service pair. This corresponds to the POSIX getaddrinfo() function.
+
+  function wrk.connect(addr)
+
+    wrk.connect returns true if the address can be connected to, otherwise
+    it returns false. The address must be one returned from wrk.lookup().
+
+  The following globals are optional, and if defined must be functions:
+
+    global setup    -- called during thread setup
+    global init     -- called when the thread is starting
+    global delay    -- called to get the request delay
+    global request  -- called to generate the HTTP request
+    global response -- called with HTTP response data
+    global done     -- called with results of run
+
+Setup
+
+  function setup(thread)
+
+  The setup phase begins after the target IP address has been resolved and all
+  threads have been initialized but not yet started.
+
+  setup() is called once for each thread and receives a userdata object
+  representing the thread.
+
+    thread.addr             - get or set the thread&#39;s server address
+    thread:get(name)        - get the value of a global in the thread&#39;s env
+    thread:set(name, value) - set the value of a global in the thread&#39;s env
+    thread:stop()           - stop the thread
+
+  Only boolean, nil, number, and string values or tables of the same may be
+  transfered via get()/set() and thread:stop() can only be called while the
+  thread is running.
+
+Running
+
+  function init(args)
+  function delay()
+  function request()
+  function response(status, headers, body)
+
+  The running phase begins with a single call to init(), followed by
+  a call to request() and response() for each request cycle.
+
+  The init() function receives any extra command line arguments for the
+  script which must be separated from wrk arguments with &#34;--&#34;.
+
+  delay() returns the number of milliseconds to delay sending the next
+  request.
+
+  request() returns a string containing the HTTP request. Building a new
+  request each time is expensive, when testing a high performance server
+  one solution is to pre-generate all requests in init() and do a quick
+  lookup in request().
+
+  response() is called with the HTTP response status, headers, and body.
+  Parsing the headers and body is expensive, so if the response global is
+  nil after the call to init() wrk will ignore the headers and body.
+
+Done
+
+  function done(summary, latency, requests)
+
+  The done() function receives a table containing result data, and two
+  statistics objects representing the per-request latency and per-thread
+  request rate. Duration and latency are microsecond values and rate is
+  measured in requests per second.
+
+  latency.min              -- minimum value seen
+  latency.max              -- maximum value seen
+  latency.mean             -- average value seen
+  latency.stdev            -- standard deviation
+  latency:percentile(99.0) -- 99th percentile value
+  latency(i)               -- raw value and count
+
+  summary = {
+    duration = N,  -- run duration in microseconds
+    requests = N,  -- total completed requests
+    bytes    = N,  -- total bytes received
+    errors   = {
+      connect = N, -- total socket connection errors
+      read    = N, -- total socket read errors
+      write   = N, -- total socket write errors
+      status  = N, -- total HTTP status codes &gt; 399
+      timeout = N  -- total request timeouts
+    }
+  }</pre></div>
+<h4 id="使用-post-请求">使用 POST 请求</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">wrk.method = &#34;POST&#34;
+wrk.body   = &#34;foo=bar&amp;baz=quux&#34;
+wrk.headers[&#34;Content-Type&#34;] = &#34;application/x-www-form-urlencoded&#34;</pre></div>
+<p>通过修改全局变量wrk，使得所有请求都使用POST方法，并指定了body和Content-Type头。</p>
+
+<p>脚本执行如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">wrk -t12 -c20 -d30s -s post.lua http://xx.xx.xx.xx:8080</pre></div>
+<p>如果你想要查看一些其他的脚本，具体可以看github上的官方提供的 <a href="https://github.com/wg/wrk/tree/master/scripts">Script Example</a></p>
+
+<h3 id="升级到wrk2-update-2019-03-06">升级到wrk2（update：2019-03-06）</h3>
+
+<h4 id="via-homebrew">Via Homebrew：</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">brew tap jabley/homebrew-wrk2
+brew install --HEAD wrk2</pre></div>
+<p>可以通过<code>-R</code>（默认1000）设置吞吐量（每秒的总请求数）</p>
+
+<h4 id="wrk2-拥有如下选项">wrk2 拥有如下选项：</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Usage: wrk &lt;options&gt; &lt;url&gt;
+  Options:
+    -c, --connections &lt;N&gt;  需要保持的连接数量
+    -d, --duration    &lt;T&gt;  测试持续的时间
+    -t, --threads     &lt;N&gt;  需要使用的线程数量
+
+    -s, --script      &lt;S&gt;  需要加载的lua脚本
+    -H, --header      &lt;H&gt;  添加请求头
+    -L  --latency          打印延迟统计
+    -U  --u_latency        打印不正确的延迟统计
+        --timeout     &lt;T&gt;  连接/请求超时时间
+    -B, --batch_latency    统计整个批量时间
+                           (正式对应的每一个op)
+    -v, --version          打印版本细节
+    -R, --rate        &lt;T&gt;  TPS [必填参数]</pre></div>
+<h4 id="以post测试为例-编写如下lua脚本">以post测试为例,编写如下lua脚本：</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">post.lua
+wrk.method = &#34;POST&#34;
+wrk.body   = &#34;{\&#34;jsonrpc\&#34;:\&#34;2.0\&#34;, \&#34;method\&#34;: \&#34;node_getNodeStates\&#34;, \&#34;id\&#34;: 1}&#34;
+wrk.headers[&#34;Content-type&#34;] = &#34;application/json&#34;</pre></div>
+<h4 id="简单测试命令">简单测试命令:</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">wrk2 -t10 -c10 -d30s -R50 -L --script=post.lua http://localhost:8081</pre></div>
+<p>参考 <a href="https://github.com/giltene/wrk2/wiki/Installing-wrk2-on-Mac">Github wiki地址</a></p>
+
+          
+  
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="http://flygopher.top/img/avatar.jpg"/></span>
+        <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
+    </div>
+    <div class="zs-modal-body">
+        <div class="zs-modal-btns">
+            <button class="btn btn-blink" data-num="2">2元</button>
+            <button class="btn btn-blink" data-num="5">5元</button>
+            <button class="btn btn-blink" data-num="10">10元</button>
+            <button class="btn btn-blink" data-num="50">50元</button>
+            <button class="btn btn-blink" data-num="100">100元</button>
+            <button class="btn btn-blink" data-num="1">任意金额</button>
+        </div>
+        <div class="zs-modal-pay">
+            <button class="btn btn-bred" id="pay-text">2元</button>
+            <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+            <img src="http://flygopher.top/img/wechat-2.png" id="pay-image"/>
+        </div>
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="http://flygopher.top/img/wechat-btn.png"/></span>
+    </div>
+</div>
+          
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+    <a href="#" class="social-share-icon icon-twitter"></a>
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+    <a href="#" class="social-share-icon icon-facebook"></a>
+    <a href="#" class="social-share-icon icon-qq"></a>
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="http://flygopher.top/post/reids-persistence-intro/">Redis持久化介绍</a></li>
+    
+    <li><a href="http://flygopher.top/post/iterm2-ssh-no-disconnect/">iTerm2保持ssh连接不断开</a></li>
+    
+    <li><a href="http://flygopher.top/post/dynamic-proxy-pattern/">设计模式之动态代理</a></li>
+    
+    <li><a href="http://flygopher.top/post/singleton-pattern/">设计模式之单例模式</a></li>
+    
+    <li><a href="http://flygopher.top/post/git-common-commands/">Git常用指令整理</a></li>
+    
+    <li><a href="http://flygopher.top/post/first-blog/">博客终于正式开张啦～</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://flygopher.top/post/reids-persistence-intro/" data-toggle="tooltip" data-placement="top" title="Redis持久化介绍">&larr; 前一篇</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://flygopher.top/post/reids-distributed-lock/" data-toggle="tooltip" data-placement="top" title="Redis实现分布式锁">后一篇 &rarr;</a>
+            </li>
+          
+        </ul>
+        
+  
+        
+  
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bo.liang0212@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="https://github.com/amuguelove" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          <li>
+            <a href="http://flygopher.top/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          &bull;&nbsp;
+          &copy;2016-2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top">梁波的技术博客</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/archives/">归档</a>
+          &nbsp; &bull;&nbsp;
+          
+        </p>
+        <p class="text-center text-muted">
+          <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+          <span id="busuanzi_container_site_pv" style="display:none">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          &nbsp;&bull;&nbsp;
+          <span id="busuanzi_container_site_uv" style="display:none">
+            访客数<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src='http://flygopher.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118696048-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-118696048-1');
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script >
+$(document).ready(function() {
+  var int = setInterval(fixCount, 50);  
+  
+  var initPVCount = 584976;
+  var initUVCount = 153191;
+  function fixCount() {                   
+    if ($("#busuanzi_container_site_pv").css("display") != "none") {
+        $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
+        clearInterval(int); 
+    }
+    if ($("#busuanzi_container_site_uv").css("display") != "none") {
+      $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + initUVCount);
+      clearInterval(int); 
+    }  
+  }           
+});
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+$('.carousel').slick({
+    dots: true,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    centerMode: true,
+    prevArrow: '<button type="button" class="slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-next"></button>',
+});
+</script>
+
+  </body>
+</html>
+

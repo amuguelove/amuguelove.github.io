@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  
+  <title>认识Java序列化-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="认识Java序列化" />
+  <meta name="twitter:title" content="认识Java序列化" />
+  
+  <meta name="description" content="引言
+
+将 Java 对象序列化为二进制文件的 Java 序列化技术是 Java 系列技术中一个较为重要的技术点，在大部分情况下，开发人员只需要了解被序列化的类需要实现 Serializable 接口，使用 ObjectInputStream 和 ObjectOutputStream 进行对象的读写。然而在有些情况下，光知道这些还远远不够，文章列举了笔者遇到的一些真实情境，它们与 Java 序列化相关，通过分析情境出现的原因，使读者轻松牢记 Java 序列化中的一些高级认识。">
+  <meta property="og:description" content="引言
+
+将 Java 对象序列化为二进制文件的 Java 序列化技术是 Java 系列技术中一个较为重要的技术点，在大部分情况下，开发人员只需要了解被序列化的类需要实现 Serializable 接口，使用 ObjectInputStream 和 ObjectOutputStream 进行对象的读写。然而在有些情况下，光知道这些还远远不够，文章列举了笔者遇到的一些真实情境，它们与 Java 序列化相关，通过分析情境出现的原因，使读者轻松牢记 Java 序列化中的一些高级认识。">
+  <meta name="twitter:description" content="引言
+
+将 Java 对象序列化为二进制文件的 Java 序列化技术是 Java 系列技术中一个较为重要的技术点，在大部分情况下，开发人员只需要了解被序列化的类需要实现 Serializable 接口，使用 ObjectInputStream 和 ObjectOutputStream 进行对象的读写。然而在有些情况下，光知道这些还远远不够，文章列举了笔者遇到的一些真实情境，它们与 Java 序列化 …">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="http://flygopher.top/post/java-serialization/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="梁波的技术博客" />
+  
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="canonical" href="http://flygopher.top/post/java-serialization/" />
+  <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-118696048-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://flygopher.top" title="梁波的技术博客">
+
+        梁波的技术博客
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="http://flygopher.top/">首页</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="http://flygopher.top/archives">Archive</a>
+                
+                  <a href="http://flygopher.top/categories">Categories</a>
+                
+                  <a href="http://flygopher.top/tags">tags</a>
+                
+                  <a href="http://flygopher.top/tags/java">java</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">书籍</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/">k8s基础知识</a>
+                
+                  <a href="https://k8s.imroc.io/">Kubernetes实践指南</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="关于" href="http://flygopher.top/page/about/">关于</a>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>认识Java序列化</h1>
+                
+                
+                  <span class="post-meta">
+  
+    发表于 May 23, 2018
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="http://flygopher.toptags/java/">Java</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#引言">引言</a></li>
+<li><a href="#文章结构">文章结构</a></li>
+<li><a href="#序列化工具类">序列化工具类</a></li>
+<li><a href="#序列化-id-问题">序列化 ID 问题</a></li>
+</ul></li>
+<li><a href="#静态变量序列化">静态变量序列化</a>
+<ul>
+<li><a href="#父类的序列化与-transient-关键字">父类的序列化与 Transient 关键字</a></li>
+<li><a href="#序列化存储规则">序列化存储规则</a></li>
+<li><a href="#序列化实现深拷贝">序列化实现深拷贝</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+          
+          
+          
+
+          <h3 id="引言">引言</h3>
+
+<p>将 Java 对象序列化为二进制文件的 Java 序列化技术是 Java 系列技术中一个较为重要的技术点，在大部分情况下，开发人员只需要了解被序列化的类需要实现 Serializable 接口，使用 ObjectInputStream 和 ObjectOutputStream 进行对象的读写。然而在有些情况下，光知道这些还远远不够，文章列举了笔者遇到的一些真实情境，它们与 Java 序列化相关，通过分析情境出现的原因，使读者轻松牢记 Java 序列化中的一些高级认识。</p>
+
+<h3 id="文章结构">文章结构</h3>
+
+<p>本文将逐一的介绍几个情境，顺序如下面的列表。</p>
+
+<ul>
+<li>序列化 ID 的问题</li>
+<li>静态变量序列化</li>
+<li>父类的序列化与 Transient 关键字</li>
+<li>序列化存储规则</li>
+<li>序列化实现深克隆</li>
+</ul>
+
+<h3 id="序列化工具类">序列化工具类</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public class JdkSerializationUtil {
+
+    private static final int DEFAULT_BUFFER_SIZE = 2048;
+
+    private static final byte[] DEFAULT_VALUE = new byte[0];
+
+    public static byte[] serialize(Object data) {
+        if (Objects.isNull(data)) {
+            return DEFAULT_VALUE;
+        }
+        if (!(data instanceof Serializable)) {
+            throw new IllegalArgumentException(data.getClass().getSimpleName() + &#34; requires implements Serializable&#34;);
+        }
+        // 这个括号在JDK1.7之前是没有的，是1.7的新特性。
+        // 括号里的内容支持包括流以及任何可关闭的资源，数据流会在 try 执行完毕后自动被关闭，而不用我们手动关闭了
+        try (
+                ByteArrayOutputStream bos = new ByteArrayOutputStream(DEFAULT_BUFFER_SIZE);
+                ObjectOutputStream oos = new ObjectOutputStream(bos)) {
+
+            oos.writeObject(data);
+            oos.flush();
+
+            return bos.toByteArray();
+        } catch (IOException e) {
+            throw new RuntimeException(&#34;Failed to serialize Object[&#34; + data.getClass().getSimpleName() + &#34;]&#34;, e);
+        }
+    }
+
+    public static &lt;T&gt; T deserialize(byte[] data, Class&lt;T&gt; clazz) {
+        if (data == null &amp;&amp; data.length == 0) {
+            return null;
+        }
+        try (
+                ByteArrayInputStream bis = new ByteArrayInputStream(data);
+                ObjectInputStream ois = new ObjectInputStream(bis);) {
+            return (T) ois.readObject();
+        } catch (Exception e) {
+            throw new RuntimeException(&#34;Failed to deserialize the byte array for &#34; + clazz.getSimpleName(), e);
+        }
+    }
+}</pre></div>
+<h3 id="序列化-id-问题">序列化 ID 问题</h3>
+
+<p><strong>情境</strong>：两个客户端 A 和 B 试图通过网络传递对象数据，A 端将对象 C 序列化为二进制数据再传给 B，B 反序列化得到 C。</p>
+
+<p><strong>问题</strong>：C 对象的全类路径假设为 com.inout.Test，在 A 和 B 端都有这么一个类文件，功能代码完全一致。也都实现了 Serializable 接口，但是反序列化时总是提示不成功。</p>
+
+<p><strong>解决</strong>：<strong>虚拟机是否允许反序列化，不仅取决于类路径和功能代码是否一致，一个非常重要的一点是两个类的序列化 ID 是否一致（就是 private static final long serialVersionUID = 1L）</strong>。</p>
+
+<p>序列化 ID 在 Eclipse 下提供了两种生成策略，一个是固定的 1L，一个是随机生成一个不重复的 long 类型数据（实际上是使用 JDK 工具生成），在这里有一个建议，如果没有特殊需求，就是用默认的 1L 就可以，这样可以确保代码一致时反序列化成功。那么随机生成的序列化 ID 有什么作用呢，有些时候，通过改变序列化 ID 可以用来限制某些用户的使用。</p>
+
+<h2 id="静态变量序列化">静态变量序列化</h2>
+
+<p>静态变量序列化问题代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public class StaticVariableTest implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    public static int staticVar = 5;
+
+    private int age;
+
+    public static void main( String[] args ) {
+
+        StaticVariableTest test = new StaticVariableTest();
+        test.age = 20;
+
+        byte[] data = JdkSerializationUtil.serialize(test);
+
+        // 序列化后修改为10
+        StaticVariableTest.staticVar = 10;
+
+        StaticVariableTest test2 = JdkSerializationUtil.deserialize(data, StaticVariableTest.class);
+        System.out.println(test2.staticVar);
+    }
+}</pre></div>
+<p>这个 System.out.println(test2.staticVar) 语句输出的是 10 还是 5 呢？</p>
+
+<p>最后的输出是 10，对于无法理解的读者认为，打印的 staticVar 是从读取的对象里获得的，应该是保存时的状态才对。之所以打印 10 的原因在于序列化时，并不保存静态变量，这其实比较容易理解，序列化保存的是对象的状态，静态变量属于类的状态，因此 <strong>序列化并不保存静态变量</strong>。</p>
+
+<h3 id="父类的序列化与-transient-关键字">父类的序列化与 Transient 关键字</h3>
+
+<p><strong>情境</strong>：一个子类实现了 Serializable 接口，它的父类都没有实现 Serializable 接口，序列化该子类对象，然后反序列化后输出父类定义的某变量的数值，该变量数值与序列化时的数值不同。</p>
+
+<p><strong>解决</strong>：<strong>要想将父类对象也序列化，就需要让父类也实现Serializable 接口</strong>。如果父类不实现的话的，就 <strong>需要有默认的无参的构造函数</strong>。在父类无参构造函数中对变量进行初始化，否则的话，父类变量值都是默认声明的值，如 int 型的默认是 0，string 型的默认是 null。</p>
+
+<p>transient 关键字的作用是控制变量的序列化，在变量声明前加上该关键字，可以阻止该变量被序列化到文件中，在被反序列化后，transient 变量的值被设为初始值，如 int 型的是 0，对象型的是 null。</p>
+
+<p>代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public class SuperUser {
+
+    private static final long serialVersionUID = 1L;
+
+    private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return &#34;SuperUser{&#34; +
+                &#34;age=&#34; + age +
+                &#39;}&#39;;
+    }
+
+}
+
+public class User extends SuperUser implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private String name;
+
+    private transient String sex;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    @Override
+    public String toString() {
+        return &#34;User{&#34; +
+                &#34;name=&#39;&#34; + name + &#39;\&#39;&#39; +
+                &#34;, sex=&#39;&#34; + sex + &#39;\&#39;&#39; +
+                &#34;} &#34; + super.toString();
+    }
+}
+
+public class SuperTest {
+
+    public static void main(String[] args) throws Exception {
+
+        User user = new User();
+        user.setName(&#34;lisi&#34;);
+        user.setAge(30);
+        user.setSex(&#34;男&#34;);
+
+        User user2 = JdkSerializationUtil.deserialize(JdkSerializationUtil.serialize(user), User.class);
+        System.out.println(user2);
+    }
+}</pre></div>
+<p>输出的结果为：</p>
+
+<p><code>User{name='lisi', sex='null'} SuperUser{age=0}</code></p>
+
+<h3 id="序列化存储规则">序列化存储规则</h3>
+
+<p>存储规则问题代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public class SaveRuleTest implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private int i;
+
+    public static void main(String[] args) throws Exception {
+        mutiSave();
+        System.out.println(&#34;=========&#34;);
+        mutiSave2();
+    }
+
+    public static void mutiSave() throws Exception {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&#34;result&#34;));
+
+        SaveRuleTest test = new SaveRuleTest();
+        // 试图将对象两次写入文件
+        oos.writeObject(test);
+        oos.flush();
+        System.out.println(new File(&#34;result&#34;).length());
+
+        oos.writeObject(test);
+        oos.close();
+
+        System.out.println(new File(&#34;result&#34;).length());
+
+
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(
+                &#34;result&#34;));
+        // 从文件依次读出两个文件
+        SaveRuleTest t1 = (SaveRuleTest) ois.readObject();
+        SaveRuleTest t2 = (SaveRuleTest) ois.readObject();
+        ois.close();
+
+        // 判断两个引用是否指向同一个对象
+        System.out.println(t1 == t2);
+    }
+
+    public static void mutiSave2() throws Exception {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&#34;result1&#34;));
+
+        SaveRuleTest test = new SaveRuleTest();
+        test.i = 1;
+        // 试图将对象两次写入文件
+        oos.writeObject(test);
+        oos.flush();
+        System.out.println(new File(&#34;result1&#34;).length());
+
+        test.i = 2;
+        oos.writeObject(test);
+        oos.close();
+
+        System.out.println(new File(&#34;result1&#34;).length());
+
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(
+                &#34;result1&#34;));
+        // 从文件依次读出两个文件
+        SaveRuleTest t1 = (SaveRuleTest) ois.readObject();
+        SaveRuleTest t2 = (SaveRuleTest) ois.readObject();
+        ois.close();
+
+        // 判断两个引用是否指向同一个对象
+        System.out.println(t1 == t2);
+        System.out.println(t1.i);
+        System.out.println(t2.i);
+    }
+}</pre></div>
+<p>程序运行结果为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">62
+67
+true
+=========
+62
+67
+true
+1
+1</pre></div>
+<p><code>mutiSave()</code>方法执行结果，我们看到，第二次写入对象时文件只增加了 5 字节，并且两个对象是相等的，这是为什么呢？</p>
+
+<p><strong>解答</strong>：Java 序列化机制为了节省磁盘空间，具有特定的存储规则，当写入文件的为同一对象时，并不会再将对象的内容进行存储，而只是再次存储一份引用，上面增加的 5 字节的存储空间就是新增引用和一些控制信息的空间。反序列化时，恢复引用关系，使得  t1 和 t2 指向唯一的对象，二者相等，输出 true。该存储规则极大的节省了存储空间。</p>
+
+<p><code>mutiSave2()</code>的目的是希望将 test 对象两次保存到 result.obj 文件中，写入一次以后修改对象属性值再次保存第二次，然后从 result.obj 中再依次读出两个对象，输出这两个对象的 i 属性值。案例代码的目的原本是希望一次性传输对象修改前后的状态。</p>
+
+<p>结果两个输出的都是 1， 原因就是第一次写入对象以后，第二次再试图写的时候，虚拟机根据引用关系知道已经有一个相同对象已经写入文件，因此只保存第二次写的引用，所以读取时，都是第一次保存的对象。读者在使用一个文件多次 writeObject 需要特别注意这个问题。</p>
+
+<h3 id="序列化实现深拷贝">序列化实现深拷贝</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public class Teacher implements Serializable {
+
+    private static final long serialVersionUID = -6635991328204468281L;
+
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return &#34;Teacher{&#34; +
+                &#34;name=&#39;&#34; + name + &#39;\&#39;&#39; +
+                &#39;}&#39;;
+    }
+}
+
+public class Student implements Serializable, Cloneable {
+
+    private static final long serialVersionUID = 1L;
+
+    private String name;
+
+    private int age;
+
+    private Teacher teacher;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    @Override
+    public String toString() {
+        return &#34;Student{&#34; +
+                &#34;name=&#39;&#34; + name + &#39;\&#39;&#39; +
+                &#34;, age=&#34; + age +
+                &#34;, teacher=&#34; + teacher +
+                &#39;}&#39;;
+    }
+}
+
+public class CloneTest {
+
+    public static void main(String[] args) throws Exception {
+
+        Teacher teacher = new Teacher();
+        teacher.setName(&#34;tom&#34;);
+
+        Student student = new Student();
+        student.setName(&#34;zhangsan&#34;);
+        student.setAge(20);
+        student.setTeacher(teacher);
+
+        System.out.println(&#34;student:&#34; + student);
+
+        // 浅拷贝
+        Student student1 = (Student) student.clone();
+        student1.getTeacher().setName(&#34;nick&#34;);
+        System.out.println(&#34;student:&#34; + student);
+        System.out.println(&#34;student1:&#34; + student1);
+
+        // 深拷贝
+        Student student2 = JdkSerializationUtil.deserialize(JdkSerializationUtil.serialize(student), Student.class);
+        student2.getTeacher().setName(&#34;james&#34;);
+
+        System.out.println(&#34;student:&#34; + student);
+        System.out.println(&#34;student2:&#34; + student2);
+    }
+}</pre></div>
+<p>输出结果为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">student:Student{name=&#39;zhangsan&#39;, age=20, teacher=Teacher{name=&#39;tom&#39;}}
+student:Student{name=&#39;zhangsan&#39;, age=20, teacher=Teacher{name=&#39;nick&#39;}}
+student1:Student{name=&#39;zhangsan&#39;, age=20, teacher=Teacher{name=&#39;nick&#39;}}
+student:Student{name=&#39;zhangsan&#39;, age=20, teacher=Teacher{name=&#39;nick&#39;}}
+student2:Student{name=&#39;zhangsan&#39;, age=20, teacher=Teacher{name=&#39;james&#39;}}</pre></div>
+<p>从上面的执行结果我们可以总结出：</p>
+
+<p><strong>浅拷贝（浅复制、浅克隆）</strong>：<br />
+被复制对象的所有变量都含有与原来的对象相同的值，而所有的对其他对象的引用仍然指向原来的对象。<br />
+换言之，浅拷贝仅仅复制所拷贝的对象，而不复制它所引用的对象。</p>
+
+<p><strong>深拷贝（深复制、深克隆）</strong>：<br />
+被复制对象的所有变量都含有与原来的对象相同的值，除去那些引用其他对象的变量。<br />
+那些引用其他对象的变量将指向被复制过的新对象，而不再是原有的那些被引用的对象。<br />
+换言之，深拷贝把要复制的对象所引用的对象都复制了一遍</p>
+
+          
+  
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="http://flygopher.top/img/avatar.jpg"/></span>
+        <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
+    </div>
+    <div class="zs-modal-body">
+        <div class="zs-modal-btns">
+            <button class="btn btn-blink" data-num="2">2元</button>
+            <button class="btn btn-blink" data-num="5">5元</button>
+            <button class="btn btn-blink" data-num="10">10元</button>
+            <button class="btn btn-blink" data-num="50">50元</button>
+            <button class="btn btn-blink" data-num="100">100元</button>
+            <button class="btn btn-blink" data-num="1">任意金额</button>
+        </div>
+        <div class="zs-modal-pay">
+            <button class="btn btn-bred" id="pay-text">2元</button>
+            <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+            <img src="http://flygopher.top/img/wechat-2.png" id="pay-image"/>
+        </div>
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="http://flygopher.top/img/wechat-btn.png"/></span>
+    </div>
+</div>
+          
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+    <a href="#" class="social-share-icon icon-twitter"></a>
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+    <a href="#" class="social-share-icon icon-facebook"></a>
+    <a href="#" class="social-share-icon icon-qq"></a>
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="http://flygopher.top/post/reids-distributed-lock/">Redis实现分布式锁</a></li>
+    
+    <li><a href="http://flygopher.top/post/http-performance-tool-wrk/">Http性能压测工具 | wrk</a></li>
+    
+    <li><a href="http://flygopher.top/post/reids-persistence-intro/">Redis持久化介绍</a></li>
+    
+    <li><a href="http://flygopher.top/post/iterm2-ssh-no-disconnect/">iTerm2保持ssh连接不断开</a></li>
+    
+    <li><a href="http://flygopher.top/post/dynamic-proxy-pattern/">设计模式之动态代理</a></li>
+    
+    <li><a href="http://flygopher.top/post/singleton-pattern/">设计模式之单例模式</a></li>
+    
+    <li><a href="http://flygopher.top/post/git-common-commands/">Git常用指令整理</a></li>
+    
+    <li><a href="http://flygopher.top/post/first-blog/">博客终于正式开张啦～</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://flygopher.top/post/reids-distributed-lock/" data-toggle="tooltip" data-placement="top" title="Redis实现分布式锁">&larr; 前一篇</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://flygopher.top/post/restful-api-best-practice/" data-toggle="tooltip" data-placement="top" title="RESTful API最佳实践的一些理解">后一篇 &rarr;</a>
+            </li>
+          
+        </ul>
+        
+  
+        
+  
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bo.liang0212@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="https://github.com/amuguelove" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          <li>
+            <a href="http://flygopher.top/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          &bull;&nbsp;
+          &copy;2016-2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top">梁波的技术博客</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/archives/">归档</a>
+          &nbsp; &bull;&nbsp;
+          
+        </p>
+        <p class="text-center text-muted">
+          <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+          <span id="busuanzi_container_site_pv" style="display:none">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          &nbsp;&bull;&nbsp;
+          <span id="busuanzi_container_site_uv" style="display:none">
+            访客数<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src='http://flygopher.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118696048-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-118696048-1');
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script >
+$(document).ready(function() {
+  var int = setInterval(fixCount, 50);  
+  
+  var initPVCount = 584976;
+  var initUVCount = 153191;
+  function fixCount() {                   
+    if ($("#busuanzi_container_site_pv").css("display") != "none") {
+        $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
+        clearInterval(int); 
+    }
+    if ($("#busuanzi_container_site_uv").css("display") != "none") {
+      $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + initUVCount);
+      clearInterval(int); 
+    }  
+  }           
+});
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+$('.carousel').slick({
+    dots: true,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    centerMode: true,
+    prevArrow: '<button type="button" class="slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-next"></button>',
+});
+</script>
+
+  </body>
+</html>
+

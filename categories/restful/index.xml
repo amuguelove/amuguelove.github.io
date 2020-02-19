@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Restful on 梁波的技术博客</title>
+    <link>http://flygopher.top/categories/restful/</link>
+    <description>Recent content in Restful on 梁波的技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 27 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://flygopher.top/categories/restful/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>RESTful API最佳实践的一些理解</title>
+      <link>http://flygopher.top/post/restful-api-best-practice/</link>
+      <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://flygopher.top/post/restful-api-best-practice/</guid>
+      <description>&lt;h3 id=&#34;什么是restful&#34;&gt;什么是RESTful&lt;/h3&gt;
+
+&lt;p&gt;简单的说：RESTful是一种架构的规范与约束、原则，符合这种规范的架构就是RESTful架构。&lt;/p&gt;
+
+&lt;p&gt;先看REST是什么意思，英文Representational state transfer 表述性状态转移 其实就是对 资源 的表述性状态转移。&lt;/p&gt;
+
+&lt;p&gt;资源的地址 在web中就是URL （统一资源标识符）。&lt;/p&gt;
+
+&lt;p&gt;资源是REST系统的核心概念，所有的设计都是以资源为中心。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  
+  <title>深入学习Redis：CentOS 7 安装Redis 4.0.11以及生产环境启动配置-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="深入学习Redis：CentOS 7 安装Redis 4.0.11以及生产环境启动配置" />
+  <meta name="twitter:title" content="深入学习Redis：CentOS 7 安装Redis 4.0.11以及生产环境启动配置" />
+  
+  <meta name="description" content="Redis简介
+
+Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。
+Redis 与其他 key - value 缓存产品有以下三个特点：
+
+
+Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。
+
+Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。
+
+Redis支持数据的备份，即master-slave模式的数据备份。
+">
+  <meta property="og:description" content="Redis简介
+
+Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。
+Redis 与其他 key - value 缓存产品有以下三个特点：
+
+
+Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。
+
+Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。
+
+Redis支持数据的备份，即master-slave模式的数据备份。
+">
+  <meta name="twitter:description" content="Redis简介
+
+Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。
+Redis 与其他 key - value 缓存产品有以下三个特点：
+
+
+Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。
+
+Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。 …">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="http://flygopher.top/post/redis-install-on-centos7/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="梁波的技术博客" />
+  
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="canonical" href="http://flygopher.top/post/redis-install-on-centos7/" />
+  <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-118696048-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://flygopher.top" title="梁波的技术博客">
+
+        梁波的技术博客
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="http://flygopher.top/">首页</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="http://flygopher.top/archives">Archive</a>
+                
+                  <a href="http://flygopher.top/categories">Categories</a>
+                
+                  <a href="http://flygopher.top/tags">tags</a>
+                
+                  <a href="http://flygopher.top/tags/java">java</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">书籍</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/">k8s基础知识</a>
+                
+                  <a href="https://k8s.imroc.io/">Kubernetes实践指南</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="关于" href="http://flygopher.top/page/about/">关于</a>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>深入学习Redis：CentOS 7 安装Redis 4.0.11以及生产环境启动配置</h1>
+                
+                
+                  <span class="post-meta">
+  
+    发表于 October 18, 2018
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="http://flygopher.toptags/redis/">Redis</a> &nbsp;
+              
+                  <a href="http://flygopher.toptags/linux/">Linux</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#redis简介">Redis简介</a></li>
+<li><a href="#redis优势">Redis优势</a></li>
+<li><a href="#redis安装">Redis安装</a></li>
+<li><a href="#redis生产环境启动方案">Redis生产环境启动方案</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+          
+          
+          
+
+          <h3 id="redis简介">Redis简介</h3>
+
+<p>Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。<br />
+Redis 与其他 key - value 缓存产品有以下三个特点：</p>
+
+<ul>
+<li><p>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</p></li>
+
+<li><p>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</p></li>
+
+<li><p>Redis支持数据的备份，即master-slave模式的数据备份。</p></li>
+</ul>
+
+<h3 id="redis优势">Redis优势</h3>
+
+<ul>
+<li>性能极高 – Redis能读的速度是110000次/s,写的速度是81000次/s 。</li>
+<li>丰富的数据类型 – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作。</li>
+<li>原子 – Redis的所有操作都是原子性的，意思就是要么成功执行要么失败完全不执行。单个操作是原子性的。多个操作也支持事务，即原子性，通过MULTI和EXEC指令包起来。</li>
+<li>丰富的特性 – Redis还支持 publish/subscribe, 通知, key 过期等等特性。</li>
+</ul>
+
+<h3 id="redis安装">Redis安装</h3>
+
+<p>本文以opt目录作为安装目录进行安装，详细安装过程如下：</p>
+
+<p><strong>1）准备工作</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// 安装`gcc`编译工具
+[root@localhost ~]# yum install gcc
+[root@localhost ~]# yum install </pre></div>
+<p><strong>2）下载<code>Redis 4.0.11</code></strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost ~]# cd /opt
+[root@localhost opt]# wget http://download.redis.io/releases/redis-4.0.11.tar.gz</pre></div>
+<p><strong>3）解压<code>redis-4.0.11.tar.gz</code></strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost opt]# tar -zxvf redis-4.0.11.tar.gz</pre></div>
+<p><strong>4）编译</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost opt]# cd redis-4.0.11/
+[root@localhost redis-4.0.11]# make</pre></div>
+<p>进行编译时，有可能会报如下错误：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">......
+......
+In file included from adlist.c:34:0:
+zmalloc.h:50:31: 致命错误：jemalloc/jemalloc.h：没有那个文件或目录
+ #include &lt;jemalloc/jemalloc.h&gt;
+                               ^
+编译中断。
+make[1]: *** [adlist.o] 错误 1
+make[1]: 离开目录“/opt/redis-4.0.1/src”
+make: *** [all] 错误 2</pre></div>
+<p>想要弄明白这个错误是怎么回事，我们得先看一下Redis的描述文档。打开Reids根目录下的README文件，找到这么一段话：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost redis-4.0.11]# cat README.md
+......
+......
+Allocator
+---------
+Selecting a non-default memory allocator when building Redis is done by setting
+the `MALLOC` environment variable. Redis is compiled and linked against libc
+malloc by default, with the exception of jemalloc being the default on Linux
+systems. This default was picked because jemalloc has proven to have fewer
+fragmentation problems than libc malloc.
+To force compiling against libc malloc, use:
+    % make MALLOC=libc
+To compile against jemalloc on Mac OS X systems, use:
+    % make MALLOC=jemalloc
+......
+......</pre></div>
+<p>这是Redis在安装时关于内存分配器allocator的描述，如果指定了MALLOC这个环境变量，那么会用这个环境变量的去建立Redis。如果没有，那么就是用默认的分配器。Redis 2.4版本之后，默认使用jemalloc来做内存管理，因为jemalloc被证明解决fragmentation problems（内存碎片化问题）比libc更好。但是如果你又没有jemalloc而只有libc，当make出错时，你可以加这么一个参数即可 make MALLOC=libc。</p>
+
+<p>如果我们就是想用jemalloc，那么安装jemalloc即可，该过程很简单，一般不会报错：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost opt]# wget https://github.com/jemalloc/jemalloc/releases/download/5.0.1/jemalloc-5.0.1.tar.bz2
+[root@localhost opt]# yum instll bzip2
+[root@localhost opt]# bzip2 -d jemalloc-5.0.1.tar.bz2
+[root@localhost opt]# tar -xvf jemalloc-5.0.1.tar
+[root@localhost opt]# cd jemalloc-5.0.1/
+[root@localhost jemalloc-5.0.1]# ./configure --prefix=/usr/local/jemalloc
+[root@localhost jemalloc-5.0.1]# make &amp;&amp; make install</pre></div>
+<p>jemalloc安装完成后，可查看安装结果：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost jemalloc-5.0.1]# ll /usr/local/jemalloc/
+总用量 0
+drwxr-xr-x. 2 root root  62 8月  13 10:58 bin
+drwxr-xr-x. 3 root root  22 8月  13 10:58 include
+drwxr-xr-x. 3 root root 115 8月  13 10:58 lib
+drwxr-xr-x. 4 root root  28 8月  13 10:58 share</pre></div>
+<p>解决完上边两个问题，再次对 Redis 进行编译，就不会报错了，因为我们打算采用jemalloc管理内存，所以编译时我们需要指定内存管理器：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost jemalloc-5.0.1]# cd ../redis-4.0.11/
+[root@localhost redis-4.0.11]# make MALLOC=/usr/local/jemalloc/lib
+......
+......
+Hint: It&#39;s a good idea to run &#39;make test&#39; ;)
+make[1]: 离开目录“/opt/redis-4.0.11/src”</pre></div>
+<p><strong>5）安装</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost redis-4.0.11]# cd src 
+[root@localhost src]# make install
+Hint: It&#39;s a good idea to run &#39;make test&#39; ;)
+    INSTALL install
+    INSTALL install
+    INSTALL install
+    INSTALL install
+    INSTALL install</pre></div>
+<p><strong>6）测试</strong></p>
+
+<p>安装完成后，我们一般还要对安装结果进行测试，测试的方式很简单，在安装结果中已经说明了，执行 make test 即可。不过在进行测试的过程中，我遇到了一个错误：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost src]# make test
+You need tcl 8.5 or newer in order to run the Redis test
+make: *** [test] 错误 1</pre></div>
+<p>这是由于tcl的版本低于8.5导致的，安装最新的tcl即可：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost opt]# wget https://sourceforge.net/projects/tcl/files/Tcl/8.6.7/tcl8.6.7-src.tar.gz
+[root@localhost opt]# tar -zxvf tcl8.6.7-src.tar.gz  -C /usr/local/
+[root@localhost opt]# cd /usr/local/tcl8.6.7/unix
+[root@localhost unix]# ./configure
+[root@localhost unix]# make
+[root@localhost unix]# make install</pre></div>
+<p>tcl安装完成后，再次进行测试，完美通过：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost redis-4.0.11]# make test
+......
+......
+\o/ All tests passed without errors!
+Cleanup: may take some time... OK
+make[1]: 离开目录“/opt/redis-4.0.11/src”</pre></div>
+<p><strong>7）查看安装版本</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost redis-4.0.1]# redis-server -v
+Redis server v=4.0.11 sha=00000000:0 malloc=libc bits=64 build=3e25d8012744402f</pre></div>
+<p>到现在，单机Redis就算安装完成了。</p>
+
+<h3 id="redis生产环境启动方案">Redis生产环境启动方案</h3>
+
+<p><strong>1）准备目录</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost redis-4.0.11]# mkdir /etc/redis
+[root@localhost redis-4.0.11]# mkdir -p /var/log/redis/
+[root@localhost redis-4.0.11]# mkdir mkdir -p /var/redis/6379/</pre></div>
+<p><strong>2）配置redis文件</strong></p>
+
+<p>在redis根目录，拷贝<code>redis.conf</code>文件到<code>/etc/redis</code>，并重命名</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost redis-4.0.11]# cp redis.conf /etc/redis/
+[root@localhost redis-4.0.11]# cd /etc/redis/
+[root@localhost redis]# mv redis.conf 6379.conf </pre></div>
+<p>修改<code>6379.conf</code>部分配置</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost]# vi /etc/redis/6379.conf
+
+修改如下：
+daemonize    yes                         // 让redis以daemon进程运行
+pidfile      /var/run/redis_6379.pid     // 设置redis的pid文件位置
+port         6379                        // 设置redis的监听端口号
+dir          /var/redis/6379             // 设置持久化文件的存储位置
+logfle       /var/log/redis/6379.log     // 设置日志目录
+bind         机器的ip地址                  // 修改绑定的ip地址
+appendonly   yes                         // 开启AOF持久化 </pre></div>
+<p>如果要求安全性的话，可以配置：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">requirepass redis_password
+masterauth redis_password</pre></div>
+<p><strong>3）开机自启动</strong></p>
+
+<p>在<code>redis-4.0.11/utils</code>目录下，拷贝<code>redis_init_script</code>到<code>/etc/init.d</code>并重命名</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost]# cd /opt/redis-4.0.11/utils
+[root@localhost utils]# cp redis_init_script /etc/init.d/
+[root@localhost utils]# cd /etc/init.d/
+[root@localhost init.d]# mv redis_init_script redis_6379
+[root@localhost init.d]# chmod 777 redis_6379</pre></div>
+<p>让redis跟随系统启动而自启动</p>
+
+<p>在<code>redis_6379</code>脚本中，最上面，加入两行注释</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># chkconfig:   2345 90 10
+
+# description:  Redis is a persistent key-value database</pre></div>
+<p>使用命令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost init.d]# chkconfig redis_6379 on
+[root@localhost init.d]# chkconfig --list
+
+netconsole      0:off   1:off   2:off   3:off   4:off   5:off   6:off
+network         0:off   1:off   2:on    3:on    4:on    5:on    6:off
+redis_6379      0:off   1:off   2:on    3:on    4:on    5:on    6:off</pre></div>
+<p>最后启动<code>redis</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost init.d]# ./redis_6379 start
+Starting Redis server...</pre></div>
+<p><strong>4）使用<code>redis-cli</code>连接客户端</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">redis-cli -h 127.0.0.1 -p 6379</pre></div>
+<p>注意<code>-h</code>要填写你在<code>6379.conf</code>中<code>bind</code>参数配置的值。</p>
+
+<p><strong>这样，就大功告成啦！</strong></p>
+
+          
+  
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="http://flygopher.top/img/avatar.jpg"/></span>
+        <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
+    </div>
+    <div class="zs-modal-body">
+        <div class="zs-modal-btns">
+            <button class="btn btn-blink" data-num="2">2元</button>
+            <button class="btn btn-blink" data-num="5">5元</button>
+            <button class="btn btn-blink" data-num="10">10元</button>
+            <button class="btn btn-blink" data-num="50">50元</button>
+            <button class="btn btn-blink" data-num="100">100元</button>
+            <button class="btn btn-blink" data-num="1">任意金额</button>
+        </div>
+        <div class="zs-modal-pay">
+            <button class="btn btn-bred" id="pay-text">2元</button>
+            <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+            <img src="http://flygopher.top/img/wechat-2.png" id="pay-image"/>
+        </div>
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="http://flygopher.top/img/wechat-btn.png"/></span>
+    </div>
+</div>
+          
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+    <a href="#" class="social-share-icon icon-twitter"></a>
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+    <a href="#" class="social-share-icon icon-facebook"></a>
+    <a href="#" class="social-share-icon icon-qq"></a>
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="http://flygopher.top/post/reids-distributed-lock/">Redis实现分布式锁</a></li>
+    
+    <li><a href="http://flygopher.top/post/reids-persistence-intro/">Redis持久化介绍</a></li>
+    
+    <li><a href="http://flygopher.top/post/macos-profile-load-order/">MacOS环境变量加载顺序</a></li>
+    
+    <li><a href="http://flygopher.top/post/gradle-environment-setup/">搭建Gradle开发环境</a></li>
+    
+    <li><a href="http://flygopher.top/post/java8-new-date-api/">Java8新特性（四）：新的时间和日期API</a></li>
+    
+    <li><a href="http://flygopher.top/post/java8-optional/">Java8新特性（三）：Optional类</a></li>
+    
+    <li><a href="http://flygopher.top/post/java8-stream/">Java8新特性（二）：Stream流式处理</a></li>
+    
+    <li><a href="http://flygopher.top/post/java8-lambda/">Java8新特性（一）：Lambda表达式</a></li>
+    
+    <li><a href="http://flygopher.top/post/custom-iterm2-zsh/">iTerm2&#43;zsh打造漂亮好用的终端环境</a></li>
+    
+    <li><a href="http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/">Vagrant搭建虚拟机集群</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://flygopher.top/post/macos-profile-load-order/" data-toggle="tooltip" data-placement="top" title="MacOS环境变量加载顺序">&larr; 前一篇</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://flygopher.top/post/redis-master-slave-setup/" data-toggle="tooltip" data-placement="top" title="深入学习Redis：Redis一主两从搭建">后一篇 &rarr;</a>
+            </li>
+          
+        </ul>
+        
+  
+        
+  
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bo.liang0212@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="https://github.com/amuguelove" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          <li>
+            <a href="http://flygopher.top/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          &bull;&nbsp;
+          &copy;2016-2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top">梁波的技术博客</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/archives/">归档</a>
+          &nbsp; &bull;&nbsp;
+          
+        </p>
+        <p class="text-center text-muted">
+          <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+          <span id="busuanzi_container_site_pv" style="display:none">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          &nbsp;&bull;&nbsp;
+          <span id="busuanzi_container_site_uv" style="display:none">
+            访客数<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src='http://flygopher.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118696048-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-118696048-1');
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script >
+$(document).ready(function() {
+  var int = setInterval(fixCount, 50);  
+  
+  var initPVCount = 584976;
+  var initUVCount = 153191;
+  function fixCount() {                   
+    if ($("#busuanzi_container_site_pv").css("display") != "none") {
+        $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
+        clearInterval(int); 
+    }
+    if ($("#busuanzi_container_site_uv").css("display") != "none") {
+      $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + initUVCount);
+      clearInterval(int); 
+    }  
+  }           
+});
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+$('.carousel').slick({
+    dots: true,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    centerMode: true,
+    prevArrow: '<button type="button" class="slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-next"></button>',
+});
+</script>
+
+  </body>
+</html>
+

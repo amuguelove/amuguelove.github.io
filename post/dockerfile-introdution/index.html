@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  
+  <title>使用Docker构建应用 | 第二篇：Dockerfile详解-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="使用Docker构建应用 | 第二篇：Dockerfile详解" />
+  <meta name="twitter:title" content="使用Docker构建应用 | 第二篇：Dockerfile详解" />
+  
+  <meta name="description" content="1. Dockerfile文件格式
+
+Dockerfile文件格式如下：
+# Comment
+INSTRUCTION arguments
+# 注释
+指令 参数
+Dockerfile文件中指令不区分大小写，但为了更易区分，约定使用大写形式。
+
+Docker 会依次执行Dockerfile中的指令，文件中的第一条指令必须是FROM，FROM指令用于指定一个基础镜像。">
+  <meta property="og:description" content="1. Dockerfile文件格式
+
+Dockerfile文件格式如下：
+# Comment
+INSTRUCTION arguments
+# 注释
+指令 参数
+Dockerfile文件中指令不区分大小写，但为了更易区分，约定使用大写形式。
+
+Docker 会依次执行Dockerfile中的指令，文件中的第一条指令必须是FROM，FROM指令用于指定一个基础镜像。">
+  <meta name="twitter:description" content="1. Dockerfile文件格式
+
+Dockerfile文件格式如下：
+# Comment
+INSTRUCTION arguments
+# 注释
+指令 参数
+Dockerfile文件中指令不区分大小写，但为了更易区分，约定使用大写形式。
+
+Docker 会依次执行Dockerfile中的指令，文件中的第一条指令必须是FROM，FROM指令用于指定一个基础镜像。">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="http://flygopher.top/post/dockerfile-introdution/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="梁波的技术博客" />
+  
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="canonical" href="http://flygopher.top/post/dockerfile-introdution/" />
+  <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-118696048-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://flygopher.top" title="梁波的技术博客">
+
+        梁波的技术博客
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="http://flygopher.top/">首页</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="http://flygopher.top/archives">Archive</a>
+                
+                  <a href="http://flygopher.top/categories">Categories</a>
+                
+                  <a href="http://flygopher.top/tags">tags</a>
+                
+                  <a href="http://flygopher.top/tags/java">java</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">书籍</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/">k8s基础知识</a>
+                
+                  <a href="https://k8s.imroc.io/">Kubernetes实践指南</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="关于" href="http://flygopher.top/page/about/">关于</a>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>使用Docker构建应用 | 第二篇：Dockerfile详解</h1>
+                
+                
+                  <span class="post-meta">
+  
+    发表于 November 24, 2018
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="http://flygopher.toptags/docker/">Docker</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-dockerfile文件格式">1. Dockerfile文件格式</a></li>
+<li><a href="#2-dockerfile中的指令">2. Dockerfile中的指令</a>
+<ul>
+<li><a href="#2-1-from">2.1 FROM</a></li>
+<li><a href="#2-2-run">2.2 RUN</a></li>
+<li><a href="#2-3-cmd">2.3 CMD</a></li>
+<li><a href="#2-4-entrypoint">2.4 ENTRYPOINT</a></li>
+<li><a href="#2-5-label">2.5 LABEL</a></li>
+<li><a href="#2-6-expose">2.6 EXPOSE</a></li>
+<li><a href="#2-7-env">2.7 ENV</a></li>
+<li><a href="#2-8-copy">2.8 COPY</a></li>
+<li><a href="#2-9-add">2.9 ADD</a></li>
+<li><a href="#2-10-volume">2.10 VOLUME</a></li>
+<li><a href="#2-11-user">2.11 USER</a></li>
+<li><a href="#2-12-workdir">2.12 WORKDIR</a></li>
+<li><a href="#2-13-arg">2.13 ARG</a></li>
+<li><a href="#2-14-onbuild">2.14 ONBUILD</a></li>
+<li><a href="#2-15-healthcheck">2.15 HEALTHCHECK</a></li>
+</ul></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+          
+          
+          
+
+          <h2 id="1-dockerfile文件格式">1. Dockerfile文件格式</h2>
+
+<p><code>Dockerfile</code>文件格式如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Comment
+INSTRUCTION arguments
+# 注释
+指令 参数</pre></div>
+<p><code>Dockerfile</code>文件中指令不区分大小写，但为了更易区分，约定使用<code>大写</code>形式。</p>
+
+<p>Docker 会依次执行<code>Dockerfile</code>中的指令，文件中的第一条指令必须是<code>FROM</code>，<code>FROM</code>指令用于指定一个基础镜像。</p>
+
+<p>以<code>#</code>开头的行，Docker会认为是注释。但<code>#</code>出现在指令参数中时，则不是注释。如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Comment
+RUN echo &#39;we are running some # of cool things&#39;</pre></div>
+<h2 id="2-dockerfile中的指令">2. Dockerfile中的指令</h2>
+
+<h3 id="2-1-from">2.1 FROM</h3>
+
+<p><code>FROM</code>指令用于指定其后构建新镜像所使用的基础镜像。<code>FROM</code>指令必是<code>Dockerfile</code>文件中的首条命令，启动构建流程后，Docker将会基于该镜像构建新镜像，<code>FROM</code>后的命令也会基于这个基础镜像。</p>
+
+<p><code>FROM</code>语法格式为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">FROM &lt;image&gt;</pre></div>
+<p>或</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">FROM &lt;image&gt;:&lt;tag&gt;</pre></div>
+<p>或</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">FROM &lt;image&gt;:&lt;digest&gt;</pre></div>
+<p>通过<code>FROM</code>指定的镜像，可以是任何有效的基础镜像。<code>FROM</code>有以下限制：</p>
+
+<ul>
+<li><code>FROM</code>必须是<code>Dockerfile</code>中第一条非注释命令</li>
+<li>在一个<code>Dockerfile</code>文件中创建多个镜像时，<code>FROM</code>可以多次出现。只需在每个新命令<code>FROM</code>之前，记录提交上次的镜像ID。</li>
+<li><code>tag</code>或<code>digest</code>是可选的，如果不使用这两个值时，会使用<code>latest</code>版本的基础镜像</li>
+</ul>
+
+<h3 id="2-2-run">2.2 RUN</h3>
+
+<p><code>RUN</code> 指令是用来执行命令行命令的。由于命令行的强大能力，<code>RUN</code> 指令在定制镜像时是最常用的指令之一。其格式有两种：</p>
+
+<ul>
+<li><p><em>shell</em> 格式：<code>RUN &lt;command&gt;</code>，就像直接在命令行中输入的命令一样。刚才写的 Dockerfile 中的 <code>RUN</code> 指令就是这种格式。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">RUN echo &#39;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&#39; &gt; /usr/share/nginx/html/index.html</pre></div></li>
+
+<li><p><em>exec</em> 格式：<code>RUN [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]</code>，这更像是函数调用中的格式。</p></li>
+</ul>
+
+<p><code>RUN</code>可以执行任何命令，然后在当前镜像上创建一个新层并提交。提交后的结果镜像将会用在<code>Dockerfile</code>文件的下一步。</p>
+
+<p>通过<code>RUN</code>执行多条命令时，可以通过<code>\</code>换行执行</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">FROM debian:jessie
+
+RUN buildDeps=&#39;gcc libc6-dev make&#39; \
+    &amp;&amp; apt-get update \
+    &amp;&amp; apt-get install -y $buildDeps \
+    &amp;&amp; wget -O redis.tar.gz &#34;http://download.redis.io/releases/redis-3.2.5.tar.gz&#34; \
+    &amp;&amp; mkdir -p /usr/src/redis \
+    &amp;&amp; tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1 \
+    &amp;&amp; make -C /usr/src/redis \
+    &amp;&amp; make -C /usr/src/redis install \
+    &amp;&amp; rm -rf /var/lib/apt/lists/* \
+    &amp;&amp; rm redis.tar.gz \
+    &amp;&amp; rm -r /usr/src/redis \
+    &amp;&amp; apt-get purge -y --auto-remove $buildDeps</pre></div>
+<h3 id="2-3-cmd">2.3 CMD</h3>
+
+<p><code>CMD</code>用于指定在容器启动时所要执行的命令。<code>CMD</code>有以下三种格式：</p>
+
+<ul>
+<li><code>shell</code> 格式：<code>CMD &lt;command&gt;</code></li>
+<li><code>exec</code> 格式：<code>CMD [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;...]</code></li>
+<li>参数列表格式：<code>CMD [&quot;param1&quot;, &quot;param2&quot;...]</code>。在指定了 <code>ENTRYPOINT</code> 指令后，用 <code>CMD</code> 指定具体的参数。</li>
+</ul>
+
+<p>Docker 不是虚拟机，容器就是进程。既然是进程，那么在启动容器的时候，需要指定所运行的程序及参数。<code>CMD</code> 指令就是用于指定默认的容器主进程的启动命令的。</p>
+
+<p>在指令格式上，一般推荐使用 <code>exec</code> 格式，这类格式在解析时会被解析为 JSON 数组，因此一定要使用双引号 <code>&quot;</code>，而不要使用单引号。</p>
+
+<p>如果使用 <code>shell</code> 格式的话，实际的命令会被包装为 <code>sh -c</code> 的参数的形式进行执行。比如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">CMD echo $HOME</pre></div>
+<p>在实际执行中，会将其变更为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">CMD [ &#34;sh&#34;, &#34;-c&#34;, &#34;echo $HOME&#34; ]</pre></div>
+<p>提到 <code>CMD</code> 就不得不提容器中应用在前台执行和后台执行的问题。这是初学者常出现的一个混淆。</p>
+
+<p>Docker 不是虚拟机，容器中的应用都应该以前台执行，而不是像虚拟机、物理机里面那样，用 upstart/systemd 去启动后台服务，容器内没有后台服务的概念。</p>
+
+<p>一些初学者将 <code>CMD</code> 写为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">CMD service nginx start</pre></div>
+<p>然后发现容器执行后就立即退出了。甚至在容器内去使用 <code>systemctl</code> 命令结果却发现根本执行不了。这就是因为没有搞明白前台、后台的概念，没有区分容器和虚拟机的差异，依旧在以传统虚拟机的角度去理解容器。</p>
+
+<p>对于容器而言，其启动程序就是容器应用进程，容器就是为了主进程而存在的，主进程退出，容器就失去了存在的意义，从而退出，其它辅助进程不是它需要关心的东西。</p>
+
+<p>而使用 <code>service nginx start</code> 命令，则是希望 upstart 来以后台守护进程形式启动 <code>nginx</code> 服务。而刚才说了 <code>CMD service nginx start</code> 会被理解为 <code>CMD [ &quot;sh&quot;, &quot;-c&quot;, &quot;service nginx start&quot;]</code>，因此主进程实际上是 <code>sh</code>。那么当 <code>service nginx start</code> 命令结束后，<code>sh</code> 也就结束了，<code>sh</code> 作为主进程退出了，自然就会令容器退出。</p>
+
+<p>正确的做法是直接执行 <code>nginx</code> 可执行文件，并且要求以前台形式运行。比如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">CMD [&#34;nginx&#34;, &#34;-g&#34;, &#34;daemon off;&#34;]</pre></div>
+<h3 id="2-4-entrypoint">2.4 ENTRYPOINT</h3>
+
+<p><code>ENTRYPOINT</code>用于给容器配置一个可执行程序。也就是说，每次使用镜像创建容器时，通过<code>ENTRYPOINT</code>指定的程序都会被设置为默认程序。<code>ENTRYPOINT</code>有以下两种形式：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ENTRYPOINT [&#34;executable&#34;, &#34;param1&#34;, &#34;param2&#34;]
+ENTRYPOINT command param1 param2</pre></div>
+<p><code>ENTRYPOINT</code>与<code>CMD</code>非常类似，不同的是通过<code>docker run</code>执行的命令不会覆盖<code>ENTRYPOINT</code>，而<code>docker run</code>命令中指定的任何参数，都会被当做参数再次传递给<code>ENTRYPOINT</code>。<code>Dockerfile</code>中只允许有一个<code>ENTRYPOINT</code>命令，多指定时会覆盖前面的设置，而只执行最后的<code>ENTRYPOINT</code>指令。</p>
+
+<p><code>docker run</code>运行容器时指定的参数都会被传递给<code>ENTRYPOINT</code>，且会覆盖<code>CMD</code>命令指定的参数。如，执行<code>docker run &lt;image&gt; -d</code>时，<code>-d</code>参数将被传递给入口点。</p>
+
+<p>也可以通过<code>docker run --entrypoint</code>重写<code>ENTRYPOINT</code>入口点。</p>
+
+<p>如：可以像下面这样指定一个容器执行程序：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ENTRYPOINT [&#34;/usr/bin/nginx&#34;]</pre></div>
+<p>完整构建代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Version: 0.0.3
+FROM ubuntu:16.04
+MAINTAINER 何民三 &#34;cn.liuht@gmail.com&#34;
+RUN apt-get update
+RUN apt-get install -y nginx
+RUN echo &#39;Hello World, 我是个容器&#39; \ 
+   &gt; /var/www/html/index.html
+ENTRYPOINT [&#34;/usr/sbin/nginx&#34;]
+EXPOSE 80</pre></div>
+<p>使用<code>docker build</code>构建镜像，并将镜像指定为<code>itbilu/test</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo docker build -t=&#34;itbilu/test&#34; .</pre></div>
+<p>构建完成后，使用<code>itbilu/test</code>启动一个容器：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo docker run -i -t  itbilu/test -g &#34;daemon off;&#34;</pre></div>
+<p>在运行容器时，我们使用了<code>-g &quot;daemon off;&quot;</code>，这个参数将会被传递给<code>ENTRYPOINT</code>，最终在容器中执行的命令为<code>/usr/sbin/nginx -g &quot;daemon off;&quot;</code>。</p>
+
+<h3 id="2-5-label">2.5 LABEL</h3>
+
+<p><code>LABEL</code>用于为镜像添加元数据，元数以键值对的形式指定：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">LABEL &lt;key&gt;=&lt;value&gt; &lt;key&gt;=&lt;value&gt; &lt;key&gt;=&lt;value&gt; ...</pre></div>
+<p>使用<code>LABEL</code>指定元数据时，一条<code>LABEL</code>指定可以指定一或多条元数据，指定多条元数据时不同元数据之间通过空格分隔。推荐将所有的元数据通过一条<code>LABEL</code>指令指定，以免生成过多的中间镜像。</p>
+
+<p>如，通过<code>LABEL</code>指定一些元数据：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">LABEL version=&#34;1.0&#34; description=&#34;这是一个Web网站&#34; by=&#34;liangbo&#34;</pre></div>
+<p>或者</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">LABEL version=&#34;1.0&#34; \ 
+	  description=&#34;这是一个Web网站&#34; \
+	  by=&#34;liangbo&#34;</pre></div>
+<p><em>注意；</em><code>Dockerfile</code>中还有个<code>MAINTAINER</code>命令，该命令用于指定镜像作者。但<code>MAINTAINER</code>并不推荐使用，更推荐使用<code>LABEL</code>来指定镜像作者。如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">LABEL maintainer=&#34;liangbo&#34;</pre></div>
+<h3 id="2-6-expose">2.6 EXPOSE</h3>
+
+<p><code>EXPOSE</code>用于指定容器在运行时监听的端口：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">EXPOSE &lt;port&gt; [&lt;port&gt;...]</pre></div>
+<p><code>EXPOSE</code> 指令是声明运行时容器提供服务端口，这只是一个声明，在运行时并不会因为这个声明应用就会开启这个端口的服务。在 Dockerfile 中写入这样的声明有两个好处，一个是帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射；另一个用处则是在运行时使用随机端口映射时，也就是 <code>docker run -P</code>时，会自动随机映射 <code>EXPOSE</code> 的端口。</p>
+
+<p>要将 <code>EXPOSE</code> 和在运行时使用 <code>-p &lt;宿主端口&gt;:&lt;容器端口&gt;</code> 区分开来。<code>-p</code>，是映射宿主端口和容器端口，换句话说，就是将容器的对应端口服务公开给外界访问，而 <code>EXPOSE</code> 仅仅是声明容器打算使用什么端口而已，并不会自动在宿主进行端口映射。</p>
+
+<h3 id="2-7-env">2.7 ENV</h3>
+
+<p>格式有两种：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ENV &lt;key&gt; &lt;value&gt;
+ENV &lt;key&gt;=&lt;value&gt; ...</pre></div>
+<p>下列指令可以支持环境变量展开： <code>RUN</code>、<code>ADD</code>、<code>COPY</code>、<code>ENV</code>、<code>EXPOSE</code>、<code>LABEL</code>、<code>USER</code>、<code>WORKDIR</code>、<code>VOLUME</code>、<code>STOPSIGNAL</code>、<code>ONBUILD</code>等。</p>
+
+<p>可以从这个指令列表里感觉到，环境变量可以使用的地方很多，很强大。通过环境变量，我们可以让一份 <code>Dockerfile</code> 制作更多的镜像，只需使用不同的环境变量即可。</p>
+
+<h3 id="2-8-copy">2.8 COPY</h3>
+
+<p><code>COPY</code>同样用于复制构建环境中的文件或目录到镜像中。其有以下两种使用方式：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">COPY &lt;src&gt;... &lt;dest&gt;
+COPY [&#34;&lt;src&gt;&#34;,... &#34;&lt;dest&gt;&#34;]</pre></div>
+<p><code>COPY</code>指令非常类似于<code>ADD</code>，不同点在于<code>COPY</code>只会复制构建目录下的文件，不能使用<code>URL</code>也不会进行解压操作。</p>
+
+<h3 id="2-9-add">2.9 ADD</h3>
+
+<p><code>ADD</code>用于复制构建环境中的文件或目录到镜像中。其有以下两种使用方式：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ADD &lt;src&gt;... &lt;dest&gt;
+ADD [&#34;&lt;src&gt;&#34;,... &#34;&lt;dest&gt;&#34;]</pre></div>
+<p><code>ADD</code> 指令和 <code>COPY</code> 的格式和性质基本一致。但是在 <code>COPY</code> 基础上增加了一些功能。</p>
+
+<p>比如 <code>&lt;源路径&gt;</code> 可以是一个 <code>URL</code>，这种情况下，Docker 引擎会试图去下载这个链接的文件放到 <code>&lt;目标路径&gt;</code> 去。下载后的文件权限自动设置为 <code>600</code>，如果这并不是想要的权限，那么还需要增加额外的一层 <code>RUN</code>进行权限调整，另外，如果下载的是个压缩包，需要解压缩，也一样还需要额外的一层 <code>RUN</code> 指令进行解压缩。所以不如直接使用 <code>RUN</code> 指令，然后使用 <code>wget</code> 或者 <code>curl</code> 工具下载，处理权限、解压缩、然后清理无用文件更合理。因此，这个功能其实并不实用，而且不推荐使用。</p>
+
+<p>如果 <code>&lt;源路径&gt;</code> 为一个 <code>tar</code> 压缩文件的话，压缩格式为 <code>gzip</code>, <code>bzip2</code> 以及 <code>xz</code> 的情况下，<code>ADD</code> 指令将会自动解压缩这个压缩文件到 <code>&lt;目标路径&gt;</code> 去。</p>
+
+<p>但在某些情况下，如果我们真的是希望复制个压缩文件进去，而不解压缩，这时就不可以使用 <code>ADD</code> 命令了。</p>
+
+<p>在 Docker 官方的 <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Dockerfile 最佳实践文档</a> 中要求，尽可能的使用 <code>COPY</code>，因为 <code>COPY</code> 的语义很明确，就是复制文件而已，而 <code>ADD</code> 则包含了更复杂的功能，其行为也不一定很清晰。最适合使用 <code>ADD</code> 的场合，就是所提及的需要自动解压缩的场合。</p>
+
+<p>另外需要注意的是，<code>ADD</code> 指令会令镜像构建缓存失效，从而可能会令镜像构建变得比较缓慢。</p>
+
+<p><strong>因此在 <code>COPY</code> 和 <code>ADD</code> 指令中选择的时候，可以遵循这样的原则，所有的文件复制均使用 <code>COPY</code> 指令，仅在需要自动解压缩的场合使用 <code>ADD</code>。</strong></p>
+
+<h3 id="2-10-volume">2.10 VOLUME</h3>
+
+<p><code>VOLUME</code>用于创建挂载点，即向基于所构建镜像创始的容器添加卷：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">VOLUME [&#34;/data&#34;]</pre></div>
+<p>一个卷可以存在于一个或多个容器的指定目录，该目录可以绕过联合文件系统，并具有以下功能：</p>
+
+<ul>
+<li>卷可以容器间共享和重用</li>
+<li>容器并不一定要和其它容器共享卷</li>
+<li>修改卷后会立即生效</li>
+<li>对卷的修改不会对镜像产生影响</li>
+<li>卷会一直存在，直到没有任何容器在使用它</li>
+</ul>
+
+<p><code>VOLUME</code>让我们可以将源代码、数据或其它内容添加到镜像中，而又不并提交到镜像中，并使我们可以多个容器间共享这些内容。</p>
+
+<p>如，通过<code>VOLUME</code>创建一个挂载点：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ENV PATH /home/tmp/
+VOLUME [$PATH]</pre></div>
+<p>构建的镜像，并指定镜像名为<code>volume/test</code>。构建镜像后，使用新构建的运行一个容器。运行容器时，需<code>-v</code>参将能本地目录绑定到容器的卷（挂载点）上，以使容器可以访问宿主机的数据。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo docker run -i -t -v ~/code/tmp:/home/tmp/  volume/test 
+root@31b0fac536c4:/# cd /home/tmp/
+root@31b0fac536c4:/home/tmp# ls
+README.md  app.js  bin  config.js  controller  db  demo  document  lib  minify.js  node_modules  package.json  public  routes  test  views</pre></div>
+<p>如上所示，我们已经可以容器的<code>/home/tmp/</code>目录下访问到宿主机<code>~/code/tmp</code>目录下的数据了。</p>
+
+<h3 id="2-11-user">2.11 USER</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">USER &lt;user&gt;[:&lt;group&gt;] or
+USER &lt;UID&gt;[:&lt;GID&gt;]</pre></div>
+<p><code>USER</code> 指令和 <code>WORKDIR</code> 相似，都是改变环境状态并影响以后的层。<code>WORKDIR</code> 是改变工作目录，<code>USER</code>则是改变之后层的执行 <code>RUN</code>, <code>CMD</code> 以及 <code>ENTRYPOINT</code> 这类命令的身份。</p>
+
+<p>当然，和 <code>WORKDIR</code> 一样，<code>USER</code> 只是帮助你切换到指定用户而已，这个用户必须是事先建立好的，否则无法切换。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">RUN groupadd -r redis &amp;&amp; useradd -r -g redis redis
+USER redis
+RUN [ &#34;redis-server&#34; ]</pre></div>
+<h3 id="2-12-workdir">2.12 WORKDIR</h3>
+
+<p><code>WORKDIR</code>用于在容器内设置一个工作目录：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">WORKDIR /path/to/workdir</pre></div>
+<p>使用 <code>WORKDIR</code> 指令可以来指定工作目录（或者称为当前目录），以后各层的当前目录就被改为指定的目录，如该目录不存在，<code>WORKDIR</code> 会帮你建立目录。</p>
+
+<p>通过<code>WORKDIR</code>设置工作目录后，<code>Dockerfile</code>中其后的命令<code>RUN</code>、<code>CMD</code>、<code>ENTRYPOINT</code>、<code>ADD</code>、<code>COPY</code>等命令都会在该目录下执行。</p>
+
+<p>在使用<code>docker run</code>运行容器时，可以通过<code>-w</code>参数覆盖构建时所设置的工作目录。</p>
+
+<h3 id="2-13-arg">2.13 ARG</h3>
+
+<p><code>ARG</code>用于指定传递给构建运行时的变量：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ARG &lt;name&gt;[=&lt;default value&gt;]</pre></div>
+<p>构建参数和 <code>ENV</code> 的效果一样，都是设置环境变量。所不同的是，<code>ARG</code> 所设置的构建环境的环境变量，在将来容器运行时是不会存在这些环境变量的。但是不要因此就使用 <code>ARG</code> 保存密码之类的信息，因为 <code>docker history</code> 还是可以看到所有值的。</p>
+
+<p><code>Dockerfile</code> 中的 <code>ARG</code> 指令是定义参数名称，以及定义其默认值。该默认值可以在构建命令 <code>docker build</code> 中用 <code>--build-arg &lt;参数名&gt;=&lt;值&gt;</code> 来覆盖。</p>
+
+<h3 id="2-14-onbuild">2.14 ONBUILD</h3>
+
+<p><code>ONBUILD</code>用于设置镜像触发器：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ONBUILD [INSTRUCTION]</pre></div>
+<p><code>ONBUILD</code> 是一个特殊的指令，它后面跟的是其它指令，比如 <code>RUN</code>, <code>COPY</code> 等，而这些指令，在当前镜像构建时并不会被执行。只有当以当前镜像为基础镜像，去构建下一级镜像的时候才会被执行。</p>
+
+<p><code>Dockerfile</code> 中的其它指令都是为了定制当前镜像而准备的，唯有 <code>ONBUILD</code> 是为了帮助别人定制自己而准备的。</p>
+
+<p>例如：</p>
+
+<p>让我们用 <code>ONBUILD</code> 写一下基础镜像的 <code>Dockerfile</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">FROM node:slim
+RUN mkdir /app
+WORKDIR /app
+ONBUILD COPY ./package.json /app
+ONBUILD RUN [ &#34;npm&#34;, &#34;install&#34; ]
+ONBUILD COPY . /app/
+CMD [ &#34;npm&#34;, &#34;start&#34; ]</pre></div>
+<p>项目内的自己的 <code>Dockerfile</code> 就变为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">FROM my-node
+COPY ./package.json /app
+RUN [ &#34;npm&#34;, &#34;install&#34; ]
+COPY . /app/</pre></div>
+<p><code>FROM my-node</code>这么一行。当在各个项目目录中，用这个只有一行的 <code>Dockerfile</code> 构建镜像时，之前基础镜像的那三行 <code>ONBUILD</code> 就会开始执行，成功的将当前项目的代码复制进镜像、并且针对本项目执行 <code>npm install</code>，生成应用镜像。</p>
+
+<h3 id="2-15-healthcheck">2.15 HEALTHCHECK</h3>
+
+<p>格式：</p>
+
+<ul>
+<li><code>HEALTHCHECK [选项] CMD &lt;命令&gt;</code>：设置检查容器健康状况的命令</li>
+<li><code>HEALTHCHECK NONE</code>：如果基础镜像有健康检查指令，使用这行可以屏蔽掉其健康检查指令</li>
+</ul>
+
+<p><code>HEALTHCHECK</code> 指令是告诉 Docker 应该如何进行判断容器的状态是否正常，这是 Docker 1.12 引入的新指令。</p>
+
+<p>当在一个镜像指定了 <code>HEALTHCHECK</code> 指令后，用其启动容器，初始状态会为 <code>starting</code>，在 <code>HEALTHCHECK</code> 指令检查成功后变为 <code>healthy</code>，如果连续一定次数失败，则会变为 <code>unhealthy</code>。</p>
+
+<p><code>HEALTHCHECK</code> 支持下列选项：</p>
+
+<ul>
+<li><code>--interval=&lt;间隔&gt;</code>：两次健康检查的间隔，默认为 30 秒；</li>
+<li><code>--timeout=&lt;时长&gt;</code>：健康检查命令运行超时时间，如果超过这个时间，本次健康检查就被视为失败，默认 30 秒；</li>
+<li><code>--retries=&lt;次数&gt;</code>：当连续失败指定次数后，则将容器状态视为 <code>unhealthy</code>，默认 3 次。</li>
+</ul>
+
+<p>和 <code>CMD</code>, <code>ENTRYPOINT</code> 一样，<code>HEALTHCHECK</code> 只可以出现一次，如果写了多个，只有最后一个生效。</p>
+
+<p>在 <code>HEALTHCHECK [选项] CMD</code> 后面的命令，格式和 <code>ENTRYPOINT</code> 一样，分为 <code>shell</code> 格式，和 <code>exec</code> 格式。命令的返回值决定了该次健康检查的成功与否：<code>0</code>：成功；<code>1</code>：失败；<code>2</code>：保留，不要使用这个值。</p>
+
+<h2 id="参考">参考</h2>
+
+<p><a href="https://docs.docker.com/engine/reference/builder/">Dockerfile reference</a>
+<a href="https://itbilu.com/linux/docker/VyhM5wPuz.html">Docker镜像构建文件Dockerfile及相关命令介绍</a></p>
+
+          
+  
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="http://flygopher.top/img/avatar.jpg"/></span>
+        <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
+    </div>
+    <div class="zs-modal-body">
+        <div class="zs-modal-btns">
+            <button class="btn btn-blink" data-num="2">2元</button>
+            <button class="btn btn-blink" data-num="5">5元</button>
+            <button class="btn btn-blink" data-num="10">10元</button>
+            <button class="btn btn-blink" data-num="50">50元</button>
+            <button class="btn btn-blink" data-num="100">100元</button>
+            <button class="btn btn-blink" data-num="1">任意金额</button>
+        </div>
+        <div class="zs-modal-pay">
+            <button class="btn btn-bred" id="pay-text">2元</button>
+            <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+            <img src="http://flygopher.top/img/wechat-2.png" id="pay-image"/>
+        </div>
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="http://flygopher.top/img/wechat-btn.png"/></span>
+    </div>
+</div>
+          
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+    <a href="#" class="social-share-icon icon-twitter"></a>
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+    <a href="#" class="social-share-icon icon-facebook"></a>
+    <a href="#" class="social-share-icon icon-qq"></a>
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="http://flygopher.top/post/docker-install/">使用Docker构建应用 | 第一篇：Docker安装</a></li>
+    
+    <li><a href="http://flygopher.top/page/about/">关于作者</a></li>
+    
+    <li><a href="http://flygopher.top/post/migrate-blog-to-hexo/">jekyll迁移到hexo历程</a></li>
+    
+    <li><a href="http://flygopher.top/post/spring-boot-admin/">SpringBoot2干货系列 | 第一篇：Spring Boot Admin 2 监控</a></li>
+    
+    <li><a href="http://flygopher.top/post/gradle-setup-multi-projects/">使用Gradle构建多模块项目</a></li>
+    
+    <li><a href="http://flygopher.top/post/java-basic-class-bytes/">Java基础类型占用字节数</a></li>
+    
+    <li><a href="http://flygopher.top/post/redis-problem-optimization/">深入学习Redis：Redis常见问题以及优化方案</a></li>
+    
+    <li><a href="http://flygopher.top/post/redis-sentinel-setup/">深入学习Redis：Redis经典三节点哨兵集群搭建</a></li>
+    
+    <li><a href="http://flygopher.top/post/redis-master-slave-setup/">深入学习Redis：Redis一主两从搭建</a></li>
+    
+    <li><a href="http://flygopher.top/post/redis-install-on-centos7/">深入学习Redis：CentOS 7 安装Redis 4.0.11以及生产环境启动配置</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://flygopher.top/post/docker-install/" data-toggle="tooltip" data-placement="top" title="使用Docker构建应用 | 第一篇：Docker安装">&larr; 前一篇</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://flygopher.top/post/docker-image-introdution/" data-toggle="tooltip" data-placement="top" title="使用Docker构建应用 | 第三篇：Docker镜像">后一篇 &rarr;</a>
+            </li>
+          
+        </ul>
+        
+  
+        
+  
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bo.liang0212@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="https://github.com/amuguelove" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          <li>
+            <a href="http://flygopher.top/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          &bull;&nbsp;
+          &copy;2016-2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top">梁波的技术博客</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/archives/">归档</a>
+          &nbsp; &bull;&nbsp;
+          
+        </p>
+        <p class="text-center text-muted">
+          <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+          <span id="busuanzi_container_site_pv" style="display:none">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          &nbsp;&bull;&nbsp;
+          <span id="busuanzi_container_site_uv" style="display:none">
+            访客数<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src='http://flygopher.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118696048-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-118696048-1');
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script >
+$(document).ready(function() {
+  var int = setInterval(fixCount, 50);  
+  
+  var initPVCount = 584976;
+  var initUVCount = 153191;
+  function fixCount() {                   
+    if ($("#busuanzi_container_site_pv").css("display") != "none") {
+        $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
+        clearInterval(int); 
+    }
+    if ($("#busuanzi_container_site_uv").css("display") != "none") {
+      $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + initUVCount);
+      clearInterval(int); 
+    }  
+  }           
+});
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+$('.carousel').slick({
+    dots: true,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    centerMode: true,
+    prevArrow: '<button type="button" class="slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-next"></button>',
+});
+</script>
+
+  </body>
+</html>
+

@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  
+  <title>Java8新特性（二）：Stream流式处理-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="Java8新特性（二）：Stream流式处理" />
+  <meta name="twitter:title" content="Java8新特性（二）：Stream流式处理" />
+  
+  <meta name="description" content="Stream 作为 Java 8 的一大亮点，它与 java.io 包里的 InputStream 和 OutputStream 是完全不同的概念。它也不同于 StAX 对 XML 解析的 Stream，也不是 Amazon Kinesis 对大数据实时处理的 Stream。Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的 Lambda 表达式，极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用 fork/join 并行方式来拆分任务和加速处理过程。">
+  <meta property="og:description" content="Stream 作为 Java 8 的一大亮点，它与 java.io 包里的 InputStream 和 OutputStream 是完全不同的概念。它也不同于 StAX 对 XML 解析的 Stream，也不是 Amazon Kinesis 对大数据实时处理的 Stream。Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的 Lambda 表达式，极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用 fork/join 并行方式来拆分任务和加速处理过程。">
+  <meta name="twitter:description" content="Stream 作为 Java 8 的一大亮点，它与 java.io 包里的 InputStream 和 OutputStream 是完全不同的概念。它也不同于 StAX 对 XML 解析的 Stream，也不是 Amazon Kinesis 对大数据实时处理的 Stream。Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的 …">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="http://flygopher.top/post/java8-stream/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="梁波的技术博客" />
+  
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="canonical" href="http://flygopher.top/post/java8-stream/" />
+  <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-118696048-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://flygopher.top" title="梁波的技术博客">
+
+        梁波的技术博客
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="http://flygopher.top/">首页</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="http://flygopher.top/archives">Archive</a>
+                
+                  <a href="http://flygopher.top/categories">Categories</a>
+                
+                  <a href="http://flygopher.top/tags">tags</a>
+                
+                  <a href="http://flygopher.top/tags/java">java</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">书籍</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/">k8s基础知识</a>
+                
+                  <a href="https://k8s.imroc.io/">Kubernetes实践指南</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="关于" href="http://flygopher.top/page/about/">关于</a>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Java8新特性（二）：Stream流式处理</h1>
+                
+                
+                  <span class="post-meta">
+  
+    发表于 October 2, 2018
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="http://flygopher.toptags/java/">Java</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#什么是聚合操作">什么是聚合操作</a></li>
+<li><a href="#stream-总览">Stream 总览</a>
+<ul>
+<li><a href="#什么是流">什么是流</a></li>
+<li><a href="#流的构成">流的构成</a></li>
+</ul></li>
+<li><a href="#流的使用详解">流的使用详解</a>
+<ul>
+<li><a href="#流的构造与转换">流的构造与转换</a></li>
+<li><a href="#流的操作">流的操作</a></li>
+</ul></li>
+<li><a href="#进阶-用-collectors-来进行-reduction-操作">进阶：用 Collectors 来进行 reduction 操作</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+          
+          
+          
+
+          <p>Stream 作为 Java 8 的一大亮点，它与 java.io 包里的 InputStream 和 OutputStream 是完全不同的概念。它也不同于 StAX 对 XML 解析的 Stream，也不是 Amazon Kinesis 对大数据实时处理的 Stream。Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的 Lambda 表达式，极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用 fork/join 并行方式来拆分任务和加速处理过程。</p>
+
+<h3 id="什么是聚合操作">什么是聚合操作</h3>
+
+<p>在传统的 J2EE 应用中，Java 代码经常不得不依赖于关系型数据库的聚合操作来完成诸如：</p>
+
+<ul>
+<li>客户每月平均消费金额</li>
+<li>最昂贵的在售商品</li>
+<li>本周完成的有效订单（排除了无效的）</li>
+<li>取十个数据样本作为首页推荐</li>
+</ul>
+
+<p>这类的操作。</p>
+
+<p>但在当今这个数据大爆炸的时代，在数据来源多样化、数据海量化的今天，很多时候不得不脱离 RDBMS，或者以底层返回的数据为基础进行更上层的数据统计。而 Java 的集合 API 中，仅仅有极少量的辅助型方法，更多的时候是程序员需要用 Iterator 来遍历集合，完成相关的聚合应用逻辑。这是一种远不够高效、笨拙的方法。在 Java 7 中，如果要发现 type 为 grocery 的所有交易，然后返回以交易值降序排序好的交易 ID 集合，我们需要这样写：</p>
+
+<p><strong>清单 1. Java 7 的排序、取值实现</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">List&lt;Transaction&gt; groceryTransactions = new Arraylist&lt;&gt;();
+for(Transaction t: transactions){
+  if(t.getType() == Transaction.GROCERY){
+    groceryTransactions.add(t);
+  }
+}
+
+Collections.sort(groceryTransactions, new Comparator(){
+  public int compare(Transaction t1, Transaction t2){
+    return t2.getValue().compareTo(t1.getValue());
+  }
+});
+
+List&lt;Integer&gt; transactionIds = new ArrayList&lt;&gt;();
+for(Transaction t: groceryTransactions){
+  transactionsIds.add(t.getId());
+}</pre></div>
+<p>而在 Java 8 使用 Stream，代码更加简洁易读；而且使用并发模式，程序执行速度更快。</p>
+
+<p><strong>清单 2. Java 8 的排序、取值实现</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">List&lt;Integer&gt; transactionsIds = transactions.parallelStream()
+  .filter(t -&gt; t.getType() == Transaction.GROCERY)
+  .sorted(comparing(Transaction::getValue)
+  .reversed())
+  .map(Transaction::getId)
+  .collect(toList());</pre></div>
+<p>需要注意的是，流只能遍历一次，遍历结束后，这个流就被关闭掉了。如果要重新遍历，可以从数据源（集合）中重新获取一个流。如果你对一个流遍历两次，就会抛出<code>java.lang.IllegalStateException</code>异常：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">List&lt;String&gt; list = Arrays.asList(&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;);
+Stream&lt;String&gt; stream = list.stream();
+stream.forEach(System.out::println);
+stream.forEach(System.out::println); // 这里会抛出java.lang.IllegalStateException异常，因为流已经被关闭</pre></div>
+<h3 id="stream-总览">Stream 总览</h3>
+
+<h4 id="什么是流">什么是流</h4>
+
+<p>Stream 不是集合元素，它不是数据结构并不保存数据，它是有关算法和计算的，它更像一个高级版本的 Iterator。</p>
+
+<p>原始版本的 Iterator，用户只能显式地一个一个遍历元素并对其执行某些操作；</p>
+
+<p>高级版本的 Stream，用户只要给出需要对其包含的元素执行什么操作，比如 “过滤掉长度大于 10 的字符串”、“获取每个字符串的首字母”等，Stream 会隐式地在内部进行遍历，做出相应的数据转换。</p>
+
+<p>Stream 就如同一个迭代器（Iterator），单向，不可往复，数据只能遍历一次，遍历过一次后即用尽了，就好比流水从面前流过，一去不复返。</p>
+
+<p>而和迭代器又不同的是，Stream 可以并行化操作，迭代器只能命令式地、串行化操作。顾名思义，当使用串行方式去遍历时，每个 item 读完后再读下一个 item。而使用并行去遍历时，数据会被分成多个段，其中每一个都在不同的线程中处理，然后将结果一起输出。Stream 的并行操作依赖于 Java7 中引入的 Fork/Join 框架（JSR166y）来拆分任务和加速处理过程。Java 的并行 API 演变历程基本如下：</p>
+
+<ol>
+<li>1.0-1.4 中的 java.lang.Thread</li>
+<li>5.0 中的 java.util.concurrent</li>
+<li>6.0 中的 Phasers 等</li>
+<li>7.0 中的 Fork/Join 框架</li>
+<li>8.0 中的 Lambda</li>
+</ol>
+
+<p>Stream 的另外一大特点是，数据源本身可以是无限的。</p>
+
+<h4 id="流的构成">流的构成</h4>
+
+<p>当我们使用一个流的时候，通常包括三个基本步骤：</p>
+
+<p>获取一个数据源（source）→ 数据转换→执行操作获取想要的结果，每次转换原有 Stream 对象不改变，返回一个新的 Stream 对象（可以有多次转换），这就允许对其操作可以像链条一样排列，变成一个管道。</p>
+
+<p><strong>有多种方式生成 Stream Source：</strong></p>
+
+<p><strong>1.由值创建流</strong></p>
+
+<p>使用静态方法<code>Stream.of()</code>创建流，该方法接收一个变长参数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Stream&lt;Stream&gt; stream = Stream.of(&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;);</pre></div>
+<p>也可以使用静态方法<code>Stream.empty()</code>创建一个空的流：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Stream&lt;Stream&gt; stream = Stream.empty();</pre></div>
+<p><strong>2.由数组或集合创建流</strong></p>
+
+<p>使用静态方法<code>Arrays.stream()</code>从数组创建一个流，该方法接收一个数组参数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">String[] strs = {&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;};
+Stream&lt;Stream&gt; stream = Arrays.stream(strs);</pre></div>
+<p><strong>3.通过文件生成流</strong></p>
+
+<p>使用<code>java.nio.file.Files</code>类中的很多静态方法都可以获取流，比如<code>Files.lines()</code>方法，该方法接收一个<code>java.nio.file.Path</code>对象，返回一个由文件行构成的字符串流：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Stream&lt;String&gt; stream = Files.lines(Paths.get(&#34;text.txt&#34;), Charset.defaultCharset());</pre></div>
+<p><strong>4.通过函数创建流</strong></p>
+
+<p><code>java.util.stream.Stream</code>中有两个静态方法用于从函数生成流，他们分别是<code>Stream.generate()</code>和<code>Stream.iterate()</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// iteartor
+Stream.iterate(0, n -&gt; n + 2).limit(51)
+  .forEach(System.out::println);
+
+// generate
+Stream.generate(() -&gt; &#34;Hello Man!&#34;).limit(10).forEach(System.out::println);</pre></div>
+<p>第一个方法会打印100以内的所有偶数，第二个方法打印10个<code>Hello Man!</code>。值得注意的是，这两个方法生成的流都是无限流，没有固定大小，可以无穷的计算下去，在上面的代码中我们使用了<code>limit()</code>来避免打印无穷个值。</p>
+
+<p>一般来说，<code>iterate()</code>用于生成一系列值，比如生成以当前时间开始之后的10天的日期：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Stream.iterate(LocalDate.now(), date -&gt; date.plusDays(1))
+  .limit(10).forEach(System.out::println);</pre></div>
+<p><code>generate()</code>方法用于生成一些随机数，比如生成10个UUID：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Stream.generate(() -&gt; UUID.randomUUID().toString()).limit(10)
+  .forEach(System.out::println);</pre></div>
+<p>流的操作类型分为两种：</p>
+
+<ul>
+<li><strong>Intermediate</strong>：一个流可以后面跟随零个或多个 intermediate 操作。其目的主要是打开流，做出某种程度的数据映射/过滤，然后返回一个新的流，交给下一个操作使用。这类操作都是惰性化的（lazy），就是说，仅仅调用到这类方法，并没有真正开始流的遍历。</li>
+<li><strong>Terminal</strong>：一个流只能有一个 terminal 操作，当这个操作执行后，流就被使用“光”了，无法再被操作。所以这必定是流的最后一个操作。Terminal 操作的执行，才会真正开始流的遍历，并且会生成一个结果，或者一个 side effect。</li>
+</ul>
+
+<p>在对于一个 Stream 进行多次转换操作 (Intermediate 操作)，每次都对 Stream 的每个元素进行转换，而且是执行多次，这样时间复杂度就是 N（转换次数）个 for 循环里把所有操作都做掉的总和吗？其实不是这样的，转换操作都是 lazy 的，多个转换操作只会在 Terminal 操作的时候融合起来，一次循环完成。我们可以这样简单的理解，Stream 里有个操作函数的集合，每次转换操作就是把转换函数放入这个集合中，在 Terminal 操作的时候循环 Stream 对应的集合，然后对每个元素执行所有的函数。</p>
+
+<p>还有一种操作被称为 <strong>short-circuiting</strong>。用以指：</p>
+
+<ul>
+<li>对于一个 intermediate 操作，如果它接受的是一个无限大（infinite/unbounded）的 Stream，但返回一个有限的新 Stream。</li>
+<li>对于一个 terminal 操作，如果它接受的是一个无限大的 Stream，但能在有限的时间计算出结果。</li>
+</ul>
+
+<p>当操作一个无限大的 Stream，而又希望在有限时间内完成操作，则在管道内拥有一个 short-circuiting 操作是必要非充分条件。</p>
+
+<h3 id="流的使用详解">流的使用详解</h3>
+
+<p>简单说，对 Stream 的使用就是实现一个 filter-map-reduce 过程，产生一个最终结果，或者导致一个副作用（side effect）。</p>
+
+<h4 id="流的构造与转换">流的构造与转换</h4>
+
+<p>下面提供最常见的几种构造 Stream 的样例。</p>
+
+<p><strong>清单 4. 构造流的几种常见方法</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// 1. Individual values
+Stream stream = Stream.of(&#34;a&#34;, &#34;b&#34;, &#34;c&#34;);
+
+// 2. Arrays
+String [] strArray = new String[] {&#34;a&#34;, &#34;b&#34;, &#34;c&#34;};
+stream = Stream.of(strArray);
+stream = Arrays.stream(strArray);
+
+// 3. Collections
+List&lt;String&gt; list = Arrays.asList(strArray);
+stream = list.stream();</pre></div>
+<p>需要注意的是，对于基本数值型，目前有三种对应的包装类型 Stream：</p>
+
+<p>IntStream、LongStream、DoubleStream。当然我们也可以用 Stream<Integer>、Stream<Long> &gt;、Stream<Double>，但是 boxing 和 unboxing 会很耗时，所以特别为这三种基本数值型提供了对应的 Stream。</p>
+
+<p>Java 8 中还没有提供其它数值型 Stream，因为这将导致扩增的内容较多。而常规的数值型聚合运算可以通过上面三种 Stream 进行。</p>
+
+<p><strong>清单 5. 数值流的构造</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">IntStream.of(new int[]{1, 2, 3}).forEach(System.out::println);
+IntStream.range(1, 3).forEach(System.out::println);
+IntStream.rangeClosed(1, 3).forEach(System.out::println);</pre></div>
+<p><strong>清单 6. 流转换为其它数据结构</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// 1. Array
+String[] strArray1 = stream.toArray(String[]::new);
+
+// 2. Collection
+List&lt;String&gt; list1 = stream.collect(Collectors.toList());
+List&lt;String&gt; list2 = stream.collect(Collectors.toCollection(ArrayList::new));
+Set set1 = stream.collect(Collectors.toSet());
+Stack stack1 = stream.collect(Collectors.toCollection(Stack::new));
+
+// 3. String
+String str = stream.collect(Collectors.joining()).toString();</pre></div>
+<p>一个 Stream 只可以使用一次，<strong>上面的代码为了简洁而重复使用了数次</strong>。</p>
+
+<h4 id="流的操作">流的操作</h4>
+
+<p>接下来，当把一个数据结构包装成 Stream 后，就要开始对里面的元素进行各类操作了。常见的操作可以归类如下。</p>
+
+<ul>
+<li>Intermediate：</li>
+</ul>
+
+<p>map (mapToInt, flatMap 等)、 filter、 distinct、 sorted、 peek、 limit、 skip、 parallel、 sequential、 unordered</p>
+
+<ul>
+<li>Terminal：</li>
+</ul>
+
+<p>forEach、 forEachOrdered、 toArray、 reduce、 collect、 min、 max、 count、 anyMatch、 allMatch、 noneMatch、 findFirst、 findAny、 iterator</p>
+
+<ul>
+<li>Short-circuiting：</li>
+</ul>
+
+<p>anyMatch、 allMatch、 noneMatch、 findFirst、 findAny、 limit</p>
+
+<p>我们下面看一下 Stream 的比较典型用法。</p>
+
+<p><strong>map/flatMap</strong></p>
+
+<p>我们先来看 map。如果你熟悉 scala 这类函数式语言，对这个方法应该很了解，它的作用就是把 input Stream 的每一个元素，映射成 output Stream 的另外一个元素。</p>
+
+<p><strong>清单 7. 转换大写</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">List&lt;String&gt; output = wordList.stream()
+  .map(String::toUpperCase)
+  .collect(Collectors.toList());</pre></div>
+<p>这段代码把所有的单词转换为大写。</p>
+
+<p><strong>清单 8. 平方数</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">List&lt;Integer&gt; nums = Arrays.asList(1, 2, 3, 4);
+List&lt;Integer&gt; squareNums = nums.stream()
+  .map(n -&gt; n * n)
+  .collect(Collectors.toList());</pre></div>
+<p>这段代码生成一个整数 list 的平方数 {1, 4, 9, 16}。</p>
+
+<p>从上面例子可以看出，map 生成的是个 1:1 映射，每个输入元素，都按照规则转换成为另外一个元素。还有一些场景，是一对多映射关系的，这时需要 flatMap。</p>
+
+<p><strong>清单 9. 一对多</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Stream&lt;List&lt;Integer&gt;&gt; inputStream = Stream.of(
+  Arrays.asList(1),
+  Arrays.asList(2, 3),
+  Arrays.asList(4, 5, 6)
+ );
+Stream&lt;Integer&gt; outputStream = inputStream
+  .flatMap((childList) -&gt; childList.stream());</pre></div>
+<p>flatMap 把 input Stream 中的层级结构扁平化，就是将最底层元素抽出来放到一起，最终 output 的新 Stream 里面已经没有 List 了，都是直接的数字。</p>
+
+<p><strong>filter</strong></p>
+
+<p>filter 对原始 Stream 进行某项测试，通过测试的元素被留下来生成一个新 Stream。</p>
+
+<p><strong>清单 10. 留下偶数</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Integer[] sixNums = {1, 2, 3, 4, 5, 6};
+Integer[] evens = Stream.of(sixNums).filter(n -&gt; n%2 == 0).toArray(Integer[]::new);</pre></div>
+<p>经过条件“被 2 整除”的 filter，剩下的数字为 {2, 4, 6}。</p>
+
+<p><strong>清单 11. 把单词挑出来</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">List&lt;String&gt; output = reader.lines()
+  .flatMap(line -&gt; Stream.of(line.split(REGEXP)))
+  .filter(word -&gt; word.length() &gt; 0)
+  .collect(Collectors.toList());</pre></div>
+<p>这段代码首先把每行的单词用 flatMap 整理到新的 Stream，然后保留长度不为 0 的，就是整篇文章中的全部单词了。</p>
+
+<p><strong>forEach/peek</strong></p>
+
+<p>forEach 方法接收一个 Lambda 表达式，然后在 Stream 的每一个元素上执行该表达式。</p>
+
+<p><strong>清单 12. 打印姓名（forEach 和 pre-java8 的对比）</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// Java 8
+roster.stream()
+  .filter(p -&gt; p.getGender() == Person.Sex.MALE)
+  .forEach(p -&gt; System.out.println(p.getName()));
+
+// Pre-Java 8
+for (Person p : roster) {
+  if (p.getGender() == Person.Sex.MALE) {
+    System.out.println(p.getName());
+  }
+}</pre></div>
+<p>对一个人员集合遍历，找出男性并打印姓名。可以看出来，forEach 是为 Lambda 而设计的，保持了最紧凑的风格。而且 Lambda 表达式本身是可以重用的，非常方便。当需要为多核系统优化时，可以 parallelStream().forEach()，只是此时原有元素的次序没法保证，并行的情况下将改变串行时操作的行为，此时 forEach 本身的实现不需要调整，而 Java8 以前的 for 循环 code 可能需要加入额外的多线程逻辑。</p>
+
+<p>但一般认为，forEach 和常规 for 循环的差异不涉及到性能，它们仅仅是函数式风格与传统 Java 风格的差别。</p>
+
+<p>另外一点需要注意，forEach 是 terminal 操作，因此它执行后，Stream 的元素就被“消费”掉了，你无法对一个 Stream 进行两次 terminal 运算。下面的代码是错误的：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">stream.forEach(element -&gt; doOneThing(element));
+stream.forEach(element -&gt; doAnotherThing(element));</pre></div>
+<p>相反，具有相似功能的 intermediate 操作 peek 可以达到上述目的。如下是出现在该 api javadoc 上的一个示例。</p>
+
+<p><strong>清单 13. peek 对每个元素执行操作并返回一个新的 Stream</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Stream.of(&#34;one&#34;, &#34;two&#34;, &#34;three&#34;, &#34;four&#34;)
+  .filter(e -&gt; e.length() &gt; 3)
+  .peek(e -&gt; System.out.println(&#34;Filtered value: &#34; + e))
+  .map(String::toUpperCase)
+  .peek(e -&gt; System.out.println(&#34;Mapped value: &#34; + e))
+  .collect(Collectors.toList());</pre></div>
+<p>forEach 不能修改自己包含的本地变量值，也不能用 break/return 之类的关键字提前结束循环。</p>
+
+<p><strong>findFirst</strong></p>
+
+<p>这是一个 <code>termimal</code> 兼 <code>short-circuiting</code> 操作，它总是返回 Stream 的第一个元素，或者空。</p>
+
+<p>这里比较重点的是它的返回值类型：<code>Optional</code>。这也是一个模仿 Scala 语言中的概念，作为一个容器，它可能含有某值，或者不包含。使用它的目的是尽可能避免 NullPointerException。</p>
+
+<p><strong>清单 14. Optional 的两个用例</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">String strA = &#34; abcd &#34;, strB = null;
+print(strA);
+print(&#34;&#34;);
+print(strB);
+getLength(strA);
+getLength(&#34;&#34;);
+getLength(strB);
+
+public static void print(String text) {
+  // Java 8
+  Optional.ofNullable(text).ifPresent(System.out::println);
+ 
+  // Pre-Java 8
+  if (text != null) {
+    System.out.println(text);
+  }
+}
+
+public static int getLength(String text) {
+  // Java 8
+  return Optional.ofNullable(text).map(String::length).orElse(-1);
+ 	
+ // Pre-Java 8
+//  return if (text != null) ? text.length() : -1;
+};</pre></div>
+<p>在更复杂的 if (xx != null) 的情况中，使用 Optional 代码的可读性更好，而且它提供的是编译时检查，能极大的降低 NPE 这种 Runtime Exception 对程序的影响，或者迫使程序员更早的在编码阶段处理空值问题，而不是留到运行时再发现和调试。</p>
+
+<p>Stream 中的<code>findAny</code>、<code>max/min</code>、<code>reduce</code> 等方法等返回 <code>Optional</code> 值。还有例如 <code>IntStream.average()</code> 返回 <code>OptionalDouble</code> 等等。</p>
+
+<p><strong>reduce</strong></p>
+
+<p>这个方法的主要作用是把 Stream 元素组合起来。它提供一个起始值（种子），然后依照运算规则（BinaryOperator），和前面 Stream 的第一个、第二个、第 n 个元素组合。从这个意义上说，字符串拼接、数值的 <code>sum</code>、<code>min</code>、<code>max</code>、<code>average</code> 都是特殊的 <code>reduce</code>。例如 Stream 的 <code>sum</code> 就相当于</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Integer sum = integers.reduce(0, (a, b) -&gt; a+b); 
+或
+Integer sum = integers.reduce(0, Integer::sum);</pre></div>
+<p>也有没有起始值的情况，这时会把 Stream 的前面两个元素组合起来，返回的是 <code>Optional</code>。</p>
+
+<p><strong>清单 15. reduce 的用例</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// 字符串连接，concat = &#34;ABCD&#34;
+String concat = Stream.of(&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;).reduce(&#34;&#34;, String::concat); 
+
+// 求最小值，minValue = -3.0
+double minValue = Stream.of(-1.5, 1.0, -3.0, -2.0).reduce(Double.MAX_VALUE, Double::min); 
+
+// 求和，sumValue = 10, 有起始值
+int sumValue = Stream.of(1, 2, 3, 4).reduce(0, Integer::sum);
+
+// 求和，sumValue = 10, 无起始值
+sumValue = Stream.of(1, 2, 3, 4).reduce(Integer::sum).get();
+
+// 过滤，字符串连接，concat = &#34;ace&#34;
+concat = Stream.of(&#34;a&#34;, &#34;B&#34;, &#34;c&#34;, &#34;D&#34;, &#34;e&#34;, &#34;F&#34;)
+  .filter(x -&gt; x.compareTo(&#34;Z&#34;) &gt; 0)
+  .reduce(&#34;&#34;, String::concat);</pre></div>
+<p>上面代码例如第一个示例的 reduce()，第一个参数（空白字符）即为起始值，第二个参数（String::concat）为 BinaryOperator。这类有起始值的 reduce() 都返回具体的对象。而对于第四个示例没有起始值的 reduce()，由于可能没有足够的元素，返回的是 <code>Optional</code>，请留意这个区别。</p>
+
+<p><strong>limit/skip</strong></p>
+
+<p>limit 返回 Stream 的前面 n 个元素；skip 则是扔掉前 n 个元素（它是由一个叫 subStream 的方法改名而来）。</p>
+
+<p><strong>清单 16. limit 和 skip 对运行次数的影响</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public void testLimitAndSkip() {
+  List&lt;Person&gt; persons = new ArrayList();
+  for (int i = 1; i &lt;= 10000; i++) {
+    Person person = new Person(i, &#34;name&#34; + i);
+    persons.add(person);
+  }
+ 
+  List&lt;String&gt; personList2 = persons.stream()
+    .map(Person::getName).limit(10).skip(3).collect(Collectors.toList());
+  System.out.println(personList2);
+}
+
+private class Person {
+  public int no;
+  private String name;
+ 	
+  public Person (int no, String name) {
+    this.no = no;
+    this.name = name;
+  }	
+  public String getName() {
+    System.out.println(name);
+    return name;
+  }
+}</pre></div>
+<p>输出结果为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">name1
+name2
+name3
+name4
+name5
+name6
+name7
+name8
+name9
+name10
+[name4, name5, name6, name7, name8, name9, name10]</pre></div>
+<p>这是一个有 10，000 个元素的 Stream，但在 short-circuiting 操作 limit 和 skip 的作用下，管道中 map 操作指定的 getName() 方法的执行次数为 limit 所限定的 10 次，而最终返回结果在跳过前 3 个元素后只有后面 7 个返回。</p>
+
+<p>有一种情况是 limit/skip 无法达到 short-circuiting 目的的，就是把它们放在 Stream 的排序操作后，原因跟 sorted 这个 intermediate 操作有关：此时系统并不知道 Stream 排序后的次序如何，所以 sorted 中的操作看上去就像完全没有被 limit 或者 skip 一样。</p>
+
+<p><strong>清单 17. limit 和 skip 对 sorted 后的运行次数无影响</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">List&lt;Person&gt; persons = new ArrayList();
+for (int i = 1; i &lt;= 5; i++) {
+  Person person = new Person(i, &#34;name&#34; + i);
+   persons.add(person);
+}
+
+List&lt;Person&gt; personList2 = persons.stream()
+  .sorted((p1, p2) -&gt; p1.getName().compareTo(p2.getName()))
+  .limit(2).collect(Collectors.toList());
+System.out.println(personList2);</pre></div>
+<p>上面的示例对清单 13 做了微调，首先对 5 个元素的 Stream 排序，然后进行 limit 操作。输出结果为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">name2
+name1
+name3
+name2
+name4
+name3
+name5
+name4
+[stream.StreamDW$Person@816f27d, stream.StreamDW$Person@87aac27]</pre></div>
+<p>即虽然最后的返回元素数量是 2，但整个管道中的 sorted 表达式执行次数没有像前面例子相应减少。</p>
+
+<p>最后有一点需要注意的是，对一个 parallel 的 Steam 管道来说，如果其元素是有序的，那么 limit 操作的成本会比较大，因为它的返回对象必须是前 n 个也有一样次序的元素。取而代之的策略是取消元素间的次序，或者不要用 parallel Stream。</p>
+
+<p><strong>sorted</strong></p>
+
+<p>对 Stream 的排序通过 sorted 进行，它比数组的排序更强之处在于你可以首先对 Stream 进行各类 map、filter、limit、skip 甚至 distinct 来减少元素数量后，再排序，这能帮助程序明显缩短执行时间。我们对清单 17 进行优化：</p>
+
+<p><strong>清单 18. 优化：排序前进行 limit 和 skip</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">List&lt;Person&gt; persons = new ArrayList();
+for (int i = 1; i &lt;= 5; i++) {
+  Person person = new Person(i, &#34;name&#34; + i);
+  persons.add(person);
+}
+
+List&lt;Person&gt; personList2 = persons.stream().limit(2)
+  .sorted((p1, p2) -&gt; p1.getName().compareTo(p2.getName()))
+  .collect(Collectors.toList());
+System.out.println(personList2);</pre></div>
+<p>结果会简单很多：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">name2
+name1
+[stream.StreamDW$Person@6ce253f1, stream.StreamDW$Person@53d8d10a]</pre></div>
+<p>当然，这种优化是有 business logic 上的局限性的：即不要求排序后再取值。</p>
+
+<p><strong>min/max/distinct</strong></p>
+
+<p>min 和 max 的功能也可以通过对 Stream 元素先排序，再 findFirst 来实现，但前者的性能会更好，为 O(n)，而 sorted 的成本是 O(n log n)。同时它们作为特殊的 reduce 方法被独立出来也是因为求最大最小值是很常见的操作。</p>
+
+<p><strong>清单 19. 找出最长一行的长度</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">BufferedReader br = new BufferedReader(new FileReader(&#34;c:\\SUService.log&#34;));
+int longest = br.lines()
+  .mapToInt(String::length)
+  .max().getAsInt();
+br.close();
+System.out.println(longest);</pre></div>
+<p>下面的例子则使用 distinct 来找出不重复的单词。</p>
+
+<p><strong>清单 20. 找出全文的单词，转小写，并排序</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">List&lt;String&gt; words = br.lines()
+  .flatMap(line -&gt; Stream.of(line.split(&#34; &#34;)))
+   .filter(word -&gt; word.length() &gt; 0)
+   .map(String::toLowerCase)
+   .distinct()
+   .sorted()
+   .collect(Collectors.toList());
+br.close();
+System.out.println(words);</pre></div>
+<p><strong>Match</strong></p>
+
+<p>Stream 有三个 match 方法，从语义上说：</p>
+
+<ul>
+<li>allMatch：Stream 中全部元素符合传入的 predicate，返回 true</li>
+<li>anyMatch：Stream 中只要有一个元素符合传入的 predicate，返回 true</li>
+<li>noneMatch：Stream 中没有一个元素符合传入的 predicate，返回 true</li>
+</ul>
+
+<p>它们都不是要遍历全部元素才能返回结果。例如 allMatch 只要一个元素不满足条件，就 skip 剩下的所有元素，返回 false。对清单 13 中的 Person 类稍做修改，加入一个 age 属性和 getAge 方法。</p>
+
+<p><strong>清单 21. 使用 Match</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">List&lt;Person&gt; persons = new ArrayList();
+persons.add(new Person(1, &#34;name&#34; + 1, 10));
+persons.add(new Person(2, &#34;name&#34; + 2, 21));
+persons.add(new Person(3, &#34;name&#34; + 3, 34));
+persons.add(new Person(4, &#34;name&#34; + 4, 6));
+persons.add(new Person(5, &#34;name&#34; + 5, 55));
+
+boolean isAllAdult = persons.stream()
+  .allMatch(p -&gt; p.getAge() &gt; 18);
+System.out.println(&#34;All are adult? &#34; + isAllAdult);
+
+boolean isThereAnyChild = persons.stream()
+  .anyMatch(p -&gt; p.getAge() &lt; 12);
+System.out.println(&#34;Any child? &#34; + isThereAnyChild);</pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">All are adult? false
+Any child? true</pre></div>
+<h3 id="进阶-用-collectors-来进行-reduction-操作">进阶：用 Collectors 来进行 reduction 操作</h3>
+
+<p><code>java.util.stream.Collectors</code> 类的主要作用就是辅助进行各类有用的 <code>reduction</code> 操作，例如转变输出为 Collection，把 Stream 元素进行归组。</p>
+
+<p><strong>groupingBy/partitioningBy</strong></p>
+
+<p><strong>清单 25. 按照年龄归组</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Map&lt;Integer, List&lt;Person&gt;&gt; personGroups = Stream.generate(new PersonSupplier())
+  .limit(100)
+  .collect(Collectors.groupingBy(Person::getAge));
+
+Iterator it = personGroups.entrySet().iterator();
+while (it.hasNext()) {
+  Map.Entry&lt;Integer, List&lt;Person&gt;&gt; persons = (Map.Entry) it.next();
+  System.out.println(&#34;Age &#34; + persons.getKey() + &#34; = &#34; + persons.getValue().size());
+}</pre></div>
+<p>上面的 code，首先生成 100 人的信息，然后按照年龄归组，相同年龄的人放到同一个 list 中，可以看到如下的输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Age 0 = 2
+Age 1 = 2
+Age 5 = 2
+Age 8 = 1
+Age 9 = 1
+Age 11 = 2
+……</pre></div>
+<p><strong>清单 26. 按照未成年人和成年人归组</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Map&lt;Boolean, List&lt;Person&gt;&gt; children = Stream.generate(new PersonSupplier())
+	.limit(100)
+	.collect(Collectors.partitioningBy(p -&gt; p.getAge() &lt; 18));
+System.out.println(&#34;Children number: &#34; + children.get(true).size());
+System.out.println(&#34;Adult number: &#34; + children.get(false).size());</pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Children number: 23 
+Adult number: 77</pre></div>
+<p>在使用条件“年龄小于 18”进行分组后可以看到，不到 18 岁的未成年人是一组，成年人是另外一组。partitioningBy 其实是一种特殊的 groupingBy，它依照条件测试的是否两种结果来构造返回的数据结构，get(true) 和 get(false) 能即为全部的元素对象。</p>
+
+          
+  
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="http://flygopher.top/img/avatar.jpg"/></span>
+        <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
+    </div>
+    <div class="zs-modal-body">
+        <div class="zs-modal-btns">
+            <button class="btn btn-blink" data-num="2">2元</button>
+            <button class="btn btn-blink" data-num="5">5元</button>
+            <button class="btn btn-blink" data-num="10">10元</button>
+            <button class="btn btn-blink" data-num="50">50元</button>
+            <button class="btn btn-blink" data-num="100">100元</button>
+            <button class="btn btn-blink" data-num="1">任意金额</button>
+        </div>
+        <div class="zs-modal-pay">
+            <button class="btn btn-bred" id="pay-text">2元</button>
+            <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+            <img src="http://flygopher.top/img/wechat-2.png" id="pay-image"/>
+        </div>
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="http://flygopher.top/img/wechat-btn.png"/></span>
+    </div>
+</div>
+          
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+    <a href="#" class="social-share-icon icon-twitter"></a>
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+    <a href="#" class="social-share-icon icon-facebook"></a>
+    <a href="#" class="social-share-icon icon-qq"></a>
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="http://flygopher.top/post/java8-lambda/">Java8新特性（一）：Lambda表达式</a></li>
+    
+    <li><a href="http://flygopher.top/post/java-serialization/">认识Java序列化</a></li>
+    
+    <li><a href="http://flygopher.top/post/custom-iterm2-zsh/">iTerm2&#43;zsh打造漂亮好用的终端环境</a></li>
+    
+    <li><a href="http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/">Vagrant搭建虚拟机集群</a></li>
+    
+    <li><a href="http://flygopher.top/post/restful-api-best-practice/">RESTful API最佳实践的一些理解</a></li>
+    
+    <li><a href="http://flygopher.top/post/reids-distributed-lock/">Redis实现分布式锁</a></li>
+    
+    <li><a href="http://flygopher.top/post/http-performance-tool-wrk/">Http性能压测工具 | wrk</a></li>
+    
+    <li><a href="http://flygopher.top/post/reids-persistence-intro/">Redis持久化介绍</a></li>
+    
+    <li><a href="http://flygopher.top/post/iterm2-ssh-no-disconnect/">iTerm2保持ssh连接不断开</a></li>
+    
+    <li><a href="http://flygopher.top/post/dynamic-proxy-pattern/">设计模式之动态代理</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://flygopher.top/post/java8-lambda/" data-toggle="tooltip" data-placement="top" title="Java8新特性（一）：Lambda表达式">&larr; 前一篇</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://flygopher.top/post/java8-optional/" data-toggle="tooltip" data-placement="top" title="Java8新特性（三）：Optional类">后一篇 &rarr;</a>
+            </li>
+          
+        </ul>
+        
+  
+        
+  
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bo.liang0212@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="https://github.com/amuguelove" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          <li>
+            <a href="http://flygopher.top/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          &bull;&nbsp;
+          &copy;2016-2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top">梁波的技术博客</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/archives/">归档</a>
+          &nbsp; &bull;&nbsp;
+          
+        </p>
+        <p class="text-center text-muted">
+          <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+          <span id="busuanzi_container_site_pv" style="display:none">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          &nbsp;&bull;&nbsp;
+          <span id="busuanzi_container_site_uv" style="display:none">
+            访客数<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src='http://flygopher.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118696048-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-118696048-1');
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script >
+$(document).ready(function() {
+  var int = setInterval(fixCount, 50);  
+  
+  var initPVCount = 584976;
+  var initUVCount = 153191;
+  function fixCount() {                   
+    if ($("#busuanzi_container_site_pv").css("display") != "none") {
+        $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
+        clearInterval(int); 
+    }
+    if ($("#busuanzi_container_site_uv").css("display") != "none") {
+      $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + initUVCount);
+      clearInterval(int); 
+    }  
+  }           
+});
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+$('.carousel').slick({
+    dots: true,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    centerMode: true,
+    prevArrow: '<button type="button" class="slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-next"></button>',
+});
+</script>
+
+  </body>
+</html>
+

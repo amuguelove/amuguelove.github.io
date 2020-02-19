@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  
+  <title>Java8新特性（一）：Lambda表达式-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="Java8新特性（一）：Lambda表达式" />
+  <meta name="twitter:title" content="Java8新特性（一）：Lambda表达式" />
+  
+  <meta name="description" content="新特性列表
+
+以下是Java8中的引入的部分新特性。关于Java8新特性更详细的介绍可参考这里。
+
+
+接口默认方法和静态方法
+Lambda 表达式
+函数式接口
+方法引用
+Stream
+Optional
+Date/Time API
+重复注解
+扩展注解的支持
+Base64
+JavaFX
+其它
+
+
+JDBC4.2规范
+更好的类型推测机制
+HashMap性能提升
+IO/NIO 的改进
+JavaScript引擎Nashorn
+并发（Concurrency）
+类依赖分析器jdeps
+JVM的PermGen空间被移除
+
+">
+  <meta property="og:description" content="新特性列表
+
+以下是Java8中的引入的部分新特性。关于Java8新特性更详细的介绍可参考这里。
+
+
+接口默认方法和静态方法
+Lambda 表达式
+函数式接口
+方法引用
+Stream
+Optional
+Date/Time API
+重复注解
+扩展注解的支持
+Base64
+JavaFX
+其它
+
+
+JDBC4.2规范
+更好的类型推测机制
+HashMap性能提升
+IO/NIO 的改进
+JavaScript引擎Nashorn
+并发（Concurrency）
+类依赖分析器jdeps
+JVM的PermGen空间被移除
+
+">
+  <meta name="twitter:description" content="新特性列表
+
+以下是Java8中的引入的部分新特性。关于Java8新特性更详细的介绍可参考这里。
+
+
+接口默认方法和静态方法
+Lambda 表达式
+函数式接口
+方法引用
+Stream
+Optional
+Date/Time API
+重复注解
+扩展注解的支持
+Base64
+JavaFX
+其它
+
+
+JDBC4.2规范
+更好的类型推测机制
+HashMap性能提升
+IO/NIO 的改进
+JavaScript …">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="http://flygopher.top/post/java8-lambda/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="梁波的技术博客" />
+  
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="canonical" href="http://flygopher.top/post/java8-lambda/" />
+  <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-118696048-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://flygopher.top" title="梁波的技术博客">
+
+        梁波的技术博客
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="http://flygopher.top/">首页</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="http://flygopher.top/archives">Archive</a>
+                
+                  <a href="http://flygopher.top/categories">Categories</a>
+                
+                  <a href="http://flygopher.top/tags">tags</a>
+                
+                  <a href="http://flygopher.top/tags/java">java</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">书籍</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/">k8s基础知识</a>
+                
+                  <a href="https://k8s.imroc.io/">Kubernetes实践指南</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="关于" href="http://flygopher.top/page/about/">关于</a>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Java8新特性（一）：Lambda表达式</h1>
+                
+                
+                  <span class="post-meta">
+  
+    发表于 October 1, 2018
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="http://flygopher.toptags/java/">Java</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#新特性列表">新特性列表</a></li>
+<li><a href="#一-接口默认方法和静态方法">一、接口默认方法和静态方法</a>
+<ul>
+<li><a href="#1-接口默认方法">1. 接口默认方法</a>
+<ul>
+<li><a href="#1-多重继承的冲突说明">(1). 多重继承的冲突说明</a></li>
+<li><a href="#2-优缺点">(2). 优缺点</a></li>
+<li><a href="#3-接口默认方法不能重载object类的任何方法">(3). 接口默认方法不能重载Object类的任何方法</a></li>
+</ul></li>
+<li><a href="#2-接口静态方法">2. 接口静态方法</a></li>
+</ul></li>
+<li><a href="#二-lambda-表达式">二、Lambda 表达式</a></li>
+<li><a href="#三-函数式接口">三、函数式接口</a>
+<ul>
+<li><a href="#1-comparator-比较器接口">1. Comparator (比较器接口)</a></li>
+<li><a href="#2-consumer-消费型接口">2. Consumer (消费型接口)</a>
+<ul>
+<li><a href="#更多的consumer接口">更多的Consumer接口</a></li>
+</ul></li>
+<li><a href="#3-supplier-供应型接口">3. Supplier (供应型接口)</a>
+<ul>
+<li><a href="#更多supplier接口">更多Supplier接口</a></li>
+</ul></li>
+<li><a href="#4-predicate-断言型接口">4. Predicate (断言型接口)</a>
+<ul>
+<li><a href="#更多的predicate接口">更多的Predicate接口</a></li>
+</ul></li>
+<li><a href="#5-function-功能型接口">5. Function (功能型接口)</a>
+<ul>
+<li><a href="#更多的function接口">更多的Function接口</a></li>
+</ul></li>
+<li><a href="#6-operator">6. Operator</a>
+<ul>
+<li><a href="#更多的operator接口">更多的Operator接口</a></li>
+</ul></li>
+<li><a href="#6-其它函数式接口">6. 其它函数式接口</a></li>
+</ul></li>
+<li><a href="#四-方法引用">四、方法引用</a>
+<ul>
+<li><a href="#1-概述">1. 概述</a></li>
+<li><a href="#2-分类">2. 分类</a></li>
+<li><a href="#3-示例">3. 示例</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+          
+          
+          
+
+          <h2 id="新特性列表">新特性列表</h2>
+
+<p>以下是Java8中的引入的部分新特性。关于Java8新特性更详细的介绍可参考<a href="http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html">这里</a>。</p>
+
+<ul>
+<li>接口默认方法和静态方法</li>
+<li>Lambda 表达式</li>
+<li>函数式接口</li>
+<li>方法引用</li>
+<li>Stream</li>
+<li>Optional</li>
+<li>Date/Time API</li>
+<li>重复注解</li>
+<li>扩展注解的支持</li>
+<li>Base64</li>
+<li>JavaFX</li>
+<li>其它
+
+<ul>
+<li>JDBC4.2规范</li>
+<li>更好的类型推测机制</li>
+<li>HashMap性能提升</li>
+<li>IO/NIO 的改进</li>
+<li>JavaScript引擎Nashorn</li>
+<li>并发（Concurrency）</li>
+<li>类依赖分析器jdeps</li>
+<li>JVM的PermGen空间被移除</li>
+</ul></li>
+</ul>
+
+<h2 id="一-接口默认方法和静态方法">一、接口默认方法和静态方法</h2>
+
+<p>Java 8用默认方法与静态方法这两个新概念来扩展接口的声明。与传统的接口又有些不一样，它允许在已有的接口中添加新方法，而同时又保持了与旧版本代码的兼容性。</p>
+
+<h3 id="1-接口默认方法">1. 接口默认方法</h3>
+
+<p>默认方法与抽象方法不同之处在于抽象方法必须要求实现，但是默认方法则没有这个要求。相反，每个接口都必须提供一个所谓的默认实现，这样所有的接口实现者将会默认继承它（如果有必要的话，可以覆盖这个默认实现）。让我们看看下面的例子：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">private interface Defaulable {
+    // Interfaces now allow default methods, the implementer may or
+    // may not implement (override) them.
+    default String notRequired() {
+        return &#34;Default implementation&#34;;
+    }
+}
+
+private static class DefaultableImpl implements Defaulable {
+}
+
+private static class OverridableImpl implements Defaulable {
+    @Override
+    public String notRequired() {
+        return &#34;Overridden implementation&#34;;
+    }
+}</pre></div>
+<p><code>Defaulable</code>接口用关键字<code>default</code>声明了一个默认方法<code>notRequired()</code>，<code>Defaulable</code>接口的实现者之一<code>DefaultableImpl</code>实现了这个接口，并且让默认方法保持原样。<code>Defaulable</code>接口的另一个实现者<code>OverridableImpl</code>用自己的方法覆盖了默认方法。</p>
+
+<h4 id="1-多重继承的冲突说明">(1). 多重继承的冲突说明</h4>
+
+<p>由于同一个方法可以从不同的接口引入，自然而然的会有冲突的现象，规则如下：</p>
+
+<ul>
+<li>一个声明在类里面的方法优先于任何默认方法</li>
+
+<li><p>优先选取最具体的实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public interface A {
+
+default void hello() {
+    System.out.println(&#34;Hello A&#34;);
+}
+
+}
+public interface B extends A {
+
+default void hello() {
+    System.out.println(&#34;Hello B&#34;);
+}
+
+}
+public class C implements A, B {
+
+public static void main(String[] args) {
+    new C().hello(); // 输出 Hello B
+}
+
+}</pre></div></li>
+</ul>
+
+<h4 id="2-优缺点">(2). 优缺点</h4>
+
+<ul>
+<li><strong>优点</strong>: 可以在不破坏代码的前提下扩展原有库的功能。它通过一个很优雅的方式使得接口变得更智能，同时还避免了代码冗余，并且扩展类库。</li>
+<li><strong>缺点</strong>: 使得<strong>接口作为协议，类作为具体实现</strong>的界限开始变得有点模糊。</li>
+</ul>
+
+<h4 id="3-接口默认方法不能重载object类的任何方法">(3). 接口默认方法不能重载Object类的任何方法</h4>
+
+<p><strong>接口不能提供对Object类的任何方法的默认实现</strong>。简单地讲，每一个java类都是Object的子类，也都继承了它类中的<code>equals()</code>/<code>hashCode()</code>/<code>toString()</code>方法，那么在类的接口上包含这些默认方法是没有意义的，它们也从来不会被编译。</p>
+
+<p>在JVM中，默认方法的实现是非常高效的，并且通过字节码指令为方法调用提供了支持。默认方法允许继续使用现有的Java接口，而同时能够保障正常的编译过程。这方面好的例子是大量的方法被添加到<code>java.util.Collection</code>接口中去：<code>stream()</code>，<code>parallelStream()</code>，<code>forEach()</code>，<code>removeIf()</code>等。尽管默认方法非常强大，但是在使用默认方法时我们需要小心注意一个地方：在声明一个默认方法前，请仔细思考是不是真的有必要使用默认方法。</p>
+
+<h3 id="2-接口静态方法">2. 接口静态方法</h3>
+
+<p>Java 8带来的另一个有趣的特性是接口可以声明（并且可以提供实现）静态方法。在接口中定义静态方法，使用<code>static</code>关键字，例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public interface StaticInterface {
+
+    static void method() {
+        System.out.println(&#34;这是Java8接口中的静态方法!&#34;);
+    }
+
+}</pre></div>
+<p>下面的一小段代码是上面静态方法的使用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public class Main {
+
+    public static void main(String[] args) {
+        StaticInterface.method(); // 输出 这是Java8接口中的静态方法!
+    }
+
+}</pre></div>
+<p>Java支持一个实现类可以实现多个接口，如果多个接口中存在同样的<code>static</code>方法会怎么样呢？如果有两个接口中的静态方法一模一样，并且一个实现类同时实现了这两个接口，此时并不会产生错误，因为Java8中只能通过接口类调用接口中的静态方法，所以对编译器来说是可以区分的。</p>
+
+<h2 id="二-lambda-表达式">二、Lambda 表达式</h2>
+
+<p><code>Lambda</code>表达式（也称为闭包）是整个Java 8发行版中最受期待的在Java语言层面上的改变，Lambda允许把函数作为一个方法的参数（即：<strong>行为参数化</strong>，函数作为参数传递进方法中）。</p>
+
+<p>一个<code>Lambda</code>可以由用逗号分隔的参数列表、<code>–&gt;</code>符号与函数体三部分表示。</p>
+
+<p>首先看看在老版本的Java中是如何排列字符串的：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">List&lt;String&gt; names = Arrays.asList(&#34;peter&#34;, &#34;anna&#34;, &#34;mike&#34;, &#34;xenia&#34;);
+Collections.sort(names, new Comparator&lt;String&gt;() {
+
+    @Override
+    public int compare(String a, String b) {
+        return b.compareTo(a);
+    }
+
+});</pre></div>
+<p>只需要给静态方法<code>Collections.sort</code>传入一个List对象以及一个比较器来按指定顺序排列。通常做法都是创建一个匿名的比较器对象然后将其传递给sort方法。
+在Java 8 中你就没必要使用这种传统的匿名对象的方式了，Java 8提供了更简洁的语法，lambda表达式：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Collections.sort(names, (String a, String b) -&gt; {
+    return b.compareTo(a);
+});</pre></div>
+<p>看到了吧，代码变得更段且更具有可读性，但是实际上还可以写得更短：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Collections.sort(names, (String a, String b) -&gt; b.compareTo(a));</pre></div>
+<p>对于函数体只有一行代码的，你可以去掉大括号<code>{}</code>以及<code>return</code>关键字，但是你还可以写得更短点：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Collections.sort(names, (a, b) -&gt; b.compareTo(a));</pre></div>
+<p>Java编译器可以自动推导出参数类型，所以你可以不用再写一次类型。</p>
+
+<h2 id="三-函数式接口">三、函数式接口</h2>
+
+<p><code>Lambda</code>表达式是如何在Java的类型系统中表示的呢？每一个Lambda表达式都对应一个类型，通常是接口类型。而<strong>函数式接口</strong>是指仅仅只包含一个抽象方法的接口，每一个该类型的Lambda表达式都会被匹配到这个抽象方法。因为<strong>默认方法</strong>不算抽象方法，所以你也可以给你的函数式接口添加默认方法。</p>
+
+<p>我们可以将Lambda表达式当作任意只包含一个抽象方法的接口类型，确保你的接口一定达到这个要求，你只需要给你的接口添加<code>@FunctionalInterface</code>注解，编译器如果发现你标注了这个注解的接口有多于一个抽象方法的时候会报错的。</p>
+
+<p>示例如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@FunctionalInterface
+interface Converter&lt;F, T&gt; {
+    T convert(F from);
+}
+
+Converter&lt;String, Integer&gt; converter = (from) -&gt; Integer.valueOf(from);
+Integer converted = converter.convert(&#34;123&#34;);
+System.out.println(converted); // 123</pre></div>
+<blockquote>
+<p><strong>注</strong>：如果<code>@FunctionalInterface</code>如果没有指定，上面的代码也是对的。</p>
+</blockquote>
+
+<p>Java8 API包含了很多内建的函数式接口，在老Java中常用到的比如<code>Comparator</code>或者<code>Runnable</code>接口，这些接口都增加了<code>@FunctionalInterface</code>注解以便能用在<code>Lambda</code>上。</p>
+
+<p>Java8 API同样还提供了很多全新的函数式接口来让工作更加方便，有一些接口是来自Google Guava库里的，即便你对这些很熟悉了，还是有必要看看这些是如何扩展到lambda上使用的。</p>
+
+<h3 id="1-comparator-比较器接口">1. Comparator (比较器接口)</h3>
+
+<p><code>Comparator</code>是老Java中的经典接口， Java 8在此之上添加了多种默认方法。源代码及使用示例如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@FunctionalInterface
+public interface Comparator&lt;T&gt; {
+
+    int compare(T o1, T o2);
+
+}
+Comparator&lt;Person&gt; comparator = (p1, p2) -&gt; p1.firstName.compareTo(p2.firstName);
+Person p1 = new Person(&#34;John&#34;, &#34;Doe&#34;);
+Person p2 = new Person(&#34;Alice&#34;, &#34;Wonderland&#34;);
+comparator.compare(p1, p2);             // &gt; 0
+comparator.reversed().compare(p1, p2);  // &lt; 0</pre></div>
+<h3 id="2-consumer-消费型接口">2. Consumer (消费型接口)</h3>
+
+<p><code>Consumer</code>接口表示执行在单个参数上的操作。源代码及使用示例如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@FunctionalInterface
+public interface Consumer&lt;T&gt; {
+
+    void accept(T t);
+
+}
+Consumer&lt;Person&gt; greeter = (p) -&gt; System.out.println(&#34;Hello, &#34; + p.firstName);
+greeter.accept(new Person(&#34;Luke&#34;, &#34;Skywalker&#34;));</pre></div>
+<h4 id="更多的consumer接口">更多的Consumer接口</h4>
+
+<ul>
+<li><code>BiConsumer：void accept(T t, U u);</code>: 接受两个参数的二元函数</li>
+<li><code>DoubleConsumer：void accept(double value);</code>: 接受一个double参数的一元函数</li>
+<li><code>IntConsumer：void accept(int value);</code>: 接受一个int参数的一元函数</li>
+<li><code>LongConsumer：void accept(long value);</code>: 接受一个long参数的一元函数</li>
+<li><code>ObjDoubleConsumer：void accept(T t, double value);</code>: 接受一个泛型参数一个double参数的二元函数</li>
+<li><code>ObjIntConsumer：void accept(T t, int value);</code>: 接受一个泛型参数一个int参数的二元函数</li>
+<li><code>ObjLongConsumer：void accept(T t, long value);</code>: 接受一个泛型参数一个long参数的二元函数</li>
+</ul>
+
+<h3 id="3-supplier-供应型接口">3. Supplier (供应型接口)</h3>
+
+<p><code>Supplier</code>接口是不需要参数并返回一个任意范型的值。其简洁的声明，会让人以为不是函数。这个抽象方法的声明，同Consumer相反，是一个只声明了返回值，不需要参数的函数。也就是说Supplier其实表达的不是从一个参数空间到结果空间的映射能力，而是表达一种生成能力，因为我们常见的场景中不止是要consume（Consumer）或者是简单的map（Function），还包括了new这个动作。而Supplier就表达了这种能力。源代码及使用示例如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@FunctionalInterface
+public interface Supplier&lt;T&gt; {
+
+    T get();
+}
+Supplier&lt;Person&gt; personSupplier = Person::new;
+personSupplier.get();   // new Person</pre></div>
+<h4 id="更多supplier接口">更多Supplier接口</h4>
+
+<ul>
+<li><code>BooleanSupplier：boolean getAsBoolean();</code>: 返回boolean的无参函数</li>
+<li><code>DoubleSupplier：double getAsDouble();</code>: 返回double的无参函数</li>
+<li><code>IntSupplier：int getAsInt();</code>: 返回int的无参函数</li>
+<li><code>LongSupplier：long getAsLong();</code>: 返回long的无参函数</li>
+</ul>
+
+<h3 id="4-predicate-断言型接口">4. Predicate (断言型接口)</h3>
+
+<p><code>Predicate</code>接口只有一个参数，返回<code>boolean</code>类型。该接口包含多种默认方法来将<code>Predicate</code>组合成其他复杂的逻辑（比如：<strong>与</strong>，<strong>或</strong>，<strong>非</strong>）。<code>Stream</code>的<code>filter</code>方法就是接受<code>Predicate</code>作为入参的。这个具体在后面使用<code>Stream</code>的时候再分析深入。源代码及使用示例如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@FunctionalInterface
+public interface Predicate&lt;T&gt; {
+
+    boolean test(T t);
+
+}
+Predicate&lt;String&gt; predicate = (s) -&gt; s.length() &gt; 0;
+predicate.test(&#34;foo&#34;);            // true
+predicate.negate().test(&#34;foo&#34;);     // false
+Predicate&lt;Boolean&gt; nonNull = Objects::nonNull;
+Predicate&lt;Boolean&gt; isNull = Objects::isNull;
+Predicate&lt;String&gt; isEmpty = String::isEmpty;
+Predicate&lt;String&gt; isNotEmpty = isEmpty.negate();</pre></div>
+<h4 id="更多的predicate接口">更多的Predicate接口</h4>
+
+<ul>
+<li><code>BiPredicate：boolean test(T t, U u);</code>: 接受两个参数的二元断言函数</li>
+<li><code>DoublePredicate：boolean test(double value);</code>: 入参为double的断言函数</li>
+<li><code>IntPredicate：boolean test(int value);</code>: 入参为int的断言函数</li>
+<li><code>LongPredicate：boolean test(long value);</code>: 入参为long的断言函数</li>
+</ul>
+
+<h3 id="5-function-功能型接口">5. Function (功能型接口)</h3>
+
+<p><code>Function</code>接口有一个参数并且返回一个结果，并附带了一些可以和其他函数组合的默认方法（<code>compose</code>, <code>andThen</code>）。源代码及使用示例如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@FunctionalInterface
+public interface Function&lt;T, R&gt; {
+
+    R apply(T t);
+
+}
+Function&lt;String, Integer&gt; toInteger = Integer::valueOf;
+Function&lt;String, String&gt; backToString = toInteger.andThen(String::valueOf);
+backToString.apply(&#34;123&#34;);     // &#34;123&#34;</pre></div>
+<h4 id="更多的function接口">更多的Function接口</h4>
+
+<ul>
+<li><code>BiFunction ：R apply(T t, U u);</code>: 接受两个参数，返回一个值，代表一个二元函数；</li>
+<li><code>DoubleFunction ：R apply(double value);</code>: 只处理double类型的一元函数；</li>
+<li><code>IntFunction ：R apply(int value);</code>: 只处理int参数的一元函数；</li>
+<li><code>LongFunction ：R apply(long value);</code>: 只处理long参数的一元函数；</li>
+<li><code>ToDoubleFunction：double applyAsDouble(T value);</code>: 返回double的一元函数；</li>
+<li><code>ToDoubleBiFunction：double applyAsDouble(T t, U u);</code>: 返回double的二元函数；</li>
+<li><code>ToIntFunction：int applyAsInt(T value);</code>: 返回int的一元函数；</li>
+<li><code>ToIntBiFunction：int applyAsInt(T t, U u);</code>: 返回int的二元函数；</li>
+<li><code>ToLongFunction：long applyAsLong(T value);</code>: 返回long的一元函数；</li>
+<li><code>ToLongBiFunction：long applyAsLong(T t, U u);</code>: 返回long的二元函数；</li>
+<li><code>DoubleToIntFunction：int applyAsInt(double value);</code>: 接受double返回int的一元函数；</li>
+<li><code>DoubleToLongFunction：long applyAsLong(double value);</code>: 接受double返回long的一元函数；</li>
+<li><code>IntToDoubleFunction：double applyAsDouble(int value);</code>: 接受int返回double的一元函数；</li>
+<li><code>IntToLongFunction：long applyAsLong(int value);</code>: 接受int返回long的一元函数；</li>
+<li><code>LongToDoubleFunction：double applyAsDouble(long value);</code>: 接受long返回double的一元函数；</li>
+<li><code>LongToIntFunction：int applyAsInt(long value);</code>: 接受long返回int的一元函数；</li>
+</ul>
+
+<h3 id="6-operator">6. Operator</h3>
+
+<p><code>Operator</code>其实就是<code>Function</code>，函数有时候也叫作算子。算子在Java8中接口描述更像是函数的补充，和上面的很多类型映射型函数类似。算子Operator包括：<code>UnaryOperator</code>和<code>BinaryOperator</code>。分别对应单（一）元算子和二元算子。</p>
+
+<p>算子的接口声明如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@FunctionalInterface
+public interface UnaryOperator&lt;T&gt; extends Function&lt;T, T&gt; {
+
+    static &lt;T&gt; UnaryOperator&lt;T&gt; identity() {
+        return t -&gt; t;
+    }
+}
+@FunctionalInterface
+public interface BinaryOperator&lt;T&gt; extends BiFunction&lt;T,T,T&gt; {
+
+    public static &lt;T&gt; BinaryOperator&lt;T&gt; minBy(Comparator&lt;? super T&gt; comparator) {
+        Objects.requireNonNull(comparator);
+        return (a, b) -&gt; comparator.compare(a, b) &lt;= 0 ? a : b;
+    }
+
+    public static &lt;T&gt; BinaryOperator&lt;T&gt; maxBy(Comparator&lt;? super T&gt; comparator) {
+        Objects.requireNonNull(comparator);
+        return (a, b) -&gt; comparator.compare(a, b) &gt;= 0 ? a : b;
+    }
+}</pre></div>
+<p><code>Operator</code>只需声明一个泛型参数T即可。对应的使用示例如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">UnaryOperator&lt;Integer&gt; increment = x -&gt; x + 1;
+System.out.println(&#34;递增:&#34; + increment.apply(2)); // 输出 递增:3
+
+BinaryOperator&lt;Integer&gt; add = (x, y) -&gt; x + y;
+System.out.println(&#34;相加:&#34; + add.apply(2, 3)); // 输出 相加:5
+
+BinaryOperator&lt;Integer&gt; min = BinaryOperator.minBy((o1, o2) -&gt; o1 - o2);
+System.out.println(&#34;最小值:&#34; + min.apply(2, 3)); // 输出 最小值:2</pre></div>
+<h4 id="更多的operator接口">更多的Operator接口</h4>
+
+<ul>
+<li><code>LongUnaryOperator：long applyAsLong(long operand);</code>: 对long类型做操作的一元算子</li>
+<li><code>IntUnaryOperator：int applyAsInt(int operand);</code>: 对int类型做操作的一元算子</li>
+<li><code>DoubleUnaryOperator：double applyAsDouble(double operand);</code>: 对double类型做操作的一元算子</li>
+<li><code>DoubleBinaryOperator：double applyAsDouble(double left, double right);</code>: 对double类型做操作的二元算子</li>
+<li><code>IntBinaryOperator：int applyAsInt(int left, int right);</code>: 对int类型做操作的二元算子</li>
+<li><code>LongBinaryOperator：long applyAsLong(long left, long right);</code>: 对long类型做操作的二元算子</li>
+</ul>
+
+<h3 id="6-其它函数式接口">6. 其它函数式接口</h3>
+
+<ul>
+<li>java.lang.Runnable</li>
+<li>java.util.concurrent.Callable</li>
+<li>java.security.PrivilegedAction</li>
+<li>java.io.FileFilter</li>
+<li>java.nio.file.PathMatcher</li>
+<li>java.lang.reflect.InvocationHandler</li>
+<li>java.beans.PropertyChangeListener</li>
+<li>java.awt.event.ActionListener</li>
+<li>javax.swing.event.ChangeListener</li>
+</ul>
+
+<h2 id="四-方法引用">四、方法引用</h2>
+
+<h3 id="1-概述">1. 概述</h3>
+
+<p>在学习了Lambda表达式之后，我们通常使用Lambda表达式来创建匿名方法。然而，有时候我们仅仅是调用了一个已存在的方法。如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Arrays.sort(strArray, (s1, s2) -&gt; s1.compareToIgnoreCase(s2));</pre></div>
+<p>在Java8中，我们可以直接通过方法引用来简写Lambda表达式中已经存在的方法。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Arrays.sort(strArray, String::compareToIgnoreCase);</pre></div>
+<p>这种特性就叫做<strong>方法引用</strong>(<code>Method Reference</code>)。</p>
+
+<p><strong>方法引用</strong>是用来直接访问类或者实例的已经存在的方法或者构造方法。方法引用提供了一种引用而不执行方法的方式，它需要由兼容的函数式接口构成的目标类型上下文。计算时，方法引用会创建函数式接口的一个实例。当Lambda表达式中只是执行一个方法调用时，不用Lambda表达式，直接通过方法引用的形式可读性更高一些。方法引用是一种更简洁易懂的Lambda表达式。</p>
+
+<blockquote>
+<p><strong>注意</strong>: 方法引用是一个Lambda表达式，其中方法引用的操作符是双冒号<code>::</code>。</p>
+</blockquote>
+
+<h3 id="2-分类">2. 分类</h3>
+
+<p>方法引用的标准形式是：<code>类名::方法名</code>。（注意：只需要写方法名，不需要写括号）</p>
+
+<p>有以下四种形式的方法引用：</p>
+
+<ul>
+<li>引用静态方法: ContainingClass::staticMethodName</li>
+<li>引用某个对象的实例方法: containingObject::instanceMethodName</li>
+<li>引用某个类型的任意对象的实例方法:ContainingType::methodName</li>
+<li>引用构造方法: ClassName::new</li>
+</ul>
+
+<h3 id="3-示例">3. 示例</h3>
+
+<p>使用示例如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public class Person {
+
+    String name;
+
+    LocalDate birthday;
+
+    public Person(String name, LocalDate birthday) {
+        this.name = name;
+        this.birthday = birthday;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public static int compareByAge(Person a, Person b) {
+        return a.birthday.compareTo(b.birthday);
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+}
+public class MethodReferenceTest {
+
+    @Test
+    public static void main() {
+        Person[] pArr = new Person[] {
+            new Person(&#34;003&#34;, LocalDate.of(2016,9,1)),
+            new Person(&#34;001&#34;, LocalDate.of(2016,2,1)),
+            new Person(&#34;002&#34;, LocalDate.of(2016,3,1)),
+            new Person(&#34;004&#34;, LocalDate.of(2016,12,1))
+        };
+
+        // 使用匿名类
+        Arrays.sort(pArr, new Comparator&lt;Person&gt;() {
+            @Override
+            public int compare(Person a, Person b) {
+                return a.getBirthday().compareTo(b.getBirthday());
+            }
+        });
+
+        //使用lambda表达式
+        Arrays.sort(pArr, (Person a, Person b) -&gt; {
+            return a.getBirthday().compareTo(b.getBirthday());
+        });
+
+        //使用方法引用，引用的是类的静态方法
+        Arrays.sort(pArr, Person::compareByAge);
+    }
+
+}</pre></div>
+
+          
+  
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="http://flygopher.top/img/avatar.jpg"/></span>
+        <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
+    </div>
+    <div class="zs-modal-body">
+        <div class="zs-modal-btns">
+            <button class="btn btn-blink" data-num="2">2元</button>
+            <button class="btn btn-blink" data-num="5">5元</button>
+            <button class="btn btn-blink" data-num="10">10元</button>
+            <button class="btn btn-blink" data-num="50">50元</button>
+            <button class="btn btn-blink" data-num="100">100元</button>
+            <button class="btn btn-blink" data-num="1">任意金额</button>
+        </div>
+        <div class="zs-modal-pay">
+            <button class="btn btn-bred" id="pay-text">2元</button>
+            <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+            <img src="http://flygopher.top/img/wechat-2.png" id="pay-image"/>
+        </div>
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="http://flygopher.top/img/wechat-btn.png"/></span>
+    </div>
+</div>
+          
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+    <a href="#" class="social-share-icon icon-twitter"></a>
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+    <a href="#" class="social-share-icon icon-facebook"></a>
+    <a href="#" class="social-share-icon icon-qq"></a>
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="http://flygopher.top/post/java-serialization/">认识Java序列化</a></li>
+    
+    <li><a href="http://flygopher.top/post/custom-iterm2-zsh/">iTerm2&#43;zsh打造漂亮好用的终端环境</a></li>
+    
+    <li><a href="http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/">Vagrant搭建虚拟机集群</a></li>
+    
+    <li><a href="http://flygopher.top/post/restful-api-best-practice/">RESTful API最佳实践的一些理解</a></li>
+    
+    <li><a href="http://flygopher.top/post/reids-distributed-lock/">Redis实现分布式锁</a></li>
+    
+    <li><a href="http://flygopher.top/post/http-performance-tool-wrk/">Http性能压测工具 | wrk</a></li>
+    
+    <li><a href="http://flygopher.top/post/reids-persistence-intro/">Redis持久化介绍</a></li>
+    
+    <li><a href="http://flygopher.top/post/iterm2-ssh-no-disconnect/">iTerm2保持ssh连接不断开</a></li>
+    
+    <li><a href="http://flygopher.top/post/dynamic-proxy-pattern/">设计模式之动态代理</a></li>
+    
+    <li><a href="http://flygopher.top/post/singleton-pattern/">设计模式之单例模式</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://flygopher.top/post/custom-iterm2-zsh/" data-toggle="tooltip" data-placement="top" title="iTerm2&#43;zsh打造漂亮好用的终端环境">&larr; 前一篇</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://flygopher.top/post/java8-stream/" data-toggle="tooltip" data-placement="top" title="Java8新特性（二）：Stream流式处理">后一篇 &rarr;</a>
+            </li>
+          
+        </ul>
+        
+  
+        
+  
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bo.liang0212@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="https://github.com/amuguelove" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          <li>
+            <a href="http://flygopher.top/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          &bull;&nbsp;
+          &copy;2016-2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top">梁波的技术博客</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/archives/">归档</a>
+          &nbsp; &bull;&nbsp;
+          
+        </p>
+        <p class="text-center text-muted">
+          <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+          <span id="busuanzi_container_site_pv" style="display:none">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          &nbsp;&bull;&nbsp;
+          <span id="busuanzi_container_site_uv" style="display:none">
+            访客数<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src='http://flygopher.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118696048-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-118696048-1');
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script >
+$(document).ready(function() {
+  var int = setInterval(fixCount, 50);  
+  
+  var initPVCount = 584976;
+  var initUVCount = 153191;
+  function fixCount() {                   
+    if ($("#busuanzi_container_site_pv").css("display") != "none") {
+        $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
+        clearInterval(int); 
+    }
+    if ($("#busuanzi_container_site_uv").css("display") != "none") {
+      $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + initUVCount);
+      clearInterval(int); 
+    }  
+  }           
+});
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+$('.carousel').slick({
+    dots: true,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    centerMode: true,
+    prevArrow: '<button type="button" class="slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-next"></button>',
+});
+</script>
+
+  </body>
+</html>
+

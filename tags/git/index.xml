@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on 梁波的技术博客</title>
+    <link>http://flygopher.top/tags/git/</link>
+    <description>Recent content in Git on 梁波的技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 13 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://flygopher.top/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git常用指令整理</title>
+      <link>http://flygopher.top/post/git-common-commands/</link>
+      <pubDate>Mon, 13 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://flygopher.top/post/git-common-commands/</guid>
+      <description>&lt;p&gt;整理的一些常用的Git指令&lt;/p&gt;
+
+&lt;h3 id=&#34;创建仓库&#34;&gt;创建仓库&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;echo &amp;#34;# comments&amp;#34; &amp;gt;&amp;gt; README.md
+git init
+git add README.md
+git commit -m &amp;#34;first commit&amp;#34;
+git remote add origin git@github.com:your_username/your_project.git
+git push -u origin master&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;若仓库存在直接push &lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;git remote add origin git@github.com:your_username/your_project.git
+git push -u origin master&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git 生成多个 SSH Key</title>
+      <link>http://flygopher.top/post/generate-multi-ssh-key/</link>
+      <pubDate>Sat, 07 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://flygopher.top/post/generate-multi-ssh-key/</guid>
+      <description>&lt;p&gt;当有多个git账号的时候，比如一个github，用于自己进行一些开发活动，再来一个gitlab，一般是公司内部的git。这两者你的邮箱如果不同的话，就会涉及到一个问题，生成第二个git的key的时候会覆盖第一个的key，导致必然有一个用不了。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

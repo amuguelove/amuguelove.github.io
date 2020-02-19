@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  
+  <title>Vagrant搭建虚拟机集群-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="Vagrant搭建虚拟机集群" />
+  <meta name="twitter:title" content="Vagrant搭建虚拟机集群" />
+  
+  <meta name="description" content="本文将将介绍如何使用Vagrant&#43;VirtualBox搭建多节点Centos7虚拟机集群">
+  <meta property="og:description" content="本文将将介绍如何使用Vagrant&#43;VirtualBox搭建多节点Centos7虚拟机集群">
+  <meta name="twitter:description" content="本文将将介绍如何使用Vagrant&#43;VirtualBox搭建多节点Centos7虚拟机集群">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="梁波的技术博客" />
+  
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="canonical" href="http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/" />
+  <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-118696048-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://flygopher.top" title="梁波的技术博客">
+
+        梁波的技术博客
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="http://flygopher.top/">首页</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="http://flygopher.top/archives">Archive</a>
+                
+                  <a href="http://flygopher.top/categories">Categories</a>
+                
+                  <a href="http://flygopher.top/tags">tags</a>
+                
+                  <a href="http://flygopher.top/tags/java">java</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">书籍</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/">k8s基础知识</a>
+                
+                  <a href="https://k8s.imroc.io/">Kubernetes实践指南</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="关于" href="http://flygopher.top/page/about/">关于</a>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Vagrant搭建虚拟机集群</h1>
+                
+                
+                  <span class="post-meta">
+  
+    发表于 September 27, 2018
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="http://flygopher.toptags/vagrant/">Vagrant</a> &nbsp;
+              
+                  <a href="http://flygopher.toptags/cluster/">Cluster</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#工具准备">工具准备</a></li>
+<li><a href="#vagrant-的常用操作命令">Vagrant 的常用操作命令</a></li>
+<li><a href="#vagrant-配置文件操作">Vagrant 配置文件操作</a>
+<ul>
+<li><a href="#config-vm">config.vm</a></li>
+<li><a href="#config-ssh">config.ssh</a></li>
+</ul></li>
+<li><a href="#vagrantfile">Vagrantfile</a>
+<ul>
+<li><a href="#deploy-vm-provider">deploy.vm.provider</a></li>
+<li><a href="#vm-box">vm.box</a></li>
+<li><a href="#vm-hostname">vm.hostname</a></li>
+<li><a href="#vm-network">vm.network</a>
+<ul>
+<li><a href="#forwarded-port"><strong>Forwarded port</strong></a></li>
+<li><a href="#private-network">Private network</a></li>
+<li><a href="#public-network">Public network</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#启动虚拟机">启动虚拟机</a></li>
+</ul></li>
+<li><a href="#使用虚拟机">使用虚拟机</a>
+<ul>
+<li><a href="#免密登陆">免密登陆</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+          
+          
+          
+
+          <p>本文将将介绍如何使用Vagrant+VirtualBox搭建多节点Centos7虚拟机集群</p>
+
+<h3 id="工具准备">工具准备</h3>
+
+<p>本人的机器环境是：<code>MaxOS</code></p>
+
+<p><strong>1. 安装 <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></strong></p>
+
+<p><strong>2. 安装 <a href="https://www.vagrantup.com/">Vagrant</a></strong></p>
+
+<h3 id="vagrant-的常用操作命令">Vagrant 的常用操作命令</h3>
+
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>vagrant box add</td>
+<td>添加box的操作</td>
+</tr>
+
+<tr>
+<td>vagrant init</td>
+<td>初始化box的操作，会生成vagrant的配置文件Vagrantfile</td>
+</tr>
+
+<tr>
+<td>vagrant up</td>
+<td>启动本地环境</td>
+</tr>
+
+<tr>
+<td>vagrant ssh</td>
+<td>通过ssh登录本地环境所在虚拟机</td>
+</tr>
+
+<tr>
+<td>vagrant halt</td>
+<td>关闭本地环境</td>
+</tr>
+
+<tr>
+<td>vagrant suspend</td>
+<td>暂停本地环境</td>
+</tr>
+
+<tr>
+<td>vagrant resume</td>
+<td>恢复本地环境</td>
+</tr>
+
+<tr>
+<td>vagrant reload</td>
+<td>修改了Vagrantfile后，使之生效（相当于先 halt，再 up）</td>
+</tr>
+
+<tr>
+<td>vagrant destroy</td>
+<td>彻底移除本地环境</td>
+</tr>
+
+<tr>
+<td>vagrant box list</td>
+<td>显示当前已经添加的box列表</td>
+</tr>
+
+<tr>
+<td>vagrant box remove</td>
+<td>删除相应的box</td>
+</tr>
+
+<tr>
+<td>vagrant package</td>
+<td>打包命令，可以把当前的运行的虚拟机环境进行打包</td>
+</tr>
+
+<tr>
+<td>vagrant plugin</td>
+<td>用于安装卸载插件</td>
+</tr>
+
+<tr>
+<td>vagrant status</td>
+<td>获取当前虚拟机的状态</td>
+</tr>
+
+<tr>
+<td>vagrant global-status</td>
+<td>显示当前用户Vagrant的所有环境状态</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="vagrant-配置文件操作">Vagrant 配置文件操作</h3>
+
+<h4 id="config-vm">config.vm</h4>
+
+<p>config.vm中设置了Vagrant管理的机器的配置。</p>
+
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>作用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>config.vm.boot_timeout</code></td>
+<td>Vagrant等待机器启动并可访问的时间（秒 默认情况下，这是300秒。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.box</code></td>
+<td>这将配置该机器要下载的<code>box</code>。可以去HashiCorp/Vagrant Cloud中查找已安装框的名称或框的简写名称。此选项需要Vagrant 1.5或更高版本。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.box_check_update</code></td>
+<td>如果为true，Vagrant会在每次执行<code>vagrant up</code>时检查配置的<code>config.vm.box</code>的更新。 如果发现更新，Vagrant会告诉用户.</td>
+</tr>
+
+<tr>
+<td><code>config.vm.box_download_checksum</code></td>
+<td>由<code>config.vm.box_url</code>指定的box的校验。如果未指定，则不会执行校验和比较。如果指定，Vagrant会将下载的box校验与这个值和错误进行比较，如果指定了此选项，则还必须指定`config.vm.box_download_checksum_type。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.box_download_checksum_type</code></td>
+<td>指定的校验和类型。支持的值目前是“md5”，“sha1”和“sha256”，如果执行则还必须指定<code>config.vm.box_download_checksum</code></td>
+</tr>
+
+<tr>
+<td><code>config.vm.box_download_client_cert</code></td>
+<td>下载邮箱时使用的客户端证书的路径（如果有必要）。 默认情况下，不使用客户端证书来下载该框。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.box_download_ca_cert</code></td>
+<td>直接下载盒子时使用的CA证书包的路径。 默认情况下，Vagrant将使用Mozilla CA证书包。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.box_download_ca_path</code></td>
+<td>包含CA证书的目录的路径，用于直接下载box。 默认情况下，Vagrant将使用Mozilla CA证书包。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.box_download_insecure</code></td>
+<td>如果为true，则来自服务器的SSL证书将不会被验证。 默认情况下，如果URL是HTTPS URL，则SSL证书将被验证。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.box_download_location_trusted</code></td>
+<td>如果为true，则所有HTTP重定向将被视为可信。这意味着用于初始URL的凭证将用于所有后续重定向。默认情况下，重定向位置不受信任，因此凭据（如果指定）仅用于初始HTTP请求。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.box_url</code></td>
+<td>可以找到配置的 box的URL。如果config.vm.box的是值是HashiCorp或者Vagrant Cloud中的一个box的简写，那么不需要指定该值。否则，它应该指向没有安装的盒子可以找到的适当位置。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.box_version</code></td>
+<td>要使用box的版本</td>
+</tr>
+
+<tr>
+<td><code>config.vm.communicator</code></td>
+<td>用于连接到 guest box 的通信器类型。默认情况下是“ssh”，但对于 Windows 虚拟机应更改为“winrm”。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.graceful_halt_timeout</code></td>
+<td>调用 <code>vagrant halt</code> 时 Vagrant 等待机器正常停止的时间。默认为 60 秒。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.guest</code></td>
+<td>将在本机中运行的客户操作系统。默认为 linux，Vagrant 会自动检测正确的发行版。Vagrant 需要知道这些信息才能执行某些客户操作系统特定的事情，例如挂载目录和配置网络。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.hostname</code></td>
+<td>机器应具有的主机名。默认为 <code>nil</code>。如果为 <code>nil</code>，Vagrant 将不管理主机名。如果设置为字符串，主机名将在引导时设置。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.network</code></td>
+<td>参考下文网络配置</td>
+</tr>
+
+<tr>
+<td><code>config.vm.post_up_message</code></td>
+<td>执行 <code>vagrant up</code> 之后显示给用户的消息，可以用于指示如何访问开发环境的各个组件等。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.provider</code></td>
+<td>配置 provider 特定的配置，该配置用于修改特定于某个 provider 的设置。如果您正在配置的 provider 不存在或未在运行 Vagrant 的系统上设置，则 Vagrant 将忽略此配置块。这允许共享一个适用于多个 provider 的 Vagrantfile，即使没有安装所有的 provider（至少要安装 Vagrantfile 要求的一个 provider）。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.provision</code></td>
+<td>在机器上配置 provisioner，以便在创建机器时自动安装和配置软件。 参考：<a href="https://www.vagrantup.com/docs/providers/configuration.html">provisioner</a></td>
+</tr>
+
+<tr>
+<td><code>config.vm.synced_folder</code></td>
+<td>在机器上配置已同步的目录，以便主机上的目录可以与客户机同步。</td>
+</tr>
+
+<tr>
+<td><code>config.vm.usable_port_range</code></td>
+<td>Vagrant 可以使用的用来处理端口冲突的一系列端口。默认为 2200..2250。</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="config-ssh">config.ssh</h4>
+
+<p><code>config.ssh</code>涉及配置Vagrant如何通过SSH访问你的机器。大多数Vagrant的设置，默认值通常就够用了，但是我们还是可以根据自己的实际情况做出微调。</p>
+
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>作用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>config.ssh.username</code></td>
+<td>默认设置Vagrant将SSH作为用户名。如果自定义设置了用户名，则可以自由覆盖此内容。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.password</code></td>
+<td>设置Vagrant将用于验证SSH用户的密码。Vagrant建议在下面使用基于密钥的身份验证而不是密码。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.host</code></td>
+<td>SSH进入的主机名或IP。默认情况下，这是空的，因为服务提供商通常会为您解决这个问题。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.port</code></td>
+<td>进入SSH的端口。默认情况下，这是端口22。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.guest_port</code></td>
+<td>运行SSH的guest虚拟机上的端口。这被一些提供商用来检测转发的SSH端口。例如，如果设置为22（默认值），并且Vagrant从主机上的端口4567检测到来宾端口22上的转发端口，则Vagrant将尝试使用端口4567与来宾进行对话（如果没有其他端口）选项。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.private_key_path</code></td>
+<td>用于SSH访问客机的私钥的路径。默认情况下，这是随Vagrant一起提供的不安全私钥，因为这是公共盒子使用的私钥。如果您使用自定义SSH密钥创建自己的自定义框，则应该指向该私钥。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.keys_only</code></td>
+<td>仅使用Vagrant提供的SSH私钥（不要使用存储在ssh-agent中的任何密钥）。默认值是true。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.verify_host_key</code></td>
+<td>执行严格的主机密钥验证。默认值是false。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.forward_agent</code></td>
+<td>如果为true，则启用通过SSH连接的代理转发。默认为false。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.forward_x11</code></td>
+<td>如果为true，则启用通过SSH连接进行的X11转发。默认为false。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.forward_env</code></td>
+<td>要转发给guest虚拟机的主机环境变量数组</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.insert_key</code></td>
+<td>如果为true，Vagrant将自动插入一个用于SSH的密钥对，如果检测到，则替换机器内部的Vagrant默认不安全密钥。默认为 true</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.proxy_command</code></td>
+<td>执行命令行命令，接收要在stdin上发送到SSH的数据。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.pty</code></td>
+<td>如果为true，pty将用于供应。默认为false。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.keep_alive</code></td>
+<td>如果为true，则此设置将默认每隔5秒发送一次保持活动数据包，以保持连接处于活动状态。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.shell</code></td>
+<td>执行来自Vagrant的SSH命令时使用的shell。默认情况下，这是bash -l。请注意，这对运行vagrant ssh时获得的shell没有影响。此配置选项仅影响在Vagrant内部执行命令时使用的shell。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.export_command_template</code></td>
+<td>用于在活动会话中生成导出的环境变量的模板。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.sudo_command</code></td>
+<td>使用sudo执行命令时使用的命令。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.compression</code></td>
+<td>如果设置为false，则此设置将不包括ssh进入机器时的压缩设置。 如果没有设置，它将默认为true，Compression = yes将使用ssh启用。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.dsa_authentication</code></td>
+<td>如果为false，则此设置在ssh登录到计算机时不包括DSAAuthentication。 如果未设置，则默认为true，DSAAuthentication = yes将与ssh一起使用。</td>
+</tr>
+
+<tr>
+<td><code>config.ssh.extra_args</code></td>
+<td>此设置值直接传递到ssh可执行文件中。 这使您可以传递任何命令来执行诸如反向隧道切入ssh程序之类的任务。</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="vagrantfile">Vagrantfile</h3>
+
+<p><strong>1. 初始化一个工作目录</strong></p>
+
+<p>比如：<code>~/Document/vagrant</code></p>
+
+<p>使用命令：<code>vagrant init</code>初始化，会自动生成<code>Vagrantfile</code>文件</p>
+
+<p><strong>2. 下载centos系统</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">vagrant box add centos/7</pre></div>
+<p>　<a href="https://app.vagrantup.com/boxes/search">Vagrant Box的中央仓库地址</a></p>
+
+<p><strong>3. 配置<code>Vagrantfile</code>文件，创建一个3个节点的虚拟机</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Vagrant.configure(&#34;2&#34;) do |config|
+   (1..3).each do |i|
+        config.vm.define &#34;node#{i}&#34; do |node|
+            # 设置虚拟机的Box
+            node.vm.box = &#34;centos/7&#34;
+
+            # 设置虚拟机的主机名
+            node.vm.hostname=&#34;node#{i}&#34;
+
+            # 设置虚拟机的IP
+            node.vm.network &#34;private_network&#34;, ip: &#34;192.168.56.#{100+i}&#34;
+
+            # 设置主机与虚拟机的共享目录
+            # node.vm.synced_folder &#34;~/Documents/vagrant/share&#34;, &#34;/home/vagrant/share&#34;
+
+            # VirtaulBox相关配置
+            node.vm.provider &#34;virtualbox&#34; do |v|
+                # 设置虚拟机的名称
+                v.name = &#34;node#{i}&#34;
+                # 设置虚拟机的内存大小
+                v.memory = 2048
+                # 设置虚拟机的CPU个数
+                v.cpus = 1
+            end
+        end
+   end
+end</pre></div>
+<p>语法还是比较易懂的，下面介绍其中几个比较关键的句法</p>
+
+<h4 id="deploy-vm-provider">deploy.vm.provider</h4>
+
+<p>这句指定了虚拟机的提供者是。本例中是 virtualbox。需要注意的是 Vagrant 只是虚拟机的编排工具，而它本身并不提供虚拟技术，需要跟其他虚拟机软件结合，例如:virtualbox、libvirt。接下来的 <code>v</code> 就是对这台虚拟机的设置。</p>
+
+<ul>
+<li><strong>v.name</strong>：virtualbox 中这台虚拟机的名字。</li>
+<li><strong>v.memory</strong>：该虚拟机的内存大小，单位是 MB。</li>
+<li><strong>v.cpus</strong>：该虚拟机的 CPU 核数。</li>
+</ul>
+
+<h4 id="vm-box">vm.box</h4>
+
+<p>该虚拟机的初始化镜像名称，这里是 <code>centos/7</code>。</p>
+
+<h4 id="vm-hostname">vm.hostname</h4>
+
+<p>该虚拟机的 hostname，很重要,ssh 连接时用的就是这个名字。请起一个有意义的名字，不然以后又得重设啦。</p>
+
+<h4 id="vm-network">vm.network</h4>
+
+<p>网络设置，Vagrant 有三种网络设置模式：</p>
+
+<h5 id="forwarded-port"><strong>Forwarded port</strong></h5>
+
+<p>这种方式把本机和虚拟机的端口进行映射，例如:</p>
+
+<p><code>config.vm.forwarded_port 80, 8080</code></p>
+
+<p>这是把虚拟机的 80 端口映射到宿主机的 8080 端口，这样访问宿主机的 8080 端口就相当于访问虚拟机的 80 端口了。</p>
+
+<h5 id="private-network">Private network</h5>
+
+<p>这种方式是私有网络，只允许宿主机访问虚拟机。如果多个虚拟机设定在同一个网段，那么几个虚拟机之间也可以互相访问。相当于搭建了个小型集群。</p>
+
+<h5 id="public-network">Public network</h5>
+
+<p>这种方式虚拟机的网络配置跟宿主机的网络配置一样，在外网别可以像访问宿主机一样访问虚拟机。</p>
+
+<h3 id="启动虚拟机">启动虚拟机</h3>
+
+<p>之前介绍的，就是本地搭建集群所需掌握的 Vagrantfile 文件格式的基本内容了。下面介绍如何从这个配置文件来启动这组虚拟机。</p>
+
+<p>将上面的文件保存为 <code>Vagranfile</code>，然后在 Vagranfile 文件所在目录执行：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">vagrant up</pre></div>
+<p>这时候整个集群启动完毕了。</p>
+
+<h2 id="使用虚拟机">使用虚拟机</h2>
+
+<p>前面说过要连接虚拟机，是要使用虚拟机的 hostname，比如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">vagrant ssh node1</pre></div>
+<p>这句命令会以 vagrant 的用户登录到 deploy 虚拟机节点，然后可以用 <code>sudo su</code> 命令获得 root 权限。</p>
+
+<p>用一下指令可以查看虚拟机的 ssh 配置详细情况：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">vagrant ssh-config</pre></div>
+<p>当我们想暂时关闭虚拟机时可以：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">vagrant halt</pre></div>
+<p>这个命令会关掉整组虚拟机，要是我们只想关掉 deploy 可以用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">vagrant halt node1</pre></div>
+<p>当我们玩腻了，想要删掉虚拟机可以：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">vagrant destroy</pre></div>
+<p>Vagrant 会每台机子询问一遍，你需要打 3 个 <code>y</code> 来删除这四台机子。</p>
+
+<h3 id="免密登陆">免密登陆</h3>
+
+<p>（1）配置hosts</p>
+
+<p>每台机器上都做如下配置：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">vi /etc/hosts
+
+增加如下内容：
+192.168.56.101 node1
+192.168.56.102 node2
+192.168.56.103 node3</pre></div>
+<p>(2) 生成秘钥</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ssh-keygen -t rsa</pre></div>
+<p>默认的路径在<code>/home/vagrant/.ssh/</code></p>
+
+<p>复制到其他虚拟机即可实现免密登陆：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ssh-copy-id vagrant@node1
+ssh-copy-id vagrant@node2
+ssh-copy-id vagrant@node3</pre></div>
+<p>如果免密登陆失败，是ssh密码校验没有开启，可以如下操作：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">vi /etc/ssh/sshd_config
+开启如下配置：
+PasswordAuthentication yes
+systemctl restart sshd</pre></div>
+<p>这样就全部完成啦！！！</p>
+
+          
+  
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="http://flygopher.top/img/avatar.jpg"/></span>
+        <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
+    </div>
+    <div class="zs-modal-body">
+        <div class="zs-modal-btns">
+            <button class="btn btn-blink" data-num="2">2元</button>
+            <button class="btn btn-blink" data-num="5">5元</button>
+            <button class="btn btn-blink" data-num="10">10元</button>
+            <button class="btn btn-blink" data-num="50">50元</button>
+            <button class="btn btn-blink" data-num="100">100元</button>
+            <button class="btn btn-blink" data-num="1">任意金额</button>
+        </div>
+        <div class="zs-modal-pay">
+            <button class="btn btn-bred" id="pay-text">2元</button>
+            <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+            <img src="http://flygopher.top/img/wechat-2.png" id="pay-image"/>
+        </div>
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="http://flygopher.top/img/wechat-btn.png"/></span>
+    </div>
+</div>
+          
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+    <a href="#" class="social-share-icon icon-twitter"></a>
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+    <a href="#" class="social-share-icon icon-facebook"></a>
+    <a href="#" class="social-share-icon icon-qq"></a>
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="http://flygopher.top/post/restful-api-best-practice/">RESTful API最佳实践的一些理解</a></li>
+    
+    <li><a href="http://flygopher.top/post/java-serialization/">认识Java序列化</a></li>
+    
+    <li><a href="http://flygopher.top/post/reids-distributed-lock/">Redis实现分布式锁</a></li>
+    
+    <li><a href="http://flygopher.top/post/http-performance-tool-wrk/">Http性能压测工具 | wrk</a></li>
+    
+    <li><a href="http://flygopher.top/post/reids-persistence-intro/">Redis持久化介绍</a></li>
+    
+    <li><a href="http://flygopher.top/post/iterm2-ssh-no-disconnect/">iTerm2保持ssh连接不断开</a></li>
+    
+    <li><a href="http://flygopher.top/post/dynamic-proxy-pattern/">设计模式之动态代理</a></li>
+    
+    <li><a href="http://flygopher.top/post/singleton-pattern/">设计模式之单例模式</a></li>
+    
+    <li><a href="http://flygopher.top/post/git-common-commands/">Git常用指令整理</a></li>
+    
+    <li><a href="http://flygopher.top/post/first-blog/">博客终于正式开张啦～</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://flygopher.top/post/restful-api-best-practice/" data-toggle="tooltip" data-placement="top" title="RESTful API最佳实践的一些理解">&larr; 前一篇</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://flygopher.top/post/custom-iterm2-zsh/" data-toggle="tooltip" data-placement="top" title="iTerm2&#43;zsh打造漂亮好用的终端环境">后一篇 &rarr;</a>
+            </li>
+          
+        </ul>
+        
+  
+        
+  
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bo.liang0212@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="https://github.com/amuguelove" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          <li>
+            <a href="http://flygopher.top/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          &bull;&nbsp;
+          &copy;2016-2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top">梁波的技术博客</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/archives/">归档</a>
+          &nbsp; &bull;&nbsp;
+          
+        </p>
+        <p class="text-center text-muted">
+          <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+          <span id="busuanzi_container_site_pv" style="display:none">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          &nbsp;&bull;&nbsp;
+          <span id="busuanzi_container_site_uv" style="display:none">
+            访客数<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src='http://flygopher.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118696048-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-118696048-1');
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script >
+$(document).ready(function() {
+  var int = setInterval(fixCount, 50);  
+  
+  var initPVCount = 584976;
+  var initUVCount = 153191;
+  function fixCount() {                   
+    if ($("#busuanzi_container_site_pv").css("display") != "none") {
+        $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
+        clearInterval(int); 
+    }
+    if ($("#busuanzi_container_site_uv").css("display") != "none") {
+      $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + initUVCount);
+      clearInterval(int); 
+    }  
+  }           
+});
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+$('.carousel').slick({
+    dots: true,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    centerMode: true,
+    prevArrow: '<button type="button" class="slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-next"></button>',
+});
+</script>
+
+  </body>
+</html>
+

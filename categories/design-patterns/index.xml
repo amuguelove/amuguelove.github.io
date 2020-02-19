@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design Patterns on 梁波的技术博客</title>
+    <link>http://flygopher.top/categories/design-patterns/</link>
+    <description>Recent content in Design Patterns on 梁波的技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 26 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://flygopher.top/categories/design-patterns/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>设计模式之动态代理</title>
+      <link>http://flygopher.top/post/dynamic-proxy-pattern/</link>
+      <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://flygopher.top/post/dynamic-proxy-pattern/</guid>
+      <description>&lt;p&gt;代理实现可以分为静态代理和动态代理, 下面使用jdk和cglib来分别说明。&lt;/p&gt;
+
+&lt;h2 id=&#34;静态代理&#34;&gt;静态代理&lt;/h2&gt;
+
+&lt;p&gt;具体实现：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;public interface Subject {
+    void request();
+}
+
+class RealSubject implements Subject {
+    public void request(){
+        System.out.println(&amp;#34;Call RealSubject&amp;#34;);
+    }
+}
+
+class Proxy implements Subject {
+    private Subject subject;
+
+    public Proxy(Subject subject) {
+        this.subject = subject;
+    }
+
+    public void request() {
+        System.out.println(&amp;#34;begin&amp;#34;);
+        subject.request();
+        System.out.println(&amp;#34;end&amp;#34;);
+    }
+}
+
+public class ProxyTest {
+
+    public static void main(String args[]) {
+        RealSubject subject = new RealSubject();
+        Proxy p = new Proxy(subject);
+        p.request();
+    }
+}&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>设计模式之单例模式</title>
+      <link>http://flygopher.top/post/singleton-pattern/</link>
+      <pubDate>Sat, 18 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://flygopher.top/post/singleton-pattern/</guid>
+      <description>&lt;p&gt;单例模式 (Singleton) 也叫单态模式，是设计模式中最为简单的一种模式。&lt;/p&gt;
+
+&lt;h3 id=&#34;第一种-懒汉-线程不安全&#34;&gt;第一种（懒汉, 线程不安全）&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;public class Singleton {
+
+    private static Singleton instance;
+
+    private Singleton() {
+    }
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这种写法 lazy loading 很明显, 但是致命的是在多线程不能正常工作。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

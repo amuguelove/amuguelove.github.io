@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  
+  <title>使用Gradle构建多模块项目-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="使用Gradle构建多模块项目" />
+  <meta name="twitter:title" content="使用Gradle构建多模块项目" />
+  
+  <meta name="description" content="之前一直使用Maven进行多模块项目开发，有如下好处：
+
+
+代码拆分，层次、结构清晰，利于维护
+Module可复用
+
+
+最近使用Gradle开发，也想使用多模块开发，写下这篇文章记录下。">
+  <meta property="og:description" content="之前一直使用Maven进行多模块项目开发，有如下好处：
+
+
+代码拆分，层次、结构清晰，利于维护
+Module可复用
+
+
+最近使用Gradle开发，也想使用多模块开发，写下这篇文章记录下。">
+  <meta name="twitter:description" content="之前一直使用Maven进行多模块项目开发，有如下好处：
+
+
+代码拆分，层次、结构清晰，利于维护
+Module可复用
+
+
+最近使用Gradle开发，也想使用多模块开发，写下这篇文章记录下。">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="http://flygopher.top/post/gradle-setup-multi-projects/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="梁波的技术博客" />
+  
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="canonical" href="http://flygopher.top/post/gradle-setup-multi-projects/" />
+  <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-118696048-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://flygopher.top" title="梁波的技术博客">
+
+        梁波的技术博客
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="http://flygopher.top/">首页</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="http://flygopher.top/archives">Archive</a>
+                
+                  <a href="http://flygopher.top/categories">Categories</a>
+                
+                  <a href="http://flygopher.top/tags">tags</a>
+                
+                  <a href="http://flygopher.top/tags/java">java</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">书籍</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/">k8s基础知识</a>
+                
+                  <a href="https://k8s.imroc.io/">Kubernetes实践指南</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="关于" href="http://flygopher.top/page/about/">关于</a>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>使用Gradle构建多模块项目</h1>
+                
+                
+                  <span class="post-meta">
+  
+    发表于 November 8, 2018
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="http://flygopher.toptags/gradle/">Gradle</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+          
+          
+          
+
+          <p>之前一直使用<code>Maven</code>进行多模块项目开发，有如下好处：</p>
+
+<ul>
+<li>代码拆分，层次、结构清晰，利于维护</li>
+<li>Module可复用</li>
+</ul>
+
+<p>最近使用<code>Gradle</code>开发，也想使用多模块开发，写下这篇文章记录下。</p>
+
+<h3 id="本机环境">本机环境</h3>
+
+<p><strong>1、Java： version “1.8.0_181”</strong><br />
+<strong>2、Mac：10.13.6，High Sierra</strong><br />
+<strong>3、Gradle：version “4.10.2”</strong><br />
+<strong>4、Idea 2018.2</strong></p>
+
+<h3 id="创建根项目">创建根项目</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">cd ~/Documents/workspace
+mkdir gradle-springboot2-projects
+gradle init</pre></div>
+<p>之后生成如下项目结构：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">gradle-springboot2-projects
+├── build.gradle
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradlew
+├── gradlew.bat
+├── settings.gradle</pre></div>
+<h3 id="配置根目录的gradle">配置根目录的gradle</h3>
+
+<h4 id="1-在根目录新建-gradle-properties-文件">1、在根目录新建<code>gradle.properties</code>文件</h4>
+
+<p>内容如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">springBootVersion=2.1.0.RELEASE
+springCloudVersion=Finchley.RELEASE</pre></div>
+<h4 id="2-配置-build-gradle-文件">2、配置<code>build.gradle</code>文件</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">//定义扩展属性(给脚本用的脚本)
+buildscript {
+
+    //定义扩展属性(可选)
+    ext {
+
+    }
+    repositories {
+        mavenCentral()
+        maven { url &#34;https://plugins.gradle.org/m2/&#34; }
+        maven { url &#39;https://repo.spring.io/libs-milestone&#39; }
+    }
+    dependencies {
+        classpath(&#34;org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}&#34;)
+    }
+}
+
+apply from: &#39;gradle/wrapper.gradle&#39;
+
+// 所有模块都采用统一的版本号以及groupName
+allprojects {
+
+    //修改项目属性(可选)
+    group &#39;me.flygopher.springboot2&#39;
+    version &#39;1.0.0&#39;
+
+}
+
+// 配置所有子模块
+subprojects {
+
+    //应用插件
+    apply plugin: &#39;java&#39;
+    apply plugin: &#39;idea&#39;
+    apply plugin: &#39;org.springframework.boot&#39;
+
+    // JVM 版本号要求
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    // java编译的时候缺省状态下会因为中文字符而失败
+    [compileJava,compileTestJava,javadoc]*.options*.encoding = &#39;UTF-8&#39;
+
+    //指定目录结构
+    sourceSets {
+        main {
+            java{
+                srcDir &#39;src/main/java&#39;
+            }
+            resources {
+                srcDir &#39;src/main/java&#39;
+                srcDir &#39;src/main/resources&#39;
+            }
+        }
+    }
+
+    // 定义仓库
+    repositories {
+        maven{url &#39;http://maven.aliyun.com/nexus/content/groups/public/&#39;}
+        maven{url &#39;https://mvnrepository.com/&#39;}
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+
+        // 引入根目录和各子项目下的libs中的jar包
+        ext.jarTree = fileTree(dir: &#39;libs&#39;, include: &#39;**/*.jar&#39;)
+        ext.rootProjectLibs = new File(rootProject.rootDir, &#39;libs&#39;).getAbsolutePath()
+        ext.jarTree += fileTree(dir: rootProjectLibs, include: &#39;**/*.jar&#39;)
+
+        compile jarTree
+
+        // 测试依赖
+        testCompile(
+                &#39;junit:junit:4.12&#39;,
+                &#39;org.springframework:spring-test&#39;,
+                &#39;org.assertj:assertj-core:3.11.1&#39;,
+                &#39;org.mockito:mockito-core:2.23.0&#39;,
+        )
+    }
+}</pre></div>
+<h4 id="3-最后配置-settings-gradle">3、最后配置<code>settings.gradle</code></h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/*
+ * This file was generated by the Gradle &#39;init&#39; task.
+ *
+ * The settings file is used to specify which projects to include in your build.
+ * 
+ * Detailed information about configuring a multi-project build in Gradle can be found
+ * in the user guide at https://docs.gradle.org/4.10.2/userguide/multi_project_builds.html
+ */
+
+rootProject.name = &#39;gradle-springboot2-projects&#39;</pre></div>
+<p>到这里你的根项目配置好了。</p>
+
+<h3 id="子模块项目的新建">子模块项目的新建</h3>
+
+<p>在<code>IDEA</code>中使用右键根项目，New -&gt; Module -&gt; 选择Gradle，填写ArtifactId和Module Name即可。</p>
+
+<p>之后会自动在子模块项目下生成<code>build.gradle</code>, 以及在根项目的<code>settings.gradle</code>中添加如下内容：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/*
+ * This file was generated by the Gradle &#39;init&#39; task.
+ *
+ * The settings file is used to specify which projects to include in your build.
+ * 
+ * Detailed information about configuring a multi-project build in Gradle can be found
+ * in the user guide at https://docs.gradle.org/4.10.2/userguide/multi_project_builds.html
+ */
+
+rootProject.name = &#39;gradle-springboot2-projects&#39;
+
+include &#39;chapter01&#39;
+findProject(&#39;:chapter01&#39;)?.name = &#39;spring-boot-admin&#39;
+include &#39;chapter02&#39;
+findProject(&#39;:chapter02&#39;)?.name = &#39;spring-boot-admin-client&#39;</pre></div>
+<p>其中<code>findProject(':chapter01')?.name = 'spring-boot-admin'</code>是因为我的ArtifactId和Module Name不一致导致的。</p>
+
+<h3 id="最后">最后</h3>
+
+<p><strong>个人博客：</strong><a href="https://amuguelove.github.io">https://amuguelove.github.io</a><br />
+<strong>源码：</strong><a href="https://github.com/amuguelove/gradle-springboot2-projects">https://github.com/amuguelove/gradle-springboot2-projects</a></p>
+
+<h3 id="参考">参考</h3>
+
+<p><a href="https://guides.gradle.org/building-spring-boot-2-projects-with-gradle/">Building Spring Boot 2 Applications with Gradle</a></p>
+
+          
+  
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="http://flygopher.top/img/avatar.jpg"/></span>
+        <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
+    </div>
+    <div class="zs-modal-body">
+        <div class="zs-modal-btns">
+            <button class="btn btn-blink" data-num="2">2元</button>
+            <button class="btn btn-blink" data-num="5">5元</button>
+            <button class="btn btn-blink" data-num="10">10元</button>
+            <button class="btn btn-blink" data-num="50">50元</button>
+            <button class="btn btn-blink" data-num="100">100元</button>
+            <button class="btn btn-blink" data-num="1">任意金额</button>
+        </div>
+        <div class="zs-modal-pay">
+            <button class="btn btn-bred" id="pay-text">2元</button>
+            <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+            <img src="http://flygopher.top/img/wechat-2.png" id="pay-image"/>
+        </div>
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="http://flygopher.top/img/wechat-btn.png"/></span>
+    </div>
+</div>
+          
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+    <a href="#" class="social-share-icon icon-twitter"></a>
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+    <a href="#" class="social-share-icon icon-facebook"></a>
+    <a href="#" class="social-share-icon icon-qq"></a>
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="http://flygopher.top/post/gradle-environment-setup/">搭建Gradle开发环境</a></li>
+    
+    <li><a href="http://flygopher.top/post/java-basic-class-bytes/">Java基础类型占用字节数</a></li>
+    
+    <li><a href="http://flygopher.top/post/redis-problem-optimization/">深入学习Redis：Redis常见问题以及优化方案</a></li>
+    
+    <li><a href="http://flygopher.top/post/redis-sentinel-setup/">深入学习Redis：Redis经典三节点哨兵集群搭建</a></li>
+    
+    <li><a href="http://flygopher.top/post/redis-master-slave-setup/">深入学习Redis：Redis一主两从搭建</a></li>
+    
+    <li><a href="http://flygopher.top/post/redis-install-on-centos7/">深入学习Redis：CentOS 7 安装Redis 4.0.11以及生产环境启动配置</a></li>
+    
+    <li><a href="http://flygopher.top/post/macos-profile-load-order/">MacOS环境变量加载顺序</a></li>
+    
+    <li><a href="http://flygopher.top/post/java8-new-date-api/">Java8新特性（四）：新的时间和日期API</a></li>
+    
+    <li><a href="http://flygopher.top/post/java8-optional/">Java8新特性（三）：Optional类</a></li>
+    
+    <li><a href="http://flygopher.top/post/java8-stream/">Java8新特性（二）：Stream流式处理</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://flygopher.top/post/java-basic-class-bytes/" data-toggle="tooltip" data-placement="top" title="Java基础类型占用字节数">&larr; 前一篇</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="http://flygopher.top/post/spring-boot-admin/" data-toggle="tooltip" data-placement="top" title="SpringBoot2干货系列 | 第一篇：Spring Boot Admin 2 监控">后一篇 &rarr;</a>
+            </li>
+          
+        </ul>
+        
+  
+        
+  
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bo.liang0212@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="https://github.com/amuguelove" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          <li>
+            <a href="http://flygopher.top/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          &bull;&nbsp;
+          &copy;2016-2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top">梁波的技术博客</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/archives/">归档</a>
+          &nbsp; &bull;&nbsp;
+          
+        </p>
+        <p class="text-center text-muted">
+          <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+          <span id="busuanzi_container_site_pv" style="display:none">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          &nbsp;&bull;&nbsp;
+          <span id="busuanzi_container_site_uv" style="display:none">
+            访客数<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src='http://flygopher.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118696048-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-118696048-1');
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script >
+$(document).ready(function() {
+  var int = setInterval(fixCount, 50);  
+  
+  var initPVCount = 584976;
+  var initUVCount = 153191;
+  function fixCount() {                   
+    if ($("#busuanzi_container_site_pv").css("display") != "none") {
+        $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
+        clearInterval(int); 
+    }
+    if ($("#busuanzi_container_site_uv").css("display") != "none") {
+      $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + initUVCount);
+      clearInterval(int); 
+    }  
+  }           
+});
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+$('.carousel').slick({
+    dots: true,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    centerMode: true,
+    prevArrow: '<button type="button" class="slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-next"></button>',
+});
+</script>
+
+  </body>
+</html>
+
