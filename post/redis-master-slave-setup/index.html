@@ -480,8 +480,8 @@ telnet 192.168.56.101 6379</pre></div>
 $(document).ready(function() {
   var int = setInterval(fixCount, 50);  
   
-  var initPVCount = 584976;
-  var initUVCount = 153191;
+  var initPVCount = 0;
+  var initUVCount = 0;
   function fixCount() {                   
     if ($("#busuanzi_container_site_pv").css("display") != "none") {
         $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 

@@ -567,8 +567,8 @@ x\{m,n\}  # 重复字符x，至少m次，不多于n次，如：&#39;o\{5,10\}&#3
 $(document).ready(function() {
   var int = setInterval(fixCount, 50);  
   
-  var initPVCount = 584976;
-  var initUVCount = 153191;
+  var initPVCount = 0;
+  var initUVCount = 0;
   function fixCount() {                   
     if ($("#busuanzi_container_site_pv").css("display") != "none") {
         $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
