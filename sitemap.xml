@@ -4,36 +4,51 @@
   
   <url>
     <loc>http://flygopher.top/categories/</loc>
-    <lastmod>2020-03-01T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://flygopher.top/categories/mongo/</loc>
-    <lastmod>2020-03-01T00:00:00+08:00</lastmod>
+    <lastmod>2020-03-04T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flygopher.top/tags/mongo/</loc>
-    <lastmod>2020-03-01T00:00:00+08:00</lastmod>
+    <lastmod>2020-03-04T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/post/mongodb-base-operation/</loc>
-    <lastmod>2020-03-01T00:00:00+08:00</lastmod>
+    <loc>http://flygopher.top/categories/mongo/</loc>
+    <lastmod>2020-03-04T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/mongo-replica-sets-install/</loc>
+    <lastmod>2020-03-04T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flygopher.top/post/</loc>
-    <lastmod>2020-03-01T00:00:00+08:00</lastmod>
+    <lastmod>2020-03-04T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flygopher.top/tags/</loc>
-    <lastmod>2020-03-01T00:00:00+08:00</lastmod>
+    <lastmod>2020-03-04T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flygopher.top/</loc>
+    <lastmod>2020-03-04T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/mongo-replica-sets/</loc>
+    <lastmod>2020-03-03T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/mongo-aggregate-operation/</loc>
+    <lastmod>2020-03-02T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/mongodb-base-operation/</loc>
     <lastmod>2020-03-01T00:00:00+08:00</lastmod>
   </url>
   
@@ -58,12 +73,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/mysql/</loc>
+    <loc>http://flygopher.top/tags/mysql/</loc>
     <lastmod>2019-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/mysql/</loc>
+    <loc>http://flygopher.top/categories/mysql/</loc>
     <lastmod>2019-04-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -98,12 +113,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/http/</loc>
+    <loc>http://flygopher.top/tags/http/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/http/</loc>
+    <loc>http://flygopher.top/categories/http/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url>
   
@@ -183,12 +198,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/golang/</loc>
+    <loc>http://flygopher.top/categories/golang/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/golang/</loc>
+    <loc>http://flygopher.top/tags/golang/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -203,12 +218,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/docker/</loc>
+    <loc>http://flygopher.top/tags/docker/</loc>
     <lastmod>2018-11-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/docker/</loc>
+    <loc>http://flygopher.top/categories/docker/</loc>
     <lastmod>2018-11-30T00:00:00+00:00</lastmod>
   </url>
   
@@ -283,12 +298,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/java/</loc>
+    <loc>http://flygopher.top/tags/java/</loc>
     <lastmod>2018-11-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/java/</loc>
+    <loc>http://flygopher.top/categories/java/</loc>
     <lastmod>2018-11-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -463,12 +478,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/design-patterns/</loc>
+    <loc>http://flygopher.top/tags/design-patterns/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/design-patterns/</loc>
+    <loc>http://flygopher.top/categories/design-patterns/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
   </url>
   

@@ -6,10 +6,68 @@
     <description>Recent content in mongo on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 01 Mar 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 04 Mar 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/categories/mongo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mongo复制集的搭建</title>
+      <link>http://flygopher.top/post/mongo-replica-sets-install/</link>
+      <pubDate>Wed, 04 Mar 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/mongo-replica-sets-install/</guid>
+      <description>&lt;p&gt;在本地机器上运行3个实例来搭建一个最简单的复制集。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mongo复制集机制及原理</title>
+      <link>http://flygopher.top/post/mongo-replica-sets/</link>
+      <pubDate>Tue, 03 Mar 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/mongo-replica-sets/</guid>
+      <description>&lt;h2 id=&#34;复制集的作用&#34;&gt;复制集的作用&lt;/h2&gt;
+
+&lt;p&gt;MongoDB 复制集的主要意义在于实现服务高可用。&lt;/p&gt;
+
+&lt;p&gt;它的现实依赖于两个方面的功能:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;数据写入时将数据迅速复制到另一个独立节点上&lt;/li&gt;
+&lt;li&gt;在接受写入的节点发生故障时自动选举出一个新的替代节点&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;在实现高可用的同时，复制集实现了其他几个附加作用:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;数据分发:将数据从一个区域复制到另一个区域，减少另一个区域的读延迟&lt;/li&gt;
+&lt;li&gt;读写分离:不同类型的压力分别在不同的节点上执行&lt;/li&gt;
+&lt;li&gt;异地容灾:在数据中心故障时候快速切换到异地&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mongo聚合查询</title>
+      <link>http://flygopher.top/post/mongo-aggregate-operation/</link>
+      <pubDate>Mon, 02 Mar 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/mongo-aggregate-operation/</guid>
+      <description>&lt;p&gt;MongoDB 聚合框架(Aggregation Framework)是一个计算框架，它可以:&lt;/p&gt;
+
+&lt;p&gt;1）作用在一个或者几个集合上；&lt;/p&gt;
+
+&lt;p&gt;2）对集合中的数据进行一系列的运算；&lt;/p&gt;
+
+&lt;p&gt;3）将这些数据转化为期望的形式；&lt;/p&gt;
+
+&lt;p&gt;从效果而言，聚合框架相当于 SQL 查询中的:&lt;/p&gt;
+
+&lt;p&gt;1）GROUP BY&lt;/p&gt;
+
+&lt;p&gt;2）LEFT OUTER JOIN&lt;/p&gt;
+
+&lt;p&gt;3）AS等&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>MongoDB介绍以及基本操作</title>
