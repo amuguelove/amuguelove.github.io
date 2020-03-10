@@ -6,24 +6,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>Mongo复制集的搭建-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="Mongo复制集的搭建" />
-  <meta name="twitter:title" content="Mongo复制集的搭建" />
+  <title>Mongo的模型设计-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="Mongo的模型设计" />
+  <meta name="twitter:title" content="Mongo的模型设计" />
   
-  <meta name="description" content="在本地机器上运行3个实例来搭建一个最简单的复制集。">
-  <meta property="og:description" content="在本地机器上运行3个实例来搭建一个最简单的复制集。">
-  <meta name="twitter:description" content="在本地机器上运行3个实例来搭建一个最简单的复制集。">
+  <meta name="description" content="数据模型
+
+什么是数据模型?
+
+1）数据模型是一组由符号、文本组成的集合，用以准确表达信息，达到有效交流、沟通 的目的。
+
+2）Steve Hoberman 霍伯曼. 数据建模经典教程
+
+数据模型设计的元素
+
+1）实体 Entity
+
+2）属性 Attribute
+
+3）关系 Relationship">
+  <meta property="og:description" content="数据模型
+
+什么是数据模型?
+
+1）数据模型是一组由符号、文本组成的集合，用以准确表达信息，达到有效交流、沟通 的目的。
+
+2）Steve Hoberman 霍伯曼. 数据建模经典教程
+
+数据模型设计的元素
+
+1）实体 Entity
+
+2）属性 Attribute
+
+3）关系 Relationship">
+  <meta name="twitter:description" content="数据模型
+
+什么是数据模型?
+
+1）数据模型是一组由符号、文本组成的集合，用以准确表达信息，达到有效交流、沟通 的目的。
+
+2）Steve Hoberman 霍伯曼. 数据建模经典教程
+
+数据模型设计的元素
+
+1）实体 Entity
+
+2）属性 Attribute
+
+3）关系 Relationship">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flygopher.top/post/mongo-replica-sets-install/" />
+  <meta property="og:url" content="http://flygopher.top/post/mongo-pattern-design/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.58.3" />
-  <link rel="canonical" href="http://flygopher.top/post/mongo-replica-sets-install/" />
+  <link rel="canonical" href="http://flygopher.top/post/mongo-pattern-design/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
@@ -158,12 +200,12 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>Mongo复制集的搭建</h1>
+              <h1>Mongo的模型设计</h1>
                 
                 
                   <span class="post-meta">
   
-    发表于 March 4, 2020
+    发表于 March 5, 2020
   
   
 </span>
@@ -203,32 +245,6 @@ if (!doNotTrack) {
         <article role="main" class="blog-post" itemprop="articleBody" id="content">
           
             
-<aside class="toc">
-  <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#准备">准备</a></li>
-<li><a href="#创建数据目录">创建数据目录</a></li>
-<li><a href="#准备配置文件">准备配置文件</a></li>
-<li><a href="#启动mongodb进程">启动MongoDB进程</a></li>
-<li><a href="#查看mongodb进程">查看MongoDB进程</a></li>
-<li><a href="#配置复制集">配置复制集</a>
-<ul>
-<li><a href="#方法1">方法1</a></li>
-<li><a href="#方法2">方法2</a></li>
-</ul></li>
-<li><a href="#验证">验证</a>
-<ul>
-<li><a href="#mongodb-主节点进行写入">MongoDB 主节点进行写入</a></li>
-<li><a href="#mongodb-从节点进行读">MongoDB 从节点进行读</a></li>
-</ul></li>
-<li><a href="#总结">总结</a></li>
-</ul></li>
-</ul>
-</nav>
-</aside>
-
           
   
           
@@ -243,263 +259,356 @@ if (!doNotTrack) {
           
           
 
-          <p>在本地机器上运行3个实例来搭建一个最简单的复制集。</p>
+          <h2 id="数据模型">数据模型</h2>
 
-<h2 id="准备">准备</h2>
+<p><strong>什么是数据模型?</strong></p>
+
+<p>1）数据模型是一组由符号、文本组成的集合，用以准确表达信息，达到有效交流、沟通 的目的。</p>
+
+<p>2）Steve Hoberman 霍伯曼. 数据建模经典教程</p>
+
+<p><strong>数据模型设计的元素</strong></p>
+
+<p>1）实体 Entity</p>
+
+<p>2）属性 Attribute</p>
+
+<p>3）关系 Relationship</p>
+
+<h2 id="传统模型设计-从概念到逻辑到物理">传统模型设计:从概念到逻辑到物理</h2>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>概念模型 CDM</th>
+<th>逻辑模型 LDM</th>
+<th>物理模型 PDM</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>目的</td>
+<td>描述业务系统要管理的对象</td>
+<td>基于概念模型，详细列出 所有实体、实体的属性及 关系</td>
+<td>根据逻辑模型，结合数据库 的物理结构，设计具体的表 结构，字段列表及主外键</td>
+</tr>
+
+<tr>
+<td>特点</td>
+<td>用概念名词来描述现实中 的实体及业务规则，如 “联系人”</td>
+<td>基于业务的描述 <br />和数据库无关</td>
+<td>技术实现细节 <br />和具体的数据库类型相关</td>
+</tr>
+
+<tr>
+<td>主要使用者</td>
+<td>用户 <br />需求分析师</td>
+<td>需求分析师 <br />架构师及开发者</td>
+<td>开发者 <br />DBA</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="mongodb-文档模型设计的三个误区">MongoDB 文档模型设计的三个误区</h2>
+
+<ol>
+<li>不需要模型设计</li>
+<li>MongoDB 应该用一个超级大文档来组织所有数据</li>
+<li>MongoDB 不支持关联或者事务</li>
+</ol>
+
+<h2 id="关于-json-文档模型设计">关于 JSON 文档模型设计</h2>
 
 <ul>
-<li>安装最新的 MongoDB 版本</li>
-<li>Windows 系统请事先配置好 MongoDB 可执行文件的环境变量</li>
-<li>Linux 和 Mac 系统请配置 PATH 变量</li>
-<li>确保有 10GB 以上的硬盘空间</li>
+<li>文档模型设计处于是物理模型设计阶段 (PDM)</li>
+<li>JSON 文档模型通过内嵌数组或引用字段来表示关系</li>
+<li>文档模型设计不遵从第三范式，允许冗余。</li>
 </ul>
 
-<h2 id="创建数据目录">创建数据目录</h2>
+<h2 id="为什么人们都说-mongodb-是无模式">为什么人们都说 MongoDB 是无模式?</h2>
 
 <ul>
-<li><p>MongoDB 启动时将使用一个数据目录存放所有数据文件。我们将为3个复制集节 点创建各自的数据目录。</p></li>
-
-<li><p>Linux/MacOS:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mkdir -p ~/data/db{1,2,3}</pre></div></li>
+<li>严格来说，MongoDB 同样需要概念/逻辑建模</li>
+<li>文档模型设计的物理层结构可以和逻辑层类似</li>
+<li>MongoDB 无模式由来: 可以省略物理建模的具体过程</li>
 </ul>
 
-<h2 id="准备配置文件">准备配置文件</h2>
+<h2 id="关系模型-vs-文档模型">关系模型 vs 文档模型</h2>
 
-<p>复制集的每个mongod进程应该位于不同的服务器。我们现在在一台机器上运行3个进程，因此要 为它们各自配置:</p>
+<p>文档模型的设计原则:性能和易用</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>关系数据库</th>
+<th>JSON 文档模型</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>模型设计层次</td>
+<td>概念模型 <br />逻辑模型 <br />物理模型</td>
+<td>概念模型 <br />逻辑模型</td>
+</tr>
+
+<tr>
+<td>模型实体</td>
+<td>表</td>
+<td>集合</td>
+</tr>
+
+<tr>
+<td>模型属性</td>
+<td>列</td>
+<td>字段</td>
+</tr>
+
+<tr>
+<td>模型关系</td>
+<td>关联关系，主外键</td>
+<td>内嵌数组，引用字段</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="文档模型设计">文档模型设计</h2>
+
+<h3 id="第一步-建立基础文档模型">第一步: 建立基础文档模型</h3>
+
+<ol>
+<li>根据概念模型或者业务需求推导出逻辑模型 – 找到对象</li>
+<li>列出实体之间的关系(及基数) - 明确关系</li>
+<li>套用逻辑设计原则来决定内嵌方式 – 进行建模</li>
+<li>完成基础模型构建</li>
+</ol>
+
+<h4 id="基础建模小结">基础建模小结</h4>
 
 <ul>
-<li><p>不同的端口。示例中将使用28017/28018/28019</p></li>
-
-<li><p>不同的数据目录</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">~/data/db1
-~/data/db2
-~/data/db3</pre></div></li>
-
-<li><p>不同日志文件路径。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">~/data/db1/mongod.log
-~/data/db2/mongod.log
-~/data/db3/mongod.log</pre></div></li>
+<li>90:10 规则: 大部分时候你会使用内嵌来表示 1-1，1-N，N-N</li>
+<li>内嵌类似于预先聚合(关联)</li>
+<li>内嵌后对读操作通常有优势(减少关联)</li>
 </ul>
 
-<p><strong>配置文件如下：</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># ~/data/db1/mongod.conf
+<h3 id="第二步-根据读写工况细化">第二步: 根据读写工况细化</h3>
 
-systemLog:
-  destination: file
-  path: /Users/bo.liang/data/db1/mongod.log    # log path
-  logAppend: true
-storage:
-  dbPath: /Users/bo.liang/data/db1 # data directory
-net:
-  bindIp: 127.0.0.1
-  port: 28017 # port
-replication:
-  replSetName: rs0
-processManagement:
-  fork: true</pre></div>
-<h2 id="启动mongodb进程">启动MongoDB进程</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mongod -f ~/data/db1/mongod.conf
-mongod -f ~/data/db2/mongod.conf 
-mongod -f ~/data/db3/mongod.conf</pre></div>
-<h2 id="查看mongodb进程">查看MongoDB进程</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">bo.liang          8911   0.1  0.2  5576252  27356   ??  S     7:21PM   0:00.56 mongod -f /Users/bo.liang/data/db3/mongod.conf
-bo.liang          8760   0.1  0.2  5601200  30796   ??  S     7:19PM   0:00.96 mongod -f /Users/bo.liang/data/db1/mongod.conf
-bo.liang          8889   0.1  0.2  5593800  27668   ??  S     7:21PM   0:00.58 mongod -f /Users/bo.liang/data/db2/mongod.conf</pre></div>
-<h2 id="配置复制集">配置复制集</h2>
+<ul>
+<li>最频繁的数据查询模式</li>
+<li>最常用的查询参数</li>
+<li>最频繁的数据写入模式</li>
+<li>读写操作的比例</li>
+<li>数据量的大小</li>
+</ul>
 
-<h3 id="方法1">方法1</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mongo localhost:28017
+<p>基于内嵌的文档模型，根据业务需求，</p>
 
-rs.initiate()
-rs.add(&#34;HOSTNAME:28018&#34;)
-rs.add(&#34;HOSTNAME:28019&#34;)</pre></div>
-<p>注意:此方式hostname 需要能被解析</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&gt; hostname -f
-CNbo.liang
+<p>1）使用引用来避免性能瓶颈</p>
 
-所以：
-rs.add(&#34;CNbo.liang:28018&#34;)
-rs.add(&#34;CNbo.liang:28019&#34;)
+<p>2）使用冗余来优化访问性能</p>
 
-或者
-rs.add(&#34;127.0.0.1:28018&#34;)
-rs.add(&#34;127.0.0.1:28019&#34;)</pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">rs0:PRIMARY&gt; rs.status()
+<h4 id="引用模式下的关联查询">引用模式下的关联查询</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Contacts
+	name: &#34;TJ Tang&#34;, 
+	company: ”TAPDATA&#34; 
+	group_ids: [1，2，3...]</pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Groups
+	groups_id:1
+	name:“Friends”</pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">db.contacts.aggregate([ 
 {
-	&#34;set&#34; : &#34;rs0&#34;,
-	&#34;date&#34; : ISODate(&#34;2020-03-10T11:29:47.821Z&#34;),
-	&#34;myState&#34; : 1,
-	&#34;term&#34; : NumberLong(1),
-	&#34;syncingTo&#34; : &#34;&#34;,
-	&#34;syncSourceHost&#34; : &#34;&#34;,
-	&#34;syncSourceId&#34; : -1,
-	&#34;heartbeatIntervalMillis&#34; : NumberLong(2000),
-	&#34;majorityVoteCount&#34; : 2,
-	&#34;writeMajorityCount&#34; : 2,
-	&#34;optimes&#34; : {
-		&#34;lastCommittedOpTime&#34; : {
-			&#34;ts&#34; : Timestamp(1583839785, 1),
-			&#34;t&#34; : NumberLong(1)
-		},
-		&#34;lastCommittedWallTime&#34; : ISODate(&#34;2020-03-10T11:29:45.024Z&#34;),
-		&#34;readConcernMajorityOpTime&#34; : {
-			&#34;ts&#34; : Timestamp(1583839785, 1),
-			&#34;t&#34; : NumberLong(1)
-		},
-		&#34;readConcernMajorityWallTime&#34; : ISODate(&#34;2020-03-10T11:29:45.024Z&#34;),
-		&#34;appliedOpTime&#34; : {
-			&#34;ts&#34; : Timestamp(1583839785, 1),
-			&#34;t&#34; : NumberLong(1)
-		},
-		&#34;durableOpTime&#34; : {
-			&#34;ts&#34; : Timestamp(1583839785, 1),
-			&#34;t&#34; : NumberLong(1)
-		},
-		&#34;lastAppliedWallTime&#34; : ISODate(&#34;2020-03-10T11:29:45.024Z&#34;),
-		&#34;lastDurableWallTime&#34; : ISODate(&#34;2020-03-10T11:29:45.024Z&#34;)
-	},
-	&#34;lastStableRecoveryTimestamp&#34; : Timestamp(1583839762, 1),
-	&#34;lastStableCheckpointTimestamp&#34; : Timestamp(1583839762, 1),
-	&#34;electionCandidateMetrics&#34; : {
-		&#34;lastElectionReason&#34; : &#34;electionTimeout&#34;,
-		&#34;lastElectionDate&#34; : ISODate(&#34;2020-03-10T11:23:21.032Z&#34;),
-		&#34;electionTerm&#34; : NumberLong(1),
-		&#34;lastCommittedOpTimeAtElection&#34; : {
-			&#34;ts&#34; : Timestamp(0, 0),
-			&#34;t&#34; : NumberLong(-1)
-		},
-		&#34;lastSeenOpTimeAtElection&#34; : {
-			&#34;ts&#34; : Timestamp(1583839400, 1),
-			&#34;t&#34; : NumberLong(-1)
-		},
-		&#34;numVotesNeeded&#34; : 1,
-		&#34;priorityAtElection&#34; : 1,
-		&#34;electionTimeoutMillis&#34; : NumberLong(10000),
-		&#34;newTermStartDate&#34; : ISODate(&#34;2020-03-10T11:23:22.079Z&#34;),
-		&#34;wMajorityWriteAvailabilityDate&#34; : ISODate(&#34;2020-03-10T11:23:22.136Z&#34;)
-	},
-	&#34;members&#34; : [
-		{
-			&#34;_id&#34; : 0,
-			&#34;name&#34; : &#34;127.0.0.1:28017&#34;,
-			&#34;health&#34; : 1,
-			&#34;state&#34; : 1,
-			&#34;stateStr&#34; : &#34;PRIMARY&#34;,
-			&#34;uptime&#34; : 607,
-			&#34;optime&#34; : {
-				&#34;ts&#34; : Timestamp(1583839785, 1),
-				&#34;t&#34; : NumberLong(1)
-			},
-			&#34;optimeDate&#34; : ISODate(&#34;2020-03-10T11:29:45Z&#34;),
-			&#34;syncingTo&#34; : &#34;&#34;,
-			&#34;syncSourceHost&#34; : &#34;&#34;,
-			&#34;syncSourceId&#34; : -1,
-			&#34;infoMessage&#34; : &#34;&#34;,
-			&#34;electionTime&#34; : Timestamp(1583839401, 1),
-			&#34;electionDate&#34; : ISODate(&#34;2020-03-10T11:23:21Z&#34;),
-			&#34;configVersion&#34; : 3,
-			&#34;self&#34; : true,
-			&#34;lastHeartbeatMessage&#34; : &#34;&#34;
-		},
-		{
-			&#34;_id&#34; : 1,
-			&#34;name&#34; : &#34;127.0.0.1:28018&#34;,
-			&#34;health&#34; : 1,
-			&#34;state&#34; : 2,
-			&#34;stateStr&#34; : &#34;SECONDARY&#34;,
-			&#34;uptime&#34; : 8,
-			&#34;optime&#34; : {
-				&#34;ts&#34; : Timestamp(1583839785, 1),
-				&#34;t&#34; : NumberLong(1)
-			},
-			&#34;optimeDurable&#34; : {
-				&#34;ts&#34; : Timestamp(1583839785, 1),
-				&#34;t&#34; : NumberLong(1)
-			},
-			&#34;optimeDate&#34; : ISODate(&#34;2020-03-10T11:29:45Z&#34;),
-			&#34;optimeDurableDate&#34; : ISODate(&#34;2020-03-10T11:29:45Z&#34;),
-			&#34;lastHeartbeat&#34; : ISODate(&#34;2020-03-10T11:29:47.027Z&#34;),
-			&#34;lastHeartbeatRecv&#34; : ISODate(&#34;2020-03-10T11:29:47.031Z&#34;),
-			&#34;pingMs&#34; : NumberLong(0),
-			&#34;lastHeartbeatMessage&#34; : &#34;&#34;,
-			&#34;syncingTo&#34; : &#34;127.0.0.1:28017&#34;,
-			&#34;syncSourceHost&#34; : &#34;127.0.0.1:28017&#34;,
-			&#34;syncSourceId&#34; : 0,
-			&#34;infoMessage&#34; : &#34;&#34;,
-			&#34;configVersion&#34; : 3
-		},
-		{
-			&#34;_id&#34; : 2,
-			&#34;name&#34; : &#34;127.0.0.1:28019&#34;,
-			&#34;health&#34; : 1,
-			&#34;state&#34; : 2,
-			&#34;stateStr&#34; : &#34;SECONDARY&#34;,
-			&#34;uptime&#34; : 2,
-			&#34;optime&#34; : {
-				&#34;ts&#34; : Timestamp(1583839785, 1),
-				&#34;t&#34; : NumberLong(1)
-			},
-			&#34;optimeDurable&#34; : {
-				&#34;ts&#34; : Timestamp(1583839785, 1),
-				&#34;t&#34; : NumberLong(1)
-			},
-			&#34;optimeDate&#34; : ISODate(&#34;2020-03-10T11:29:45Z&#34;),
-			&#34;optimeDurableDate&#34; : ISODate(&#34;2020-03-10T11:29:45Z&#34;),
-			&#34;lastHeartbeat&#34; : ISODate(&#34;2020-03-10T11:29:47.027Z&#34;),
-			&#34;lastHeartbeatRecv&#34; : ISODate(&#34;2020-03-10T11:29:47.325Z&#34;),
-			&#34;pingMs&#34; : NumberLong(0),
-			&#34;lastHeartbeatMessage&#34; : &#34;&#34;,
-			&#34;syncingTo&#34; : &#34;&#34;,
-			&#34;syncSourceHost&#34; : &#34;&#34;,
-			&#34;syncSourceId&#34; : -1,
-			&#34;infoMessage&#34; : &#34;&#34;,
-			&#34;configVersion&#34; : 3
-		}
-	],
-	&#34;ok&#34; : 1,
-	&#34;$clusterTime&#34; : {
-		&#34;clusterTime&#34; : Timestamp(1583839785, 1),
-		&#34;signature&#34; : {
-			&#34;hash&#34; : BinData(0,&#34;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&#34;),
-			&#34;keyId&#34; : NumberLong(0)
-		}
-	},
-	&#34;operationTime&#34; : Timestamp(1583839785, 1)
-}</pre></div>
-<h3 id="方法2">方法2</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mongo localhost:28017
-
-rs.initiate({
-	_id: &#34;rs0&#34;, 
-	members: [{ 
-		_id: 0,
-		host: &#34;localhost:28017&#34; 
-	},{
-		_id: 1,
-		host: &#34;localhost:28018&#34; 
-	},{
-		_id: 2,
-		host: &#34;localhost:28019&#34; 
-  }]
-})</pre></div>
-<h2 id="验证">验证</h2>
-
-<h3 id="mongodb-主节点进行写入">MongoDB 主节点进行写入</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mongo localhost:28017
-
-db.test.insert({ a:1 })
-
-db.test.insert({ a:2 })</pre></div>
-<h3 id="mongodb-从节点进行读">MongoDB 从节点进行读</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mongo localhost:28018
-rs.slaveOk()
-db.test.find()</pre></div>
-<h2 id="总结">总结</h2>
+	$lookup:
+	{
+		from: &#34;groups&#34;,
+		localField: &#34;group_ids&#34;, 
+		foreignField: &#34;group_id&#34;, 
+		as: &#34;groups&#34;
+	} 
+}
+])</pre></div>
+<h4 id="什么时候该使用引用方式">什么时候该使用引用方式?</h4>
 
 <ul>
-<li>MongoDB 的生产环境要求搭建复制集</li>
-<li>MongoDB 复制集的搭建非常简单</li>
-<li>实际环境要分三个物理(虚拟机)节点 (或以上</li>
+<li>内嵌文档太大，数 MB 或者超过 16MB</li>
+<li>内嵌文档或数组元素会频繁修改</li>
+<li>内嵌数组元素会持续增长并且没有封顶</li>
 </ul>
+
+<h4 id="mongodb-引用设计的限制">MongoDB 引用设计的限制</h4>
+
+<ul>
+<li>MongoDB 对使用引用的集合之间并无主外键检查</li>
+<li>MongoDB 使用聚合框架的 $lookup 来模仿关联查询</li>
+
+<li><p>$lookup 只支持 left outer join</p></li>
+
+<li><p>$lookup 的关联目标(from)不能是分片表</p></li>
+</ul>
+
+<h3 id="第三步-套用设计模式">第三步:套用设计模式</h3>
+
+<ul>
+<li>文档模型: 无范式，无思维定式，充分发挥想象力</li>
+<li>设计模式: 实战过屡试不爽的设计技巧，快速应用</li>
+</ul>
+
+<p>举例:一个 IoT 场景的分桶设计模式，可以帮助把存储空间降低 10 倍并且查询效率提 升数十倍.</p>
+
+<h2 id="模式集锦">模式集锦</h2>
+
+<h3 id="分桶模式">分桶模式</h3>
+
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>痛点</th>
+<th>设计模式的方案及优点</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>时序数据 <br />物联网 <br />智慧城市 <br />智慧交通</td>
+<td>数据点采集频繁，数据量太多</td>
+<td>利用文档内嵌数组，将一个时 间段的数据聚合到一个文档里。 <br /> 大量减少文档数量<br /> 大量减少索引占用空间</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="列传行模式">列传行模式</h3>
+
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>痛点</th>
+<th>设计模式方案及优点</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>产品属性 ‘color’, ‘size’, ‘dimensions’, &hellip; <br />多语言(多国家)属性</td>
+<td>文档中有很多类似的字段 <br />会用于组合查询搜索，需要见 很多索引</td>
+<td>转化为数组，一个索引解决所 有查询问题</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="版本字段">版本字段</h3>
+
+<p>2019.01 版本1.0</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">{
+	&#34;_id&#34; : ObjectId(&#34;5de26f197edd62c5d388babb&#34;), 
+	&#34;name&#34; : &#34;TJ&#34;,
+	&#34;company&#34; : &#34;Tapdata&#34;,
+}</pre></div>
+<p>2019.03 版本2.0</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">{
+	&#34;_id&#34; : ObjectId(&#34;5de26f197edd62c5d388babb&#34;), 
+	&#34;name&#34; : &#34;TJ&#34;,
+	&#34;company&#34; : &#34;Tapdata&#34;,
+	&#34;wechat&#34;: &#34;abc123&#34;，
+	&#34;schema_version&#34;: &#34;2.0&#34;
+}</pre></div>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>痛点</th>
+<th>设计模式方案及优点</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>任何有版本衍变的数据库</td>
+<td>文档模型格式多，无法知道其 合理性<br />升级时候需要更新太多文档</td>
+<td>增加一个版本号字段 <br />快速过滤掉<br />不需要升级的文档</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="近似计算模式">近似计算模式</h3>
+
+<p><strong>问题: 统计网页点击流量</strong></p>
+
+<p>每访问一个页面都会产生一次数据库计数 更新操作</p>
+
+<p>统计数字准确性并不十分重要</p>
+
+<p><strong>解决方案: 用近似计算</strong></p>
+
+<p>每隔10 (X)次写一次</p>
+
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>痛点</th>
+<th>设计模式方案及优点</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>网页计数 <br />各种结果不需要准确的排名</td>
+<td>写入太频繁，消耗系统资源</td>
+<td>间隔写入，每隔10次或者100次 <br />大量减少写入需求</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="预聚合模式">预聚合模式</h3>
+
+<p><strong>问题: 业绩排名，游戏排名，商品统计等精确统计</strong></p>
+
+<p>热销榜: 某个商品今天卖了多少，这个星期卖了多少，这个月卖了多少?</p>
+
+<p>电影排行: 观影者，场次统计</p>
+
+<p><strong>传统解决方案: 通过聚合计算</strong></p>
+
+<p><strong>痛点: 消耗资源多，聚合计算时间长</strong></p>
+
+<p><strong>解决方案: 用预聚合字段</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">{
+	product: &#34;Bike&#34;, 
+	sku: &#34;abc123456&#34;, 
+	quantitiy: 20394, 
+	daily_sales: 40, 
+	weekly_sales: 302, 
+	monthly_sales: 1419
+}
+
+db.inventory.update(
+	{_id:123},
+	{$inc: {
+		quantity: -1, 
+		daily_sales: 1, 
+		weekly_sales: 1， 
+		monthly_sales: 1，
+	}
+})</pre></div>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>痛点</th>
+<th>设计模式方案及优点</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>准确排名 <br />排行榜</td>
+<td>统计计算耗时，计算时间长</td>
+<td>模型中直接增加统计字段 <br />每次更新数据时候同时更新统计值</td>
+</tr>
+</tbody>
+</table>
 
           
   
@@ -560,6 +669,8 @@ db.test.find()</pre></div>
 <h3>相关文章</h3>
 <ul style="margin-bottom: 25px;">
     
+    <li><a href="http://flygopher.top/post/mongo-replica-sets-install/">Mongo复制集的搭建</a></li>
+    
     <li><a href="http://flygopher.top/post/mongo-replica-sets/">Mongo复制集机制及原理</a></li>
     
     <li><a href="http://flygopher.top/post/mongo-aggregate-operation/">Mongo聚合查询</a></li>
@@ -578,8 +689,6 @@ db.test.find()</pre></div>
     
     <li><a href="http://flygopher.top/post/linux-command-grep/">每天一个Linux命令（3）：grep 文本搜索</a></li>
     
-    <li><a href="http://flygopher.top/post/springboot2-transaction/">SpringBoot2干货系列 | 第三篇：Spring Transaction 哪些事儿</a></li>
-    
 </ul>
 
         
@@ -588,13 +697,9 @@ db.test.find()</pre></div>
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://flygopher.top/post/mongo-replica-sets/" data-toggle="tooltip" data-placement="top" title="Mongo复制集机制及原理">&larr; 前一篇</a>
+              <a href="http://flygopher.top/post/mongo-replica-sets-install/" data-toggle="tooltip" data-placement="top" title="Mongo复制集的搭建">&larr; 前一篇</a>
             </li>
           
-          
-            <li class="next">
-              <a href="http://flygopher.top/post/mongo-pattern-design/" data-toggle="tooltip" data-placement="top" title="Mongo的模型设计">后一篇 &rarr;</a>
-            </li>
           
         </ul>
         

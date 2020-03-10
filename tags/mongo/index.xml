@@ -6,10 +6,33 @@
     <description>Recent content in mongo on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 04 Mar 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 05 Mar 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/tags/mongo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mongo的模型设计</title>
+      <link>http://flygopher.top/post/mongo-pattern-design/</link>
+      <pubDate>Thu, 05 Mar 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/mongo-pattern-design/</guid>
+      <description>&lt;h2 id=&#34;数据模型&#34;&gt;数据模型&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;什么是数据模型?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;1）数据模型是一组由符号、文本组成的集合，用以准确表达信息，达到有效交流、沟通 的目的。&lt;/p&gt;
+
+&lt;p&gt;2）Steve Hoberman 霍伯曼. 数据建模经典教程&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;数据模型设计的元素&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;1）实体 Entity&lt;/p&gt;
+
+&lt;p&gt;2）属性 Attribute&lt;/p&gt;
+
+&lt;p&gt;3）关系 Relationship&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Mongo复制集的搭建</title>
