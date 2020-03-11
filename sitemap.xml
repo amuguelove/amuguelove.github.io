@@ -103,12 +103,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/linux/</loc>
+    <loc>http://flygopher.top/categories/linux/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/linux/</loc>
+    <loc>http://flygopher.top/tags/linux/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -233,12 +233,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/docker/</loc>
+    <loc>http://flygopher.top/categories/docker/</loc>
     <lastmod>2018-11-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/docker/</loc>
+    <loc>http://flygopher.top/tags/docker/</loc>
     <lastmod>2018-11-30T00:00:00+00:00</lastmod>
   </url>
   
@@ -278,12 +278,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/hexo/</loc>
+    <loc>http://flygopher.top/tags/hexo/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/hexo/</loc>
+    <loc>http://flygopher.top/categories/hexo/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url>
   
@@ -328,12 +328,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/redis/</loc>
+    <loc>http://flygopher.top/categories/redis/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/redis/</loc>
+    <loc>http://flygopher.top/tags/redis/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
   </url>
   
@@ -403,12 +403,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/tools/</loc>
+    <loc>http://flygopher.top/categories/tools/</loc>
     <lastmod>2018-10-01T10:34:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/tools/</loc>
+    <loc>http://flygopher.top/tags/tools/</loc>
     <lastmod>2018-10-01T10:34:00+00:00</lastmod>
   </url>
   
@@ -418,12 +418,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/vagrant/</loc>
+    <loc>http://flygopher.top/tags/vagrant/</loc>
     <lastmod>2018-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/vagrant/</loc>
+    <loc>http://flygopher.top/categories/vagrant/</loc>
     <lastmod>2018-09-27T00:00:00+00:00</lastmod>
   </url>
   
@@ -493,12 +493,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/design-patterns/</loc>
+    <loc>http://flygopher.top/tags/design-patterns/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/design-patterns/</loc>
+    <loc>http://flygopher.top/categories/design-patterns/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
   </url>
   
