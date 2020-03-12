@@ -4,36 +4,46 @@
   
   <url>
     <loc>http://flygopher.top/categories/</loc>
-    <lastmod>2020-03-07T00:00:00+08:00</lastmod>
+    <lastmod>2020-03-09T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flygopher.top/categories/mongo/</loc>
-    <lastmod>2020-03-07T00:00:00+08:00</lastmod>
+    <lastmod>2020-03-09T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flygopher.top/tags/mongo/</loc>
-    <lastmod>2020-03-07T00:00:00+08:00</lastmod>
+    <lastmod>2020-03-09T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/post/mongo-best-practice/</loc>
-    <lastmod>2020-03-07T00:00:00+08:00</lastmod>
+    <loc>http://flygopher.top/post/mongo-index/</loc>
+    <lastmod>2020-03-09T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flygopher.top/post/</loc>
-    <lastmod>2020-03-07T00:00:00+08:00</lastmod>
+    <lastmod>2020-03-09T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flygopher.top/tags/</loc>
-    <lastmod>2020-03-07T00:00:00+08:00</lastmod>
+    <lastmod>2020-03-09T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flygopher.top/</loc>
+    <lastmod>2020-03-09T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/mongo-dump-restore/</loc>
+    <lastmod>2020-03-08T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/mongo-best-practice/</loc>
     <lastmod>2020-03-07T00:00:00+08:00</lastmod>
   </url>
   
@@ -88,12 +98,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/mysql/</loc>
+    <loc>http://flygopher.top/tags/mysql/</loc>
     <lastmod>2019-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/mysql/</loc>
+    <loc>http://flygopher.top/categories/mysql/</loc>
     <lastmod>2019-04-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -278,12 +288,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/hexo/</loc>
+    <loc>http://flygopher.top/categories/hexo/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/hexo/</loc>
+    <loc>http://flygopher.top/tags/hexo/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url>
   
@@ -328,12 +338,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/redis/</loc>
+    <loc>http://flygopher.top/tags/redis/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/redis/</loc>
+    <loc>http://flygopher.top/categories/redis/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
   </url>
   
@@ -418,12 +428,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/vagrant/</loc>
+    <loc>http://flygopher.top/categories/vagrant/</loc>
     <lastmod>2018-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/vagrant/</loc>
+    <loc>http://flygopher.top/tags/vagrant/</loc>
     <lastmod>2018-09-27T00:00:00+00:00</lastmod>
   </url>
   
@@ -493,12 +503,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/design-patterns/</loc>
+    <loc>http://flygopher.top/categories/design-patterns/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/design-patterns/</loc>
+    <loc>http://flygopher.top/tags/design-patterns/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
   </url>
   

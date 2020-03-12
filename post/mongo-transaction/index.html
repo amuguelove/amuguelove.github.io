@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>Mongo的事务处理-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="Mongo的事务处理" />
-  <meta name="twitter:title" content="Mongo的事务处理" />
+  <title>Mongo事务处理-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="Mongo事务处理" />
+  <meta name="twitter:title" content="Mongo事务处理" />
   
   <meta name="description" content="MongoDB 4.0引入了事务功能，支持多文档的ACID特性。">
   <meta property="og:description" content="MongoDB 4.0引入了事务功能，支持多文档的ACID特性。">
@@ -160,7 +160,7 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>Mongo的事务处理</h1>
+              <h1>Mongo事务处理</h1>
                 
                 
                   <span class="post-meta">
@@ -445,9 +445,8 @@ db.test.insert( {count: 1}, {writeConcern: {w: 3, wtimeout:3000 }})</pre></div>
 <h4 id="readpreference-实验-从节点读">readPreference 实验: 从节点读</h4>
 
 <ul>
-<li><p>主节点写入<code>{x:1}</code>,观察该条数据在各个节点均可见</p></li>
-
-<li><p>在两个从节点分别执行 <code>db.fsyncLock()</code> 来锁定写入(同步)</p></li>
+<li>主节点写入<code>{x:1}</code>,观察该条数据在各个节点均可见</li>
+<li>在两个从节点分别执行 <code>db.fsyncLock()</code> 来锁定写入(同步)</li>
 
 <li><p>主节点写入<code>{x:2}</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">db.test.find({a:123})

@@ -6,10 +6,28 @@
     <description>Recent content in mongo on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 07 Mar 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 09 Mar 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/categories/mongo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mongo的索引机制</title>
+      <link>http://flygopher.top/post/mongo-index/</link>
+      <pubDate>Mon, 09 Mar 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/mongo-index/</guid>
+      <description>&lt;p&gt;索引是对数据库表中一列或多列的值进行排序的一种数据结构，可以让我们查询数据库变得更快。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mongo数据备份以及恢复</title>
+      <link>http://flygopher.top/post/mongo-dump-restore/</link>
+      <pubDate>Sun, 08 Mar 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/mongo-dump-restore/</guid>
+      <description>&lt;p&gt;MongoDB支持副本集，为何还需要备份呢？备份的主要目的有：1）防止硬件故障引起的数据丢失； 2）防止人为错误误删数据；3）时间回溯；4）监管要求。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Mongo开发最佳实践</title>
@@ -21,7 +39,7 @@
     </item>
     
     <item>
-      <title>Mongo的事务处理</title>
+      <title>Mongo事务处理</title>
       <link>http://flygopher.top/post/mongo-transaction/</link>
       <pubDate>Fri, 06 Mar 2020 00:00:00 +0800</pubDate>
       
