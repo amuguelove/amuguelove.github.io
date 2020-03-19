@@ -6,10 +6,27 @@
     <description>Recent content in Git on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 13 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git协同工作流的选择</title>
+      <link>http://flygopher.top/post/git-flow-choose/</link>
+      <pubDate>Wed, 11 Mar 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/git-flow-choose/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/git-flow-1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;与传统的代码版本管理工具相比，Git 有很多的优势，因而越来越成为程序员喜欢的版本管理工具。我觉得，Git 这个代码版本管理工具最大的优势有以下几个。&lt;/li&gt;
+&lt;li&gt;Git 是一个分布式的版本管理工具，而且可以是单机版的，所以，你在没有网络的时候同样可以提交（commit）代码。&lt;/li&gt;
+&lt;li&gt;Git 从一个分支向另一个分支合并代码的时候，会把要合并的分支上的所有提交一个一个应用到被合并的分支上，合并后也能看得到整个代码的变更记录。而其他的版本管理工具则不能。&lt;/li&gt;
+&lt;li&gt;Git 切换分支的时候通常很快。不像其他版本管理器，每个分支一份拷贝。&lt;/li&gt;
+&lt;li&gt;Git 有很多非常有用的命令，让你可以很方便地工作。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     
     <item>
       <title>Git常用指令整理</title>

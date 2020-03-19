@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>SpringBoot-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="SpringBoot" />
-  <meta name="twitter:title" content="SpringBoot" />
+  <title>springboot-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="springboot" />
+  <meta name="twitter:title" content="springboot" />
   
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -150,7 +150,7 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="page-heading">
-              <h1>#SpringBoot</h1>
+              <h1>#springboot</h1>
               <hr class="small">
             </div>
           </div>
@@ -165,6 +165,47 @@ if (!doNotTrack) {
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+              <a href="http://flygopher.top/post/jpa-id-generated-strategy/">
+                <h2 class="post-title">JPA ID生成策略</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 March 13, 2020
+              </p>
+              <div class="post-entry">
+                
+                  <p><strong>JPA</strong> 为对象关系映射提供了了⼀一种基于 <strong>POJO</strong> 的持久化模型</p>
+
+<ul>
+<li>简化数据持久化代码的开发⼯工作</li>
+<li>为 Java 社区屏蔽不不同持久化 API 的差异</li>
+</ul>
+
+<p><code>JPA</code>定义了持久化的标准，而<code>Hibernate</code>是持久化的实现。<code>Spring Data JPA</code>就是在<code>Hibernate</code>的基础上封装实现的。</p>
+
+<p>JPA提供了很多常用的注解，下面就来讲下关于主键的生成策略，主要的注解有：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Id
+@GeneratedValue(strategy, generator)
+@SequenceGenerator(name, sequenceName)</pre></div>
+                  <a href="http://flygopher.top/post/jpa-id-generated-strategy/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/jpa/">jpa</a>&nbsp;
+                  
+                    #<a href="http://flygopher.top/tags/springboot/">springboot</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
           
             <article class="post-preview">
               <a href="http://flygopher.top/post/springboot2-transaction/">
@@ -221,7 +262,7 @@ if (!doNotTrack) {
               
                 <span class="post-meta">
                   
-                    #<a href="http://flygopher.top/tags/springboot/">SpringBoot</a>&nbsp;
+                    #<a href="http://flygopher.top/tags/springboot/">springboot</a>&nbsp;
                   
                     #<a href="http://flygopher.top/tags/aop/">AOP</a>&nbsp;
                   
@@ -252,7 +293,7 @@ if (!doNotTrack) {
               
                 <span class="post-meta">
                   
-                    #<a href="http://flygopher.top/tags/springboot/">SpringBoot</a>&nbsp;
+                    #<a href="http://flygopher.top/tags/springboot/">springboot</a>&nbsp;
                   
                 </span>
               
@@ -368,7 +409,7 @@ $(document).ready(function() {
   
   var initPVCount = 0;
   var initUVCount = 0;
-  function fixCount() {                   
+  function fixCount() {
     if ($("#busuanzi_container_site_pv").css("display") != "none") {
         $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
         clearInterval(int); 
@@ -376,8 +417,8 @@ $(document).ready(function() {
     if ($("#busuanzi_container_site_uv").css("display") != "none") {
       $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + initUVCount);
       clearInterval(int); 
-    }  
-  }           
+    }
+  }
 });
 </script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

@@ -167,6 +167,66 @@ if (!doNotTrack) {
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://flygopher.top/post/mysql-base/">
+                <h2 class="post-title">MySQL基础</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 April 15, 2019
+              </p>
+              <div class="post-entry">
+                
+                  <h3 id="并发控制">并发控制</h3>
+
+<p>无论何时，只要有多个查询需要在同一时刻修改数据，都会产生并发控制的问题。这里主要讨论MySQL在两个层面的并发控制：服务器层和存储引擎层。</p>
+                  <a href="http://flygopher.top/post/mysql-base/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/mysql/">MySQL</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://flygopher.top/post/shell-scripts-quickstart/">
+                <h2 class="post-title">Shell脚本快速上手</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 March 9, 2019
+              </p>
+              <div class="post-entry">
+                
+                  <p>Shell是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务。Ken Thompson的sh是第一种Unix Shell，Windows Explorer是一个典型的图形界面Shell。</p>
+
+<p>Shell脚本（shell script），是一种为shell编写的脚本程序。业界所说的shell通常都是指shell脚本，但是，shell和shell script是两个不同的概念。由于习惯的原因，简洁起见，本文出现的“shell编程”都是指shell脚本编程，不是指开发shell自身（如Windows Explorer扩展开发）。</p>
+                  <a href="http://flygopher.top/post/shell-scripts-quickstart/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/linux/">Linux</a>&nbsp;
+                  
+                    #<a href="http://flygopher.top/tags/shell/">Shell</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://flygopher.top/post/apache-httpclient-timeout-diff/">
                 <h2 class="post-title">Apache HttpClient 三个超时时间的区别</h2>
 
@@ -368,7 +428,7 @@ if (!doNotTrack) {
               
                 <span class="post-meta">
                   
-                    #<a href="http://flygopher.top/tags/springboot/">SpringBoot</a>&nbsp;
+                    #<a href="http://flygopher.top/tags/springboot/">springboot</a>&nbsp;
                   
                     #<a href="http://flygopher.top/tags/aop/">AOP</a>&nbsp;
                   
@@ -454,71 +514,6 @@ brew install go</pre></div>
                 
                   <p><code>容器</code>(Container)是<code>Docker</code>的核心组件之一，它是用于运行<code>镜像</code>的一个沙箱环境，是一个从<code>镜像</code>创建的应用运行实例，<code>镜像</code>打包、构建完成后最终都会运行于<code>容器</code>中。<code>容器</code>具有良好的隔离性，<code>容器</code>之间是相互隔离、互不可见。本文将介绍<code>Docker</code>容器的创建与管理，并以容器的生命周期为主线介绍容器的创建、管理、停止，到最终删除。</p>
                   <a href="http://flygopher.top/post/docker-container-introdution/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/docker/">Docker</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/docker-image-introdution/">
-                <h2 class="post-title">使用Docker构建应用 | 第三篇：Docker镜像</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 November 25, 2018
-              </p>
-              <div class="post-entry">
-                
-                  <h2 id="1-什么是docker镜像">1. 什么是Docker镜像</h2>
-
-<p><code>镜像</code>是一个只读的层（<code>layer</code>），由文件系统叠加构成。而<code>镜像</code>又是<code>容器</code>(Container)的构成单元，我们一般会将应用构建成标准的<code>镜像</code>组件，一或多个<code>镜像</code>叠加又构成了<code>容器</code>。</p>
-                  <a href="http://flygopher.top/post/docker-image-introdution/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/docker/">Docker</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/dockerfile-introdution/">
-                <h2 class="post-title">使用Docker构建应用 | 第二篇：Dockerfile详解</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 November 24, 2018
-              </p>
-              <div class="post-entry">
-                
-                  <h2 id="1-dockerfile文件格式">1. Dockerfile文件格式</h2>
-
-<p><code>Dockerfile</code>文件格式如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Comment
-INSTRUCTION arguments
-# 注释
-指令 参数</pre></div>
-<p><code>Dockerfile</code>文件中指令不区分大小写，但为了更易区分，约定使用<code>大写</code>形式。</p>
-
-<p>Docker 会依次执行<code>Dockerfile</code>中的指令，文件中的第一条指令必须是<code>FROM</code>，<code>FROM</code>指令用于指定一个基础镜像。</p>
-                  <a href="http://flygopher.top/post/dockerfile-introdution/" class="post-read-more">[阅读全文]</a>
                 
               </div>
 
@@ -654,7 +649,7 @@ $(document).ready(function() {
   
   var initPVCount = 0;
   var initUVCount = 0;
-  function fixCount() {                   
+  function fixCount() {
     if ($("#busuanzi_container_site_pv").css("display") != "none") {
         $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
         clearInterval(int); 
@@ -662,8 +657,8 @@ $(document).ready(function() {
     if ($("#busuanzi_container_site_uv").css("display") != "none") {
       $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + initUVCount);
       clearInterval(int); 
-    }  
-  }           
+    }
+  }
 });
 </script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
