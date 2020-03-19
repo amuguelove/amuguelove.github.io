@@ -273,19 +273,21 @@ if (!doNotTrack) {
 <h2 id="2-aop术语">2.  AOP术语</h2>
 
 <ul>
+<li><p>切面（aspect）：是一个可以定义切点、各类通知和引入的内容。</p></li>
+
 <li><p>连接点（join point）：对应的是具体被拦截的对象，因为Spring只支持芳芳，所以被拦截的对象往往就是指特定的方法。</p></li>
 
 <li><p>切点（point cut）：有时候，我们的切面不单单应用于单个方法，也可以是多个类的不同方法，这时，可以通过正则表达式和指示器的规则去定义。</p></li>
 
-<li><p>通知（advice）：按照约定的流程防范，如：前置通知（before advice）、后置通知（after advice）、环绕通知（around advice）、事后返回通知（afterReturning advice）和异常通知（afterThrowing advice），它会更具约定织入流程中，需要弄明白它们在流程中的顺序和运行的条件。</p></li>
+<li><p>通知（advice）：按照约定的流程防范，在连接点执⾏行行的动作，如：前置通知（before advice）、后置通知（after advice）、环绕通知（around advice）、事后返回通知（afterReturning advice）和异常通知（afterThrowing advice），它会更具约定织入流程中，需要弄明白它们在流程中的顺序和运行的条件。</p></li>
 
 <li><p>目标对象（target）：即被代理对象。</p></li>
+
+<li><p>AOP代理对象（AOP proxy）：AOP 代理理对象，可以是 JDK 动态代理理，也可以是 CGLIB 代理理</p></li>
 
 <li><p>引入（introduction）：是指引入新的类和方法，增强现有Bean的功能。</p></li>
 
 <li><p>织入（weaving）：它是一个通过动态代理技术，为原有服务对象生成动态对象，然后将与切点定义匹配的连接点拦截，并按约定将各类通知织入约定流程的过程。</p></li>
-
-<li><p>切面（aspect）：是一个可以定义切点、各类通知和引入的内容。</p></li>
 </ul>
 
 <h2 id="3-切点详解">3.  切点详解</h2>

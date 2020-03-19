@@ -6,10 +6,23 @@
     <description>Recent content on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 13 Mar 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 19 Mar 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Gradle发布Java Library到Maven中央仓库</title>
+      <link>http://flygopher.top/post/gradle-publish-jar-into-maven-central/</link>
+      <pubDate>Thu, 19 Mar 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/gradle-publish-jar-into-maven-central/</guid>
+      <description>&lt;p&gt;最近打算将一些基础的Jar包上传到&lt;code&gt;Maven&lt;/code&gt;中央仓库，方便在自己项目中引用。本文将结合&lt;code&gt;Gradle&lt;/code&gt;的两个插件&lt;code&gt;maven-publish&lt;/code&gt;和 &lt;code&gt;signing&lt;/code&gt;来讲解如何发布一个Jar包。&lt;/p&gt;
+
+&lt;p&gt;在开始之前，先对&lt;code&gt;OSSRH&lt;/code&gt;做下了解是很必要的。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;OSSRH&lt;/code&gt;：&lt;code&gt;Sonatype Open Source Software Repository Hosting Service&lt;/code&gt;，为开源软件提供maven仓库托管服务。你可以在上面部署&lt;code&gt;snapshot&lt;/code&gt;、&lt;code&gt;release&lt;/code&gt;等，最后你可以申请把你的release同步到&lt;code&gt;Maven Central Repository&lt;/code&gt;（&lt;code&gt;Maven中央仓库&lt;/code&gt;）。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>JPA ID生成策略</title>

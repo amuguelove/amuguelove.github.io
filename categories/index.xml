@@ -6,10 +6,19 @@
     <description>Recent content in Categories on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 13 Mar 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 19 Mar 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Gradle</title>
+      <link>http://flygopher.top/categories/gradle/</link>
+      <pubDate>Thu, 19 Mar 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/categories/gradle/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>springboot</title>
@@ -98,15 +107,6 @@
       <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>http://flygopher.top/categories/hexo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gradle</title>
-      <link>http://flygopher.top/categories/gradle/</link>
-      <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://flygopher.top/categories/gradle/</guid>
       <description></description>
     </item>
     

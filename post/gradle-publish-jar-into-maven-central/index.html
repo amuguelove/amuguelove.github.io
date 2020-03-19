@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  
+  <title>Gradle发布Java Library到Maven中央仓库-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="Gradle发布Java Library到Maven中央仓库" />
+  <meta name="twitter:title" content="Gradle发布Java Library到Maven中央仓库" />
+  
+  <meta name="description" content="最近打算将一些基础的Jar包上传到Maven中央仓库，方便在自己项目中引用。本文将结合Gradle的两个插件maven-publish和 signing来讲解如何发布一个Jar包。
+
+在开始之前，先对OSSRH做下了解是很必要的。
+
+OSSRH：Sonatype Open Source Software Repository Hosting Service，为开源软件提供maven仓库托管服务。你可以在上面部署snapshot、release等，最后你可以申请把你的release同步到Maven Central Repository（Maven中央仓库）。">
+  <meta property="og:description" content="最近打算将一些基础的Jar包上传到Maven中央仓库，方便在自己项目中引用。本文将结合Gradle的两个插件maven-publish和 signing来讲解如何发布一个Jar包。
+
+在开始之前，先对OSSRH做下了解是很必要的。
+
+OSSRH：Sonatype Open Source Software Repository Hosting Service，为开源软件提供maven仓库托管服务。你可以在上面部署snapshot、release等，最后你可以申请把你的release同步到Maven Central Repository（Maven中央仓库）。">
+  <meta name="twitter:description" content="最近打算将一些基础的Jar包上传到Maven中央仓库，方便在自己项目中引用。本文将结合Gradle的两个插件maven-publish和 signing来讲解如何发布一个Jar包。
+
+在开始之前，先对OSSRH做下了解是很必要的。
+
+OSSRH：Sonatype Open Source Software Repository Hosting Service，为开源软件提供maven仓库托管服务。你 …">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="http://flygopher.top/post/gradle-publish-jar-into-maven-central/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="梁波的技术博客" />
+  
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="canonical" href="http://flygopher.top/post/gradle-publish-jar-into-maven-central/" />
+  <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-158970182-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://flygopher.top/" title="梁波的技术博客">
+
+        梁波的技术博客
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="http://flygopher.top/">首页</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="http://flygopher.top/archives">Archive</a>
+                
+                  <a href="http://flygopher.top/categories">Categories</a>
+                
+                  <a href="http://flygopher.top/tags">tags</a>
+                
+                  <a href="http://flygopher.top/tags/java">java</a>
+                
+                  <a href="http://flygopher.top/tags/springboot">springboot</a>
+                
+                  <a href="http://flygopher.top/tags/mongo">mongo</a>
+                
+                  <a href="http://flygopher.top/tags/mysql">mysql</a>
+                
+                  <a href="http://flygopher.top/tags/redis">redis</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">书籍</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/">k8s基础知识</a>
+                
+                  <a href="https://k8s.imroc.io/">Kubernetes实践指南</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="关于" href="http://flygopher.top/page/about/">关于</a>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Gradle发布Java Library到Maven中央仓库</h1>
+                
+                
+                  <span class="post-meta">
+  
+    发表于 March 19, 2020
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="http://flygopher.top/tags/gradle/">gradle</a> &nbsp;
+              
+                  <a href="http://flygopher.top/tags/maven/">maven</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#注册sonatype-jira账号">注册Sonatype JIRA账号</a></li>
+<li><a href="#创建issue">创建Issue</a></li>
+<li><a href="#等待回复">等待回复</a></li>
+<li><a href="#ossrh对提交文件的要求">OSSRH对提交文件的要求</a></li>
+<li><a href="#gpg">GPG</a></li>
+<li><a href="#配置gradle插件">配置Gradle插件</a>
+<ul>
+<li><a href="#build-gradle参数">build.gradle参数</a></li>
+</ul></li>
+<li><a href="#提交到sonatype仓库">提交到Sonatype仓库</a></li>
+<li><a href="#到sonatype-oss发布">到Sonatype OSS发布</a></li>
+<li><a href="#新版本更新">新版本更新</a></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+          
+          
+          
+
+          <p>最近打算将一些基础的Jar包上传到<code>Maven</code>中央仓库，方便在自己项目中引用。本文将结合<code>Gradle</code>的两个插件<code>maven-publish</code>和 <code>signing</code>来讲解如何发布一个Jar包。</p>
+
+<p>在开始之前，先对<code>OSSRH</code>做下了解是很必要的。</p>
+
+<p><code>OSSRH</code>：<code>Sonatype Open Source Software Repository Hosting Service</code>，为开源软件提供maven仓库托管服务。你可以在上面部署<code>snapshot</code>、<code>release</code>等，最后你可以申请把你的release同步到<code>Maven Central Repository</code>（<code>Maven中央仓库</code>）。</p>
+
+<h2 id="注册sonatype-jira账号">注册Sonatype JIRA账号</h2>
+
+<blockquote>
+<p>JIRA是Atlassian公司出品的项目与事务跟踪工具，被广泛应用于缺陷跟踪、客户服务、需求收集、流程审批、任务跟踪、项目跟踪和敏捷管理等工作领域。</p>
+</blockquote>
+
+<p>网址：<a href="https://issues.sonatype.org/">https://issues.sonatype.org/</a></p>
+
+<p>注册好了之后，记住用户名和密码，下面会用到。</p>
+
+<h2 id="创建issue">创建Issue</h2>
+
+<p>地址：<a href="https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&amp;pid=10134">https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&amp;pid=10134</a></p>
+
+<p><img src="http://flygopher.top/img/post/gradle-publish-jar-01.png" alt="" /></p>
+
+<ul>
+<li><p><code>Summary</code>：简单的写一个描述即可</p></li>
+
+<li><p><code>Group Id</code>：</p>
+
+<ul>
+<li>自己有域名
+可以使用子域名作为<code>Group Id</code> 。
+<strong>注意：不能瞎编一个，因为后面审核人员会来审核你是否是该域名的拥有者</strong></li>
+<li>自己没域名
+可以借助github，例：我的用户名为<code>amuguelove</code>，那么就用<code>com.github.amuguelove</code>作为作为<code>Group Id</code>，例如：我就是这样提供的，审核人员会让你新建一个仓库来验证你是否是github账号的拥有者。</li>
+</ul></li>
+
+<li><p><code>Project URL</code>：最好与<code>Group Id</code>有一定关联性，例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Project URL: https://github.com/amuguelove/spring-boot-projects
+Group Id: com.github.amuguelove</pre></div></li>
+
+<li><p><code>SCM url</code>：版本仓库的拉取地址</p></li>
+</ul>
+
+<p>可以看考一下我成功了的例子：<a href="https://issues.sonatype.org/browse/OSSRH-55962">https://issues.sonatype.org/browse/OSSRH-55962</a></p>
+
+<h2 id="等待回复">等待回复</h2>
+
+<p>提交<code>Issue</code>后，如果存在问题，审核者会在jira中指出，可以直接回复，见下图。</p>
+
+<p>如果一切顺利，那么你会收到审核人员，这样的一个评论：</p>
+
+<p><img src="http://flygopher.top/img/post/gradle-publish-jar-02.png" alt="" /></p>
+
+<h2 id="ossrh对提交文件的要求">OSSRH对提交文件的要求</h2>
+
+<p>为了确保中央存储库中可用组件的质量水平，<code>OSSRH</code>对提交的文件有明确的要求。</p>
+
+<p>一个基础的提交，应该包含一下文件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">example-1.0.0.pom
+example-1.0.0.pom.asc
+example-1.0.0.jar
+example-1.0.0.jar.asc
+example-1.0.0-sources.jar
+example-1.0.0-sources.jar.asc
+example-1.0.0-javadoc.jar
+example-1.0.0-javadoc.jar.asc</pre></div>
+<p>下面我们会使用Gradle构建工具来帮助我们来生成。</p>
+
+<h2 id="gpg">GPG</h2>
+
+<p><code>OSX</code>下可以通过brew来安装<code>gpg</code>命令行工具。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ brew update
+$ brew install -v gpg</pre></div>
+<p>也可以去官网下载安装，地址：<a href="https://gpgtools.org/">https://gpgtools.org/</a></p>
+
+<p><strong>新建一个密钥</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">gpg --generate-key</pre></div>
+<p><strong>查看已经生成的密钥</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ gpg -k
+
+/Users/bo.liang/.gnupg/pubring.kbx
+----------------------------------
+pub   dsa2048 2010-08-19 [SC] [expires: 2020-06-15]
+      85E38F69046B44C1EC9FB07B76D78F0500D026C4
+uid           [ unknown] GPGTools Team &lt;team@gpgtools.org&gt;
+sub   elg2048 2010-08-19 [E] [expires: 2020-06-15]
+sub   rsa4096 2014-04-08 [S] [expires: 2024-01-02]
+
+pub   rsa2048 2020-03-19 [SC] [expires: 2022-03-19]
+      CD62FE125D651206FBC76C88DF58A148A2AAA46C
+uid           [ultimate] liangbo &lt;bo.liang0212@gmail.com&gt;
+sub   rsa2048 2020-03-19 [E] [expires: 2022-03-19]</pre></div>
+<p><strong><code>CD62FE125D651206FBC76C88DF58A148A2AAA46C</code></strong>，是<code>密钥指纹</code>(用来做唯一识别)，后面8位<strong><code>A2AAA46C</code></strong>叫做<code>标识</code>或<code>KEY ID</code>，在后面需要加到Gradle插件配置中。</p>
+
+<p><strong>导出私钥文件</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ gpg --export-secret-keys [密钥指纹] &gt; secret.gpg
+
+例如：
+[16:56:48] bo.liang:gnupg $ gpg --export-secret-keys A2AAA46C &gt; secret.gpg
+[17:00:06] bo.liang:gnupg $ pwd
+/Users/bo.liang/Documents/workspace/myProjects/gnupg</pre></div>
+<p>会生成一个二进制的私钥文件，后面需要配置到gradle中，让<code>signing</code>插件帮我们给文件批量签名。</p>
+
+<p><strong>上传公钥到公钥服务器</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ gpg --keyserver keyserver.ubuntu.com --send-keys [密钥指纹]</pre></div>
+<p>在sonatype的仓库提交后，会需要一个校验步骤
+会需要从<code>多个</code>公钥服务器上下载匹配的公钥，然后来校验你上传的文件的签名。</p>
+
+<p>以下是sonatype会去拉取的公钥服务器列表。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">keys.gnupg.net
+pool.sks-keyservers.net
+keyserver.ubuntu.com</pre></div>
+<p>准备好了以上几项，我们就可以开始撸Gradle了</p>
+
+<h2 id="配置gradle插件">配置Gradle插件</h2>
+
+<h3 id="build-gradle参数">build.gradle参数</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">plugins {
+    id &#34;java-library&#34;
+    id &#34;maven-publish&#34;
+    id &#34;signing&#34;
+}
+
+task sourceJar(type: Jar) {
+    classifier &#34;sources&#34;
+    from sourceSets.main.allJava
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier &#34;javadoc&#34;
+    from javadoc.destinationDir
+}
+
+javadoc {
+    description = &#34;生成jar格式的javadoc。&#34;
+    // 只显示 protected 和 public 的类和成员
+    options.memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PROTECTED
+    options.author = true
+    options.version = true
+    options.header = project.name
+    // 静默javadoc检查（比如不支持@date会报错等），jdk 8+
+    options.addStringOption(&#39;Xdoclint:none&#39;, &#39;-quiet&#39;)
+    // 防止本地打开中文乱码
+    options.addStringOption(&#34;charset&#34;, &#34;UTF-8&#34;)
+    // suppress warnings due to cross-module @see and @link references;
+    // note that global &#39;api&#39; task does display all warnings.
+    logging.captureStandardError LogLevel.INFO
+    // suppress &#34;## warnings&#34; message
+    logging.captureStandardOutput LogLevel.INFO
+    // 编码一定要配置否则直接出错
+    options.encoding = &#34;UTF-8&#34;
+    options.charSet = &#34;UTF-8&#34;
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = &#39;com.github.amuguelove&#39;
+            artifactId = &#39;p6spy-spring-boot-autoconfigure&#39;
+            version = &#39;1.0.0&#39;
+            from components.java
+
+            artifact sourceJar
+            artifact javadocJar
+
+            pom {
+                name = &#39;p6spy-spring-boot-autoconfigure&#39;
+                description = &#39;quickly integrate p6spy for spring boot&#39;
+                url = &#39;https://github.com/amuguelove/spring-boot-projects&#39;
+                licenses {
+                    license {
+                        name = &#39;Apache License, Version 2.0&#39;
+                        url = &#39;http://www.apache.org/licenses/LICENSE-2.0.txt&#39;
+                        distribution = &#39;repo&#39;
+                        comments = &#39;A business-friendly OSS license&#39;
+                    }
+                }
+                developers {
+                    developer {
+                        name = &#39;liangbo&#39;
+                        email = &#39;bo.liang0212@gmail.com&#39;
+                        roles = [&#39;Java Developer&#39;]
+                        url = &#34;https://amuguelove.github.io&#34;
+                    }
+                }
+                scm {
+                    url = &#39;https://github.com/amuguelove/spring-boot-projects&#39;
+                    connection = &#39;scm:git:https://github.com/amuguelove/spring-boot-projects.git&#39;
+                    developerConnection = &#39;scm:git:git@github.com:amuguelove/spring-boot-projects.git&#39;
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name &#34;oss&#34;
+            def releasesRepoUrl = &#34;https://oss.sonatype.org/service/local/staging/deploy/maven2&#34;
+            def snapshotsRepoUrl = &#34;https://oss.sonatype.org/content/repositories/snapshots&#34;
+            url = version.endsWith(&#39;SNAPSHOT&#39;) ? snapshotsRepoUrl : releasesRepoUrl
+            credentials {
+                username = sonatypeUsername
+                password = sonatypePassword
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
+}</pre></div>
+<p>在项目根目录或者gradle根目录新增<code>gradle.properties</code>（我推荐在本地的gradle根目录新建，毕竟有敏感信息）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">signing.keyId=密钥keyId(后8位)
+signing.password=密钥password（gpg新建秘钥时输入的密码）
+signing.secretKeyRingFile=私钥keyRingFile路径
+
+sonatypeUsername=sonatype账号
+sonatypePassword=sonatype密码</pre></div>
+<h2 id="提交到sonatype仓库">提交到Sonatype仓库</h2>
+
+<p>首先，用Gradle执行<code>publishToMavenLocal</code>任务，先在本地发布下，看看生成了哪些文件，或还有什么问题</p>
+
+<p>然后，用Gradle执行<code>publish</code>任务，发布到指定的maven仓库</p>
+
+<p>如果没有报错，那么恭喜你，已经成功提交到了sonatype的仓库中</p>
+
+<p>但是提交成功，并不代表发布成功。</p>
+
+<h2 id="到sonatype-oss发布">到Sonatype OSS发布</h2>
+
+<p>用你之前注册的账号密码，登录：<a href="https://oss.sonatype.org/">https://oss.sonatype.org/</a></p>
+
+<p>登录后查看左侧的<code>Build Promotion</code>-&gt;<code>Staging Repositories</code></p>
+
+<p><img src="http://flygopher.top/img/post/gradle-publish-jar-03.png" alt="" /></p>
+
+<p>点击<code>Close</code>按钮后，中央仓库会验证你上传的文件签名，回去公钥服务器拉取公钥，如果验证失败会提示你，根据提示修改你的操作。</p>
+
+<p>需要等待一会，等它执行完毕，状态会从<code>open</code>变成<code>closed</code></p>
+
+<p>一般情况下，感觉如果顺利<code>close</code>后，再次选中点击<code>Release</code>，耐心等待一会，就大功告成了！</p>
+
+<p>可以在侧边栏<code>Artifact Search</code>中搜索下你的<code>groupId</code>，此时应该能看到对应的构件名称和版本了</p>
+
+<p><strong>但是！！！</strong></p>
+
+<p>目前为止你的Jar包还无法在Maven Search页面找到，根据上面审核人员的提示需要2个小时，但是我实际的等待不止两个小时。看来从sonatype同步到中央仓库，的确是需要一定的时间。</p>
+
+<p>但是文件其实会比索引同步得早，所以你可以先到 <a href="https://repo1.maven.org/maven2/">https://repo1.maven.org/maven2/</a> 上按照坐标找下，是否能找到你的包。如果能找到，那你就可以开始引用它了。</p>
+
+<p>之后可以间隔不同的时间去 <a href="https://search.maven.org/">https://search.maven.org/</a> 上搜一下。</p>
+
+<p><img src="http://flygopher.top/img/post/gradle-publish-jar-04.png" alt="" /></p>
+
+<h2 id="新版本更新">新版本更新</h2>
+
+<p>你可以在<code>groupId范围内</code>发布<code>任意名称</code>的构件</p>
+
+<hr>
+
+<h2 id="参考">参考</h2>
+
+<p><a href="https://medium.com/@nmauti/sign-and-publish-on-maven-central-a-project-with-the-new-maven-publish-gradle-plugin-22a72a4bfd4b">Sign and publish on Maven Central a Project with the new maven-publish Gradle plugin</a></p>
+
+<p><a href="https://central.sonatype.org/pages/ossrh-guide.html">OSSRH Guide</a></p>
+
+<p><a href="https://docs.gradle.org/current/userguide/publishing_maven.html">Maven Publish Plugin</a></p>
+
+<p><a href="https://docs.gradle.org/current/userguide/signing_plugin.html">The Sign Plugin</a></p>
+
+<p><a href="https://help.github.com/en/github/authenticating-to-github/generating-a-new-gpg-key">Generating a new GPG key</a></p>
+
+          
+  
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="http://flygopher.top/img/avatar.jpg"/></span>
+        <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
+    </div>
+    <div class="zs-modal-body">
+        <div class="zs-modal-btns">
+            <button class="btn btn-blink" data-num="2">2元</button>
+            <button class="btn btn-blink" data-num="5">5元</button>
+            <button class="btn btn-blink" data-num="10">10元</button>
+            <button class="btn btn-blink" data-num="50">50元</button>
+            <button class="btn btn-blink" data-num="100">100元</button>
+            <button class="btn btn-blink" data-num="1">任意金额</button>
+        </div>
+        <div class="zs-modal-pay">
+            <button class="btn btn-bred" id="pay-text">2元</button>
+            <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+            <img src="http://flygopher.top/img/wechat-2.png" id="pay-image"/>
+        </div>
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="http://flygopher.top/img/wechat-btn.png"/></span>
+    </div>
+</div>
+          
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+    <a href="#" class="social-share-icon icon-twitter"></a>
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+    <a href="#" class="social-share-icon icon-facebook"></a>
+    <a href="#" class="social-share-icon icon-qq"></a>
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="http://flygopher.top/post/jpa-id-generated-strategy/">JPA ID生成策略</a></li>
+    
+    <li><a href="http://flygopher.top/post/git-flow-choose/">Git协同工作流的选择</a></li>
+    
+    <li><a href="http://flygopher.top/post/mongo-index/">Mongo的索引机制</a></li>
+    
+    <li><a href="http://flygopher.top/post/mongo-dump-restore/">Mongo数据备份以及恢复</a></li>
+    
+    <li><a href="http://flygopher.top/post/mongo-best-practice/">Mongo开发最佳实践</a></li>
+    
+    <li><a href="http://flygopher.top/post/mongo-transaction/">Mongo事务处理</a></li>
+    
+    <li><a href="http://flygopher.top/post/mongo-pattern-design/">Mongo的模型设计</a></li>
+    
+    <li><a href="http://flygopher.top/post/mongo-replica-sets-install/">Mongo复制集的搭建</a></li>
+    
+    <li><a href="http://flygopher.top/post/mongo-replica-sets/">Mongo复制集机制及原理</a></li>
+    
+    <li><a href="http://flygopher.top/post/mongo-aggregate-operation/">Mongo聚合查询</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://flygopher.top/post/jpa-id-generated-strategy/" data-toggle="tooltip" data-placement="top" title="JPA ID生成策略">&larr; 前一篇</a>
+            </li>
+          
+          
+        </ul>
+        
+  
+        
+  
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bo.liang0212@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="https://github.com/amuguelove" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          <li>
+            <a href="http://flygopher.top/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          &bull;&nbsp;
+          &copy;2016-2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/">梁波的技术博客</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/archives/">归档</a>
+          &nbsp; &bull;&nbsp;
+          
+        </p>
+        <p class="text-center text-muted">
+          <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+          <span id="busuanzi_container_site_pv" style="display:none">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          &nbsp;&bull;&nbsp;
+          <span id="busuanzi_container_site_uv" style="display:none">
+            访客数<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src='http://flygopher.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-158970182-1');
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script >
+$(document).ready(function() {
+  var int = setInterval(fixCount, 50);  
+  
+  var initPVCount = 0;
+  var initUVCount = 0;
+  function fixCount() {
+    if ($("#busuanzi_container_site_pv").css("display") != "none") {
+        $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
+        clearInterval(int); 
+    }
+    if ($("#busuanzi_container_site_uv").css("display") != "none") {
+      $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + initUVCount);
+      clearInterval(int); 
+    }
+  }
+});
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+$('.carousel').slick({
+    dots: true,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    centerMode: true,
+    prevArrow: '<button type="button" class="slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-next"></button>',
+});
+</script>
+
+  </body>
+</html>
+

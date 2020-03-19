@@ -195,6 +195,62 @@ if (!doNotTrack) {
 
 
             <article class="post-preview">
+              <a href="http://flygopher.top/post/reids-persistence-intro/">
+                <h2 class="post-title">Redis持久化介绍</h2>
+                
+              </a>
+
+              <span class="post-meta">
+  
+    发表于 January 10, 2018
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>简单介绍一下Redis两种持久化策略RDB和AOF的区别。</p>
+
+<p>一些简单的配置，比如端口号<code>port</code>, 日志位置<code>logfile</code>等基本配置可自行配置。</p>
+
+<h2 id="快照rdb持久化配置">快照RDB持久化配置：</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Save the DB on disk:
+#  设置sedis进行数据库镜像的频率。
+#  900秒（15分钟）内至少1个key值改变（则进行数据库保存--持久化）。
+#  300秒（5分钟）内至少10个key值改变（则进行数据库保存--持久化）。
+#  60秒（1分钟）内至少10000个key值改变（则进行数据库保存--持久化）。
+save 900 1
+save 300 10
+save 60 10000
+
+stop-writes-on-bgsave-error yes
+# 在进行镜像备份时,是否进行压缩。yes：压缩，但是需要一些cpu的消耗。no：不压缩，需要更多的磁盘空间。
+rdbcompression yes
+# 一个CRC64的校验就被放在了文件末尾，当存储或者加载rbd文件的时候会有一个10%左右的性能下降，为了达到性能的最大化，你可以关掉这个配置项。
+rdbchecksum yes
+# 快照的文件名
+dbfilename dump.rdb
+# 存放快照的目录
+dir /var/lib/redis</pre></div>
+                  <a href="http://flygopher.top/post/reids-persistence-intro/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://flygopher.top/tags/redis/">Redis</a>&nbsp;
+                
+                </span>
+              
+            </article>
+
+          
+
+
+
+            <article class="post-preview">
               <a href="http://flygopher.top/post/iterm2-ssh-no-disconnect/">
                 <h2 class="post-title">iTerm2保持ssh连接不断开</h2>
                 
@@ -227,6 +283,17 @@ if (!doNotTrack) {
             </article>
 
           
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -268,17 +335,6 @@ if (!doNotTrack) {
             </article>
 
           
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -614,6 +670,7 @@ git push -u origin master</pre></div>
           
           
           
+          
         </div>
 
       </div>
@@ -701,7 +758,7 @@ git push -u origin master</pre></div>
             
           
             
-            <li><a href="http://flygopher.top/categories/gradle">gradle(2)</a></li>
+            <li><a href="http://flygopher.top/categories/gradle">gradle(3)</a></li>
             
           
             
@@ -797,7 +854,7 @@ git push -u origin master</pre></div>
             
             
             
-            <a href="http://flygopher.top/tags/gradle"><i class="fa fa-tags"></i> gradle(2)</a>
+            <a href="http://flygopher.top/tags/gradle"><i class="fa fa-tags"></i> gradle(3)</a>
             
             
             
@@ -838,6 +895,10 @@ git push -u origin master</pre></div>
             
             
             <a href="http://flygopher.top/tags/macos"><i class="fa fa-tags"></i> macos(2)</a>
+            
+            
+            
+            <a href="http://flygopher.top/tags/maven"><i class="fa fa-tags"></i> maven(1)</a>
             
             
             
