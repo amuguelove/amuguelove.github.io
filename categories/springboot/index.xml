@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>springboot on 梁波的技术博客</title>
+    <title>SpringBoot on 梁波的技术博客</title>
     <link>http://flygopher.top/categories/springboot/</link>
-    <description>Recent content in springboot on 梁波的技术博客</description>
+    <description>Recent content in SpringBoot on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 13 Mar 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 18 Mar 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/categories/springboot/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SpringBoot配置文件加载的路径和优先级</title>
+      <link>http://flygopher.top/post/springboot-load-configure-locations/</link>
+      <pubDate>Wed, 18 Mar 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/springboot-load-configure-locations/</guid>
+      <description>&lt;p&gt;很多人对&lt;code&gt;SpringBoot&lt;/code&gt;文件加载的位置和优先级有点疑惑，下面通过源码看下到底是如何加载的。&lt;/p&gt;
+
+&lt;p&gt;我们先来看下&lt;code&gt;SpringBoot&lt;/code&gt;加载&lt;code&gt;PropertySource&lt;/code&gt;的顺序是如何的呢？可以&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config&#34;&gt;参考官网&lt;/a&gt;：&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config&#34;&gt;https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/springboot-configuration-1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;配置加载的优先级从高到低，其中高优先级可以覆盖低优先级的配置。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>JPA ID生成策略</title>

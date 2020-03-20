@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>springboot-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="springboot" />
-  <meta name="twitter:title" content="springboot" />
+  <title>SpringBoot-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="SpringBoot" />
+  <meta name="twitter:title" content="SpringBoot" />
   
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -152,7 +152,7 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="page-heading">
-              <h1>#springboot</h1>
+              <h1>#SpringBoot</h1>
               <hr class="small">
             </div>
           </div>
@@ -167,6 +167,39 @@ if (!doNotTrack) {
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+              <a href="http://flygopher.top/post/springboot-load-configure-locations/">
+                <h2 class="post-title">SpringBoot配置文件加载的路径和优先级</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 March 18, 2020
+              </p>
+              <div class="post-entry">
+                
+                  <p>很多人对<code>SpringBoot</code>文件加载的位置和优先级有点疑惑，下面通过源码看下到底是如何加载的。</p>
+
+<p>我们先来看下<code>SpringBoot</code>加载<code>PropertySource</code>的顺序是如何的呢？可以<a href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config">参考官网</a>：<a href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config">https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config</a></p>
+
+<p><img src="http://flygopher.top/img/post/springboot-configuration-1.png" alt="" /></p>
+
+<p>配置加载的优先级从高到低，其中高优先级可以覆盖低优先级的配置。</p>
+                  <a href="http://flygopher.top/post/springboot-load-configure-locations/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/springboot/">springboot</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
           
             <article class="post-preview">
               <a href="http://flygopher.top/post/jpa-id-generated-strategy/">
