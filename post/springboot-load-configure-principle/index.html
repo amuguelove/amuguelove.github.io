@@ -10,7 +10,9 @@
   <meta property="og:title" content="SpringBoot的自动装配原理分析" />
   <meta name="twitter:title" content="SpringBoot的自动装配原理分析" />
   
-  <meta name="description" content="在Spring Boot应用中的自动装配是通过@EnableAutoConfiguration 注解进行开启的。@EnableAutoConfiguration 可以帮助 Spring Boot 应用将所有符合条件的 @Configuration 配置类的 bean 都加载到 Spring IoC 容器中。我们看下@SpringBootApplication注解，默认是启动@EnableAutoConfiguration 的。
+  <meta name="description" content="在Spring Boot应用中的自动装配是通过@EnableAutoConfiguration 注解进行开启的。@EnableAutoConfiguration 可以帮助 Spring Boot 应用将所有符合条件的 @Configuration 配置类的 bean 都加载到 Spring IoC 容器中。
+
+我们看下@SpringBootApplication注解，默认是启动@EnableAutoConfiguration 的。
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -37,7 +39,9 @@ public @interface SpringBootApplication {
 	boolean proxyBeanMethods() default true;
 
 }">
-  <meta property="og:description" content="在Spring Boot应用中的自动装配是通过@EnableAutoConfiguration 注解进行开启的。@EnableAutoConfiguration 可以帮助 Spring Boot 应用将所有符合条件的 @Configuration 配置类的 bean 都加载到 Spring IoC 容器中。我们看下@SpringBootApplication注解，默认是启动@EnableAutoConfiguration 的。
+  <meta property="og:description" content="在Spring Boot应用中的自动装配是通过@EnableAutoConfiguration 注解进行开启的。@EnableAutoConfiguration 可以帮助 Spring Boot 应用将所有符合条件的 @Configuration 配置类的 bean 都加载到 Spring IoC 容器中。
+
+我们看下@SpringBootApplication注解，默认是启动@EnableAutoConfiguration 的。
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -64,7 +68,9 @@ public @interface SpringBootApplication {
 	boolean proxyBeanMethods() default true;
 
 }">
-  <meta name="twitter:description" content="在Spring Boot应用中的自动装配是通过@EnableAutoConfiguration 注解进行开启的。@EnableAutoConfiguration 可以帮助 Spring Boot 应用将所有符合条件的 @Configuration 配置类的 bean 都加载到 Spring IoC 容器中。我们看下@SpringBootApplication注解， …">
+  <meta name="twitter:description" content="在Spring Boot应用中的自动装配是通过@EnableAutoConfiguration 注解进行开启的。@EnableAutoConfiguration 可以帮助 Spring Boot 应用将所有符合条件的 @Configuration 配置类的 bean 都加载到 Spring IoC 容器中。
+
+我们看下@SpringBootApplication注解， …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
@@ -295,7 +301,9 @@ if (!doNotTrack) {
           
           
 
-          <p>在Spring Boot应用中的自动装配是通过<code>@EnableAutoConfiguration</code> 注解进行开启的。<code>@EnableAutoConfiguration</code> 可以帮助 Spring Boot 应用将所有符合条件的 <code>@Configuration</code> 配置类的 bean 都加载到 Spring IoC 容器中。我们看下<code>@SpringBootApplication</code>注解，默认是启动<code>@EnableAutoConfiguration</code> 的。</p>
+          <p>在Spring Boot应用中的自动装配是通过<code>@EnableAutoConfiguration</code> 注解进行开启的。<code>@EnableAutoConfiguration</code> 可以帮助 Spring Boot 应用将所有符合条件的 <code>@Configuration</code> 配置类的 bean 都加载到 Spring IoC 容器中。</p>
+
+<p>我们看下<code>@SpringBootApplication</code>注解，默认是启动<code>@EnableAutoConfiguration</code> 的。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
