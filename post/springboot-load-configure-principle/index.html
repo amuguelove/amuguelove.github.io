@@ -378,7 +378,7 @@ public @interface SpringBootApplication {
 
 <h3 id="spring-factories机制">Spring Factories机制</h3>
 
-<p>先看下<code>org.springframework.core.io.support.SpringFactoriesLoader</code>代码：</p>
+<p>先看下<code>org.springframework.core.io.support.SpringFactoriesLoader</code> 的关键代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public final class SpringFactoriesLoader {
 	
 	// 配置文件的路径
@@ -421,22 +421,6 @@ public @interface SpringBootApplication {
 	......
 
 }</pre></div>
-<h3 id="autoconfigurationimportselector分析">AutoConfigurationImportSelector分析</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Inherited
-@AutoConfigurationPackage
-@Import(AutoConfigurationImportSelector.class)
-public @interface EnableAutoConfiguration {
-
-	String ENABLED_OVERRIDE_PROPERTY = &#34;spring.boot.enableautoconfiguration&#34;;
-
-	Class&lt;?&gt;[] exclude() default {};
-
-	String[] excludeName() default {};
-
-}</pre></div>
 <p>首先我们可以在下 <code>spring-boot-autoconfigure-2.2.4.RELEASE.jar/META-INF/spring.factories</code>找到了 key 为 <code>org.springframework.boot.autoconfigure.EnableAutoConfiguration</code> 部分：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
@@ -457,6 +441,22 @@ org.springframework.boot.autoconfigure.AutoConfigurationImportFilter=\
 org.springframework.boot.autoconfigure.condition.OnBeanCondition,\
 org.springframework.boot.autoconfigure.condition.OnClassCondition,\
 org.springframework.boot.autoconfigure.condition.OnWebApplicationCondition</pre></div>
+<h3 id="autoconfigurationimportselector分析">AutoConfigurationImportSelector分析</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@AutoConfigurationPackage
+@Import(AutoConfigurationImportSelector.class)
+public @interface EnableAutoConfiguration {
+
+	String ENABLED_OVERRIDE_PROPERTY = &#34;spring.boot.enableautoconfiguration&#34;;
+
+	Class&lt;?&gt;[] exclude() default {};
+
+	String[] excludeName() default {};
+
+}</pre></div>
 <p><code>AutoConfigurationImportSelector</code>导入配置的关键代码如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Override
 	public String[] selectImports(AnnotationMetadata annotationMetadata) {
