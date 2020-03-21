@@ -347,9 +347,11 @@ public @interface SpringBootApplication {
 			configureIgnoreBeanInfo(environment);
 			Banner printedBanner = printBanner(environment);
 			context = createApplicationContext();
+			
 			// 通过SpringFactoriesLoader加载指定配置
 			exceptionReporters = getSpringFactoriesInstances(SpringBootExceptionReporter.class,
 					new Class[] { ConfigurableApplicationContext.class }, context);
+			
 			prepareContext(context, environment, listeners, applicationArguments, printedBanner);
 			refreshContext(context);
 			afterRefresh(context, applicationArguments);
@@ -466,6 +468,7 @@ public @interface EnableAutoConfiguration {
 		}
 		AutoConfigurationMetadata autoConfigurationMetadata = AutoConfigurationMetadataLoader
 				.loadMetadata(this.beanClassLoader);
+		
 		// 加载key为EnableAutoConfiguration全限定名称的值
 		// 去掉重复配置
 		// 移除掉排除的配置
