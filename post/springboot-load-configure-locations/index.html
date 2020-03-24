@@ -250,7 +250,7 @@ if (!doNotTrack) {
 <p>配置加载的优先级从高到低，其中高优先级可以覆盖低优先级的配置。</p>
 
 <p>简单的用中文翻译如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">1. 开启 DevTools 时，~/.spring-boot-devtools.properties
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">1. 开启 DevTools 时，~/.config/spring-boot-devtools.properties
 2. 测试类上的 @TestPropertySource 注解 
 3. @SpringBootTest#properties 属性
 4. 命令⾏行行参数( --server.port=9000 ) 
@@ -272,7 +272,7 @@ if (!doNotTrack) {
 –file:./
 –classpath:/config/
 –classpath:/</pre></div>
-<p>加载顺序从高到低，高优先级的配置会腐败低优先级配置内容。</p>
+<p>加载顺序从高到低，高优先级的配置会覆盖低优先级配置内容。</p>
 
 <p>其定义在文件<code>ConfigFileApplicationListener</code>中</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public class ConfigFileApplicationListener implements EnvironmentPostProcessor, SmartApplicationListener, Ordered {
