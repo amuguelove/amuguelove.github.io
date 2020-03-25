@@ -6,21 +6,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>Categories-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="Categories" />
-  <meta name="twitter:title" content="Categories" />
+  <title>本地搭建Kubernetes三节点高可用集群-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="本地搭建Kubernetes三节点高可用集群" />
+  <meta name="twitter:title" content="本地搭建Kubernetes三节点高可用集群" />
   
+  <meta name="description" content="Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 CNCF。你可以通过阅读 官方文档了解Kubernetes和其基础概念。
+
+接下来这篇文章将介绍如何使用二进制部署Kubernetes v1.14.8。通过这种hard-way的方式来帮助你更好的了解Kubernetes。
+
+Kubernetes Cluster搭建的过程，可以参考和我一步步部署 kubernetes 集群。我将其中的脚本整理好了，并通过Vagrant和VirtualBox在本地快速创建k8s集群。
+
+Github地址如下: https://github.com/amuguelove/vagrant-install-kubernetes-cluster">
+  <meta property="og:description" content="Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 CNCF。你可以通过阅读 官方文档了解Kubernetes和其基础概念。
+
+接下来这篇文章将介绍如何使用二进制部署Kubernetes v1.14.8。通过这种hard-way的方式来帮助你更好的了解Kubernetes。
+
+Kubernetes Cluster搭建的过程，可以参考和我一步步部署 kubernetes 集群。我将其中的脚本整理好了，并通过Vagrant和VirtualBox在本地快速创建k8s集群。
+
+Github地址如下: https://github.com/amuguelove/vagrant-install-kubernetes-cluster">
+  <meta name="twitter:description" content="Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 CNCF。你可以通过阅读 官方文档了解Kubernetes和其基础概念。
+
+接下来这篇文章将介绍如何使用二进制部署Kubernetes v1.14.8。通过这种hard-way的方式来帮助你更好的了解Kubernetes。
+
+Kubernetes Cluster搭建的过程， …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flygopher.top/categories/" />
+  <meta property="og:url" content="http://flygopher.top/post/local-install-ha-kubernetes-cluster/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.58.3" />
-  <link rel="canonical" href="http://flygopher.top/categories/" />
+  <link rel="canonical" href="http://flygopher.top/post/local-install-ha-kubernetes-cluster/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
@@ -164,9 +183,18 @@ if (!doNotTrack) {
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="categories-heading">
-              <h1>Categories</h1>
+            <div class="post-heading">
+              <h1>本地搭建Kubernetes三节点高可用集群</h1>
                 
+                
+                  <span class="post-meta">
+  
+    发表于 March 25, 2020
+  
+  
+</span>
+
+
                 
             </div>
           </div>
@@ -179,71 +207,259 @@ if (!doNotTrack) {
 
 
     
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="http://flygopher.top/tags/kubernetes/">kubernetes</a> &nbsp;
+              
+                  <a href="http://flygopher.top/tags/vagrant/">vagrant</a> &nbsp;
+              
+                  <a href="http://flygopher.top/tags/devops/">devops</a> &nbsp;
+              
+            </h5>
+            
+        </div>
   
-  <div class="container" role="main">
-    <article class="post-preview">
-      <div class="list-group col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
-      
-      <a href="http://flygopher.top/categories/mongo/" class="list-group-item">
-          mongo<span class="badge">9</span></a>
-      
-      <a href="http://flygopher.top/categories/java/" class="list-group-item">
-          java<span class="badge">7</span></a>
-      
-      <a href="http://flygopher.top/categories/redis/" class="list-group-item">
-          redis<span class="badge">6</span></a>
-      
-      <a href="http://flygopher.top/categories/springboot/" class="list-group-item">
-          springboot<span class="badge">6</span></a>
-      
-      <a href="http://flygopher.top/categories/docker/" class="list-group-item">
-          docker<span class="badge">5</span></a>
-      
-      <a href="http://flygopher.top/categories/linux/" class="list-group-item">
-          linux<span class="badge">5</span></a>
-      
-      <a href="http://flygopher.top/categories/git/" class="list-group-item">
-          git<span class="badge">3</span></a>
-      
-      <a href="http://flygopher.top/categories/gradle/" class="list-group-item">
-          gradle<span class="badge">3</span></a>
-      
-      <a href="http://flygopher.top/categories/tools/" class="list-group-item">
-          tools<span class="badge">3</span></a>
-      
-      <a href="http://flygopher.top/categories/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/" class="list-group-item">
-          生活杂记<span class="badge">3</span></a>
-      
-      <a href="http://flygopher.top/categories/design-patterns/" class="list-group-item">
-          design-patterns<span class="badge">2</span></a>
-      
-      <a href="http://flygopher.top/categories/golang/" class="list-group-item">
-          golang<span class="badge">1</span></a>
-      
-      <a href="http://flygopher.top/categories/hexo/" class="list-group-item">
-          hexo<span class="badge">1</span></a>
-      
-      <a href="http://flygopher.top/categories/http/" class="list-group-item">
-          http<span class="badge">1</span></a>
-      
-      <a href="http://flygopher.top/categories/kubernetes/" class="list-group-item">
-          kubernetes<span class="badge">1</span></a>
-      
-      <a href="http://flygopher.top/categories/macos/" class="list-group-item">
-          macos<span class="badge">1</span></a>
-      
-      <a href="http://flygopher.top/categories/mysql/" class="list-group-item">
-          mysql<span class="badge">1</span></a>
-      
-      <a href="http://flygopher.top/categories/restful/" class="list-group-item">
-          restful<span class="badge">1</span></a>
-      
-      <a href="http://flygopher.top/categories/vagrant/" class="list-group-item">
-          vagrant<span class="badge">1</span></a>
-      
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#环境准备">环境准备</a>
+<ul>
+<li><a href="#集群准备">集群准备</a></li>
+<li><a href="#主要组件版本">主要组件版本</a>
+<ul>
+<li><a href="#插件">插件</a></li>
+</ul></li>
+<li><a href="#运行结果展示">运行结果展示</a>
+<ul>
+<li><a href="#kubernetes-dashboard">Kubernetes DashBoard</a></li>
+<li><a href="#prometheus">Prometheus</a></li>
+<li><a href="#grafana">Grafana</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+          
+          
+          
+
+          <p>Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 <a href="https://www.cncf.io/about">CNCF</a>。你可以通过阅读 <a href="https://kubernetes.io/zh/docs/home/">官方文档</a>了解Kubernetes和其基础概念。</p>
+
+<p>接下来这篇文章将介绍如何使用二进制部署<code>Kubernetes v1.14.8</code>。通过这种<code>hard-way</code>的方式来帮助你更好的了解Kubernetes。</p>
+
+<p>Kubernetes Cluster搭建的过程，可以参考<a href="https://github.com/opsnull/follow-me-install-kubernetes-cluster">和我一步步部署 kubernetes 集群</a>。我将其中的脚本整理好了，并通过<a href="https://www.vagrantup.com/">Vagrant</a>和<a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>在本地快速创建k8s集群。</p>
+
+<p>Github地址如下: <a href="https://github.com/amuguelove/vagrant-install-kubernetes-cluster">https://github.com/amuguelove/vagrant-install-kubernetes-cluster</a></p>
+
+<h1 id="环境准备">环境准备</h1>
+
+<p>需要准备以下软件和环境：</p>
+
+<ul>
+<li>8G以上内存</li>
+<li>Vagrant 2.2.4</li>
+<li>VirtualBox 5.2.36</li>
+<li>Mac / Linux</li>
+<li>虚拟机：Centos 7</li>
+</ul>
+
+<h2 id="集群准备">集群准备</h2>
+
+<p>我们使用Vagrant和Virtualbox安装包含3个节点的kubernetes集群。</p>
+
+<table>
+<thead>
+<tr>
+<th>IP</th>
+<th>主机名</th>
+<th>组件</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>192.168.56.101</td>
+<td>node1</td>
+<td>kube-apiserver、kube-controller-manager、kube-scheduler、kubelet、etcd、corecdn、dashboard</td>
+</tr>
+
+<tr>
+<td>192.168.56.102</td>
+<td>node2</td>
+<td>kube-apiserver、kube-controller-manager、kube-scheduler、kubelet、etcd</td>
+</tr>
+
+<tr>
+<td>192.168.56.103</td>
+<td>node3</td>
+<td>kube-apiserver、kube-controller-manager、kube-scheduler、kubelet、etcd</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>注意</strong>：以上的IP、主机名和组件都是固定在这些节点的，即使销毁后下次使用vagrant重建依然保持不变。</p>
+
+<p>容器IP范围：172.30.0.0/16</p>
+
+<p>Kubernetes service IP范围：10.254.0.0/16</p>
+
+<h2 id="主要组件版本">主要组件版本</h2>
+
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>版本</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>kubernetes</td>
+<td>1.14.8</td>
+</tr>
+
+<tr>
+<td>etcd</td>
+<td>3.3.13</td>
+</tr>
+
+<tr>
+<td>Flanneld</td>
+<td>0.11.0</td>
+</tr>
+
+<tr>
+<td>Docker</td>
+<td>18.09.6-ce</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="插件">插件</h3>
+
+<ul>
+<li>Coredns</li>
+<li>Dashboard</li>
+<li>Prometheus</li>
+<li>ELK (elasticsearch、fluentd、kibana)</li>
+</ul>
+
+<h2 id="运行结果展示">运行结果展示</h2>
+
+<h3 id="kubernetes-dashboard">Kubernetes DashBoard</h3>
+
+<p><img src="img/post/dashboard.png" alt="" /></p>
+
+<h3 id="prometheus">Prometheus</h3>
+
+<p><img src="img/post/prometheus.png" alt="" /></p>
+
+<h3 id="grafana">Grafana</h3>
+
+<p><img src="img/post/grafana.png" alt="" /></p>
+
+          
+  
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="http://flygopher.top/img/avatar.jpg"/></span>
+        <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
+    </div>
+    <div class="zs-modal-body">
+        <div class="zs-modal-btns">
+            <button class="btn btn-blink" data-num="2">2元</button>
+            <button class="btn btn-blink" data-num="5">5元</button>
+            <button class="btn btn-blink" data-num="10">10元</button>
+            <button class="btn btn-blink" data-num="50">50元</button>
+            <button class="btn btn-blink" data-num="100">100元</button>
+            <button class="btn btn-blink" data-num="1">任意金额</button>
+        </div>
+        <div class="zs-modal-pay">
+            <button class="btn btn-bred" id="pay-text">2元</button>
+            <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+            <img src="http://flygopher.top/img/wechat-2.png" id="pay-image"/>
+        </div>
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="http://flygopher.top/img/wechat-btn.png"/></span>
+    </div>
+</div>
+          
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+    <a href="#" class="social-share-icon icon-twitter"></a>
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+    <a href="#" class="social-share-icon icon-facebook"></a>
+    <a href="#" class="social-share-icon icon-qq"></a>
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://flygopher.top/post/java-object-mappping-framework-benchmark/" data-toggle="tooltip" data-placement="top" title="使用JMH对Java Object Mapping框架做性能对比">&larr; 前一篇</a>
+            </li>
+          
+          
+        </ul>
+        
+  
+        
+  
       </div>
-    </article>
+    
+    
   </div>
+</div>
 
     <footer>
   <div class="container">
