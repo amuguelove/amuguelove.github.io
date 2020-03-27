@@ -6,7 +6,7 @@
     <description>Recent content in Tags on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 25 Mar 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 27 Mar 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,16 +14,25 @@
     <item>
       <title>devops</title>
       <link>http://flygopher.top/tags/devops/</link>
-      <pubDate>Wed, 25 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Fri, 27 Mar 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/tags/devops/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>jenkins</title>
+      <link>http://flygopher.top/tags/jenkins/</link>
+      <pubDate>Fri, 27 Mar 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/tags/jenkins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>kubernetes</title>
       <link>http://flygopher.top/tags/kubernetes/</link>
-      <pubDate>Wed, 25 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Fri, 27 Mar 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/tags/kubernetes/</guid>
       <description></description>
