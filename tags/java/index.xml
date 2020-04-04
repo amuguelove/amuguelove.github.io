@@ -6,10 +6,23 @@
     <description>Recent content in Java on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 23 Mar 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 03 Apr 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>代码整洁之道</title>
+      <link>http://flygopher.top/post/read-clean-code/</link>
+      <pubDate>Fri, 03 Apr 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/read-clean-code/</guid>
+      <description>&lt;p&gt;最近因为一些契机，花了2到3天看完&lt;strong&gt;《代码简洁之道》&lt;/strong&gt;这本书，英文名为：&lt;code&gt;Clean Code&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;开篇就有有这么简单一句话：“阅读这本书有两种原因：第一，你是个程序员；第二，你想成为更好的程序员”。是的，没错，我想成为更好的程序员。所以我决定好好阅读下这本书。&lt;/p&gt;
+
+&lt;p&gt;回想2019年，确实是我最忙碌的一年，做过几个项目，其中部分涉及到架构，但是大部分时间都关注在如何实现业务代码，没有更好的关注到代码本身的细节。虽然经常了解到关于整洁代码相关的知识，在工作中也或多或少的用到，比如每天的&lt;code&gt;code review&lt;/code&gt;以及&lt;code&gt;TDD&lt;/code&gt;开发等等。但是确实不够系统，大多时间忙于完成业务，通过阅读本书，以及其中大量简洁代码的指南，受益匪浅。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>使用JMH对Java Object Mapping框架做性能对比</title>
