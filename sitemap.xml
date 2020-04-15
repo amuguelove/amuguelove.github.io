@@ -3,8 +3,78 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://flygopher.top/categories/book/</loc>
-    <lastmod>2020-04-03T00:00:00+08:00</lastmod>
+    <loc>http://flygopher.top/categories/</loc>
+    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/devops/</loc>
+    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/kubeadm/</loc>
+    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/kubernetes/</loc>
+    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/categories/kubernetes/</loc>
+    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/</loc>
+    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/</loc>
+    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/vagrant/</loc>
+    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/kubeadm-install-kubernetes-cluster/</loc>
+    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</loc>
+    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/</loc>
+    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/categories/docker/</loc>
+    <lastmod>2020-04-07T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/docker/</loc>
+    <lastmod>2020-04-07T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/docker-best-practice/</loc>
+    <lastmod>2020-04-07T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/docker-underlying-technology/</loc>
+    <lastmod>2020-04-06T00:00:00+08:00</lastmod>
   </url>
   
   <url>
@@ -13,7 +83,7 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/</loc>
+    <loc>http://flygopher.top/categories/book/</loc>
     <lastmod>2020-04-03T00:00:00+08:00</lastmod>
   </url>
   
@@ -28,28 +98,8 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/post/</loc>
-    <lastmod>2020-04-03T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://flygopher.top/tags/</loc>
-    <lastmod>2020-04-03T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://flygopher.top/post/read-clean-code/</loc>
     <lastmod>2020-04-03T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://flygopher.top/</loc>
-    <lastmod>2020-04-03T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://flygopher.top/tags/devops/</loc>
-    <lastmod>2020-03-27T00:00:00+08:00</lastmod>
   </url>
   
   <url>
@@ -58,28 +108,8 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/kubernetes/</loc>
-    <lastmod>2020-03-27T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://flygopher.top/tags/kubernetes/</loc>
-    <lastmod>2020-03-27T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://flygopher.top/post/jenkins-slave-base-on-kubernetes/</loc>
     <lastmod>2020-03-27T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://flygopher.top/tags/vagrant/</loc>
-    <lastmod>2020-03-25T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</loc>
-    <lastmod>2020-03-25T00:00:00+08:00</lastmod>
   </url>
   
   <url>
@@ -153,12 +183,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/git/</loc>
+    <loc>http://flygopher.top/categories/git/</loc>
     <lastmod>2020-03-11T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/git/</loc>
+    <loc>http://flygopher.top/tags/git/</loc>
     <lastmod>2020-03-11T00:00:00+08:00</lastmod>
   </url>
   
@@ -168,12 +198,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/mongo/</loc>
+    <loc>http://flygopher.top/tags/mongo/</loc>
     <lastmod>2020-03-09T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/mongo/</loc>
+    <loc>http://flygopher.top/categories/mongo/</loc>
     <lastmod>2020-03-09T00:00:00+08:00</lastmod>
   </url>
   
@@ -243,12 +273,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/mysql/</loc>
+    <loc>http://flygopher.top/categories/mysql/</loc>
     <lastmod>2019-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/mysql/</loc>
+    <loc>http://flygopher.top/tags/mysql/</loc>
     <lastmod>2019-04-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -258,12 +288,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/linux/</loc>
+    <loc>http://flygopher.top/categories/linux/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/linux/</loc>
+    <loc>http://flygopher.top/tags/linux/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -353,12 +383,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/golang/</loc>
+    <loc>http://flygopher.top/categories/golang/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/golang/</loc>
+    <loc>http://flygopher.top/tags/golang/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -370,16 +400,6 @@
   <url>
     <loc>http://flygopher.top/post/macos-golang-environment-setup/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://flygopher.top/tags/docker/</loc>
-    <lastmod>2018-11-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://flygopher.top/categories/docker/</loc>
-    <lastmod>2018-11-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -418,12 +438,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/hexo/</loc>
+    <loc>http://flygopher.top/categories/hexo/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/hexo/</loc>
+    <loc>http://flygopher.top/tags/hexo/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url>
   
@@ -448,12 +468,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/redis/</loc>
+    <loc>http://flygopher.top/categories/redis/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/redis/</loc>
+    <loc>http://flygopher.top/tags/redis/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
   </url>
   
@@ -548,12 +568,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/restful/</loc>
+    <loc>http://flygopher.top/tags/restful/</loc>
     <lastmod>2018-05-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/restful/</loc>
+    <loc>http://flygopher.top/categories/restful/</loc>
     <lastmod>2018-05-27T00:00:00+00:00</lastmod>
   </url>
   
@@ -608,12 +628,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/design-patterns/</loc>
+    <loc>http://flygopher.top/categories/design-patterns/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/design-patterns/</loc>
+    <loc>http://flygopher.top/tags/design-patterns/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
   </url>
   

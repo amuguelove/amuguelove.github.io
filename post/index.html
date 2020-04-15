@@ -165,6 +165,134 @@ if (!doNotTrack) {
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://flygopher.top/post/kubeadm-install-kubernetes-cluster/">
+                <h2 class="post-title">使用kubeadm搭建Kubernetes集群</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 April 8, 2020
+              </p>
+              <div class="post-entry">
+                
+                  <p>之前使用二进制Hard-Way模式搭建了Kubernetes三节点集群，今天采用Kubeadm 来快速搭建Kubernetes V1.16.8集群。</p>
+
+<p>Github地址如下: <a href="https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.16.8">https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.16.8</a></p>
+                  <a href="http://flygopher.top/post/kubeadm-install-kubernetes-cluster/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/kubernetes/">kubernetes</a>&nbsp;
+                  
+                    #<a href="http://flygopher.top/tags/kubeadm/">kubeadm</a>&nbsp;
+                  
+                    #<a href="http://flygopher.top/tags/devops/">devops</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://flygopher.top/post/local-install-ha-kubernetes-cluster/">
+                <h2 class="post-title">使用二进制搭建Kubernetes三节点高可用集群</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 April 8, 2020
+              </p>
+              <div class="post-entry">
+                
+                  <p>Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 <a href="https://www.cncf.io/about">CNCF</a>。你可以通过阅读 <a href="https://kubernetes.io/zh/docs/home/">官方文档</a>了解Kubernetes和其基础概念。</p>
+
+<p>接下来这篇文章将介绍如何使用二进制部署<code>Kubernetes v1.14.8</code>。通过这种<code>hard-way</code>的方式来帮助你更好的了解Kubernetes。</p>
+
+<p>Kubernetes Cluster搭建的过程，可以参考<a href="https://github.com/opsnull/follow-me-install-kubernetes-cluster">和我一步步部署 kubernetes 集群</a>。我将其中的脚本整理好了，并通过<a href="https://www.vagrantup.com/">Vagrant</a>和<a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>在本地快速创建k8s集群。</p>
+
+<p>Github地址如下: <a href="https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.14.8">https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.14.8</a></p>
+                  <a href="http://flygopher.top/post/local-install-ha-kubernetes-cluster/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/kubernetes/">kubernetes</a>&nbsp;
+                  
+                    #<a href="http://flygopher.top/tags/vagrant/">vagrant</a>&nbsp;
+                  
+                    #<a href="http://flygopher.top/tags/devops/">devops</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://flygopher.top/post/docker-best-practice/">
+                <h2 class="post-title">Docker最佳实践</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 April 7, 2020
+              </p>
+              <div class="post-entry">
+                
+                  <p>了解了用于构建 Dockerfile 的基本方法后，我们在编写 Dockerfile 的时候并没有一些强制要求，导致很多构建的镜像不符合一些最佳实践，典型的就是镜像构建的层数非常多，对一些基本指令的区别不是很清楚。下面介绍 Dockerfile 在实际使用中的一些最佳的实践方式。</p>
+                  <a href="http://flygopher.top/post/docker-best-practice/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/docker/">Docker</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://flygopher.top/post/docker-underlying-technology/">
+                <h2 class="post-title">Docker的底层技术</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 April 6, 2020
+              </p>
+              <div class="post-entry">
+                
+                  <p>Docker最初实现是基于 <a href="https://linuxcontainers.org/lxc/introduction/">LXC</a>，从 0.7 版本以后开始去除 <code>LXC</code>，转而使用自行开发的 <a href="https://github.com/docker/libcontainer">libcontainer</a>，从 1.11 开始，则进一步演进为使用 <a href="https://github.com/opencontainers/runc">runC</a> 和 <a href="https://github.com/containerd/containerd">containerd</a>。</p>
+
+<p>Docker 本质就是宿主机的一个进程，Docker 是通过 <code>namespace</code> 实现资源隔离，通过<code>cgroup</code> 实现资源限制，通过写时复制技术（copy-on-write）实现了高效的文件操作。</p>
+
+<p>传统的虚拟机通过在宿主主机中运行 hypervisor 来模拟一整套完整的硬件环境提供给虚拟机的操作系统。虚拟机系统看到的环境是可限制的，也是彼此隔离的。 这种直接的做法实现了对资源最完整的封装，但很多时候往往意味着系统资源的浪费。 例如，以宿主机和虚拟机系统都为 Linux 系统为例，虚拟机中运行的应用其实可以利用宿主机系统中的运行环境。</p>
+                  <a href="http://flygopher.top/post/docker-underlying-technology/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/docker/">Docker</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://flygopher.top/post/read-clean-code/">
                 <h2 class="post-title">代码整洁之道</h2>
 
@@ -222,43 +350,6 @@ if (!doNotTrack) {
                     #<a href="http://flygopher.top/tags/kubernetes/">kubernetes</a>&nbsp;
                   
                     #<a href="http://flygopher.top/tags/jenkins/">jenkins</a>&nbsp;
-                  
-                    #<a href="http://flygopher.top/tags/devops/">devops</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/local-install-ha-kubernetes-cluster/">
-                <h2 class="post-title">本地搭建Kubernetes三节点高可用集群</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 March 25, 2020
-              </p>
-              <div class="post-entry">
-                
-                  <p>Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 <a href="https://www.cncf.io/about">CNCF</a>。你可以通过阅读 <a href="https://kubernetes.io/zh/docs/home/">官方文档</a>了解Kubernetes和其基础概念。</p>
-
-<p>接下来这篇文章将介绍如何使用二进制部署<code>Kubernetes v1.14.8</code>。通过这种<code>hard-way</code>的方式来帮助你更好的了解Kubernetes。</p>
-
-<p>Kubernetes Cluster搭建的过程，可以参考<a href="https://github.com/opsnull/follow-me-install-kubernetes-cluster">和我一步步部署 kubernetes 集群</a>。我将其中的脚本整理好了，并通过<a href="https://www.vagrantup.com/">Vagrant</a>和<a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>在本地快速创建k8s集群。</p>
-
-<p>Github地址如下: <a href="https://github.com/amuguelove/vagrant-install-kubernetes-cluster">https://github.com/amuguelove/vagrant-install-kubernetes-cluster</a></p>
-                  <a href="http://flygopher.top/post/local-install-ha-kubernetes-cluster/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/kubernetes/">kubernetes</a>&nbsp;
-                  
-                    #<a href="http://flygopher.top/tags/vagrant/">vagrant</a>&nbsp;
                   
                     #<a href="http://flygopher.top/tags/devops/">devops</a>&nbsp;
                   
@@ -502,87 +593,6 @@ public @interface SpringBootApplication {
                 <span class="post-meta">
                   
                     #<a href="http://flygopher.top/tags/git/">git</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/mongo-index/">
-                <h2 class="post-title">Mongo的索引机制</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 March 9, 2020
-              </p>
-              <div class="post-entry">
-                
-                  <p>索引是对数据库表中一列或多列的值进行排序的一种数据结构，可以让我们查询数据库变得更快。</p>
-                  <a href="http://flygopher.top/post/mongo-index/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/mongo/">mongo</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/mongo-dump-restore/">
-                <h2 class="post-title">Mongo数据备份以及恢复</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 March 8, 2020
-              </p>
-              <div class="post-entry">
-                
-                  <p>MongoDB支持副本集，为何还需要备份呢？备份的主要目的有：1）防止硬件故障引起的数据丢失； 2）防止人为错误误删数据；3）时间回溯；4）监管要求。</p>
-                  <a href="http://flygopher.top/post/mongo-dump-restore/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/mongo/">mongo</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/mongo-best-practice/">
-                <h2 class="post-title">Mongo开发最佳实践</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 March 7, 2020
-              </p>
-              <div class="post-entry">
-                
-                  <p>Mongo开发的最佳实践总结。</p>
-                  <a href="http://flygopher.top/post/mongo-best-practice/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/mongo/">mongo</a>&nbsp;
                   
                 </span>
               

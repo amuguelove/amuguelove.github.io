@@ -6,15 +6,15 @@
     <description>Recent content in Vagrant on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 25 Mar 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 08 Apr 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>本地搭建Kubernetes三节点高可用集群</title>
+      <title>使用二进制搭建Kubernetes三节点高可用集群</title>
       <link>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</link>
-      <pubDate>Wed, 25 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</guid>
       <description>&lt;p&gt;Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 &lt;a href=&#34;https://www.cncf.io/about&#34;&gt;CNCF&lt;/a&gt;。你可以通过阅读 &lt;a href=&#34;https://kubernetes.io/zh/docs/home/&#34;&gt;官方文档&lt;/a&gt;了解Kubernetes和其基础概念。&lt;/p&gt;
@@ -23,7 +23,7 @@
 
 &lt;p&gt;Kubernetes Cluster搭建的过程，可以参考&lt;a href=&#34;https://github.com/opsnull/follow-me-install-kubernetes-cluster&#34;&gt;和我一步步部署 kubernetes 集群&lt;/a&gt;。我将其中的脚本整理好了，并通过&lt;a href=&#34;https://www.vagrantup.com/&#34;&gt;Vagrant&lt;/a&gt;和&lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;VirtualBox&lt;/a&gt;在本地快速创建k8s集群。&lt;/p&gt;
 
-&lt;p&gt;Github地址如下: &lt;a href=&#34;https://github.com/amuguelove/vagrant-install-kubernetes-cluster&#34;&gt;https://github.com/amuguelove/vagrant-install-kubernetes-cluster&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;Github地址如下: &lt;a href=&#34;https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.14.8&#34;&gt;https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.14.8&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

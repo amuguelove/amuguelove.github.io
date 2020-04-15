@@ -165,6 +165,115 @@ if (!doNotTrack) {
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://flygopher.top/post/java8-optional/">
+                <h2 class="post-title">Java8新特性（三）：Optional类</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 October 5, 2018
+              </p>
+              <div class="post-entry">
+                
+                  <p>Optional 是 JDK1.8 中的一个很流弊的新特性，每个接触JAVA的都遇到过 NPE(NullPointerException)，1.8中Optional 帮助我们很好的避免了这一现象。</p>
+                  <a href="http://flygopher.top/post/java8-optional/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/java/">Java</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://flygopher.top/post/java8-stream/">
+                <h2 class="post-title">Java8新特性（二）：Stream流式处理</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 October 2, 2018
+              </p>
+              <div class="post-entry">
+                
+                  <p>Stream 作为 Java 8 的一大亮点，它与 java.io 包里的 InputStream 和 OutputStream 是完全不同的概念。它也不同于 StAX 对 XML 解析的 Stream，也不是 Amazon Kinesis 对大数据实时处理的 Stream。Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的 Lambda 表达式，极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用 fork/join 并行方式来拆分任务和加速处理过程。</p>
+                  <a href="http://flygopher.top/post/java8-stream/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/java/">Java</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://flygopher.top/post/java8-lambda/">
+                <h2 class="post-title">Java8新特性（一）：Lambda表达式</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 October 1, 2018
+              </p>
+              <div class="post-entry">
+                
+                  <h2 id="新特性列表">新特性列表</h2>
+
+<p>以下是Java8中的引入的部分新特性。关于Java8新特性更详细的介绍可参考<a href="http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html">这里</a>。</p>
+
+<ul>
+<li>接口默认方法和静态方法</li>
+<li>Lambda 表达式</li>
+<li>函数式接口</li>
+<li>方法引用</li>
+<li>Stream</li>
+<li>Optional</li>
+<li>Date/Time API</li>
+<li>重复注解</li>
+<li>扩展注解的支持</li>
+<li>Base64</li>
+<li>JavaFX</li>
+<li>其它
+
+<ul>
+<li>JDBC4.2规范</li>
+<li>更好的类型推测机制</li>
+<li>HashMap性能提升</li>
+<li>IO/NIO 的改进</li>
+<li>JavaScript引擎Nashorn</li>
+<li>并发（Concurrency）</li>
+<li>类依赖分析器jdeps</li>
+<li>JVM的PermGen空间被移除</li>
+</ul></li>
+</ul>
+                  <a href="http://flygopher.top/post/java8-lambda/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/java/">Java</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://flygopher.top/post/custom-iterm2-zsh/">
                 <h2 class="post-title">iTerm2&#43;zsh打造漂亮好用的终端环境</h2>
 
@@ -483,151 +592,6 @@ dir /var/lib/redis</pre></div>
                 <span class="post-meta">
                   
                     #<a href="http://flygopher.top/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/">生活杂记</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/dynamic-proxy-pattern/">
-                <h2 class="post-title">设计模式之动态代理</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 March 26, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <p>代理实现可以分为静态代理和动态代理, 下面使用jdk和cglib来分别说明。</p>
-
-<h2 id="静态代理">静态代理</h2>
-
-<p>具体实现：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public interface Subject {
-    void request();
-}
-
-class RealSubject implements Subject {
-    public void request(){
-        System.out.println(&#34;Call RealSubject&#34;);
-    }
-}
-
-class Proxy implements Subject {
-    private Subject subject;
-
-    public Proxy(Subject subject) {
-        this.subject = subject;
-    }
-
-    public void request() {
-        System.out.println(&#34;begin&#34;);
-        subject.request();
-        System.out.println(&#34;end&#34;);
-    }
-}
-
-public class ProxyTest {
-
-    public static void main(String args[]) {
-        RealSubject subject = new RealSubject();
-        Proxy p = new Proxy(subject);
-        p.request();
-    }
-}</pre></div>
-                  <a href="http://flygopher.top/post/dynamic-proxy-pattern/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/design-patterns/">Design Patterns</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/singleton-pattern/">
-                <h2 class="post-title">设计模式之单例模式</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 March 18, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <p>单例模式 (Singleton) 也叫单态模式，是设计模式中最为简单的一种模式。</p>
-
-<h3 id="第一种-懒汉-线程不安全">第一种（懒汉, 线程不安全）</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public class Singleton {
-
-    private static Singleton instance;
-
-    private Singleton() {
-    }
-
-    public static Singleton getInstance() {
-        if (instance == null) {
-            instance = new Singleton();
-        }
-        return instance;
-    }
-}</pre></div>
-<p>这种写法 lazy loading 很明显, 但是致命的是在多线程不能正常工作。</p>
-                  <a href="http://flygopher.top/post/singleton-pattern/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/design-patterns/">Design Patterns</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/git-common-commands/">
-                <h2 class="post-title">Git常用指令整理</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 March 13, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <p>整理的一些常用的Git指令</p>
-
-<h3 id="创建仓库">创建仓库</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">echo &#34;# comments&#34; &gt;&gt; README.md
-git init
-git add README.md
-git commit -m &#34;first commit&#34;
-git remote add origin git@github.com:your_username/your_project.git
-git push -u origin master</pre></div>
-<p>若仓库存在直接push </p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">git remote add origin git@github.com:your_username/your_project.git
-git push -u origin master</pre></div>
-                  <a href="http://flygopher.top/post/git-common-commands/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/git/">Git</a>&nbsp;
                   
                 </span>
               

@@ -6,10 +6,58 @@
     <description>Recent content in Posts on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 03 Apr 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 08 Apr 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用kubeadm搭建Kubernetes集群</title>
+      <link>http://flygopher.top/post/kubeadm-install-kubernetes-cluster/</link>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/kubeadm-install-kubernetes-cluster/</guid>
+      <description>&lt;p&gt;之前使用二进制Hard-Way模式搭建了Kubernetes三节点集群，今天采用Kubeadm 来快速搭建Kubernetes V1.16.8集群。&lt;/p&gt;
+
+&lt;p&gt;Github地址如下: &lt;a href=&#34;https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.16.8&#34;&gt;https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.16.8&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用二进制搭建Kubernetes三节点高可用集群</title>
+      <link>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</link>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</guid>
+      <description>&lt;p&gt;Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 &lt;a href=&#34;https://www.cncf.io/about&#34;&gt;CNCF&lt;/a&gt;。你可以通过阅读 &lt;a href=&#34;https://kubernetes.io/zh/docs/home/&#34;&gt;官方文档&lt;/a&gt;了解Kubernetes和其基础概念。&lt;/p&gt;
+
+&lt;p&gt;接下来这篇文章将介绍如何使用二进制部署&lt;code&gt;Kubernetes v1.14.8&lt;/code&gt;。通过这种&lt;code&gt;hard-way&lt;/code&gt;的方式来帮助你更好的了解Kubernetes。&lt;/p&gt;
+
+&lt;p&gt;Kubernetes Cluster搭建的过程，可以参考&lt;a href=&#34;https://github.com/opsnull/follow-me-install-kubernetes-cluster&#34;&gt;和我一步步部署 kubernetes 集群&lt;/a&gt;。我将其中的脚本整理好了，并通过&lt;a href=&#34;https://www.vagrantup.com/&#34;&gt;Vagrant&lt;/a&gt;和&lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;VirtualBox&lt;/a&gt;在本地快速创建k8s集群。&lt;/p&gt;
+
+&lt;p&gt;Github地址如下: &lt;a href=&#34;https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.14.8&#34;&gt;https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.14.8&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker最佳实践</title>
+      <link>http://flygopher.top/post/docker-best-practice/</link>
+      <pubDate>Tue, 07 Apr 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/docker-best-practice/</guid>
+      <description>&lt;p&gt;了解了用于构建 Dockerfile 的基本方法后，我们在编写 Dockerfile 的时候并没有一些强制要求，导致很多构建的镜像不符合一些最佳实践，典型的就是镜像构建的层数非常多，对一些基本指令的区别不是很清楚。下面介绍 Dockerfile 在实际使用中的一些最佳的实践方式。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker的底层技术</title>
+      <link>http://flygopher.top/post/docker-underlying-technology/</link>
+      <pubDate>Mon, 06 Apr 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/docker-underlying-technology/</guid>
+      <description>&lt;p&gt;Docker最初实现是基于 &lt;a href=&#34;https://linuxcontainers.org/lxc/introduction/&#34;&gt;LXC&lt;/a&gt;，从 0.7 版本以后开始去除 &lt;code&gt;LXC&lt;/code&gt;，转而使用自行开发的 &lt;a href=&#34;https://github.com/docker/libcontainer&#34;&gt;libcontainer&lt;/a&gt;，从 1.11 开始，则进一步演进为使用 &lt;a href=&#34;https://github.com/opencontainers/runc&#34;&gt;runC&lt;/a&gt; 和 &lt;a href=&#34;https://github.com/containerd/containerd&#34;&gt;containerd&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;Docker 本质就是宿主机的一个进程，Docker 是通过 &lt;code&gt;namespace&lt;/code&gt; 实现资源隔离，通过&lt;code&gt;cgroup&lt;/code&gt; 实现资源限制，通过写时复制技术（copy-on-write）实现了高效的文件操作。&lt;/p&gt;
+
+&lt;p&gt;传统的虚拟机通过在宿主主机中运行 hypervisor 来模拟一整套完整的硬件环境提供给虚拟机的操作系统。虚拟机系统看到的环境是可限制的，也是彼此隔离的。 这种直接的做法实现了对资源最完整的封装，但很多时候往往意味着系统资源的浪费。 例如，以宿主机和虚拟机系统都为 Linux 系统为例，虚拟机中运行的应用其实可以利用宿主机系统中的运行环境。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>代码整洁之道</title>
@@ -31,21 +79,6 @@
       
       <guid>http://flygopher.top/post/jenkins-slave-base-on-kubernetes/</guid>
       <description>&lt;p&gt;搭建&lt;code&gt;CI/CD&lt;/code&gt;可以使用的工具不少，例如：&lt;code&gt;Jenkins&lt;/code&gt;、&lt;code&gt;Gitlab CI&lt;/code&gt;等等，这里会使用大家最新熟悉的&lt;code&gt;Jenkins&lt;/code&gt;来做&lt;code&gt;CI/CD&lt;/code&gt;的工具。不少人都是基于虚拟机来搭建的，基于&lt;code&gt;Kubernetes&lt;/code&gt;搭建的Jenkins Slave会有什么效果呢？&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>本地搭建Kubernetes三节点高可用集群</title>
-      <link>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</link>
-      <pubDate>Wed, 25 Mar 2020 00:00:00 +0800</pubDate>
-      
-      <guid>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</guid>
-      <description>&lt;p&gt;Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 &lt;a href=&#34;https://www.cncf.io/about&#34;&gt;CNCF&lt;/a&gt;。你可以通过阅读 &lt;a href=&#34;https://kubernetes.io/zh/docs/home/&#34;&gt;官方文档&lt;/a&gt;了解Kubernetes和其基础概念。&lt;/p&gt;
-
-&lt;p&gt;接下来这篇文章将介绍如何使用二进制部署&lt;code&gt;Kubernetes v1.14.8&lt;/code&gt;。通过这种&lt;code&gt;hard-way&lt;/code&gt;的方式来帮助你更好的了解Kubernetes。&lt;/p&gt;
-
-&lt;p&gt;Kubernetes Cluster搭建的过程，可以参考&lt;a href=&#34;https://github.com/opsnull/follow-me-install-kubernetes-cluster&#34;&gt;和我一步步部署 kubernetes 集群&lt;/a&gt;。我将其中的脚本整理好了，并通过&lt;a href=&#34;https://www.vagrantup.com/&#34;&gt;Vagrant&lt;/a&gt;和&lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;VirtualBox&lt;/a&gt;在本地快速创建k8s集群。&lt;/p&gt;
-
-&lt;p&gt;Github地址如下: &lt;a href=&#34;https://github.com/amuguelove/vagrant-install-kubernetes-cluster&#34;&gt;https://github.com/amuguelove/vagrant-install-kubernetes-cluster&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
