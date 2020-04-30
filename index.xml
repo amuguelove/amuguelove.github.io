@@ -17,9 +17,7 @@
       <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/post/kubeadm-install-kubernetes-cluster/</guid>
-      <description>&lt;p&gt;之前使用二进制Hard-Way模式搭建了Kubernetes三节点集群，今天采用Kubeadm 来快速搭建Kubernetes V1.16.8集群。&lt;/p&gt;
-
-&lt;p&gt;Github地址如下: &lt;a href=&#34;https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.16.8&#34;&gt;https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.16.8&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;之前使用二进制Hard-Way模式搭建了Kubernetes三节点集群，今天采用Kubeadm 来快速搭建Kubernetes V1.16.8集群。&lt;/p&gt;</description>
     </item>
     
     <item>
