@@ -21,7 +21,7 @@
     </item>
     
     <item>
-      <title>使用二进制搭建Kubernetes三节点高可用集群</title>
+      <title>使用二进制搭建kubernetes三节点高可用集群</title>
       <link>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</link>
       <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
       

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SSL on 梁波的技术博客</title>
+    <link>http://flygopher.top/tags/ssl/</link>
+    <description>Recent content in SSL on 梁波的技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 29 Aug 2020 00:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="http://flygopher.top/tags/ssl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>浅谈HTTPS原理</title>
+      <link>http://flygopher.top/post/sample-https-principle/</link>
+      <pubDate>Sat, 29 Aug 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/sample-https-principle/</guid>
+      <description>&lt;p&gt;我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取。所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

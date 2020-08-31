@@ -6,40 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>使用二进制搭建kubernetes三节点高可用集群-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="使用二进制搭建kubernetes三节点高可用集群" />
-  <meta name="twitter:title" content="使用二进制搭建kubernetes三节点高可用集群" />
+  <title>浅谈HTTPS原理-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="浅谈HTTPS原理" />
+  <meta name="twitter:title" content="浅谈HTTPS原理" />
   
-  <meta name="description" content="Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 CNCF。你可以通过阅读 官方文档了解Kubernetes和其基础概念。
-
-接下来这篇文章将介绍如何使用二进制部署Kubernetes v1.14.8。通过这种hard-way的方式来帮助你更好的了解Kubernetes。
-
-Kubernetes Cluster搭建的过程，可以参考和我一步步部署 kubernetes 集群。我将其中的脚本整理好了，并通过Vagrant和VirtualBox在本地快速创建k8s集群。
-
-Github地址如下: https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.14.8">
-  <meta property="og:description" content="Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 CNCF。你可以通过阅读 官方文档了解Kubernetes和其基础概念。
-
-接下来这篇文章将介绍如何使用二进制部署Kubernetes v1.14.8。通过这种hard-way的方式来帮助你更好的了解Kubernetes。
-
-Kubernetes Cluster搭建的过程，可以参考和我一步步部署 kubernetes 集群。我将其中的脚本整理好了，并通过Vagrant和VirtualBox在本地快速创建k8s集群。
-
-Github地址如下: https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.14.8">
-  <meta name="twitter:description" content="Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 CNCF。你可以通过阅读 官方文档了解Kubernetes和其基础概念。
-
-接下来这篇文章将介绍如何使用二进制部署Kubernetes v1.14.8。通过这种hard-way的方式来帮助你更好的了解Kubernetes。
-
-Kubernetes Cluster搭建的过程， …">
+  <meta name="description" content="我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取。所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。">
+  <meta property="og:description" content="我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取。所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。">
+  <meta name="twitter:description" content="我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取。所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flygopher.top/post/local-install-ha-kubernetes-cluster/" />
+  <meta property="og:url" content="http://flygopher.top/post/sample-https-principle/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.58.3" />
-  <link rel="canonical" href="http://flygopher.top/post/local-install-ha-kubernetes-cluster/" />
+  <link rel="canonical" href="http://flygopher.top/post/sample-https-principle/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
@@ -180,12 +164,12 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>使用二进制搭建kubernetes三节点高可用集群</h1>
+              <h1>浅谈HTTPS原理</h1>
                 
                 
                   <span class="post-meta">
   
-    发表于 April 8, 2020
+    发表于 August 29, 2020
   
   
 </span>
@@ -216,11 +200,9 @@ if (!doNotTrack) {
             
             <h5 id="tags" style="margin-top: 30px;">标签:
               
-                  <a href="http://flygopher.top/tags/kubernetes/">kubernetes</a> &nbsp;
+                  <a href="http://flygopher.top/tags/https/">https</a> &nbsp;
               
-                  <a href="http://flygopher.top/tags/vagrant/">vagrant</a> &nbsp;
-              
-                  <a href="http://flygopher.top/tags/devops/">devops</a> &nbsp;
+                  <a href="http://flygopher.top/tags/ssl/">SSL</a> &nbsp;
               
             </h5>
             
@@ -232,19 +214,24 @@ if (!doNotTrack) {
 <aside class="toc">
   <nav id="TableOfContents">
 <ul>
-<li><a href="#环境准备">环境准备</a>
+<li>
 <ul>
-<li><a href="#集群准备">集群准备</a></li>
-<li><a href="#主要组件版本">主要组件版本</a>
+<li><a href="#https简介">HTTPS简介</a></li>
+<li><a href="#为什么数据传输是用对称加密">为什么数据传输是用对称加密？</a></li>
+<li><a href="#为什么需要-ca-认证机构颁发证书">为什么需要 CA 认证机构颁发证书？</a></li>
+<li><a href="#浏览器是如何确保-ca-证书的合法性">浏览器是如何确保 CA 证书的合法性？</a>
 <ul>
-<li><a href="#插件">插件</a></li>
+<li>
+<ul>
+<li><a href="#1-证书包含什么信息">1. 证书包含什么信息？</a></li>
+<li><a href="#2-证书的合法性依据是什么">2. 证书的合法性依据是什么？</a></li>
+<li><a href="#3-浏览器如何验证证书的合法性">3. 浏览器如何验证证书的合法性？</a></li>
+<li><a href="#4-只有认证机构可以生成证书吗">4. 只有认证机构可以生成证书吗？</a></li>
 </ul></li>
-<li><a href="#运行结果展示">运行结果展示</a>
-<ul>
-<li><a href="#kubernetes-dashboard">Kubernetes DashBoard</a></li>
-<li><a href="#prometheus">Prometheus</a></li>
-<li><a href="#grafana">Grafana</a></li>
 </ul></li>
+<li><a href="#本地随机数被窃取怎么办">本地随机数被窃取怎么办？</a></li>
+<li><a href="#用了-https-会被抓包吗">用了 HTTPS 会被抓包吗？</a></li>
+<li><a href="#总结">总结</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -264,121 +251,152 @@ if (!doNotTrack) {
           
           
 
-          <p>Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 <a href="https://www.cncf.io/about">CNCF</a>。你可以通过阅读 <a href="https://kubernetes.io/zh/docs/home/">官方文档</a>了解Kubernetes和其基础概念。</p>
+          <p>我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取。所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。</p>
 
-<p>接下来这篇文章将介绍如何使用二进制部署<code>Kubernetes v1.14.8</code>。通过这种<code>hard-way</code>的方式来帮助你更好的了解Kubernetes。</p>
+<h2 id="https简介">HTTPS简介</h2>
 
-<p>Kubernetes Cluster搭建的过程，可以参考<a href="https://github.com/opsnull/follow-me-install-kubernetes-cluster">和我一步步部署 kubernetes 集群</a>。我将其中的脚本整理好了，并通过<a href="https://www.vagrantup.com/">Vagrant</a>和<a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>在本地快速创建k8s集群。</p>
+<p>HTTPS其实是有两部分组成：HTTP+SSL/TLS，也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据。具体是如何进行加密，解密，验证的，且看下图。</p>
 
-<p>Github地址如下: <a href="https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.14.8">https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.14.8</a></p>
+<p><img src="http://flygopher.top/img/post/graphic-https.png" alt="" /></p>
 
-<h1 id="环境准备">环境准备</h1>
-
-<p>需要准备以下软件和环境：</p>
+<p><strong>证书验证阶段:</strong></p>
 
 <ul>
-<li>8G以上内存</li>
-<li>Vagrant 2.2.4</li>
-<li>VirtualBox 5.2.36</li>
-<li>Mac / Linux</li>
-<li>虚拟机：Centos 7</li>
+<li>浏览器发起 HTTPS 请求</li>
+<li>服务端返回 HTTPS 证书</li>
+<li>客户端验证证书是否合法，如果不合法则提示告警</li>
 </ul>
 
-<h2 id="集群准备">集群准备</h2>
-
-<p>我们使用Vagrant和Virtualbox安装包含3个节点的kubernetes集群。</p>
-
-<table>
-<thead>
-<tr>
-<th>IP</th>
-<th>主机名</th>
-<th>组件</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>192.168.56.101</td>
-<td>node1</td>
-<td>kube-apiserver、kube-controller-manager、kube-scheduler、kubelet、etcd、corecdn、dashboard</td>
-</tr>
-
-<tr>
-<td>192.168.56.102</td>
-<td>node2</td>
-<td>kube-apiserver、kube-controller-manager、kube-scheduler、kubelet、etcd</td>
-</tr>
-
-<tr>
-<td>192.168.56.103</td>
-<td>node3</td>
-<td>kube-apiserver、kube-controller-manager、kube-scheduler、kubelet、etcd</td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>注意</strong>：以上的IP、主机名和组件都是固定在这些节点的，即使销毁后下次使用vagrant重建依然保持不变。</p>
-
-<p>容器IP范围：172.30.0.0/16</p>
-
-<p>Kubernetes service IP范围：10.254.0.0/16</p>
-
-<h2 id="主要组件版本">主要组件版本</h2>
-
-<table>
-<thead>
-<tr>
-<th>组件</th>
-<th>版本</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>kubernetes</td>
-<td>1.14.8</td>
-</tr>
-
-<tr>
-<td>etcd</td>
-<td>3.3.13</td>
-</tr>
-
-<tr>
-<td>Flanneld</td>
-<td>0.11.0</td>
-</tr>
-
-<tr>
-<td>Docker</td>
-<td>18.09.6-ce</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="插件">插件</h3>
+<p><strong>数据传输阶段:</strong></p>
 
 <ul>
-<li>Coredns</li>
-<li>Dashboard</li>
-<li>Prometheus</li>
-<li>ELK (elasticsearch、fluentd、kibana)</li>
+<li>当证书验证合法后，在本地生成随机数</li>
+<li>通过公钥加密随机数，并把加密后的随机数传输到服务端</li>
+<li>服务端通过私钥对随机数进行解密</li>
+<li>服务端通过客户端传入的随机数构造对称加密算法，对返回结果内容进行加密后传输</li>
 </ul>
 
-<h2 id="运行结果展示">运行结果展示</h2>
+<h2 id="为什么数据传输是用对称加密">为什么数据传输是用对称加密？</h2>
 
-<h3 id="kubernetes-dashboard">Kubernetes DashBoard</h3>
+<p>首先，非对称加密的加解密效率是非常低的，而 http 的应用场景中通常端与端之间存在大量的交互，非对称加密的效率是无法接受的；</p>
 
-<p><img src="http://flygopher.top/img/post/dashboard.png" alt="" /></p>
+<p>另外，在 HTTPS 的场景中只有服务端保存了私钥，一对公私钥只能实现单向的加解密，所以 HTTPS 中内容传输加密采取的是对称加密，而不是非对称加密。</p>
 
-<h3 id="prometheus">Prometheus</h3>
+<h2 id="为什么需要-ca-认证机构颁发证书">为什么需要 CA 认证机构颁发证书？</h2>
 
-<p><img src="http://flygopher.top/img/post/prometheus.png" alt="" /></p>
+<p>HTTP 协议被认为不安全是因为传输过程容易被监听者勾线监听、伪造服务器，而 HTTPS 协议主要解决的便是网络传输的安全性问题。</p>
 
-<h3 id="grafana">Grafana</h3>
+<p>首先我们假设不存在认证机构，任何人都可以制作证书，这带来的安全风险便是经典的<strong>“中间人攻击”</strong>问题。
+“中间人攻击”的具体过程如下：</p>
 
-<p><img src="http://flygopher.top/img/post/grafana.png" alt="" /></p>
+<p><img src="http://flygopher.top/img/post/https2.png" alt="" /></p>
+
+<p>过程原理：</p>
+
+<ol>
+<li>本地请求被劫持（如DNS劫持等），所有请求均发送到中间人的服务器</li>
+<li>中间人服务器返回中间人自己的证书</li>
+<li>客户端创建随机数，通过中间人证书的公钥对随机数加密后传送给中间人，然后凭随机数构造对称加密对传输内容进行加密传输</li>
+<li>中间人因为拥有客户端的随机数，可以通过对称加密算法进行内容解密</li>
+<li>中间人以客户端的请求内容再向正规网站发起请求</li>
+<li>因为中间人与服务器的通信过程是合法的，正规网站通过建立的安全通道返回加密后的数据</li>
+<li>中间人凭借与正规网站建立的对称加密算法对内容进行解密</li>
+<li>中间人通过与客户端建立的对称加密算法对正规内容返回的数据进行加密传输</li>
+<li>客户端通过与中间人建立的对称加密算法对返回结果数据进行解密</li>
+</ol>
+
+<p>由于缺少对证书的验证，所以客户端虽然发起的是 HTTPS 请求，但客户端完全不知道自己的网络已被拦截，传输内容被中间人全部窃取。</p>
+
+<h2 id="浏览器是如何确保-ca-证书的合法性">浏览器是如何确保 CA 证书的合法性？</h2>
+
+<h4 id="1-证书包含什么信息">1. 证书包含什么信息？</h4>
+
+<ul>
+<li>颁发机构信息</li>
+<li>公钥</li>
+<li>公司信息</li>
+<li>域名</li>
+<li>有效期</li>
+<li>指纹</li>
+<li>……</li>
+</ul>
+
+<h4 id="2-证书的合法性依据是什么">2. 证书的合法性依据是什么？</h4>
+
+<p>首先，权威机构是要有认证的，不是随便一个机构都有资格颁发证书，不然也不叫做权威机构。另外，证书的可信性基于信任制，权威机构需要对其颁发的证书进行信用背书，只要是权威机构生成的证书，我们就认为是合法的。所以权威机构会对申请者的信息进行审核，不同等级的权威机构对审核的要求也不一样，于是证书也分为免费的、便宜的和贵的。</p>
+
+<h4 id="3-浏览器如何验证证书的合法性">3. 浏览器如何验证证书的合法性？</h4>
+
+<p>浏览器发起 HTTPS 请求时，服务器会返回网站的 SSL 证书，浏览器需要对证书做以下验证：</p>
+
+<ol>
+<li><p>验证域名、有效期等信息是否正确。证书上都有包含这些信息，比较容易完成验证；</p></li>
+
+<li><p>判断证书来源是否合法。每份签发证书都可以根据验证链查找到对应的根证书，操作系统、浏览器会在本地存储权威机构的根证书，利用本地根证书可以对对应机构签发证书完成来源验证；</p></li>
+</ol>
+
+<p><img src="http://flygopher.top/img/post/https3.png" alt="" /></p>
+
+<ol>
+<li><p>判断证书是否被篡改。需要与 CA 服务器进行校验；</p></li>
+
+<li><p>判断证书是否已吊销。通过CRL（Certificate Revocation List 证书注销列表）和 OCSP（Online Certificate Status Protocol 在线证书状态协议）实现，其中 OCSP 可用于第3步中以减少与 CA 服务器的交互，提高验证效率</p></li>
+</ol>
+
+<p>以上任意一步都满足的情况下浏览器才认为证书是合法的。</p>
+
+<blockquote>
+<p>这里插一个我想了很久的但其实答案很简单的问题：
+既然证书是公开的，如果要发起中间人攻击，我在官网上下载一份证书作为我的服务器证书，那客户端肯定会认同这个证书是合法的，如何避免这种证书冒用的情况？
+其实这就是非加密对称中公私钥的用处，虽然中间人可以得到证书，但私钥是无法获取的，一份公钥是不可能推算出其对应的私钥，中间人即使拿到证书也无法伪装成合法服务端，因为无法对客户端传入的加密数据进行解密。</p>
+</blockquote>
+
+<h4 id="4-只有认证机构可以生成证书吗">4. 只有认证机构可以生成证书吗？</h4>
+
+<p>如果需要浏览器不提示安全风险，那只能使用认证机构签发的证书。但浏览器通常只是提示安全风险，并不限制网站不能访问，所以从技术上谁都可以生成证书，只要有证书就可以完成网站的 HTTPS 传输。例如早期的 12306 采用的便是手动安装私有证书的形式实现 HTTPS 访问。</p>
+
+<p><img src="http://flygopher.top/img/post/https4.png" alt="" /></p>
+
+<h2 id="本地随机数被窃取怎么办">本地随机数被窃取怎么办？</h2>
+
+<p>证书验证是采用非对称加密实现，但是传输过程是采用对称加密，而其中对称加密算法中重要的随机数是由本地生成并且存储于本地的，HTTPS 如何保证随机数不会被窃取？</p>
+
+<p>其实 HTTPS 并不包含对随机数的安全保证，HTTPS 保证的只是传输过程安全，而随机数存储于本地，本地的安全属于另一安全范畴，应对的措施有安装杀毒软件、反木马、浏览器升级修复漏洞等。</p>
+
+<h2 id="用了-https-会被抓包吗">用了 HTTPS 会被抓包吗？</h2>
+
+<p>HTTPS 的数据是加密的，常规下抓包工具代理请求后抓到的包内容是加密状态，无法直接查看。</p>
+
+<p>但是，正如前文所说，浏览器只会提示安全风险，如果用户授权仍然可以继续访问网站，完成请求。因此，只要客户端是我们自己的终端，我们授权的情况下，便可以组建中间人网络，而抓包工具便是作为中间人的代理。通常 HTTPS 抓包工具的使用方法是会生成一个证书，用户需要手动把证书安装到客户端中，然后终端发起的所有请求通过该证书完成与抓包工具的交互，然后抓包工具再转发请求到服务器，最后把服务器返回的结果在控制台输出后再返回给终端，从而完成整个请求的闭环。</p>
+
+<p>既然 HTTPS 不能防抓包，那 HTTPS 有什么意义？
+HTTPS 可以防止用户在不知情的情况下通信链路被监听，对于主动授信的抓包操作是不提供防护的，因为这个场景用户是已经对风险知情。要防止被抓包，需要采用应用级的安全防护，例如采用私有的对称加密，同时做好移动端的防反编译加固，防止本地算法被破解。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>以下用简短的Q&amp;A形式进行全文总结：</p>
+
+<p>Q: HTTPS 为什么安全？
+A: 因为 HTTPS 保证了传输安全，防止传输过程被监听、防止数据被窃取，可以确认网站的真实性。</p>
+
+<p>Q: HTTPS 的传输过程是怎样的？
+A: 客户端发起 HTTPS 请求，服务端返回证书，客户端对证书进行验证，验证通过后本地生成用于改造对称加密算法的随机数，通过证书中的公钥对随机数进行加密传输到服务端，服务端接收后通过私钥解密得到随机数，之后的数据交互通过对称加密算法进行加解密。</p>
+
+<p>Q: 为什么需要证书？
+A: 防止”中间人“攻击，同时可以为网站提供身份证明。</p>
+
+<p>Q: 使用 HTTPS 会被抓包吗？
+A: 会被抓包，HTTPS 只防止用户在不知情的情况下通信被监听，如果用户主动授信，是可以构建“中间人”网络，代理软件可以对传输内容进行解密。</p>
+
+<p>顺手 po 一张学习的过程图，高清大图点这里:</p>
+
+<p><img src="http://flygopher.top/img/post/https5.jpg" alt="" /></p>
+
+<p><br/></p>
+
+<blockquote>
+<p><em>本文转载自：「leapMie 的博客 」，原文：<a href="https://blog.leapmie.com/archives/418/">https://blog.leapmie.com/archives/418/</a></em></p>
+</blockquote>
 
           
   
@@ -439,9 +457,7 @@ if (!doNotTrack) {
 <h3>相关文章</h3>
 <ul style="margin-bottom: 25px;">
     
-    <li><a href="http://flygopher.top/post/kubeadm-install-kubernetes-cluster/">使用kubeadm搭建Kubernetes集群</a></li>
-    
-    <li><a href="http://flygopher.top/post/jenkins-slave-base-on-kubernetes/">基于kubernetes的动态jenkins slave</a></li>
+    <li><a href="http://flygopher.top/post/springboot-load-configure-principle/">SpringBoot的自动装配原理分析</a></li>
     
 </ul>
 
@@ -451,13 +467,9 @@ if (!doNotTrack) {
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://flygopher.top/post/docker-best-practice/" data-toggle="tooltip" data-placement="top" title="Docker最佳实践">&larr; 前一篇</a>
+              <a href="http://flygopher.top/post/kubeadm-install-kubernetes-cluster/" data-toggle="tooltip" data-placement="top" title="使用kubeadm搭建Kubernetes集群">&larr; 前一篇</a>
             </li>
           
-          
-            <li class="next">
-              <a href="http://flygopher.top/post/kubeadm-install-kubernetes-cluster/" data-toggle="tooltip" data-placement="top" title="使用kubeadm搭建Kubernetes集群">后一篇 &rarr;</a>
-            </li>
           
         </ul>
         

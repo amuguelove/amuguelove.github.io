@@ -6,10 +6,19 @@
     <description>Recent content in Categories on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 08 Apr 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>https</title>
+      <link>http://flygopher.top/categories/https/</link>
+      <pubDate>Sat, 29 Aug 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/categories/https/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>kubernetes</title>

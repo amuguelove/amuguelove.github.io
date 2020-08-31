@@ -4,7 +4,42 @@
   
   <url>
     <loc>http://flygopher.top/categories/</loc>
-    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
+    <lastmod>2020-08-29T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/https/</loc>
+    <lastmod>2020-08-29T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/categories/https/</loc>
+    <lastmod>2020-08-29T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/</loc>
+    <lastmod>2020-08-29T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/ssl/</loc>
+    <lastmod>2020-08-29T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/</loc>
+    <lastmod>2020-08-29T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/</loc>
+    <lastmod>2020-08-29T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/sample-https-principle/</loc>
+    <lastmod>2020-08-29T00:00:00+08:00</lastmod>
   </url>
   
   <url>
@@ -18,22 +53,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/kubernetes/</loc>
-    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://flygopher.top/categories/kubernetes/</loc>
     <lastmod>2020-04-08T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/post/</loc>
-    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://flygopher.top/tags/</loc>
+    <loc>http://flygopher.top/tags/kubernetes/</loc>
     <lastmod>2020-04-08T00:00:00+08:00</lastmod>
   </url>
   
@@ -49,11 +74,6 @@
   
   <url>
     <loc>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</loc>
-    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://flygopher.top/</loc>
     <lastmod>2020-04-08T00:00:00+08:00</lastmod>
   </url>
   
@@ -78,12 +98,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/book/</loc>
+    <loc>http://flygopher.top/categories/book/</loc>
     <lastmod>2020-04-03T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/book/</loc>
+    <loc>http://flygopher.top/tags/book/</loc>
     <lastmod>2020-04-03T00:00:00+08:00</lastmod>
   </url>
   
@@ -183,12 +203,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/git/</loc>
+    <loc>http://flygopher.top/categories/git/</loc>
     <lastmod>2020-03-11T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/git/</loc>
+    <loc>http://flygopher.top/tags/git/</loc>
     <lastmod>2020-03-11T00:00:00+08:00</lastmod>
   </url>
   
@@ -198,12 +218,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/mongo/</loc>
+    <loc>http://flygopher.top/tags/mongo/</loc>
     <lastmod>2020-03-09T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/mongo/</loc>
+    <loc>http://flygopher.top/categories/mongo/</loc>
     <lastmod>2020-03-09T00:00:00+08:00</lastmod>
   </url>
   
@@ -273,12 +293,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/mysql/</loc>
+    <loc>http://flygopher.top/categories/mysql/</loc>
     <lastmod>2019-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/mysql/</loc>
+    <loc>http://flygopher.top/tags/mysql/</loc>
     <lastmod>2019-04-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -313,12 +333,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/http/</loc>
+    <loc>http://flygopher.top/tags/http/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/http/</loc>
+    <loc>http://flygopher.top/categories/http/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url>
   
@@ -383,12 +403,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/golang/</loc>
+    <loc>http://flygopher.top/categories/golang/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/golang/</loc>
+    <loc>http://flygopher.top/tags/golang/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -438,12 +458,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/hexo/</loc>
+    <loc>http://flygopher.top/tags/hexo/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/hexo/</loc>
+    <loc>http://flygopher.top/categories/hexo/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url>
   
@@ -543,12 +563,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/tools/</loc>
+    <loc>http://flygopher.top/tags/tools/</loc>
     <lastmod>2018-10-01T10:34:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/tools/</loc>
+    <loc>http://flygopher.top/categories/tools/</loc>
     <lastmod>2018-10-01T10:34:00+00:00</lastmod>
   </url>
   
