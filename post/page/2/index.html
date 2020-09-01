@@ -165,6 +165,47 @@ if (!doNotTrack) {
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://flygopher.top/post/jpa-id-generated-strategy/">
+                <h2 class="post-title">JPA ID生成策略</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 March 13, 2020
+              </p>
+              <div class="post-entry">
+                
+                  <p><strong>JPA</strong> 为对象关系映射提供了了⼀一种基于 <strong>POJO</strong> 的持久化模型</p>
+
+<ul>
+<li>简化数据持久化代码的开发⼯工作</li>
+<li>为 Java 社区屏蔽不不同持久化 API 的差异</li>
+</ul>
+
+<p><code>JPA</code>定义了持久化的标准，而<code>Hibernate</code>是持久化的实现。<code>Spring Data JPA</code>就是在<code>Hibernate</code>的基础上封装实现的。</p>
+
+<p>JPA提供了很多常用的注解，下面就来讲下关于主键的生成策略，主要的注解有：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Id
+@GeneratedValue(strategy, generator)
+@SequenceGenerator(name, sequenceName)</pre></div>
+                  <a href="http://flygopher.top/post/jpa-id-generated-strategy/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/jpa/">jpa</a>&nbsp;
+                  
+                    #<a href="http://flygopher.top/tags/springboot/">springboot</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://flygopher.top/post/git-flow-choose/">
                 <h2 class="post-title">Git协同工作流的选择</h2>
 
@@ -510,35 +551,6 @@ if (!doNotTrack) {
                     #<a href="http://flygopher.top/tags/hugo/">Hugo</a>&nbsp;
                   
                     #<a href="http://flygopher.top/tags/emacs/">Emacs</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/mysql-base/">
-                <h2 class="post-title">MySQL基础</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 April 15, 2019
-              </p>
-              <div class="post-entry">
-                
-                  <h3 id="并发控制">并发控制</h3>
-
-<p>无论何时，只要有多个查询需要在同一时刻修改数据，都会产生并发控制的问题。这里主要讨论MySQL在两个层面的并发控制：服务器层和存储引擎层。</p>
-                  <a href="http://flygopher.top/post/mysql-base/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/mysql/">MySQL</a>&nbsp;
                   
                 </span>
               

@@ -6,10 +6,19 @@
     <description>Recent content in Categories on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 29 Aug 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>RegExp</title>
+      <link>http://flygopher.top/categories/regexp/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/categories/regexp/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>https</title>

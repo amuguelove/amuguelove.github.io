@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RegExp on 梁波的技术博客</title>
+    <link>http://flygopher.top/tags/regexp/</link>
+    <description>Recent content in RegExp on 梁波的技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 01 Sep 2020 00:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="http://flygopher.top/tags/regexp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>正则表达式入门</title>
+      <link>http://flygopher.top/post/sample-regexp/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/sample-regexp/</guid>
+      <description>&lt;p&gt;一个正则表达式通常被称为一个&lt;strong&gt;模式&lt;/strong&gt;（pattern），为用来描述或者匹配一系列符合某个&lt;a href=&#34;https://zh.wikipedia.org/wiki/句法&#34;&gt;句法&lt;/a&gt;规则的&lt;a href=&#34;https://zh.wikipedia.org/wiki/字符串&#34;&gt;字符串&lt;/a&gt;。例如：Handel、Händel和Haendel这三个字符串，都可以由&lt;code&gt;H(a|ä|ae)ndel&lt;/code&gt;这个模式来描述。大部分正则表达式的形式都有如下的结构：&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
