@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  
+  <title>kubernetes持久化存储（一）-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="kubernetes持久化存储（一）" />
+  <meta name="twitter:title" content="kubernetes持久化存储（一）" />
+  
+  <meta name="description" content="PV和PVC的使用">
+  <meta property="og:description" content="PV和PVC的使用">
+  <meta name="twitter:description" content="PV和PVC的使用">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="http://flygopher.top/post/kubernetes-storage1/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="梁波的技术博客" />
+  
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="canonical" href="http://flygopher.top/post/kubernetes-storage1/" />
+  <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-158970182-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://flygopher.top/" title="梁波的技术博客">
+
+        梁波的技术博客
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="http://flygopher.top/">首页</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="http://flygopher.top/archives">Archive</a>
+                
+                  <a href="http://flygopher.top/categories">Categories</a>
+                
+                  <a href="http://flygopher.top/tags">tags</a>
+                
+                  <a href="http://flygopher.top/tags/java">java</a>
+                
+                  <a href="http://flygopher.top/tags/springboot">springboot</a>
+                
+                  <a href="http://flygopher.top/tags/kubernetes">kubernetes</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">学习</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://github.com/amuguelove">Github</a>
+                
+                  <a href="https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/">k8s基础知识</a>
+                
+                  <a href="https://k8s.imroc.io/">Kubernetes实践指南</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="关于" href="http://flygopher.top/page/about/">关于</a>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>kubernetes持久化存储（一）</h1>
+                
+                  
+                    <h2 class="post-subheading">PV和PVC的使用</h2>
+                  
+                
+                
+                  <span class="post-meta">
+  
+    发表于 September 26, 2020
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="http://flygopher.top/tags/kubernetes/">kubernetes</a> &nbsp;
+              
+                  <a href="http://flygopher.top/tags/volume/">volume</a> &nbsp;
+              
+                  <a href="http://flygopher.top/tags/pv/">pv</a> &nbsp;
+              
+                  <a href="http://flygopher.top/tags/pvc/">pvc</a> &nbsp;
+              
+                  <a href="http://flygopher.top/tags/storageclass/">storageclass</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#kuberntes-volume">Kuberntes Volume</a></li>
+<li><a href="#概念">概念</a>
+<ul>
+<li>
+<ul>
+<li><a href="#pv">PV</a></li>
+<li><a href="#pvc">PVC</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#pv的使用">PV的使用</a>
+<ul>
+<li>
+<ul>
+<li><a href="#capacity-存储能力">Capacity（存储能力）</a></li>
+<li><a href="#accessmodes-访问模式">AccessModes（访问模式）</a></li>
+<li><a href="#persistentvolumereclaimpolicy-回收策略">persistentVolumeReclaimPolicy（回收策略）</a></li>
+<li><a href="#状态">状态</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#pvc的使用">PVC的使用</a>
+<ul>
+<li><a href="#新建pvc">新建PVC</a></li>
+<li><a href="#使用pvc">使用PVC</a></li>
+</ul></li>
+<li><a href="#pv和pvc的状态变化">PV和PVC的状态变化</a></li>
+<li><a href="#注意事项">注意事项</a></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+          
+          
+          
+
+          <p>Kubernetes提供了可靠的存储来保存应用的持久化数据，这样容器在重建后，依然可以使用之前的数据。但是显然存储资源和 CPU 资源以及内存资源有很大不同，为了屏蔽底层的技术实现细节，让用户更加方便的使用，<code>Kubernetes</code> 便引入了 <code>PV</code> 和 <code>PVC</code> 两个重要的资源对象来实现对存储的管理。</p>
+
+<h2 id="kuberntes-volume">Kuberntes Volume</h2>
+
+<p>Kubernetes 和 Docker 类似，也是通过 Volume 的方式提供对存储的支持。Volume 被定义在 Pod 上，可以被 Pod 里的多个容器挂载到相同或不同的路径下。Kubernetes 中 Volume 的 概念与Docker 中的 Volume 类似，但不完全相同。具体区别如下：</p>
+
+<ul>
+<li>Kubernetes 中的 Volume 与 Pod 的生命周期相同，但与容器的生命周期不相关。当容器终止或重启时，Volume 中的数据也不会丢失。</li>
+<li>当 Pod 被删除时，Volume 才会被清理。并且数据是否丢失取决于 Volume 的具体类型，比如：emptyDir 类型的 Volume 数据会丢失，而 PV 类型的数据则不会丢失。</li>
+</ul>
+
+<p>Kubernetes 卷具有明确的生命周期——与包裹它的 Pod 相同。 因此，卷比 Pod 中运行的任何容器的存活期都长，在容器重新启动时数据也会得到保留。 当然，当一个 Pod 不再存在时，卷也将不再存在。 也许更重要的是，Kubernetes 可以支持许多类型的卷，Pod 也能同时使用任意数量的卷。</p>
+
+<p>卷的核心是包含一些数据的目录，Pod 中的容器可以访问该目录。 特定的卷类型可以决定这个目录如何形成的，并能决定它支持何种介质，以及目录中存放什么内容。</p>
+
+<p>使用卷时, Pod 声明中需要提供卷的类型 (<code>.spec.volumes</code> 字段)和卷挂载的位置 (<code>.spec.containers.volumeMounts</code> 字段).</p>
+
+<p>Kubernetes 目前支持多种 Volume 类型，最新数据可以查看<a href="https://kubernetes.io/zh/docs/concepts/storage/volumes">官网</a>，大致如下：</p>
+
+<ul>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#awselasticblockstore">awsElasticBlockStore</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#azuredisk">azureDisk</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#azurefile">azureFile</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#cephfs">cephfs</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#cinder">cinder</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#configmap">configMap</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#csi">csi</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#downwardapi">downwardAPI</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#emptydir">emptyDir</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#fc">fc (fibre channel)</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#flexVolume">flexVolume</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#flocker">flocker</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#gcepersistentdisk">gcePersistentDisk</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#gitrepo">gitRepo (deprecated)</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#glusterfs">glusterfs</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#hostpath">hostPath</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#iscsi">iscsi</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#local">local</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#nfs">nfs</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#persistentvolumeclaim">persistentVolumeClaim</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#projected">projected</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#portworxvolume">portworxVolume</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#quobyte">quobyte</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#rbd">rbd</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#scaleio">scaleIO</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#secret">secret</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#storageos">storageos</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#vspherevolume">vsphereVolume</a></li>
+</ul>
+
+<blockquote>
+<p>注：这些 Volume 并非全部都是持久化的，比如: emptyDir 等，就会随着 Pod 的消亡而消失。</p>
+</blockquote>
+
+<h2 id="概念">概念</h2>
+
+<h4 id="pv">PV</h4>
+
+<p>PV 的全称是：PersistentVolume（持久化卷）。PersistentVolume 是 Volume 的一种类型，是对底层的共享存储的一种抽象。PV 由集群管理员进行创建和配置，就像节点 (Node) 是集群中的资源一样，PV 也是集群资源的一种。PV 包含存储类型、存储大小和访问模式。PV 的生命周期独立于 Pod，例如：当使用它的 Pod 销毁时对 PV 没有影响。</p>
+
+<p>PersistentVolume 通过插件机制实现与共享存储的对接。Kubernetes 目前支持以下插件类型：</p>
+
+<ul>
+<li>GCEPersistentDisk</li>
+<li>AWSElasticBlockStore</li>
+<li>AzureFile</li>
+<li>AzureDisk</li>
+<li>CSI</li>
+<li>FC (Fibre Channel)</li>
+<li>FlexVolume</li>
+<li>Flocker</li>
+<li>NFS</li>
+<li>iSCSI</li>
+<li>RBD (Ceph Block Device)</li>
+<li>CephFS</li>
+<li>Cinder (OpenStack block storage)</li>
+<li>Glusterfs</li>
+<li>VsphereVolume</li>
+<li>Quobyte Volumes</li>
+<li>HostPath (Single node testing only &ndash; local storage is not supported in any way and WILL NOT WORK in a multi-node cluster)</li>
+<li>Portworx Volumes</li>
+<li>ScaleIO Volumes</li>
+<li>StorageOS</li>
+</ul>
+
+<h4 id="pvc">PVC</h4>
+
+<p>PVC 的全称是：PersistentVolumeClaim（持久化卷声明），PVC 是用户对存储资源的一种请求。PVC 和 Pod 比较类似，Pod 消耗的是节点资源，PVC 消耗的是 PV 资源。Pod 可以请求 CPU 和内存，而 PVC 可以请求特定的存储空间和访问模式。对于真正使用存储的用户不需要关心底层的存储实现细节，只需要直接使用 PVC 即可。</p>
+
+<p>但是通过 PVC 请求到一定的存储空间也很有可能不足以满足应用对于存储设备的各种需求，而且不同的应用程序对于存储性能的要求可能也不尽相同，比如读写速度、并发性能等，为了解决这一问题，Kubernetes 又为我们引入了一个新的资源对象：<code>StorageClass</code>，通过 StorageClass 的定义，管理员可以将存储资源定义为某种类型的资源，比如快速存储、慢速存储等，用户根据 StorageClass 的描述就可以非常直观的知道各种存储资源的具体特性了，这样就可以根据应用的特性去申请合适的存储资源了。关于StorageClass我们将会在下节讲述。</p>
+
+<h2 id="pv的使用">PV的使用</h2>
+
+<p>以NFS文件存储为例，IP地址为：100.0.0.50。</p>
+
+<p>PV 作为存储资源，主要包括存储能力、访问模式、存储类型、回收策略等关键信息，下面我们来新建一个 PV 对象，使用 nfs 类型的后端存储，10G 的存储空间，访问模式为 ReadWriteOnce，回收策略为 Recycle，对应的 YAML 文件如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name:  nfs-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /
+    server: 100.0.0.50</pre></div>
+<p>我们来分别对上面的属性进行一些解读。</p>
+
+<h4 id="capacity-存储能力">Capacity（存储能力）</h4>
+
+<p>一般来说，一个 PV 对象都要指定一个存储能力，通过 PV 的 <strong>capacity</strong>属性来设置的，目前只支持存储空间的设置，就是我们这里的 storage=10Gi，不过未来可能会加入 IOPS、吞吐量等指标的配置。</p>
+
+<h4 id="accessmodes-访问模式">AccessModes（访问模式）</h4>
+
+<p>AccessModes 是用来对 PV 进行访问模式的设置，用于描述用户应用对存储资源的访问权限，访问权限包括下面几种方式：</p>
+
+<ul>
+<li>ReadWriteOnce（RWO）：读写权限，但是只能被单个节点挂载</li>
+<li>ReadOnlyMany（ROX）：只读权限，可以被多个节点挂载</li>
+<li>ReadWriteMany（RWX）：读写权限，可以被多个节点挂载</li>
+</ul>
+
+<blockquote>
+<p>注意：一些 PV 可能支持多种访问模式，但是在挂载的时候只能使用一种访问模式，多种访问模式是不会生效的。</p>
+</blockquote>
+
+<h4 id="persistentvolumereclaimpolicy-回收策略">persistentVolumeReclaimPolicy（回收策略）</h4>
+
+<p>我这里指定的 PV 的回收策略为 Recycle，目前 PV 支持的策略有三种：</p>
+
+<ul>
+<li>Retain（保留）- 保留数据，需要管理员手工清理数据</li>
+<li>Recycle（回收）- 清除 PV 中的数据，效果相当于执行 (<code>rm -rf /thevolume/*</code>)</li>
+<li>Delete（删除）- 与 PV 相连的后端存储完成 volume 的删除操作，当然这常见于云服务商的存储服务，比如 AWS EBS, GCE PD, Azure Disk, and Cinder。</li>
+</ul>
+
+<p>不过需要注意的是，目前只有 NFS 和 HostPath 两种类型支持回收策略。当然一般来说还是设置为 Retain 这种策略保险一点。</p>
+
+<h4 id="状态">状态</h4>
+
+<p>一个 PV 的生命周期中，可能会处于4中不同的阶段：</p>
+
+<ul>
+<li>Available（可用）：表示可用状态，还未被任何 PVC 绑定</li>
+<li>Bound（已绑定）：表示 PV 已经被 PVC 绑定</li>
+<li>Released（已释放）：PVC 被删除，但是资源还未被集群重新声明</li>
+<li>Failed（失败）： 表示该 PV 的自动回收失败</li>
+</ul>
+
+<h2 id="pvc的使用">PVC的使用</h2>
+
+<h3 id="新建pvc">新建PVC</h3>
+
+<p>同样的，我们来新建一个数据卷声明，我们来请求 10Gi 的存储容量，访问模式也是 ReadWriteOnce，YAML 文件如下：(nfs-pvc.yaml)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nfs-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi</pre></div>
+<p>这时 pvc-nfs 创建成功了，状态是 <code>Bound</code> 状态了，这个时候我们再看下 PV 的状态，也变成 <code>Bound</code> 状态了。</p>
+
+<p>其实这是系统自动帮我们去匹配的，他会根据我们的声明要求去查找处于 Available 状态的 PV，如果没有找到的话那么我们的 PVC 就会一直处于 Pending 状态，找到了的话当然就会把当前的 PVC 和目标 PV 进行绑定，这个时候状态就会变成 Bound 状态了。</p>
+
+<p>这里要注意的一点是，如果PV的容量不PVC的大，是可以绑定的，并且使用的是PV申请的容量，反之不可以。</p>
+
+<h3 id="使用pvc">使用PVC</h3>
+
+<p>上面我们已经知道怎么创建 PV 和 PVC 了，现在我们就来使用下我们的 PVC，这里我们同样使用之前的 nginx 的镜像来测试下：(nfs-nginx-deployment.yaml)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx  
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: www
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: www
+        persistentVolumeClaim:
+          claimName: nfs-pvc</pre></div>
+<h2 id="pv和pvc的状态变化">PV和PVC的状态变化</h2>
+
+<figure><img src="http://flygopher.top/img/post/pv_and_pvc_status.png" alt="PV和PVC的状态变化"><figcaption>PV和PVC的状态变化</figcaption></figure>
+
+<h2 id="注意事项">注意事项</h2>
+
+<ol>
+<li>如果数据非常重要，不能删除，那么你在删除PVC的时候，需要注意不能自动回收了PV里面的数据。</li>
+<li>PVC中的访问模式设置为ReadWriteOnce时，如果没有POD关联，则创建 Pod 挂载此 PVC 时会出现失败。</li>
+<li>如果PV的persistentVolumeReclaimPolicy是Retain，那么在PVC删除后，PV的状态为Released。那么可以通过编辑该PV的yaml，将spec.claimRef字段删除，PV的状态就会变成Available，可以被新的PVC重新绑定了。</li>
+</ol>
+
+<h2 id="参考">参考</h2>
+
+<p><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/">Kubernetes Volumes</a></p>
+
+<p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">Kubernetes Persistem Volumes</a></p>
+
+          
+  
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="http://flygopher.top/img/avatar.jpg"/></span>
+        <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
+    </div>
+    <div class="zs-modal-body">
+        <div class="zs-modal-btns">
+            <button class="btn btn-blink" data-num="2">2元</button>
+            <button class="btn btn-blink" data-num="5">5元</button>
+            <button class="btn btn-blink" data-num="10">10元</button>
+            <button class="btn btn-blink" data-num="50">50元</button>
+            <button class="btn btn-blink" data-num="100">100元</button>
+            <button class="btn btn-blink" data-num="1">任意金额</button>
+        </div>
+        <div class="zs-modal-pay">
+            <button class="btn btn-bred" id="pay-text">2元</button>
+            <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+            <img src="http://flygopher.top/img/wechat-2.png" id="pay-image"/>
+        </div>
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="http://flygopher.top/img/wechat-btn.png"/></span>
+    </div>
+</div>
+          
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+    <a href="#" class="social-share-icon icon-twitter"></a>
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+    <a href="#" class="social-share-icon icon-facebook"></a>
+    <a href="#" class="social-share-icon icon-qq"></a>
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="http://flygopher.top/post/kubeadm-install-kubernetes-cluster/">使用kubeadm搭建Kubernetes集群</a></li>
+    
+    <li><a href="http://flygopher.top/post/local-install-ha-kubernetes-cluster/">使用二进制搭建kubernetes三节点高可用集群</a></li>
+    
+    <li><a href="http://flygopher.top/post/jenkins-slave-base-on-kubernetes/">基于kubernetes的动态jenkins slave</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://flygopher.top/post/sample-regexp/" data-toggle="tooltip" data-placement="top" title="正则表达式入门">&larr; 前一篇</a>
+            </li>
+          
+          
+        </ul>
+        
+  
+        
+  
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bo.liang0212@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="https://github.com/amuguelove" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          <li>
+            <a href="http://flygopher.top/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          &bull;&nbsp;
+          &copy;2016-2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/">梁波的技术博客</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/archives/">归档</a>
+          &nbsp; &bull;&nbsp;
+          
+        </p>
+        <p class="text-center text-muted">
+          <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+          <span id="busuanzi_container_site_pv" style="display:none">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          &nbsp;&bull;&nbsp;
+          <span id="busuanzi_container_site_uv" style="display:none">
+            访客数<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src='http://flygopher.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-158970182-1');
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script >
+$(document).ready(function() {
+  var int = setInterval(fixCount, 50);  
+  
+  var initPVCount = 0;
+  var initUVCount = 0;
+  function fixCount() {
+    if ($("#busuanzi_container_site_pv").css("display") != "none") {
+        $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
+        clearInterval(int); 
+    }
+    if ($("#busuanzi_container_site_uv").css("display") != "none") {
+      $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + initUVCount);
+      clearInterval(int); 
+    }
+  }
+});
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+$('.carousel').slick({
+    dots: true,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    centerMode: true,
+    prevArrow: '<button type="button" class="slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-next"></button>',
+});
+</script>
+
+  </body>
+</html>
+

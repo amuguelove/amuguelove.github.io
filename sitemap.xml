@@ -4,12 +4,57 @@
   
   <url>
     <loc>http://flygopher.top/categories/</loc>
-    <lastmod>2020-09-01T00:00:00+08:00</lastmod>
+    <lastmod>2020-09-26T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/kubernetes/</loc>
+    <lastmod>2020-09-26T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/categories/kubernetes/</loc>
+    <lastmod>2020-09-26T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/kubernetes-storage1/</loc>
+    <lastmod>2020-09-26T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flygopher.top/post/</loc>
-    <lastmod>2020-09-01T00:00:00+08:00</lastmod>
+    <lastmod>2020-09-26T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/pv/</loc>
+    <lastmod>2020-09-26T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/pvc/</loc>
+    <lastmod>2020-09-26T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/storageclass/</loc>
+    <lastmod>2020-09-26T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/</loc>
+    <lastmod>2020-09-26T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/tags/volume/</loc>
+    <lastmod>2020-09-26T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/</loc>
+    <lastmod>2020-09-26T00:00:00+08:00</lastmod>
   </url>
   
   <url>
@@ -23,27 +68,17 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/</loc>
-    <lastmod>2020-09-01T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://flygopher.top/</loc>
-    <lastmod>2020-09-01T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://flygopher.top/post/sample-regexp/</loc>
     <lastmod>2020-09-01T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/https/</loc>
+    <loc>http://flygopher.top/tags/https/</loc>
     <lastmod>2020-08-29T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/https/</loc>
+    <loc>http://flygopher.top/categories/https/</loc>
     <lastmod>2020-08-29T00:00:00+08:00</lastmod>
   </url>
   
@@ -64,16 +99,6 @@
   
   <url>
     <loc>http://flygopher.top/tags/kubeadm/</loc>
-    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://flygopher.top/tags/kubernetes/</loc>
-    <lastmod>2020-04-08T00:00:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://flygopher.top/categories/kubernetes/</loc>
     <lastmod>2020-04-08T00:00:00+08:00</lastmod>
   </url>
   
@@ -168,12 +193,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/gradle/</loc>
+    <loc>http://flygopher.top/categories/gradle/</loc>
     <lastmod>2020-03-19T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/gradle/</loc>
+    <loc>http://flygopher.top/tags/gradle/</loc>
     <lastmod>2020-03-19T00:00:00+08:00</lastmod>
   </url>
   
@@ -188,12 +213,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/springboot/</loc>
+    <loc>http://flygopher.top/categories/springboot/</loc>
     <lastmod>2020-03-18T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/springboot/</loc>
+    <loc>http://flygopher.top/tags/springboot/</loc>
     <lastmod>2020-03-18T00:00:00+08:00</lastmod>
   </url>
   
@@ -218,12 +243,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/git/</loc>
+    <loc>http://flygopher.top/categories/git/</loc>
     <lastmod>2020-03-11T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/git/</loc>
+    <loc>http://flygopher.top/tags/git/</loc>
     <lastmod>2020-03-11T00:00:00+08:00</lastmod>
   </url>
   
@@ -233,12 +258,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/mongo/</loc>
+    <loc>http://flygopher.top/tags/mongo/</loc>
     <lastmod>2020-03-09T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/mongo/</loc>
+    <loc>http://flygopher.top/categories/mongo/</loc>
     <lastmod>2020-03-09T00:00:00+08:00</lastmod>
   </url>
   
@@ -323,12 +348,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/linux/</loc>
+    <loc>http://flygopher.top/categories/linux/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/linux/</loc>
+    <loc>http://flygopher.top/tags/linux/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -348,12 +373,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/http/</loc>
+    <loc>http://flygopher.top/tags/http/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/http/</loc>
+    <loc>http://flygopher.top/categories/http/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url>
   
@@ -418,12 +443,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/golang/</loc>
+    <loc>http://flygopher.top/categories/golang/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/golang/</loc>
+    <loc>http://flygopher.top/tags/golang/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -503,12 +528,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/redis/</loc>
+    <loc>http://flygopher.top/categories/redis/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/redis/</loc>
+    <loc>http://flygopher.top/tags/redis/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
   </url>
   
@@ -603,12 +628,12 @@
   </url>
   
   <url>
-    <loc>http://flygopher.top/tags/restful/</loc>
+    <loc>http://flygopher.top/categories/restful/</loc>
     <lastmod>2018-05-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flygopher.top/categories/restful/</loc>
+    <loc>http://flygopher.top/tags/restful/</loc>
     <lastmod>2018-05-27T00:00:00+00:00</lastmod>
   </url>
   

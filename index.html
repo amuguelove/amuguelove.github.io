@@ -193,6 +193,52 @@ if (!doNotTrack) {
 
 
             <article class="post-preview">
+              <a href="http://flygopher.top/post/kubernetes-storage1/">
+                <h2 class="post-title">kubernetes持久化存储（一）</h2>
+                
+                  <h3 class="post-subtitle">
+                  PV和PVC的使用
+                  </h3>
+                
+              </a>
+
+              <span class="post-meta">
+  
+    发表于 September 26, 2020
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>Kubernetes提供了可靠的存储来保存应用的持久化数据，这样容器在重建后，依然可以使用之前的数据。但是显然存储资源和 CPU 资源以及内存资源有很大不同，为了屏蔽底层的技术实现细节，让用户更加方便的使用，<code>Kubernetes</code> 便引入了 <code>PV</code> 和 <code>PVC</code> 两个重要的资源对象来实现对存储的管理。</p>
+                  <a href="http://flygopher.top/post/kubernetes-storage1/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://flygopher.top/tags/kubernetes/">kubernetes</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/volume/">volume</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/pv/">pv</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/pvc/">pvc</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/storageclass/">storageclass</a>&nbsp;
+                
+                </span>
+              
+            </article>
+
+          
+
+
+
+            <article class="post-preview">
               <a href="http://flygopher.top/post/sample-regexp/">
                 <h2 class="post-title">正则表达式入门</h2>
                 
@@ -223,6 +269,17 @@ if (!doNotTrack) {
             </article>
 
           
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -259,17 +316,6 @@ if (!doNotTrack) {
             </article>
 
           
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -659,46 +705,6 @@ public @interface SpringBootApplication {
             </article>
 
           
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/springboot-load-configure-locations/">
-                <h2 class="post-title">SpringBoot配置文件加载的路径和优先级</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 March 18, 2020
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>很多人对<code>SpringBoot</code>文件加载的位置和优先级有点疑惑，下面通过源码看下到底是如何加载的。</p>
-
-<p>我们先来看下<code>SpringBoot</code>加载<code>PropertySource</code>的顺序是如何的呢？可以<a href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config">参考官网</a>：<a href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config">https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config</a></p>
-
-<p><img src="http://flygopher.top/img/post/springboot-configuration-1.png" alt="" /></p>
-
-<p>配置加载的优先级从高到低，其中高优先级可以覆盖低优先级的配置。</p>
-                  <a href="http://flygopher.top/post/springboot-load-configure-locations/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/springboot/">springboot</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
         </div>
 
         <div align="center" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -915,7 +921,7 @@ public @interface SpringBootApplication {
             
           
             
-            <li><a href="http://flygopher.top/categories/kubernetes">kubernetes(3)</a></li>
+            <li><a href="http://flygopher.top/categories/kubernetes">kubernetes(4)</a></li>
             
           
             
@@ -1067,7 +1073,7 @@ public @interface SpringBootApplication {
             
             
             
-            <a href="http://flygopher.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(3)</a>
+            <a href="http://flygopher.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(4)</a>
             
             
             
@@ -1096,6 +1102,14 @@ public @interface SpringBootApplication {
             
             
             <a href="http://flygopher.top/tags/performance"><i class="fa fa-tags"></i> performance(1)</a>
+            
+            
+            
+            <a href="http://flygopher.top/tags/pv"><i class="fa fa-tags"></i> pv(1)</a>
+            
+            
+            
+            <a href="http://flygopher.top/tags/pvc"><i class="fa fa-tags"></i> pvc(1)</a>
             
             
             
@@ -1131,6 +1145,10 @@ public @interface SpringBootApplication {
             
             
             
+            <a href="http://flygopher.top/tags/storageclass"><i class="fa fa-tags"></i> storageclass(1)</a>
+            
+            
+            
             <a href="http://flygopher.top/tags/tools"><i class="fa fa-tags"></i> tools(2)</a>
             
             
@@ -1140,6 +1158,10 @@ public @interface SpringBootApplication {
             
             
             <a href="http://flygopher.top/tags/vagrant"><i class="fa fa-tags"></i> vagrant(3)</a>
+            
+            
+            
+            <a href="http://flygopher.top/tags/volume"><i class="fa fa-tags"></i> volume(1)</a>
             
             
             
