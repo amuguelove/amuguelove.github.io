@@ -6,7 +6,7 @@
     <description>Recent content in Categories on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 26 Sep 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>kubernetes</title>
       <link>http://flygopher.top/categories/kubernetes/</link>
-      <pubDate>Sat, 26 Sep 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/categories/kubernetes/</guid>
       <description></description>
@@ -75,7 +75,7 @@
     </item>
     
     <item>
-      <title>SpringBoot</title>
+      <title>springboot</title>
       <link>http://flygopher.top/categories/springboot/</link>
       <pubDate>Wed, 18 Mar 2020 00:00:00 +0800</pubDate>
       

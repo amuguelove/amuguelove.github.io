@@ -6,24 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>kubernetes持久化存储（一）-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="kubernetes持久化存储（一）" />
-  <meta name="twitter:title" content="kubernetes持久化存储（一）" />
+  <title>kubernetes持久化存储（二）-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="kubernetes持久化存储（二）" />
+  <meta name="twitter:title" content="kubernetes持久化存储（二）" />
   
-  <meta name="description" content="PV和PVC的使用">
-  <meta property="og:description" content="PV和PVC的使用">
-  <meta name="twitter:description" content="PV和PVC的使用">
+  <meta name="description" content="StorageClass的使用">
+  <meta property="og:description" content="StorageClass的使用">
+  <meta name="twitter:description" content="StorageClass的使用">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flygopher.top/post/kubernetes-storage1/" />
+  <meta property="og:url" content="http://flygopher.top/post/kubernetes-storage2/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.58.3" />
-  <link rel="canonical" href="http://flygopher.top/post/kubernetes-storage1/" />
+  <link rel="canonical" href="http://flygopher.top/post/kubernetes-storage2/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
@@ -164,16 +164,16 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>kubernetes持久化存储（一）</h1>
+              <h1>kubernetes持久化存储（二）</h1>
                 
                   
-                    <h2 class="post-subheading">PV和PVC的使用</h2>
+                    <h2 class="post-subheading">StorageClass的使用</h2>
                   
                 
                 
                   <span class="post-meta">
   
-    发表于 September 26, 2020
+    发表于 September 27, 2020
   
   
 </span>
@@ -226,32 +226,23 @@ if (!doNotTrack) {
 <ul>
 <li>
 <ul>
-<li><a href="#kuberntes-volume">Kuberntes Volume</a></li>
-<li><a href="#概念">概念</a>
+<li><a href="#storageclass资源">StorageClass资源</a>
 <ul>
 <li>
 <ul>
-<li><a href="#pv">PV</a></li>
+<li><a href="#provisioner">provisioner</a></li>
+<li><a href="#reclaimpolicy">reclaimPolicy</a></li>
+<li><a href="#allowvolumeexpansion">allowVolumeExpansion</a></li>
+<li><a href="#volumebindingmode">volumeBindingMode</a></li>
+<li><a href="#parameters">parameters</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#本地storageclass">本地StorageClass</a></li>
+<li><a href="#storageclass使用">StorageClass使用</a>
+<ul>
 <li><a href="#pvc">PVC</a></li>
+<li><a href="#statefulset">StatefulSet</a></li>
 </ul></li>
-</ul></li>
-<li><a href="#pv的使用">PV的使用</a>
-<ul>
-<li>
-<ul>
-<li><a href="#capacity-存储能力">Capacity（存储能力）</a></li>
-<li><a href="#accessmodes-访问模式">AccessModes（访问模式）</a></li>
-<li><a href="#persistentvolumereclaimpolicy-回收策略">persistentVolumeReclaimPolicy（回收策略）</a></li>
-<li><a href="#状态">状态</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#pvc的使用">PVC的使用</a>
-<ul>
-<li><a href="#新建pvc">新建PVC</a></li>
-<li><a href="#使用pvc">使用PVC</a></li>
-</ul></li>
-<li><a href="#pv和pvc的状态变化">PV和PVC的状态变化</a></li>
-<li><a href="#注意事项">注意事项</a></li>
 <li><a href="#参考">参考</a></li>
 </ul></li>
 </ul>
@@ -272,227 +263,187 @@ if (!doNotTrack) {
           
           
 
-          <p>Kubernetes提供了可靠的存储来保存应用的持久化数据，这样容器在重建后，依然可以使用之前的数据。但是显然存储资源和 CPU 资源以及内存资源有很大不同，为了屏蔽底层的技术实现细节，让用户更加方便的使用，<code>Kubernetes</code> 便引入了 <code>PV</code> 和 <code>PVC</code> 两个重要的资源对象来实现对存储的管理。</p>
+          <p>前面的文章里我们学习了 <code>PV</code> 和 <code>PVC</code> 的使用方法，但是前面的 PV 都是静态的，什么意思呢？就是我要使用的一个 PVC 的话就必须手动去创建一个 PV，我们也说过这种方式在很大程度上并不能满足我们的需求，比如我们有一个应用需要对存储的并发度要求比较高，而另外一个应用对读写速度又要求比较高，特别是对于 <code>StatefulSet</code> 类型的应用简单的来使用静态的 PV 就很不合适了，这种情况下我们就需要用到动态 PV，也就是我们今天要讲解的 <code>StorageClass</code>。</p>
 
-<h2 id="kuberntes-volume">Kuberntes Volume</h2>
+<h2 id="storageclass资源">StorageClass资源</h2>
 
-<p>Kubernetes 和 Docker 类似，也是通过 Volume 的方式提供对存储的支持。Volume 被定义在 Pod 上，可以被 Pod 里的多个容器挂载到相同或不同的路径下。Kubernetes 中 Volume 的 概念与Docker 中的 Volume 类似，但不完全相同。具体区别如下：</p>
+<p>每个 StorageClass 都包含 <code>provisioner</code>、<code>parameters</code> 和 <code>reclaimPolicy</code> 字段， 这些字段会在 StorageClass 需要动态分配 <code>PersistentVolume</code> 时会使用到。</p>
 
-<ul>
-<li>Kubernetes 中的 Volume 与 Pod 的生命周期相同，但与容器的生命周期不相关。当容器终止或重启时，Volume 中的数据也不会丢失。</li>
-<li>当 Pod 被删除时，Volume 才会被清理。并且数据是否丢失取决于 Volume 的具体类型，比如：emptyDir 类型的 Volume 数据会丢失，而 PV 类型的数据则不会丢失。</li>
-</ul>
+<p>StorageClass 对象的命名很重要，用户使用这个命名来请求生成一个特定的类。 当创建 StorageClass 对象时，管理员设置 StorageClass 对象的命名和其他参数，一旦创建了对象就不能再对其更新。</p>
 
-<p>Kubernetes 卷具有明确的生命周期——与包裹它的 Pod 相同。 因此，卷比 Pod 中运行的任何容器的存活期都长，在容器重新启动时数据也会得到保留。 当然，当一个 Pod 不再存在时，卷也将不再存在。 也许更重要的是，Kubernetes 可以支持许多类型的卷，Pod 也能同时使用任意数量的卷。</p>
+<p>管理员可以为没有申请绑定到特定 StorageClass 的 PVC 指定一个默认的存储类 ： 更多详情请参阅 <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims">PersistentVolumeClaim 章节</a>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: my-storageclass
+  annotations:
+    storageclass.beta.kubernetes.io/is-default-class: &#34;true&#34;
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2
+reclaimPolicy: Retain
+allowVolumeExpansion: true
+mountOptions:
+  - debug
+volumeBindingMode: Immediate</pre></div>
+<h4 id="provisioner">provisioner</h4>
 
-<p>卷的核心是包含一些数据的目录，Pod 中的容器可以访问该目录。 特定的卷类型可以决定这个目录如何形成的，并能决定它支持何种介质，以及目录中存放什么内容。</p>
+<p>每个 StorageClass 都有一个分配器，用来决定使用哪个卷插件分配 PV。该字段必须指定。</p>
 
-<p>使用卷时, Pod 声明中需要提供卷的类型 (<code>.spec.volumes</code> 字段)和卷挂载的位置 (<code>.spec.containers.volumeMounts</code> 字段).</p>
+<h4 id="reclaimpolicy">reclaimPolicy</h4>
 
-<p>Kubernetes 目前支持多种 Volume 类型，最新数据可以查看<a href="https://kubernetes.io/zh/docs/concepts/storage/volumes">官网</a>，大致如下：</p>
+<p>由 StorageClass 动态创建的 PersistentVolume 会在类的 <code>reclaimPolicy</code> 字段中指定回收策略，可以是 <code>Delete</code> 或者 <code>Retain</code>。如果 StorageClass 对象被创建时没有指定 <code>reclaimPolicy</code>，它将默认为 <code>Delete</code>。</p>
 
-<ul>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#awselasticblockstore">awsElasticBlockStore</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#azuredisk">azureDisk</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#azurefile">azureFile</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#cephfs">cephfs</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#cinder">cinder</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#configmap">configMap</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#csi">csi</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#downwardapi">downwardAPI</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#emptydir">emptyDir</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#fc">fc (fibre channel)</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#flexVolume">flexVolume</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#flocker">flocker</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#gcepersistentdisk">gcePersistentDisk</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#gitrepo">gitRepo (deprecated)</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#glusterfs">glusterfs</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#hostpath">hostPath</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#iscsi">iscsi</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#local">local</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#nfs">nfs</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#persistentvolumeclaim">persistentVolumeClaim</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#projected">projected</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#portworxvolume">portworxVolume</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#quobyte">quobyte</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#rbd">rbd</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#scaleio">scaleIO</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#secret">secret</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#storageos">storageos</a></li>
-<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#vspherevolume">vsphereVolume</a></li>
-</ul>
+<p>通过 StorageClass 手动创建并管理的 PersistentVolume 会使用它们被创建时指定的回收政策。</p>
+
+<h4 id="allowvolumeexpansion">allowVolumeExpansion</h4>
+
+<p>PersistentVolume 可以配置为可扩展。将此功能设置为 <code>true</code> 时，允许用户通过编辑相应的 PVC 对象来调整卷大小。</p>
+
+<p>当基础存储类的 <code>allowVolumeExpansion</code> 字段设置为 true 时，以下类型的卷支持卷扩展。</p>
+
+<table>
+<thead>
+<tr>
+<th>卷类型</th>
+<th>Kubernetes 版本要求</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>gcePersistentDisk</td>
+<td>1.11</td>
+</tr>
+
+<tr>
+<td>awsElasticBlockStore</td>
+<td>1.11</td>
+</tr>
+
+<tr>
+<td>Cinder</td>
+<td>1.11</td>
+</tr>
+
+<tr>
+<td>glusterfs</td>
+<td>1.11</td>
+</tr>
+
+<tr>
+<td>rbd</td>
+<td>1.11</td>
+</tr>
+
+<tr>
+<td>Azure File</td>
+<td>1.11</td>
+</tr>
+
+<tr>
+<td>Azure Disk</td>
+<td>1.11</td>
+</tr>
+
+<tr>
+<td>Portworx</td>
+<td>1.11</td>
+</tr>
+
+<tr>
+<td>FlexVolume</td>
+<td>1.13</td>
+</tr>
+
+<tr>
+<td>CSI</td>
+<td>1.14 (alpha), 1.16 (beta)</td>
+</tr>
+</tbody>
+</table>
 
 <blockquote>
-<p>注：这些 Volume 并非全部都是持久化的，比如: emptyDir 等，就会随着 Pod 的消亡而消失。</p>
+<p><strong>说明：</strong> 此功能仅可用于扩容卷，不能用于缩小卷。</p>
 </blockquote>
 
-<h2 id="概念">概念</h2>
+<h4 id="volumebindingmode">volumeBindingMode</h4>
 
-<h4 id="pv">PV</h4>
+<p><code>volumeBindingMode</code> 字段控制了<a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#provisioning">卷绑定和动态分配</a> 应该发生在什么时候。</p>
 
-<p>PV 的全称是：PersistentVolume（持久化卷）。PersistentVolume 是 Volume 的一种类型，是对底层的共享存储的一种抽象。PV 由集群管理员进行创建和配置，就像节点 (Node) 是集群中的资源一样，PV 也是集群资源的一种。PV 包含存储类型、存储大小和访问模式。PV 的生命周期独立于 Pod，例如：当使用它的 Pod 销毁时对 PV 没有影响。</p>
+<p>默认情况下，<code>Immediate</code> 模式表示一旦创建了 PersistentVolumeClaim 也就完成了卷绑定和动态分配。 对于由于拓扑限制而非集群所有节点可达的存储后端，PersistentVolume 会在不知道 Pod 调度要求的情况下绑定或者分配。</p>
 
-<p>PersistentVolume 通过插件机制实现与共享存储的对接。Kubernetes 目前支持以下插件类型：</p>
+<p>集群管理员可以通过指定 <code>WaitForFirstConsumer</code> 模式来解决此问题。 该模式将延迟 PersistentVolume 的绑定和分配，直到使用该 PersistentVolumeClaim 的 Pod 被创建。</p>
 
-<ul>
-<li>GCEPersistentDisk</li>
-<li>AWSElasticBlockStore</li>
-<li>AzureFile</li>
-<li>AzureDisk</li>
-<li>CSI</li>
-<li>FC (Fibre Channel)</li>
-<li>FlexVolume</li>
-<li>Flocker</li>
-<li>NFS</li>
-<li>iSCSI</li>
-<li>RBD (Ceph Block Device)</li>
-<li>CephFS</li>
-<li>Cinder (OpenStack block storage)</li>
-<li>Glusterfs</li>
-<li>VsphereVolume</li>
-<li>Quobyte Volumes</li>
-<li>HostPath (Single node testing only &ndash; local storage is not supported in any way and WILL NOT WORK in a multi-node cluster)</li>
-<li>Portworx Volumes</li>
-<li>ScaleIO Volumes</li>
-<li>StorageOS</li>
-</ul>
+<h4 id="parameters">parameters</h4>
 
-<h4 id="pvc">PVC</h4>
+<p>Storage class 具有描述属于卷的参数。取决于分配器，可以接受不同的参数。 例如，参数 type 的值 io1 和参数 iopsPerGB 特定于 EBS PV。当参数被省略时，会使用默认值。</p>
 
-<p>PVC 的全称是：PersistentVolumeClaim（持久化卷声明），PVC 是用户对存储资源的一种请求。PVC 和 Pod 比较类似，Pod 消耗的是节点资源，PVC 消耗的是 PV 资源。Pod 可以请求 CPU 和内存，而 PVC 可以请求特定的存储空间和访问模式。对于真正使用存储的用户不需要关心底层的存储实现细节，只需要直接使用 PVC 即可。</p>
+<p>一个 StorageClass 最多可以定义 512 个参数。这些参数对象的总长度不能超过 256 KiB, 包括参数的键和值。</p>
 
-<p>但是通过 PVC 请求到一定的存储空间也很有可能不足以满足应用对于存储设备的各种需求，而且不同的应用程序对于存储性能的要求可能也不尽相同，比如读写速度、并发性能等，为了解决这一问题，Kubernetes 又为我们引入了一个新的资源对象：<code>StorageClass</code>，通过 StorageClass 的定义，管理员可以将存储资源定义为某种类型的资源，比如快速存储、慢速存储等，用户根据 StorageClass 的描述就可以非常直观的知道各种存储资源的具体特性了，这样就可以根据应用的特性去申请合适的存储资源了。关于StorageClass我们将会在下节讲述。</p>
+<h2 id="本地storageclass">本地StorageClass</h2>
 
-<h2 id="pv的使用">PV的使用</h2>
-
-<p>以NFS文件存储为例，IP地址为：100.0.0.50。</p>
-
-<p>PV 作为存储资源，主要包括存储能力、访问模式、存储类型、回收策略等关键信息，下面我们来新建一个 PV 对象，使用 nfs 类型的后端存储，10G 的存储空间，访问模式为 ReadWriteOnce，回收策略为 Recycle，对应的 YAML 文件如下：</p>
+<p>Yaml文件如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer</pre></div>
+<p>在PVC中如何使用：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name:  nfs-pv
+  name: local-pv
 spec:
   capacity:
     storage: 10Gi
   accessModes:
-  - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
-  nfs:
-    path: /
-    server: 100.0.0.50</pre></div>
-<p>我们来分别对上面的属性进行一些解读。</p>
+    - ReadWriteOnce
+  storageClassName: local-storage
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /data/
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - 10.0.0.3 # node name</pre></div>
+<h2 id="storageclass使用">StorageClass使用</h2>
 
-<h4 id="capacity-存储能力">Capacity（存储能力）</h4>
-
-<p>一般来说，一个 PV 对象都要指定一个存储能力，通过 PV 的 <strong>capacity</strong>属性来设置的，目前只支持存储空间的设置，就是我们这里的 storage=10Gi，不过未来可能会加入 IOPS、吞吐量等指标的配置。</p>
-
-<h4 id="accessmodes-访问模式">AccessModes（访问模式）</h4>
-
-<p>AccessModes 是用来对 PV 进行访问模式的设置，用于描述用户应用对存储资源的访问权限，访问权限包括下面几种方式：</p>
-
-<ul>
-<li>ReadWriteOnce（RWO）：读写权限，但是只能被单个节点挂载</li>
-<li>ReadOnlyMany（ROX）：只读权限，可以被多个节点挂载</li>
-<li>ReadWriteMany（RWX）：读写权限，可以被多个节点挂载</li>
-</ul>
-
-<blockquote>
-<p>注意：一些 PV 可能支持多种访问模式，但是在挂载的时候只能使用一种访问模式，多种访问模式是不会生效的。</p>
-</blockquote>
-
-<h4 id="persistentvolumereclaimpolicy-回收策略">persistentVolumeReclaimPolicy（回收策略）</h4>
-
-<p>我这里指定的 PV 的回收策略为 Recycle，目前 PV 支持的策略有三种：</p>
-
-<ul>
-<li>Retain（保留）- 保留数据，需要管理员手工清理数据</li>
-<li>Recycle（回收）- 清除 PV 中的数据，效果相当于执行 (<code>rm -rf /thevolume/*</code>)</li>
-<li>Delete（删除）- 与 PV 相连的后端存储完成 volume 的删除操作，当然这常见于云服务商的存储服务，比如 AWS EBS, GCE PD, Azure Disk, and Cinder。</li>
-</ul>
-
-<p>不过需要注意的是，目前只有 NFS 和 HostPath 两种类型支持回收策略。当然一般来说还是设置为 Retain 这种策略保险一点。</p>
-
-<h4 id="状态">状态</h4>
-
-<p>一个 PV 的生命周期中，可能会处于4中不同的阶段：</p>
-
-<ul>
-<li>Available（可用）：表示可用状态，还未被任何 PVC 绑定</li>
-<li>Bound（已绑定）：表示 PV 已经被 PVC 绑定</li>
-<li>Released（已释放）：PVC 被删除，但是资源还未被集群重新声明</li>
-<li>Failed（失败）： 表示该 PV 的自动回收失败</li>
-</ul>
-
-<h2 id="pvc的使用">PVC的使用</h2>
-
-<h3 id="新建pvc">新建PVC</h3>
-
-<p>同样的，我们来新建一个数据卷声明，我们来请求 10Gi 的存储容量，访问模式也是 ReadWriteOnce，YAML 文件如下：(nfs-pvc.yaml)</p>
+<h3 id="pvc">PVC</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: nfs-pvc
+  name: my-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - &#34;ReadWriteOnce&#34;
   resources:
     requests:
-      storage: 10Gi</pre></div>
-<p>这时 pvc-nfs 创建成功了，状态是 <code>Bound</code> 状态了，这个时候我们再看下 PV 的状态，也变成 <code>Bound</code> 状态了。</p>
-
-<p>其实这是系统自动帮我们去匹配的，他会根据我们的声明要求去查找处于 Available 状态的 PV，如果没有找到的话那么我们的 PVC 就会一直处于 Pending 状态，找到了的话当然就会把当前的 PVC 和目标 PV 进行绑定，这个时候状态就会变成 Bound 状态了。</p>
-
-<p>这里要注意的一点是，如果PV的容量不PVC的大，是可以绑定的，并且使用的是PV申请的容量，反之不可以。</p>
-
-<h3 id="使用pvc">使用PVC</h3>
-
-<p>上面我们已经知道怎么创建 PV 和 PVC 了，现在我们就来使用下我们的 PVC，这里我们同样使用之前的 nginx 的镜像来测试下：(nfs-nginx-deployment.yaml)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: nginx
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: nginx  
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:latest
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 80
-          name: web
-        volumeMounts:
-        - name: www
-          mountPath: /usr/share/nginx/html
-      volumes:
-      - name: www
-        persistentVolumeClaim:
-          claimName: nfs-pvc</pre></div>
-<h2 id="pv和pvc的状态变化">PV和PVC的状态变化</h2>
-
-<figure><img src="http://flygopher.top/img/post/pv_and_pvc_status.png" alt="PV和PVC的状态变化"><figcaption>PV和PVC的状态变化</figcaption></figure>
-
-<h2 id="注意事项">注意事项</h2>
-
-<ol>
-<li>如果数据非常重要，不能删除，那么你在删除PVC的时候，需要注意不能自动回收了PV里面的数据。</li>
-<li>PVC中的访问模式设置为ReadWriteOnce时，如果没有POD关联，则创建 Pod 挂载此 PVC 时会出现失败。</li>
-<li>如果PV的persistentVolumeReclaimPolicy是Retain，那么在PVC删除后，PV的状态为Released。那么可以通过编辑该PV的yaml，将spec.claimRef字段删除，PV的状态就会变成Available，可以被新的PVC重新绑定了。</li>
-</ol>
-
+      storage: &#34;10Gi&#34;
+  storageClassName: &#34;my-storageclass&#34;</pre></div>
+<h3 id="statefulset">StatefulSet</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">spec:
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: [ &#34;ReadWriteOnce&#34; ]
+        storageClassName: my-storageclass
+        resources:
+          requests:
+            storage: 10Gi	</pre></div>
 <h2 id="参考">参考</h2>
 
 <p><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/">Kubernetes Volumes</a></p>
 
 <p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">Kubernetes Persistem Volumes</a></p>
+
+<p><a href="https://kubernetes.io/zh/docs/concepts/storage/storage-classes/">Kubernates Storage</a></p>
 
           
   
@@ -553,6 +504,8 @@ spec:
 <h3>相关文章</h3>
 <ul style="margin-bottom: 25px;">
     
+    <li><a href="http://flygopher.top/post/kubernetes-storage1/">kubernetes持久化存储（一）</a></li>
+    
     <li><a href="http://flygopher.top/post/kubeadm-install-kubernetes-cluster/">使用kubeadm搭建Kubernetes集群</a></li>
     
     <li><a href="http://flygopher.top/post/local-install-ha-kubernetes-cluster/">使用二进制搭建kubernetes三节点高可用集群</a></li>
@@ -567,13 +520,9 @@ spec:
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://flygopher.top/post/sample-regexp/" data-toggle="tooltip" data-placement="top" title="正则表达式入门">&larr; 前一篇</a>
+              <a href="http://flygopher.top/post/kubernetes-storage1/" data-toggle="tooltip" data-placement="top" title="kubernetes持久化存储（一）">&larr; 前一篇</a>
             </li>
           
-          
-            <li class="next">
-              <a href="http://flygopher.top/post/kubernetes-storage2/" data-toggle="tooltip" data-placement="top" title="kubernetes持久化存储（二）">后一篇 &rarr;</a>
-            </li>
           
         </ul>
         

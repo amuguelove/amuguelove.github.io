@@ -6,7 +6,7 @@
     <description>Recent content in Tags on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 26 Sep 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>kubernetes</title>
       <link>http://flygopher.top/tags/kubernetes/</link>
-      <pubDate>Sat, 26 Sep 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/tags/kubernetes/</guid>
       <description></description>
@@ -23,7 +23,7 @@
     <item>
       <title>pv</title>
       <link>http://flygopher.top/tags/pv/</link>
-      <pubDate>Sat, 26 Sep 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/tags/pv/</guid>
       <description></description>
@@ -32,7 +32,7 @@
     <item>
       <title>pvc</title>
       <link>http://flygopher.top/tags/pvc/</link>
-      <pubDate>Sat, 26 Sep 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/tags/pvc/</guid>
       <description></description>
@@ -41,7 +41,7 @@
     <item>
       <title>storageclass</title>
       <link>http://flygopher.top/tags/storageclass/</link>
-      <pubDate>Sat, 26 Sep 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/tags/storageclass/</guid>
       <description></description>
@@ -50,7 +50,7 @@
     <item>
       <title>volume</title>
       <link>http://flygopher.top/tags/volume/</link>
-      <pubDate>Sat, 26 Sep 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/tags/volume/</guid>
       <description></description>
@@ -192,7 +192,7 @@
     </item>
     
     <item>
-      <title>SpringBoot</title>
+      <title>springboot</title>
       <link>http://flygopher.top/tags/springboot/</link>
       <pubDate>Wed, 18 Mar 2020 00:00:00 +0800</pubDate>
       

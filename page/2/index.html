@@ -193,6 +193,68 @@ if (!doNotTrack) {
 
 
             <article class="post-preview">
+              <a href="http://flygopher.top/post/springboot-load-configure-principle/">
+                <h2 class="post-title">SpringBoot的自动装配原理分析</h2>
+                
+              </a>
+
+              <span class="post-meta">
+  
+    发表于 March 18, 2020
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>在Spring Boot应用中的自动装配是通过<code>@EnableAutoConfiguration</code> 注解进行开启的。<code>@EnableAutoConfiguration</code> 可以帮助 Spring Boot 应用将所有符合条件的 <code>@Configuration</code> 配置类的 bean 都加载到 Spring IoC 容器中。</p>
+
+<p>我们看下<code>@SpringBootApplication</code>注解，默认是启动<code>@EnableAutoConfiguration</code> 的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan(excludeFilters = { @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
+		@Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
+public @interface SpringBootApplication {
+
+	@AliasFor(annotation = EnableAutoConfiguration.class)
+	Class&lt;?&gt;[] exclude() default {};
+
+	@AliasFor(annotation = EnableAutoConfiguration.class)
+	String[] excludeName() default {};
+
+	@AliasFor(annotation = ComponentScan.class, attribute = &#34;basePackages&#34;)
+	String[] scanBasePackages() default {};
+
+	@AliasFor(annotation = ComponentScan.class, attribute = &#34;basePackageClasses&#34;)
+	Class&lt;?&gt;[] scanBasePackageClasses() default {};
+
+	@AliasFor(annotation = Configuration.class)
+	boolean proxyBeanMethods() default true;
+
+}</pre></div>
+                  <a href="http://flygopher.top/post/springboot-load-configure-principle/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://flygopher.top/tags/springboot/">springboot</a>&nbsp;
+                
+                </span>
+              
+            </article>
+
+          
+
+
+
+            <article class="post-preview">
               <a href="http://flygopher.top/post/springboot-load-configure-locations/">
                 <h2 class="post-title">SpringBoot配置文件加载的路径和优先级</h2>
                 
@@ -229,6 +291,17 @@ if (!doNotTrack) {
             </article>
 
           
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -277,17 +350,6 @@ if (!doNotTrack) {
             </article>
 
           
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -647,40 +709,6 @@ if (!doNotTrack) {
             </article>
 
           
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/mongodb-base-operation/">
-                <h2 class="post-title">MongoDB介绍以及基本操作</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 March 1, 2020
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>MongoDB 是一个高性能，开源，无模式的文档型数据库，是当前noSql数据库产品中最热门的一种。它在许多场景下用于替代传统的关系型数据库或键值对存储方式，MongoDB是用C++开发，MongoDB的官方网址：<a href="https://www.mongodb.com/">https://www.mongodb.com/</a></p>
-                  <a href="http://flygopher.top/post/mongodb-base-operation/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/mongo/">mongo</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
         </div>
 
         <div align="center" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -897,7 +925,7 @@ if (!doNotTrack) {
             
           
             
-            <li><a href="http://flygopher.top/categories/kubernetes">kubernetes(4)</a></li>
+            <li><a href="http://flygopher.top/categories/kubernetes">kubernetes(5)</a></li>
             
           
             
@@ -1049,7 +1077,7 @@ if (!doNotTrack) {
             
             
             
-            <a href="http://flygopher.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(4)</a>
+            <a href="http://flygopher.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(5)</a>
             
             
             
@@ -1081,11 +1109,11 @@ if (!doNotTrack) {
             
             
             
-            <a href="http://flygopher.top/tags/pv"><i class="fa fa-tags"></i> pv(1)</a>
+            <a href="http://flygopher.top/tags/pv"><i class="fa fa-tags"></i> pv(2)</a>
             
             
             
-            <a href="http://flygopher.top/tags/pvc"><i class="fa fa-tags"></i> pvc(1)</a>
+            <a href="http://flygopher.top/tags/pvc"><i class="fa fa-tags"></i> pvc(2)</a>
             
             
             
@@ -1121,7 +1149,7 @@ if (!doNotTrack) {
             
             
             
-            <a href="http://flygopher.top/tags/storageclass"><i class="fa fa-tags"></i> storageclass(1)</a>
+            <a href="http://flygopher.top/tags/storageclass"><i class="fa fa-tags"></i> storageclass(2)</a>
             
             
             
@@ -1137,7 +1165,7 @@ if (!doNotTrack) {
             
             
             
-            <a href="http://flygopher.top/tags/volume"><i class="fa fa-tags"></i> volume(1)</a>
+            <a href="http://flygopher.top/tags/volume"><i class="fa fa-tags"></i> volume(2)</a>
             
             
             
