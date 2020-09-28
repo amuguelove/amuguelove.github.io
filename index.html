@@ -193,6 +193,56 @@ if (!doNotTrack) {
 
 
             <article class="post-preview">
+              <a href="http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/">
+                <h2 class="post-title">kubernetes Ingress 自动化 HTTPS</h2>
+                
+                  <h3 class="post-subtitle">
+                  使用Cert Manager为Kubernetes Ingress自动签发证书
+                  </h3>
+                
+              </a>
+
+              <span class="post-meta">
+  
+    发表于 September 28, 2020
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>现在的Web应用启用<code>HTTPS</code>服务是真的非常有必要的。一些正规机构颁发的<code>CA</code>证书费用又特别高，不过比较幸运的是也有免费的午餐 - <code>Let's Encrypt</code>，虽然只有90天的证书有效期，但是我们完全可以在证书失效之前，重新生成证书替换掉。在<code>Kubernetes</code>集群中就更方便了，我们可以通过 Kubernetes Ingress 和 Let’s Encrypt 实现外部服务的自动化 HTTPS。</p>
+
+<p>Cert-Manager 是一个云原生证书管理开源项目，用于在 Kubernetes 集群中提供 HTTPS 证书并自动续期，支持 Let’s Encrypt / HashiCorp / Vault 这些免费证书的签发。</p>
+
+<p><img src="http://flygopher.top/img/post/cert-manager-structrue.svg" alt="Cert Manager Structrue" /></p>
+                  <a href="http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://flygopher.top/tags/kubernetes/">kubernetes</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/ingress/">ingress</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/https/">https</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/tls/">tls</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/cert-manager/">cert-manager</a>&nbsp;
+                
+                </span>
+              
+            </article>
+
+          
+
+
+
+            <article class="post-preview">
               <a href="http://flygopher.top/post/kubernetes-storage2/">
                 <h2 class="post-title">kubernetes持久化存储（二）</h2>
                 
@@ -230,11 +280,24 @@ if (!doNotTrack) {
                 
                   #<a href="http://flygopher.top/tags/storageclass/">storageclass</a>&nbsp;
                 
+                  #<a href="http://flygopher.top/tags/devops/">devops</a>&nbsp;
+                
                 </span>
               
             </article>
 
           
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -276,22 +339,13 @@ if (!doNotTrack) {
                 
                   #<a href="http://flygopher.top/tags/storageclass/">storageclass</a>&nbsp;
                 
+                  #<a href="http://flygopher.top/tags/devops/">devops</a>&nbsp;
+                
                 </span>
               
             </article>
 
           
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -389,11 +443,11 @@ if (!doNotTrack) {
               
                 <span class="post-meta">
                 
+                  #<a href="http://flygopher.top/tags/devops/">devops</a>&nbsp;
+                
                   #<a href="http://flygopher.top/tags/kubernetes/">kubernetes</a>&nbsp;
                 
                   #<a href="http://flygopher.top/tags/kubeadm/">kubeadm</a>&nbsp;
-                
-                  #<a href="http://flygopher.top/tags/devops/">devops</a>&nbsp;
                 
                   #<a href="http://flygopher.top/tags/vagrant/">vagrant</a>&nbsp;
                 
@@ -435,11 +489,11 @@ if (!doNotTrack) {
               
                 <span class="post-meta">
                 
+                  #<a href="http://flygopher.top/tags/devops/">devops</a>&nbsp;
+                
                   #<a href="http://flygopher.top/tags/kubernetes/">kubernetes</a>&nbsp;
                 
                   #<a href="http://flygopher.top/tags/vagrant/">vagrant</a>&nbsp;
-                
-                  #<a href="http://flygopher.top/tags/devops/">devops</a>&nbsp;
                 
                 </span>
               
@@ -473,7 +527,9 @@ if (!doNotTrack) {
               
                 <span class="post-meta">
                 
-                  #<a href="http://flygopher.top/tags/docker/">Docker</a>&nbsp;
+                  #<a href="http://flygopher.top/tags/docker/">docker</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/container/">container</a>&nbsp;
                 
                 </span>
               
@@ -511,7 +567,9 @@ if (!doNotTrack) {
               
                 <span class="post-meta">
                 
-                  #<a href="http://flygopher.top/tags/docker/">Docker</a>&nbsp;
+                  #<a href="http://flygopher.top/tags/docker/">docker</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/container/">container</a>&nbsp;
                 
                 </span>
               
@@ -643,46 +701,6 @@ if (!doNotTrack) {
                   #<a href="http://flygopher.top/tags/jmh/">jmh</a>&nbsp;
                 
                   #<a href="http://flygopher.top/tags/mapping-framework/">mapping-framework</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/gradle-publish-jar-into-maven-central/">
-                <h2 class="post-title">Gradle发布Java Library到Maven中央仓库</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 March 19, 2020
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>最近打算将一些基础的Jar包上传到<code>Maven</code>中央仓库，方便在自己项目中引用。本文将结合<code>Gradle</code>的两个插件<code>maven-publish</code>和 <code>signing</code>来讲解如何发布一个Jar包。</p>
-
-<p>在开始之前，先对<code>OSSRH</code>做下了解是很必要的。</p>
-
-<p><code>OSSRH</code>：<code>Sonatype Open Source Software Repository Hosting Service</code>，为开源软件提供maven仓库托管服务。你可以在上面部署<code>snapshot</code>、<code>release</code>等，最后你可以申请把你的release同步到<code>Maven Central Repository</code>（<code>Maven中央仓库</code>）。</p>
-                  <a href="http://flygopher.top/post/gradle-publish-jar-into-maven-central/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/gradle/">gradle</a>&nbsp;
-                
-                  #<a href="http://flygopher.top/tags/maven/">maven</a>&nbsp;
                 
                 </span>
               
@@ -915,7 +933,7 @@ if (!doNotTrack) {
             
           
             
-            <li><a href="http://flygopher.top/categories/kubernetes">kubernetes(5)</a></li>
+            <li><a href="http://flygopher.top/categories/kubernetes">kubernetes(6)</a></li>
             
           
             
@@ -979,11 +997,19 @@ if (!doNotTrack) {
             
             
             
+            <a href="http://flygopher.top/tags/cert-manager"><i class="fa fa-tags"></i> cert-manager(1)</a>
+            
+            
+            
             <a href="http://flygopher.top/tags/clean-code"><i class="fa fa-tags"></i> clean-code(1)</a>
             
             
             
             <a href="http://flygopher.top/tags/cluster"><i class="fa fa-tags"></i> cluster(1)</a>
+            
+            
+            
+            <a href="http://flygopher.top/tags/container"><i class="fa fa-tags"></i> container(2)</a>
             
             
             
@@ -995,7 +1021,7 @@ if (!doNotTrack) {
             
             
             
-            <a href="http://flygopher.top/tags/devops"><i class="fa fa-tags"></i> devops(3)</a>
+            <a href="http://flygopher.top/tags/devops"><i class="fa fa-tags"></i> devops(5)</a>
             
             
             
@@ -1035,11 +1061,15 @@ if (!doNotTrack) {
             
             
             
-            <a href="http://flygopher.top/tags/https"><i class="fa fa-tags"></i> https(1)</a>
+            <a href="http://flygopher.top/tags/https"><i class="fa fa-tags"></i> https(2)</a>
             
             
             
             <a href="http://flygopher.top/tags/hugo"><i class="fa fa-tags"></i> hugo(1)</a>
+            
+            
+            
+            <a href="http://flygopher.top/tags/ingress"><i class="fa fa-tags"></i> ingress(1)</a>
             
             
             
@@ -1067,7 +1097,7 @@ if (!doNotTrack) {
             
             
             
-            <a href="http://flygopher.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(5)</a>
+            <a href="http://flygopher.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(6)</a>
             
             
             
@@ -1140,6 +1170,10 @@ if (!doNotTrack) {
             
             
             <a href="http://flygopher.top/tags/storageclass"><i class="fa fa-tags"></i> storageclass(2)</a>
+            
+            
+            
+            <a href="http://flygopher.top/tags/tls"><i class="fa fa-tags"></i> tls(1)</a>
             
             
             

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  
+  <title>kubernetes Ingress 自动化 HTTPS-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="kubernetes Ingress 自动化 HTTPS" />
+  <meta name="twitter:title" content="kubernetes Ingress 自动化 HTTPS" />
+  
+  <meta name="description" content="使用Cert Manager为Kubernetes Ingress自动签发证书">
+  <meta property="og:description" content="使用Cert Manager为Kubernetes Ingress自动签发证书">
+  <meta name="twitter:description" content="使用Cert Manager为Kubernetes Ingress自动签发证书">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="梁波的技术博客" />
+  
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="canonical" href="http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/" />
+  <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-158970182-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://flygopher.top/" title="梁波的技术博客">
+
+        梁波的技术博客
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="http://flygopher.top/">首页</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="http://flygopher.top/archives">Archive</a>
+                
+                  <a href="http://flygopher.top/categories">Categories</a>
+                
+                  <a href="http://flygopher.top/tags">tags</a>
+                
+                  <a href="http://flygopher.top/tags/java">java</a>
+                
+                  <a href="http://flygopher.top/tags/springboot">springboot</a>
+                
+                  <a href="http://flygopher.top/tags/kubernetes">kubernetes</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">学习</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://github.com/amuguelove">Github</a>
+                
+                  <a href="https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/">k8s基础知识</a>
+                
+                  <a href="https://k8s.imroc.io/">Kubernetes实践指南</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="关于" href="http://flygopher.top/page/about/">关于</a>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>kubernetes Ingress 自动化 HTTPS</h1>
+                
+                  
+                    <h2 class="post-subheading">使用Cert Manager为Kubernetes Ingress自动签发证书</h2>
+                  
+                
+                
+                  <span class="post-meta">
+  
+    发表于 September 28, 2020
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="http://flygopher.top/tags/kubernetes/">kubernetes</a> &nbsp;
+              
+                  <a href="http://flygopher.top/tags/ingress/">ingress</a> &nbsp;
+              
+                  <a href="http://flygopher.top/tags/https/">https</a> &nbsp;
+              
+                  <a href="http://flygopher.top/tags/tls/">tls</a> &nbsp;
+              
+                  <a href="http://flygopher.top/tags/cert-manager/">cert-manager</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li><a href="#部署">部署</a>
+<ul>
+<li>
+<ul>
+<li><a href="#yaml文件部署">Yaml文件部署</a></li>
+<li><a href="#helm3-部署">Helm3 部署</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#证书签发服务">证书签发服务</a></li>
+<li><a href="#验证">验证</a></li>
+<li><a href="#参考">参考</a></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+          
+          
+          
+
+          <p>现在的Web应用启用<code>HTTPS</code>服务是真的非常有必要的。一些正规机构颁发的<code>CA</code>证书费用又特别高，不过比较幸运的是也有免费的午餐 - <code>Let's Encrypt</code>，虽然只有90天的证书有效期，但是我们完全可以在证书失效之前，重新生成证书替换掉。在<code>Kubernetes</code>集群中就更方便了，我们可以通过 Kubernetes Ingress 和 Let’s Encrypt 实现外部服务的自动化 HTTPS。</p>
+
+<p>Cert-Manager 是一个云原生证书管理开源项目，用于在 Kubernetes 集群中提供 HTTPS 证书并自动续期，支持 Let’s Encrypt / HashiCorp / Vault 这些免费证书的签发。</p>
+
+<figure><img src="http://flygopher.top/img/post/cert-manager-structrue.svg" alt="Cert Manager Structrue"><figcaption>Cert Manager Structrue</figcaption></figure>
+
+<h1 id="部署">部署</h1>
+
+<p>我们这里用来管理 SSL/TLS 证书的组件是<code>Cert manager</code>，它对于每一个 ingress endpoint 将会自动创建一个新的证书，当 certificates 过期时还能自动更新，除此之外，Cert manager 也可以和其它的 providers 一起工作，例如 HashiCorp Vault。这里我们介绍两种部署方式：</p>
+
+<h3 id="yaml文件部署">Yaml文件部署</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Kubernetes 1.16+
+$ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.2/cert-manager.yaml
+
+# Kubernetes &lt;1.16
+$ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.2/cert-manager-legacy.yaml</pre></div>
+<h3 id="helm3-部署">Helm3 部署</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kubectl create namespace cert-manager
+
+helm repo add jetstack https://charts.jetstack.io
+helm repo update
+
+helm upgrade --install \
+  cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --version v1.0.2 \
+  --set ingressShim.defaultIssuerName=letsencrypt-prod \
+  --set ingressShim.defaultIssuerKind=ClusterIssuer \
+  --set installCRDs=true</pre></div>
+<p>在使用的时候我们需要配置一个缺省的<a href="http://docs.cert-manager.io/en/latest/reference/clusterissuers.html">cluster issuer</a>，当部署<code>Cert manager</code>的时候，用于支持<code>kubernetes.io/tls-acme: &quot;true&quot;</code>annotation 来自动化 TLS。</p>
+
+<p>安装完成后，然后查看<code>Pod</code>运行状态：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl get pods -n cert-manager
+NAME                                      READY   STATUS    RESTARTS   AGE
+cert-manager-74fdd7bc8f-bhj6v             1/1     Running   0          6h48m
+cert-manager-cainjector-8665f9998-k7bx6   1/1     Running   0          6h48m
+cert-manager-webhook-677b8cbf67-2w48n     1/1     Running   0          6h48m</pre></div>
+<p>除此之外，安装完成后<code>Cert manager</code>还提供了一些<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Kubernetes custom resources</a>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl get crd -n cert-manager
+NAME                                  CREATED AT
+certificaterequests.cert-manager.io   2020-09-28T05:44:55Z
+certificates.cert-manager.io          2020-09-28T05:44:55Z
+challenges.acme.cert-manager.io       2020-09-28T05:44:56Z
+clusterissuers.cert-manager.io        2020-09-28T05:44:56Z
+issuers.cert-manager.io               2020-09-28T05:44:58Z
+orders.acme.cert-manager.io           2020-09-28T05:44:58Z</pre></div>
+<h1 id="证书签发服务">证书签发服务</h1>
+
+<p><code>Cert manager</code>安装后，接下来需要定义上面的<code>letsencrypt-prod</code>这个<code>cluster issuer</code>，这里使用上面的<code>clusterissuers.certmanager.k8s.io</code>这个<code>CRD</code>来定义：（cluster-issuer-letsencrypt-prod.yaml）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: xxx@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+      - http01:
+          ingress:
+            class: nginx</pre></div>
+<p>然后直接创建这个<code>ClusterIssuer</code>资源：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl create -f cluster-issuer-letsencrypt-prod.yaml
+clusterissuer.certmanager.k8s.io &#34;letsencrypt-prod&#34; created</pre></div>
+<p>注意：上面配置的是生产环境，你还可以配置staging环境来测试。<a href="https://letsencrypt.org/zh-cn/docs/staging-environment/">Let’s Encrypt 测试环境与生产环境的区别</a></p>
+
+<h1 id="验证">验证</h1>
+
+<p>上面我们已经安装了<code>Cert manager</code>，定义了<code>ClusterIssuer</code>，接下来我们来配置 HTTPS 去访问我们的 Nginx服务，Nginx 的部署我们这里就不多说了，直接添加一个 Ingress 资源对象即可：(nginx-ingress.yaml)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+	name: nginx
+  annotations:
+  	kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: &#34;true&#34;
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: nginx
+          servicePort: 80
+    host: &#34;nginx-demo.qcloud.com&#34;
+  tls:
+    - hosts:
+      - nginx-demo.qcloud.com
+      secretName: nginx-demo-tls</pre></div>
+<p>这里需要注意的是上面我们添加的<code>annotations</code>非常重要，这个将告诉 Cert Manager 去生成证书，然后由于我们这里要使用 HTTPS，所以我们需要添加一个 tls 证书，而证书就是通过<code>nginx-demo-tls</code>这个 Secret 对象来提供的，要注意的是这个 Secret 对象并不是我们手动创建的，而是 Cert Manager 自动创建的证书对应的对应。然后直接创建这个资源对象即可：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl create -f nginx-ingress.yaml</code></pre></div>
+<blockquote>
+<p>当然如果需要在公网中进行访问，我们还需要将我们这里的域名解析到 Ingress Controller 所在的任意一个节点，或者在本地的<code>/etc/hosts</code>中加上映射也是可以的。</p>
+</blockquote>
+
+<p>之后 Cert-manager 会读取注解并创建证书，使用以下命令查看：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl get certificate
+NAME                     READY   SECRET                   AGE
+nginx-demo-tls           True    nginx-demo-tls	          5h20m</pre></div>
+<p>到这里我们就完成了使用<code>Let's Encrypt</code>实现<code>Kubernetes Ingress</code>自动化 HTTPS。</p>
+
+<h1 id="参考">参考</h1>
+
+<p><a href="https://cert-manager.io/docs/installation/kubernetes/">Cert Manager 官网</a></p>
+
+<p><a href="https://github.com/jetstack/cert-manager">Cert Manager Github</a></p>
+
+          
+  
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="http://flygopher.top/img/avatar.jpg"/></span>
+        <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
+    </div>
+    <div class="zs-modal-body">
+        <div class="zs-modal-btns">
+            <button class="btn btn-blink" data-num="2">2元</button>
+            <button class="btn btn-blink" data-num="5">5元</button>
+            <button class="btn btn-blink" data-num="10">10元</button>
+            <button class="btn btn-blink" data-num="50">50元</button>
+            <button class="btn btn-blink" data-num="100">100元</button>
+            <button class="btn btn-blink" data-num="1">任意金额</button>
+        </div>
+        <div class="zs-modal-pay">
+            <button class="btn btn-bred" id="pay-text">2元</button>
+            <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+            <img src="http://flygopher.top/img/wechat-2.png" id="pay-image"/>
+        </div>
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="http://flygopher.top/img/wechat-btn.png"/></span>
+    </div>
+</div>
+          
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+    <a href="#" class="social-share-icon icon-twitter"></a>
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+    <a href="#" class="social-share-icon icon-facebook"></a>
+    <a href="#" class="social-share-icon icon-qq"></a>
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="http://flygopher.top/post/kubernetes-storage2/">kubernetes持久化存储（二）</a></li>
+    
+    <li><a href="http://flygopher.top/post/kubernetes-storage1/">kubernetes持久化存储（一）</a></li>
+    
+    <li><a href="http://flygopher.top/post/sample-https-principle/">浅谈HTTPS原理</a></li>
+    
+    <li><a href="http://flygopher.top/post/kubeadm-install-kubernetes-cluster/">使用kubeadm搭建Kubernetes集群</a></li>
+    
+    <li><a href="http://flygopher.top/post/local-install-ha-kubernetes-cluster/">使用二进制搭建kubernetes三节点高可用集群</a></li>
+    
+    <li><a href="http://flygopher.top/post/jenkins-slave-base-on-kubernetes/">基于kubernetes的动态jenkins slave</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://flygopher.top/post/kubernetes-storage2/" data-toggle="tooltip" data-placement="top" title="kubernetes持久化存储（二）">&larr; 前一篇</a>
+            </li>
+          
+          
+        </ul>
+        
+  
+        
+  
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bo.liang0212@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="https://github.com/amuguelove" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          <li>
+            <a href="http://flygopher.top/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          &bull;&nbsp;
+          &copy;2016-2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/">梁波的技术博客</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flygopher.top/archives/">归档</a>
+          &nbsp; &bull;&nbsp;
+          
+        </p>
+        <p class="text-center text-muted">
+          <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+          <span id="busuanzi_container_site_pv" style="display:none">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          &nbsp;&bull;&nbsp;
+          <span id="busuanzi_container_site_uv" style="display:none">
+            访客数<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src='http://flygopher.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-158970182-1');
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script >
+$(document).ready(function() {
+  var int = setInterval(fixCount, 50);  
+  
+  var initPVCount = 0;
+  var initUVCount = 0;
+  function fixCount() {
+    if ($("#busuanzi_container_site_pv").css("display") != "none") {
+        $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
+        clearInterval(int); 
+    }
+    if ($("#busuanzi_container_site_uv").css("display") != "none") {
+      $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + initUVCount);
+      clearInterval(int); 
+    }
+  }
+});
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+$('.carousel').slick({
+    dots: true,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    centerMode: true,
+    prevArrow: '<button type="button" class="slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-next"></button>',
+});
+</script>
+
+  </body>
+</html>
+
