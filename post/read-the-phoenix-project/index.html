@@ -6,24 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>kubernetes Ingress 自动化 HTTPS-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="kubernetes Ingress 自动化 HTTPS" />
-  <meta name="twitter:title" content="kubernetes Ingress 自动化 HTTPS" />
+  <title>凤凰项目读后感-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="凤凰项目读后感" />
+  <meta name="twitter:title" content="凤凰项目读后感" />
   
-  <meta name="description" content="使用Cert Manager为Kubernetes Ingress自动签发证书">
-  <meta property="og:description" content="使用Cert Manager为Kubernetes Ingress自动签发证书">
-  <meta name="twitter:description" content="使用Cert Manager为Kubernetes Ingress自动签发证书">
+  <meta name="description" content="花了2天的时间看完这本书：《凤凰项目（沙盘特别版）》，感触颇深。和所有讲DevOps相关的书不同，感觉就在读小说一样，而且非常的励志，讲述了一家陷入困境的传统制造业公司，怎么凭借凤凰项目（或者独角兽项目）起死回生的。IT运维在其中发挥了只管重要的作用。
+
+最近这半年来，我大部分的工作也集中在开发运维上，在这个过程中，也接触到了很多DevOps相关的知识和实践，虽然书中很多东西比较旧，但是还是有很多只得借鉴的地方。 读这本书的时候，有很多地方产生了共鸣，一度让我回忆起了之前参与公司的TWI中的课程，关于敏捷和精益的部分，尤其是精益思想。">
+  <meta property="og:description" content="花了2天的时间看完这本书：《凤凰项目（沙盘特别版）》，感触颇深。和所有讲DevOps相关的书不同，感觉就在读小说一样，而且非常的励志，讲述了一家陷入困境的传统制造业公司，怎么凭借凤凰项目（或者独角兽项目）起死回生的。IT运维在其中发挥了只管重要的作用。
+
+最近这半年来，我大部分的工作也集中在开发运维上，在这个过程中，也接触到了很多DevOps相关的知识和实践，虽然书中很多东西比较旧，但是还是有很多只得借鉴的地方。 读这本书的时候，有很多地方产生了共鸣，一度让我回忆起了之前参与公司的TWI中的课程，关于敏捷和精益的部分，尤其是精益思想。">
+  <meta name="twitter:description" content="花了2天的时间看完这本书：《凤凰项目（沙盘特别版）》，感触颇深。和所有讲DevOps相关的书不同，感觉就在读小说一样，而且非常的励志，讲述了一家陷入困境的传统制造业公司，怎么凭借凤凰项目（或者独角兽项目）起死回生的。IT运维在其中发挥了只管重要的作用。
+
+最近这半年来，我大部分的工作也集中在开发运维上，在这个过程中，也接触到了很多DevOps相关的知识和实践，虽然书中很多东西比较旧，但是还是有很多 …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/" />
+  <meta property="og:url" content="http://flygopher.top/post/read-the-phoenix-project/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.58.3" />
-  <link rel="canonical" href="http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/" />
+  <link rel="canonical" href="http://flygopher.top/post/read-the-phoenix-project/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
@@ -164,16 +170,12 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>kubernetes Ingress 自动化 HTTPS</h1>
-                
-                  
-                    <h2 class="post-subheading">使用Cert Manager为Kubernetes Ingress自动签发证书</h2>
-                  
+              <h1>凤凰项目读后感</h1>
                 
                 
                   <span class="post-meta">
   
-    发表于 September 28, 2020
+    发表于 October 10, 2020
   
   
 </span>
@@ -204,15 +206,11 @@ if (!doNotTrack) {
             
             <h5 id="tags" style="margin-top: 30px;">标签:
               
-                  <a href="http://flygopher.top/tags/kubernetes/">kubernetes</a> &nbsp;
+                  <a href="http://flygopher.top/tags/book/">book</a> &nbsp;
               
-                  <a href="http://flygopher.top/tags/ingress/">ingress</a> &nbsp;
+                  <a href="http://flygopher.top/tags/devops/">devops</a> &nbsp;
               
-                  <a href="http://flygopher.top/tags/https/">https</a> &nbsp;
-              
-                  <a href="http://flygopher.top/tags/tls/">tls</a> &nbsp;
-              
-                  <a href="http://flygopher.top/tags/cert-manager/">cert-manager</a> &nbsp;
+                  <a href="http://flygopher.top/tags/it/">IT</a> &nbsp;
               
             </h5>
             
@@ -224,17 +222,20 @@ if (!doNotTrack) {
 <aside class="toc">
   <nav id="TableOfContents">
 <ul>
-<li><a href="#部署">部署</a>
-<ul>
 <li>
 <ul>
-<li><a href="#yaml文件部署">Yaml文件部署</a></li>
-<li><a href="#helm3-部署">Helm3 部署</a></li>
+<li><a href="#开发运维从何而来">开发运维从何而来</a></li>
+<li><a href="#三步工作法">三步工作法</a></li>
+<li><a href="#对开发运维的误解">对开发运维的误解</a>
+<ul>
+<li><a href="#开发运维取代了敏捷开发">开发运维取代了敏捷开发</a></li>
+<li><a href="#开发运维取代了itil">开发运维取代了ITIL</a></li>
+<li><a href="#开发运维意味着无需运维">开发运维意味着无需运维</a></li>
+<li><a href="#开发运维只适用于开源软件">开发运维只适用于开源软件</a></li>
+<li><a href="#开发运维只是-作为代码的基础架构-或自动化">开发运维只是“作为代码的基础架构”或自动化</a></li>
+<li><a href="#开发运维只适用于创业公司和-独角兽-公司">开发运维只适用于创业公司和“独角兽”公司</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#证书签发服务">证书签发服务</a></li>
-<li><a href="#验证">验证</a></li>
-<li><a href="#参考">参考</a></li>
 </ul>
 </nav>
 </aside>
@@ -253,114 +254,74 @@ if (!doNotTrack) {
           
           
 
-          <p>现在的Web应用启用<code>HTTPS</code>服务是真的非常有必要的。一些正规机构颁发的<code>CA</code>证书费用又特别高，不过比较幸运的是也有免费的午餐 - <code>Let's Encrypt</code>，虽然只有90天的证书有效期，但是我们完全可以在证书失效之前，重新生成证书替换掉。在<code>Kubernetes</code>集群中就更方便了，我们可以通过 Kubernetes Ingress 和 Let’s Encrypt 实现外部服务的自动化 HTTPS。</p>
+          <p>花了2天的时间看完这本书：《凤凰项目（沙盘特别版）》，感触颇深。和所有讲DevOps相关的书不同，感觉就在读小说一样，而且非常的励志，讲述了一家陷入困境的传统制造业公司，怎么凭借凤凰项目（或者独角兽项目）起死回生的。IT运维在其中发挥了只管重要的作用。</p>
 
-<p>Cert-Manager 是一个云原生证书管理开源项目，用于在 Kubernetes 集群中提供 HTTPS 证书并自动续期，支持 Let’s Encrypt / HashiCorp / Vault 这些免费证书的签发。</p>
+<p>最近这半年来，我大部分的工作也集中在开发运维上，在这个过程中，也接触到了很多DevOps相关的知识和实践，虽然书中很多东西比较旧，但是还是有很多只得借鉴的地方。 读这本书的时候，有很多地方产生了共鸣，一度让我回忆起了之前参与公司的TWI中的课程，关于敏捷和精益的部分，尤其是精益思想。</p>
 
-<figure><img src="http://flygopher.top/img/post/cert-manager-structrue.svg" alt="Cert Manager Structrue"><figcaption>Cert Manager Structrue</figcaption></figure>
+<h2 id="开发运维从何而来">开发运维从何而来</h2>
 
-<h1 id="部署">部署</h1>
+<p>“开发运维”这个词最初是在2008年由帕特特里克·德布瓦和安德鲁·谢弗提出的，并于2009年因为约翰·阿斯帕尔瓦和保罗·哈蒙德那场著名的“每天超过10次部署：Flickr的开发与运维合作”演讲，在Velocity技术大会广为流传。</p>
 
-<p>我们这里用来管理 SSL/TLS 证书的组件是<code>Cert manager</code>，它对于每一个 ingress endpoint 将会自动创建一个新的证书，当 certificates 过期时还能自动更新，除此之外，Cert manager 也可以和其它的 providers 一起工作，例如 HashiCorp Vault。这里我们介绍两种部署方式：</p>
+<p>书中认为“开发运维”是在IT价值流中应用精益理论的结果。</p>
 
-<h3 id="yaml文件部署">Yaml文件部署</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Kubernetes 1.16+
-$ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.2/cert-manager.yaml
+<h2 id="三步工作法">三步工作法</h2>
 
-# Kubernetes &lt;1.16
-$ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.2/cert-manager-legacy.yaml</pre></div>
-<h3 id="helm3-部署">Helm3 部署</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kubectl create namespace cert-manager
+<p>书中很大的篇幅为读者阐述了这一基础原理，即所有开发运维模式都来自“三步工作法”，它旨在阐明指导开发运维的流程与实践的价值与理念。</p>
 
-helm repo add jetstack https://charts.jetstack.io
-helm repo update
+<p><code>第一工作法</code>是关于从开发到IT运维再到客户的整个自左向右的工作流。为了使流量最大化，我们需要小的批量规模和工作间隔，绝不让缺陷流向下游工作中心，并且不断为了整体目标（相对于开发功能完成率、测试发现/修复比率机票运维有效性指标等局部目标）进行优化。</p>
 
-helm upgrade --install \
-  cert-manager jetstack/cert-manager \
-  --namespace cert-manager \
-  --version v1.0.2 \
-  --set ingressShim.defaultIssuerName=letsencrypt-prod \
-  --set ingressShim.defaultIssuerKind=ClusterIssuer \
-  --set installCRDs=true</pre></div>
-<p>在使用的时候我们需要配置一个缺省的<a href="http://docs.cert-manager.io/en/latest/reference/clusterissuers.html">cluster issuer</a>，当部署<code>Cert manager</code>的时候，用于支持<code>kubernetes.io/tls-acme: &quot;true&quot;</code>annotation 来自动化 TLS。</p>
+<p>必要的做法包括：持续构建、集成以及部署，按需创建环境，严控半成品，以及构建器能够顺利变更的安全系统和组织。</p>
 
-<p>安装完成后，然后查看<code>Pod</code>运行状态：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl get pods -n cert-manager
-NAME                                      READY   STATUS    RESTARTS   AGE
-cert-manager-74fdd7bc8f-bhj6v             1/1     Running   0          6h48m
-cert-manager-cainjector-8665f9998-k7bx6   1/1     Running   0          6h48m
-cert-manager-webhook-677b8cbf67-2w48n     1/1     Running   0          6h48m</pre></div>
-<p>除此之外，安装完成后<code>Cert manager</code>还提供了一些<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Kubernetes custom resources</a>：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl get crd -n cert-manager
-NAME                                  CREATED AT
-certificaterequests.cert-manager.io   2020-09-28T05:44:55Z
-certificates.cert-manager.io          2020-09-28T05:44:55Z
-challenges.acme.cert-manager.io       2020-09-28T05:44:56Z
-clusterissuers.cert-manager.io        2020-09-28T05:44:56Z
-issuers.cert-manager.io               2020-09-28T05:44:58Z
-orders.acme.cert-manager.io           2020-09-28T05:44:58Z</pre></div>
-<h1 id="证书签发服务">证书签发服务</h1>
+<p><code>第二工作法</code>是关于价值流各阶段自右向左的快速持续反馈流，放大其效益以确保防止问题再次发生，或者更快地发现和修复问题。这样，我们就能在所需之处获取或嵌入知识，从源头保证质量。</p>
 
-<p><code>Cert manager</code>安装后，接下来需要定义上面的<code>letsencrypt-prod</code>这个<code>cluster issuer</code>，这里使用上面的<code>clusterissuers.certmanager.k8s.io</code>这个<code>CRD</code>来定义：（cluster-issuer-letsencrypt-prod.yaml）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
-metadata:
-  name: letsencrypt-prod
-spec:
-  acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
-    email: xxx@gmail.com
-    privateKeySecretRef:
-      name: letsencrypt-prod
-    solvers:
-      - http01:
-          ingress:
-            class: nginx</pre></div>
-<p>然后直接创建这个<code>ClusterIssuer</code>资源：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl create -f cluster-issuer-letsencrypt-prod.yaml
-clusterissuer.certmanager.k8s.io &#34;letsencrypt-prod&#34; created</pre></div>
-<p>注意：上面配置的是生产环境，你还可以配置staging环境来测试。<a href="https://letsencrypt.org/zh-cn/docs/staging-environment/">Let’s Encrypt 测试环境与生产环境的区别</a></p>
+<p>必要的做法包括：在部署管道中的构建和测试失败时“停止生产线”；日复一日地持续改进日常工作；创建快速的自动化测试套装软件，以确保代码总是处于可部署的状态；在开发和IT运维之间建立共同的目标和共同解决问题的机制；建立普通的产品遥感技术，让每个人都能知道，代码和环境是否在按照设定的运行，以及是否达到客户的目标。</p>
 
-<h1 id="验证">验证</h1>
+<p><code>第三工作法</code>是关于创造公司文化，该文化可带动两种风气的形成：不断尝试，这需要承担风险并从成功和失败中吸取经验教训；理解重复和练习是熟练掌握的前提。</p>
 
-<p>上面我们已经安装了<code>Cert manager</code>，定义了<code>ClusterIssuer</code>，接下来我们来配置 HTTPS 去访问我们的 Nginx服务，Nginx 的部署我们这里就不多说了，直接添加一个 Ingress 资源对象即可：(nginx-ingress.yaml)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-	name: nginx
-  annotations:
-  	kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: &#34;true&#34;
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-spec:
-  rules:
-  - http:
-      paths:
-      - backend:
-          serviceName: nginx
-          servicePort: 80
-    host: &#34;nginx-demo.qcloud.com&#34;
-  tls:
-    - hosts:
-      - nginx-demo.qcloud.com
-      secretName: nginx-demo-tls</pre></div>
-<p>这里需要注意的是上面我们添加的<code>annotations</code>非常重要，这个将告诉 Cert Manager 去生成证书，然后由于我们这里要使用 HTTPS，所以我们需要添加一个 tls 证书，而证书就是通过<code>nginx-demo-tls</code>这个 Secret 对象来提供的，要注意的是这个 Secret 对象并不是我们手动创建的，而是 Cert Manager 自动创建的证书对应的对应。然后直接创建这个资源对象即可：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl create -f nginx-ingress.yaml</code></pre></div>
-<blockquote>
-<p>当然如果需要在公网中进行访问，我们还需要将我们这里的域名解析到 Ingress Controller 所在的任意一个节点，或者在本地的<code>/etc/hosts</code>中加上映射也是可以的。</p>
-</blockquote>
+<p>尝试和承担风险让我们能够不懈地改进工作系统，这经常要求我们去做一些与几十年来的做法大不相同的事。一旦出了问题，不断重复的日常操练赋予我们的技能和经验，令我们可以撤回至安全区域并恢复正常运作。</p>
 
-<p>之后 Cert-manager 会读取注解并创建证书，使用以下命令查看：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl get certificate
-NAME                     READY   SECRET                   AGE
-nginx-demo-tls           True    nginx-demo-tls	          5h20m</pre></div>
-<p>到这里我们就完成了使用<code>Let's Encrypt</code>实现<code>Kubernetes Ingress</code>自动化 HTTPS。</p>
+<p>必要的做法包括：营造一种勇于创新、敢于冒险（相对于畏惧或盲目服从命令）以及高信任度（相对于低信任度和命令控制）的文化，把至少20%的开发和IT运维周期划拨给非功能性需求，并且不断鼓励进行改进。</p>
 
-<h1 id="参考">参考</h1>
+<h2 id="对开发运维的误解">对开发运维的误解</h2>
 
-<p><a href="https://cert-manager.io/docs/installation/kubernetes/">Cert Manager 官网</a></p>
+<p>一如各种变革性、颠覆性的运动，开发运维也会被误解或曲解。以下是对开发运维的一些主要误解。</p>
 
-<p><a href="https://github.com/jetstack/cert-manager">Cert Manager Github</a></p>
+<h3 id="开发运维取代了敏捷开发">开发运维取代了敏捷开发</h3>
+
+<p>开发运维与敏捷开发完全兼容。事实上，开发运维是始于 2001年的敏捷开发的逻辑延伸，因为我们现在知道，“完成”的真正定义并非开发部完成了编码，而是只有在代码经过充分测试并按设计在生产中运行时，代码才算“完成”。（注意，敏捷开发并非采用开发运维的前提条件。）</p>
+
+<h3 id="开发运维取代了itil">开发运维取代了ITIL</h3>
+
+<p>尽管有些人可能会把开发运维看作ITIL(IT Infrastructure Library,信息技术基础架构库）或ITSM(IT Service Management,信息技术服务管理）形对立面，但是开发运维与ITIL也是可兼容的。ITIL 和ITSM仍然是支撑
+运维流程的最佳编码法则，而且它们描述了为了支撑开发运维协同工作的流程，IT运维部所需要具备的很多能力。</p>
+
+<p>为了适应与开发运维相关的更短的交付周期和更高的部署频率，ITIL流程的许多方面都需要自动化，特别是变更、配置和发布流程等方面。</p>
+
+<p>因为在发生服务事故时，我们同样需要快速检测和修复，所以关于服务设计以及事故问题管理的ITIL准则仍然和以前一样有意义。</p>
+
+<h3 id="开发运维意味着无需运维">开发运维意味着无需运维</h3>
+
+<p>有时候，“开发运维”被错误地理解为“无需运维”（例如，IT运维部被整体取消了）。然而，更准确地说，开发运维经常会让开发部承担更多开展代码部署和维持服务水平的责任。这只不过意味着开发部接管了许多IT运维部和运维工程的职责。</p>
+
+<p>为了支持快速交付并让开发人员提高工作效率，开发运维确实要求把许多IT运维任务转变为自助服务。也就是说，不再是开发部开出一张派工单，等着IT运维部完成工作。许多这一类的活动将会自动化，让开发人员自己就能做这些事（例如，构建一个类生产的开发环境，为产品远程添加一个功能指标）。</p>
+
+<h3 id="开发运维只适用于开源软件">开发运维只适用于开源软件</h3>
+
+<p>尽管开发运维的很多成功案例都来自使用LAMP栈（LAMP stack)等软件的公司，但各组织通过Microsoft.NET、SAP,甚至COBOL 应用程序，将开发运维的模式植入到大型机和惠普激光打印固件上。</p>
+
+<p>开发运维的原理是通用的，它们在很大程度上独立于所采用的底层技术。一些开发运维模式有特定的技术要求（例如，可支持自动测试，可公开能够在版本控制中核查的配置），这在开源软件中更为普遍。</p>
+
+<h3 id="开发运维只是-作为代码的基础架构-或自动化">开发运维只是“作为代码的基础架构”或自动化</h3>
+
+<p>尽管本书展示的许多开发运维模式需要自动化，但开发运维也需要IT价值流自始至终拥有共同的目标并共同解决问题。这远非自动化所能涵盖的。</p>
+
+<h3 id="开发运维只适用于创业公司和-独角兽-公司">开发运维只适用于创业公司和“独角兽”公司</h3>
+
+<p>开发运维适用于任何一家亟需提高开发部门计划内工作流，同时为客户保持质量、可靠性及安全性的企业。</p>
+
+<p>事实上，我们认为开发运维对于“马驹公司”的重要性更甚于“独角兽”公司。毕竟，如理查德·福斯特所言：“1955年的财富500强公司中，有87%业已消失。1958年，财富500强公司的平均寿命为61年，而现在只有18年。” 我们知道，每一家IT公司都有螺旋式下降的过程。然而，绝大多数公司的IT部门都会给出无数条理由，证明其不能采用开发运维，或者证明开发运维与其无关。</p>
+
+<p>“马驹公司”最主要的一个反对意见是，所有的“独角兽公司”（例如谷歌、亚马逊、Twitter、Etsy)都是生来如此的。也就是说，“独角兽公司”从一开始就在做开发运维。实际上，几乎每一家开发运维“独角兽公司”都曾是“马驹公司”，都曾有过“马驹公司”所面临的全部问题。</p>
 
           
   
@@ -425,11 +386,11 @@ nginx-demo-tls           True    nginx-demo-tls	          5h20m</pre></div>
     
     <li><a href="http://flygopher.top/post/kubernetes-storage1/">kubernetes持久化存储（一）</a></li>
     
-    <li><a href="http://flygopher.top/post/sample-https-principle/">浅谈HTTPS原理</a></li>
-    
     <li><a href="http://flygopher.top/post/kubeadm-install-kubernetes-cluster/">使用kubeadm搭建Kubernetes集群</a></li>
     
     <li><a href="http://flygopher.top/post/local-install-ha-kubernetes-cluster/">使用二进制搭建kubernetes三节点高可用集群</a></li>
+    
+    <li><a href="http://flygopher.top/post/read-clean-code/">代码整洁之道</a></li>
     
     <li><a href="http://flygopher.top/post/jenkins-slave-base-on-kubernetes/">基于kubernetes的动态jenkins slave</a></li>
     
@@ -441,13 +402,9 @@ nginx-demo-tls           True    nginx-demo-tls	          5h20m</pre></div>
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://flygopher.top/post/kubernetes-storage2/" data-toggle="tooltip" data-placement="top" title="kubernetes持久化存储（二）">&larr; 前一篇</a>
+              <a href="http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/" data-toggle="tooltip" data-placement="top" title="kubernetes Ingress 自动化 HTTPS">&larr; 前一篇</a>
             </li>
           
-          
-            <li class="next">
-              <a href="http://flygopher.top/post/read-the-phoenix-project/" data-toggle="tooltip" data-placement="top" title="凤凰项目读后感">后一篇 &rarr;</a>
-            </li>
           
         </ul>
         

@@ -193,6 +193,57 @@ if (!doNotTrack) {
 
 
             <article class="post-preview">
+              <a href="http://flygopher.top/post/java-object-mappping-framework-benchmark/">
+                <h2 class="post-title">使用JMH对Java Object Mapping框架做性能对比</h2>
+                
+              </a>
+
+              <span class="post-meta">
+  
+    发表于 March 23, 2020
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <h2 id="jmh概述">JMH概述</h2>
+
+<p>JMH 是一个由 OpenJDK/Oracle 里面那群开发了 Java 编译器的大牛们所开发的 Micro Benchmark Framework 。何谓 Micro Benchmark 呢？简单地说就是在 <strong>method</strong> 层面上的 benchmark，精度可以精确到微秒级。可以看出 JMH 主要使用在当你已经找出了热点函数，而需要对热点函数进行进一步的优化时，就可以使用 JMH 对优化的效果进行定量的分析。</p>
+
+<p>比较典型的使用场景还有：</p>
+
+<ul>
+<li>想定量地知道某个函数需要执行多长时间，以及执行时间和输入 n 的相关性</li>
+<li>一个函数有两种不同实现（例如实现 A 使用了 FixedThreadPool，实现 B 使用了 ForkJoinPool），不知道哪种实现性能更好</li>
+</ul>
+
+<p>尽管 JMH 是一个相当不错的 Micro Benchmark Framework，但很无奈的是网上能够找到的文档比较少，而官方也没有提供比较详细的文档，对使用造成了一定的障碍。但是有个好消息是官方的 <a href="http://hg.openjdk.java.net/code-tools/jmh/file/tip/jmh-samples/src/main/java/org/openjdk/jmh/samples/">Code Sample</a> 写得非常浅显易懂，推荐在需要详细了解 JMH 的用法时可以通读一遍——本文则会介绍 JMH 最典型的用法和部分常用选项。</p>
+
+<p>我Fork了一份到github，可以提供大家参考一下，使用gradle构建。<a href="https://github.com/amuguelove/jmh-gradle-samples">jmh-gradle-samples</a></p>
+                  <a href="http://flygopher.top/post/java-object-mappping-framework-benchmark/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://flygopher.top/tags/java/">java</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/jmh/">jmh</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/mapping-framework/">mapping-framework</a>&nbsp;
+                
+                </span>
+              
+            </article>
+
+          
+
+
+
+            <article class="post-preview">
               <a href="http://flygopher.top/post/gradle-publish-jar-into-maven-central/">
                 <h2 class="post-title">Gradle发布Java Library到Maven中央仓库</h2>
                 
@@ -229,6 +280,17 @@ if (!doNotTrack) {
             </article>
 
           
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -291,17 +353,6 @@ public @interface SpringBootApplication {
             </article>
 
           
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -650,57 +701,6 @@ public @interface SpringBootApplication {
             </article>
 
           
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/mongo-replica-sets/">
-                <h2 class="post-title">Mongo复制集机制及原理</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 March 3, 2020
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <h2 id="复制集的作用">复制集的作用</h2>
-
-<p>MongoDB 复制集的主要意义在于实现服务高可用。</p>
-
-<p>它的现实依赖于两个方面的功能:</p>
-
-<ol>
-<li>数据写入时将数据迅速复制到另一个独立节点上</li>
-<li>在接受写入的节点发生故障时自动选举出一个新的替代节点</li>
-</ol>
-
-<p>在实现高可用的同时，复制集实现了其他几个附加作用:</p>
-
-<ol>
-<li>数据分发:将数据从一个区域复制到另一个区域，减少另一个区域的读延迟</li>
-<li>读写分离:不同类型的压力分别在不同的节点上执行</li>
-<li>异地容灾:在数据中心故障时候快速切换到异地</li>
-</ol>
-                  <a href="http://flygopher.top/post/mongo-replica-sets/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/mongo/">mongo</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
         </div>
 
         <div align="center" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -887,7 +887,7 @@ public @interface SpringBootApplication {
           <ol class="list-unstyled">
             
             
-            <li><a href="http://flygopher.top/categories/book">book(1)</a></li>
+            <li><a href="http://flygopher.top/categories/book">book(2)</a></li>
             
           
             
@@ -987,7 +987,7 @@ public @interface SpringBootApplication {
             
             
             
-            <a href="http://flygopher.top/tags/book"><i class="fa fa-tags"></i> book(1)</a>
+            <a href="http://flygopher.top/tags/book"><i class="fa fa-tags"></i> book(2)</a>
             
             
             
@@ -1015,7 +1015,7 @@ public @interface SpringBootApplication {
             
             
             
-            <a href="http://flygopher.top/tags/devops"><i class="fa fa-tags"></i> devops(5)</a>
+            <a href="http://flygopher.top/tags/devops"><i class="fa fa-tags"></i> devops(6)</a>
             
             
             
@@ -1064,6 +1064,10 @@ public @interface SpringBootApplication {
             
             
             <a href="http://flygopher.top/tags/ingress"><i class="fa fa-tags"></i> ingress(1)</a>
+            
+            
+            
+            <a href="http://flygopher.top/tags/it"><i class="fa fa-tags"></i> it(1)</a>
             
             
             

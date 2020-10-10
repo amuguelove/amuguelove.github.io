@@ -6,10 +6,37 @@
     <description>Recent content in Tags on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 28 Sep 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>book</title>
+      <link>http://flygopher.top/tags/book/</link>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/tags/book/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>devops</title>
+      <link>http://flygopher.top/tags/devops/</link>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IT</title>
+      <link>http://flygopher.top/tags/it/</link>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/tags/it/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>cert-manager</title>
@@ -53,15 +80,6 @@
       <pubDate>Mon, 28 Sep 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/tags/tls/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>devops</title>
-      <link>http://flygopher.top/tags/devops/</link>
-      <pubDate>Sun, 27 Sep 2020 00:00:00 +0800</pubDate>
-      
-      <guid>http://flygopher.top/tags/devops/</guid>
       <description></description>
     </item>
     
@@ -152,15 +170,6 @@
       <pubDate>Tue, 07 Apr 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>book</title>
-      <link>http://flygopher.top/tags/book/</link>
-      <pubDate>Fri, 03 Apr 2020 00:00:00 +0800</pubDate>
-      
-      <guid>http://flygopher.top/tags/book/</guid>
       <description></description>
     </item>
     

@@ -165,6 +165,39 @@ if (!doNotTrack) {
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://flygopher.top/post/springboot2-aop/">
+                <h2 class="post-title">SpringBoot2干货系列 | 第二篇：Spring AOP 哪些事儿</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 December 26, 2018
+              </p>
+              <div class="post-entry">
+                
+                  <p>AOP(Aspect-Oriented Programming) 即面向方面编程.  它是一种在运行时,动态地将代码切入到类的指定方法、指定位置上的编程思想. 用于切入到指定类指定方法的代码片段叫做切面, 而切入到哪些类中的哪些方法叫做切入点.</p>
+
+<p>AOP是OOP的有益补充，OOP从横向上区分出了一个个类，AOP则从纵向上向指定类的指定方法中动态地切入代码. 它使OOP变得更加立体.</p>
+
+<p>Java中的动态代理或CGLib就是AOP的体现.</p>
+                  <a href="http://flygopher.top/post/springboot2-aop/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/springboot/">springboot</a>&nbsp;
+                  
+                    #<a href="http://flygopher.top/tags/aop/">AOP</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://flygopher.top/post/macos-golang-environment-setup/">
                 <h2 class="post-title">Mac下安装Golang并配置环境</h2>
 
@@ -498,43 +531,6 @@ redis单机QPS一般在几万，fork可能一下子就会拖慢几万条操作�
 <p><strong>优化思路：</strong><br />
 fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10GB以内，slave -&gt; master，全量复制。</p>
                   <a href="http://flygopher.top/post/redis-problem-optimization/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/redis/">Redis</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/redis-sentinel-setup/">
-                <h2 class="post-title">深入学习Redis：Redis经典三节点哨兵集群搭建</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 October 20, 2018
-              </p>
-              <div class="post-entry">
-                
-                  <h3 id="redis哨兵介绍">Redis哨兵介绍</h3>
-
-<p>哨兵是redis集群架构中非常重要的一个组件，主要功能如下</p>
-
-<p>（1）集群监控，负责监控redis master和slave进程是否正常工作</p>
-
-<p>（2）消息通知，如果某个redis实例有故障，那么哨兵负责发送消息作为报警通知给管理员</p>
-
-<p>（3）故障转移，如果master node挂掉了，会自动转移到slave node上</p>
-
-<p>（4）配置中心，如果故障转移发生了，通知client客户端新的master地址</p>
-                  <a href="http://flygopher.top/post/redis-sentinel-setup/" class="post-read-more">[阅读全文]</a>
                 
               </div>
 
