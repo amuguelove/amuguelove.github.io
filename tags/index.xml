@@ -6,10 +6,55 @@
     <description>Recent content in Tags on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>centos7</title>
+      <link>http://flygopher.top/tags/centos7/</link>
+      <pubDate>Sun, 11 Oct 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/tags/centos7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>devops</title>
+      <link>http://flygopher.top/tags/devops/</link>
+      <pubDate>Sun, 11 Oct 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubeadm</title>
+      <link>http://flygopher.top/tags/kubeadm/</link>
+      <pubDate>Sun, 11 Oct 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/tags/kubeadm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>http://flygopher.top/tags/kubernetes/</link>
+      <pubDate>Sun, 11 Oct 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vagrant</title>
+      <link>http://flygopher.top/tags/vagrant/</link>
+      <pubDate>Sun, 11 Oct 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/tags/vagrant/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>book</title>
@@ -17,15 +62,6 @@
       <pubDate>Sat, 10 Oct 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/tags/book/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>devops</title>
-      <link>http://flygopher.top/tags/devops/</link>
-      <pubDate>Sat, 10 Oct 2020 00:00:00 +0800</pubDate>
-      
-      <guid>http://flygopher.top/tags/devops/</guid>
       <description></description>
     </item>
     
@@ -62,15 +98,6 @@
       <pubDate>Mon, 28 Sep 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/tags/ingress/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>http://flygopher.top/tags/kubernetes/</link>
-      <pubDate>Mon, 28 Sep 2020 00:00:00 +0800</pubDate>
-      
-      <guid>http://flygopher.top/tags/kubernetes/</guid>
       <description></description>
     </item>
     
@@ -134,24 +161,6 @@
       <pubDate>Sat, 29 Aug 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/tags/ssl/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubeadm</title>
-      <link>http://flygopher.top/tags/kubeadm/</link>
-      <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
-      
-      <guid>http://flygopher.top/tags/kubeadm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Vagrant</title>
-      <link>http://flygopher.top/tags/vagrant/</link>
-      <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
-      
-      <guid>http://flygopher.top/tags/vagrant/</guid>
       <description></description>
     </item>
     

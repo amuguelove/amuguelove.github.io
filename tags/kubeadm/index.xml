@@ -6,10 +6,23 @@
     <description>Recent content in kubeadm on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 08 Apr 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/tags/kubeadm/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vagrant定制Box</title>
+      <link>http://flygopher.top/post/customize-vagrant-box/</link>
+      <pubDate>Sun, 11 Oct 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/customize-vagrant-box/</guid>
+      <description>&lt;p&gt;很多人在学习Kubernetes之前，都会苦恼如何搭建一个集群环境呢？你可以使用新版的Docker快速搭建一个单Master的集群，你也可以购买云厂商的集群服务；使用Docker安装集群非常的简单，但是只能是单master节点；购买云厂商的集群服务可以拥有所有的集群功能，而且任意购买云存储，外网LoadBalancer等，但是费用昂贵，因为k8s集群对机器的要求还是不低的。那有没有其他的选择呢？下面给大家介绍我是如何在本地快速搭建k8s集群的。&lt;/p&gt;
+
+&lt;p&gt;使用Vagrant定制Centos7 Box，里面包含了Linux参数优化，Docker，Kubectl，Kubeadm，Kubelet等。这样就可以通过这个Vagrant Box启动多个节点的k8s集群了。&lt;/p&gt;
+
+&lt;p&gt;最近花了点时间将所有的配置都脚本化，可以通过CLI的方式快速构建基础Box或者删除。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>使用kubeadm搭建Kubernetes集群</title>

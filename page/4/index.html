@@ -193,6 +193,42 @@ if (!doNotTrack) {
 
 
             <article class="post-preview">
+              <a href="http://flygopher.top/post/linux-command-crontab/">
+                <h2 class="post-title">每天一个Linux命令（1）：crontab 定时任务</h2>
+                
+              </a>
+
+              <span class="post-meta">
+  
+    发表于 January 7, 2019
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>crontab用于提交和管理用户的需要周期性执行的任务</p>
+                  <a href="http://flygopher.top/post/linux-command-crontab/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://flygopher.top/tags/linux/">Linux</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/crontab/">crontab</a>&nbsp;
+                
+                </span>
+              
+            </article>
+
+          
+
+
+
+            <article class="post-preview">
               <a href="http://flygopher.top/post/springboot2-aop/">
                 <h2 class="post-title">SpringBoot2干货系列 | 第二篇：Spring AOP 哪些事儿</h2>
                 
@@ -229,6 +265,17 @@ if (!doNotTrack) {
             </article>
 
           
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -272,17 +319,6 @@ brew install go</pre></div>
             </article>
 
           
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -621,49 +657,6 @@ INSTRUCTION arguments
             </article>
 
           
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/redis-problem-optimization/">
-                <h2 class="post-title">深入学习Redis：Redis常见问题以及优化方案</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 October 23, 2018
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <h2 id="常见问题以及优化方案">常见问题以及优化方案</h2>
-
-<h4 id="1-fork耗时导致高并发请求延时">1. fork耗时导致高并发请求延时</h4>
-
-<p>一般来说，如果父进程内存有1个G的数据，那么fork可能会耗费在20ms左右，如果是10G~30G，那么就会耗费20 * 10，甚至20 * 30，也就是几百毫秒的时间 。<br />
-info stats中的latest_fork_usec，可以看到最近一次form的时长 。<br />
-redis单机QPS一般在几万，fork可能一下子就会拖慢几万条操作的请求时长，从几毫秒变成1秒 。</p>
-
-<p><strong>优化思路：</strong><br />
-fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10GB以内，slave -&gt; master，全量复制。</p>
-                  <a href="http://flygopher.top/post/redis-problem-optimization/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/redis/">Redis</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
         </div>
 
         <div align="center" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -932,7 +925,7 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
             
           
             
-            <li><a href="http://flygopher.top/categories/vagrant">vagrant(1)</a></li>
+            <li><a href="http://flygopher.top/categories/vagrant">vagrant(2)</a></li>
             
           
             
@@ -953,6 +946,10 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
             
             
             <a href="http://flygopher.top/tags/book"><i class="fa fa-tags"></i> book(2)</a>
+            
+            
+            
+            <a href="http://flygopher.top/tags/centos7"><i class="fa fa-tags"></i> centos7(1)</a>
             
             
             
@@ -980,7 +977,7 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
             
             
             
-            <a href="http://flygopher.top/tags/devops"><i class="fa fa-tags"></i> devops(6)</a>
+            <a href="http://flygopher.top/tags/devops"><i class="fa fa-tags"></i> devops(7)</a>
             
             
             
@@ -1056,11 +1053,11 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
             
             
             
-            <a href="http://flygopher.top/tags/kubeadm"><i class="fa fa-tags"></i> kubeadm(1)</a>
+            <a href="http://flygopher.top/tags/kubeadm"><i class="fa fa-tags"></i> kubeadm(2)</a>
             
             
             
-            <a href="http://flygopher.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(6)</a>
+            <a href="http://flygopher.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(7)</a>
             
             
             
@@ -1148,7 +1145,7 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
             
             
             
-            <a href="http://flygopher.top/tags/vagrant"><i class="fa fa-tags"></i> vagrant(3)</a>
+            <a href="http://flygopher.top/tags/vagrant"><i class="fa fa-tags"></i> vagrant(4)</a>
             
             
             

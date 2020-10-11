@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Vagrant on 梁波的技术博客</title>
-    <link>http://flygopher.top/categories/vagrant/</link>
-    <description>Recent content in Vagrant on 梁波的技术博客</description>
+    <title>centos7 on 梁波的技术博客</title>
+    <link>http://flygopher.top/tags/centos7/</link>
+    <description>Recent content in centos7 on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 11 Oct 2020 00:00:00 +0800</lastBuildDate>
     
-	<atom:link href="http://flygopher.top/categories/vagrant/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://flygopher.top/tags/centos7/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -22,15 +22,6 @@
 &lt;p&gt;使用Vagrant定制Centos7 Box，里面包含了Linux参数优化，Docker，Kubectl，Kubeadm，Kubelet等。这样就可以通过这个Vagrant Box启动多个节点的k8s集群了。&lt;/p&gt;
 
 &lt;p&gt;最近花了点时间将所有的配置都脚本化，可以通过CLI的方式快速构建基础Box或者删除。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Vagrant搭建虚拟机集群</title>
-      <link>http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/</link>
-      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/</guid>
-      <description>&lt;p&gt;本文将将介绍如何使用Vagrant+VirtualBox搭建多节点Centos7虚拟机集群&lt;/p&gt;</description>
     </item>
     
   </channel>
