@@ -264,7 +264,7 @@ if (!doNotTrack) {
 
 <h2 id="vagrantfile配置文件">Vagrantfile配置文件</h2>
 
-<p>以centos7，版本2004.01为基础镜像，通过执行<code>init-centos.sh</code>脚本来定制化Box。Vagrant自动会将根目录的</p>
+<p>Vagrant会将项目根目录下所有文件同步到目标节点的<code>/vagrant</code>目录，在Vagrantfile配置文件中，以centos7，版本2004.01为基础镜像，执行执行<code>init-centos.sh</code>脚本来定制化Box。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># -*- mode: ruby -*-
 # vi: set ft=ruby :
 
