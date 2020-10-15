@@ -193,14 +193,14 @@ if (!doNotTrack) {
 
 
             <article class="post-preview">
-              <a href="http://flygopher.top/post/java-basic-class-bytes/">
-                <h2 class="post-title">Java基础类型占用字节数</h2>
+              <a href="http://flygopher.top/post/first-blog/">
+                <h2 class="post-title">博客终于正式开张啦～</h2>
                 
               </a>
 
               <span class="post-meta">
   
-    发表于 November 6, 2018
+    发表于 September 25, 2016
   
   
 </span>
@@ -208,491 +208,23 @@ if (!doNotTrack) {
 
               <div class="post-entry">
                 
-                  <p>在Java中一共有8种基本数据类型，其中有4种整型，2种浮点型，1种用于表示Unicode编码的字符但愿的字符类型和一种表示真值的boolean类型。</p>
-                  <a href="http://flygopher.top/post/java-basic-class-bytes/" class="post-read-more">[阅读全文]</a>
+                  <p>万事开头难，第一次总是有更多的纪念意义。</p>
+
+<p>经过几番折腾，花了一个周末的时间，在github pages上终于把自己的个人博客搭建好了。</p>
+
+<p>本来9月13号我购买了一年的阿里云服务器，用Java搭建好了，结果因为购买服务器是国内的，备案一直没有弄下来，购买的域名也无法使用，也不能退，花的RMB就这样打水漂啦啦啦～</p>
+
+<p>最近接触的东西挺多的，加上之前一直挺喜欢写点东西的，使用过各种第三方博客，但是很多没有坚持下来，不够纯粹，达不到自己想要的，所以才下定决心把个人博客弄起来，希望自己能够坚持下去，加油！</p>
+
+<!-- more -->
+
                 
               </div>
 
               
                 <span class="post-meta">
                 
-                  #<a href="http://flygopher.top/tags/java/">Java</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/redis-problem-optimization/">
-                <h2 class="post-title">深入学习Redis：Redis常见问题以及优化方案</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 October 23, 2018
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <h2 id="常见问题以及优化方案">常见问题以及优化方案</h2>
-
-<h4 id="1-fork耗时导致高并发请求延时">1. fork耗时导致高并发请求延时</h4>
-
-<p>一般来说，如果父进程内存有1个G的数据，那么fork可能会耗费在20ms左右，如果是10G~30G，那么就会耗费20 * 10，甚至20 * 30，也就是几百毫秒的时间 。<br />
-info stats中的latest_fork_usec，可以看到最近一次form的时长 。<br />
-redis单机QPS一般在几万，fork可能一下子就会拖慢几万条操作的请求时长，从几毫秒变成1秒 。</p>
-
-<p><strong>优化思路：</strong><br />
-fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10GB以内，slave -&gt; master，全量复制。</p>
-                  <a href="http://flygopher.top/post/redis-problem-optimization/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/redis/">Redis</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/redis-sentinel-setup/">
-                <h2 class="post-title">深入学习Redis：Redis经典三节点哨兵集群搭建</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 October 20, 2018
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <h3 id="redis哨兵介绍">Redis哨兵介绍</h3>
-
-<p>哨兵是redis集群架构中非常重要的一个组件，主要功能如下</p>
-
-<p>（1）集群监控，负责监控redis master和slave进程是否正常工作</p>
-
-<p>（2）消息通知，如果某个redis实例有故障，那么哨兵负责发送消息作为报警通知给管理员</p>
-
-<p>（3）故障转移，如果master node挂掉了，会自动转移到slave node上</p>
-
-<p>（4）配置中心，如果故障转移发生了，通知client客户端新的master地址</p>
-                  <a href="http://flygopher.top/post/redis-sentinel-setup/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/redis/">Redis</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/redis-master-slave-setup/">
-                <h2 class="post-title">深入学习Redis：Redis一主两从搭建</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 October 19, 2018
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p><code>redis</code>的一主多从的搭建很简单，但是一般需要搭配<code>redis sentinel</code>哨兵集群，将会在下篇文章介绍。</p>
-
-<h3 id="配置">配置</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">master：192.168.56.101
-
-slave1：192.168.56.102
-
-slave2：192.168.56.103</pre></div>
-<p>如何搭建虚拟机集群环境，可以参考：<a href="http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/">Vagrant搭建虚拟机集群</a><br />
-如何部署Redis单机服务，可以参考：<a href="http://flygopher.top/post/redis-install-on-centos7/">Redis深入学习（一）：Linux CentOS 7 安装Redis 4.0.11</a></p>
-                  <a href="http://flygopher.top/post/redis-master-slave-setup/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/redis/">Redis</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/redis-install-on-centos7/">
-                <h2 class="post-title">深入学习Redis：CentOS 7 安装Redis 4.0.11以及生产环境启动配置</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 October 18, 2018
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <h3 id="redis简介">Redis简介</h3>
-
-<p>Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。<br />
-Redis 与其他 key - value 缓存产品有以下三个特点：</p>
-
-<ul>
-<li><p>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</p></li>
-
-<li><p>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</p></li>
-
-<li><p>Redis支持数据的备份，即master-slave模式的数据备份。</p></li>
-</ul>
-                  <a href="http://flygopher.top/post/redis-install-on-centos7/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/redis/">Redis</a>&nbsp;
-                
-                  #<a href="http://flygopher.top/tags/linux/">Linux</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/macos-profile-load-order/">
-                <h2 class="post-title">MacOS环境变量加载顺序</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 October 16, 2018
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <h4 id="配置文件加载顺序">配置文件加载顺序　</h4>
-
-<p>OS X系统的配置文件，加载顺序为：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/etc/profile
-/etc/paths 
-~/.bash_profile 
-~/.bash_login 
-~/.profile 
-~/.bashrc</pre></div>
-                  <a href="http://flygopher.top/post/macos-profile-load-order/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/macos/">MacOS</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/gradle-environment-setup/">
-                <h2 class="post-title">搭建Gradle开发环境</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 October 10, 2018
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <h3 id="背景介绍">背景介绍</h3>
-
-<blockquote>
-<p>Gradle 是基于 JVM 的构建工具，是基于 Ant 、Maven、ivy 概念的一款通用灵活的构建工具，基于 Groovy 脚本构建，目前支持 Java、Groovy、Kotlin 和 Scala 语言，能够满足日常开发中复杂构建需求的开源工具。</p>
-</blockquote>
-
-<p>最近公司都在使用<code>Gradle</code>搭建开发环境，所以本人就来研究一下<code>Gradle</code>的使用，感觉对比<code>Maven</code>ß还是挺好用的，准备写一些博客记录一下。</p>
-                  <a href="http://flygopher.top/post/gradle-environment-setup/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/gradle/">Gradle</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/java8-new-date-api/">
-                <h2 class="post-title">Java8新特性（四）：新的时间和日期API</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 October 6, 2018
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>Java 8另一个新增的重要特性就是引入了新的时间和日期API，它们被包含在<code>java.time</code>包中。借助新的时间和日期API可以以更简洁的方法处理时间和日期。</p>
-                  <a href="http://flygopher.top/post/java8-new-date-api/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/java/">Java</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/java8-optional/">
-                <h2 class="post-title">Java8新特性（三）：Optional类</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 October 5, 2018
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>Optional 是 JDK1.8 中的一个很流弊的新特性，每个接触JAVA的都遇到过 NPE(NullPointerException)，1.8中Optional 帮助我们很好的避免了这一现象。</p>
-                  <a href="http://flygopher.top/post/java8-optional/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/java/">Java</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/java8-stream/">
-                <h2 class="post-title">Java8新特性（二）：Stream流式处理</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 October 2, 2018
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>Stream 作为 Java 8 的一大亮点，它与 java.io 包里的 InputStream 和 OutputStream 是完全不同的概念。它也不同于 StAX 对 XML 解析的 Stream，也不是 Amazon Kinesis 对大数据实时处理的 Stream。Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的 Lambda 表达式，极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用 fork/join 并行方式来拆分任务和加速处理过程。</p>
-                  <a href="http://flygopher.top/post/java8-stream/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/java/">Java</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/java8-lambda/">
-                <h2 class="post-title">Java8新特性（一）：Lambda表达式</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 October 1, 2018
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <h2 id="新特性列表">新特性列表</h2>
-
-<p>以下是Java8中的引入的部分新特性。关于Java8新特性更详细的介绍可参考<a href="http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html">这里</a>。</p>
-
-<ul>
-<li>接口默认方法和静态方法</li>
-<li>Lambda 表达式</li>
-<li>函数式接口</li>
-<li>方法引用</li>
-<li>Stream</li>
-<li>Optional</li>
-<li>Date/Time API</li>
-<li>重复注解</li>
-<li>扩展注解的支持</li>
-<li>Base64</li>
-<li>JavaFX</li>
-<li>其它
-
-<ul>
-<li>JDBC4.2规范</li>
-<li>更好的类型推测机制</li>
-<li>HashMap性能提升</li>
-<li>IO/NIO 的改进</li>
-<li>JavaScript引擎Nashorn</li>
-<li>并发（Concurrency）</li>
-<li>类依赖分析器jdeps</li>
-<li>JVM的PermGen空间被移除</li>
-</ul></li>
-</ul>
-                  <a href="http://flygopher.top/post/java8-lambda/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/java/">Java</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/custom-iterm2-zsh/">
-                <h2 class="post-title">iTerm2&#43;zsh打造漂亮好用的终端环境</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 October 1, 2018
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>注：适用于使用MacOS开发的Developer</p>
-
-<p>身为程序开发者，很大一部分的时间是在用<code>Command Line</code>做事，如果能把<code>Command Line</code>调整得好用又炫酷的模样，不只是效率提升很懂，用起来爽度也比较高。</p>
-
-<p>最后大概会是这个样子：</p>
-
-<p><img src="http://flygopher.top/img/post/post-detail-zsh.png" alt="" /></p>
-                  <a href="http://flygopher.top/post/custom-iterm2-zsh/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/iterm2/">iTerm2</a>&nbsp;
-                
-                  #<a href="http://flygopher.top/tags/tools/">Tools</a>&nbsp;
+                  #<a href="http://flygopher.top/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/">生活杂记</a>&nbsp;
                 
                 </span>
               
@@ -711,7 +243,7 @@ Redis 与其他 key - value 缓存产品有以下三个特点：</p>
     </li>
     
     <li class="page-item">
-    <a href="http://flygopher.top/page/4/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+    <a href="http://flygopher.top/page/6/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
     </li>
     
     
@@ -757,7 +289,7 @@ Redis 与其他 key - value 缓存产品有以下三个特点：</p>
         
     
     
-    <li class="page-item"><a class="page-link" href="http://flygopher.top/page/4/">4</a></li>
+    <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
     
     
     
@@ -767,8 +299,6 @@ Redis 与其他 key - value 缓存产品有以下三个特点：</p>
         
         
     
-    
-    <li class="page-item active"><a class="page-link" href="http://flygopher.top/page/5/">5</a></li>
     
     
     
@@ -790,11 +320,11 @@ Redis 与其他 key - value 缓存产品有以下三个特点：</p>
         
     
     
-    <li class="page-item"><a class="page-link" href="http://flygopher.top/page/7/">7</a></li>
+    <li class="page-item active"><a class="page-link" href="http://flygopher.top/page/7/">7</a></li>
     
     
-    <li class="page-item">
-    <a href="http://flygopher.top/page/6/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+    <li class="page-item disabled">
+    <a  class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
     </li>
     
     <li class="page-item">
@@ -804,17 +334,6 @@ Redis 与其他 key - value 缓存产品有以下三个特点：</p>
 </ul>
 
 
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
           
           
         </div>
