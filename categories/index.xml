@@ -6,10 +6,19 @@
     <description>Recent content in Categories on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Oct 2020 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2020 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="http://flygopher.top/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git</title>
+      <link>http://flygopher.top/categories/git/</link>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/categories/git/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>kubernetes</title>
@@ -89,15 +98,6 @@
       <pubDate>Wed, 18 Mar 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/categories/springboot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Git</title>
-      <link>http://flygopher.top/categories/git/</link>
-      <pubDate>Wed, 11 Mar 2020 00:00:00 +0800</pubDate>
-      
-      <guid>http://flygopher.top/categories/git/</guid>
       <description></description>
     </item>
     

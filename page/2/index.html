@@ -193,6 +193,46 @@ if (!doNotTrack) {
 
 
             <article class="post-preview">
+              <a href="http://flygopher.top/post/docker-underlying-technology/">
+                <h2 class="post-title">Docker的底层技术</h2>
+                
+              </a>
+
+              <span class="post-meta">
+  
+    发表于 April 6, 2020
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>Docker最初实现是基于 <a href="https://linuxcontainers.org/lxc/introduction/">LXC</a>，从 0.7 版本以后开始去除 <code>LXC</code>，转而使用自行开发的 <a href="https://github.com/docker/libcontainer">libcontainer</a>，从 1.11 开始，则进一步演进为使用 <a href="https://github.com/opencontainers/runc">runC</a> 和 <a href="https://github.com/containerd/containerd">containerd</a>。</p>
+
+<p>Docker 本质就是宿主机的一个进程，Docker 是通过 <code>namespace</code> 实现资源隔离，通过<code>cgroup</code> 实现资源限制，通过写时复制技术（copy-on-write）实现了高效的文件操作。</p>
+
+<p>传统的虚拟机通过在宿主主机中运行 hypervisor 来模拟一整套完整的硬件环境提供给虚拟机的操作系统。虚拟机系统看到的环境是可限制的，也是彼此隔离的。 这种直接的做法实现了对资源最完整的封装，但很多时候往往意味着系统资源的浪费。 例如，以宿主机和虚拟机系统都为 Linux 系统为例，虚拟机中运行的应用其实可以利用宿主机系统中的运行环境。</p>
+                  <a href="http://flygopher.top/post/docker-underlying-technology/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://flygopher.top/tags/docker/">docker</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/container/">container</a>&nbsp;
+                
+                </span>
+              
+            </article>
+
+          
+
+
+
+            <article class="post-preview">
               <a href="http://flygopher.top/post/read-clean-code/">
                 <h2 class="post-title">代码整洁之道</h2>
                 
@@ -234,6 +274,17 @@ if (!doNotTrack) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
             <article class="post-preview">
               <a href="http://flygopher.top/post/jenkins-slave-base-on-kubernetes/">
                 <h2 class="post-title">基于kubernetes的动态jenkins slave</h2>
@@ -269,17 +320,6 @@ if (!doNotTrack) {
             </article>
 
           
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -665,40 +705,6 @@ public @interface SpringBootApplication {
             </article>
 
           
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/mongo-transaction/">
-                <h2 class="post-title">Mongo事务处理</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 March 6, 2020
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>MongoDB 4.0引入了事务功能，支持多文档的ACID特性。</p>
-                  <a href="http://flygopher.top/post/mongo-transaction/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/mongo/">mongo</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
         </div>
 
         <div align="center" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -906,7 +912,7 @@ public @interface SpringBootApplication {
             
           
             
-            <li><a href="http://flygopher.top/categories/git">git(3)</a></li>
+            <li><a href="http://flygopher.top/categories/git">git(4)</a></li>
             
           
             
@@ -1038,7 +1044,11 @@ public @interface SpringBootApplication {
             
             
             
-            <a href="http://flygopher.top/tags/git"><i class="fa fa-tags"></i> git(3)</a>
+            <a href="http://flygopher.top/tags/git"><i class="fa fa-tags"></i> git(4)</a>
+            
+            
+            
+            <a href="http://flygopher.top/tags/github"><i class="fa fa-tags"></i> github(1)</a>
             
             
             
