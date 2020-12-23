@@ -11,13 +11,10 @@
   <meta name="twitter:title" content="MySQL基础" />
   
   <meta name="description" content="并发控制
-
 无论何时，只要有多个查询需要在同一时刻修改数据，都会产生并发控制的问题。这里主要讨论MySQL在两个层面的并发控制：服务器层和存储引擎层。">
   <meta property="og:description" content="并发控制
-
 无论何时，只要有多个查询需要在同一时刻修改数据，都会产生并发控制的问题。这里主要讨论MySQL在两个层面的并发控制：服务器层和存储引擎层。">
   <meta name="twitter:description" content="并发控制
-
 无论何时，只要有多个查询需要在同一时刻修改数据，都会产生并发控制的问题。这里主要讨论MySQL在两个层面的并发控制：服务器层和存储引擎层。">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -28,7 +25,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/mysql-base/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -39,8 +36,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -175,7 +171,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 April 15, 2019
+    
   
   
 </span>
@@ -230,178 +226,132 @@ if (!doNotTrack) {
           
 
           <h3 id="并发控制">并发控制</h3>
-
 <p>无论何时，只要有多个查询需要在同一时刻修改数据，都会产生并发控制的问题。这里主要讨论MySQL在两个层面的并发控制：服务器层和存储引擎层。</p>
-
 <h4 id="读写锁">读写锁</h4>
-
 <p>这两种类型的锁通常被称为共享锁（shared lock）和排他锁（exclusive lock），也可以叫读锁（read lock）和写锁（write lock）。读锁事共享的，或者说相互不阻塞。写锁是排他的，也就是说一个写锁会阻塞其他的写锁和读锁。</p>
-
 <h4 id="锁粒度">锁粒度</h4>
-
 <p>所谓的锁策略，就是在锁的开销和数据安全性之间寻求平衡，这种平衡当然也会影响到性能。</p>
-
 <p>MySQL 提供了多种选择。每种MySQL存储引擎都可以实现自己的锁策略和锁粒度。下面介绍两种最重要的锁策略</p>
-
 <p><strong>1）表锁（table lock）</strong></p>
-
 <p>表锁事 MySQL 中最基本的锁策略，并且是开销最小的策略。它会锁定整张表，一个用户在对表进行写操作前，需要先获取写锁，这会阻塞其他用户对该表的所有读写操作。只有没有写锁时，其他读取的用户才能获得读锁。读锁之前是不想糊阻塞的。</p>
-
 <p>尽管存储引擎可以管理自己的锁，MySQL 本身会是会使用各种有效的表锁来实现不同的目的。例如：服务器会为诸如 ALTER TABLE 之类的语句使用表锁，而忽略存储引擎的锁机制。</p>
-
 <p><strong>2）行级锁（row lock）</strong></p>
-
 <p>行级锁可以最大程度地支持并发处理（同时也带来了最大的锁开销）。众所周知，在 InnoDB 和 XtraDB，以及其他一些存储引擎中实现了行级锁。</p>
-
 <h3 id="事务">事务</h3>
-
 <p>事务就是一组原子性的SQL操作，或者说一个独立的工作单元。</p>
-
 <p>下面介绍事务的ACID概念：</p>
-
 <ul>
-<li><strong>原子性（Atomicity )</strong></li>
-</ul>
-
+<li>
+<p><strong>原子性（Atomicity )</strong></p>
 <p>一个事务必须被视为一个不可分割的最小工作单元，整个事务中的所有操作要么全部提交成功，要么全部失败回滚，对于一个事物来说，不可能只执行其中一部分操作，这就是事务的原子性。</p>
-
-<ul>
-<li><strong>一致性（Consistency）</strong></li>
-</ul>
-
+</li>
+<li>
+<p><strong>一致性（Consistency）</strong></p>
 <p>数据库总是从一个一致性状态转换到另外一个一致性状态。比如用户A和用户B两者的钱加起来一共是5000，那么不管A和B之间如何转账，转几次账，事务结束后两个用户的钱相加起来应该还得是5000，不可能A扣了钱，B却没收到，这就是事务的一致性。</p>
-
-<ul>
-<li><strong>隔离性（Isolation）</strong></li>
-</ul>
-
+</li>
+<li>
+<p><strong>隔离性（Isolation）</strong></p>
 <p>一个事务所做的修改在最终提交以前，对其他事务是不可见的。</p>
-
-<ul>
-<li><strong>持久性（Durability）</strong></li>
-</ul>
-
+</li>
+<li>
+<p><strong>持久性（Durability）</strong></p>
 <p>一旦事务提交，则其所做的修改就会永久保存到数据库中。此时即使系统崩溃，修改的数据也不会丢失。</p>
-
+</li>
+</ul>
 <h3 id="隔离级别">隔离级别</h3>
-
 <p>隔离性其实比想象的要复杂。在SQL标准中定义了四种隔离级别，每一种级别都规定了一个事务中所做的修改，哪些在事务内和事务间是可见的，哪些是不可见的。较低级别的隔离通常可以执行更好的并发，系统的开销也更低。</p>
-
 <p>下面简单地介绍一下四种隔离级别：</p>
-
 <ul>
-<li><strong>READ UNCOMMITTED （未提交读）</strong></li>
-</ul>
-
+<li>
+<p><strong>READ UNCOMMITTED （未提交读）</strong></p>
 <p>在<strong>READ UNCOMMITTED</strong>级别，事务中的修改，即使没有提交，对其他事务也都是可见的。事务中也可以读取未提交的数据，这也被称为<strong>脏读（Dirty Read）</strong>。这个级别会导致很多问题，在实际应用中一般很少使用。</p>
-
-<ul>
-<li><strong>READ COMMITTED（提交读）</strong></li>
-</ul>
-
-<p>大多数数据库系统默认隔离级别都是<strong>READ COMMITTED</strong>（但MySQL不是）。它满足了前面提到的隔离性的简单定义：一个事务开始时，只能&rdquo;看到&rdquo;已经提交的事务所做的修改。换句话说，一个事务从开始直到提交之前，所做的任何修改对其他事务时不可见的。这个级别有时候也可叫做<strong>不可重复读（noorepeatable read）</strong>，因为两次执行同样的查询，可能会得到不一样的结果。</p>
-
-<ul>
-<li><strong>REPEATABLE READ（可重复读）</strong></li>
-</ul>
-
+</li>
+<li>
+<p><strong>READ COMMITTED（提交读）</strong></p>
+<p>大多数数据库系统默认隔离级别都是<strong>READ COMMITTED</strong>（但MySQL不是）。它满足了前面提到的隔离性的简单定义：一个事务开始时，只能&quot;看到&quot;已经提交的事务所做的修改。换句话说，一个事务从开始直到提交之前，所做的任何修改对其他事务时不可见的。这个级别有时候也可叫做<strong>不可重复读（noorepeatable read）</strong>，因为两次执行同样的查询，可能会得到不一样的结果。</p>
+</li>
+<li>
+<p><strong>REPEATABLE READ（可重复读）</strong></p>
 <p><strong>REPEATABLE READ</strong> 解决了脏读的问题。该级别保证了在同一个事务中多次读取同样的记录的结果都是一致的。但是理论上，可重复读隔离级别还是无法解决另外一个幻读（Phantom Read）的问题。所谓幻读，指的是当某个事务在读取某个范围内的记录时，另外一个事务又在该范围内插入了新的记录，当之前的事务再次读取该范围的记录时，会产生幻行。InnoDB和XtraDB存储引擎通过多版本并发控制（MVCC，Multiversion Concurrency Control）解决了幻读问题。</p>
-
 <p>可重复读是 MySQL 的默认事务隔离级别。</p>
-
-<ul>
-<li><strong>SERIALIZABLE（可串行化）</strong></li>
-</ul>
-
+</li>
+<li>
+<p><strong>SERIALIZABLE（可串行化）</strong></p>
 <p><strong>SERIALIZABLE</strong> 是最高的隔离级别。它通过强制事务串行执行，避免了前面说的幻读的问题。简单来说，<strong>SERIALIZABLE</strong> 会在读取的每一行数据上都加锁，所以可能导致大量的超时和锁争用的问题。实际应用也很少用到这个隔离级别。</p>
-
 <p><strong>注意：不可重复读的和幻读很容易混淆，不可重复读侧重于修改，幻读侧重于新增或删除。解决不可重复读的问题只需锁住满足条件的行，解决幻读需要锁表。</strong></p>
-
+</li>
+</ul>
 <table>
 <thead>
 <tr>
-<th align="left">事务隔离级别</th>
-<th align="left">脏读</th>
-<th align="center">不可重复读</th>
-<th align="center">幻读</th>
+<th style="text-align:left">事务隔离级别</th>
+<th style="text-align:left">脏读</th>
+<th style="text-align:center">不可重复读</th>
+<th style="text-align:center">幻读</th>
 <th>加锁读</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td align="left">READ UNCOMMITTED</td>
-<td align="left">YES</td>
-<td align="center">YES</td>
-<td align="center">YES</td>
+<td style="text-align:left">READ UNCOMMITTED</td>
+<td style="text-align:left">YES</td>
+<td style="text-align:center">YES</td>
+<td style="text-align:center">YES</td>
 <td>NO</td>
 </tr>
-
 <tr>
-<td align="left">READ COMMITTED</td>
-<td align="left">NO</td>
-<td align="center">YES</td>
-<td align="center">YES</td>
+<td style="text-align:left">READ COMMITTED</td>
+<td style="text-align:left">NO</td>
+<td style="text-align:center">YES</td>
+<td style="text-align:center">YES</td>
 <td>NO</td>
 </tr>
-
 <tr>
-<td align="left">REPEATABLE READ</td>
-<td align="left">NO</td>
-<td align="center">NO</td>
-<td align="center">YES</td>
+<td style="text-align:left">REPEATABLE READ</td>
+<td style="text-align:left">NO</td>
+<td style="text-align:center">NO</td>
+<td style="text-align:center">YES</td>
 <td>NO</td>
 </tr>
-
 <tr>
-<td align="left">SERIALIZABLE</td>
-<td align="left">NO</td>
-<td align="center">NO</td>
-<td align="center">否</td>
+<td style="text-align:left">SERIALIZABLE</td>
+<td style="text-align:left">NO</td>
+<td style="text-align:center">NO</td>
+<td style="text-align:center">否</td>
 <td>YES</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="死锁">死锁</h3>
-
 <p>死锁是指两个或者多个事务在同一个资源上相互占用，并请求锁定对方占用的资源，从而导致恶性循环的现象。当多个事务试图以不同的顺序锁定资源时，就可能产生死锁。多个事务同事锁定同一个资源时，也会产生死锁。</p>
-
 <p>例如，设想下面两个事务同时处理 StockPrice 表：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">事务1:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">事务1:
 START TRANSACTION;
 UPDATE StockPrice SET close = 45.50 WHERE stock_id = 4 and date = &#39;2002-05-01&#39;;
 UPDATE StockPrice SET close = 19.80 WHERE stock_id = 3 and date = &#39;2002-05-02&#39;;
-COMMIT;</pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">事务2:
+COMMIT;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">事务2:
 START TRANSACTION;
 UPDATE StockPrice SET close = 20.12 WHERE stock_id = 3 and date = &#39;2002-05-02&#39;;
 UPDATE StockPrice SET close = 47.20 WHERE stock_id = 4 and date = &#39;2002-05-01&#39;;
-COMMIT;</pre></div>
-<p>如果恰巧，两个事务都执行到了第一条 UPDATE 语句，更新了一行数据，同时也锁定了该行数据，接着尝试执行第二条时，却发现该行已经被对方锁定，陷入死锁。除非有外部因素介入才可能解除死锁。</p>
-
+COMMIT;
+</code></pre></div><p>如果恰巧，两个事务都执行到了第一条 UPDATE 语句，更新了一行数据，同时也锁定了该行数据，接着尝试执行第二条时，却发现该行已经被对方锁定，陷入死锁。除非有外部因素介入才可能解除死锁。</p>
 <p>为了解决上述问题，数据库系统实现了各种死锁检测和死锁超时机制。越复杂的系统，比如 InnoDB 存储引擎，越能检测到死锁的循环依赖，并立即返回错误。还有一种解决方式，就是当查询的时候打到锁等待超时的设定后放弃请求，这种方式通常来说不太好。 InnoDB 目前处理死锁的方式是，将持有最少行级排他锁的事务进行回滚。</p>
-
 <h3 id="mysql-中的事务">MySQL 中的事务</h3>
-
-<h4 id="自动提交-autocommit">自动提交（AUTOCOMMIT）</h4>
-
+<h4 id="自动提交autocommit">自动提交（AUTOCOMMIT）</h4>
 <p>MySQL 默认采用自动提交模式。也就是说，如果不是显示地开始一个事务，则每个查询都被当作一个事务执行提交操作。在当前连接中，可通过设置 AUTOCOMMIT 变量来启用或者禁用自动提交模式。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mysql&gt; SET AUTOCOMMIT = 1;</pre></div>
-<p>1 或者 ON 表示启用， 0 或者 OFF表示禁用。当 AUTOCOMMIT= 0 时，所有的查询都是在一个事务中，直到显式地执行 COMMIT 提交或者 ROLLBACK 回滚，该事务结束。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mysql&gt; SET AUTOCOMMIT = 1;
+</code></pre></div><p>1 或者 ON 表示启用， 0 或者 OFF表示禁用。当 AUTOCOMMIT= 0 时，所有的查询都是在一个事务中，直到显式地执行 COMMIT 提交或者 ROLLBACK 回滚，该事务结束。</p>
 <p>MySQL 可以通过执行 <code>SET TRANSACTION ISOLATION LEVEL</code> 命令来设置隔离级别。新的隔离级别会在下一个事务开始的时候生效。可以在配置文件中设置整个数据库的隔离级别，也可以只改变当前会话的隔离级别：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mysql&gt; SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;</pre></div>
-<h4 id="在事务中混合使用存储引擎">在事务中混合使用存储引擎</h4>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mysql&gt; SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
+</code></pre></div><h4 id="在事务中混合使用存储引擎">在事务中混合使用存储引擎</h4>
 <p>MySQL 服务器不管理事务，事务是由下层的存储引擎实现的。所以同一个事务中，使用多种存储引擎是不可靠的。</p>
-
 <p>如果在事务中，混合使用了事务型和非事务型的表（例如 InnoDB 和 MyISAM 表），在正常提交的情况下没什么问题，如果事务需要回滚，非事务型的表上的变更就无法撤销。这会导致数据库出于不一致的状态。</p>
-
 <h4 id="隐式和显式锁定">隐式和显式锁定</h4>
-
 <p>InnoDB 支持特定的语句进行显式锁定，这些语句不属于 SQL 规范：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">SELECT ... LOCL IN SHARE MODE
-SELECT ... FOR UPDATE</pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">SELECT ... LOCL IN SHARE MODE
+SELECT ... FOR UPDATE
+</code></pre></div>
 
           
   
@@ -570,7 +520,7 @@ SELECT ... FOR UPDATE</pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

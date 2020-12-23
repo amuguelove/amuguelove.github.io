@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/mongodb-base-operation/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,8 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -169,7 +168,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 March 1, 2020
+    
   
   
 </span>
@@ -211,44 +210,29 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#关于mongodb">关于MongoDB</a></li>
-<li><a href="#mongodb版本的变迁">MongoDB版本的变迁</a></li>
-<li><a href="#mongodb-vs-关系型数据库">MongoDB vs. 关系型数据库</a></li>
-<li><a href="#mongodb特点及优势">MongoDB特点及优势</a></li>
-<li><a href="#安装mongodb">安装MongoDB</a>
-<ul>
-<li><a href="#1-本地安装合适的os版本">1. 本地安装合适的OS版本</a></li>
-<li><a href="#2-使用atlas免费账号">2. 使用Atlas免费账号</a></li>
-</ul></li>
-<li><a href="#mongodb基本操作">MongoDB基本操作</a>
-<ul>
-<li><a href="#使用insert完成插入操作">使用insert完成插入操作</a></li>
-<li><a href="#使用-find-查询文档">使用 find 查询文档</a>
-<ul>
-<li><a href="#关于find">关于find：</a></li>
-<li><a href="#find示例">find示例：</a></li>
-<li><a href="#查询条件对照表">查询条件对照表</a></li>
-<li><a href="#查询逻辑对照表">查询逻辑对照表</a></li>
-<li><a href="#查询逻辑运算符">查询逻辑运算符</a></li>
-<li><a href="#使用-find-搜索子文档">使用 find 搜索子文档</a></li>
-<li><a href="#使用-find-搜索数组">使用 find 搜索数组</a></li>
-<li><a href="#使用-find-搜索数组中的对象">使用 find 搜索数组中的对象</a></li>
-<li><a href="#控制-find-返回的字段">控制 find 返回的字段</a></li>
-</ul></li>
-<li><a href="#使用-remove-删除文档">使用 remove 删除文档</a></li>
-<li><a href="#使用-update-更新文档">使用 update 更新文档</a>
-<ul>
-<li><a href="#使用-update-更新数组">使用 update 更新数组</a></li>
-</ul></li>
-<li><a href="#使用-drop-删除集合">使用 drop 删除集合</a></li>
-<li><a href="#使用-dropdatabase-删除数据库">使用 dropDatabase 删除数据库</a></li>
-</ul></li>
-<li><a href="#参考">参考：</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#关于mongodb">关于MongoDB</a></li>
+    <li><a href="#mongodb版本的变迁">MongoDB版本的变迁</a></li>
+    <li><a href="#mongodb-vs-关系型数据库">MongoDB vs. 关系型数据库</a></li>
+    <li><a href="#mongodb特点及优势">MongoDB特点及优势</a></li>
+    <li><a href="#安装mongodb">安装MongoDB</a>
+      <ul>
+        <li><a href="#1-本地安装合适的os版本">1. 本地安装合适的OS版本</a></li>
+        <li><a href="#2-使用atlas免费账号">2. 使用Atlas免费账号</a></li>
+      </ul>
+    </li>
+    <li><a href="#mongodb基本操作">MongoDB基本操作</a>
+      <ul>
+        <li><a href="#使用insert完成插入操作">使用insert完成插入操作</a></li>
+        <li><a href="#使用-find-查询文档">使用 find 查询文档</a></li>
+        <li><a href="#使用-remove-删除文档">使用 remove 删除文档</a></li>
+        <li><a href="#使用-update-更新文档">使用 update 更新文档</a></li>
+        <li><a href="#使用-drop-删除集合">使用 drop 删除集合</a></li>
+        <li><a href="#使用-dropdatabase-删除数据库">使用 dropDatabase 删除数据库</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考：</a></li>
+  </ul>
 </nav>
 </aside>
 
@@ -266,10 +250,8 @@ if (!doNotTrack) {
           
           
 
-          <p>MongoDB 是一个高性能，开源，无模式的文档型数据库，是当前noSql数据库产品中最热门的一种。它在许多场景下用于替代传统的关系型数据库或键值对存储方式，MongoDB是用C++开发，MongoDB的官方网址：<a href="https://www.mongodb.com/">https://www.mongodb.com/</a></p>
-
+          <p>MongoDB 是一个高性能，开源，无模式的文档型数据库，是当前noSql数据库产品中最热门的一种。它在许多场景下用于替代传统的关系型数据库或键值对存储方式，MongoDB是用C++开发，MongoDB的官方网址：https://www.mongodb.com/</p>
 <h2 id="关于mongodb">关于MongoDB</h2>
-
 <table>
 <thead>
 <tr>
@@ -277,49 +259,36 @@ if (!doNotTrack) {
 <th>一个以 JSON 为数据模型的文档数据库。</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>为什么叫文档数据库?</td>
 <td>文档来自于“JSON Document”，并非我们一般理解的 PDF，WORD 文档。</td>
 </tr>
-
 <tr>
 <td>谁开发 MongDB?</td>
 <td>上市公司 MongoDB Inc. ，总部位于美国纽约。</td>
 </tr>
-
 <tr>
 <td>主要用途</td>
-<td>应用数据库，类似于 Oracle, MySQL<br /> 海量数据处理，数据平台。</td>
+<td>应用数据库，类似于 Oracle, MySQL<!-- raw HTML omitted --> 海量数据处理，数据平台。</td>
 </tr>
-
 <tr>
 <td>主要特点</td>
-<td>建模为可选<br/> JSON 数据模型比较适合开发者 <br />横向扩展可以支撑很大数据量和并发</td>
+<td>建模为可选<!-- raw HTML omitted --> JSON 数据模型比较适合开发者 <!-- raw HTML omitted -->横向扩展可以支撑很大数据量和并发</td>
 </tr>
-
 <tr>
 <td>MongoDB 是免费的吗?</td>
-<td>MongoDB 有两个发布版本:社区版和企业版。<br /> 社区版是基于 SSPL，一种和 AGPL 基本类似的开源协议 。 <br />企业版是基于商业协议，需付费使用。</td>
+<td>MongoDB 有两个发布版本:社区版和企业版。<!-- raw HTML omitted --> 社区版是基于 SSPL，一种和 AGPL 基本类似的开源协议 。 <!-- raw HTML omitted -->企业版是基于商业协议，需付费使用。</td>
 </tr>
 </tbody>
 </table>
-
 <h2 id="mongodb版本的变迁">MongoDB版本的变迁</h2>
-
 <p>0.x:  起步阶段 (2008)</p>
-
 <p>1.x: 支持复制集 和分片集 (2010)</p>
-
 <p>2.x: 更丰富的数 据库功能 (2012)</p>
-
 <p>3.x: WiredTiger 和周边生态环境 (2014)</p>
-
 <p>4.x: 分布式事务 支持 (2018)</p>
-
 <h2 id="mongodb-vs-关系型数据库">MongoDB vs. 关系型数据库</h2>
-
 <table>
 <thead>
 <tr>
@@ -328,56 +297,47 @@ if (!doNotTrack) {
 <th>RDBMS(关系数据库管理系统)</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>数据模型</td>
 <td>文档模型</td>
 <td>关系模型</td>
 </tr>
-
 <tr>
 <td>数据库类型</td>
 <td>OLTP</td>
 <td>OLTP</td>
 </tr>
-
 <tr>
 <td>CRUD 操作</td>
 <td>MQL/SQL</td>
 <td>SQL</td>
 </tr>
-
 <tr>
 <td>高可用</td>
 <td>复制集</td>
 <td>集群模式</td>
 </tr>
-
 <tr>
 <td>横向扩展能力</td>
 <td>通过原生分片完善支持</td>
 <td>数据分区或者应用侵入式</td>
 </tr>
-
 <tr>
 <td>索引支持</td>
 <td>B-树、全文索引、地理位置索引、多键(multikey) 索引、TTL 索引</td>
 <td>B树</td>
 </tr>
-
 <tr>
 <td>开发难度</td>
 <td>容易</td>
 <td>困难</td>
 </tr>
-
 <tr>
 <td>数据容量</td>
 <td>没有理论上限</td>
 <td>千万、亿</td>
 </tr>
-
 <tr>
 <td>扩展方式</td>
 <td>垂直扩展+水平扩展</td>
@@ -385,63 +345,57 @@ if (!doNotTrack) {
 </tr>
 </tbody>
 </table>
-
 <h2 id="mongodb特点及优势">MongoDB特点及优势</h2>
-
 <ol>
 <li>开发效率</li>
 <li>自然模型</li>
 <li>横向扩展</li>
 </ol>
-
 <h2 id="安装mongodb">安装MongoDB</h2>
-
 <h3 id="1-本地安装合适的os版本">1. 本地安装合适的OS版本</h3>
-
-<p>地址：<a href="https://www.mongodb.com/download-center/community">https://www.mongodb.com/download-center/community</a></p>
-
+<p>地址：https://www.mongodb.com/download-center/community</p>
 <p>如果是Linux系统：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ mkdir -p /data /data/db
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ mkdir -p /data /data/db
 $ cd /data
 $ curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.2.3.tgz $ tar -xvf mongodb-linux-x86_64-rhel70-4.2.3.tgz
 $ export PATH=$PATH:/data/mongodb-linux-x86_64-rhel70-4.2.3/bin
-$ mongod --dbpath /data/db --port 27017 --logpath /data/db/mongod.log --fork –bind_ip 0.0.0.0</pre></div>
-<p>如果是MacOS:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">brew tap mongodb/brew
-brew install mongodb-community@4.2</pre></div>
-<ul>
+$ mongod --dbpath /data/db --port 27017 --logpath /data/db/mongod.log --fork –bind_ip 0.0.0.0
+</code></pre></div><p>如果是MacOS:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">brew tap mongodb/brew
+brew install mongodb-community@4.2
+</code></pre></div><ul>
 <li>the <a href="https://docs.mongodb.com/manual/reference/configuration-options/">configuration file</a> (<code>/usr/local/etc/mongod.conf</code>)</li>
 <li>the <a href="https://docs.mongodb.com/manual/reference/configuration-options/#systemLog.path"><code>log directory path</code></a> (<code>/usr/local/var/log/mongodb</code>)</li>
 <li>the <a href="https://docs.mongodb.com/manual/reference/configuration-options/#storage.dbPath"><code>data directory path</code></a> (<code>/usr/local/var/mongodb</code>)</li>
 </ul>
-
 <p>如何启动：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">brew services start mongodb-community@4.2
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">brew services start mongodb-community@4.2
 或者
-mongod --config /usr/local/etc/mongod.conf --fork</pre></div>
-<p>查看：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ps aux | grep -v grep | grep mongod</pre></div>
-<h3 id="2-使用atlas免费账号">2. 使用Atlas免费账号</h3>
-
+mongod --config /usr/local/etc/mongod.conf --fork
+</code></pre></div><p>查看：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ps aux | grep -v grep | grep mongod
+</code></pre></div><h3 id="2-使用atlas免费账号">2. 使用Atlas免费账号</h3>
 <ul>
-<li><p>官方提供的云托管 MongoDB (<a href="https://cloud.mongodb.com/">https://cloud.mongodb.com/</a>)</p></li>
-
-<li><p>提供一个终身免费测试账号</p></li>
-
-<li><p>步骤:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">1）注册账号
+<li>
+<p>官方提供的云托管 MongoDB (<a href="https://cloud.mongodb.com/">https://cloud.mongodb.com/</a>)</p>
+</li>
+<li>
+<p>提供一个终身免费测试账号</p>
+</li>
+<li>
+<p>步骤:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">1）注册账号
   
 2）创建免费集群
   
 3）按照提示完成创建并获得连接串 
   
-4）使用 mongo 命令行连接集群</pre></div></li>
+4）使用 mongo 命令行连接集群
+</code></pre></div></li>
 </ul>
-
 <h2 id="mongodb基本操作">MongoDB基本操作</h2>
-
 <h3 id="使用insert完成插入操作">使用insert完成插入操作</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">操作格式:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">操作格式:
 
 db.&lt;集合&gt;.insertOne(&lt;JSON对象&gt;) 
 db.&lt;集合&gt;.insertMany([&lt;JSON 1&gt;, &lt;JSON 2&gt;, ...&lt;JSON n&gt;])
@@ -454,24 +408,20 @@ db.fruit.insertMany([
 			{name: &#34;apple&#34;}, 
 			{name: &#34;pear&#34;}, 
 			{name: &#34;orange&#34;}
-])</pre></div>
-<h3 id="使用-find-查询文档">使用 find 查询文档</h3>
-
+])
+</code></pre></div><h3 id="使用-find-查询文档">使用 find 查询文档</h3>
 <h4 id="关于find">关于find：</h4>
-
 <ul>
 <li>find 是 MongoDB 中查询数据的基本指令，相当于 SQL 中的 SELECT 。</li>
 <li>find 返回的是游标。</li>
 </ul>
-
 <h4 id="find示例">find示例：</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">db.movies.find( { &#34;year&#34; : 1975 } ) //单条件查询
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">db.movies.find( { &#34;year&#34; : 1975 } ) //单条件查询
 db.movies.find( { &#34;year&#34; : 1989, &#34;title&#34; : &#34;Batman&#34; } ) //多条件and查询
 db.movies.find( { $and : [ {&#34;title&#34; : &#34;Batman&#34;}, { &#34;category&#34; : &#34;action&#34; }] } ) // and的另一种形式 
 db.movies.find( { $or: [{&#34;year&#34; : 1989}, {&#34;title&#34; : &#34;Batman&#34;}] } ) //多条件or查询 
-db.movies.find( { &#34;title&#34; : /^B/} ) //按正则表达式查找</pre></div>
-<h4 id="查询条件对照表">查询条件对照表</h4>
-
+db.movies.find( { &#34;title&#34; : /^B/} ) //按正则表达式查找
+</code></pre></div><h4 id="查询条件对照表">查询条件对照表</h4>
 <table>
 <thead>
 <tr>
@@ -479,42 +429,34 @@ db.movies.find( { &#34;title&#34; : /^B/} ) //按正则表达式查找</pre></di
 <th>MQL</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>a=1</td>
 <td>{a: 1}</td>
 </tr>
-
 <tr>
 <td>a &lt;&gt; 1</td>
 <td>{a: {$ne: 1}}</td>
 </tr>
-
 <tr>
 <td>a&gt;1</td>
 <td>{a: {$gt: 1}}</td>
 </tr>
-
 <tr>
 <td>a &gt;= 1</td>
 <td>{a: {$gte: 1}}</td>
 </tr>
-
 <tr>
 <td>a&lt;1</td>
 <td>{a: {$lt: 1}}</td>
 </tr>
-
 <tr>
 <td>a &lt;= 1</td>
 <td>{a: {$lte: 1}}</td>
 </tr>
 </tbody>
 </table>
-
 <h4 id="查询逻辑对照表">查询逻辑对照表</h4>
-
 <table>
 <thead>
 <tr>
@@ -522,32 +464,26 @@ db.movies.find( { &#34;title&#34; : /^B/} ) //按正则表达式查找</pre></di
 <th>MQL</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>a = 1 AND b = 1</td>
 <td>{a: 1, b: 1}或{$and: [{a: 1}, {b: 1}]}</td>
 </tr>
-
 <tr>
 <td>a = 1 OR b = 1</td>
 <td>{$or: [{a: 1}, {b: 1}]}</td>
 </tr>
-
 <tr>
 <td>a IS NULL</td>
 <td>{a: {$exists: false}}</td>
 </tr>
-
 <tr>
 <td>a IN (1, 2, 3)</td>
 <td>{a: {$in: [1, 2, 3]}}</td>
 </tr>
 </tbody>
 </table>
-
 <h4 id="查询逻辑运算符">查询逻辑运算符</h4>
-
 <ul>
 <li>$lt: 存在并小于</li>
 <li>$lte: 存在并小于等于</li>
@@ -559,11 +495,9 @@ db.movies.find( { &#34;title&#34; : /^B/} ) //按正则表达式查找</pre></di
 <li>$or: 匹配两个或多个条件中的一个</li>
 <li>$and: 匹配全部条件</li>
 </ul>
-
 <h4 id="使用-find-搜索子文档">使用 find 搜索子文档</h4>
-
 <p>find 支持使用“field.sub_field”的形式查询子文档。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">db.fruit.insertOne({ 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">db.fruit.insertOne({ 
 	name: &#34;apple&#34;,
 	from: {
 		country: &#34;China&#34;, province: &#34;Guangdon&#34;
@@ -571,9 +505,9 @@ db.movies.find( { &#34;title&#34; : /^B/} ) //按正则表达式查找</pre></di
 })
 
 db.fruit.find( { &#34;from.country&#34; : &#34;China&#34; } )
-{ &#34;_id&#34; : ObjectId(&#34;5e6764e764b0cc447c446de7&#34;), &#34;name&#34; : &#34;apple&#34;, &#34;from&#34; : { &#34;country&#34; : &#34;China&#34;, &#34;province&#34; : &#34;Guangdon&#34; } }</pre></div>
-<h4 id="使用-find-搜索数组">使用 find 搜索数组</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">db.fruit.insert([
+{ &#34;_id&#34; : ObjectId(&#34;5e6764e764b0cc447c446de7&#34;), &#34;name&#34; : &#34;apple&#34;, &#34;from&#34; : { &#34;country&#34; : &#34;China&#34;, &#34;province&#34; : &#34;Guangdon&#34; } }
+</code></pre></div><h4 id="使用-find-搜索数组">使用 find 搜索数组</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">db.fruit.insert([
 	{ &#34;name&#34; : &#34;Apple&#34;, color: [&#34;red&#34;, &#34;green&#34; ] }, 
 	{ &#34;name&#34; : &#34;Mango&#34;, color: [&#34;yellow&#34;, &#34;green&#34;] }
 ])
@@ -583,9 +517,9 @@ db.fruit.find({color: &#34;red&#34;})
 
 db.fruit.find({$or: [{color: &#34;red&#34;}, {color: &#34;yellow&#34;}]} )
 { &#34;_id&#34; : ObjectId(&#34;5e67624564b0cc447c446de4&#34;), &#34;name&#34; : &#34;Apple&#34;, &#34;color&#34; : [ &#34;red&#34;, &#34;green&#34; ] }
-{ &#34;_id&#34; : ObjectId(&#34;5e67624564b0cc447c446de5&#34;), &#34;name&#34; : &#34;Mango&#34;, &#34;color&#34; : [ &#34;yellow&#34;, &#34;green&#34; ] }</pre></div>
-<h4 id="使用-find-搜索数组中的对象">使用 find 搜索数组中的对象</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">db.movies.insertOne( {
+{ &#34;_id&#34; : ObjectId(&#34;5e67624564b0cc447c446de5&#34;), &#34;name&#34; : &#34;Mango&#34;, &#34;color&#34; : [ &#34;yellow&#34;, &#34;green&#34; ] }
+</code></pre></div><h4 id="使用-find-搜索数组中的对象">使用 find 搜索数组中的对象</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">db.movies.insertOne( {
 	&#34;title&#34;: &#34;Raiders of the Lost Ark&#34;,
 	&#34;filming_locations&#34;: [
 		{ &#34;city&#34; : &#34;Los Angeles&#34;, &#34;state&#34; : &#34;CA&#34;, &#34;country&#34; : &#34;USA&#34;},
@@ -604,56 +538,56 @@ db.getCollection(&#39;movies&#39;).find({ &#34;filming_locations.city&#34;: &#34
 db.getCollection(&#39;movies&#39;).find({
 	&#34;filming_locations&#34;: { $elemMatch:{&#34;city&#34;:&#34;Rome&#34;, &#34;country&#34;: &#34;USA&#34;}
 } })
-无结果</pre></div>
-<h4 id="控制-find-返回的字段">控制 find 返回的字段</h4>
+无结果
 
+</code></pre></div><h4 id="控制-find-返回的字段">控制 find 返回的字段</h4>
 <ol>
 <li>find 可以指定只返回指定的字段；</li>
 <li>_id字段必须明确指明不返回，否则默认返回；</li>
 <li>在 MongoDB 中我们称这为投影(projection)；</li>
-<li>db.movies.find({&ldquo;category&rdquo;: &ldquo;action&rdquo;},{&rdquo;_id&rdquo;:0, title:1})；0表示不返回</li>
+<li>db.movies.find({&ldquo;category&rdquo;: &ldquo;action&rdquo;},{&quot;_id&quot;:0, title:1})；0表示不返回</li>
 </ol>
-
 <h3 id="使用-remove-删除文档">使用 remove 删除文档</h3>
-
 <ol>
 <li>remove 命令需要配合查询条件使用;</li>
 <li>匹配查询条件的的文档会被删除;</li>
 <li>指定一个空文档条件会删除所有文档;</li>
 </ol>
-
 <p>一下示例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">b.testcol.remove( { a : 1 } ) // 删除a 等于1的记录 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">b.testcol.remove( { a : 1 } ) // 删除a 等于1的记录 
 db.testcol.remove( { a : { $lt : 5 } } ) // 删除a 小于5的记录 
 db.testcol.remove( { } ) // 删除所有记录 
-db.testcol.remove() //报错</pre></div>
-<h3 id="使用-update-更新文档">使用 update 更新文档</h3>
-
+db.testcol.remove() //报错
+</code></pre></div><h3 id="使用-update-更新文档">使用 update 更新文档</h3>
 <ul>
-<li><p><strong>Update 操作执行格式:  db.&lt;集合&gt;.update(&lt;查询条件&gt;, &lt;更新字段&gt;)</strong></p></li>
-
-<li><p><strong>使用 updateOne 表示无论条件匹配多少条记录，始终只更新第一条;</strong></p></li>
-
-<li><p><strong>使用 updateMany 表示条件匹配多少条就更新多少条;</strong></p></li>
-
-<li><p><strong>updateOne/updateMany 方法要求更新条件部分必须具有以下之一，否则将报错:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$set/$unset
+<li>
+<p><strong>Update 操作执行格式:  db.&lt;集合&gt;.update(&lt;查询条件&gt;, &lt;更新字段&gt;)</strong></p>
+</li>
+<li>
+<p><strong>使用 updateOne 表示无论条件匹配多少条记录，始终只更新第一条;</strong></p>
+</li>
+<li>
+<p><strong>使用 updateMany 表示条件匹配多少条就更新多少条;</strong></p>
+</li>
+<li>
+<p><strong>updateOne/updateMany 方法要求更新条件部分必须具有以下之一，否则将报错:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$set/$unset
 $push/$pushAll/$pop
 $pull/$pullAll
-$addToSet</pre></div></li>
-
-<li><p>示例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">db.fruit.insertMany([ 
-	{name: &#34;apple&#34;}, 
-	{name: &#34;pear&#34;}, 
-	{name: &#34;orange&#34;}
+$addToSet
+</code></pre></div></li>
+<li>
+<p>示例：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">db.fruit.insertMany([ 
+  {name: &#34;apple&#34;}, 
+  {name: &#34;pear&#34;}, 
+  {name: &#34;orange&#34;}
 ])
   
-db.fruit.updateOne({name: &#34;apple&#34;}, {$set: {from: &#34;China&#34;}})</pre></div></li>
+db.fruit.updateOne({name: &#34;apple&#34;}, {$set: {from: &#34;China&#34;}})
+</code></pre></div></li>
 </ul>
-
 <h4 id="使用-update-更新数组">使用 update 更新数组</h4>
-
 <ul>
 <li><strong>$push: 增加一个对象到数组底部</strong></li>
 <li><strong>$pushAll: 增加多个对象到数组底部</strong></li>
@@ -662,33 +596,33 @@ db.fruit.updateOne({name: &#34;apple&#34;}, {$set: {from: &#34;China&#34;}})</pr
 <li><strong>$pullAll: 如果匹配任意的值，从数据中删除相应的对象</strong></li>
 <li><strong>$addToSet: 如果不存在则增加一个值到数组</strong></li>
 </ul>
-
 <h3 id="使用-drop-删除集合">使用 drop 删除集合</h3>
-
 <ul>
-<li><p><strong>使用 db.&lt;集合&gt;.drop() 来删除一个集合</strong></p></li>
-
-<li><p><strong>集合中的全部文档都会被删除</strong></p></li>
-
-<li><p><strong>集合相关的索引也会被删除</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">db.colToBeDropped.drop()</pre></div></li>
+<li>
+<p><strong>使用 db.&lt;集合&gt;.drop() 来删除一个集合</strong></p>
+</li>
+<li>
+<p><strong>集合中的全部文档都会被删除</strong></p>
+</li>
+<li>
+<p><strong>集合相关的索引也会被删除</strong></p>
+</li>
 </ul>
-
-<h3 id="使用-dropdatabase-删除数据库">使用 dropDatabase 删除数据库</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">db.colToBeDropped.drop()
+</code></pre></div><h3 id="使用-dropdatabase-删除数据库">使用 dropDatabase 删除数据库</h3>
 <ul>
-<li><p><strong>使用 db.dropDatabase() 来删除数据库</strong></p></li>
-
-<li><p><strong>数据库相应文件也会被删除，磁盘空间将被释放</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">use tempDB
+<li>
+<p><strong>使用 db.dropDatabase() 来删除数据库</strong></p>
+</li>
+<li>
+<p><strong>数据库相应文件也会被删除，磁盘空间将被释放</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">use tempDB
 db.dropDatabase()
-show collections // No collections show dbs // The db is gone</pre></div></li>
-</ul>
-
-<hr>
-
+show collections // No collections show dbs // The db is gone
+</code></pre></div><!-- raw HTML omitted -->
 <h2 id="参考">参考：</h2>
-
 <p><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/">Install MongoDB Community Edition on macOS</a></p>
 
           
@@ -858,7 +792,7 @@ show collections // No collections show dbs // The db is gone</pre></div></li>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

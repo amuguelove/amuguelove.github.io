@@ -11,7 +11,6 @@
   <meta name="twitter:title" content="SpringBoot的自动装配原理分析" />
   
   <meta name="description" content="在Spring Boot应用中的自动装配是通过@EnableAutoConfiguration 注解进行开启的。@EnableAutoConfiguration 可以帮助 Spring Boot 应用将所有符合条件的 @Configuration 配置类的 bean 都加载到 Spring IoC 容器中。
-
 我们看下@SpringBootApplication注解，默认是启动@EnableAutoConfiguration 的。
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -38,9 +37,9 @@ public @interface SpringBootApplication {
 	@AliasFor(annotation = Configuration.class)
 	boolean proxyBeanMethods() default true;
 
-}">
+}
+">
   <meta property="og:description" content="在Spring Boot应用中的自动装配是通过@EnableAutoConfiguration 注解进行开启的。@EnableAutoConfiguration 可以帮助 Spring Boot 应用将所有符合条件的 @Configuration 配置类的 bean 都加载到 Spring IoC 容器中。
-
 我们看下@SpringBootApplication注解，默认是启动@EnableAutoConfiguration 的。
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -67,9 +66,9 @@ public @interface SpringBootApplication {
 	@AliasFor(annotation = Configuration.class)
 	boolean proxyBeanMethods() default true;
 
-}">
+}
+">
   <meta name="twitter:description" content="在Spring Boot应用中的自动装配是通过@EnableAutoConfiguration 注解进行开启的。@EnableAutoConfiguration 可以帮助 Spring Boot 应用将所有符合条件的 @Configuration 配置类的 bean 都加载到 Spring IoC 容器中。
-
 我们看下@SpringBootApplication注解， …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -80,7 +79,7 @@ public @interface SpringBootApplication {
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/springboot-load-configure-principle/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -91,8 +90,7 @@ public @interface SpringBootApplication {
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -227,7 +225,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 March 18, 2020
+    
   
   
 </span>
@@ -269,17 +267,15 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#自动装配的原理">自动装配的原理</a>
-<ul>
-<li><a href="#spring-factories机制">Spring Factories机制</a></li>
-<li><a href="#autoconfigurationimportselector分析">AutoConfigurationImportSelector分析</a></li>
-</ul></li>
-<li><a href="#参考">参考</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#自动装配的原理">自动装配的原理</a>
+      <ul>
+        <li><a href="#spring-factories机制">Spring Factories机制</a></li>
+        <li><a href="#autoconfigurationimportselector分析">AutoConfigurationImportSelector分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
 </nav>
 </aside>
 
@@ -298,9 +294,8 @@ if (!doNotTrack) {
           
 
           <p>在Spring Boot应用中的自动装配是通过<code>@EnableAutoConfiguration</code> 注解进行开启的。<code>@EnableAutoConfiguration</code> 可以帮助 Spring Boot 应用将所有符合条件的 <code>@Configuration</code> 配置类的 bean 都加载到 Spring IoC 容器中。</p>
-
 <p>我们看下<code>@SpringBootApplication</code>注解，默认是启动<code>@EnableAutoConfiguration</code> 的。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Target(ElementType.TYPE)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
@@ -325,11 +320,10 @@ public @interface SpringBootApplication {
 	@AliasFor(annotation = Configuration.class)
 	boolean proxyBeanMethods() default true;
 
-}</pre></div>
-<h2 id="自动装配的原理">自动装配的原理</h2>
-
+}
+</code></pre></div><h2 id="自动装配的原理">自动装配的原理</h2>
 <p>看下在Spring Boot应用启动时，<code>run</code>方法的代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public ConfigurableApplicationContext run(String... args) {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public ConfigurableApplicationContext run(String... args) {
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
 		ConfigurableApplicationContext context = null;
@@ -371,13 +365,11 @@ public @interface SpringBootApplication {
 			throw new IllegalStateException(ex);
 		}
 		return context;
-	}</pre></div>
-<p>注意一下<code>getSpringFactoriesInstances</code>方法，通过<code>SpringFactoriesLoader</code>来加载指定文件的配置。</p>
-
+	}
+</code></pre></div><p>注意一下<code>getSpringFactoriesInstances</code>方法，通过<code>SpringFactoriesLoader</code>来加载指定文件的配置。</p>
 <h3 id="spring-factories机制">Spring Factories机制</h3>
-
 <p>先看下<code>org.springframework.core.io.support.SpringFactoriesLoader</code> 的关键代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public final class SpringFactoriesLoader {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public final class SpringFactoriesLoader {
 	
 	// 配置文件的路径
 	public static final String FACTORIES_RESOURCE_LOCATION = &#34;META-INF/spring.factories&#34;;
@@ -418,9 +410,9 @@ public @interface SpringBootApplication {
 	
 	......
 
-}</pre></div>
-<p>首先我们可以在下 <code>spring-boot-autoconfigure-2.2.4.RELEASE.jar/META-INF/spring.factories</code>找到了 key 为 <code>org.springframework.boot.autoconfigure.EnableAutoConfiguration</code> 部分：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Auto Configure
+}
+</code></pre></div><p>首先我们可以在下 <code>spring-boot-autoconfigure-2.2.4.RELEASE.jar/META-INF/spring.factories</code>找到了 key 为 <code>org.springframework.boot.autoconfigure.EnableAutoConfiguration</code> 部分：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 org.springframework.boot.autoconfigure.admin.SpringApplicationAdminJmxAutoConfiguration,\
 org.springframework.boot.autoconfigure.aop.AopAutoConfiguration,\
@@ -432,15 +424,15 @@ org.springframework.boot.autoconfigure.cloud.CloudServiceConnectorsAutoConfigura
 org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration,\
 org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration,\
 
-......</pre></div>
-<p>key 为 <code>org.springframework.boot.autoconfigure.AutoConfigurationImportFilter</code> 部分：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Auto Configuration Import Filters
+......
+</code></pre></div><p>key 为 <code>org.springframework.boot.autoconfigure.AutoConfigurationImportFilter</code> 部分：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Auto Configuration Import Filters
 org.springframework.boot.autoconfigure.AutoConfigurationImportFilter=\
 org.springframework.boot.autoconfigure.condition.OnBeanCondition,\
 org.springframework.boot.autoconfigure.condition.OnClassCondition,\
-org.springframework.boot.autoconfigure.condition.OnWebApplicationCondition</pre></div>
-<h3 id="autoconfigurationimportselector分析">AutoConfigurationImportSelector分析</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Target(ElementType.TYPE)
+org.springframework.boot.autoconfigure.condition.OnWebApplicationCondition
+</code></pre></div><h3 id="autoconfigurationimportselector分析">AutoConfigurationImportSelector分析</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
@@ -454,9 +446,9 @@ public @interface EnableAutoConfiguration {
 
 	String[] excludeName() default {};
 
-}</pre></div>
-<p><code>AutoConfigurationImportSelector</code>导入配置的关键代码如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Override
+}
+</code></pre></div><p><code>AutoConfigurationImportSelector</code>导入配置的关键代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Override
 	public String[] selectImports(AnnotationMetadata annotationMetadata) {
 		// 判断环境变量spring.boot.enableautoconfiguration的值是否为true?
 		if (!isEnabled(annotationMetadata)) {
@@ -472,15 +464,11 @@ public @interface EnableAutoConfiguration {
 		AutoConfigurationEntry autoConfigurationEntry = getAutoConfigurationEntry(autoConfigurationMetadata,
 				annotationMetadata);
 		return StringUtils.toStringArray(autoConfigurationEntry.getConfigurations());
-	}</pre></div>
-<p>大致流程如下：</p>
-
-<p><img src="http://flygopher.top/img/post/enable-auto-configuration-01.png" alt="" /></p>
-
-<hr>
-
+	}
+</code></pre></div><p>大致流程如下：</p>
+<p><img src="http://flygopher.top/img/post/enable-auto-configuration-01.png" alt=""></p>
+<!-- raw HTML omitted -->
 <h2 id="参考">参考</h2>
-
 <p>spring-boot-autoconfigure-2.2.4.RELEASE</p>
 
           
@@ -638,7 +626,7 @@ public @interface EnableAutoConfiguration {
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

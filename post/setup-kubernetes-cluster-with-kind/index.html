@@ -11,10 +11,8 @@
   <meta name="twitter:title" content="使用Kind快速构建Kubernetes集群" />
   
   <meta name="description" content="现在安装 Kubernetes 集群已经变得越来越简单了，出现了很多方案，各种方案都有自己适合的使用场景。虽然我们可以很快速在云环境下面启动一个 Kubernetes 集群，但是对于开发人员通常更喜欢能够快速上手的东西，Kubernetes in Docker（Kind）这个工具就可以通过创建容器来作为 Kubernetes 的节点，我们只需要在机器上安装 Docker 就可以使用，它允许我们在很短的时间内就启动一个多节点的集群，而不依赖任何其他工具或云服务商。
-
 前面的文章也讲过如何在本地使用Vagrant来快速搭建Kubernetes集群，但还是有点麻烦，而且需要自己去定制Vagrant Box，有一定的技术门槛。">
   <meta property="og:description" content="现在安装 Kubernetes 集群已经变得越来越简单了，出现了很多方案，各种方案都有自己适合的使用场景。虽然我们可以很快速在云环境下面启动一个 Kubernetes 集群，但是对于开发人员通常更喜欢能够快速上手的东西，Kubernetes in Docker（Kind）这个工具就可以通过创建容器来作为 Kubernetes 的节点，我们只需要在机器上安装 Docker 就可以使用，它允许我们在很短的时间内就启动一个多节点的集群，而不依赖任何其他工具或云服务商。
-
 前面的文章也讲过如何在本地使用Vagrant来快速搭建Kubernetes集群，但还是有点麻烦，而且需要自己去定制Vagrant Box，有一定的技术门槛。">
   <meta name="twitter:description" content="现在安装 Kubernetes 集群已经变得越来越简单了，出现了很多方案，各种方案都有自己适合的使用场景。虽然我们可以很快速在云环境下面启动一个 Kubernetes 集群，但是对于开发人员通常更喜欢能够快速上手的东西，Kubernetes in Docker（Kind）这个工具就可以通过创建容器来作为 Kubernetes 的节点，我们只需要在机器上安装 Docker 就可以使用，它允许我们在很 …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
@@ -26,7 +24,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/setup-kubernetes-cluster-with-kind/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -37,8 +35,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -173,7 +170,7 @@ if (!doNotTrack) {
                   
                     <span class="post-meta">
   
-    发表于 October 15, 2020
+    
   
   
 </span>
@@ -200,7 +197,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 October 15, 2020
+    
   
   
 </span>
@@ -248,17 +245,14 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#依赖">依赖</a></li>
-<li><a href="#kind架构">Kind架构</a></li>
-<li><a href="#安装">安装</a></li>
-<li><a href="#多节点集群">多节点集群</a></li>
-<li><a href="#删除kind集群">删除Kind集群</a></li>
-<li><a href="#参考">参考</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#依赖">依赖</a></li>
+    <li><a href="#kind架构">Kind架构</a></li>
+    <li><a href="#安装">安装</a></li>
+    <li><a href="#多节点集群">多节点集群</a></li>
+    <li><a href="#删除kind集群">删除Kind集群</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
 </nav>
 </aside>
 
@@ -277,34 +271,27 @@ if (!doNotTrack) {
           
 
           <p>现在安装 Kubernetes 集群已经变得越来越简单了，出现了很多方案，各种方案都有自己适合的使用场景。虽然我们可以很快速在云环境下面启动一个 Kubernetes 集群，但是对于开发人员通常更喜欢能够快速上手的东西，<a href="https://kind.sigs.k8s.io/">Kubernetes in Docker（Kind）</a>这个工具就可以通过创建容器来作为 Kubernetes 的节点，我们只需要在机器上安装 Docker 就可以使用，它允许我们在很短的时间内就启动一个多节点的集群，而不依赖任何其他工具或云服务商。</p>
-
 <p>前面的文章也讲过如何在本地使用Vagrant来快速搭建Kubernetes集群，但还是有点麻烦，而且需要自己去定制Vagrant Box，有一定的技术门槛。</p>
-
 <h2 id="依赖">依赖</h2>
-
 <p>本文使用的是<code>MacOS</code>系统，Kind需要本机安装docker和golang，本文的软件版本如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Docker Desktop 2.4.0.0(48506)
-go version go1.15.3 darwin/amd64</pre></div>
-<h2 id="kind架构">Kind架构</h2>
-
-<p><img src="http://flygopher.top/img/post/kind-design.png" alt="" /></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Docker Desktop 2.4.0.0(48506)
+go version go1.15.3 darwin/amd64
+</code></pre></div><h2 id="kind架构">Kind架构</h2>
+<p><img src="http://flygopher.top/img/post/kind-design.png" alt=""></p>
 <p>Kind 是使用 kubeadm 工具来启动管理集群，也通过了一致性测试和 CNCF 的认证，当然它也会为你生成访问集群的 kubeconfig 文件，这样我们同样就可以使用 kubectl 来和集群进行交互了。其他 Kubernetes 组件，比如 Helm、Istio 也同样可以在 Kind 集群内正常工作。</p>
-
 <p>Kind 有一个缺点是它不能使用 LoadBalancer 的 Service，所以我们需要使用 NodePort 来对外暴露服务。</p>
-
 <h2 id="安装">安装</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">sudo curl -sL https://kind.sigs.k8s.io/dl/v0.9.0/kind-darwin-amd64 -o /usr/local/bin/kind
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo curl -sL https://kind.sigs.k8s.io/dl/v0.9.0/kind-darwin-amd64 -o /usr/local/bin/kind
 sudo chmod +x /usr/local/bin/kind
 
 $ kind version
-kind v0.9.0 go1.15.2 darwin/amd64</pre></div>
-<p>或者</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">brew install kind</pre></div>
-<p>安装完成后你可以使用下面的命令创建你的集群：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kind create cluster</pre></div>
-<p>出现如下结果，表示安装成功：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kind create cluster
+kind v0.9.0 go1.15.2 darwin/amd64
+</code></pre></div><p>或者</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">brew install kind
+</code></pre></div><p>安装完成后你可以使用下面的命令创建你的集群：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kind create cluster
+</code></pre></div><p>出现如下结果，表示安装成功：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kind create cluster
 Creating cluster &#34;kind&#34; ...
  ✓ Ensuring node image (kindest/node:v1.19.1) 🖼
  ✓ Preparing nodes 📦
@@ -317,30 +304,28 @@ You can now use your cluster with:
 
 kubectl cluster-info --context kind-kind
 
-Not sure what to do next? 😅  Check out https://kind.sigs.k8s.io/docs/user/quick-start/</pre></div>
-<p>验证：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kind get clusters
+Not sure what to do next? 😅  Check out https://kind.sigs.k8s.io/docs/user/quick-start/
+</code></pre></div><p>验证：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kind get clusters
 kind
 
 $ kubectl get nodes
 NAME                 STATUS   ROLES    AGE   VERSION
-kind-control-plane   Ready    master   40s   v1.19.1</pre></div>
-<h2 id="多节点集群">多节点集群</h2>
-
+kind-control-plane   Ready    master   40s   v1.19.1
+</code></pre></div><h2 id="多节点集群">多节点集群</h2>
 <p>如果你想定义一个多节点集群，你可以使用类似下面的集群配置文件进行创建：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># kind-config.yaml
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># kind-config.yaml
 # 2个节点（1个woker节点）
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
 - role: control-plane
-- role: worker</pre></div>
-<p>然后使用上面的配置文件创建集群：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kind create cluster --name kind --image kindest/node:v1.19.1 --config kind-config.yaml</pre></div>
-<p>我们也可以在 <code>nodes</code> 属性部分指定多个控制平面角色来创建多控制平面集群。由于 KinD 会自动创建一个 kubeconfig 文件，所以我们可以像使用其他集群一样使用 kubectl 命令。</p>
-
+- role: worker
+</code></pre></div><p>然后使用上面的配置文件创建集群：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kind create cluster --name kind --image kindest/node:v1.19.1 --config kind-config.yaml
+</code></pre></div><p>我们也可以在 <code>nodes</code> 属性部分指定多个控制平面角色来创建多控制平面集群。由于 KinD 会自动创建一个 kubeconfig 文件，所以我们可以像使用其他集群一样使用 kubectl 命令。</p>
 <p>结果如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kind create cluster --name kind --image kindest/node:v1.19.1 --config kind-config.yaml
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kind create cluster --name kind --image kindest/node:v1.19.1 --config kind-config.yaml
 Creating cluster &#34;kind&#34; ...
  ✓ Ensuring node image (kindest/node:v1.19.1) 🖼
  ✓ Preparing nodes 📦 📦
@@ -359,21 +344,15 @@ Have a question, bug, or feature request? Let us know! https://kind.sigs.k8s.io/
 $ kubectl get nodes
 NAME                 STATUS   ROLES    AGE   VERSION
 kind-control-plane   Ready    master   80s   v1.19.1
-kind-worker          Ready    &lt;none&gt;   50s   v1.19.1</pre></div>
-<h2 id="删除kind集群">删除Kind集群</h2>
-
+kind-worker          Ready    &lt;none&gt;   50s   v1.19.1
+</code></pre></div><h2 id="删除kind集群">删除Kind集群</h2>
 <p>要想删除 KinD 集群也很简单，直接使用如下所示的命令即可：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kind delete cluster --name kind</pre></div>
-<p>到这里你就可以快速构建你想要的本地K8S集群了。</p>
-
-<hr>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kind delete cluster --name kind
+</code></pre></div><p>到这里你就可以快速构建你想要的本地K8S集群了。</p>
+<!-- raw HTML omitted -->
 <h2 id="参考">参考</h2>
-
 <p><a href="https://kind.sigs.k8s.io/docs/user/quick-start/">Kind官网Quick Start</a></p>
-
 <p><a href="https://github.com/kubernetes-sigs/kind/">Kind Github</a></p>
-
 <p><a href="https://hub.docker.com/r/kindest/node/tags?page=1">Kind Docker Images</a></p>
 
           
@@ -543,7 +522,7 @@ kind-worker          Ready    &lt;none&gt;   50s   v1.19.1</pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

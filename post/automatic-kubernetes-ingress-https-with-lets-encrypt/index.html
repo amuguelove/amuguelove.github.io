@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,8 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -173,7 +172,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 September 28, 2020
+    
   
   
 </span>
@@ -223,19 +222,14 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li><a href="#部署">部署</a>
-<ul>
-<li>
-<ul>
-<li><a href="#yaml文件部署">Yaml文件部署</a></li>
-<li><a href="#helm3-部署">Helm3 部署</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#证书签发服务">证书签发服务</a></li>
-<li><a href="#验证">验证</a></li>
-<li><a href="#参考">参考</a></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#yaml文件部署">Yaml文件部署</a></li>
+        <li><a href="#helm3-部署">Helm3 部署</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </aside>
 
@@ -254,23 +248,18 @@ if (!doNotTrack) {
           
 
           <p>现在的Web应用启用<code>HTTPS</code>服务是真的非常有必要的。一些正规机构颁发的<code>CA</code>证书费用又特别高，不过比较幸运的是也有免费的午餐 - <code>Let's Encrypt</code>，虽然只有90天的证书有效期，但是我们完全可以在证书失效之前，重新生成证书替换掉。在<code>Kubernetes</code>集群中就更方便了，我们可以通过 Kubernetes Ingress 和 Let’s Encrypt 实现外部服务的自动化 HTTPS。</p>
-
 <p>Cert-Manager 是一个云原生证书管理开源项目，用于在 Kubernetes 集群中提供 HTTPS 证书并自动续期，支持 Let’s Encrypt / HashiCorp / Vault 这些免费证书的签发。</p>
-
-<figure><img src="http://flygopher.top/img/post/cert-manager-structrue.svg" alt="Cert Manager Structrue"><figcaption>Cert Manager Structrue</figcaption></figure>
-
+<p><img src="http://flygopher.top/img/post/cert-manager-structrue.svg" alt="Cert Manager Structrue"></p>
 <h1 id="部署">部署</h1>
-
 <p>我们这里用来管理 SSL/TLS 证书的组件是<code>Cert manager</code>，它对于每一个 ingress endpoint 将会自动创建一个新的证书，当 certificates 过期时还能自动更新，除此之外，Cert manager 也可以和其它的 providers 一起工作，例如 HashiCorp Vault。这里我们介绍两种部署方式：</p>
-
 <h3 id="yaml文件部署">Yaml文件部署</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Kubernetes 1.16+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Kubernetes 1.16+
 $ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.2/cert-manager.yaml
 
 # Kubernetes &lt;1.16
-$ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.2/cert-manager-legacy.yaml</pre></div>
-<h3 id="helm3-部署">Helm3 部署</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kubectl create namespace cert-manager
+$ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.2/cert-manager-legacy.yaml
+</code></pre></div><h3 id="helm3-部署">Helm3 部署</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubectl create namespace cert-manager
 
 helm repo add jetstack https://charts.jetstack.io
 helm repo update
@@ -281,28 +270,26 @@ helm upgrade --install \
   --version v1.0.2 \
   --set ingressShim.defaultIssuerName=letsencrypt-prod \
   --set ingressShim.defaultIssuerKind=ClusterIssuer \
-  --set installCRDs=true</pre></div>
-<p>在使用的时候我们需要配置一个缺省的<a href="http://docs.cert-manager.io/en/latest/reference/clusterissuers.html">cluster issuer</a>，当部署<code>Cert manager</code>的时候，用于支持<code>kubernetes.io/tls-acme: &quot;true&quot;</code>annotation 来自动化 TLS。</p>
-
+  --set installCRDs=true
+</code></pre></div><p>在使用的时候我们需要配置一个缺省的<a href="http://docs.cert-manager.io/en/latest/reference/clusterissuers.html">cluster issuer</a>，当部署<code>Cert manager</code>的时候，用于支持<code>kubernetes.io/tls-acme: &quot;true&quot;</code>annotation 来自动化 TLS。</p>
 <p>安装完成后，然后查看<code>Pod</code>运行状态：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl get pods -n cert-manager
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl get pods -n cert-manager
 NAME                                      READY   STATUS    RESTARTS   AGE
 cert-manager-74fdd7bc8f-bhj6v             1/1     Running   0          6h48m
 cert-manager-cainjector-8665f9998-k7bx6   1/1     Running   0          6h48m
-cert-manager-webhook-677b8cbf67-2w48n     1/1     Running   0          6h48m</pre></div>
-<p>除此之外，安装完成后<code>Cert manager</code>还提供了一些<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Kubernetes custom resources</a>：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl get crd -n cert-manager
+cert-manager-webhook-677b8cbf67-2w48n     1/1     Running   0          6h48m
+</code></pre></div><p>除此之外，安装完成后<code>Cert manager</code>还提供了一些<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Kubernetes custom resources</a>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl get crd -n cert-manager
 NAME                                  CREATED AT
 certificaterequests.cert-manager.io   2020-09-28T05:44:55Z
 certificates.cert-manager.io          2020-09-28T05:44:55Z
 challenges.acme.cert-manager.io       2020-09-28T05:44:56Z
 clusterissuers.cert-manager.io        2020-09-28T05:44:56Z
 issuers.cert-manager.io               2020-09-28T05:44:58Z
-orders.acme.cert-manager.io           2020-09-28T05:44:58Z</pre></div>
-<h1 id="证书签发服务">证书签发服务</h1>
-
+orders.acme.cert-manager.io           2020-09-28T05:44:58Z
+</code></pre></div><h1 id="证书签发服务">证书签发服务</h1>
 <p><code>Cert manager</code>安装后，接下来需要定义上面的<code>letsencrypt-prod</code>这个<code>cluster issuer</code>，这里使用上面的<code>clusterissuers.certmanager.k8s.io</code>这个<code>CRD</code>来定义：（cluster-issuer-letsencrypt-prod.yaml）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: cert-manager.io/v1
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-prod
@@ -315,16 +302,14 @@ spec:
     solvers:
       - http01:
           ingress:
-            class: nginx</pre></div>
-<p>然后直接创建这个<code>ClusterIssuer</code>资源：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl create -f cluster-issuer-letsencrypt-prod.yaml
-clusterissuer.certmanager.k8s.io &#34;letsencrypt-prod&#34; created</pre></div>
-<p>注意：上面配置的是生产环境，你还可以配置staging环境来测试。<a href="https://letsencrypt.org/zh-cn/docs/staging-environment/">Let’s Encrypt 测试环境与生产环境的区别</a></p>
-
+            class: nginx
+</code></pre></div><p>然后直接创建这个<code>ClusterIssuer</code>资源：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl create -f cluster-issuer-letsencrypt-prod.yaml
+clusterissuer.certmanager.k8s.io &#34;letsencrypt-prod&#34; created
+</code></pre></div><p>注意：上面配置的是生产环境，你还可以配置staging环境来测试。<a href="https://letsencrypt.org/zh-cn/docs/staging-environment/">Let’s Encrypt 测试环境与生产环境的区别</a></p>
 <h1 id="验证">验证</h1>
-
 <p>上面我们已经安装了<code>Cert manager</code>，定义了<code>ClusterIssuer</code>，接下来我们来配置 HTTPS 去访问我们的 Nginx服务，Nginx 的部署我们这里就不多说了，直接添加一个 Ingress 资源对象即可：(nginx-ingress.yaml)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: networking.k8s.io/v1beta1
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
 	name: nginx
@@ -343,23 +328,19 @@ spec:
   tls:
     - hosts:
       - nginx-demo.qcloud.com
-      secretName: nginx-demo-tls</pre></div>
-<p>这里需要注意的是上面我们添加的<code>annotations</code>非常重要，这个将告诉 Cert Manager 去生成证书，然后由于我们这里要使用 HTTPS，所以我们需要添加一个 tls 证书，而证书就是通过<code>nginx-demo-tls</code>这个 Secret 对象来提供的，要注意的是这个 Secret 对象并不是我们手动创建的，而是 Cert Manager 自动创建的证书对应的对应。然后直接创建这个资源对象即可：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl create -f nginx-ingress.yaml</code></pre></div>
-<blockquote>
+      secretName: nginx-demo-tls
+</code></pre></div><p>这里需要注意的是上面我们添加的<code>annotations</code>非常重要，这个将告诉 Cert Manager 去生成证书，然后由于我们这里要使用 HTTPS，所以我们需要添加一个 tls 证书，而证书就是通过<code>nginx-demo-tls</code>这个 Secret 对象来提供的，要注意的是这个 Secret 对象并不是我们手动创建的，而是 Cert Manager 自动创建的证书对应的对应。然后直接创建这个资源对象即可：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl create -f nginx-ingress.yaml
+</code></pre></div><blockquote>
 <p>当然如果需要在公网中进行访问，我们还需要将我们这里的域名解析到 Ingress Controller 所在的任意一个节点，或者在本地的<code>/etc/hosts</code>中加上映射也是可以的。</p>
 </blockquote>
-
 <p>之后 Cert-manager 会读取注解并创建证书，使用以下命令查看：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ kubectl get certificate
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl get certificate
 NAME                     READY   SECRET                   AGE
-nginx-demo-tls           True    nginx-demo-tls	          5h20m</pre></div>
-<p>到这里我们就完成了使用<code>Let's Encrypt</code>实现<code>Kubernetes Ingress</code>自动化 HTTPS。</p>
-
+nginx-demo-tls           True    nginx-demo-tls	          5h20m
+</code></pre></div><p>到这里我们就完成了使用<code>Let's Encrypt</code>实现<code>Kubernetes Ingress</code>自动化 HTTPS。</p>
 <h1 id="参考">参考</h1>
-
 <p><a href="https://cert-manager.io/docs/installation/kubernetes/">Cert Manager 官网</a></p>
-
 <p><a href="https://github.com/jetstack/cert-manager">Cert Manager Github</a></p>
 
           
@@ -521,7 +502,7 @@ nginx-demo-tls           True    nginx-demo-tls	          5h20m</pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

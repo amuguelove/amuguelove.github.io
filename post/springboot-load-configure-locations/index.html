@@ -11,22 +11,15 @@
   <meta name="twitter:title" content="SpringBoot配置文件加载的路径和优先级" />
   
   <meta name="description" content="很多人对SpringBoot文件加载的位置和优先级有点疑惑，下面通过源码看下到底是如何加载的。
-
 我们先来看下SpringBoot加载PropertySource的顺序是如何的呢？可以参考官网：https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config
-
-
 
 配置加载的优先级从高到低，其中高优先级可以覆盖低优先级的配置。">
   <meta property="og:description" content="很多人对SpringBoot文件加载的位置和优先级有点疑惑，下面通过源码看下到底是如何加载的。
-
 我们先来看下SpringBoot加载PropertySource的顺序是如何的呢？可以参考官网：https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config
-
-
 
 配置加载的优先级从高到低，其中高优先级可以覆盖低优先级的配置。">
   <meta name="twitter:description" content="很多人对SpringBoot文件加载的位置和优先级有点疑惑，下面通过源码看下到底是如何加载的。
-
-我们先来看下SpringBoot加载PropertySource的顺序是如何的呢？可以参考官网： …">
+我们先来看下SpringBoot加载PropertySource的顺序是如何的呢？ …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
@@ -36,7 +29,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/springboot-load-configure-locations/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -47,8 +40,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -183,7 +175,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 March 18, 2020
+    
   
   
 </span>
@@ -238,15 +230,11 @@ if (!doNotTrack) {
           
 
           <p>很多人对<code>SpringBoot</code>文件加载的位置和优先级有点疑惑，下面通过源码看下到底是如何加载的。</p>
-
-<p>我们先来看下<code>SpringBoot</code>加载<code>PropertySource</code>的顺序是如何的呢？可以<a href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config">参考官网</a>：<a href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config">https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config</a></p>
-
-<p><img src="http://flygopher.top/img/post/springboot-configuration-1.png" alt="" /></p>
-
+<p>我们先来看下<code>SpringBoot</code>加载<code>PropertySource</code>的顺序是如何的呢？可以<a href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config">参考官网</a>：https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config</p>
+<p><img src="http://flygopher.top/img/post/springboot-configuration-1.png" alt=""></p>
 <p>配置加载的优先级从高到低，其中高优先级可以覆盖低优先级的配置。</p>
-
 <p>简单的用中文翻译如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">1. 开启 DevTools 时，~/.config/spring-boot/spring-boot-devtools.properties
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">1. 开启 DevTools 时，~/.config/spring-boot/spring-boot-devtools.properties
 2. 测试类上的 @TestPropertySource 注解 
 3. @SpringBootTest#properties 属性
 4. 命令⾏行行参数( --server.port=9000 ) 
@@ -262,39 +250,34 @@ if (!doNotTrack) {
 14. jar 包外部的 application.properties 或 .yml
 15. jar 包内部的 application.properties 或 .yml
 16. @Configuration 类上的 @PropertySource 
-17. SpringApplication.setDefaultProperties() 设置的默认属性</pre></div>
-<h2 id="项目内部配置加载路径">项目内部配置加载路径</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">–file:./config/
+17. SpringApplication.setDefaultProperties() 设置的默认属性
+</code></pre></div><h2 id="项目内部配置加载路径">项目内部配置加载路径</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">–file:./config/
 –file:./
 –classpath:/config/
-–classpath:/</pre></div>
-<p>加载顺序从高到低，高优先级的配置会覆盖低优先级配置内容。</p>
-
+–classpath:/
+</code></pre></div><p>加载顺序从高到低，高优先级的配置会覆盖低优先级配置内容。</p>
 <p>其定义在文件<code>ConfigFileApplicationListener</code>中</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public class ConfigFileApplicationListener implements EnvironmentPostProcessor, SmartApplicationListener, Ordered {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public class ConfigFileApplicationListener implements EnvironmentPostProcessor, SmartApplicationListener, Ordered {
 ···
 	// Note the order is from least to most specific (last one wins)
 	private static final String DEFAULT_SEARCH_LOCATIONS = &#34;classpath:/,classpath:/config/,file:./,file:./config/&#34;;
 		
 ···
-}</pre></div>
-<h2 id="propertysourceloader源码分析">PropertySourceLoader源码分析</h2>
-
+}
+</code></pre></div><h2 id="propertysourceloader源码分析">PropertySourceLoader源码分析</h2>
 <p><code>SpringBoot</code>把配置文件的加载封装成了<code>PropertySourceLoader</code>接口，该接口的定义如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public interface PropertySourceLoader {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public interface PropertySourceLoader {
 
 	// 支持的文件后缀
 	String[] getFileExtensions();
 
 	// 把资源Resource加载成属性源PropertySource
 	List&lt;PropertySource&lt;?&gt;&gt; load(String name, Resource resource) throws IOException;
-}</pre></div>
-<p>PropertySource是Spring对name/value键值对的封装接口。该定义了getSource()方法，这个方法会返回得到属性源的源头。比如MapPropertySource的源头就是一个Map，PropertiesPropertySource的源头就是一个Properties。</p>
-
+}
+</code></pre></div><p>PropertySource是Spring对name/value键值对的封装接口。该定义了getSource()方法，这个方法会返回得到属性源的源头。比如MapPropertySource的源头就是一个Map，PropertiesPropertySource的源头就是一个Properties。</p>
 <p>PropertySource目前的实现类有不少，比如上面提到的MapPropertySource和<code>PropertiesPropertySource</code>，还有RandomValuePropertySource(source是Random)、SimpleCommandLinePropertySource(source是CommandLineArgs，命令行参数)、ServletConfigPropertySource(source是ServletConfig)等等。</p>
-
 <p>PropertySource常用的子类有：</p>
-
 <ul>
 <li>MapPropertySource：source指定为Map实例的PropertySource实现。</li>
 <li>PropertiesPropertySource：source指定为Map实例的PropertySource实现，内部的Map实例由Properties实例转换而来。</li>
@@ -302,9 +285,8 @@ if (!doNotTrack) {
 <li>StubPropertySource：PropertySource的一个内部类，source设置为null，实际上就是空实现。</li>
 <li>ComparisonPropertySource：继承自ComparisonPropertySource，所有属性访问方法强制抛出异常，作用就是一个不可访问属性的空实现。</li>
 </ul>
-
 <p><code>AbstractEnvironment</code>中的属性定义：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public static final String IGNORE_GETENV_PROPERTY_NAME = &#34;spring.getenv.ignore&#34;;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public static final String IGNORE_GETENV_PROPERTY_NAME = &#34;spring.getenv.ignore&#34;;
 public static final String ACTIVE_PROFILES_PROPERTY_NAME = &#34;spring.profiles.active&#34;;
 public static final String DEFAULT_PROFILES_PROPERTY_NAME = &#34;spring.profiles.default&#34;;
 protected static final String RESERVED_DEFAULT_PROFILE_NAME = &#34;default&#34;;
@@ -315,18 +297,16 @@ private final Set&lt;String&gt; defaultProfiles = new LinkedHashSet&lt;&gt;(getR
 
 private final MutablePropertySources propertySources = new MutablePropertySources();
 
-private final ConfigurablePropertyResolver propertyResolver = new PropertySourcesPropertyResolver(this.propertySources);</pre></div>
-<p>上面的propertySources(<code>MutablePropertySources</code>类型)属性就是用来存放<code>PropertySource</code>列表的，<code>PropertySourcesPropertyResolver</code>是<code>ConfigurablePropertyResolver</code>的实现，默认的profile就是字符串default。<code>MutablePropertySources</code>的内部属性如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">private final List&lt;PropertySource&lt;?&gt;&gt; propertySourceList = new CopyOnWriteArrayList&lt;&gt;();</pre></div>
-<p>PropertySourceLoader接口目前有两个实现类:</p>
-
+private final ConfigurablePropertyResolver propertyResolver = new PropertySourcesPropertyResolver(this.propertySources);
+</code></pre></div><p>上面的propertySources(<code>MutablePropertySources</code>类型)属性就是用来存放<code>PropertySource</code>列表的，<code>PropertySourcesPropertyResolver</code>是<code>ConfigurablePropertyResolver</code>的实现，默认的profile就是字符串default。<code>MutablePropertySources</code>的内部属性如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">private final List&lt;PropertySource&lt;?&gt;&gt; propertySourceList = new CopyOnWriteArrayList&lt;&gt;();
+</code></pre></div><p>PropertySourceLoader接口目前有两个实现类:</p>
 <ol>
 <li>PropertiesPropertySourceLoader（支持从xml或properties格式的文件中加载数据）</li>
 <li>YamlPropertySourceLoader（支持从yml或者yaml格式的文件中加载数据）</li>
 </ol>
-
 <h2 id="environment源码分析">Environment源码分析</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public interface Environment extends PropertyResolver {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public interface Environment extends PropertyResolver {
 	
 	String[] getActiveProfiles();
 
@@ -337,9 +317,8 @@ private final ConfigurablePropertyResolver propertyResolver = new PropertySource
 
 	boolean acceptsProfiles(Profiles profiles);
 
-}</pre></div>
-<p><code>Environment</code>接口是Spring对当前程序运行期间的环境的封装。主要提供了两大功能：<code>profile</code>和<code>property</code>(父接口PropertyResolver提供)。</p>
-
+}
+</code></pre></div><p><code>Environment</code>接口是Spring对当前程序运行期间的环境的封装。主要提供了两大功能：<code>profile</code>和<code>property</code>(父接口PropertyResolver提供)。</p>
 <ul>
 <li>PropertyResolver：提供属性访问功能。</li>
 <li>ConfigurablePropertyResolver：继承自PropertyResolver，主要提供属性类型转换(基于org.springframework.core.convert.ConversionService)功能。</li>
@@ -350,11 +329,9 @@ private final ConfigurablePropertyResolver propertyResolver = new PropertySource
 <li>StandardEnvironment：继承自AbstractEnvironment，非Servlet(Web)环境下的标准Environment实现。</li>
 <li>StandardServletEnvironment：继承自StandardEnvironment，Servlet(Web)环境下的标准Environment实现。</li>
 </ul>
-
 <p>Environment（主要是ConfigurableEnvironment）加载过程源码分析：</p>
-
 <p>在<code>SpringApplication#prepareEnvironment</code>中</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">private ConfigurableEnvironment prepareEnvironment(SpringApplicationRunListeners listeners,
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">private ConfigurableEnvironment prepareEnvironment(SpringApplicationRunListeners listeners,
 			ApplicationArguments applicationArguments) {
 		// Create and configure the environment
 		//创建ConfigurableEnvironment实例
@@ -373,9 +350,9 @@ private final ConfigurablePropertyResolver propertyResolver = new PropertySource
 		//绑定ConfigurationPropertySourcesPropertySource到ConfigurableEnvironment中，name为configurationProperties，实例是SpringConfigurationPropertySources，属性实际是ConfigurableEnvironment中的MutablePropertySources
 		ConfigurationPropertySources.attach(environment);
 		return environment;
-	}</pre></div>
-<p>看下<code>getOrCreateEnvironment</code>方法：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">private ConfigurableEnvironment getOrCreateEnvironment() {
+	}
+</code></pre></div><p>看下<code>getOrCreateEnvironment</code>方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">private ConfigurableEnvironment getOrCreateEnvironment() {
 		if (this.environment != null) {
 			return this.environment;
 		}
@@ -387,18 +364,18 @@ private final ConfigurablePropertyResolver propertyResolver = new PropertySource
 		default:
 			return new StandardEnvironment();
 		}
-	}</pre></div>
-<p>还有一个地方要重点关注：发布ConfigurableEnvironment准备完毕事件<code>listeners.environmentPrepared(environment)</code>，实际上这里用到了同步的EventBus，事件的监听者是ConfigFileApplicationListener，具体处理逻辑是<code>onApplicationEnvironmentPreparedEvent</code>方法：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">private void onApplicationEnvironmentPreparedEvent(ApplicationEnvironmentPreparedEvent event) {
+	}
+</code></pre></div><p>还有一个地方要重点关注：发布ConfigurableEnvironment准备完毕事件<code>listeners.environmentPrepared(environment)</code>，实际上这里用到了同步的EventBus，事件的监听者是ConfigFileApplicationListener，具体处理逻辑是<code>onApplicationEnvironmentPreparedEvent</code>方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">private void onApplicationEnvironmentPreparedEvent(ApplicationEnvironmentPreparedEvent event) {
 		List&lt;EnvironmentPostProcessor&gt; postProcessors = loadPostProcessors();
 		postProcessors.add(this);
 		AnnotationAwareOrderComparator.sort(postProcessors);
 		for (EnvironmentPostProcessor postProcessor : postProcessors) {
 			postProcessor.postProcessEnvironment(event.getEnvironment(), event.getSpringApplication());
 		}
-	}</pre></div>
-<p>实际上，处理工作大部分都在ConfigFileApplicationListener中，见它的<code>postProcessEnvironment</code>方法：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Override
+	}
+</code></pre></div><p>实际上，处理工作大部分都在ConfigFileApplicationListener中，见它的<code>postProcessEnvironment</code>方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Override
 	public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
 		addPropertySources(environment, application.getResourceLoader());
 	}
@@ -417,11 +394,9 @@ private final ConfigurablePropertyResolver propertyResolver = new PropertySource
 	protected void addPropertySources(ConfigurableEnvironment environment, ResourceLoader resourceLoader) {
 		RandomValuePropertySource.addToEnvironment(environment);
 		new Loader(environment, resourceLoader).load();
-	}</pre></div>
-<p>主要的配置环境加载逻辑在内部类Loader，Loader会匹配多个路径下的文件把属性加载到ConfigurableEnvironment中，加载器主要是PropertySourceLoader的实例，例如我们用到application-${profile}.yaml文件做应用主配置文件，使用的是YamlPropertySourceLoader，这个时候activeProfiles也会被设置到ConfigurableEnvironment中。加载完毕之后，ConfigurableEnvironment中基本包含了所有需要加载的属性(activeProfiles是这个时候被写入ConfigurableEnvironment)。值得注意的是，几乎所有属性都是key-value形式存储，如xxx.yyyy.zzzzz=value、xxx.yyyy[0].zzzzz=value-1、xxx.yyyy[1].zzzzz=value-2。<code>Loader</code>中的逻辑相对复杂，有比较多的遍历和过滤条件，这里不做展开。</p>
-
+	}
+</code></pre></div><p>主要的配置环境加载逻辑在内部类Loader，Loader会匹配多个路径下的文件把属性加载到ConfigurableEnvironment中，加载器主要是PropertySourceLoader的实例，例如我们用到application-${profile}.yaml文件做应用主配置文件，使用的是YamlPropertySourceLoader，这个时候activeProfiles也会被设置到ConfigurableEnvironment中。加载完毕之后，ConfigurableEnvironment中基本包含了所有需要加载的属性(activeProfiles是这个时候被写入ConfigurableEnvironment)。值得注意的是，几乎所有属性都是key-value形式存储，如xxx.yyyy.zzzzz=value、xxx.yyyy[0].zzzzz=value-1、xxx.yyyy[1].zzzzz=value-2。<code>Loader</code>中的逻辑相对复杂，有比较多的遍历和过滤条件，这里不做展开。</p>
 <h2 id="最后">最后</h2>
-
 <p>Spring中的环境属性管理的源码个人认为是最清晰和简单的：从文件中读取数据转化为key-value结构，key-value结构存放在一个PropertySource实例中，然后得到的多个PropertySource实例存放在一个CopyOnWriteArrayList中，属性访问的时候总是遍历CopyOnWriteArrayList中的PropertySource进行匹配。可能相对复杂的就是占位符的解析和参数类型的转换</p>
 
           
@@ -579,7 +554,7 @@ private final ConfigurablePropertyResolver propertyResolver = new PropertySource
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

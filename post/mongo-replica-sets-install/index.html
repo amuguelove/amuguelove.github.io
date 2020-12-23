@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/mongo-replica-sets-install/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,8 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -169,7 +168,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 March 4, 2020
+    
   
   
 </span>
@@ -211,27 +210,26 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#准备">准备</a></li>
-<li><a href="#创建数据目录">创建数据目录</a></li>
-<li><a href="#准备配置文件">准备配置文件</a></li>
-<li><a href="#启动mongodb进程">启动MongoDB进程</a></li>
-<li><a href="#查看mongodb进程">查看MongoDB进程</a></li>
-<li><a href="#配置复制集">配置复制集</a>
-<ul>
-<li><a href="#方法1">方法1</a></li>
-<li><a href="#方法2">方法2</a></li>
-</ul></li>
-<li><a href="#验证">验证</a>
-<ul>
-<li><a href="#mongodb-主节点进行写入">MongoDB 主节点进行写入</a></li>
-<li><a href="#mongodb-从节点进行读">MongoDB 从节点进行读</a></li>
-</ul></li>
-<li><a href="#总结">总结</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#准备">准备</a></li>
+    <li><a href="#创建数据目录">创建数据目录</a></li>
+    <li><a href="#准备配置文件">准备配置文件</a></li>
+    <li><a href="#启动mongodb进程">启动MongoDB进程</a></li>
+    <li><a href="#查看mongodb进程">查看MongoDB进程</a></li>
+    <li><a href="#配置复制集">配置复制集</a>
+      <ul>
+        <li><a href="#方法1">方法1</a></li>
+        <li><a href="#方法2">方法2</a></li>
+      </ul>
+    </li>
+    <li><a href="#验证">验证</a>
+      <ul>
+        <li><a href="#mongodb-主节点进行写入">MongoDB 主节点进行写入</a></li>
+        <li><a href="#mongodb-从节点进行读">MongoDB 从节点进行读</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
 </nav>
 </aside>
 
@@ -250,45 +248,44 @@ if (!doNotTrack) {
           
 
           <p>在本地机器上运行3个实例来搭建一个最简单的复制集。</p>
-
 <h2 id="准备">准备</h2>
-
 <ul>
 <li>安装最新的 MongoDB 版本</li>
 <li>Windows 系统请事先配置好 MongoDB 可执行文件的环境变量</li>
 <li>Linux 和 Mac 系统请配置 PATH 变量</li>
 <li>确保有 10GB 以上的硬盘空间</li>
 </ul>
-
 <h2 id="创建数据目录">创建数据目录</h2>
-
 <ul>
-<li><p>MongoDB 启动时将使用一个数据目录存放所有数据文件。我们将为3个复制集节 点创建各自的数据目录。</p></li>
-
-<li><p>Linux/MacOS:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mkdir -p ~/data/db{1,2,3}</pre></div></li>
+<li>
+<p>MongoDB 启动时将使用一个数据目录存放所有数据文件。我们将为3个复制集节 点创建各自的数据目录。</p>
+</li>
+<li>
+<p>Linux/MacOS:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mkdir -p ~/data/db{1,2,3}
+</code></pre></div></li>
 </ul>
-
 <h2 id="准备配置文件">准备配置文件</h2>
-
 <p>复制集的每个mongod进程应该位于不同的服务器。我们现在在一台机器上运行3个进程，因此要 为它们各自配置:</p>
-
 <ul>
-<li><p>不同的端口。示例中将使用28017/28018/28019</p></li>
-
-<li><p>不同的数据目录</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">~/data/db1
+<li>
+<p>不同的端口。示例中将使用28017/28018/28019</p>
+</li>
+<li>
+<p>不同的数据目录</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">~/data/db1
 ~/data/db2
-~/data/db3</pre></div></li>
-
-<li><p>不同日志文件路径。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">~/data/db1/mongod.log
+~/data/db3
+</code></pre></div></li>
+<li>
+<p>不同日志文件路径。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">~/data/db1/mongod.log
 ~/data/db2/mongod.log
-~/data/db3/mongod.log</pre></div></li>
+~/data/db3/mongod.log
+</code></pre></div></li>
 </ul>
-
 <p><strong>配置文件如下：</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># ~/data/db1/mongod.conf
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># ~/data/db1/mongod.conf
 
 systemLog:
   destination: file
@@ -302,25 +299,24 @@ net:
 replication:
   replSetName: rs0
 processManagement:
-  fork: true</pre></div>
-<h2 id="启动mongodb进程">启动MongoDB进程</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mongod -f ~/data/db1/mongod.conf
+  fork: true
+</code></pre></div><h2 id="启动mongodb进程">启动MongoDB进程</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongod -f ~/data/db1/mongod.conf
 mongod -f ~/data/db2/mongod.conf 
-mongod -f ~/data/db3/mongod.conf</pre></div>
-<h2 id="查看mongodb进程">查看MongoDB进程</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">bo.liang          8911   0.1  0.2  5576252  27356   ??  S     7:21PM   0:00.56 mongod -f /Users/bo.liang/data/db3/mongod.conf
+mongod -f ~/data/db3/mongod.conf
+</code></pre></div><h2 id="查看mongodb进程">查看MongoDB进程</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">bo.liang          8911   0.1  0.2  5576252  27356   ??  S     7:21PM   0:00.56 mongod -f /Users/bo.liang/data/db3/mongod.conf
 bo.liang          8760   0.1  0.2  5601200  30796   ??  S     7:19PM   0:00.96 mongod -f /Users/bo.liang/data/db1/mongod.conf
-bo.liang          8889   0.1  0.2  5593800  27668   ??  S     7:21PM   0:00.58 mongod -f /Users/bo.liang/data/db2/mongod.conf</pre></div>
-<h2 id="配置复制集">配置复制集</h2>
-
+bo.liang          8889   0.1  0.2  5593800  27668   ??  S     7:21PM   0:00.58 mongod -f /Users/bo.liang/data/db2/mongod.conf
+</code></pre></div><h2 id="配置复制集">配置复制集</h2>
 <h3 id="方法1">方法1</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mongo localhost:28017
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongo localhost:28017
 
 rs.initiate()
 rs.add(&#34;HOSTNAME:28018&#34;)
-rs.add(&#34;HOSTNAME:28019&#34;)</pre></div>
-<p>注意:此方式hostname 需要能被解析</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&gt; hostname -f
+rs.add(&#34;HOSTNAME:28019&#34;)
+</code></pre></div><p>注意:此方式hostname 需要能被解析</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&gt; hostname -f
 CNbo.liang
 
 所以：
@@ -329,7 +325,8 @@ rs.add(&#34;CNbo.liang:28019&#34;)
 
 或者
 rs.add(&#34;127.0.0.1:28018&#34;)
-rs.add(&#34;127.0.0.1:28019&#34;)</pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">rs0:PRIMARY&gt; rs.status()
+rs.add(&#34;127.0.0.1:28019&#34;)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">rs0:PRIMARY&gt; rs.status()
 {
 	&#34;set&#34; : &#34;rs0&#34;,
 	&#34;date&#34; : ISODate(&#34;2020-03-10T11:29:47.821Z&#34;),
@@ -470,9 +467,9 @@ rs.add(&#34;127.0.0.1:28019&#34;)</pre></div><div class="highlight"><pre style="
 		}
 	},
 	&#34;operationTime&#34; : Timestamp(1583839785, 1)
-}</pre></div>
-<h3 id="方法2">方法2</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mongo localhost:28017
+}
+</code></pre></div><h3 id="方法2">方法2</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongo localhost:28017
 
 rs.initiate({
 	_id: &#34;rs0&#34;, 
@@ -486,21 +483,19 @@ rs.initiate({
 		_id: 2,
 		host: &#34;localhost:28019&#34; 
   }]
-})</pre></div>
-<h2 id="验证">验证</h2>
-
+})
+</code></pre></div><h2 id="验证">验证</h2>
 <h3 id="mongodb-主节点进行写入">MongoDB 主节点进行写入</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mongo localhost:28017
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongo localhost:28017
 
 db.test.insert({ a:1 })
 
-db.test.insert({ a:2 })</pre></div>
-<h3 id="mongodb-从节点进行读">MongoDB 从节点进行读</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mongo localhost:28018
+db.test.insert({ a:2 })
+</code></pre></div><h3 id="mongodb-从节点进行读">MongoDB 从节点进行读</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongo localhost:28018
 rs.slaveOk()
-db.test.find()</pre></div>
-<h2 id="总结">总结</h2>
-
+db.test.find()
+</code></pre></div><h2 id="总结">总结</h2>
 <ul>
 <li>MongoDB 的生产环境要求搭建复制集</li>
 <li>MongoDB 复制集的搭建非常简单</li>
@@ -674,7 +669,7 @@ db.test.find()</pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

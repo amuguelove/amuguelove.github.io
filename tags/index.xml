@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 梁波的技术博客</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Tags on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 31 Oct 2020 00:00:00 +0800</lastBuildDate>
-    
-	<atom:link href="http://flygopher.top/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 31 Oct 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>api</title>
       <link>http://flygopher.top/tags/api/</link>
@@ -233,6 +229,15 @@
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CI</title>
+      <link>http://flygopher.top/tags/ci/</link>
+      <pubDate>Fri, 27 Mar 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/tags/ci/</guid>
       <description></description>
     </item>
     

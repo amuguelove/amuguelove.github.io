@@ -11,27 +11,21 @@
   <meta name="twitter:title" content="Redis实现分布式锁" />
   
   <meta name="description" content="常用的分布式锁实现方式
-
 分布式锁一般有三种实现方式：
-
 
 基于数据库的唯一索引；
 基于 Redis 的NX EX参数；
 基于 ZooKeeper 的临时有序节点。
 ">
   <meta property="og:description" content="常用的分布式锁实现方式
-
 分布式锁一般有三种实现方式：
-
 
 基于数据库的唯一索引；
 基于 Redis 的NX EX参数；
 基于 ZooKeeper 的临时有序节点。
 ">
   <meta name="twitter:description" content="常用的分布式锁实现方式
-
 分布式锁一般有三种实现方式：
-
 
 基于数据库的唯一索引；
 基于 Redis 的NX EX参数；
@@ -46,7 +40,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/reids-distributed-lock/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -57,8 +51,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -193,7 +186,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 May 11, 2018
+    
   
   
 </span>
@@ -248,97 +241,89 @@ if (!doNotTrack) {
           
 
           <h3 id="常用的分布式锁实现方式">常用的分布式锁实现方式</h3>
-
 <p>分布式锁一般有三种实现方式：</p>
-
 <ol>
 <li>基于数据库的唯一索引；</li>
 <li>基于 Redis 的<code>NX</code> <code>EX</code>参数；</li>
 <li>基于 ZooKeeper 的临时有序节点。</li>
 </ol>
-
 <h3 id="分布式锁的可靠性">分布式锁的可靠性</h3>
-
-<p>为了确保分布式锁可用，至少要确保锁的实现<strong><em>同时满足以下四个条件</em></strong>：</p>
-
+<p>为了确保分布式锁可用，至少要确保锁的实现<em><strong>同时满足以下四个条件</strong></em>：</p>
 <ol>
 <li>互斥性：在任意时刻，只有一个客户端能持有锁。</li>
 <li>不会发生死锁：即使有一个客户端在持有锁的期间崩溃而没有主动解锁，也能保证后续其他客户端能加锁（设置超时）。</li>
 <li>具有容错性：只要大部分的Redis节点正常运行，客户端就可以加锁和解锁（Redis高可用）。</li>
 <li>解铃还须系铃人：加锁和解锁必须是同一个客户端，客户端自己不能解别人加的锁。</li>
 </ol>
-
 <h3 id="redis实现">Redis实现</h3>
-
 <ul>
-<li><p>依赖 Jedis 组件，通过 Maven 引入 Jedis</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">&lt;</span>dependency<span style="color:#ff79c6">&gt;</span>
-<span style="color:#ff79c6">&lt;</span>groupId<span style="color:#ff79c6">&gt;</span>redis.<span style="color:#50fa7b">clients</span><span style="color:#ff79c6">&lt;/</span>groupId<span style="color:#ff79c6">&gt;</span>
-<span style="color:#ff79c6">&lt;</span>artifactId<span style="color:#ff79c6">&gt;</span>jedis<span style="color:#ff79c6">&lt;/</span>artifactId<span style="color:#ff79c6">&gt;</span>
-<span style="color:#ff79c6">&lt;</span>version<span style="color:#ff79c6">&gt;</span>2.<span style="color:#50fa7b">9</span>.<span style="color:#50fa7b">0</span><span style="color:#ff79c6">&lt;/</span>version<span style="color:#ff79c6">&gt;</span>
-<span style="color:#ff79c6">&lt;/</span>dependency<span style="color:#ff79c6">&gt;</span></code></pre></div></li>
-
-<li><p>加锁</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public class RedisTool {
- 
-private static final String LOCK_SUCCESS = &#34;OK&#34;;
-private static final String SET_IF_NOT_EXIST = &#34;NX&#34;;
-private static final String SET_WITH_EXPIRE_TIME = &#34;PX&#34;;
- 
-/**
- * 尝试获取分布式锁
- * @param jedis Redis客户端
- * @param lockKey 锁
- * @param requestId 请求标识
- * @param expireTime 超期时间
- * @return 是否获取成功
- */
-public static boolean tryGetDistributedLock(Jedis jedis, String lockKey, String requestId, int expireTime) {
- 
-    String result = jedis.set(lockKey, requestId, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);
- 
-    if (LOCK_SUCCESS.equals(result)) {
-        return true;
-    }
-    return false;
- 
-}
- 
-}</pre></div></li>
-
-<li><p>解锁</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public class RedisTool {
- 
-private static final Long RELEASE_SUCCESS = 1L;
- 
-/**
- * 释放分布式锁
- * @param jedis Redis客户端
- * @param lockKey 锁
- * @param requestId 请求标识
- * @return 是否释放成功
- */
-public static boolean releaseDistributedLock(Jedis jedis, String lockKey, String requestId) {
- 
-    String script = &#34;if redis.call(&#39;get&#39;, KEYS[1]) == ARGV[1] then return redis.call(&#39;del&#39;, KEYS[1]) else return 0 end&#34;;
-    Object result = jedis.eval(script, Collections.singletonList(lockKey), Collections.singletonList(requestId));
- 
-    if (RELEASE_SUCCESS.equals(result)) {
-        return true;
-    }
-    return false;
- 
-}
- 
-}</pre></div></li>
+<li>依赖 Jedis 组件，通过 Maven 引入 Jedis</li>
 </ul>
-
-<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">&lt;</span>dependency<span style="color:#ff79c6">&gt;</span>
+    <span style="color:#ff79c6">&lt;</span>groupId<span style="color:#ff79c6">&gt;</span>redis<span style="color:#ff79c6">.</span><span style="color:#50fa7b">clients</span><span style="color:#ff79c6">&lt;/</span>groupId<span style="color:#ff79c6">&gt;</span>
+    <span style="color:#ff79c6">&lt;</span>artifactId<span style="color:#ff79c6">&gt;</span>jedis<span style="color:#ff79c6">&lt;/</span>artifactId<span style="color:#ff79c6">&gt;</span>
+    <span style="color:#ff79c6">&lt;</span>version<span style="color:#ff79c6">&gt;</span>2<span style="color:#ff79c6">.</span><span style="color:#50fa7b">9</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">0</span><span style="color:#ff79c6">&lt;/</span>version<span style="color:#ff79c6">&gt;</span>
+<span style="color:#ff79c6">&lt;/</span>dependency<span style="color:#ff79c6">&gt;</span>
+</code></pre></div><ul>
+<li>加锁</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public class RedisTool {
+ 
+    private static final String LOCK_SUCCESS = &#34;OK&#34;;
+    private static final String SET_IF_NOT_EXIST = &#34;NX&#34;;
+    private static final String SET_WITH_EXPIRE_TIME = &#34;PX&#34;;
+ 
+    /**
+     * 尝试获取分布式锁
+     * @param jedis Redis客户端
+     * @param lockKey 锁
+     * @param requestId 请求标识
+     * @param expireTime 超期时间
+     * @return 是否获取成功
+     */
+    public static boolean tryGetDistributedLock(Jedis jedis, String lockKey, String requestId, int expireTime) {
+ 
+        String result = jedis.set(lockKey, requestId, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);
+ 
+        if (LOCK_SUCCESS.equals(result)) {
+            return true;
+        }
+        return false;
+ 
+    }
+ 
+}
+</code></pre></div><ul>
+<li>解锁</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public class RedisTool {
+ 
+    private static final Long RELEASE_SUCCESS = 1L;
+ 
+    /**
+     * 释放分布式锁
+     * @param jedis Redis客户端
+     * @param lockKey 锁
+     * @param requestId 请求标识
+     * @return 是否释放成功
+     */
+    public static boolean releaseDistributedLock(Jedis jedis, String lockKey, String requestId) {
+ 
+        String script = &#34;if redis.call(&#39;get&#39;, KEYS[1]) == ARGV[1] then return redis.call(&#39;del&#39;, KEYS[1]) else return 0 end&#34;;
+        Object result = jedis.eval(script, Collections.singletonList(lockKey), Collections.singletonList(requestId));
+ 
+        if (RELEASE_SUCCESS.equals(result)) {
+            return true;
+        }
+        return false;
+ 
+    }
+ 
+}
+</code></pre></div><blockquote>
 <p>将 Lua 代码传到 jedis.eval() 方法里，并使参数 KEYS[1] 赋值为 lockKey，ARGV[1] 赋值为 requestId。eval() 方法是将 Lua 代码交给 Redis 服务端执行。并且直到eval命令执行完成，Redis才会执行其他命令。</p>
 </blockquote>
-
 <p>总结：</p>
-
 <ol>
 <li>要通过 Redis 实现分布式锁，只要保证能满足可靠性里的四个条件。</li>
 <li>如果项目中 Redis 是多机部署的，可以尝试使用 Redisson 实现分布式锁。</li>
@@ -505,7 +490,7 @@ public static boolean releaseDistributedLock(Jedis jedis, String lockKey, String
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

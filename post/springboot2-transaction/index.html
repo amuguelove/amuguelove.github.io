@@ -11,13 +11,10 @@
   <meta name="twitter:title" content="SpringBoot2干货系列 | 第三篇：Spring Transaction 哪些事儿" />
   
   <meta name="description" content="事务管理是Spring框架中最为常用的功能之一，我们在使用Spring Boot开发应用时，大部分情况下也都需要使用事务。
-
 事务的作用就是为了保证用户的每一个操作都是可靠的，事务中的每一步操作都必须成功执行，只要有发生异常就回退到事务开始未进行操作的状态。">
   <meta property="og:description" content="事务管理是Spring框架中最为常用的功能之一，我们在使用Spring Boot开发应用时，大部分情况下也都需要使用事务。
-
 事务的作用就是为了保证用户的每一个操作都是可靠的，事务中的每一步操作都必须成功执行，只要有发生异常就回退到事务开始未进行操作的状态。">
   <meta name="twitter:description" content="事务管理是Spring框架中最为常用的功能之一，我们在使用Spring Boot开发应用时，大部分情况下也都需要使用事务。
-
 事务的作用就是为了保证用户的每一个操作都是可靠的，事务中的每一步操作都必须成功执行，只要有发生异常就回退到事务开始未进行操作的状态。">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -28,7 +25,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/springboot2-transaction/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -39,8 +36,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -175,7 +171,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 January 9, 2019
+    
   
   
 </span>
@@ -232,17 +228,12 @@ if (!doNotTrack) {
           
 
           <p>事务管理是Spring框架中最为常用的功能之一，我们在使用Spring Boot开发应用时，大部分情况下也都需要使用事务。</p>
-
 <p>事务的作用就是为了保证用户的每一个操作都是可靠的，事务中的每一步操作都必须成功执行，只要有发生异常就回退到事务开始未进行操作的状态。</p>
-
 <h3 id="spring-声明式事务的使用">Spring 声明式事务的使用</h3>
-
 <p>在项目启动类加入<code>@EnableTransactionManagement</code>开启全局事务，接下来只需要使用<code>@Transactional</code>进行标注。这个注解可以放在类或者方法上，当它标注在类上时，代表这个类所有公共（public）非静态的方法都将启用事务功能。</p>
-
 <p>在<code>@Transactional</code>中，还允许配置许多的属性，如事务的隔离级别和传播行为。也是接下来需要重点讲解的地方。</p>
-
 <h3 id="transactional的配置项">@Transactional的配置项</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Target({ElementType.METHOD, ElementType.TYPE})
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
@@ -279,13 +270,11 @@ public @interface Transactional {
 	// 方法在发生指定异常名称时不回滚，默认所有异常都回滚
 	String[] noRollbackForClassName() default {};
 
-}</pre></div>
-<p>注意该注解可以放在接口上，也可以放在实现类上。但是Spring推荐放在实现类上，因为放在接口上将使得你的类基于接口的代理时它才生效</p>
-
+}
+</code></pre></div><p>注意该注解可以放在接口上，也可以放在实现类上。但是Spring推荐放在实现类上，因为放在接口上将使得你的类基于接口的代理时它才生效</p>
 <h3 id="spring事务管理器">Spring事务管理器</h3>
-
 <p>在Spring中，事务管理器的顶层接口为<code>PlatformTransactionManager</code>，Spring还为此定义了一系列的接口和类。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public interface PlatformTransactionManager {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public interface PlatformTransactionManager {
 
 	// 获取事务，它还会设置数据属性
 	TransactionStatus getTransaction(@Nullable TransactionDefinition definition) throws TransactionException;
@@ -296,29 +285,27 @@ public @interface Transactional {
 	// 回滚事务
 	void rollback(TransactionStatus status) throws TransactionException;
 
-}</pre></div>
-<h3 id="隔离级别">隔离级别</h3>
-
+}
+</code></pre></div><h3 id="隔离级别">隔离级别</h3>
 <h4 id="1-数据库事务知识">1. 数据库事务知识</h4>
-
 <p>一个数据库事务必须具备四个标准特性：</p>
-
 <ul>
-<li><p>原子性（Atomicity）：一个事务必须被视为一个不可分割的最小工作单元，整个事务中的所有操作要么全部提交成功，要么全部失败回滚，对于一个事务来说，不可能只执行其中的一部分操作，这就是事务的原子性</p></li>
-
-<li><p>一致性（Consistency）：数据库总是从一个一致性的状态转换到另一个一致性的状态。（在前面的例子中，一致性确保了，即使在执行第三、四条语句之间时系统崩溃，支票账户中也不会损失200美元，因为事务最终没有提交，所以事务中所做的修改也不会保存到数据库中。）</p></li>
-
-<li><p>隔离性（Isolation）： 即不同事务之间的相互影响和隔离的程度。比如，不同的隔离级别，事务的并发程度也不同，最强的隔离状态是所有的事务都是串行化的。</p></li>
-
-<li><p>持久性（Durability）：一旦事务提交，则其所做的修改不会永久保存到数据库。（此时即使系统崩溃，修改的数据也不会丢失。持久性是个有占模糊的概念，因为实际上持久性也分很多不同的级别。有些持久性策略能够提供非常强的安全保障，而有些则未必，而且不可能有能做到100%的持久性保证的策略。）</p></li>
+<li>
+<p>原子性（Atomicity）：一个事务必须被视为一个不可分割的最小工作单元，整个事务中的所有操作要么全部提交成功，要么全部失败回滚，对于一个事务来说，不可能只执行其中的一部分操作，这就是事务的原子性</p>
+</li>
+<li>
+<p>一致性（Consistency）：数据库总是从一个一致性的状态转换到另一个一致性的状态。（在前面的例子中，一致性确保了，即使在执行第三、四条语句之间时系统崩溃，支票账户中也不会损失200美元，因为事务最终没有提交，所以事务中所做的修改也不会保存到数据库中。）</p>
+</li>
+<li>
+<p>隔离性（Isolation）： 即不同事务之间的相互影响和隔离的程度。比如，不同的隔离级别，事务的并发程度也不同，最强的隔离状态是所有的事务都是串行化的。</p>
+</li>
+<li>
+<p>持久性（Durability）：一旦事务提交，则其所做的修改不会永久保存到数据库。（此时即使系统崩溃，修改的数据也不会丢失。持久性是个有占模糊的概念，因为实际上持久性也分很多不同的级别。有些持久性策略能够提供非常强的安全保障，而有些则未必，而且不可能有能做到100%的持久性保证的策略。）</p>
+</li>
 </ul>
-
 <p>以上四个特性就是常说的<strong>ACID</strong>。</p>
-
 <h4 id="2-丢失更新">2. 丢失更新</h4>
-
 <p><strong>第一类丢失更新：</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -327,56 +314,47 @@ public @interface Transactional {
 <th>转账事务B</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>T1</td>
 <td>开始事务</td>
 <td></td>
 </tr>
-
 <tr>
 <td>T2</td>
 <td></td>
 <td>开始事务</td>
 </tr>
-
 <tr>
 <td>T3</td>
 <td>读余额为1000</td>
 <td></td>
 </tr>
-
 <tr>
 <td>T4</td>
 <td>取出100，余额改为900</td>
 <td>-</td>
 </tr>
-
 <tr>
 <td>T5</td>
 <td></td>
 <td>读余额为1000</td>
 </tr>
-
 <tr>
 <td>T6</td>
 <td></td>
 <td>汇入100，余额改为1100</td>
 </tr>
-
 <tr>
 <td>T7</td>
 <td></td>
 <td>提交事务，余额定为1100</td>
 </tr>
-
 <tr>
 <td>T8</td>
 <td>撤销事务，余额改回1000</td>
 <td>-</td>
 </tr>
-
 <tr>
 <td>T9</td>
 <td>最终余额1000，更新丢失</td>
@@ -384,11 +362,8 @@ public @interface Transactional {
 </tr>
 </tbody>
 </table>
-
 <p>SQL92没有定义这种现象，标准定义的所有隔离界别都不允许第一类丢失更新发生。</p>
-
 <p><strong>第二类丢失更新：</strong></p>
-
 <table>
 <thead>
 <tr>
@@ -397,56 +372,47 @@ public @interface Transactional {
 <th>取款事务B</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>T1</td>
 <td>开始事务</td>
 <td></td>
 </tr>
-
 <tr>
 <td>T2</td>
 <td></td>
 <td>开始事务</td>
 </tr>
-
 <tr>
 <td>T3</td>
 <td>读余额为1000</td>
 <td></td>
 </tr>
-
 <tr>
 <td>T4</td>
 <td></td>
 <td>读余额为1000</td>
 </tr>
-
 <tr>
 <td>T5</td>
 <td></td>
 <td>取出100，余额改为900</td>
 </tr>
-
 <tr>
 <td>T6</td>
 <td></td>
 <td>提交事务，余额定为900</td>
 </tr>
-
 <tr>
 <td>T7</td>
 <td>汇入100，余额改为1100</td>
 <td>-</td>
 </tr>
-
 <tr>
 <td>T8</td>
 <td>提交事务，余额定为1100</td>
 <td>-</td>
 </tr>
-
 <tr>
 <td>T9</td>
 <td>最终余额1100，更新丢失</td>
@@ -454,53 +420,41 @@ public @interface Transactional {
 </tr>
 </tbody>
 </table>
-
 <h4 id="3-详解隔离级别">3. 详解隔离级别</h4>
-
 <p>隔离级别是指若干个并发的事务之间的隔离程度，与我们开发时候主要相关的场景包括：脏读取、重复读、幻读。</p>
-
 <p>我们可以看<code>org.springframework.transaction.annotation.Isolation</code>枚举类中定义了五个表示隔离级别的值：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public enum Isolation {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public enum Isolation {
     DEFAULT(-1),
     READ_UNCOMMITTED(1),
     READ_COMMITTED(2),
     REPEATABLE_READ(4),
     SERIALIZABLE(8);
-}</pre></div>
-<ul>
-<li><code>DEFAULT</code>：这是默认值</li>
-</ul>
-
+}
+</code></pre></div><ul>
+<li>
+<p><code>DEFAULT</code>：这是默认值</p>
 <p>表示使用底层数据库的默认隔离级别。对大部分数据库而言，通常这值就是：<code>READ_COMMITTED</code>。</p>
-
-<ul>
-<li><code>READ_UNCOMMITTED</code>：未提交读</li>
-</ul>
-
+</li>
+<li>
+<p><code>READ_UNCOMMITTED</code>：未提交读</p>
 <p>该隔离级别表示一个事务可以读取另一个事务修改但还没有提交的数据。该级别不能防止脏读和不可重复读，因此很少使用该隔离级别。</p>
-
-<ul>
-<li><code>READ_COMMITTED</code>：读写提交</li>
-</ul>
-
+</li>
+<li>
+<p><code>READ_COMMITTED</code>：读写提交</p>
 <p>该隔离级别表示一个事务只能读取另一个事务已经提交的数据。该级别可以防止脏读，这也是大多数情况下的推荐值。</p>
-
-<ul>
-<li><code>REPEATABLE_READ</code>：可重复读</li>
-</ul>
-
+</li>
+<li>
+<p><code>REPEATABLE_READ</code>：可重复读</p>
 <p>该隔离级别表示一个事务在整个过程中可以多次重复执行某个查询，并且每次返回的记录都相同。即使在多次查询之间有新增的数据满足该查询，这些新增的记录也会被忽略。该级别可以防止脏读和不可重复读。</p>
-
-<ul>
-<li><code>SERIALIZABLE</code>：串行化</li>
-</ul>
-
+</li>
+<li>
+<p><code>SERIALIZABLE</code>：串行化</p>
 <p>所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，该级别可以防止脏读、不可重复读以及幻读。但是这将严重影响程序的性能。通常情况下也不会用到该级别。</p>
-
+</li>
+</ul>
 <p>指定方法：通过使用<code>isolation</code>属性设置，例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Transactional(isolation = Isolation.DEFAULT)</pre></div>
-<p>区分事务隔离级别是为了解决脏读、不可重复读和幻读三个问题的。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Transactional(isolation = Isolation.DEFAULT)
+</code></pre></div><p>区分事务隔离级别是为了解决脏读、不可重复读和幻读三个问题的。</p>
 <table>
 <thead>
 <tr>
@@ -512,7 +466,6 @@ public @interface Transactional {
 <th>幻读</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>读未提交</td>
@@ -522,7 +475,6 @@ public @interface Transactional {
 <td>可能发生</td>
 <td>可能发生</td>
 </tr>
-
 <tr>
 <td>读已提交</td>
 <td>x</td>
@@ -531,7 +483,6 @@ public @interface Transactional {
 <td>可能发生</td>
 <td>可能发生</td>
 </tr>
-
 <tr>
 <td>可重复读</td>
 <td>x</td>
@@ -540,7 +491,6 @@ public @interface Transactional {
 <td>x</td>
 <td>可能发生</td>
 </tr>
-
 <tr>
 <td>串行化</td>
 <td>x</td>
@@ -551,13 +501,10 @@ public @interface Transactional {
 </tr>
 </tbody>
 </table>
-
 <h3 id="传播行为">传播行为</h3>
-
 <p>所谓事务的传播行为是指，如果在开始当前事务之前，一个事务上下文已经存在，此时有若干选项可以指定一个事务性方法的执行行为。</p>
-
 <p>我们可以看<code>org.springframework.transaction.annotation.Propagation</code>枚举类中定义了6个表示传播行为的枚举值：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public enum Propagation {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public enum Propagation {
     REQUIRED(0),
     SUPPORTS(1),
     MANDATORY(2),
@@ -565,8 +512,8 @@ public @interface Transactional {
     NOT_SUPPORTED(4),
     NEVER(5),
     NESTED(6);
-}</pre></div>
-<ul>
+}
+</code></pre></div><ul>
 <li><code>REQUIRED</code>：如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。</li>
 <li><code>SUPPORTS</code>：如果当前存在事务，则加入该事务；如果当前没有事务，则以非事务的方式继续运行。</li>
 <li><code>MANDATORY</code>：如果当前存在事务，则加入该事务；如果当前没有事务，则抛出异常。</li>
@@ -575,20 +522,14 @@ public @interface Transactional {
 <li><code>NEVER</code>：以非事务方式运行，如果当前存在事务，则抛出异常。</li>
 <li><code>NESTED</code>：如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行；如果当前没有事务，则该取值等价于<code>REQUIRED</code>。如果子方法发生异常，只回滚子方法执行的SQL。</li>
 </ul>
-
 <p>指定方法：通过使用<code>propagation</code>属性设置，例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Transactional(propagation = Propagation.REQUIRED)</pre></div>
-<p><strong>@Transactional 自调失效的问题</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Transactional(propagation = Propagation.REQUIRED)
+</code></pre></div><p><strong>@Transactional 自调失效的问题</strong></p>
 <p>例如：</p>
-
 <p>1：在同一个service中嵌套,  如果已经存在外层事务，则nested不会开启新的事务，否则会开启。
 nested的savepoint是不起作用的， 内层事务回滚会导致整个事务一同回滚 。</p>
-
 <p>2：在不同的service中嵌套，如果已经存在外层事务，则nested同样不会开启新的事务，否则会开启。</p>
-
 <p>同样，REQUEST_NEW等也会出现类似的问题， 为什么会这样呢？</p>
-
 <p>Spring数据库事务的约定，其实现原理是AOP，而AOP的原理是动态代理，在自调用的过程中，是类自身的调用，而不是代理对象去调用，那么就不会产生AOP。</p>
 
           
@@ -758,7 +699,7 @@ nested的savepoint是不起作用的， 内层事务回滚会导致整个事务�
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

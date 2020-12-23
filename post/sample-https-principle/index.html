@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/sample-https-principle/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,8 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -169,7 +168,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 August 29, 2020
+    
   
   
 </span>
@@ -213,28 +212,20 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#https简介">HTTPS简介</a></li>
-<li><a href="#为什么数据传输是用对称加密">为什么数据传输是用对称加密？</a></li>
-<li><a href="#为什么需要-ca-认证机构颁发证书">为什么需要 CA 认证机构颁发证书？</a></li>
-<li><a href="#浏览器是如何确保-ca-证书的合法性">浏览器是如何确保 CA 证书的合法性？</a>
-<ul>
-<li>
-<ul>
-<li><a href="#1-证书包含什么信息">1. 证书包含什么信息？</a></li>
-<li><a href="#2-证书的合法性依据是什么">2. 证书的合法性依据是什么？</a></li>
-<li><a href="#3-浏览器如何验证证书的合法性">3. 浏览器如何验证证书的合法性？</a></li>
-<li><a href="#4-只有认证机构可以生成证书吗">4. 只有认证机构可以生成证书吗？</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#本地随机数被窃取怎么办">本地随机数被窃取怎么办？</a></li>
-<li><a href="#用了-https-会被抓包吗">用了 HTTPS 会被抓包吗？</a></li>
-<li><a href="#总结">总结</a></li>
-<li><a href="#参考">参考</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#https简介">HTTPS简介</a></li>
+    <li><a href="#为什么数据传输是用对称加密">为什么数据传输是用对称加密？</a></li>
+    <li><a href="#为什么需要-ca-认证机构颁发证书">为什么需要 CA 认证机构颁发证书？</a></li>
+    <li><a href="#浏览器是如何确保-ca-证书的合法性">浏览器是如何确保 CA 证书的合法性？</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#本地随机数被窃取怎么办">本地随机数被窃取怎么办？</a></li>
+    <li><a href="#用了-https-会被抓包吗">用了 HTTPS 会被抓包吗？</a></li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
 </nav>
 </aside>
 
@@ -253,47 +244,31 @@ if (!doNotTrack) {
           
 
           <p>我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取。所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。</p>
-
 <h2 id="https简介">HTTPS简介</h2>
-
 <p>HTTPS其实是有两部分组成：HTTP+SSL/TLS，也就是在HTTP上又加了一层处理加密信息的模块。服务端和客户端的信息传输都会通过TLS进行加密，所以传输的数据都是加密后的数据。具体是如何进行加密，解密，验证的，且看下图。</p>
-
-<p><img src="http://flygopher.top/img/post/graphic-https.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/graphic-https.png" alt=""></p>
 <p><strong>证书验证阶段:</strong></p>
-
 <ul>
 <li>浏览器发起 HTTPS 请求</li>
 <li>服务端返回 HTTPS 证书</li>
 <li>客户端验证证书是否合法，如果不合法则提示告警</li>
 </ul>
-
 <p><strong>数据传输阶段:</strong></p>
-
 <ul>
 <li>当证书验证合法后，在本地生成随机数</li>
 <li>通过公钥加密随机数，并把加密后的随机数传输到服务端</li>
 <li>服务端通过私钥对随机数进行解密</li>
 <li>服务端通过客户端传入的随机数构造对称加密算法，对返回结果内容进行加密后传输</li>
 </ul>
-
 <h2 id="为什么数据传输是用对称加密">为什么数据传输是用对称加密？</h2>
-
 <p>首先，非对称加密的加解密效率是非常低的，而 http 的应用场景中通常端与端之间存在大量的交互，非对称加密的效率是无法接受的；</p>
-
 <p>另外，在 HTTPS 的场景中只有服务端保存了私钥，一对公私钥只能实现单向的加解密，所以 HTTPS 中内容传输加密采取的是对称加密，而不是非对称加密。</p>
-
 <h2 id="为什么需要-ca-认证机构颁发证书">为什么需要 CA 认证机构颁发证书？</h2>
-
 <p>HTTP 协议被认为不安全是因为传输过程容易被监听者勾线监听、伪造服务器，而 HTTPS 协议主要解决的便是网络传输的安全性问题。</p>
-
-<p>首先我们假设不存在认证机构，任何人都可以制作证书，这带来的安全风险便是经典的<strong>“中间人攻击”</strong>问题。
+<p>首先我们假设不存在认证机构，任何人都可以制作证书，这带来的安全风险便是经典的**“中间人攻击”**问题。
 “中间人攻击”的具体过程如下：</p>
-
-<p><img src="http://flygopher.top/img/post/https2.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/https2.png" alt=""></p>
 <p>过程原理：</p>
-
 <ol>
 <li>本地请求被劫持（如DNS劫持等），所有请求均发送到中间人的服务器</li>
 <li>中间人服务器返回中间人自己的证书</li>
@@ -305,13 +280,9 @@ if (!doNotTrack) {
 <li>中间人通过与客户端建立的对称加密算法对正规内容返回的数据进行加密传输</li>
 <li>客户端通过与中间人建立的对称加密算法对返回结果数据进行解密</li>
 </ol>
-
 <p>由于缺少对证书的验证，所以客户端虽然发起的是 HTTPS 请求，但客户端完全不知道自己的网络已被拦截，传输内容被中间人全部窃取。</p>
-
 <h2 id="浏览器是如何确保-ca-证书的合法性">浏览器是如何确保 CA 证书的合法性？</h2>
-
 <h4 id="1-证书包含什么信息">1. 证书包含什么信息？</h4>
-
 <ul>
 <li>颁发机构信息</li>
 <li>公钥</li>
@@ -321,82 +292,49 @@ if (!doNotTrack) {
 <li>指纹</li>
 <li>……</li>
 </ul>
-
 <h4 id="2-证书的合法性依据是什么">2. 证书的合法性依据是什么？</h4>
-
 <p>首先，权威机构是要有认证的，不是随便一个机构都有资格颁发证书，不然也不叫做权威机构。另外，证书的可信性基于信任制，权威机构需要对其颁发的证书进行信用背书，只要是权威机构生成的证书，我们就认为是合法的。所以权威机构会对申请者的信息进行审核，不同等级的权威机构对审核的要求也不一样，于是证书也分为免费的、便宜的和贵的。</p>
-
 <h4 id="3-浏览器如何验证证书的合法性">3. 浏览器如何验证证书的合法性？</h4>
-
 <p>浏览器发起 HTTPS 请求时，服务器会返回网站的 SSL 证书，浏览器需要对证书做以下验证：</p>
-
 <p>1）验证域名、有效期等信息是否正确。证书上都有包含这些信息，比较容易完成验证；</p>
-
 <p>2）判断证书来源是否合法。每份签发证书都可以根据验证链查找到对应的根证书，操作系统、浏览器会在本地存储权威机构的根证书，利用本地根证书可以对对应机构签发证书完成来源验证；</p>
-
-<p><img src="http://flygopher.top/img/post/https3.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/https3.png" alt=""></p>
 <p>3）判断证书是否被篡改。需要与 CA 服务器进行校验；</p>
-
 <p>4）判断证书是否已吊销。通过CRL（Certificate Revocation List 证书注销列表）和 OCSP（Online Certificate Status Protocol 在线证书状态协议）实现，其中 OCSP 可用于第3步中以减少与 CA 服务器的交互，提高验证效率</p>
-
 <p>以上任意一步都满足的情况下浏览器才认为证书是合法的。</p>
-
 <blockquote>
 <p>这里插一个我想了很久的但其实答案很简单的问题：
 既然证书是公开的，如果要发起中间人攻击，我在官网上下载一份证书作为我的服务器证书，那客户端肯定会认同这个证书是合法的，如何避免这种证书冒用的情况？
 其实这就是非加密对称中公私钥的用处，虽然中间人可以得到证书，但私钥是无法获取的，一份公钥是不可能推算出其对应的私钥，中间人即使拿到证书也无法伪装成合法服务端，因为无法对客户端传入的加密数据进行解密。</p>
 </blockquote>
-
 <h4 id="4-只有认证机构可以生成证书吗">4. 只有认证机构可以生成证书吗？</h4>
-
 <p>如果需要浏览器不提示安全风险，那只能使用认证机构签发的证书。但浏览器通常只是提示安全风险，并不限制网站不能访问，所以从技术上谁都可以生成证书，只要有证书就可以完成网站的 HTTPS 传输。例如早期的 12306 采用的便是手动安装私有证书的形式实现 HTTPS 访问。</p>
-
-<p><img src="http://flygopher.top/img/post/https4.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/https4.png" alt=""></p>
 <h2 id="本地随机数被窃取怎么办">本地随机数被窃取怎么办？</h2>
-
 <p>证书验证是采用非对称加密实现，但是传输过程是采用对称加密，而其中对称加密算法中重要的随机数是由本地生成并且存储于本地的，HTTPS 如何保证随机数不会被窃取？</p>
-
 <p>其实 HTTPS 并不包含对随机数的安全保证，HTTPS 保证的只是传输过程安全，而随机数存储于本地，本地的安全属于另一安全范畴，应对的措施有安装杀毒软件、反木马、浏览器升级修复漏洞等。</p>
-
 <h2 id="用了-https-会被抓包吗">用了 HTTPS 会被抓包吗？</h2>
-
 <p>HTTPS 的数据是加密的，常规下抓包工具代理请求后抓到的包内容是加密状态，无法直接查看。</p>
-
 <p>但是，正如前文所说，浏览器只会提示安全风险，如果用户授权仍然可以继续访问网站，完成请求。因此，只要客户端是我们自己的终端，我们授权的情况下，便可以组建中间人网络，而抓包工具便是作为中间人的代理。通常 HTTPS 抓包工具的使用方法是会生成一个证书，用户需要手动把证书安装到客户端中，然后终端发起的所有请求通过该证书完成与抓包工具的交互，然后抓包工具再转发请求到服务器，最后把服务器返回的结果在控制台输出后再返回给终端，从而完成整个请求的闭环。</p>
-
 <p>既然 HTTPS 不能防抓包，那 HTTPS 有什么意义？
 HTTPS 可以防止用户在不知情的情况下通信链路被监听，对于主动授信的抓包操作是不提供防护的，因为这个场景用户是已经对风险知情。要防止被抓包，需要采用应用级的安全防护，例如采用私有的对称加密，同时做好移动端的防反编译加固，防止本地算法被破解。</p>
-
 <h2 id="总结">总结</h2>
-
 <p>以下用简短的Q&amp;A形式进行全文总结：</p>
-
 <p>Q: HTTPS 为什么安全？
 A: 因为 HTTPS 保证了传输安全，防止传输过程被监听、防止数据被窃取，可以确认网站的真实性。</p>
-
 <p>Q: HTTPS 的传输过程是怎样的？
 A: 客户端发起 HTTPS 请求，服务端返回证书，客户端对证书进行验证，验证通过后本地生成用于改造对称加密算法的随机数，通过证书中的公钥对随机数进行加密传输到服务端，服务端接收后通过私钥解密得到随机数，之后的数据交互通过对称加密算法进行加解密。</p>
-
 <p>Q: 为什么需要证书？
 A: 防止”中间人“攻击，同时可以为网站提供身份证明。</p>
-
 <p>Q: 使用 HTTPS 会被抓包吗？
 A: 会被抓包，HTTPS 只防止用户在不知情的情况下通信被监听，如果用户主动授信，是可以构建“中间人”网络，代理软件可以对传输内容进行解密。</p>
-
 <p>顺手 po 一张学习的过程图，高清大图点这里:</p>
-
-<p><img src="http://flygopher.top/img/post/https5.jpg" alt="" /></p>
-
-<p><br/></p>
-
+<p><img src="http://flygopher.top/img/post/https5.jpg" alt=""></p>
+<!-- raw HTML omitted -->
 <blockquote>
-<p><em>本文转载自：「leapMie 的博客 」，原文：<a href="https://blog.leapmie.com/archives/418/">https://blog.leapmie.com/archives/418/</a></em></p>
+<p><em>本文转载自：「leapMie 的博客 」，原文：https://blog.leapmie.com/archives/418/</em></p>
 </blockquote>
-
 <h2 id="参考">参考</h2>
-
 <p><a href="http://liuduo.me/2018/05/14/https-detail/">HTTPS 原理详解</a></p>
 
           
@@ -548,7 +486,7 @@ A: 会被抓包，HTTPS 只防止用户在不知情的情况下通信被监听�
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

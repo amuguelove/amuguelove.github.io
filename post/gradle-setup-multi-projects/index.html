@@ -12,26 +12,20 @@
   
   <meta name="description" content="之前一直使用Maven进行多模块项目开发，有如下好处：
 
-
 代码拆分，层次、结构清晰，利于维护
 Module可复用
-
 
 最近使用Gradle开发，也想使用多模块开发，写下这篇文章记录下。">
   <meta property="og:description" content="之前一直使用Maven进行多模块项目开发，有如下好处：
 
-
 代码拆分，层次、结构清晰，利于维护
 Module可复用
-
 
 最近使用Gradle开发，也想使用多模块开发，写下这篇文章记录下。">
   <meta name="twitter:description" content="之前一直使用Maven进行多模块项目开发，有如下好处：
 
-
 代码拆分，层次、结构清晰，利于维护
 Module可复用
-
 
 最近使用Gradle开发，也想使用多模块开发，写下这篇文章记录下。">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
@@ -43,7 +37,7 @@ Module可复用
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/gradle-setup-multi-projects/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -54,8 +48,7 @@ Module可复用
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -190,7 +183,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 November 8, 2018
+    
   
   
 </span>
@@ -245,27 +238,22 @@ if (!doNotTrack) {
           
 
           <p>之前一直使用<code>Maven</code>进行多模块项目开发，有如下好处：</p>
-
 <ul>
 <li>代码拆分，层次、结构清晰，利于维护</li>
 <li>Module可复用</li>
 </ul>
-
 <p>最近使用<code>Gradle</code>开发，也想使用多模块开发，写下这篇文章记录下。</p>
-
 <h3 id="本机环境">本机环境</h3>
-
-<p><strong>1、Java： version “1.8.0_181”</strong><br />
-<strong>2、Mac：10.13.6，High Sierra</strong><br />
-<strong>3、Gradle：version “4.10.2”</strong><br />
+<p><strong>1、Java： version “1.8.0_181”</strong><br>
+<strong>2、Mac：10.13.6，High Sierra</strong><br>
+<strong>3、Gradle：version “4.10.2”</strong><br>
 <strong>4、Idea 2018.2</strong></p>
-
 <h3 id="创建根项目">创建根项目</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">cd ~/Documents/workspace
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cd ~/Documents/workspace
 mkdir gradle-springboot2-projects
-gradle init</pre></div>
-<p>之后生成如下项目结构：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">gradle-springboot2-projects
+gradle init
+</code></pre></div><p>之后生成如下项目结构：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">gradle-springboot2-projects
 ├── build.gradle
 ├── gradle
 │   └── wrapper
@@ -273,16 +261,14 @@ gradle init</pre></div>
 │       └── gradle-wrapper.properties
 ├── gradlew
 ├── gradlew.bat
-├── settings.gradle</pre></div>
-<h3 id="配置根目录的gradle">配置根目录的gradle</h3>
-
-<h4 id="1-在根目录新建-gradle-properties-文件">1、在根目录新建<code>gradle.properties</code>文件</h4>
-
+├── settings.gradle
+</code></pre></div><h3 id="配置根目录的gradle">配置根目录的gradle</h3>
+<h4 id="1在根目录新建gradleproperties文件">1、在根目录新建<code>gradle.properties</code>文件</h4>
 <p>内容如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">springBootVersion=2.1.0.RELEASE
-springCloudVersion=Finchley.RELEASE</pre></div>
-<h4 id="2-配置-build-gradle-文件">2、配置<code>build.gradle</code>文件</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">//定义扩展属性(给脚本用的脚本)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">springBootVersion=2.1.0.RELEASE
+springCloudVersion=Finchley.RELEASE
+</code></pre></div><h4 id="2配置buildgradle文件">2、配置<code>build.gradle</code>文件</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">//定义扩展属性(给脚本用的脚本)
 buildscript {
 
     //定义扩展属性(可选)
@@ -363,9 +349,9 @@ subprojects {
                 &#39;org.mockito:mockito-core:2.23.0&#39;,
         )
     }
-}</pre></div>
-<h4 id="3-最后配置-settings-gradle">3、最后配置<code>settings.gradle</code></h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/*
+}
+</code></pre></div><h4 id="3最后配置settingsgradle">3、最后配置<code>settings.gradle</code></h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/*
  * This file was generated by the Gradle &#39;init&#39; task.
  *
  * The settings file is used to specify which projects to include in your build.
@@ -374,15 +360,12 @@ subprojects {
  * in the user guide at https://docs.gradle.org/4.10.2/userguide/multi_project_builds.html
  */
 
-rootProject.name = &#39;gradle-springboot2-projects&#39;</pre></div>
-<p>到这里你的根项目配置好了。</p>
-
+rootProject.name = &#39;gradle-springboot2-projects&#39;
+</code></pre></div><p>到这里你的根项目配置好了。</p>
 <h3 id="子模块项目的新建">子模块项目的新建</h3>
-
 <p>在<code>IDEA</code>中使用右键根项目，New -&gt; Module -&gt; 选择Gradle，填写ArtifactId和Module Name即可。</p>
-
 <p>之后会自动在子模块项目下生成<code>build.gradle</code>, 以及在根项目的<code>settings.gradle</code>中添加如下内容：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/*
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/*
  * This file was generated by the Gradle &#39;init&#39; task.
  *
  * The settings file is used to specify which projects to include in your build.
@@ -396,11 +379,9 @@ rootProject.name = &#39;gradle-springboot2-projects&#39;
 include &#39;chapter01&#39;
 findProject(&#39;:chapter01&#39;)?.name = &#39;spring-boot-admin&#39;
 include &#39;chapter02&#39;
-findProject(&#39;:chapter02&#39;)?.name = &#39;spring-boot-admin-client&#39;</pre></div>
-<p>其中<code>findProject(':chapter01')?.name = 'spring-boot-admin'</code>是因为我的ArtifactId和Module Name不一致导致的。</p>
-
+findProject(&#39;:chapter02&#39;)?.name = &#39;spring-boot-admin-client&#39;
+</code></pre></div><p>其中<code>findProject(':chapter01')?.name = 'spring-boot-admin'</code>是因为我的ArtifactId和Module Name不一致导致的。</p>
 <h3 id="参考">参考</h3>
-
 <p><a href="https://guides.gradle.org/building-spring-boot-2-projects-with-gradle/">Building Spring Boot 2 Applications with Gradle</a></p>
 
           
@@ -570,7 +551,7 @@ findProject(&#39;:chapter02&#39;)?.name = &#39;spring-boot-admin-client&#39;</pr
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

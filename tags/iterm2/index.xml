@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>iTerm2 on 梁波的技术博客</title>
@@ -6,11 +6,7 @@
     <description>Recent content in iTerm2 on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 01 Oct 2018 10:34:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://flygopher.top/tags/iterm2/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 01 Oct 2018 10:34:00 +0000</lastBuildDate><atom:link href="http://flygopher.top/tags/iterm2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>iTerm2&#43;zsh打造漂亮好用的终端环境</title>
       <link>http://flygopher.top/post/custom-iterm2-zsh/</link>
@@ -18,12 +14,9 @@
       
       <guid>http://flygopher.top/post/custom-iterm2-zsh/</guid>
       <description>&lt;p&gt;注：适用于使用MacOS开发的Developer&lt;/p&gt;
-
 &lt;p&gt;身为程序开发者，很大一部分的时间是在用&lt;code&gt;Command Line&lt;/code&gt;做事，如果能把&lt;code&gt;Command Line&lt;/code&gt;调整得好用又炫酷的模样，不只是效率提升很懂，用起来爽度也比较高。&lt;/p&gt;
-
 &lt;p&gt;最后大概会是这个样子：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/post-detail-zsh.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/post-detail-zsh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

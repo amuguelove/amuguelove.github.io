@@ -11,32 +11,24 @@
   <meta name="twitter:title" content="深入学习Redis：Redis常见问题以及优化方案" />
   
   <meta name="description" content="常见问题以及优化方案
-
 1. fork耗时导致高并发请求延时
-
 一般来说，如果父进程内存有1个G的数据，那么fork可能会耗费在20ms左右，如果是10G~30G，那么就会耗费20 * 10，甚至20 * 30，也就是几百毫秒的时间 。
 info stats中的latest_fork_usec，可以看到最近一次form的时长 。
 redis单机QPS一般在几万，fork可能一下子就会拖慢几万条操作的请求时长，从几毫秒变成1秒 。
-
 优化思路：
 fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10GB以内，slave -&gt; master，全量复制。">
   <meta property="og:description" content="常见问题以及优化方案
-
 1. fork耗时导致高并发请求延时
-
 一般来说，如果父进程内存有1个G的数据，那么fork可能会耗费在20ms左右，如果是10G~30G，那么就会耗费20 * 10，甚至20 * 30，也就是几百毫秒的时间 。
 info stats中的latest_fork_usec，可以看到最近一次form的时长 。
 redis单机QPS一般在几万，fork可能一下子就会拖慢几万条操作的请求时长，从几毫秒变成1秒 。
-
 优化思路：
 fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10GB以内，slave -&gt; master，全量复制。">
   <meta name="twitter:description" content="常见问题以及优化方案
-
 1. fork耗时导致高并发请求延时
-
 一般来说，如果父进程内存有1个G的数据，那么fork可能会耗费在20ms左右，如果是10G~30G，那么就会耗费20 * 10，甚至20 * 30，也就是几百毫秒的时间 。
 info stats中的latest_fork_usec，可以看到最近一次form的时长 。
-redis单机QPS一般在几万，fork可能一下子就会拖慢几万条操作 …">
+redis单机QPS一般在几万，fork可能一下子就会拖慢几万条操作的请 …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
@@ -46,7 +38,7 @@ redis单机QPS一般在几万，fork可能一下子就会拖慢几万条操作 �
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/redis-problem-optimization/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -57,8 +49,7 @@ redis单机QPS一般在几万，fork可能一下子就会拖慢几万条操作 �
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -193,7 +184,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 October 23, 2018
+    
   
   
 </span>
@@ -248,55 +239,42 @@ if (!doNotTrack) {
           
 
           <h2 id="常见问题以及优化方案">常见问题以及优化方案</h2>
-
 <h4 id="1-fork耗时导致高并发请求延时">1. fork耗时导致高并发请求延时</h4>
-
-<p>一般来说，如果父进程内存有1个G的数据，那么fork可能会耗费在20ms左右，如果是10G~30G，那么就会耗费20 * 10，甚至20 * 30，也就是几百毫秒的时间 。<br />
-info stats中的latest_fork_usec，可以看到最近一次form的时长 。<br />
+<p>一般来说，如果父进程内存有1个G的数据，那么fork可能会耗费在20ms左右，如果是10G~30G，那么就会耗费20 * 10，甚至20 * 30，也就是几百毫秒的时间 。<br>
+info stats中的latest_fork_usec，可以看到最近一次form的时长 。<br>
 redis单机QPS一般在几万，fork可能一下子就会拖慢几万条操作的请求时长，从几毫秒变成1秒 。</p>
-
-<p><strong>优化思路：</strong><br />
+<p><strong>优化思路：</strong><br>
 fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10GB以内，slave -&gt; master，全量复制。</p>
-
 <h4 id="2-aof的阻塞问题">2. AOF的阻塞问题</h4>
-
 <p>redis将数据写入AOF缓冲区，单独开一个现场做fsync操作，每秒一次 ，但是redis主线程会检查两次fsync的时间，如果距离上次fsync时间超过了2秒，那么写请求就会阻塞 。everysec，最多丢失2秒的数据，一旦fsync超过2秒的延时，整个redis就被拖慢。</p>
-
-<p><strong>优化思路：</strong><br />
+<p><strong>优化思路：</strong><br>
 优化硬盘写入速度，建议采用SSD，不要用普通的机械硬盘，SSD，大幅度提升磁盘读写的速度</p>
-
 <h4 id="3-主从复制延迟问题">3. 主从复制延迟问题</h4>
-
-<p>主从复制可能会超时严重，这个时候需要良好的监控和报警机制 。<br />
-在<code>info replication</code>中，可以看到master和slave复制的offset，做一个差值就可以看到对应的延迟量 。<br />
+<p>主从复制可能会超时严重，这个时候需要良好的监控和报警机制 。<br>
+在<code>info replication</code>中，可以看到master和slave复制的offset，做一个差值就可以看到对应的延迟量 。<br>
 如果延迟过多，那么就进行报警。</p>
-
 <h4 id="4-主从复制风暴问题">4. 主从复制风暴问题</h4>
-
-<p>如果一下子让多个slave从master去执行全量复制，一份大的rdb同时发送到多个slave，会导致网络带宽被严重占用 。<br />
+<p>如果一下子让多个slave从master去执行全量复制，一份大的rdb同时发送到多个slave，会导致网络带宽被严重占用 。<br>
 如果一个master真的要挂载多个slave，那尽量用树状结构，不要用星型结构。</p>
-
-<h4 id="5-vm-overcommit-memory-配置">5.  <code>vm.overcommit_memory</code> 配置</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">0: 检查有没有足够内存，没有的话申请内存失败 
+<h4 id="5--vmovercommit_memory-配置">5.  <code>vm.overcommit_memory</code> 配置</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">0: 检查有没有足够内存，没有的话申请内存失败 
 1: 允许使用内存直到用完为止 
-2: 内存地址空间不能超过swap + 50% </pre></div>
-<p>如果是0的话，可能导致类似fork等操作执行失败，申请不到足够的内存空间。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">cat /proc/sys/vm/overcommit_memory
+2: 内存地址空间不能超过swap + 50% 
+</code></pre></div><p>如果是0的话，可能导致类似fork等操作执行失败，申请不到足够的内存空间。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat /proc/sys/vm/overcommit_memory
 echo &#34;vm.overcommit_memory=1&#34; &gt;&gt; /etc/sysctl.conf
-sysctl vm.overcommit_memory=1</pre></div>
-<h4 id="6-swappiness">6. <code>swappiness</code></h4>
-
-<p><code>cat /proc/version</code>，查看linux内核版本。<br />
-如果linux内核版本<3.5，那么swappiness设置为0，这样系统宁愿swap也不会oom killer（杀掉进程）；   
-如果linux内核版本>=3.5，那么swappiness设置为1，这样系统宁愿swap也不会oom killer。<br />
+sysctl vm.overcommit_memory=1
+</code></pre></div><h4 id="6-swappiness">6. <code>swappiness</code></h4>
+<p><code>cat /proc/version</code>，查看linux内核版本。<br>
+如果linux内核版本&lt;3.5，那么swappiness设置为0，这样系统宁愿swap也不会oom killer（杀掉进程）；<br>
+如果linux内核版本&gt;=3.5，那么swappiness设置为1，这样系统宁愿swap也不会oom killer。<br>
 保证redis不会被杀掉 。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">cat /proc/sys/vm/swappiness 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat /proc/sys/vm/swappiness 
 echo 0 &gt; /proc/sys/vm/swappiness 
-echo vm.swappiness=0 &gt;&gt; /etc/sysctl.conf </pre></div>
-<h4 id="7-设置最大打开文件句柄">7. 设置最大打开文件句柄</h4>
-
+echo vm.swappiness=0 &gt;&gt; /etc/sysctl.conf 
+</code></pre></div><h4 id="7-设置最大打开文件句柄">7. 设置最大打开文件句柄</h4>
 <p>单个进程最多允许打开的文件句柄数（包括socket连接数）是有限制的，当大于这个系统限制时，程序会抛出大量的无法打开文件的报错。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># ulimit -a
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># ulimit -a
 core file size          (blocks, -c) unlimited
 data seg size           (kbytes, -d) unlimited
 file size               (blocks, -f) unlimited
@@ -310,26 +288,24 @@ stack size              (kbytes, -s) 10240
 cpu time               (seconds, -t) unlimited
 max user processes              (-u) 515235
 virtual memory          (kbytes, -v) unlimited
-file locks                      (-x) unlimited</pre></div>
-<p>其中open files表示的是单个进程最多允许打开的文件句柄数（soket连接数也算在内），默认值是1024。对于一般的程序来说，这个值是足够的，但是对于很多需要打开大量文件或者大量socket连接的程序来说，这个值就不够了。</p>
-
+file locks                      (-x) unlimited
+</code></pre></div><p>其中open files表示的是单个进程最多允许打开的文件句柄数（soket连接数也算在内），默认值是1024。对于一般的程序来说，这个值是足够的，但是对于很多需要打开大量文件或者大量socket连接的程序来说，这个值就不够了。</p>
 <p>设置每个进程的最大打开数，<strong>非root用户只能越设置越小，不能越设置越大</strong>：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// 切换到root
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// 切换到root
 sudo su - 
-ulimit -n 10240 10240 </pre></div>
-<p><em>任何用户对ulimit -n的修改只在当前环境有效，退出后失效，重新登录新来后，ulimit -n由limits.conf决定。</em></p>
-
+ulimit -n 10240 10240 
+</code></pre></div><p><em>任何用户对ulimit -n的修改只在当前环境有效，退出后失效，重新登录新来后，ulimit -n由limits.conf决定。</em></p>
 <p>可以使用如下命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">echo fs.file-max=6553560 &gt;&gt; /etc/sysctl.conf 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">echo fs.file-max=6553560 &gt;&gt; /etc/sysctl.conf 
 echo &#34;* soft nofile 10240&#34;  &gt;&gt; /etc/security/limits.conf 
-echo &#34;* hard nofile 10240&#34;  &gt;&gt; /etc/security/limits.conf </pre></div>
-<p>修改之后，不需重启服务器，只需退出当前ssh远程连接，重新登录之后重启相关程序即可生效。</p>
-
+echo &#34;* hard nofile 10240&#34;  &gt;&gt; /etc/security/limits.conf 
+</code></pre></div><p>修改之后，不需重启服务器，只需退出当前ssh远程连接，重新登录之后重启相关程序即可生效。</p>
 <h4 id="8-tcp-backlog">8. <code>tcp backlog</code></h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">cat /proc/sys/net/core/somaxconn
-echo net.core.somaxconn=511 &gt;&gt; /etc/sysctl.conf</pre></div>
-<p><strong>注意以上修改/etc/sysctl.conf，可以执行如下命令生效：</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">sudo sysctl -p</pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat /proc/sys/net/core/somaxconn
+echo net.core.somaxconn=511 &gt;&gt; /etc/sysctl.conf
+</code></pre></div><p><strong>注意以上修改/etc/sysctl.conf，可以执行如下命令生效：</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo sysctl -p
+</code></pre></div>
 
           
   
@@ -498,7 +474,7 @@ echo net.core.somaxconn=511 &gt;&gt; /etc/sysctl.conf</pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

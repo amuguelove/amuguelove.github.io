@@ -11,9 +11,7 @@
   <meta name="twitter:title" content="Http性能压测工具 | wrk" />
   
   <meta name="description" content="简单的 http 性能测试工具，记录一下使用方法。
-
 安装
-
 MacOS
 brew install wrk
 Ubuntu/Debian
@@ -31,11 +29,10 @@ git clone https://github.com/wg/wrk.git wrk
 cd wrk
 make
 # move the executable to somewhere in your PATH
-sudo cp wrk /somewhere/in/your/PATH">
+sudo cp wrk /somewhere/in/your/PATH
+">
   <meta property="og:description" content="简单的 http 性能测试工具，记录一下使用方法。
-
 安装
-
 MacOS
 brew install wrk
 Ubuntu/Debian
@@ -53,11 +50,10 @@ git clone https://github.com/wg/wrk.git wrk
 cd wrk
 make
 # move the executable to somewhere in your PATH
-sudo cp wrk /somewhere/in/your/PATH">
+sudo cp wrk /somewhere/in/your/PATH
+">
   <meta name="twitter:description" content="简单的 http 性能测试工具，记录一下使用方法。
-
 安装
-
 MacOS
 brew install wrk
 Ubuntu/Debian
@@ -75,7 +71,7 @@ sudo make
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/http-performance-tool-wrk/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -86,8 +82,7 @@ sudo make
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -222,7 +217,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 April 7, 2018
+    
   
   
 </span>
@@ -266,33 +261,16 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#安装">安装</a>
-<ul>
-<li><a href="#macos">MacOS</a></li>
-<li><a href="#ubuntu-debian">Ubuntu/Debian</a></li>
-<li><a href="#centos-redhat-fedora">CentOS / RedHat / Fedora</a></li>
-</ul></li>
-<li><a href="#简单使用">简单使用</a></li>
-<li><a href="#使用lua脚本进行个性化wrk压测">使用lua脚本进行个性化wrk压测</a>
-<ul>
-<li><a href="#lua脚本如何交互的">Lua脚本如何交互的</a></li>
-<li><a href="#使用-post-请求">使用 POST 请求</a></li>
-</ul></li>
-<li><a href="#升级到wrk2-update-2019-03-06">升级到wrk2（update：2019-03-06）</a>
-<ul>
-<li><a href="#via-homebrew">Via Homebrew：</a></li>
-<li><a href="#wrk2-拥有如下选项">wrk2 拥有如下选项：</a></li>
-<li><a href="#以post测试为例-编写如下lua脚本">以post测试为例,编写如下lua脚本：</a></li>
-<li><a href="#简单测试命令">简单测试命令:</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#简单使用">简单使用</a></li>
+        <li><a href="#使用lua脚本进行个性化wrk压测">使用lua脚本进行个性化wrk压测</a></li>
+        <li><a href="#升级到wrk2update2019-03-06">升级到wrk2（update：2019-03-06）</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </aside>
 
@@ -311,31 +289,28 @@ if (!doNotTrack) {
           
 
           <p>简单的 http 性能测试工具，记录一下使用方法。</p>
-
 <h3 id="安装">安装</h3>
-
 <h4 id="macos">MacOS</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">brew install wrk</pre></div>
-<h4 id="ubuntu-debian">Ubuntu/Debian</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">sudo apt-get install build-essential libssl-dev git -y
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">brew install wrk
+</code></pre></div><h4 id="ubuntudebian">Ubuntu/Debian</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo apt-get install build-essential libssl-dev git -y
 git clone https://github.com/wg/wrk.git wrk
 cd wrk
 sudo make
 # move the executable to somewhere in your PATH, ex:
-sudo cp wrk /usr/local/bin</pre></div>
-<h4 id="centos-redhat-fedora">CentOS / RedHat / Fedora</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">sudo yum groupinstall &#39;Development Tools&#39;
+sudo cp wrk /usr/local/bin
+</code></pre></div><h4 id="centos--redhat--fedora">CentOS / RedHat / Fedora</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo yum groupinstall &#39;Development Tools&#39;
 sudo yum install openssl-devel
 sudo yum install git
 git clone https://github.com/wg/wrk.git wrk
 cd wrk
 make
 # move the executable to somewhere in your PATH
-sudo cp wrk /somewhere/in/your/PATH</pre></div>
-<h3 id="简单使用">简单使用</h3>
-
+sudo cp wrk /somewhere/in/your/PATH
+</code></pre></div><h3 id="简单使用">简单使用</h3>
 <p>1.命令行敲下wrk，可以看到使用帮助</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Usage: wrk &lt;options&gt; &lt;url&gt;                            
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Usage: wrk &lt;options&gt; &lt;url&gt;                            
   Options:                                            
     -c, --connections &lt;N&gt;  Connections to keep open   
     -d, --duration    &lt;T&gt;  Duration of test           
@@ -348,9 +323,9 @@ sudo cp wrk /somewhere/in/your/PATH</pre></div>
     -v, --version          Print version details      
                                                       
   Numeric arguments may include a SI unit (1k, 1M, 1G)
-  Time arguments may include a time unit (2s, 2m, 2h)</pre></div>
-<p>翻译成中文：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">使用方法: wrk &lt;选项&gt; &lt;被测HTTP服务的URL&gt;                            
+  Time arguments may include a time unit (2s, 2m, 2h)
+</code></pre></div><p>翻译成中文：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">使用方法: wrk &lt;选项&gt; &lt;被测HTTP服务的URL&gt;                            
   Options:                                            
     -c, --connections &lt;N&gt;  跟服务器建立并保持的TCP连接数量  
     -d, --duration    &lt;T&gt;  压测时间           
@@ -364,11 +339,11 @@ sudo cp wrk /somewhere/in/your/PATH</pre></div>
     -v, --version          打印正在使用的wrk的详细版本信息
                                                       
   &lt;N&gt;代表数字参数，支持国际单位 (1k, 1M, 1G)
-  &lt;T&gt;代表时间参数，支持时间单位 (2s, 2m, 2h)</pre></div>
-<p>2.查看下版本</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">wrk 4.1.0 [epoll] Copyright (C) 2012 Will Glozer</pre></div>
-<p>3.一次简单压测，分析一下结果</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">wrk -t8 -c200 -d30s --latency  &#34;http://www.bing.com&#34;
+  &lt;T&gt;代表时间参数，支持时间单位 (2s, 2m, 2h)
+</code></pre></div><p>2.查看下版本</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">wrk 4.1.0 [epoll] Copyright (C) 2012 Will Glozer
+</code></pre></div><p>3.一次简单压测，分析一下结果</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">wrk -t8 -c200 -d30s --latency  &#34;http://www.bing.com&#34;
 
 输出：
 Running 30s test @ http://www.bing.com
@@ -383,9 +358,10 @@ Running 30s test @ http://www.bing.com
      99%    1.35s 
   1790465 requests in 30.01s, 684.08MB read
 Requests/sec:  59658.29
-Transfer/sec:     22.79MB</pre></div>
-<p>以上使用8个线程200个连接，对bing首页进行了30秒的压测，并要求在压测结果中输出响应延迟信息。以下对压测结果进行简单注释：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Running 30s test @ http://www.bing.com （压测时间30s）
+Transfer/sec:     22.79MB
+
+</code></pre></div><p>以上使用8个线程200个连接，对bing首页进行了30秒的压测，并要求在压测结果中输出响应延迟信息。以下对压测结果进行简单注释：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Running 30s test @ http://www.bing.com （压测时间30s）
   8 threads and 200 connections （共8个测试线程，200个连接）
   Thread Stats   Avg      Stdev     Max   +/- Stdev
               （平均值） （标准差）（最大值）（正负一个标准差所占比例）
@@ -400,15 +376,12 @@ Transfer/sec:     22.79MB</pre></div>
      99%    1.35s （99分位的延迟）
   1790465 requests in 30.01s, 684.08MB read （30.01秒内共处理完成了1790465个请求，读取了684.08MB数据）
 Requests/sec:  59658.29 （平均每秒处理完成59658.29个请求）
-Transfer/sec:     22.79MB （平均每秒读取数据22.79MB）</pre></div>
-<h3 id="使用lua脚本进行个性化wrk压测">使用lua脚本进行个性化wrk压测</h3>
-
+Transfer/sec:     22.79MB （平均每秒读取数据22.79MB）
+</code></pre></div><h3 id="使用lua脚本进行个性化wrk压测">使用lua脚本进行个性化wrk压测</h3>
 <p>简单的压测可能不能满足我们的需求。比如我们可能需要使用POST METHOD跟服务器交互；可能需要为每一次请求使用不同的参数，以更好的模拟服务的实际使用场景等。wrk支持用户使用<code>-s</code>或<code>--script</code>指定Lua脚本，来定制压测过程，满足个性化需求。</p>
-
 <h4 id="lua脚本如何交互的">Lua脚本如何交互的</h4>
-
 <p>wrk支持在三个阶段对压测进行个性化，分别是启动阶段、运行阶段和结束阶段。每个测试线程，都拥有独立的Lua运行环境。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Overview
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Overview
 
   wrk supports executing a LuaJIT script during three distinct phases: setup,
   running, and done. Each wrk thread has an independent scripting environment
@@ -524,26 +497,22 @@ Done
       status  = N, -- total HTTP status codes &gt; 399
       timeout = N  -- total request timeouts
     }
-  }</pre></div>
-<h4 id="使用-post-请求">使用 POST 请求</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">wrk.method = &#34;POST&#34;
+  }
+</code></pre></div><h4 id="使用-post-请求">使用 POST 请求</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">wrk.method = &#34;POST&#34;
 wrk.body   = &#34;foo=bar&amp;baz=quux&#34;
-wrk.headers[&#34;Content-Type&#34;] = &#34;application/x-www-form-urlencoded&#34;</pre></div>
-<p>通过修改全局变量wrk，使得所有请求都使用POST方法，并指定了body和Content-Type头。</p>
-
+wrk.headers[&#34;Content-Type&#34;] = &#34;application/x-www-form-urlencoded&#34;
+</code></pre></div><p>通过修改全局变量wrk，使得所有请求都使用POST方法，并指定了body和Content-Type头。</p>
 <p>脚本执行如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">wrk -t12 -c20 -d30s -s post.lua http://xx.xx.xx.xx:8080</pre></div>
-<p>如果你想要查看一些其他的脚本，具体可以看github上的官方提供的 <a href="https://github.com/wg/wrk/tree/master/scripts">Script Example</a></p>
-
-<h3 id="升级到wrk2-update-2019-03-06">升级到wrk2（update：2019-03-06）</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">wrk -t12 -c20 -d30s -s post.lua http://xx.xx.xx.xx:8080
+</code></pre></div><p>如果你想要查看一些其他的脚本，具体可以看github上的官方提供的 <a href="https://github.com/wg/wrk/tree/master/scripts">Script Example</a></p>
+<h3 id="升级到wrk2update2019-03-06">升级到wrk2（update：2019-03-06）</h3>
 <h4 id="via-homebrew">Via Homebrew：</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">brew tap jabley/homebrew-wrk2
-brew install --HEAD wrk2</pre></div>
-<p>可以通过<code>-R</code>（默认1000）设置吞吐量（每秒的总请求数）</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">brew tap jabley/homebrew-wrk2
+brew install --HEAD wrk2
+</code></pre></div><p>可以通过<code>-R</code>（默认1000）设置吞吐量（每秒的总请求数）</p>
 <h4 id="wrk2-拥有如下选项">wrk2 拥有如下选项：</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Usage: wrk &lt;options&gt; &lt;url&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Usage: wrk &lt;options&gt; &lt;url&gt;
   Options:
     -c, --connections &lt;N&gt;  需要保持的连接数量
     -d, --duration    &lt;T&gt;  测试持续的时间
@@ -557,15 +526,15 @@ brew install --HEAD wrk2</pre></div>
     -B, --batch_latency    统计整个批量时间
                            (正式对应的每一个op)
     -v, --version          打印版本细节
-    -R, --rate        &lt;T&gt;  TPS [必填参数]</pre></div>
-<h4 id="以post测试为例-编写如下lua脚本">以post测试为例,编写如下lua脚本：</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">post.lua
+    -R, --rate        &lt;T&gt;  TPS [必填参数]
+</code></pre></div><h4 id="以post测试为例编写如下lua脚本">以post测试为例,编写如下lua脚本：</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">post.lua
 wrk.method = &#34;POST&#34;
 wrk.body   = &#34;{\&#34;jsonrpc\&#34;:\&#34;2.0\&#34;, \&#34;method\&#34;: \&#34;node_getNodeStates\&#34;, \&#34;id\&#34;: 1}&#34;
-wrk.headers[&#34;Content-type&#34;] = &#34;application/json&#34;</pre></div>
-<h4 id="简单测试命令">简单测试命令:</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">wrk2 -t10 -c10 -d30s -R50 -L --script=post.lua http://localhost:8081</pre></div>
-<p>参考 <a href="https://github.com/giltene/wrk2/wiki/Installing-wrk2-on-Mac">Github wiki地址</a></p>
+wrk.headers[&#34;Content-type&#34;] = &#34;application/json&#34;
+</code></pre></div><h4 id="简单测试命令">简单测试命令:</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">wrk2 -t10 -c10 -d30s -R50 -L --script=post.lua http://localhost:8081
+</code></pre></div><p>参考 <a href="https://github.com/giltene/wrk2/wiki/Installing-wrk2-on-Mac">Github wiki地址</a></p>
 
           
   
@@ -726,7 +695,7 @@ wrk.headers[&#34;Content-type&#34;] = &#34;application/json&#34;</pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

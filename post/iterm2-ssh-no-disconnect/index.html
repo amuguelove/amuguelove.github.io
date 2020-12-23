@@ -11,13 +11,10 @@
   <meta name="twitter:title" content="iTerm2保持ssh连接不断开" />
   
   <meta name="description" content="iTerm2连接ssh一个蛋疼的问题
-
 在mbp笔记本上安装了iTerm2来替换自带的终端，简洁易用，让人一下子就喜欢上，但是使用iTerm2进行ssh连接时，空闲一段时间，连接就会断掉&hellip;&hellip; 下面就来介绍如何解决iTerm2短连的问题。">
   <meta property="og:description" content="iTerm2连接ssh一个蛋疼的问题
-
 在mbp笔记本上安装了iTerm2来替换自带的终端，简洁易用，让人一下子就喜欢上，但是使用iTerm2进行ssh连接时，空闲一段时间，连接就会断掉&hellip;&hellip; 下面就来介绍如何解决iTerm2短连的问题。">
   <meta name="twitter:description" content="iTerm2连接ssh一个蛋疼的问题
-
 在mbp笔记本上安装了iTerm2来替换自带的终端，简洁易用，让人一下子就喜欢上，但是使用iTerm2进行ssh连接时，空闲一段时间，连接就会断掉&hellip;&hellip; 下面就来介绍如何解决iTerm2短连的问题。">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -28,7 +25,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/iterm2-ssh-no-disconnect/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -39,8 +36,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -175,7 +171,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 August 12, 2017
+    
   
   
 </span>
@@ -230,30 +226,19 @@ if (!doNotTrack) {
           
 
           <h3 id="iterm2连接ssh一个蛋疼的问题">iTerm2连接ssh一个蛋疼的问题</h3>
-
 <p>在mbp笔记本上安装了iTerm2来替换自带的终端，简洁易用，让人一下子就喜欢上，但是使用iTerm2进行ssh连接时，空闲一段时间，连接就会断掉&hellip;&hellip; 下面就来介绍如何解决iTerm2短连的问题。</p>
-
 <h3 id="如何解决">如何解决</h3>
-
 <p>问题主要是：是服务器端把空闲连接给断开了，或者是mbp的wifi连接会自动断开。。。</p>
-
 <h4 id="通过iterm2配置参数">通过iTerm2配置参数</h4>
-
 <p><code>profiles -&gt; sessions -&gt; When idle, send ASCII code</code></p>
-
 <p>这样配置会有一个问题，比如配置ASCII code 为 97， 也就是a，开着iTerm2，过一段时间过来时，屏幕上会有一串aaaaaaaaa，你必须得手动删除，蛋疼。</p>
-
 <h4 id="设置ssh参数">设置ssh参数</h4>
-
 <p>正确的做法是，通过配置 ServerAliveInterval 来实现，在 <code>~/.ssh/config</code> 中加入： ServerAliveInterval=30</p>
-
 <p>ServerAliveInterval 30 #表示ssh客户端每隔30秒给远程主机发送一个no-op包，no-op是无任何操作的意思，这样远程主机就不会关闭这个SSH会话。</p>
-
 <p>打开<code>vim ~/.ssh/config</code>, 新增：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Host *
-    ServerAliveInterval 60</pre></div>
-<p>我觉得60秒就好了，而且基本去连的机器都保持，所以配置了*，如果有需要针对某个机器，可以自行配置为需要的serverHostName。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Host *
+    ServerAliveInterval 60
+</code></pre></div><p>我觉得60秒就好了，而且基本去连的机器都保持，所以配置了*，如果有需要针对某个机器，可以自行配置为需要的serverHostName。</p>
 <p>再经过最后的验证，方案二确实为最优选择。</p>
 
           
@@ -411,7 +396,7 @@ if (!doNotTrack) {
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

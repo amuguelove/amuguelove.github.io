@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/java8-optional/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,8 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -169,7 +168,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 October 5, 2018
+    
   
   
 </span>
@@ -211,25 +210,18 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#of-empty-ofnullable">of/empty/ofNullable</a></li>
-<li><a href="#get-ispresent">get/isPresent</a></li>
-<li><a href="#orelse-orelseget-orelsethrow">orElse/orElseGet/orElseThrow</a></li>
-<li><a href="#filter-map">filter/map</a></li>
-<li><a href="#optional转集合">Optional转集合</a></li>
-<li><a href="#如何正确使用-optional">如何正确使用<code>Optional</code></a>
-<ul>
-<li><a href="#正确创建-optional-对象">正确创建<code>Optional</code>对象</a></li>
-<li><a href="#orelse-方法的使用"><code>orElse()</code>方法的使用</a></li>
-<li><a href="#简化-if-else">简化<code>if-else</code></a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#ofemptyofnullable">of/empty/ofNullable</a></li>
+        <li><a href="#getispresent">get/isPresent</a></li>
+        <li><a href="#orelseorelsegetorelsethrow">orElse/orElseGet/orElseThrow</a></li>
+        <li><a href="#filtermap">filter/map</a></li>
+        <li><a href="#optional转集合">Optional转集合</a></li>
+        <li><a href="#如何正确使用optional">如何正确使用<code>Optional</code></a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </aside>
 
@@ -248,9 +240,8 @@ if (!doNotTrack) {
           
 
           <p>Optional 是 JDK1.8 中的一个很流弊的新特性，每个接触JAVA的都遇到过 NPE(NullPointerException)，1.8中Optional 帮助我们很好的避免了这一现象。</p>
-
-<h3 id="of-empty-ofnullable">of/empty/ofNullable</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">User user = null; // user 是一个 空对象	
+<h3 id="ofemptyofnullable">of/empty/ofNullable</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">User user = null; // user 是一个 空对象	
 
 /**
  * 源码：        
@@ -281,9 +272,9 @@ Optional&lt;User&gt; op2 = Optional.empty(); // 看API就知道啥意思了,基�
  * }
  * 解释：如果对象为空就返回 empty() 相反就  调用 of(value); 
  */
-Optional&lt;User&gt; op3 = Optional.ofNullable(user);</pre></div>
-<h3 id="get-ispresent">get/isPresent</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Optional&lt;User&gt; op = Optional.ofNullable(null); // 创建一个对象为Null的Optional
+Optional&lt;User&gt; op3 = Optional.ofNullable(user);
+</code></pre></div><h3 id="getispresent">get/isPresent</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Optional&lt;User&gt; op = Optional.ofNullable(null); // 创建一个对象为Null的Optional
     
 /**
  * 源码：        
@@ -304,9 +295,9 @@ System.out.println(op.isPresent());
  * }
  * 解释：如果 value 为空 null 抛出 NoSuchElementException 否则返回 T
  */
-System.out.println(op.get());</pre></div>
-<h3 id="orelse-orelseget-orelsethrow">orElse/orElseGet/orElseThrow</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">User user = null;
+System.out.println(op.get());
+</code></pre></div><h3 id="orelseorelsegetorelsethrow">orElse/orElseGet/orElseThrow</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">User user = null;
 	
 /**
  * 源码：        
@@ -342,21 +333,19 @@ System.out.println(u2);//Student{id=1, name=&#39;lisi&#39;, email=&#39;xxx@qq.co
  * 解释：如果T为null那么抛出异常（本宝宝非常喜欢）
  */			
 User u3 = Optional.ofNullable(user).orElseThrow(() -&gt; new RuntimeException(&#34;哈哈,报错了吧&#34;));
-System.out.println(u3); //抛出：java.lang.RuntimeException: 哈哈,报错了吧</pre></div>
-<h3 id="filter-map">filter/map</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// 可以加if判断条件过滤
+System.out.println(u3); //抛出：java.lang.RuntimeException: 哈哈,报错了吧
+</code></pre></div><h3 id="filtermap">filter/map</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// 可以加if判断条件过滤
 String filter = Optional.ofNullable(&#34;aadasdsa&#34;).filter((value) -&gt; value.length() &gt; 5).get();
 System.out.println(filter);
 
 // 大小写转换等等..
 String map = Optional.ofNullable(&#34;aadasdsa&#34;).map(String::toUpperCase).get();
-System.out.println(map);</pre></div>
-<p>使用<code>map</code>函数返回对象，使用<code>flatMap</code>返回<code>Optional</code>。</p>
-
+System.out.println(map);
+</code></pre></div><p>使用<code>map</code>函数返回对象，使用<code>flatMap</code>返回<code>Optional</code>。</p>
 <h3 id="optional转集合">Optional转集合</h3>
-
 <p>将一个Optional转为List或者Set</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public static &lt;T&gt; List&lt;T&gt; toList(Optional&lt;T&gt; option) {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public static &lt;T&gt; List&lt;T&gt; toList(Optional&lt;T&gt; option) {
     return option.
             map(Collections::singletonList).
             orElse(Collections.emptyList());
@@ -377,53 +366,46 @@ import static java.util.stream.Collectors.*;
 //转为List
 List&lt;String&gt; list = collect(opt, toList());
 //转为Set
-Set&lt;String&gt; set  = collect(opt, toSet());</pre></div>
-<h3 id="如何正确使用-optional">如何正确使用<code>Optional</code></h3>
-
+Set&lt;String&gt; set  = collect(opt, toSet());
+</code></pre></div><h3 id="如何正确使用optional">如何正确使用<code>Optional</code></h3>
 <p>假设你试图使用<code>Optional</code>来避免可能出现的<code>NullPointerException</code>异常，编写了如下代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Optional&lt;User&gt; userOpt = Optional.ofNullable(user);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Optional&lt;User&gt; userOpt = Optional.ofNullable(user);
 if (userOpt.isPresent()) {
     User user = userOpt.get();
     // do something...
 } else {
     // do something...
-}</pre></div>
-<p>坦白说，上面的代码与我们之前的使用<code>if</code>语句判断空值没有任何区别，没有起到<code>Optional</code>的正真作用：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">if (user != null) {
+}
+</code></pre></div><p>坦白说，上面的代码与我们之前的使用<code>if</code>语句判断空值没有任何区别，没有起到<code>Optional</code>的正真作用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if (user != null) {
     // do something...
 } else {
     // do something...
-}</pre></div>
-<p>当我们从之前版本切换到Java 8的时候，不应该还按照之前的思维方式处理<code>null</code>值，Java 8提倡函数式编程，新增的许多API都可以用函数式编程表示，<code>Optional</code>类也是其中之一。这里有几条关于<code>Optional</code>使用的建议：</p>
-
+}
+</code></pre></div><p>当我们从之前版本切换到Java 8的时候，不应该还按照之前的思维方式处理<code>null</code>值，Java 8提倡函数式编程，新增的许多API都可以用函数式编程表示，<code>Optional</code>类也是其中之一。这里有几条关于<code>Optional</code>使用的建议：</p>
 <ol>
 <li>尽量避免在程序中直接调用<code>Optional</code>对象的<code>get()</code>和<code>isPresent()</code>方法；</li>
 <li>避免使用<code>Optional</code>类型声明实体类的属性；</li>
 </ol>
-
 <p>第一条建议中直接调用<code>get()</code>方法是很危险的做法，如果<code>Optional</code>的值为空，那么毫无疑问会抛出<code>NullPointerException</code>异常，而为了调用<code>get()</code>方法而使用<code>isPresent()</code>方法作为空值检查，这种做法与传统的用<code>if</code>语句块做空值检查没有任何区别。</p>
-
 <p>第二条建议避免使用<code>Optional</code>作为实体类的属性，它在设计的时候就没有考虑过用来作为类的属性，如果你查看<code>Optional</code>的源代码，你会发现它没有实现<code>java.io.Serializable</code>接口，这在某些情况下是很重要的（比如你的项目中使用了某些序列化框架），使用了<code>Optional</code>作为实体类的属性，意味着他们不能被序列化。</p>
-
 <p>下面我们通过一些例子讲解<code>Optional</code>的正确用法：</p>
-
-<h4 id="正确创建-optional-对象">正确创建<code>Optional</code>对象</h4>
-
+<h4 id="正确创建optional对象">正确创建<code>Optional</code>对象</h4>
 <p>上面提到创建<code>Optional</code>对象有三个方法，<code>empty()</code>方法比较简单，没什么特别要说明的。主要是<code>of()</code>和<code>ofNullable()</code>方法。当你很确定一个对象不可能为<code>null</code>的时候，应该使用<code>of()</code>方法，否则，尽可能使用<code>ofNullable()</code>方法，比如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public static void method(Role role) {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public static void method(Role role) {
     // 当Optional的值通过常量获得或者通过关键字new初始化，可以直接使用of()方法
     Optional&lt;String&gt; strOpt = Optional.of(&#34;Hello World&#34;);
     Optional&lt;User&gt; userOpt = Optional.of(new User());
 
     // 方法参数中role值不确定是否为null，使用ofNullable()方法创建
     Optional&lt;Role&gt; roleOpt = Optional.ofNullable(role);
-}</pre></div>
-<h4 id="orelse-方法的使用"><code>orElse()</code>方法的使用</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">return str != null ? str : &#34;Hello World&#34;</pre></div>
-<p>上面的代码表示判断字符串<code>str</code>是否为空，不为空就返回，否则，返回一个常量。使用<code>Optional</code>类可以表示为：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">return strOpt.orElse(&#34;Hello World&#34;)</pre></div>
-<h4 id="简化-if-else">简化<code>if-else</code></h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">User user = ...
+}
+</code></pre></div><h4 id="orelse方法的使用"><code>orElse()</code>方法的使用</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">return str != null ? str : &#34;Hello World&#34;
+</code></pre></div><p>上面的代码表示判断字符串<code>str</code>是否为空，不为空就返回，否则，返回一个常量。使用<code>Optional</code>类可以表示为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">return strOpt.orElse(&#34;Hello World&#34;)
+</code></pre></div><h4 id="简化if-else">简化<code>if-else</code></h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">User user = ...
 if (user != null) {
     String userName = user.getUserName();
     if (userName != null) {
@@ -433,15 +415,15 @@ if (user != null) {
     }
 } else {
     return null;
-}</pre></div>
-<p>上面的代码可以简化成：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">User user = ...
+}
+</code></pre></div><p>上面的代码可以简化成：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">User user = ...
 Optional&lt;User&gt; userOpt = Optional.ofNullable(user);
 
 return user.map(User::getUserName)
             .map(String::toUpperCase)
-            .orElse(null);</pre></div>
-<p>总结一下，新的<code>Optional</code>类让我们可以以函数式编程的方式处理<code>null</code>值，抛弃了Java 8之前需要嵌套大量<code>if-else</code>代码块，使代码可读性有了很大的提高。</p>
+            .orElse(null);
+</code></pre></div><p>总结一下，新的<code>Optional</code>类让我们可以以函数式编程的方式处理<code>null</code>值，抛弃了Java 8之前需要嵌套大量<code>if-else</code>代码块，使代码可读性有了很大的提高。</p>
 
           
   
@@ -610,7 +592,7 @@ return user.map(User::getUserName)
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

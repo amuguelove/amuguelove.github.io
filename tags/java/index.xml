@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on 梁波的技术博客</title>
@@ -6,21 +6,15 @@
     <description>Recent content in Java on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 03 Apr 2020 00:00:00 +0800</lastBuildDate>
-    
-	<atom:link href="http://flygopher.top/tags/java/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 03 Apr 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>代码整洁之道</title>
       <link>http://flygopher.top/post/read-clean-code/</link>
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0800</pubDate>
       
       <guid>http://flygopher.top/post/read-clean-code/</guid>
-      <description>&lt;p&gt;最近因为一些契机，花了2到3天看完&lt;strong&gt;《代码简洁之道》&lt;/strong&gt;这本书，英文名为：&lt;code&gt;Clean Code&lt;/code&gt;。&lt;/p&gt;
-
+      <description>&lt;p&gt;最近因为一些契机，花了2到3天看完**《代码简洁之道》**这本书，英文名为：&lt;code&gt;Clean Code&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;开篇就有有这么简单一句话：“阅读这本书有两种原因：第一，你是个程序员；第二，你想成为更好的程序员”。是的，没错，我想成为更好的程序员。所以我决定好好阅读下这本书。&lt;/p&gt;
-
 &lt;p&gt;回想2019年，确实是我最忙碌的一年，做过几个项目，其中部分涉及到架构，但是大部分时间都关注在如何实现业务代码，没有更好的关注到代码本身的细节。虽然经常了解到关于整洁代码相关的知识，在工作中也或多或少的用到，比如每天的&lt;code&gt;code review&lt;/code&gt;以及&lt;code&gt;TDD&lt;/code&gt;开发等等。但是确实不够系统，大多时间忙于完成业务，通过阅读本书，以及其中大量简洁代码的指南，受益匪浅。&lt;/p&gt;</description>
     </item>
     
@@ -31,18 +25,13 @@
       
       <guid>http://flygopher.top/post/java-object-mappping-framework-benchmark/</guid>
       <description>&lt;h2 id=&#34;jmh概述&#34;&gt;JMH概述&lt;/h2&gt;
-
 &lt;p&gt;JMH 是一个由 OpenJDK/Oracle 里面那群开发了 Java 编译器的大牛们所开发的 Micro Benchmark Framework 。何谓 Micro Benchmark 呢？简单地说就是在 &lt;strong&gt;method&lt;/strong&gt; 层面上的 benchmark，精度可以精确到微秒级。可以看出 JMH 主要使用在当你已经找出了热点函数，而需要对热点函数进行进一步的优化时，就可以使用 JMH 对优化的效果进行定量的分析。&lt;/p&gt;
-
 &lt;p&gt;比较典型的使用场景还有：&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;想定量地知道某个函数需要执行多长时间，以及执行时间和输入 n 的相关性&lt;/li&gt;
 &lt;li&gt;一个函数有两种不同实现（例如实现 A 使用了 FixedThreadPool，实现 B 使用了 ForkJoinPool），不知道哪种实现性能更好&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;尽管 JMH 是一个相当不错的 Micro Benchmark Framework，但很无奈的是网上能够找到的文档比较少，而官方也没有提供比较详细的文档，对使用造成了一定的障碍。但是有个好消息是官方的 &lt;a href=&#34;http://hg.openjdk.java.net/code-tools/jmh/file/tip/jmh-samples/src/main/java/org/openjdk/jmh/samples/&#34;&gt;Code Sample&lt;/a&gt; 写得非常浅显易懂，推荐在需要详细了解 JMH 的用法时可以通读一遍——本文则会介绍 JMH 最典型的用法和部分常用选项。&lt;/p&gt;
-
 &lt;p&gt;我Fork了一份到github，可以提供大家参考一下，使用gradle构建。&lt;a href=&#34;https://github.com/amuguelove/jmh-gradle-samples&#34;&gt;jmh-gradle-samples&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
@@ -89,9 +78,7 @@
       
       <guid>http://flygopher.top/post/java8-lambda/</guid>
       <description>&lt;h2 id=&#34;新特性列表&#34;&gt;新特性列表&lt;/h2&gt;
-
 &lt;p&gt;以下是Java8中的引入的部分新特性。关于Java8新特性更详细的介绍可参考&lt;a href=&#34;http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html&#34;&gt;这里&lt;/a&gt;。&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;接口默认方法和静态方法&lt;/li&gt;
 &lt;li&gt;Lambda 表达式&lt;/li&gt;
@@ -105,7 +92,6 @@
 &lt;li&gt;Base64&lt;/li&gt;
 &lt;li&gt;JavaFX&lt;/li&gt;
 &lt;li&gt;其它
-
 &lt;ul&gt;
 &lt;li&gt;JDBC4.2规范&lt;/li&gt;
 &lt;li&gt;更好的类型推测机制&lt;/li&gt;
@@ -115,7 +101,8 @@
 &lt;li&gt;并发（Concurrency）&lt;/li&gt;
 &lt;li&gt;类依赖分析器jdeps&lt;/li&gt;
 &lt;li&gt;JVM的PermGen空间被移除&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     
@@ -126,7 +113,6 @@
       
       <guid>http://flygopher.top/post/java-serialization/</guid>
       <description>&lt;h3 id=&#34;引言&#34;&gt;引言&lt;/h3&gt;
-
 &lt;p&gt;将 Java 对象序列化为二进制文件的 Java 序列化技术是 Java 系列技术中一个较为重要的技术点，在大部分情况下，开发人员只需要了解被序列化的类需要实现 Serializable 接口，使用 ObjectInputStream 和 ObjectOutputStream 进行对象的读写。然而在有些情况下，光知道这些还远远不够，文章列举了笔者遇到的一些真实情境，它们与 Java 序列化相关，通过分析情境出现的原因，使读者轻松牢记 Java 序列化中的一些高级认识。&lt;/p&gt;</description>
     </item>
     

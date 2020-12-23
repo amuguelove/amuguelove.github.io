@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Redis on 梁波的技术博客</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Redis on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 23 Oct 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://flygopher.top/tags/redis/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 23 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://flygopher.top/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>深入学习Redis：Redis常见问题以及优化方案</title>
       <link>http://flygopher.top/post/redis-problem-optimization/</link>
@@ -18,14 +14,11 @@
       
       <guid>http://flygopher.top/post/redis-problem-optimization/</guid>
       <description>&lt;h2 id=&#34;常见问题以及优化方案&#34;&gt;常见问题以及优化方案&lt;/h2&gt;
-
 &lt;h4 id=&#34;1-fork耗时导致高并发请求延时&#34;&gt;1. fork耗时导致高并发请求延时&lt;/h4&gt;
-
-&lt;p&gt;一般来说，如果父进程内存有1个G的数据，那么fork可能会耗费在20ms左右，如果是10G~30G，那么就会耗费20 * 10，甚至20 * 30，也就是几百毫秒的时间 。&lt;br /&gt;
-info stats中的latest_fork_usec，可以看到最近一次form的时长 。&lt;br /&gt;
+&lt;p&gt;一般来说，如果父进程内存有1个G的数据，那么fork可能会耗费在20ms左右，如果是10G~30G，那么就会耗费20 * 10，甚至20 * 30，也就是几百毫秒的时间 。&lt;br&gt;
+info stats中的latest_fork_usec，可以看到最近一次form的时长 。&lt;br&gt;
 redis单机QPS一般在几万，fork可能一下子就会拖慢几万条操作的请求时长，从几毫秒变成1秒 。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;优化思路：&lt;/strong&gt;&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;优化思路：&lt;/strong&gt;&lt;br&gt;
 fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10GB以内，slave -&amp;gt; master，全量复制。&lt;/p&gt;</description>
     </item>
     
@@ -36,15 +29,10 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
       
       <guid>http://flygopher.top/post/redis-sentinel-setup/</guid>
       <description>&lt;h3 id=&#34;redis哨兵介绍&#34;&gt;Redis哨兵介绍&lt;/h3&gt;
-
 &lt;p&gt;哨兵是redis集群架构中非常重要的一个组件，主要功能如下&lt;/p&gt;
-
 &lt;p&gt;（1）集群监控，负责监控redis master和slave进程是否正常工作&lt;/p&gt;
-
 &lt;p&gt;（2）消息通知，如果某个redis实例有故障，那么哨兵负责发送消息作为报警通知给管理员&lt;/p&gt;
-
 &lt;p&gt;（3）故障转移，如果master node挂掉了，会自动转移到slave node上&lt;/p&gt;
-
 &lt;p&gt;（4）配置中心，如果故障转移发生了，通知client客户端新的master地址&lt;/p&gt;</description>
     </item>
     
@@ -55,14 +43,13 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
       
       <guid>http://flygopher.top/post/redis-master-slave-setup/</guid>
       <description>&lt;p&gt;&lt;code&gt;redis&lt;/code&gt;的一主多从的搭建很简单，但是一般需要搭配&lt;code&gt;redis sentinel&lt;/code&gt;哨兵集群，将会在下篇文章介绍。&lt;/p&gt;
-
 &lt;h3 id=&#34;配置&#34;&gt;配置&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;master：192.168.56.101
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;master：192.168.56.101
 
 slave1：192.168.56.102
 
-slave2：192.168.56.103&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;如何搭建虚拟机集群环境，可以参考：&lt;a href=&#34;http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/&#34;&gt;Vagrant搭建虚拟机集群&lt;/a&gt;&lt;br /&gt;
+slave2：192.168.56.103
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如何搭建虚拟机集群环境，可以参考：&lt;a href=&#34;http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/&#34;&gt;Vagrant搭建虚拟机集群&lt;/a&gt;&lt;br&gt;
 如何部署Redis单机服务，可以参考：&lt;a href=&#34;http://flygopher.top/post/redis-install-on-centos7/&#34;&gt;Redis深入学习（一）：Linux CentOS 7 安装Redis 4.0.11&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
@@ -73,16 +60,18 @@ slave2：192.168.56.103&lt;/pre&gt;&lt;/div&gt;
       
       <guid>http://flygopher.top/post/redis-install-on-centos7/</guid>
       <description>&lt;h3 id=&#34;redis简介&#34;&gt;Redis简介&lt;/h3&gt;
-
-&lt;p&gt;Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。&lt;br /&gt;
+&lt;p&gt;Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。&lt;br&gt;
 Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Redis支持数据的备份，即master-slave模式的数据备份。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Redis支持数据的备份，即master-slave模式的数据备份。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     
@@ -93,9 +82,7 @@ Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
       
       <guid>http://flygopher.top/post/reids-distributed-lock/</guid>
       <description>&lt;h3 id=&#34;常用的分布式锁实现方式&#34;&gt;常用的分布式锁实现方式&lt;/h3&gt;
-
 &lt;p&gt;分布式锁一般有三种实现方式：&lt;/p&gt;
-
 &lt;ol&gt;
 &lt;li&gt;基于数据库的唯一索引；&lt;/li&gt;
 &lt;li&gt;基于 Redis 的&lt;code&gt;NX&lt;/code&gt; &lt;code&gt;EX&lt;/code&gt;参数；&lt;/li&gt;
@@ -110,11 +97,9 @@ Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
       
       <guid>http://flygopher.top/post/reids-persistence-intro/</guid>
       <description>&lt;p&gt;简单介绍一下Redis两种持久化策略RDB和AOF的区别。&lt;/p&gt;
-
 &lt;p&gt;一些简单的配置，比如端口号&lt;code&gt;port&lt;/code&gt;, 日志位置&lt;code&gt;logfile&lt;/code&gt;等基本配置可自行配置。&lt;/p&gt;
-
 &lt;h2 id=&#34;快照rdb持久化配置&#34;&gt;快照RDB持久化配置：&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;# Save the DB on disk:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# Save the DB on disk:
 #  设置sedis进行数据库镜像的频率。
 #  900秒（15分钟）内至少1个key值改变（则进行数据库保存--持久化）。
 #  300秒（5分钟）内至少10个key值改变（则进行数据库保存--持久化）。
@@ -131,7 +116,8 @@ rdbchecksum yes
 # 快照的文件名
 dbfilename dump.rdb
 # 存放快照的目录
-dir /var/lib/redis&lt;/pre&gt;&lt;/div&gt;</description>
+dir /var/lib/redis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>

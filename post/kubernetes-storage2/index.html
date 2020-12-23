@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/kubernetes-storage2/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,8 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -173,7 +172,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 September 27, 2020
+    
   
   
 </span>
@@ -225,29 +224,21 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#storageclass资源">StorageClass资源</a>
-<ul>
-<li>
-<ul>
-<li><a href="#provisioner">provisioner</a></li>
-<li><a href="#reclaimpolicy">reclaimPolicy</a></li>
-<li><a href="#allowvolumeexpansion">allowVolumeExpansion</a></li>
-<li><a href="#volumebindingmode">volumeBindingMode</a></li>
-<li><a href="#parameters">parameters</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#本地storageclass">本地StorageClass</a></li>
-<li><a href="#storageclass使用">StorageClass使用</a>
-<ul>
-<li><a href="#pvc">PVC</a></li>
-<li><a href="#statefulset">StatefulSet</a></li>
-</ul></li>
-<li><a href="#参考">参考</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#storageclass资源">StorageClass资源</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#本地storageclass">本地StorageClass</a></li>
+    <li><a href="#storageclass使用">StorageClass使用</a>
+      <ul>
+        <li><a href="#pvc">PVC</a></li>
+        <li><a href="#statefulset">StatefulSet</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
 </nav>
 </aside>
 
@@ -266,15 +257,11 @@ if (!doNotTrack) {
           
 
           <p>前面的文章里我们学习了 <code>PV</code> 和 <code>PVC</code> 的使用方法，但是前面的 PV 都是静态的，什么意思呢？就是我要使用的一个 PVC 的话就必须手动去创建一个 PV，我们也说过这种方式在很大程度上并不能满足我们的需求，比如我们有一个应用需要对存储的并发度要求比较高，而另外一个应用对读写速度又要求比较高，特别是对于 <code>StatefulSet</code> 类型的应用简单的来使用静态的 PV 就很不合适了，这种情况下我们就需要用到动态 PV，也就是我们今天要讲解的 <code>StorageClass</code>。</p>
-
 <h2 id="storageclass资源">StorageClass资源</h2>
-
 <p>每个 StorageClass 都包含 <code>provisioner</code>、<code>parameters</code> 和 <code>reclaimPolicy</code> 字段， 这些字段会在 StorageClass 需要动态分配 <code>PersistentVolume</code> 时会使用到。</p>
-
 <p>StorageClass 对象的命名很重要，用户使用这个命名来请求生成一个特定的类。 当创建 StorageClass 对象时，管理员设置 StorageClass 对象的命名和其他参数，一旦创建了对象就不能再对其更新。</p>
-
 <p>管理员可以为没有申请绑定到特定 StorageClass 的 PVC 指定一个默认的存储类 ： 更多详情请参阅 <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims">PersistentVolumeClaim 章节</a>。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: storage.k8s.io/v1
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: my-storageclass
@@ -287,23 +274,15 @@ reclaimPolicy: Retain
 allowVolumeExpansion: true
 mountOptions:
   - debug
-volumeBindingMode: Immediate</pre></div>
-<h4 id="provisioner">provisioner</h4>
-
+volumeBindingMode: Immediate
+</code></pre></div><h4 id="provisioner">provisioner</h4>
 <p>每个 StorageClass 都有一个分配器，用来决定使用哪个卷插件分配 PV。该字段必须指定。</p>
-
 <h4 id="reclaimpolicy">reclaimPolicy</h4>
-
 <p>由 StorageClass 动态创建的 PersistentVolume 会在类的 <code>reclaimPolicy</code> 字段中指定回收策略，可以是 <code>Delete</code> 或者 <code>Retain</code>。如果 StorageClass 对象被创建时没有指定 <code>reclaimPolicy</code>，它将默认为 <code>Delete</code>。</p>
-
 <p>通过 StorageClass 手动创建并管理的 PersistentVolume 会使用它们被创建时指定的回收政策。</p>
-
 <h4 id="allowvolumeexpansion">allowVolumeExpansion</h4>
-
 <p>PersistentVolume 可以配置为可扩展。将此功能设置为 <code>true</code> 时，允许用户通过编辑相应的 PVC 对象来调整卷大小。</p>
-
 <p>当基础存储类的 <code>allowVolumeExpansion</code> 字段设置为 true 时，以下类型的卷支持卷扩展。</p>
-
 <table>
 <thead>
 <tr>
@@ -311,89 +290,69 @@ volumeBindingMode: Immediate</pre></div>
 <th>Kubernetes 版本要求</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>gcePersistentDisk</td>
 <td>1.11</td>
 </tr>
-
 <tr>
 <td>awsElasticBlockStore</td>
 <td>1.11</td>
 </tr>
-
 <tr>
 <td>Cinder</td>
 <td>1.11</td>
 </tr>
-
 <tr>
 <td>glusterfs</td>
 <td>1.11</td>
 </tr>
-
 <tr>
 <td>rbd</td>
 <td>1.11</td>
 </tr>
-
 <tr>
 <td>Azure File</td>
 <td>1.11</td>
 </tr>
-
 <tr>
 <td>Azure Disk</td>
 <td>1.11</td>
 </tr>
-
 <tr>
 <td>Portworx</td>
 <td>1.11</td>
 </tr>
-
 <tr>
 <td>FlexVolume</td>
 <td>1.13</td>
 </tr>
-
 <tr>
 <td>CSI</td>
 <td>1.14 (alpha), 1.16 (beta)</td>
 </tr>
 </tbody>
 </table>
-
 <blockquote>
 <p><strong>说明：</strong> 此功能仅可用于扩容卷，不能用于缩小卷。</p>
 </blockquote>
-
 <h4 id="volumebindingmode">volumeBindingMode</h4>
-
 <p><code>volumeBindingMode</code> 字段控制了<a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#provisioning">卷绑定和动态分配</a> 应该发生在什么时候。</p>
-
 <p>默认情况下，<code>Immediate</code> 模式表示一旦创建了 PersistentVolumeClaim 也就完成了卷绑定和动态分配。 对于由于拓扑限制而非集群所有节点可达的存储后端，PersistentVolume 会在不知道 Pod 调度要求的情况下绑定或者分配。</p>
-
 <p>集群管理员可以通过指定 <code>WaitForFirstConsumer</code> 模式来解决此问题。 该模式将延迟 PersistentVolume 的绑定和分配，直到使用该 PersistentVolumeClaim 的 Pod 被创建。</p>
-
 <h4 id="parameters">parameters</h4>
-
 <p>Storage class 具有描述属于卷的参数。取决于分配器，可以接受不同的参数。 例如，参数 type 的值 io1 和参数 iopsPerGB 特定于 EBS PV。当参数被省略时，会使用默认值。</p>
-
 <p>一个 StorageClass 最多可以定义 512 个参数。这些参数对象的总长度不能超过 256 KiB, 包括参数的键和值。</p>
-
 <h2 id="本地storageclass">本地StorageClass</h2>
-
 <p>Yaml文件如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kind: StorageClass
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
   name: local-storage
 provisioner: kubernetes.io/no-provisioner
-volumeBindingMode: WaitForFirstConsumer</pre></div>
-<p>在PVC中如何使用：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: v1
+volumeBindingMode: WaitForFirstConsumer
+</code></pre></div><p>在PVC中如何使用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: local-pv
@@ -413,11 +372,10 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - 10.0.0.3 # node name</pre></div>
-<h2 id="storageclass使用">StorageClass使用</h2>
-
+                - 10.0.0.3 # node name
+</code></pre></div><h2 id="storageclass使用">StorageClass使用</h2>
 <h3 id="pvc">PVC</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kind: PersistentVolumeClaim
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: my-pvc
@@ -427,9 +385,10 @@ spec:
   resources:
     requests:
       storage: &#34;10Gi&#34;
-  storageClassName: &#34;my-storageclass&#34;</pre></div>
-<h3 id="statefulset">StatefulSet</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">spec:
+  storageClassName: &#34;my-storageclass&#34;
+
+</code></pre></div><h3 id="statefulset">StatefulSet</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">spec:
   volumeClaimTemplates:
     - metadata:
         name: data
@@ -438,13 +397,10 @@ spec:
         storageClassName: my-storageclass
         resources:
           requests:
-            storage: 10Gi	</pre></div>
-<h2 id="参考">参考</h2>
-
+            storage: 10Gi	
+</code></pre></div><h2 id="参考">参考</h2>
 <p><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/">Kubernetes Volumes</a></p>
-
 <p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">Kubernetes Persistem Volumes</a></p>
-
 <p><a href="https://kubernetes.io/zh/docs/concepts/storage/storage-classes/">Kubernates Storage</a></p>
 
           
@@ -602,7 +558,7 @@ spec:
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

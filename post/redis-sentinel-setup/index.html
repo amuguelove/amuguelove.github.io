@@ -11,38 +11,23 @@
   <meta name="twitter:title" content="深入学习Redis：Redis经典三节点哨兵集群搭建" />
   
   <meta name="description" content="Redis哨兵介绍
-
 哨兵是redis集群架构中非常重要的一个组件，主要功能如下
-
 （1）集群监控，负责监控redis master和slave进程是否正常工作
-
 （2）消息通知，如果某个redis实例有故障，那么哨兵负责发送消息作为报警通知给管理员
-
 （3）故障转移，如果master node挂掉了，会自动转移到slave node上
-
 （4）配置中心，如果故障转移发生了，通知client客户端新的master地址">
   <meta property="og:description" content="Redis哨兵介绍
-
 哨兵是redis集群架构中非常重要的一个组件，主要功能如下
-
 （1）集群监控，负责监控redis master和slave进程是否正常工作
-
 （2）消息通知，如果某个redis实例有故障，那么哨兵负责发送消息作为报警通知给管理员
-
 （3）故障转移，如果master node挂掉了，会自动转移到slave node上
-
 （4）配置中心，如果故障转移发生了，通知client客户端新的master地址">
   <meta name="twitter:description" content="Redis哨兵介绍
-
 哨兵是redis集群架构中非常重要的一个组件，主要功能如下
-
 （1）集群监控，负责监控redis master和slave进程是否正常工作
-
 （2）消息通知，如果某个redis实例有故障，那么哨兵负责发送消息作为报警通知给管理员
-
 （3）故障转移，如果master node挂掉了，会自动转移到slave node上
-
-（4）配置中心，如果故障转移发生了，通知client客户端 …">
+（4）配置中心，如果故障转移发生了，通知client客户端新 …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
@@ -52,7 +37,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/redis-sentinel-setup/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -63,8 +48,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -199,7 +183,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 October 20, 2018
+    
   
   
 </span>
@@ -254,109 +238,73 @@ if (!doNotTrack) {
           
 
           <h3 id="redis哨兵介绍">Redis哨兵介绍</h3>
-
 <p>哨兵是redis集群架构中非常重要的一个组件，主要功能如下</p>
-
 <p>（1）集群监控，负责监控redis master和slave进程是否正常工作</p>
-
 <p>（2）消息通知，如果某个redis实例有故障，那么哨兵负责发送消息作为报警通知给管理员</p>
-
 <p>（3）故障转移，如果master node挂掉了，会自动转移到slave node上</p>
-
 <p>（4）配置中心，如果故障转移发生了，通知client客户端新的master地址</p>
-
 <h3 id="redis哨兵核心知识">Redis哨兵核心知识</h3>
-
 <p>（1）哨兵至少需要3个实例，来保证自己的健壮性</p>
-
 <p>（2）哨兵 + redis主从的部署架构，是不会保证数据零丢失的，只能保证redis集群的高可用性</p>
-
 <p>（3）对于哨兵 + redis主从这种复杂的部署架构，尽量在测试环境和生产环境，都进行充足的测试和演练</p>
-
 <h3 id="为什么redis哨兵集群只有2个节点无法正常工作">为什么Redis哨兵集群只有2个节点无法正常工作？</h3>
-
 <p>哨兵集群必须部署2个以上节点，如果哨兵集群仅仅部署了个2个哨兵实例，设置<code>quorum=1</code>。</p>
-
 <p>故障的迁移需要majority，也就是大多数哨兵都是运行的，2个哨兵的majority就是2（2的majority=2，3的majority=2，5的majority=3，4的majority=2），2个哨兵都运行着，就可以允许执行故障转移。</p>
-
 <p>如果Redis和哨兵同时挂掉，就没有办法做迁移了。</p>
-
 <h3 id="sdown和odown转换机制">sdown和odown转换机制</h3>
-
 <p>sdown和odown两种失败状态</p>
-
 <p>sdown是主观宕机，就一个哨兵如果自己觉得一个master宕机了，那么就是主观宕机 。</p>
-
 <p>odown是客观宕机，如果quorum数量的哨兵都觉得一个master宕机了，那么就是客观宕机 。</p>
-
 <p>sdown达成的条件很简单，如果一个哨兵ping一个master，超过了is-master-down-after-milliseconds指定的毫秒数之后，就主观认为master宕机 。</p>
-
 <p>sdown到odown转换的条件很简单，如果一个哨兵在指定时间内，收到了quorum指定数量的其他哨兵也认为那个master是sdown了，那么就认为是odown了，客观认为master宕机 。</p>
-
 <h3 id="quorum和majority">quorum和majority</h3>
-
-<p>1) quorum：确认odown的最少的哨兵数量 。</p>
-
-<p>2) majority：授权进行主从切换的最少的哨兵数量 。</p>
-
-<p>3) 每次一个哨兵要做主备切换，首先需要quorum数量的哨兵认为odown，然后选举出一个哨兵来做切换，这个哨兵还得得到majority哨兵的授权，才能正式执行切换 。</p>
-
-<p>4) 如果quorum &lt; majority，比如5个哨兵，majority就是3，quorum设置为2，那么就3个哨兵授权就可以执行切换，但是如果quorum &gt;= majority，那么必须quorum数量的哨兵都授权，比如5个哨兵，quorum是5，那么必须5个哨兵都同意授权，才能执行切换 。</p>
-
+<ol>
+<li>
+<p>quorum：确认odown的最少的哨兵数量 。</p>
+</li>
+<li>
+<p>majority：授权进行主从切换的最少的哨兵数量 。</p>
+</li>
+<li>
+<p>每次一个哨兵要做主备切换，首先需要quorum数量的哨兵认为odown，然后选举出一个哨兵来做切换，这个哨兵还得得到majority哨兵的授权，才能正式执行切换 。</p>
+</li>
+<li>
+<p>如果quorum &lt; majority，比如5个哨兵，majority就是3，quorum设置为2，那么就3个哨兵授权就可以执行切换，但是如果quorum &gt;= majority，那么必须quorum数量的哨兵都授权，比如5个哨兵，quorum是5，那么必须5个哨兵都同意授权，才能执行切换 。</p>
+</li>
+</ol>
 <p>总结：每次一个哨兵要做主备切换，首先需要quorum数量的哨兵认为odown，然后选举出一个哨兵来做切换，这个哨兵还得得到majority哨兵的授权，才能正式执行切换 。</p>
-
 <h3 id="哨兵集群的自动发现机制">哨兵集群的自动发现机制</h3>
-
 <p>哨兵互相之间的发现，是通过redis的pub/sub系统实现的，每个哨兵都会往<code>__sentinel__:hello</code>这个channel里发送一个消息，这时候所有其他哨兵都可以消费到这个消息，并感知到其他的哨兵的存在 。</p>
-
 <p>每隔两秒钟，每个哨兵都会往自己监控的某个master+slaves对应的<code>__sentinel__:hello</code> channel里发送一个消息，内容是自己的host、ip和runid还有对这个master的监控配置 。</p>
-
 <p>每个哨兵也会去监听自己监控的每个master+slaves对应的<code>__sentinel__:hello</code> channel，然后去感知到同样在监听这个master+slaves的其他哨兵的存在 。</p>
-
 <p>每个哨兵还会跟其他哨兵交换对master的监控配置，互相进行监控配置的同步 。</p>
-
 <h3 id="slave配置的自动纠正">slave配置的自动纠正</h3>
-
 <p>哨兵会负责自动纠正slave的一些配置，比如slave如果要成为潜在的master候选人，哨兵会确保slave在复制现有master的数据; 如果slave连接到了一个错误的master上，比如故障转移之后，那么哨兵会确保它们连接到正确的master上。</p>
-
 <h3 id="slave-master选举算法">slave-&gt;master选举算法</h3>
-
 <p>如果一个master被认为odown了，而且majority哨兵都允许了主备切换，那么某个哨兵就会执行主备切换操作，此时首先要选举一个slave来 。</p>
-
 <p>会考虑slave的一些信息：</p>
-
 <p>（1）跟master断开连接的时长</p>
-
 <p>（2）slave优先级</p>
-
 <p>（3）复制offset</p>
-
 <p>（4）run id</p>
-
 <p>如果一个slave跟master断开连接已经超过了down-after-milliseconds的10倍，外加master宕机的时长，那么slave就被认为不适合选举为master 。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">(down-after-milliseconds * 10) + milliseconds_since_master_is_in_SDOWN_state </pre></div>
-<p>接下来会对slave进行排序</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">(down-after-milliseconds * 10) + milliseconds_since_master_is_in_SDOWN_state 
+</code></pre></div><p>接下来会对slave进行排序</p>
 <p>（1）按照slave优先级进行排序，slave priority越低，优先级就越高</p>
-
 <p>（2）如果slave priority相同，那么看replica offset，哪个slave复制了越多的数据，offset越靠后，优先级就越高</p>
-
 <p>（3）如果上面两个条件都相同，那么选择一个run id比较小的那个slave</p>
-
 <h3 id="redis-sentinel-配置">Redis Sentinel 配置</h3>
-
 <p><strong>1）准备工作</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mkdir /etc/sentinel/
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mkdir /etc/sentinel/
 mkdir -p /var/sentinel/26379
 mkdir -p /var/log/sentinel/
 
-iptables -A INPUT -p tcp --dport  26379 -j ACCEPT</pre></div>
-<p><strong>2）添加配置文件</strong></p>
-
+iptables -A INPUT -p tcp --dport  26379 -j ACCEPT
+</code></pre></div><p><strong>2）添加配置文件</strong></p>
 <p>可以参考官方文档，<a href="http://download.redis.io/redis-stable/sentinel.conf">Redis Sentinel 官方文档</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/etc/sentinel/26379.conf</pre></div>
-<p>加入如下配置：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">port 26379
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/etc/sentinel/26379.conf
+</code></pre></div><p>加入如下配置：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">port 26379
 bind 192.168.56.101
 dir /var/sentinel/26379
 daemonize yes
@@ -366,30 +314,25 @@ pidfile /var/run/sentinel_26379.pid
 sentinel monitor mymaster 192.168.56.101 6379 2
 sentinel down-after-milliseconds mymaster 30000
 sentinel failover-timeout mymaster 60000
-sentinel parallel-syncs mymaster 1</pre></div>
-<p>如果你加上了安全校验，还需要添加：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">sentinel auth-pass mymaster &lt;password&gt;</pre></div>
-<p>每一个哨兵都可以去监控多个maser-slaves的主从架构，只需要<code>&lt;master-name&gt;</code>不同就行。</p>
-
+sentinel parallel-syncs mymaster 1
+</code></pre></div><p>如果你加上了安全校验，还需要添加：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sentinel auth-pass mymaster &lt;password&gt;
+</code></pre></div><p>每一个哨兵都可以去监控多个maser-slaves的主从架构，只需要<code>&lt;master-name&gt;</code>不同就行。</p>
 <p><code>down-after-milliseconds</code>: 超过多少毫秒跟一个redis实例断了连接，哨兵就可能认为这个redis实例挂了。</p>
-
 <p><code>failover-timeout</code>: 执行故障转移的timeout超时时长。</p>
-
 <p><code>parallel-syncs</code>: 新的master别切换之后，同时有多少个slave被切换到去连接新master，重新做同步，数字越低，花费的时间越多。</p>
-
 <h3 id="启动">启动</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/usr/local/bin/redis-sentinel /etc/sentinel/26379.conf </pre></div>
-<p>以上配置操作在3台机器做相同的操作即可，需要修改下<code>bind</code>参数，改成每台机器的ip地址即可。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/usr/local/bin/redis-sentinel /etc/sentinel/26379.conf 
+</code></pre></div><p>以上配置操作在3台机器做相同的操作即可，需要修改下<code>bind</code>参数，改成每台机器的ip地址即可。</p>
 <p>最后，可以将<code>Redis Sentinel</code>改成自启动，可自行百度。</p>
-
 <h3 id="检查哨兵状态">检查哨兵状态</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">redis-cli -h 192.168.56.101 -a yourPassword -p 26379
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">redis-cli -h 192.168.56.101 -a yourPassword -p 26379
 
 sentinel master mymaster 
 sentinel slaves mymaster 
 sentinel sentinels mymaster 
-sentinel get-master-addr-by-name mymaster </pre></div>
+sentinel get-master-addr-by-name mymaster 
+</code></pre></div>
 
           
   
@@ -558,7 +501,7 @@ sentinel get-master-addr-by-name mymaster </pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

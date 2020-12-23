@@ -19,7 +19,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -30,8 +30,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -172,12 +171,11 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                发表于 November 9, 2018
+                
               </p>
               <div class="post-entry">
                 
                   <p>Spring Boot Admin 在 Spring Boot Actuator 的基础上提供简洁的可视化 WEB UI，是用来管理 Spring Boot 应用程序的一个简单的界面，提供的功能参考：<a href="https://github.com/codecentric/spring-boot-admin">Spring Boot Admin Github</a></p>
-
 <p>在本文中，我们将介绍配置 Spring Boot Admin（以下简称 SBA）服务端的步骤以及如何将一个 Spring Boot 应用注册为它的客户端。</p>
                   <a href="http://flygopher.top/post/spring-boot-admin/" class="post-read-more">[阅读全文]</a>
                 
@@ -201,17 +199,15 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                发表于 November 8, 2018
+                
               </p>
               <div class="post-entry">
                 
                   <p>之前一直使用<code>Maven</code>进行多模块项目开发，有如下好处：</p>
-
 <ul>
 <li>代码拆分，层次、结构清晰，利于维护</li>
 <li>Module可复用</li>
 </ul>
-
 <p>最近使用<code>Gradle</code>开发，也想使用多模块开发，写下这篇文章记录下。</p>
                   <a href="http://flygopher.top/post/gradle-setup-multi-projects/" class="post-read-more">[阅读全文]</a>
                 
@@ -235,7 +231,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                发表于 November 6, 2018
+                
               </p>
               <div class="post-entry">
                 
@@ -262,19 +258,16 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                发表于 October 23, 2018
+                
               </p>
               <div class="post-entry">
                 
                   <h2 id="常见问题以及优化方案">常见问题以及优化方案</h2>
-
 <h4 id="1-fork耗时导致高并发请求延时">1. fork耗时导致高并发请求延时</h4>
-
-<p>一般来说，如果父进程内存有1个G的数据，那么fork可能会耗费在20ms左右，如果是10G~30G，那么就会耗费20 * 10，甚至20 * 30，也就是几百毫秒的时间 。<br />
-info stats中的latest_fork_usec，可以看到最近一次form的时长 。<br />
+<p>一般来说，如果父进程内存有1个G的数据，那么fork可能会耗费在20ms左右，如果是10G~30G，那么就会耗费20 * 10，甚至20 * 30，也就是几百毫秒的时间 。<br>
+info stats中的latest_fork_usec，可以看到最近一次form的时长 。<br>
 redis单机QPS一般在几万，fork可能一下子就会拖慢几万条操作的请求时长，从几毫秒变成1秒 。</p>
-
-<p><strong>优化思路：</strong><br />
+<p><strong>优化思路：</strong><br>
 fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10GB以内，slave -&gt; master，全量复制。</p>
                   <a href="http://flygopher.top/post/redis-problem-optimization/" class="post-read-more">[阅读全文]</a>
                 
@@ -298,20 +291,15 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
               </a>
 
               <p class="post-meta">
-                发表于 October 20, 2018
+                
               </p>
               <div class="post-entry">
                 
                   <h3 id="redis哨兵介绍">Redis哨兵介绍</h3>
-
 <p>哨兵是redis集群架构中非常重要的一个组件，主要功能如下</p>
-
 <p>（1）集群监控，负责监控redis master和slave进程是否正常工作</p>
-
 <p>（2）消息通知，如果某个redis实例有故障，那么哨兵负责发送消息作为报警通知给管理员</p>
-
 <p>（3）故障转移，如果master node挂掉了，会自动转移到slave node上</p>
-
 <p>（4）配置中心，如果故障转移发生了，通知client客户端新的master地址</p>
                   <a href="http://flygopher.top/post/redis-sentinel-setup/" class="post-read-more">[阅读全文]</a>
                 
@@ -335,19 +323,18 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
               </a>
 
               <p class="post-meta">
-                发表于 October 19, 2018
+                
               </p>
               <div class="post-entry">
                 
                   <p><code>redis</code>的一主多从的搭建很简单，但是一般需要搭配<code>redis sentinel</code>哨兵集群，将会在下篇文章介绍。</p>
-
 <h3 id="配置">配置</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">master：192.168.56.101
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">master：192.168.56.101
 
 slave1：192.168.56.102
 
-slave2：192.168.56.103</pre></div>
-<p>如何搭建虚拟机集群环境，可以参考：<a href="http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/">Vagrant搭建虚拟机集群</a><br />
+slave2：192.168.56.103
+</code></pre></div><p>如何搭建虚拟机集群环境，可以参考：<a href="http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/">Vagrant搭建虚拟机集群</a><br>
 如何部署Redis单机服务，可以参考：<a href="http://flygopher.top/post/redis-install-on-centos7/">Redis深入学习（一）：Linux CentOS 7 安装Redis 4.0.11</a></p>
                   <a href="http://flygopher.top/post/redis-master-slave-setup/" class="post-read-more">[阅读全文]</a>
                 
@@ -371,21 +358,23 @@ slave2：192.168.56.103</pre></div>
               </a>
 
               <p class="post-meta">
-                发表于 October 18, 2018
+                
               </p>
               <div class="post-entry">
                 
                   <h3 id="redis简介">Redis简介</h3>
-
-<p>Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。<br />
+<p>Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。<br>
 Redis 与其他 key - value 缓存产品有以下三个特点：</p>
-
 <ul>
-<li><p>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</p></li>
-
-<li><p>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</p></li>
-
-<li><p>Redis支持数据的备份，即master-slave模式的数据备份。</p></li>
+<li>
+<p>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</p>
+</li>
+<li>
+<p>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</p>
+</li>
+<li>
+<p>Redis支持数据的备份，即master-slave模式的数据备份。</p>
+</li>
 </ul>
                   <a href="http://flygopher.top/post/redis-install-on-centos7/" class="post-read-more">[阅读全文]</a>
                 
@@ -411,19 +400,19 @@ Redis 与其他 key - value 缓存产品有以下三个特点：</p>
               </a>
 
               <p class="post-meta">
-                发表于 October 16, 2018
+                
               </p>
               <div class="post-entry">
                 
                   <h4 id="配置文件加载顺序">配置文件加载顺序　</h4>
-
 <p>OS X系统的配置文件，加载顺序为：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/etc/profile
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/etc/profile
 /etc/paths 
 ~/.bash_profile 
 ~/.bash_login 
 ~/.profile 
-~/.bashrc</pre></div>
+~/.bashrc
+</code></pre></div>
                   <a href="http://flygopher.top/post/macos-profile-load-order/" class="post-read-more">[阅读全文]</a>
                 
               </div>
@@ -446,16 +435,14 @@ Redis 与其他 key - value 缓存产品有以下三个特点：</p>
               </a>
 
               <p class="post-meta">
-                发表于 October 10, 2018
+                
               </p>
               <div class="post-entry">
                 
                   <h3 id="背景介绍">背景介绍</h3>
-
 <blockquote>
 <p>Gradle 是基于 JVM 的构建工具，是基于 Ant 、Maven、ivy 概念的一款通用灵活的构建工具，基于 Groovy 脚本构建，目前支持 Java、Groovy、Kotlin 和 Scala 语言，能够满足日常开发中复杂构建需求的开源工具。</p>
 </blockquote>
-
 <p>最近公司都在使用<code>Gradle</code>搭建开发环境，所以本人就来研究一下<code>Gradle</code>的使用，感觉对比<code>Maven</code>ß还是挺好用的，准备写一些博客记录一下。</p>
                   <a href="http://flygopher.top/post/gradle-environment-setup/" class="post-read-more">[阅读全文]</a>
                 
@@ -479,7 +466,7 @@ Redis 与其他 key - value 缓存产品有以下三个特点：</p>
               </a>
 
               <p class="post-meta">
-                发表于 October 6, 2018
+                
               </p>
               <div class="post-entry">
                 
@@ -506,7 +493,7 @@ Redis 与其他 key - value 缓存产品有以下三个特点：</p>
               </a>
 
               <p class="post-meta">
-                发表于 October 5, 2018
+                
               </p>
               <div class="post-entry">
                 
@@ -533,7 +520,7 @@ Redis 与其他 key - value 缓存产品有以下三个特点：</p>
               </a>
 
               <p class="post-meta">
-                发表于 October 2, 2018
+                
               </p>
               <div class="post-entry">
                 
@@ -632,7 +619,7 @@ Redis 与其他 key - value 缓存产品有以下三个特点：</p>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

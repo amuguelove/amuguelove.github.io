@@ -11,25 +11,16 @@
   <meta name="twitter:title" content="iTerm2&#43;zsh打造漂亮好用的终端环境" />
   
   <meta name="description" content="注：适用于使用MacOS开发的Developer
-
 身为程序开发者，很大一部分的时间是在用Command Line做事，如果能把Command Line调整得好用又炫酷的模样，不只是效率提升很懂，用起来爽度也比较高。
-
 最后大概会是这个样子：
-
 ">
   <meta property="og:description" content="注：适用于使用MacOS开发的Developer
-
 身为程序开发者，很大一部分的时间是在用Command Line做事，如果能把Command Line调整得好用又炫酷的模样，不只是效率提升很懂，用起来爽度也比较高。
-
 最后大概会是这个样子：
-
 ">
   <meta name="twitter:description" content="注：适用于使用MacOS开发的Developer
-
 身为程序开发者，很大一部分的时间是在用Command Line做事，如果能把Command Line调整得好用又炫酷的模样，不只是效率提升很懂，用起来爽度也比较高。
-
 最后大概会是这个样子：
-
 ">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -40,7 +31,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/custom-iterm2-zsh/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -51,8 +42,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -187,7 +177,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 October 1, 2018
+    
   
   
 </span>
@@ -244,17 +234,11 @@ if (!doNotTrack) {
           
 
           <p>注：适用于使用MacOS开发的Developer</p>
-
 <p>身为程序开发者，很大一部分的时间是在用<code>Command Line</code>做事，如果能把<code>Command Line</code>调整得好用又炫酷的模样，不只是效率提升很懂，用起来爽度也比较高。</p>
-
 <p>最后大概会是这个样子：</p>
-
-<p><img src="http://flygopher.top/img/post/post-detail-zsh.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/post-detail-zsh.png" alt=""></p>
 <h3 id="如下安装步">如下安装步:</h3>
-
 <p>总共有以下步驟：</p>
-
 <ol>
 <li>安裝 iTerm2</li>
 <li>修改 iTerm2 的 color scheme</li>
@@ -264,127 +248,98 @@ if (!doNotTrack) {
 <li>安裝 zsh theme:  powerlevel9k</li>
 <li>设置 powerlevel9k</li>
 </ol>
-
 <p>步骤看似很多，但是其实都很简单。</p>
-
 <h3 id="安装iterm2">安装iTerm2:</h3>
-
 <p>安装方式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">brew install iterm2</pre></div>
-<p>或者去官网下载安装都可以。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">brew install iterm2
+</code></pre></div><p>或者去官网下载安装都可以。</p>
 <p>安裝好以后，打开 iTerm2 检查 Report Terminal Type 的设定，设定路径：<code>Preferences &gt; Profiles &gt; Terminal &gt; Report Terminal Type</code></p>
-
 <p>改为 <code>xterm-256color</code>，才能在 terminal 中看得到漂亮的顏色。</p>
-
 <h3 id="修改iterm2的color-scheme">修改iTerm2的color scheme</h3>
-
 <p>设定路径：<code>Preferences &gt; Profiles &gt; Colors &gt; Color Presets...</code></p>
-
 <p>里面很一些内置的，也可以到<a href="https://github.com/mbadolato/iTerm2-Color-Schemes">iTerm2 Color Schemes</a>中把这个git repo下载到电脑中，然后import到iTerm2中。</p>
-
 <p>我自己是用 <strong>Tomorrow Night Eighties</strong>，优点是对比不會太强比较不刺眼，屏幕盯久了不會不舒服，颜色饱和度也适中，看起來质感比较好。</p>
-
 <p>也可以选择<strong>Solarized Dark Higher Contrast</strong>或者<strong>ayu</strong>。</p>
-
 <h3 id="安装powerline-font">安装powerline font</h3>
-
 <p>因为一些theme会用到特殊的icon，所以必须选择支持这些特殊icon的font。这些字体统称为powerline font。</p>
-
 <p>你可以看我上面那张图中，vcs相关的图片，如果显示不了会出现框框问号。</p>
-
 <p>支持 powerline 的字型很多，我推荐 <strong>Sauce Code Pro Nerd Font Complete</strong></p>
-
 <p>安装<code>powerline</code>字体指令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">git clone https://github.com/powerline/fonts.git
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git clone https://github.com/powerline/fonts.git
 cd fonts
 ./install.sh
-rm -rf ../fonts</pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 先执行，才能用 homebrew 安装字体。
+rm -rf ../fonts
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 先执行，才能用 homebrew 安装字体。
 brew tap caskroom/fonts
 # 安裝指令
-brew cask install font-sourcecodepro-nerd-font</pre></div>
-<p>brew 上面也有很多字型可以挑，可是使用：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">brew search nerd</pre></div>
-<p>装完后，记得修改 iTerm2 字体设定否则不会生效。请改成 SauceCodePro Nerd Font 或你自己下载的字体。</p>
-
+brew cask install font-sourcecodepro-nerd-font
+</code></pre></div><p>brew 上面也有很多字型可以挑，可是使用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">brew search nerd
+</code></pre></div><p>装完后，记得修改 iTerm2 字体设定否则不会生效。请改成 SauceCodePro Nerd Font 或你自己下载的字体。</p>
 <p>设定路径：<code>Preferences &gt; Profiles &gt; Text &gt; Change Font</code> ，选择<code>Sauce Code Powerline</code>字体。</p>
-
 <h3 id="安装zsh">安装zsh：</h3>
-
 <p>检查当前默认的shell：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">echo $0</pre></div>
-<p>查看机器上支持哪些shell：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">cat /etc/shells</pre></div>
-<p>切换到zsh：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">chsh -s /bin/zsh</pre></div>
-<p>如果没有安装zsh，可以执行如下操作：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">brew install zsh
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">echo $0
+</code></pre></div><p>查看机器上支持哪些shell：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat /etc/shells
+</code></pre></div><p>切换到zsh：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">chsh -s /bin/zsh
+</code></pre></div><p>如果没有安装zsh，可以执行如下操作：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">brew install zsh
 sudo sh -c &#34;echo $(which zsh) &gt;&gt; /etc/shells&#34; 
-chsh -s $(which zsh)</pre></div>
-<p>iTerm2设定路径：<code>Preferences &gt; Profiles &gt; General &gt; Command</code>，改为<code>/bin/zsh</code></p>
-
+chsh -s $(which zsh)
+</code></pre></div><p>iTerm2设定路径：<code>Preferences &gt; Profiles &gt; General &gt; Command</code>，改为<code>/bin/zsh</code></p>
 <h3 id="安装oh-my-zsh">安装oh-my-zsh：</h3>
-
 <p>安裝指令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34;</pre></div>
-<h3 id="安裝-zsh-theme-powerlevel9k-https-github-com-bhilburn-powerlevel9k"><strong>安裝 zsh theme</strong> <a href="https://github.com/bhilburn/powerlevel9k"><strong>powerlevel9k</strong></a></h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34;
+</code></pre></div><h3 id="安裝-zsh-theme-powerlevel9khttpsgithubcombhilburnpowerlevel9k"><strong>安裝 zsh theme</strong> <a href="https://github.com/bhilburn/powerlevel9k"><strong>powerlevel9k</strong></a></h3>
 <p>安装好<code>oh-my-zsh</code>以后，默认theme为<code>robbyrussell</code>，多了一些git资讯，颜色也比原生bash好看多了。</p>
-
 <p>不過 oh-my-zsh 內建很多 theme，在它的 <a href="https://github.com/robbyrussell/oh-my-zsh/wiki/themes">github wiki</a> 上有很多截图可以參考。</p>
-
 <p>切换內建的 theme 很简单，直接修改你的 <code>~/.zshrc</code>，把原本 <code>ZSH_THEME=”robbyrussell”</code> 改成你想要的：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 編輯 ~/.zshrc
-ZSH_THEME=&#34;agnoster&#34; # 看把 robbyrussell 改成 agnoster</pre></div>
-<p>任何的 zsh 設定修改过后，还要执行以下指令才會生效</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">source ~/.zshrc</pre></div>
-<p>推荐另外一个超强的主题，powerlevel9k</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 編輯 ~/.zshrc
+ZSH_THEME=&#34;agnoster&#34; # 看把 robbyrussell 改成 agnoster
+</code></pre></div><p>任何的 zsh 設定修改过后，还要执行以下指令才會生效</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">source ~/.zshrc
+</code></pre></div><p>推荐另外一个超强的主题，powerlevel9k</p>
 <p>powerlevel9k 不只是像上面的示例显示的一些基本资讯，还可以做到很屌的事情，比如 WiFi信号强度、电池电力、CPU loading、system free memory 等等在 command line</p>
-
 <h3 id="powerlevel9k-安裝方式">powerlevel9k 安裝方式：</h3>
-
 <p><strong>1.下载</strong></p>
-
 <p><a href="https://github.com/bhilburn/powerlevel9k">powerlevel9k</a> 不是 oh-my-zsh 內建的 theme ，必须另外下载：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k</pre></div>
-<p><strong>2. 设置主题</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+</code></pre></div><p><strong>2. 设置主题</strong></p>
 <ul>
-<li><p>修改 <code>~/.zshrc</code> 配置文件，配置该主题</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">ZSH_THEME=&#34;powerlevel9k/powerlevel9k&#34;</pre></div></li>
-
-<li><p>修改命令提示符 默认的命令提示符为 *user@userdemackbookPro*，这样的提示符配合 powerlevel9k 主题太过冗长，因此我选择将该冗长的提示符去掉，在 <code>~/.zshrc</code> 配置文件后面追加如下内容：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 注意：DEFAULT_USER 的值必须要是系统用户名才能生效
-DEFAULT_USER=&#34;user&#34;</pre></div></li>
-
-<li><p>简单定制下 powerlevel9k 主题 powerlevel9k 主题的好处就是可以做很多自定义，只需要简单修改 <code>~/.zshrc</code> 配置即可生效。更多关于该主题的定制请看 <a href="https://github.com/bhilburn/powerlevel9k#customizing-prompt-segments">customizing-prompt-segments</a>； 默认的 powerlevel9k 主题最右侧显示的元素为：*每条命令的执行状态，历史命令条数，当前时间*，这样也比较冗余，我在这里将 <em>历史命令条数</em> 这一元素去掉，这样看起来比较简洁。这需要修改 <code>~/.zshrc</code> 配置文件，在后面追加如下内容，定制该主题的显示元素：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 设置 oh-my-zsh powerlevel9k 主题左边元素显示
+<li>修改 <code>~/.zshrc</code> 配置文件，配置该主题</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ZSH_THEME=&#34;powerlevel9k/powerlevel9k&#34;
+</code></pre></div><ul>
+<li>修改命令提示符 默认的命令提示符为 <em>user@userdemackbookPro</em>，这样的提示符配合 powerlevel9k 主题太过冗长，因此我选择将该冗长的提示符去掉，在 <code>~/.zshrc</code> 配置文件后面追加如下内容：</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 注意：DEFAULT_USER 的值必须要是系统用户名才能生效
+DEFAULT_USER=&#34;user&#34;
+</code></pre></div><ul>
+<li>简单定制下 powerlevel9k 主题 powerlevel9k 主题的好处就是可以做很多自定义，只需要简单修改 <code>~/.zshrc</code> 配置即可生效。更多关于该主题的定制请看 <a href="https://github.com/bhilburn/powerlevel9k#customizing-prompt-segments">customizing-prompt-segments</a>； 默认的 powerlevel9k 主题最右侧显示的元素为：<em>每条命令的执行状态，历史命令条数，当前时间</em>，这样也比较冗余，我在这里将 <em>历史命令条数</em> 这一元素去掉，这样看起来比较简洁。这需要修改 <code>~/.zshrc</code> 配置文件，在后面追加如下内容，定制该主题的显示元素：</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 设置 oh-my-zsh powerlevel9k 主题左边元素显示
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
 # 设置 oh-my-zsh powerlevel9k 主题右边元素显示
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)</pre></div></li>
-</ul>
-
-<p><strong>3. zsh 命令语法高亮</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting</pre></div>
-<p><strong>4. 安装一些比较实用的插件</strong></p>
-
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
+</code></pre></div><p><strong>3. zsh 命令语法高亮</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+</code></pre></div><p><strong>4. 安装一些比较实用的插件</strong></p>
 <p>关于 oh-my-zsh 插件的管理是很简单的，有两个插件目录：</p>
-
 <ul>
 <li><strong>/Users/user/.oh-my-zsh/plugins</strong>: oh-my-zsh 官方插件目录，该目录已经预装了很多实用的插件，只不过没激活而已；</li>
 <li><strong>/Users/user/.oh-my-zsh/custom/plugins</strong>: oh-my-zsh 第三方插件目录；</li>
 </ul>
-
 <p>需要安装哪个插件，只需要把插件下载到上面任何一个目录即可，然后在 <code>~/.zshrc</code> 配置文件中的 plugins 变量中添加对应插件的名称即可，以下是我挑选的几个比较好用的插件（都是官方自带的，无需另外下载），<code>~/.zshrc</code> 配置文件如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Add wisely, as too many plugins slow down shell startup.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Add wisely, as too many plugins slow down shell startup.
 plugins=(
    git
    extract
    z
    zsh-syntax-highlighting
- )</pre></div>
-<ul>
+ )
+</code></pre></div><ul>
 <li><strong>git</strong>：oh-my-zsh 默认开启的，没什么好说的；</li>
 <li><strong>extract</strong>：通用的解压缩插件，可以解压缩任何后缀的压缩文件，使用方法很简单：<code>x 文件名</code>；</li>
 <li><strong>z</strong>：很智能的目录跳转插件，能记录之前 <code>cd</code> 过哪些目录，然后模糊匹配跳转，不需要输入全路径即可跳转，使用方法：<code>z dir_pattern</code></li>
@@ -557,7 +512,7 @@ plugins=(
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

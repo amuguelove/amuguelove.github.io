@@ -11,9 +11,7 @@
   <meta name="twitter:title" content="Redis持久化介绍" />
   
   <meta name="description" content="简单介绍一下Redis两种持久化策略RDB和AOF的区别。
-
 一些简单的配置，比如端口号port, 日志位置logfile等基本配置可自行配置。
-
 快照RDB持久化配置：
 # Save the DB on disk:
 #  设置sedis进行数据库镜像的频率。
@@ -32,11 +30,10 @@ rdbchecksum yes
 # 快照的文件名
 dbfilename dump.rdb
 # 存放快照的目录
-dir /var/lib/redis">
+dir /var/lib/redis
+">
   <meta property="og:description" content="简单介绍一下Redis两种持久化策略RDB和AOF的区别。
-
 一些简单的配置，比如端口号port, 日志位置logfile等基本配置可自行配置。
-
 快照RDB持久化配置：
 # Save the DB on disk:
 #  设置sedis进行数据库镜像的频率。
@@ -55,16 +52,15 @@ rdbchecksum yes
 # 快照的文件名
 dbfilename dump.rdb
 # 存放快照的目录
-dir /var/lib/redis">
+dir /var/lib/redis
+">
   <meta name="twitter:description" content="简单介绍一下Redis两种持久化策略RDB和AOF的区别。
-
 一些简单的配置，比如端口号port, 日志位置logfile等基本配置可自行配置。
-
 快照RDB持久化配置：
 # Save the DB on disk:
 #  设置sedis进行数据库镜像的频率。
 #  900秒（15分钟）内至少1个key值改变（则进行数据库保存--持久化）。
-#  300秒（5分钟）内至少10个key值改变（则进行 …">
+#  300秒（5分钟）内至少10个key值改变（则进行数据 …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
@@ -74,7 +70,7 @@ dir /var/lib/redis">
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/reids-persistence-intro/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -85,8 +81,7 @@ dir /var/lib/redis">
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -221,7 +216,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 January 10, 2018
+    
   
   
 </span>
@@ -276,11 +271,9 @@ if (!doNotTrack) {
           
 
           <p>简单介绍一下Redis两种持久化策略RDB和AOF的区别。</p>
-
 <p>一些简单的配置，比如端口号<code>port</code>, 日志位置<code>logfile</code>等基本配置可自行配置。</p>
-
 <h2 id="快照rdb持久化配置">快照RDB持久化配置：</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># Save the DB on disk:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Save the DB on disk:
 #  设置sedis进行数据库镜像的频率。
 #  900秒（15分钟）内至少1个key值改变（则进行数据库保存--持久化）。
 #  300秒（5分钟）内至少10个key值改变（则进行数据库保存--持久化）。
@@ -297,9 +290,9 @@ rdbchecksum yes
 # 快照的文件名
 dbfilename dump.rdb
 # 存放快照的目录
-dir /var/lib/redis</pre></div>
-<h2 id="aof持久配置">AOF持久配置：</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 是否开启AOF，默认关闭（no）
+dir /var/lib/redis
+</code></pre></div><h2 id="aof持久配置">AOF持久配置：</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 是否开启AOF，默认关闭（no）
 appendonly yes
 # 指定 AOF 文件名
 appendfilename appendonly.aof
@@ -314,40 +307,34 @@ no-appendfsync-on-rewrite yes
 #当前AOF文件大小是上次日志重写得到AOF文件大小的二倍时，自动启动新的日志重写过程。
 auto-aof-rewrite-percentage 100
 #当前AOF文件启动新的日志重写过程的最小值，避免刚刚启动Reids时由于文件尺寸较小导致频繁的重写。
-auto-aof-rewrite-min-size 64mb</pre></div>
-<p><strong>快照RDB和AOF持久化如何选择呢：</strong></p>
-
+auto-aof-rewrite-min-size 64mb
+</code></pre></div><p><strong>快照RDB和AOF持久化如何选择呢：</strong></p>
 <p>1）如果能接受几分钟的数据丢失的话，建议选择快照RDB
 2）要是不允许数据丢失，则需要用AOF来持久化</p>
-
 <p><strong>关于数据恢复：</strong>
 RDB的启动时间会更短，原因有两个：
 一是RDB文件中每一条数据只有一条记录，不会像AOF日志那样可能有一条数据的多次操作记录。所以每条数据只需要写一次就行了。
 另一个原因是RDB文件的存储格式和Redis数据在内存中的编码格式是一致的，不需要再进行数据编码工作，所以在CPU消耗上要远小于AOF日志的加载。</p>
-
 <p><strong>注意：</strong>
 AOF(Append Only File)&lt;二进制文件&gt;比RDB方式有更好的持久化性。由于在使用AOF持久化方式时，Redis会将每一个收到的写命令都通过Write函数追加到文件最后，类似于MySQL的binlog。
 AOF的完全持久化方式同时也带来了另一个问题，持久化文件会变得越来越大。(比如我们调用INCR test命令100次，文件中就必须保存全部的100条命令，但其实99条都是多余的。因为要恢复数据库的状态其实文件中保存一条SET test 100就够了)。为了合并重写AOF的持久化文件，Redis提供了bgrewriteaof命令。</p>
-
 <p><strong>Redis重启如何载入数据的：</strong></p>
-
 <p>通过日志可以很清楚的知道redis通过那个文件来取数据的：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">RDB: * DB loaded from disk: 0.000 seconds
-AOF: * DB loaded from append only file: 0.000 seconds</pre></div>
-<p>保存数据则是：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">RDB: * DB saved on disk
-AOF: * Calling fsync() on the AOF file.</pre></div>
-<p>重启时将按照以下优先级恢复数据到内存：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">•如果只配置AOF,重启时加载AOF文件恢复数据。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">RDB: * DB loaded from disk: 0.000 seconds
+AOF: * DB loaded from append only file: 0.000 seconds
+</code></pre></div><p>保存数据则是：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">RDB: * DB saved on disk
+AOF: * Calling fsync() on the AOF file.
+</code></pre></div><p>重启时将按照以下优先级恢复数据到内存：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">•如果只配置AOF,重启时加载AOF文件恢复数据。
 •如果同时 配置了RBD和AOF,启动是只加载AOF文件恢复数据。
-•如果只配置RBD,启动是讲加载dump文件恢复数据。</pre></div>
-<p>如果你先开启了RDB模式，想再开启AOF模式，先执行<code>bgrewriteaof</code>命令，不然会因为恢复数据的优先级问题，数据都没有了。</p>
-
+•如果只配置RBD,启动是讲加载dump文件恢复数据。
+</code></pre></div><p>如果你先开启了RDB模式，想再开启AOF模式，先执行<code>bgrewriteaof</code>命令，不然会因为恢复数据的优先级问题，数据都没有了。</p>
 <p>为了防止悲剧发生，注意<strong>多备份</strong>，AOF模式，记得使用脚本定期执行<code>bgrewriteaof</code>命令。</p>
-
 <p>脚本如下，可以结合<code>Linux Crontab</code>来使用，定期执行。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">echo &#39;bgrewriteaof redis 6379&#39;
-redis-cli -p 6379 bgrewriteaof</pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">echo &#39;bgrewriteaof redis 6379&#39;
+redis-cli -p 6379 bgrewriteaof
+</code></pre></div>
 
           
   
@@ -506,7 +493,7 @@ redis-cli -p 6379 bgrewriteaof</pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

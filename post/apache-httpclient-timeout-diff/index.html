@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/apache-httpclient-timeout-diff/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,8 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -169,7 +168,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 March 4, 2019
+    
   
   
 </span>
@@ -226,13 +225,11 @@ if (!doNotTrack) {
           
 
           <p>如何区分Apache HttpClient中配置的三个超时时间。</p>
-
 <h2 id="1-初始化httpclient">1. 初始化HttpClient</h2>
-
 <p>先引入jar包，以gradle为例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">compile &#39;org.apache.httpcomponents:httpclient:4.5.6&#39;</pre></div>
-<p>先看以下HttpClient的初始化代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public static CloseableHttpClient buildHttpClient(
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">compile &#39;org.apache.httpcomponents:httpclient:4.5.6&#39;
+</code></pre></div><p>先看以下HttpClient的初始化代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public static CloseableHttpClient buildHttpClient(
             int maxConnTotal,
             int maxConnPerRoute,
             int connectionRequestTimeout,
@@ -263,20 +260,14 @@ if (!doNotTrack) {
                         .build();
 
         return httpClient;
-    }</pre></div>
-<h2 id="2-三个超时时间详解">2. 三个超时时间详解</h2>
-
+    }
+</code></pre></div><h2 id="2-三个超时时间详解">2. 三个超时时间详解</h2>
 <p><strong>2.1从连接池中获取可用连接超时</strong></p>
-
 <p>HttpClient中的要用连接时尝试从连接池中获取，若是在等待了一定的时间后还没有获取到可用连接（比如连接池中没有空闲连接了）则会抛出获取连接超时异常。</p>
-
 <p><strong>2.2 连接目标超时connectionTimeout</strong></p>
-
 <p>指的是连接目标url的连接超时时间，即客服端发送请求到与目标url建立起连接的最大时间。如果在该时间范围内还没有建立起连接，则就抛出connectionTimeOut异常。
-   如测试的时候，将url改为一个不存在的url：“<a href="http://test.com”">http://test.com”</a> ， 超时时间3000ms过后，系统报出异常：    org.apache.commons.httpclient.ConnectTimeoutException:The host did not accept the connection within timeout of 3000 ms</p>
-
+如测试的时候，将url改为一个不存在的url：“http://test.com” ， 超时时间3000ms过后，系统报出异常：    org.apache.commons.httpclient.ConnectTimeoutException:The host did not accept the connection within timeout of 3000 ms</p>
 <p><strong>2.3 等待响应超时（读取数据超时）socketTimeout</strong></p>
-
 <p>连接上一个url后，获取response的返回等待时间 ，即在与目标url建立连接后，等待放回response的最大时间，在规定时间内没有返回响应的话就抛出SocketTimeout。</p>
 
           
@@ -446,7 +437,7 @@ if (!doNotTrack) {
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

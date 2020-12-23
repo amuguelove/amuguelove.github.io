@@ -12,39 +12,32 @@
   
   <meta name="description" content="JPA 为对象关系映射提供了了⼀一种基于 POJO 的持久化模型
 
-
 简化数据持久化代码的开发⼯工作
 为 Java 社区屏蔽不不同持久化 API 的差异
 
-
 JPA定义了持久化的标准，而Hibernate是持久化的实现。Spring Data JPA就是在Hibernate的基础上封装实现的。
-
 JPA提供了很多常用的注解，下面就来讲下关于主键的生成策略，主要的注解有：
 @Id
 @GeneratedValue(strategy, generator)
-@SequenceGenerator(name, sequenceName)">
+@SequenceGenerator(name, sequenceName)
+">
   <meta property="og:description" content="JPA 为对象关系映射提供了了⼀一种基于 POJO 的持久化模型
 
-
 简化数据持久化代码的开发⼯工作
 为 Java 社区屏蔽不不同持久化 API 的差异
 
-
 JPA定义了持久化的标准，而Hibernate是持久化的实现。Spring Data JPA就是在Hibernate的基础上封装实现的。
-
 JPA提供了很多常用的注解，下面就来讲下关于主键的生成策略，主要的注解有：
 @Id
 @GeneratedValue(strategy, generator)
-@SequenceGenerator(name, sequenceName)">
+@SequenceGenerator(name, sequenceName)
+">
   <meta name="twitter:description" content="JPA 为对象关系映射提供了了⼀一种基于 POJO 的持久化模型
-
 
 简化数据持久化代码的开发⼯工作
 为 Java 社区屏蔽不不同持久化 API 的差异
 
-
 JPA定义了持久化的标准，而Hibernate是持久化的实现。Spring Data JPA就是在Hibernate的基础上封装实现的。
-
 JPA提供了很多常用的注解，下面就来讲下关于主键的生成策略，主要的注解有：
 @Id …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
@@ -56,7 +49,7 @@ JPA提供了很多常用的注解，下面就来讲下关于主键的生成策�
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/jpa-id-generated-strategy/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -67,8 +60,7 @@ JPA提供了很多常用的注解，下面就来讲下关于主键的生成策�
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -203,7 +195,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 March 13, 2020
+    
   
   
 </span>
@@ -247,14 +239,11 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#jpa的通用策略生成">JPA的通用策略生成</a></li>
-<li><a href="#hibernate主键策略生成器">Hibernate主键策略生成器</a></li>
-<li><a href="#参考">参考：</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#jpa的通用策略生成">JPA的通用策略生成</a></li>
+    <li><a href="#hibernate主键策略生成器">Hibernate主键策略生成器</a></li>
+    <li><a href="#参考">参考：</a></li>
+  </ul>
 </nav>
 </aside>
 
@@ -273,23 +262,19 @@ if (!doNotTrack) {
           
 
           <p><strong>JPA</strong> 为对象关系映射提供了了⼀一种基于 <strong>POJO</strong> 的持久化模型</p>
-
 <ul>
 <li>简化数据持久化代码的开发⼯工作</li>
 <li>为 Java 社区屏蔽不不同持久化 API 的差异</li>
 </ul>
-
 <p><code>JPA</code>定义了持久化的标准，而<code>Hibernate</code>是持久化的实现。<code>Spring Data JPA</code>就是在<code>Hibernate</code>的基础上封装实现的。</p>
-
 <p>JPA提供了很多常用的注解，下面就来讲下关于主键的生成策略，主要的注解有：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Id
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Id
 @GeneratedValue(strategy, generator)
-@SequenceGenerator(name, sequenceName)</pre></div>
-<h2 id="jpa的通用策略生成">JPA的通用策略生成</h2>
-
+@SequenceGenerator(name, sequenceName)
+</code></pre></div><h2 id="jpa的通用策略生成">JPA的通用策略生成</h2>
 <p>其生成规则由<code>@GeneratedValue</code>设定的。
 JPA提供四种标准用法,由@GeneratedValue的源代码可以明显看出。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public @interface GeneratedValue {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public @interface GeneratedValue {
 
     /**
      * (Optional) The primary key generation strategy
@@ -305,7 +290,8 @@ JPA提供四种标准用法,由@GeneratedValue的源代码可以明显看出。<
      * &lt;p&gt; Defaults to the id generator supplied by persistence provider.
      */
     String generator() default &#34;&#34;;
-}</pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public enum GenerationType { 
+}
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public enum GenerationType { 
 
     /**
      * Indicates that the persistence provider must assign 
@@ -336,18 +322,18 @@ JPA提供四种标准用法,由@GeneratedValue的源代码可以明显看出。<
      * or cannot create the schema resource at runtime.
      */
     AUTO
-}</pre></div>
-<p><code>JPA</code>提供的四种标准用法为<code>TABLE</code>，<code>SEQUENCE</code>，<code>IDENTITY</code>，<code>AUTO</code>。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">TABLE：使用一个特定的数据库表格来保存主键。
+}
+</code></pre></div><p><code>JPA</code>提供的四种标准用法为<code>TABLE</code>，<code>SEQUENCE</code>，<code>IDENTITY</code>，<code>AUTO</code>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">TABLE：使用一个特定的数据库表格来保存主键。
 SEQUENCE：根据底层数据库的序列来生成主键，条件是数据库支持序列。(MySQL不支持)
 IDENTITY：主键由数据库自动生成（Oracle不支持这种方式）
-AUTO：把主键生成策略交给持久化引擎。（如MySQL会自动对应auto increment。）</pre></div>
-<p>简单看下<code>SEQUENCE</code>的使用：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Id  
+AUTO：把主键生成策略交给持久化引擎。（如MySQL会自动对应auto increment。）
+</code></pre></div><p>简单看下<code>SEQUENCE</code>的使用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Id  
 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator=&#34;sequence-generator&#34;)  
-@SequenceGenerator(name=&#34;sequence-generator&#34;)  </pre></div>
-<p>看下<code>@SequenceGenerator</code>的定义：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public @interface SequenceGenerator {
+@SequenceGenerator(name=&#34;sequence-generator&#34;)  
+</code></pre></div><p>看下<code>@SequenceGenerator</code>的定义：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public @interface SequenceGenerator {
 
     /** 
      * (Required) A unique generator name that can be referenced 
@@ -386,18 +372,15 @@ AUTO：把主键生成策略交给持久化引擎。（如MySQL会自动对应au
      * sequence numbers from the sequence.
      */
     int allocationSize() default 50;
-}</pre></div>
-<p>在我们的应用中，一般选用<code>@GeneratedValue(strategy=GenerationType.AUTO)</code>这种方式，自动选择主键生成策略，以适应不同的数据库移植。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Id  
-@GeneratedValue(strategy = GenerationType.AUTO)  </pre></div>
-<p>如果使用<code>Hibernate</code>对<code>JPA</code>的实现，可以使用Hibernate对主键生成策略的扩展，通过<code>Hibernate</code>的<code>@GenericGenerator</code>实现。</p>
-
+}
+</code></pre></div><p>在我们的应用中，一般选用<code>@GeneratedValue(strategy=GenerationType.AUTO)</code>这种方式，自动选择主键生成策略，以适应不同的数据库移植。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Id  
+@GeneratedValue(strategy = GenerationType.AUTO)  
+</code></pre></div><p>如果使用<code>Hibernate</code>对<code>JPA</code>的实现，可以使用Hibernate对主键生成策略的扩展，通过<code>Hibernate</code>的<code>@GenericGenerator</code>实现。</p>
 <h2 id="hibernate主键策略生成器">Hibernate主键策略生成器</h2>
-
 <p><strong>Hbernate提供了多种生成器供选择，基于Annotation的方式通过@GenericGenerator实现.</strong></p>
-
 <p><code>Hibernate</code>每种主键生成策略提供接口<code>org.hibernate.id.IdentifierGenerator</code>的实现类，如果要实现自定义的主键生成策略也必须实现此接口。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public interface IdentifierGenerator {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public interface IdentifierGenerator {
 	/**
 	 * The configuration parameter holding the entity name
 	 */
@@ -425,13 +408,13 @@ AUTO：把主键生成策略交给持久化引擎。（如MySQL会自动对应au
 	 * @throws HibernateException Indicates trouble generating the identifier
 	 */
 	Serializable generate(SharedSessionContractImplementor session, Object object) throws HibernateException;
-}</pre></div>
-<p>如何使用呢？</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Id
+}
+</code></pre></div><p>如何使用呢？</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Id
 @GeneratedValue(generator = &#34;hibernate-uuid&#34;)    
-@GenericGenerator(name = &#34;hibernate-uuid&#34;, strategy = &#34;uuid&#34;) </pre></div>
-<p>其中<code>@GenericGenerator</code>源码如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public @interface GenericGenerator {
+@GenericGenerator(name = &#34;hibernate-uuid&#34;, strategy = &#34;uuid&#34;) 
+</code></pre></div><p>其中<code>@GenericGenerator</code>源码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public @interface GenericGenerator {
 	/**
 	 * unique generator name.
 	 */
@@ -444,17 +427,16 @@ AUTO：把主键生成策略交给持久化引擎。（如MySQL会自动对应au
 	 * Optional generator parameters.
 	 */
 	Parameter[] parameters() default {};
-}</pre></div>
-<blockquote>
+}
+</code></pre></div><blockquote>
 <ul>
 <li>name属性指定生成器名称。</li>
 <li>strategy属性指定具体生成器的类名。</li>
 <li>parameters得到strategy指定的具体生成器所用到的参数。</li>
 </ul>
 </blockquote>
-
 <p><code>Hibernate</code>定义了很多实现好的生成器，在<code>org.hibernate.id.factory.IdentifierGeneratorFactory</code>的默认实现类中<code>DefaultIdentifierGeneratorFactory</code>。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">public DefaultIdentifierGeneratorFactory() {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public DefaultIdentifierGeneratorFactory() {
 		register( &#34;uuid2&#34;, UUIDGenerator.class );
 		register( &#34;guid&#34;, GUIDGenerator.class );			// can be done with UUIDGenerator + strategy
 		register( &#34;uuid&#34;, UUIDHexGenerator.class );			// &#34;deprecated&#34; for new use
@@ -469,13 +451,10 @@ AUTO：把主键生成策略交给持久化引擎。（如MySQL会自动对应au
 		register( &#34;sequence-identity&#34;, SequenceIdentityGenerator.class );
 		register( &#34;enhanced-sequence&#34;, SequenceStyleGenerator.class );
 		register( &#34;enhanced-table&#34;, TableGenerator.class );
-	}</pre></div>
-<p>关于<code>Hibernate</code>的主键生成策略如何选择，可以参考文章下面的引用。</p>
-
-<hr>
-
+	}
+</code></pre></div><p>关于<code>Hibernate</code>的主键生成策略如何选择，可以参考文章下面的引用。</p>
+<!-- raw HTML omitted -->
 <h2 id="参考">参考：</h2>
-
 <p><a href="https://blog.csdn.net/gudong2945/article/details/7325255">Hibernate 主键生成策略选择</a></p>
 
           
@@ -629,7 +608,7 @@ AUTO：把主键生成策略交给持久化引擎。（如MySQL会自动对应au
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

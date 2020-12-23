@@ -11,36 +11,40 @@
   <meta name="twitter:title" content="深入学习Redis：CentOS 7 安装Redis 4.0.11以及生产环境启动配置" />
   
   <meta name="description" content="Redis简介
-
 Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。
 Redis 与其他 key - value 缓存产品有以下三个特点：
 
 
 Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。
 
+
 Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。
 
+
 Redis支持数据的备份，即master-slave模式的数据备份。
+
 ">
   <meta property="og:description" content="Redis简介
-
 Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。
 Redis 与其他 key - value 缓存产品有以下三个特点：
 
 
 Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。
+
 
 Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。
 
+
 Redis支持数据的备份，即master-slave模式的数据备份。
+
 ">
   <meta name="twitter:description" content="Redis简介
-
 Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。
 Redis 与其他 key - value 缓存产品有以下三个特点：
 
 
 Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。
+
 
 Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。 …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
@@ -52,7 +56,7 @@ Redis不仅仅支持简单的key-value类型的数据，同时还提供list，se
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/redis-install-on-centos7/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -63,8 +67,7 @@ Redis不仅仅支持简单的key-value类型的数据，同时还提供list，se
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -199,7 +202,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 October 18, 2018
+    
   
   
 </span>
@@ -243,18 +246,16 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#redis简介">Redis简介</a></li>
-<li><a href="#redis优势">Redis优势</a></li>
-<li><a href="#redis安装">Redis安装</a></li>
-<li><a href="#redis生产环境启动方案">Redis生产环境启动方案</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#redis简介">Redis简介</a></li>
+        <li><a href="#redis优势">Redis优势</a></li>
+        <li><a href="#redis安装">Redis安装</a></li>
+        <li><a href="#redis生产环境启动方案">Redis生产环境启动方案</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </aside>
 
@@ -273,45 +274,42 @@ if (!doNotTrack) {
           
 
           <h3 id="redis简介">Redis简介</h3>
-
-<p>Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。<br />
+<p>Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。<br>
 Redis 与其他 key - value 缓存产品有以下三个特点：</p>
-
 <ul>
-<li><p>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</p></li>
-
-<li><p>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</p></li>
-
-<li><p>Redis支持数据的备份，即master-slave模式的数据备份。</p></li>
+<li>
+<p>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</p>
+</li>
+<li>
+<p>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</p>
+</li>
+<li>
+<p>Redis支持数据的备份，即master-slave模式的数据备份。</p>
+</li>
 </ul>
-
 <h3 id="redis优势">Redis优势</h3>
-
 <ul>
 <li>性能极高 – Redis能读的速度是110000次/s,写的速度是81000次/s 。</li>
 <li>丰富的数据类型 – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作。</li>
 <li>原子 – Redis的所有操作都是原子性的，意思就是要么成功执行要么失败完全不执行。单个操作是原子性的。多个操作也支持事务，即原子性，通过MULTI和EXEC指令包起来。</li>
 <li>丰富的特性 – Redis还支持 publish/subscribe, 通知, key 过期等等特性。</li>
 </ul>
-
 <h3 id="redis安装">Redis安装</h3>
-
 <p>本文以opt目录作为安装目录进行安装，详细安装过程如下：</p>
-
 <p><strong>1）准备工作</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// 安装`gcc`编译工具
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// 安装`gcc`编译工具
 [root@localhost ~]# yum install gcc
-[root@localhost ~]# yum install </pre></div>
-<p><strong>2）下载<code>Redis 4.0.11</code></strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost ~]# cd /opt
-[root@localhost opt]# wget http://download.redis.io/releases/redis-4.0.11.tar.gz</pre></div>
-<p><strong>3）解压<code>redis-4.0.11.tar.gz</code></strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost opt]# tar -zxvf redis-4.0.11.tar.gz</pre></div>
-<p><strong>4）编译</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost opt]# cd redis-4.0.11/
-[root@localhost redis-4.0.11]# make</pre></div>
-<p>进行编译时，有可能会报如下错误：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">......
+[root@localhost ~]# yum install 
+</code></pre></div><p><strong>2）下载<code>Redis 4.0.11</code></strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost ~]# cd /opt
+[root@localhost opt]# wget http://download.redis.io/releases/redis-4.0.11.tar.gz
+</code></pre></div><p><strong>3）解压<code>redis-4.0.11.tar.gz</code></strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost opt]# tar -zxvf redis-4.0.11.tar.gz
+</code></pre></div><p><strong>4）编译</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost opt]# cd redis-4.0.11/
+[root@localhost redis-4.0.11]# make
+</code></pre></div><p>进行编译时，有可能会报如下错误：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">......
 ......
 In file included from adlist.c:34:0:
 zmalloc.h:50:31: 致命错误：jemalloc/jemalloc.h：没有那个文件或目录
@@ -320,9 +318,9 @@ zmalloc.h:50:31: 致命错误：jemalloc/jemalloc.h：没有那个文件或目�
 编译中断。
 make[1]: *** [adlist.o] 错误 1
 make[1]: 离开目录“/opt/redis-4.0.1/src”
-make: *** [all] 错误 2</pre></div>
-<p>想要弄明白这个错误是怎么回事，我们得先看一下Redis的描述文档。打开Reids根目录下的README文件，找到这么一段话：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost redis-4.0.11]# cat README.md
+make: *** [all] 错误 2
+</code></pre></div><p>想要弄明白这个错误是怎么回事，我们得先看一下Redis的描述文档。打开Reids根目录下的README文件，找到这么一段话：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost redis-4.0.11]# cat README.md
 ......
 ......
 Allocator
@@ -337,79 +335,74 @@ To force compiling against libc malloc, use:
 To compile against jemalloc on Mac OS X systems, use:
     % make MALLOC=jemalloc
 ......
-......</pre></div>
-<p>这是Redis在安装时关于内存分配器allocator的描述，如果指定了MALLOC这个环境变量，那么会用这个环境变量的去建立Redis。如果没有，那么就是用默认的分配器。Redis 2.4版本之后，默认使用jemalloc来做内存管理，因为jemalloc被证明解决fragmentation problems（内存碎片化问题）比libc更好。但是如果你又没有jemalloc而只有libc，当make出错时，你可以加这么一个参数即可 make MALLOC=libc。</p>
-
+......
+</code></pre></div><p>这是Redis在安装时关于内存分配器allocator的描述，如果指定了MALLOC这个环境变量，那么会用这个环境变量的去建立Redis。如果没有，那么就是用默认的分配器。Redis 2.4版本之后，默认使用jemalloc来做内存管理，因为jemalloc被证明解决fragmentation problems（内存碎片化问题）比libc更好。但是如果你又没有jemalloc而只有libc，当make出错时，你可以加这么一个参数即可 make MALLOC=libc。</p>
 <p>如果我们就是想用jemalloc，那么安装jemalloc即可，该过程很简单，一般不会报错：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost opt]# wget https://github.com/jemalloc/jemalloc/releases/download/5.0.1/jemalloc-5.0.1.tar.bz2
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost opt]# wget https://github.com/jemalloc/jemalloc/releases/download/5.0.1/jemalloc-5.0.1.tar.bz2
 [root@localhost opt]# yum instll bzip2
 [root@localhost opt]# bzip2 -d jemalloc-5.0.1.tar.bz2
 [root@localhost opt]# tar -xvf jemalloc-5.0.1.tar
 [root@localhost opt]# cd jemalloc-5.0.1/
 [root@localhost jemalloc-5.0.1]# ./configure --prefix=/usr/local/jemalloc
-[root@localhost jemalloc-5.0.1]# make &amp;&amp; make install</pre></div>
-<p>jemalloc安装完成后，可查看安装结果：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost jemalloc-5.0.1]# ll /usr/local/jemalloc/
+[root@localhost jemalloc-5.0.1]# make &amp;&amp; make install
+</code></pre></div><p>jemalloc安装完成后，可查看安装结果：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost jemalloc-5.0.1]# ll /usr/local/jemalloc/
 总用量 0
 drwxr-xr-x. 2 root root  62 8月  13 10:58 bin
 drwxr-xr-x. 3 root root  22 8月  13 10:58 include
 drwxr-xr-x. 3 root root 115 8月  13 10:58 lib
-drwxr-xr-x. 4 root root  28 8月  13 10:58 share</pre></div>
-<p>解决完上边两个问题，再次对 Redis 进行编译，就不会报错了，因为我们打算采用jemalloc管理内存，所以编译时我们需要指定内存管理器：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost jemalloc-5.0.1]# cd ../redis-4.0.11/
+drwxr-xr-x. 4 root root  28 8月  13 10:58 share
+</code></pre></div><p>解决完上边两个问题，再次对 Redis 进行编译，就不会报错了，因为我们打算采用jemalloc管理内存，所以编译时我们需要指定内存管理器：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost jemalloc-5.0.1]# cd ../redis-4.0.11/
 [root@localhost redis-4.0.11]# make MALLOC=/usr/local/jemalloc/lib
 ......
 ......
 Hint: It&#39;s a good idea to run &#39;make test&#39; ;)
-make[1]: 离开目录“/opt/redis-4.0.11/src”</pre></div>
-<p><strong>5）安装</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost redis-4.0.11]# cd src 
+make[1]: 离开目录“/opt/redis-4.0.11/src”
+</code></pre></div><p><strong>5）安装</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost redis-4.0.11]# cd src 
 [root@localhost src]# make install
 Hint: It&#39;s a good idea to run &#39;make test&#39; ;)
     INSTALL install
     INSTALL install
     INSTALL install
     INSTALL install
-    INSTALL install</pre></div>
-<p><strong>6）测试</strong></p>
-
+    INSTALL install
+</code></pre></div><p><strong>6）测试</strong></p>
 <p>安装完成后，我们一般还要对安装结果进行测试，测试的方式很简单，在安装结果中已经说明了，执行 make test 即可。不过在进行测试的过程中，我遇到了一个错误：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost src]# make test
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost src]# make test
 You need tcl 8.5 or newer in order to run the Redis test
-make: *** [test] 错误 1</pre></div>
-<p>这是由于tcl的版本低于8.5导致的，安装最新的tcl即可：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost opt]# wget https://sourceforge.net/projects/tcl/files/Tcl/8.6.7/tcl8.6.7-src.tar.gz
+make: *** [test] 错误 1
+</code></pre></div><p>这是由于tcl的版本低于8.5导致的，安装最新的tcl即可：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost opt]# wget https://sourceforge.net/projects/tcl/files/Tcl/8.6.7/tcl8.6.7-src.tar.gz
 [root@localhost opt]# tar -zxvf tcl8.6.7-src.tar.gz  -C /usr/local/
 [root@localhost opt]# cd /usr/local/tcl8.6.7/unix
 [root@localhost unix]# ./configure
 [root@localhost unix]# make
-[root@localhost unix]# make install</pre></div>
-<p>tcl安装完成后，再次进行测试，完美通过：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost redis-4.0.11]# make test
+[root@localhost unix]# make install
+</code></pre></div><p>tcl安装完成后，再次进行测试，完美通过：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost redis-4.0.11]# make test
 ......
 ......
 \o/ All tests passed without errors!
 Cleanup: may take some time... OK
-make[1]: 离开目录“/opt/redis-4.0.11/src”</pre></div>
-<p><strong>7）查看安装版本</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost redis-4.0.1]# redis-server -v
-Redis server v=4.0.11 sha=00000000:0 malloc=libc bits=64 build=3e25d8012744402f</pre></div>
-<p>到现在，单机Redis就算安装完成了。</p>
-
+make[1]: 离开目录“/opt/redis-4.0.11/src”
+</code></pre></div><p><strong>7）查看安装版本</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost redis-4.0.1]# redis-server -v
+Redis server v=4.0.11 sha=00000000:0 malloc=libc bits=64 build=3e25d8012744402f
+</code></pre></div><p>到现在，单机Redis就算安装完成了。</p>
 <h3 id="redis生产环境启动方案">Redis生产环境启动方案</h3>
-
 <p><strong>1）准备目录</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost redis-4.0.11]# mkdir /etc/redis
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost redis-4.0.11]# mkdir /etc/redis
 [root@localhost redis-4.0.11]# mkdir -p /var/log/redis/
-[root@localhost redis-4.0.11]# mkdir mkdir -p /var/redis/6379/</pre></div>
-<p><strong>2）配置redis文件</strong></p>
-
+[root@localhost redis-4.0.11]# mkdir mkdir -p /var/redis/6379/
+</code></pre></div><p><strong>2）配置redis文件</strong></p>
 <p>在redis根目录，拷贝<code>redis.conf</code>文件到<code>/etc/redis</code>，并重命名</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost redis-4.0.11]# cp redis.conf /etc/redis/
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost redis-4.0.11]# cp redis.conf /etc/redis/
 [root@localhost redis-4.0.11]# cd /etc/redis/
-[root@localhost redis]# mv redis.conf 6379.conf </pre></div>
-<p>修改<code>6379.conf</code>部分配置</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost]# vi /etc/redis/6379.conf
+[root@localhost redis]# mv redis.conf 6379.conf 
+</code></pre></div><p>修改<code>6379.conf</code>部分配置</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost]# vi /etc/redis/6379.conf
 
 修改如下：
 daemonize    yes                         // 让redis以daemon进程运行
@@ -418,38 +411,36 @@ port         6379                        // 设置redis的监听端口号
 dir          /var/redis/6379             // 设置持久化文件的存储位置
 logfle       /var/log/redis/6379.log     // 设置日志目录
 bind         机器的ip地址                  // 修改绑定的ip地址
-appendonly   yes                         // 开启AOF持久化 </pre></div>
-<p>如果要求安全性的话，可以配置：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">requirepass redis_password
-masterauth redis_password</pre></div>
-<p><strong>3）开机自启动</strong></p>
-
+appendonly   yes                         // 开启AOF持久化 
+</code></pre></div><p>如果要求安全性的话，可以配置：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">requirepass redis_password
+masterauth redis_password
+</code></pre></div><p><strong>3）开机自启动</strong></p>
 <p>在<code>redis-4.0.11/utils</code>目录下，拷贝<code>redis_init_script</code>到<code>/etc/init.d</code>并重命名</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost]# cd /opt/redis-4.0.11/utils
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost]# cd /opt/redis-4.0.11/utils
 [root@localhost utils]# cp redis_init_script /etc/init.d/
 [root@localhost utils]# cd /etc/init.d/
 [root@localhost init.d]# mv redis_init_script redis_6379
-[root@localhost init.d]# chmod 777 redis_6379</pre></div>
-<p>让redis跟随系统启动而自启动</p>
-
+[root@localhost init.d]# chmod 777 redis_6379
+</code></pre></div><p>让redis跟随系统启动而自启动</p>
 <p>在<code>redis_6379</code>脚本中，最上面，加入两行注释</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># chkconfig:   2345 90 10
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># chkconfig:   2345 90 10
 
-# description:  Redis is a persistent key-value database</pre></div>
-<p>使用命令</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost init.d]# chkconfig redis_6379 on
+# description:  Redis is a persistent key-value database
+</code></pre></div><p>使用命令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost init.d]# chkconfig redis_6379 on
 [root@localhost init.d]# chkconfig --list
 
 netconsole      0:off   1:off   2:off   3:off   4:off   5:off   6:off
 network         0:off   1:off   2:on    3:on    4:on    5:on    6:off
-redis_6379      0:off   1:off   2:on    3:on    4:on    5:on    6:off</pre></div>
-<p>最后启动<code>redis</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@localhost init.d]# ./redis_6379 start
-Starting Redis server...</pre></div>
-<p><strong>4）使用<code>redis-cli</code>连接客户端</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">redis-cli -h 127.0.0.1 -p 6379</pre></div>
-<p>注意<code>-h</code>要填写你在<code>6379.conf</code>中<code>bind</code>参数配置的值。</p>
+redis_6379      0:off   1:off   2:on    3:on    4:on    5:on    6:off
 
+</code></pre></div><p>最后启动<code>redis</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@localhost init.d]# ./redis_6379 start
+Starting Redis server...
+</code></pre></div><p><strong>4）使用<code>redis-cli</code>连接客户端</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">redis-cli -h 127.0.0.1 -p 6379
+</code></pre></div><p>注意<code>-h</code>要填写你在<code>6379.conf</code>中<code>bind</code>参数配置的值。</p>
 <p><strong>这样，就大功告成啦！</strong></p>
 
           
@@ -619,7 +610,7 @@ Starting Redis server...</pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

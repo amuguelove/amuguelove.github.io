@@ -21,7 +21,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -32,8 +32,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -200,7 +199,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 April 7, 2020
+    
   
   
 </span>
@@ -236,7 +235,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 April 6, 2020
+    
   
   
 </span>
@@ -245,9 +244,7 @@ if (!doNotTrack) {
               <div class="post-entry">
                 
                   <p>Docker最初实现是基于 <a href="https://linuxcontainers.org/lxc/introduction/">LXC</a>，从 0.7 版本以后开始去除 <code>LXC</code>，转而使用自行开发的 <a href="https://github.com/docker/libcontainer">libcontainer</a>，从 1.11 开始，则进一步演进为使用 <a href="https://github.com/opencontainers/runc">runC</a> 和 <a href="https://github.com/containerd/containerd">containerd</a>。</p>
-
 <p>Docker 本质就是宿主机的一个进程，Docker 是通过 <code>namespace</code> 实现资源隔离，通过<code>cgroup</code> 实现资源限制，通过写时复制技术（copy-on-write）实现了高效的文件操作。</p>
-
 <p>传统的虚拟机通过在宿主主机中运行 hypervisor 来模拟一整套完整的硬件环境提供给虚拟机的操作系统。虚拟机系统看到的环境是可限制的，也是彼此隔离的。 这种直接的做法实现了对资源最完整的封装，但很多时候往往意味着系统资源的浪费。 例如，以宿主机和虚拟机系统都为 Linux 系统为例，虚拟机中运行的应用其实可以利用宿主机系统中的运行环境。</p>
                   <a href="http://flygopher.top/post/docker-underlying-technology/" class="post-read-more">[阅读全文]</a>
                 
@@ -287,7 +284,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 April 3, 2020
+    
   
   
 </span>
@@ -295,10 +292,8 @@ if (!doNotTrack) {
 
               <div class="post-entry">
                 
-                  <p>最近因为一些契机，花了2到3天看完<strong>《代码简洁之道》</strong>这本书，英文名为：<code>Clean Code</code>。</p>
-
+                  <p>最近因为一些契机，花了2到3天看完**《代码简洁之道》**这本书，英文名为：<code>Clean Code</code>。</p>
 <p>开篇就有有这么简单一句话：“阅读这本书有两种原因：第一，你是个程序员；第二，你想成为更好的程序员”。是的，没错，我想成为更好的程序员。所以我决定好好阅读下这本书。</p>
-
 <p>回想2019年，确实是我最忙碌的一年，做过几个项目，其中部分涉及到架构，但是大部分时间都关注在如何实现业务代码，没有更好的关注到代码本身的细节。虽然经常了解到关于整洁代码相关的知识，在工作中也或多或少的用到，比如每天的<code>code review</code>以及<code>TDD</code>开发等等。但是确实不够系统，大多时间忙于完成业务，通过阅读本书，以及其中大量简洁代码的指南，受益匪浅。</p>
                   <a href="http://flygopher.top/post/read-clean-code/" class="post-read-more">[阅读全文]</a>
                 
@@ -329,7 +324,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 March 27, 2020
+    
   
   
 </span>
@@ -351,6 +346,8 @@ if (!doNotTrack) {
                 
                   #<a href="http://flygopher.top/tags/devops/">devops</a>&nbsp;
                 
+                  #<a href="http://flygopher.top/tags/ci/">CI</a>&nbsp;
+                
                 </span>
               
             </article>
@@ -367,7 +364,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 March 23, 2020
+    
   
   
 </span>
@@ -376,18 +373,13 @@ if (!doNotTrack) {
               <div class="post-entry">
                 
                   <h2 id="jmh概述">JMH概述</h2>
-
 <p>JMH 是一个由 OpenJDK/Oracle 里面那群开发了 Java 编译器的大牛们所开发的 Micro Benchmark Framework 。何谓 Micro Benchmark 呢？简单地说就是在 <strong>method</strong> 层面上的 benchmark，精度可以精确到微秒级。可以看出 JMH 主要使用在当你已经找出了热点函数，而需要对热点函数进行进一步的优化时，就可以使用 JMH 对优化的效果进行定量的分析。</p>
-
 <p>比较典型的使用场景还有：</p>
-
 <ul>
 <li>想定量地知道某个函数需要执行多长时间，以及执行时间和输入 n 的相关性</li>
 <li>一个函数有两种不同实现（例如实现 A 使用了 FixedThreadPool，实现 B 使用了 ForkJoinPool），不知道哪种实现性能更好</li>
 </ul>
-
 <p>尽管 JMH 是一个相当不错的 Micro Benchmark Framework，但很无奈的是网上能够找到的文档比较少，而官方也没有提供比较详细的文档，对使用造成了一定的障碍。但是有个好消息是官方的 <a href="http://hg.openjdk.java.net/code-tools/jmh/file/tip/jmh-samples/src/main/java/org/openjdk/jmh/samples/">Code Sample</a> 写得非常浅显易懂，推荐在需要详细了解 JMH 的用法时可以通读一遍——本文则会介绍 JMH 最典型的用法和部分常用选项。</p>
-
 <p>我Fork了一份到github，可以提供大家参考一下，使用gradle构建。<a href="https://github.com/amuguelove/jmh-gradle-samples">jmh-gradle-samples</a></p>
                   <a href="http://flygopher.top/post/java-object-mappping-framework-benchmark/" class="post-read-more">[阅读全文]</a>
                 
@@ -418,7 +410,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 March 19, 2020
+    
   
   
 </span>
@@ -427,9 +419,7 @@ if (!doNotTrack) {
               <div class="post-entry">
                 
                   <p>最近打算将一些基础的Jar包上传到<code>Maven</code>中央仓库，方便在自己项目中引用。本文将结合<code>Gradle</code>的两个插件<code>maven-publish</code>和 <code>signing</code>来讲解如何发布一个Jar包。</p>
-
 <p>在开始之前，先对<code>OSSRH</code>做下了解是很必要的。</p>
-
 <p><code>OSSRH</code>：<code>Sonatype Open Source Software Repository Hosting Service</code>，为开源软件提供maven仓库托管服务。你可以在上面部署<code>snapshot</code>、<code>release</code>等，最后你可以申请把你的release同步到<code>Maven Central Repository</code>（<code>Maven中央仓库</code>）。</p>
                   <a href="http://flygopher.top/post/gradle-publish-jar-into-maven-central/" class="post-read-more">[阅读全文]</a>
                 
@@ -458,7 +448,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 March 18, 2020
+    
   
   
 </span>
@@ -467,9 +457,8 @@ if (!doNotTrack) {
               <div class="post-entry">
                 
                   <p>在Spring Boot应用中的自动装配是通过<code>@EnableAutoConfiguration</code> 注解进行开启的。<code>@EnableAutoConfiguration</code> 可以帮助 Spring Boot 应用将所有符合条件的 <code>@Configuration</code> 配置类的 bean 都加载到 Spring IoC 容器中。</p>
-
 <p>我们看下<code>@SpringBootApplication</code>注解，默认是启动<code>@EnableAutoConfiguration</code> 的。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Target(ElementType.TYPE)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
@@ -494,7 +483,8 @@ public @interface SpringBootApplication {
 	@AliasFor(annotation = Configuration.class)
 	boolean proxyBeanMethods() default true;
 
-}</pre></div>
+}
+</code></pre></div>
                   <a href="http://flygopher.top/post/springboot-load-configure-principle/" class="post-read-more">[阅读全文]</a>
                 
               </div>
@@ -520,7 +510,7 @@ public @interface SpringBootApplication {
 
               <span class="post-meta">
   
-    发表于 March 18, 2020
+    
   
   
 </span>
@@ -529,11 +519,8 @@ public @interface SpringBootApplication {
               <div class="post-entry">
                 
                   <p>很多人对<code>SpringBoot</code>文件加载的位置和优先级有点疑惑，下面通过源码看下到底是如何加载的。</p>
-
-<p>我们先来看下<code>SpringBoot</code>加载<code>PropertySource</code>的顺序是如何的呢？可以<a href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config">参考官网</a>：<a href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config">https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config</a></p>
-
-<p><img src="http://flygopher.top/img/post/springboot-configuration-1.png" alt="" /></p>
-
+<p>我们先来看下<code>SpringBoot</code>加载<code>PropertySource</code>的顺序是如何的呢？可以<a href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config">参考官网</a>：https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config</p>
+<p><img src="http://flygopher.top/img/post/springboot-configuration-1.png" alt=""></p>
 <p>配置加载的优先级从高到低，其中高优先级可以覆盖低优先级的配置。</p>
                   <a href="http://flygopher.top/post/springboot-load-configure-locations/" class="post-read-more">[阅读全文]</a>
                 
@@ -560,7 +547,7 @@ public @interface SpringBootApplication {
 
               <span class="post-meta">
   
-    发表于 March 13, 2020
+    
   
   
 </span>
@@ -569,18 +556,16 @@ public @interface SpringBootApplication {
               <div class="post-entry">
                 
                   <p><strong>JPA</strong> 为对象关系映射提供了了⼀一种基于 <strong>POJO</strong> 的持久化模型</p>
-
 <ul>
 <li>简化数据持久化代码的开发⼯工作</li>
 <li>为 Java 社区屏蔽不不同持久化 API 的差异</li>
 </ul>
-
 <p><code>JPA</code>定义了持久化的标准，而<code>Hibernate</code>是持久化的实现。<code>Spring Data JPA</code>就是在<code>Hibernate</code>的基础上封装实现的。</p>
-
 <p>JPA提供了很多常用的注解，下面就来讲下关于主键的生成策略，主要的注解有：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Id
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Id
 @GeneratedValue(strategy, generator)
-@SequenceGenerator(name, sequenceName)</pre></div>
+@SequenceGenerator(name, sequenceName)
+</code></pre></div>
                   <a href="http://flygopher.top/post/jpa-id-generated-strategy/" class="post-read-more">[阅读全文]</a>
                 
               </div>
@@ -608,7 +593,7 @@ public @interface SpringBootApplication {
 
               <span class="post-meta">
   
-    发表于 March 11, 2020
+    
   
   
 </span>
@@ -616,8 +601,7 @@ public @interface SpringBootApplication {
 
               <div class="post-entry">
                 
-                  <p><img src="http://flygopher.top/img/post/git-flow-1.png" alt="" /></p>
-
+                  <p><img src="http://flygopher.top/img/post/git-flow-1.png" alt=""></p>
 <ul>
 <li>与传统的代码版本管理工具相比，Git 有很多的优势，因而越来越成为程序员喜欢的版本管理工具。我觉得，Git 这个代码版本管理工具最大的优势有以下几个。</li>
 <li>Git 是一个分布式的版本管理工具，而且可以是单机版的，所以，你在没有网络的时候同样可以提交（commit）代码。</li>
@@ -650,7 +634,7 @@ public @interface SpringBootApplication {
 
               <span class="post-meta">
   
-    发表于 March 9, 2020
+    
   
   
 </span>
@@ -684,7 +668,7 @@ public @interface SpringBootApplication {
 
               <span class="post-meta">
   
-    发表于 March 8, 2020
+    
   
   
 </span>
@@ -711,100 +695,34 @@ public @interface SpringBootApplication {
 
         <div align="center" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-
 <ul class="pagination">
-    
-    <li class="page-item">
-        <a href="http://flygopher.top/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
-    
-    <li class="page-item">
+  <li class="page-item">
+    <a href="http://flygopher.top/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+  </li>
+  <li class="page-item">
     <a href="http://flygopher.top/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="http://flygopher.top/">1</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item active"><a class="page-link" href="http://flygopher.top/page/2/">2</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="http://flygopher.top/page/3/">3</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="http://flygopher.top/page/7/">7</a></li>
-    
-    
-    <li class="page-item">
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="http://flygopher.top/">1</a>
+  </li>
+  <li class="page-item active">
+    <a class="page-link" href="http://flygopher.top/page/2/">2</a>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="http://flygopher.top/page/3/">3</a>
+  </li>
+  <li class="page-item disabled">
+    <span aria-hidden="true">&nbsp;&hellip;&nbsp;</span>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="http://flygopher.top/page/7/">7</a>
+  </li>
+  <li class="page-item">
     <a href="http://flygopher.top/page/3/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="http://flygopher.top/page/7/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-    
+  </li>
+  <li class="page-item">
+    <a href="http://flygopher.top/page/7/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+  </li>
 </ul>
 
 
@@ -1015,6 +933,10 @@ public @interface SpringBootApplication {
             
             
             <a href="http://flygopher.top/tags/cert-manager"><i class="fa fa-tags"></i> cert-manager(1)</a>
+            
+            
+            
+            <a href="http://flygopher.top/tags/ci"><i class="fa fa-tags"></i> ci(1)</a>
             
             
             
@@ -1299,7 +1221,7 @@ public @interface SpringBootApplication {
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

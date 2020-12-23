@@ -11,49 +11,28 @@
   <meta name="twitter:title" content="Mongo聚合查询" />
   
   <meta name="description" content="MongoDB 聚合框架(Aggregation Framework)是一个计算框架，它可以:
-
 1）作用在一个或者几个集合上；
-
 2）对集合中的数据进行一系列的运算；
-
 3）将这些数据转化为期望的形式；
-
 从效果而言，聚合框架相当于 SQL 查询中的:
-
 1）GROUP BY
-
 2）LEFT OUTER JOIN
-
 3）AS等">
   <meta property="og:description" content="MongoDB 聚合框架(Aggregation Framework)是一个计算框架，它可以:
-
 1）作用在一个或者几个集合上；
-
 2）对集合中的数据进行一系列的运算；
-
 3）将这些数据转化为期望的形式；
-
 从效果而言，聚合框架相当于 SQL 查询中的:
-
 1）GROUP BY
-
 2）LEFT OUTER JOIN
-
 3）AS等">
   <meta name="twitter:description" content="MongoDB 聚合框架(Aggregation Framework)是一个计算框架，它可以:
-
 1）作用在一个或者几个集合上；
-
 2）对集合中的数据进行一系列的运算；
-
 3）将这些数据转化为期望的形式；
-
 从效果而言，聚合框架相当于 SQL 查询中的:
-
 1）GROUP BY
-
 2）LEFT OUTER JOIN
-
 3）AS等">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -64,7 +43,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/mongo-aggregate-operation/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -75,8 +54,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -211,7 +189,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 March 2, 2020
+    
   
   
 </span>
@@ -266,40 +244,28 @@ if (!doNotTrack) {
           
 
           <p>MongoDB 聚合框架(Aggregation Framework)是一个计算框架，它可以:</p>
-
 <p>1）作用在一个或者几个集合上；</p>
-
 <p>2）对集合中的数据进行一系列的运算；</p>
-
 <p>3）将这些数据转化为期望的形式；</p>
-
 <p>从效果而言，聚合框架相当于 SQL 查询中的:</p>
-
 <p>1）GROUP BY</p>
-
 <p>2）LEFT OUTER JOIN</p>
-
 <p>3）AS等</p>
-
-<h2 id="管道-pipeline-和步骤-stage">管道（Pipeline）和步骤（Stage）</h2>
-
+<h2 id="管道pipeline和步骤stage">管道（Pipeline）和步骤（Stage）</h2>
 <p>整个聚合运算过程称为管道(Pipeline)，它是由多个步骤(Stage)组成的， 每个管道:</p>
-
 <ul>
 <li>接受一系列文档(原始数据);</li>
 <li>每个步骤对这些文档进行一系列运算;</li>
 <li>结果文档输出给下一个步骤;</li>
 </ul>
-
 <h2 id="聚合运算的基本格式">聚合运算的基本格式</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">pipeline = [$stage1, $stage2, ...$stageN];
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">pipeline = [$stage1, $stage2, ...$stageN];
 
 db.&lt;COLLECTION&gt;.aggregate( 
 	pipeline,
 	{ options } 
-);</pre></div>
-<h2 id="常见步骤">常见步骤</h2>
-
+);
+</code></pre></div><h2 id="常见步骤">常见步骤</h2>
 <table>
 <thead>
 <tr>
@@ -308,56 +274,47 @@ db.&lt;COLLECTION&gt;.aggregate(
 <th>SQL等价运算符</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>$match</td>
 <td>过滤</td>
 <td>WHERE</td>
 </tr>
-
 <tr>
 <td>$project</td>
 <td>投影</td>
 <td>AS</td>
 </tr>
-
 <tr>
 <td>$sort</td>
 <td>排序</td>
 <td>ORDER BY</td>
 </tr>
-
 <tr>
 <td>$group</td>
 <td>分组</td>
 <td>GROUP BY</td>
 </tr>
-
 <tr>
 <td>$skip/$limit</td>
 <td>结果限制</td>
 <td>SKIP/LIMIT</td>
 </tr>
-
 <tr>
 <td>$lookup</td>
 <td>左外连接</td>
 <td>LEFT OUTER JOIN</td>
 </tr>
-
 <tr>
 <td>$unwind</td>
 <td>展开数组</td>
 <td>N/A</td>
 </tr>
-
 <tr>
 <td>$graphLookup</td>
 <td>图搜索</td>
 <td>N/A</td>
 </tr>
-
 <tr>
 <td>$facet/$bucket</td>
 <td>分面搜索</td>
@@ -365,9 +322,7 @@ db.&lt;COLLECTION&gt;.aggregate(
 </tr>
 </tbody>
 </table>
-
 <h2 id="常见步骤中的运算符">常见步骤中的运算符</h2>
-
 <table>
 <thead>
 <tr>
@@ -376,49 +331,45 @@ db.&lt;COLLECTION&gt;.aggregate(
 <th>$group</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
-<td>•$eq/$gt/$gte/$lt/$lte <br />•$and/$or/$not/$in <br /> •$geoWithin/$intersect <br />•&hellip;&hellip;</td>
-<td>•选择需要的或排除不需要的字段<br/> •$map/$reduce/$filter<br/> •$range<br/> •$multiply/$divide/$substract/$add <br />•$year/$month/$dayOfMonth/$hour/$minute/$second<br /> •&hellip;&hellip;</td>
-<td>•$sum/$avg <br />•$push/$addToSet <br />•$first/$last/$max/$min <br />•&hellip;&hellip;</td>
+<td>•$eq/$gt/$gte/$lt/$lte <!-- raw HTML omitted -->•$and/$or/$not/$in <!-- raw HTML omitted --> •$geoWithin/$intersect <!-- raw HTML omitted -->•&hellip;&hellip;</td>
+<td>•选择需要的或排除不需要的字段<!-- raw HTML omitted --> •$map/$reduce/$filter<!-- raw HTML omitted --> •$range<!-- raw HTML omitted --> •$multiply/$divide/$substract/$add <!-- raw HTML omitted -->•$year/$month/$dayOfMonth/$hour/$minute/$second<!-- raw HTML omitted --> •&hellip;&hellip;</td>
+<td>•$sum/$avg <!-- raw HTML omitted -->•$push/$addToSet <!-- raw HTML omitted -->•$first/$last/$max/$min <!-- raw HTML omitted -->•&hellip;&hellip;</td>
 </tr>
 </tbody>
 </table>
-
 <h2 id="mql-常用步骤与-sql-对比">MQL 常用步骤与 SQL 对比</h2>
-
 <p>示例1：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">SELECT
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">SELECT
 FIRST_NAME AS `名`, LAST_NAME AS `姓`
 FROM Users
 WHERE GENDER = &#39;男&#39;
-SKIP 100 LIMIT 20</pre></div>
-<p><strong>VS:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">db.users.aggregate([
+SKIP 100 LIMIT 20
+</code></pre></div><p><strong>VS:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">db.users.aggregate([
 	{$match: {gender: ’’男”}},
 	{$skip: 100}, 
 	{$limit: 20}, 
 	{$project: {
     	&#39;名&#39;: &#39;$first_name&#39;, &#39;姓&#39;: &#39;$last_name&#39;
    }} 
-]);</pre></div>
-<p>示例2：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">SELECT DEPARTMENT, COUNT(NULL) AS EMP_QTY
+]);
+</code></pre></div><p>示例2：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">SELECT DEPARTMENT, COUNT(NULL) AS EMP_QTY
 FROM Users
 WHERE GENDER = &#39;女&#39;
-GROUP BY DEPARTMENT HAVING COUNT(*) &lt; 10</pre></div>
-<p><strong>VS:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">db.users.aggregate([
+GROUP BY DEPARTMENT HAVING COUNT(*) &lt; 10
+</code></pre></div><p><strong>VS:</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">db.users.aggregate([
 	{$match: {gender: &#39;女&#39;}},
 	{$group: {
 			_id: &#39;$DEPARTMENT’, 
 			emp_qty: {$sum: 1}
 	}},
 	{$match: {emp_qty: {$lt: 10}}}
-]);</pre></div>
-<h2 id="工具">工具</h2>
-
+]);
+</code></pre></div><h2 id="工具">工具</h2>
 <p>可以使用Mongo Compass或者Studio 3T等工具帮助完成复杂的聚合查询，而且可以导出成不同编程语言的代码。</p>
 
           
@@ -588,7 +539,7 @@ GROUP BY DEPARTMENT HAVING COUNT(*) &lt; 10</pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

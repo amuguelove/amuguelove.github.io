@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kubernetes on 梁波的技术博客</title>
@@ -6,11 +6,7 @@
     <description>Recent content in kubernetes on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 31 Oct 2020 00:00:00 +0800</lastBuildDate>
-    
-	<atom:link href="http://flygopher.top/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 31 Oct 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kubernetes API资源的使用</title>
       <link>http://flygopher.top/post/how-to-use-k8s-api-resources/</link>
@@ -18,7 +14,6 @@
       
       <guid>http://flygopher.top/post/how-to-use-k8s-api-resources/</guid>
       <description>&lt;p&gt;在使用&lt;code&gt;Kubernetes&lt;/code&gt;的时候，因为有太多的资源、太多的版本、太多的组了，这些都非常容易产生混淆。如果我们通过 YAML 文件定义过 Deployment 这样的资源清单文件的话，那么你应该会看到&lt;code&gt;apiVersion: apps/v1beta2&lt;/code&gt;、&lt;code&gt;apiVersion: apps/v1&lt;/code&gt;等等这样的信息，那么我们到底应该使用哪一个呢？哪一个才是正确的呢？如何检查&lt;code&gt;Kubernetes&lt;/code&gt;集群支持哪些？其实我们使用&lt;code&gt;kubectl&lt;/code&gt;工具就可以来解决我们的这些疑惑。&lt;/p&gt;
-
 &lt;p&gt;当前我使用的&lt;code&gt;Kubernetes&lt;/code&gt;的版本是&lt;code&gt;1.18,8&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     
@@ -29,7 +24,6 @@
       
       <guid>http://flygopher.top/post/setup-kubernetes-cluster-with-kind/</guid>
       <description>&lt;p&gt;现在安装 Kubernetes 集群已经变得越来越简单了，出现了很多方案，各种方案都有自己适合的使用场景。虽然我们可以很快速在云环境下面启动一个 Kubernetes 集群，但是对于开发人员通常更喜欢能够快速上手的东西，&lt;a href=&#34;https://kind.sigs.k8s.io/&#34;&gt;Kubernetes in Docker（Kind）&lt;/a&gt;这个工具就可以通过创建容器来作为 Kubernetes 的节点，我们只需要在机器上安装 Docker 就可以使用，它允许我们在很短的时间内就启动一个多节点的集群，而不依赖任何其他工具或云服务商。&lt;/p&gt;
-
 &lt;p&gt;前面的文章也讲过如何在本地使用Vagrant来快速搭建Kubernetes集群，但还是有点麻烦，而且需要自己去定制Vagrant Box，有一定的技术门槛。&lt;/p&gt;</description>
     </item>
     
@@ -40,10 +34,8 @@
       
       <guid>http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</guid>
       <description>&lt;p&gt;现在的Web应用启用&lt;code&gt;HTTPS&lt;/code&gt;服务是真的非常有必要的。一些正规机构颁发的&lt;code&gt;CA&lt;/code&gt;证书费用又特别高，不过比较幸运的是也有免费的午餐 - &lt;code&gt;Let&#39;s Encrypt&lt;/code&gt;，虽然只有90天的证书有效期，但是我们完全可以在证书失效之前，重新生成证书替换掉。在&lt;code&gt;Kubernetes&lt;/code&gt;集群中就更方便了，我们可以通过 Kubernetes Ingress 和 Let’s Encrypt 实现外部服务的自动化 HTTPS。&lt;/p&gt;
-
 &lt;p&gt;Cert-Manager 是一个云原生证书管理开源项目，用于在 Kubernetes 集群中提供 HTTPS 证书并自动续期，支持 Let’s Encrypt / HashiCorp / Vault 这些免费证书的签发。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/cert-manager-structrue.svg&#34; alt=&#34;Cert Manager Structrue&#34; /&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/cert-manager-structrue.svg&#34; alt=&#34;Cert Manager Structrue&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -80,12 +72,9 @@
       
       <guid>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</guid>
       <description>&lt;p&gt;Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 &lt;a href=&#34;https://www.cncf.io/about&#34;&gt;CNCF&lt;/a&gt;。你可以通过阅读 &lt;a href=&#34;https://kubernetes.io/zh/docs/home/&#34;&gt;官方文档&lt;/a&gt;了解Kubernetes和其基础概念。&lt;/p&gt;
-
 &lt;p&gt;接下来这篇文章将介绍如何使用二进制部署&lt;code&gt;Kubernetes v1.14.8&lt;/code&gt;。通过这种&lt;code&gt;hard-way&lt;/code&gt;的方式来帮助你更好的了解Kubernetes。&lt;/p&gt;
-
 &lt;p&gt;Kubernetes Cluster搭建的过程，可以参考&lt;a href=&#34;https://github.com/opsnull/follow-me-install-kubernetes-cluster&#34;&gt;和我一步步部署 kubernetes 集群&lt;/a&gt;。我将其中的脚本整理好了，并通过&lt;a href=&#34;https://www.vagrantup.com/&#34;&gt;Vagrant&lt;/a&gt;和&lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;VirtualBox&lt;/a&gt;在本地快速创建k8s集群。&lt;/p&gt;
-
-&lt;p&gt;Github地址如下: &lt;a href=&#34;https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.14.8&#34;&gt;https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.14.8&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;Github地址如下: &lt;a href=&#34;https://github.com/amuguelove/k8s-setup-tutorial/tree/v1.14.8&#34;&gt;https://github.com/amuguelove/k8s-setup-tutorial/tree/v1.14.8&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

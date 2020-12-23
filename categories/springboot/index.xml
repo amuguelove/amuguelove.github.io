@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>springboot on 梁波的技术博客</title>
@@ -6,11 +6,7 @@
     <description>Recent content in springboot on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 18 Mar 2020 00:00:00 +0800</lastBuildDate>
-    
-	<atom:link href="http://flygopher.top/categories/springboot/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 18 Mar 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/categories/springboot/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SpringBoot的自动装配原理分析</title>
       <link>http://flygopher.top/post/springboot-load-configure-principle/</link>
@@ -18,9 +14,8 @@
       
       <guid>http://flygopher.top/post/springboot-load-configure-principle/</guid>
       <description>&lt;p&gt;在Spring Boot应用中的自动装配是通过&lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; 注解进行开启的。&lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; 可以帮助 Spring Boot 应用将所有符合条件的 &lt;code&gt;@Configuration&lt;/code&gt; 配置类的 bean 都加载到 Spring IoC 容器中。&lt;/p&gt;
-
 &lt;p&gt;我们看下&lt;code&gt;@SpringBootApplication&lt;/code&gt;注解，默认是启动&lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; 的。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;@Target(ElementType.TYPE)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
@@ -45,7 +40,8 @@ public @interface SpringBootApplication {
 	@AliasFor(annotation = Configuration.class)
 	boolean proxyBeanMethods() default true;
 
-}&lt;/pre&gt;&lt;/div&gt;</description>
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -55,11 +51,8 @@ public @interface SpringBootApplication {
       
       <guid>http://flygopher.top/post/springboot-load-configure-locations/</guid>
       <description>&lt;p&gt;很多人对&lt;code&gt;SpringBoot&lt;/code&gt;文件加载的位置和优先级有点疑惑，下面通过源码看下到底是如何加载的。&lt;/p&gt;
-
-&lt;p&gt;我们先来看下&lt;code&gt;SpringBoot&lt;/code&gt;加载&lt;code&gt;PropertySource&lt;/code&gt;的顺序是如何的呢？可以&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config&#34;&gt;参考官网&lt;/a&gt;：&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config&#34;&gt;https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/springboot-configuration-1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;我们先来看下&lt;code&gt;SpringBoot&lt;/code&gt;加载&lt;code&gt;PropertySource&lt;/code&gt;的顺序是如何的呢？可以&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config&#34;&gt;参考官网&lt;/a&gt;：https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/springboot-configuration-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;配置加载的优先级从高到低，其中高优先级可以覆盖低优先级的配置。&lt;/p&gt;</description>
     </item>
     
@@ -70,18 +63,16 @@ public @interface SpringBootApplication {
       
       <guid>http://flygopher.top/post/jpa-id-generated-strategy/</guid>
       <description>&lt;p&gt;&lt;strong&gt;JPA&lt;/strong&gt; 为对象关系映射提供了了⼀一种基于 &lt;strong&gt;POJO&lt;/strong&gt; 的持久化模型&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;简化数据持久化代码的开发⼯工作&lt;/li&gt;
 &lt;li&gt;为 Java 社区屏蔽不不同持久化 API 的差异&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;&lt;code&gt;JPA&lt;/code&gt;定义了持久化的标准，而&lt;code&gt;Hibernate&lt;/code&gt;是持久化的实现。&lt;code&gt;Spring Data JPA&lt;/code&gt;就是在&lt;code&gt;Hibernate&lt;/code&gt;的基础上封装实现的。&lt;/p&gt;
-
 &lt;p&gt;JPA提供了很多常用的注解，下面就来讲下关于主键的生成策略，主要的注解有：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;@Id
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;@Id
 @GeneratedValue(strategy, generator)
-@SequenceGenerator(name, sequenceName)&lt;/pre&gt;&lt;/div&gt;</description>
+@SequenceGenerator(name, sequenceName)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -91,7 +82,6 @@ public @interface SpringBootApplication {
       
       <guid>http://flygopher.top/post/springboot2-transaction/</guid>
       <description>&lt;p&gt;事务管理是Spring框架中最为常用的功能之一，我们在使用Spring Boot开发应用时，大部分情况下也都需要使用事务。&lt;/p&gt;
-
 &lt;p&gt;事务的作用就是为了保证用户的每一个操作都是可靠的，事务中的每一步操作都必须成功执行，只要有发生异常就回退到事务开始未进行操作的状态。&lt;/p&gt;</description>
     </item>
     
@@ -102,9 +92,7 @@ public @interface SpringBootApplication {
       
       <guid>http://flygopher.top/post/springboot2-aop/</guid>
       <description>&lt;p&gt;AOP(Aspect-Oriented Programming) 即面向方面编程.  它是一种在运行时,动态地将代码切入到类的指定方法、指定位置上的编程思想. 用于切入到指定类指定方法的代码片段叫做切面, 而切入到哪些类中的哪些方法叫做切入点.&lt;/p&gt;
-
 &lt;p&gt;AOP是OOP的有益补充，OOP从横向上区分出了一个个类，AOP则从纵向上向指定类的指定方法中动态地切入代码. 它使OOP变得更加立体.&lt;/p&gt;
-
 &lt;p&gt;Java中的动态代理或CGLib就是AOP的体现.&lt;/p&gt;</description>
     </item>
     
@@ -115,7 +103,6 @@ public @interface SpringBootApplication {
       
       <guid>http://flygopher.top/post/spring-boot-admin/</guid>
       <description>&lt;p&gt;Spring Boot Admin 在 Spring Boot Actuator 的基础上提供简洁的可视化 WEB UI，是用来管理 Spring Boot 应用程序的一个简单的界面，提供的功能参考：&lt;a href=&#34;https://github.com/codecentric/spring-boot-admin&#34;&gt;Spring Boot Admin Github&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;在本文中，我们将介绍配置 Spring Boot Admin（以下简称 SBA）服务端的步骤以及如何将一个 Spring Boot 应用注册为它的客户端。&lt;/p&gt;</description>
     </item>
     

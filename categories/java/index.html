@@ -19,7 +19,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/categories/java/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -30,8 +30,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -172,23 +171,18 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                发表于 March 23, 2020
+                
               </p>
               <div class="post-entry">
                 
                   <h2 id="jmh概述">JMH概述</h2>
-
 <p>JMH 是一个由 OpenJDK/Oracle 里面那群开发了 Java 编译器的大牛们所开发的 Micro Benchmark Framework 。何谓 Micro Benchmark 呢？简单地说就是在 <strong>method</strong> 层面上的 benchmark，精度可以精确到微秒级。可以看出 JMH 主要使用在当你已经找出了热点函数，而需要对热点函数进行进一步的优化时，就可以使用 JMH 对优化的效果进行定量的分析。</p>
-
 <p>比较典型的使用场景还有：</p>
-
 <ul>
 <li>想定量地知道某个函数需要执行多长时间，以及执行时间和输入 n 的相关性</li>
 <li>一个函数有两种不同实现（例如实现 A 使用了 FixedThreadPool，实现 B 使用了 ForkJoinPool），不知道哪种实现性能更好</li>
 </ul>
-
 <p>尽管 JMH 是一个相当不错的 Micro Benchmark Framework，但很无奈的是网上能够找到的文档比较少，而官方也没有提供比较详细的文档，对使用造成了一定的障碍。但是有个好消息是官方的 <a href="http://hg.openjdk.java.net/code-tools/jmh/file/tip/jmh-samples/src/main/java/org/openjdk/jmh/samples/">Code Sample</a> 写得非常浅显易懂，推荐在需要详细了解 JMH 的用法时可以通读一遍——本文则会介绍 JMH 最典型的用法和部分常用选项。</p>
-
 <p>我Fork了一份到github，可以提供大家参考一下，使用gradle构建。<a href="https://github.com/amuguelove/jmh-gradle-samples">jmh-gradle-samples</a></p>
                   <a href="http://flygopher.top/post/java-object-mappping-framework-benchmark/" class="post-read-more">[阅读全文]</a>
                 
@@ -216,7 +210,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                发表于 November 6, 2018
+                
               </p>
               <div class="post-entry">
                 
@@ -243,7 +237,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                发表于 October 6, 2018
+                
               </p>
               <div class="post-entry">
                 
@@ -270,7 +264,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                发表于 October 5, 2018
+                
               </p>
               <div class="post-entry">
                 
@@ -297,7 +291,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                发表于 October 2, 2018
+                
               </p>
               <div class="post-entry">
                 
@@ -324,14 +318,12 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                发表于 October 1, 2018
+                
               </p>
               <div class="post-entry">
                 
                   <h2 id="新特性列表">新特性列表</h2>
-
 <p>以下是Java8中的引入的部分新特性。关于Java8新特性更详细的介绍可参考<a href="http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html">这里</a>。</p>
-
 <ul>
 <li>接口默认方法和静态方法</li>
 <li>Lambda 表达式</li>
@@ -345,7 +337,6 @@ if (!doNotTrack) {
 <li>Base64</li>
 <li>JavaFX</li>
 <li>其它
-
 <ul>
 <li>JDBC4.2规范</li>
 <li>更好的类型推测机制</li>
@@ -355,7 +346,8 @@ if (!doNotTrack) {
 <li>并发（Concurrency）</li>
 <li>类依赖分析器jdeps</li>
 <li>JVM的PermGen空间被移除</li>
-</ul></li>
+</ul>
+</li>
 </ul>
                   <a href="http://flygopher.top/post/java8-lambda/" class="post-read-more">[阅读全文]</a>
                 
@@ -379,12 +371,11 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                发表于 May 23, 2018
+                
               </p>
               <div class="post-entry">
                 
                   <h3 id="引言">引言</h3>
-
 <p>将 Java 对象序列化为二进制文件的 Java 序列化技术是 Java 系列技术中一个较为重要的技术点，在大部分情况下，开发人员只需要了解被序列化的类需要实现 Serializable 接口，使用 ObjectInputStream 和 ObjectOutputStream 进行对象的读写。然而在有些情况下，光知道这些还远远不够，文章列举了笔者遇到的一些真实情境，它们与 Java 序列化相关，通过分析情境出现的原因，使读者轻松牢记 Java 序列化中的一些高级认识。</p>
                   <a href="http://flygopher.top/post/java-serialization/" class="post-read-more">[阅读全文]</a>
                 
@@ -467,7 +458,7 @@ if (!doNotTrack) {
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

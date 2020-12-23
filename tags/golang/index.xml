@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on 梁波的技术博客</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Golang on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 18 Dec 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://flygopher.top/tags/golang/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 18 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://flygopher.top/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mac下安装Golang并配置环境</title>
       <link>http://flygopher.top/post/macos-golang-environment-setup/</link>
@@ -18,13 +14,11 @@
       
       <guid>http://flygopher.top/post/macos-golang-environment-setup/</guid>
       <description>&lt;p&gt;在MacOS上主要有如下两种方法安装&lt;/p&gt;
-
-&lt;h3 id=&#34;一-homebrew&#34;&gt;一、HomeBrew&lt;/h3&gt;
-
+&lt;h3 id=&#34;一homebrew&#34;&gt;一、HomeBrew&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;homebrew&lt;/code&gt;是Mac系统下面目前使用最多的管理软件的工具，目前已支持Go，可以通过命令直接安装Go。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;brew update &amp;amp;&amp;amp; brew upgrade
-brew install go&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;这样安装之后通过命令行输入&lt;code&gt;go&lt;/code&gt;就可以看到相关的信息。输入&lt;code&gt;go env&lt;/code&gt;查看环境信息。&lt;/p&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;brew update &amp;amp;&amp;amp; brew upgrade
+brew install go
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样安装之后通过命令行输入&lt;code&gt;go&lt;/code&gt;就可以看到相关的信息。输入&lt;code&gt;go env&lt;/code&gt;查看环境信息。&lt;/p&gt;</description>
     </item>
     
   </channel>

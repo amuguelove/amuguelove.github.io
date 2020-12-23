@@ -11,31 +11,19 @@
   <meta name="twitter:title" content="RESTful API最佳实践的一些理解" />
   
   <meta name="description" content="什么是RESTful
-
 简单的说：RESTful是一种架构的规范与约束、原则，符合这种规范的架构就是RESTful架构。
-
 先看REST是什么意思，英文Representational state transfer 表述性状态转移 其实就是对 资源 的表述性状态转移。
-
 资源的地址 在web中就是URL （统一资源标识符）。
-
 资源是REST系统的核心概念，所有的设计都是以资源为中心。">
   <meta property="og:description" content="什么是RESTful
-
 简单的说：RESTful是一种架构的规范与约束、原则，符合这种规范的架构就是RESTful架构。
-
 先看REST是什么意思，英文Representational state transfer 表述性状态转移 其实就是对 资源 的表述性状态转移。
-
 资源的地址 在web中就是URL （统一资源标识符）。
-
 资源是REST系统的核心概念，所有的设计都是以资源为中心。">
   <meta name="twitter:description" content="什么是RESTful
-
 简单的说：RESTful是一种架构的规范与约束、原则，符合这种规范的架构就是RESTful架构。
-
 先看REST是什么意思，英文Representational state transfer 表述性状态转移 其实就是对 资源 的表述性状态转移。
-
 资源的地址 在web中就是URL （统一资源标识符）。
-
 资源是REST系统的核心概念，所有的设计都是以资源为中心。">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -46,7 +34,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/restful-api-best-practice/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -57,8 +45,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -193,7 +180,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 May 27, 2018
+    
   
   
 </span>
@@ -248,47 +235,29 @@ if (!doNotTrack) {
           
 
           <h3 id="什么是restful">什么是RESTful</h3>
-
 <p>简单的说：RESTful是一种架构的规范与约束、原则，符合这种规范的架构就是RESTful架构。</p>
-
 <p>先看REST是什么意思，英文Representational state transfer 表述性状态转移 其实就是对 资源 的表述性状态转移。</p>
-
 <p>资源的地址 在web中就是URL （统一资源标识符）。</p>
-
 <p>资源是REST系统的核心概念，所有的设计都是以资源为中心。</p>
-
 <p><strong>RESTful的基本概念：</strong></p>
-
 <p><strong>1. 在REST中，一切的内容都被认为是一种资源</strong></p>
-
 <p><strong>2. 每个资源都由URI唯一标识</strong></p>
-
 <p><strong>3. 使用统一的接口处理资源请求（POST/GET/PUT/DELETE/HEAD）</strong></p>
-
 <p><strong>4. 无状态</strong></p>
-
 <h3 id="为什么要用-restful">为什么要用 RESTful</h3>
-
 <p>RESTful 给我的最大感觉就是规范、易懂和优雅，一个结构清晰、易于理解的 API 完全可以省去许多无意义的沟通和文档。并且 RESTful 现在越来越流行，也有越来越多优秀的周边工具（例如文档工具 Swagger）。</p>
-
 <h3 id="域名">域名</h3>
-
 <p>使用一个恰当的域名地址，比如：<code>api.github.com</code>，协议最好使用<code>https</code>。</p>
-
 <h3 id="版本">版本</h3>
-
 <p>API 的版本号和客户端 APP 的版本号是毫无关系的，不要让 APP 将它们用于提交应用市场的版本号传递到服务器，而是提供类似于<code>v1</code>、<code>v2</code>之类的 API 版本号。版本号只允许枚举，不允许判断区间。</p>
-
 <p>版本号拼接在 URL 中或是放在 Header 中都可以。例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">api.xxx.com/v1/users</pre></div>
-<p>或：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">api.xxx.com/users
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">api.xxx.com/v1/users
+</code></pre></div><p>或：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">api.xxx.com/users
 
-version=v1</pre></div>
-<h3 id="路径">路径</h3>
-
+version=v1
+</code></pre></div><h3 id="路径">路径</h3>
 <p><strong>推荐使用复数名词</strong>，最基础的 URL 就是以下几种：</p>
-
 <ul>
 <li><code>GET /articles</code>： 文章列表</li>
 <li><code>GET /articles/id</code>：文章详情</li>
@@ -296,109 +265,105 @@ version=v1</pre></div>
 <li><code>PUT /articles/id</code>：修改文章</li>
 <li><code>DELETE /articles/id</code>：删除文章</li>
 </ul>
-
 <p>RESTful 中使用 GET、POST、PUT 和 DELETE 来表示资源的查询、创建、更改、删除，并且除了 POST 其他三种请求都具备幂等性（多次请求的效果相同）。需要注意的是 POST 和 PUT 最大的区别就是幂等性，所以 PUT 也可以用于创建操作，只要在创建前就可以确定资源的 id。</p>
-
 <p>将 id 放在 URL 中而不是 Query Param 的其中一个好处是可以表示资源之间的层级关系，例如文章下面会有评论（Comment）和点赞（Like），这两项资源必然会属于一篇文章，所以它们的 URL 应该是这样的：</p>
-
 <p>评论：</p>
-
 <ul>
-<li><p><code>GET /articles/aid/comments</code>： 某篇文章的评论列表</p></li>
-
-<li><p><code>GET /comments/cid</code>： 获取</p></li>
-
-<li><p><code>POST /articles/aid/comments</code>： 在某篇文章中创建评论</p></li>
-
-<li><p><code>PUT /comments/cid</code>： 修改评论</p></li>
-
-<li><p><code>DELETE /comments/cid</code>： 删除评论</p></li>
-</ul>
-
+<li>
+<p><code>GET /articles/aid/comments</code>： 某篇文章的评论列表</p>
+</li>
+<li>
+<p><code>GET /comments/cid</code>： 获取</p>
+</li>
+<li>
+<p><code>POST /articles/aid/comments</code>： 在某篇文章中创建评论</p>
+</li>
+<li>
+<p><code>PUT /comments/cid</code>： 修改评论</p>
+</li>
+<li>
+<p><code>DELETE /comments/cid</code>： 删除评论</p>
 <p>这里有一点比较特殊，永远去使用可以指向资源的的最短 URL 路径，也就是说既然<code>/comments/cid</code>已经可以指向一条评论了，就不需要再用<code>/articles/aid/comments/cid</code>特意的指出所属文章了。</p>
-
 <p>点赞：</p>
-
-<ul>
-<li><p><code>GET /articles/id/like</code>：查看文章是否被点赞</p></li>
-
-<li><p><code>PUT /articles/id/like</code>：点赞文章</p></li>
-
-<li><p><code>DELETE /articles/id/like</code>：取消点赞</p></li>
+</li>
+<li>
+<p><code>GET /articles/id/like</code>：查看文章是否被点赞</p>
+</li>
+<li>
+<p><code>PUT /articles/id/like</code>：点赞文章</p>
+</li>
+<li>
+<p><code>DELETE /articles/id/like</code>：取消点赞</p>
+</li>
 </ul>
-
 <p>RESTful 中不建议出现动词，所以可以将这种关系作为资源来映射。并且由于大部分的关系查询都与当前的登录用户有关，所以也可以直接在关系所属的资源中返回关系状态。例如点赞状态就可以直接在获取文章详情时返回。注意这里我选择了 PUT 而不是 POST，因为我觉得点赞这种行为应该是幂等的，多次操作的结果应该相同。</p>
-
 <h3 id="token-和-sign">Token 和 Sign</h3>
-
 <p>API 需要设计成无状态，所以客户端在每次请求时都需要提供有效的 Token 和 Sign，在我看来它们的用途分别是：</p>
-
 <ul>
 <li>Token 用于证明请求所属的用户，一般都是服务端在登录后随机生成一段字符串（UUID）和登录用户进行绑定，再将其返回给客户端。Token 的状态保持一般有两种方式实现：一种是在用户每次操作都会延长或重置 TOKEN 的生存时间（类似于缓存的机制），另一种是 Token 的生存时间固定不变，但是同时返回一个刷新用的 Token，当 Token 过期时可以将其刷新而不是重新登录。</li>
 <li>Sign 用于证明该次请求合理，所以一般客户端会把请求参数拼接后并加密作为 Sign 传给服务端，这样即使被抓包了，对方只修改参数而无法生成对应的 Sign 也会被服务端识破。当然也可以将时间戳、请求地址和 Token 也混入 Sign，这样 Sign 也拥有了所属人、时效性和目的地。</li>
 </ul>
-
 <h3 id="过滤信息">过滤信息</h3>
-
 <p>搜索：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/users/?query=xxx</pre></div>
-<p>过滤：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/users/?gender=1</pre></div>
-<p>对于某些特定且复杂的业务逻辑，不要试图让客户端用复杂的查询参数表示，而是在 URL 使用别名：：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/users/recommend</pre></div>
-<p>分页：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/users/?offset=10&amp;limit=10
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/?query=xxx
+</code></pre></div><p>过滤：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/?gender=1
+</code></pre></div><p>对于某些特定且复杂的业务逻辑，不要试图让客户端用复杂的查询参数表示，而是在 URL 使用别名：：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/recommend
+</code></pre></div><p>分页：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/?offset=10&amp;limit=10
 
 /articles/?cursor=2015-01-01 15:20:30&amp;limit=10
 
-/users/?page=2&amp;pre_page=20</pre></div>
-<h3 id="状态码">状态码</h3>
-
+/users/?page=2&amp;pre_page=20
+</code></pre></div><h3 id="状态码">状态码</h3>
 <p>使用HTTP状态码+业务状态码，其中常用的HTTP状态码有：</p>
-
 <ul>
-<li><p>200：请求成功</p></li>
-
-<li><p>201：创建、修改成功</p></li>
-
-<li><p>204：删除成功</p></li>
-
-<li><p>400：参数错误</p></li>
-
-<li><p>401：未登录</p></li>
-
-<li><p>403：禁止访问</p></li>
-
-<li><p>404：未找到</p></li>
-
-<li><p>500：系统错误</p></li>
-</ul>
-
+<li>
+<p>200：请求成功</p>
+</li>
+<li>
+<p>201：创建、修改成功</p>
+</li>
+<li>
+<p>204：删除成功</p>
+</li>
+<li>
+<p>400：参数错误</p>
+</li>
+<li>
+<p>401：未登录</p>
+</li>
+<li>
+<p>403：禁止访问</p>
+</li>
+<li>
+<p>404：未找到</p>
+</li>
+<li>
+<p>500：系统错误</p>
 <p>仅仅使用 HTTP 状态码没有办法明确的表达错误信息，所以可以在里面再包一层自定义的返回码，例如：</p>
-
 <p>成功时：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">  {
-      &#34;code&#34;: 100,
-      &#34;msg&#34;: &#34;成功&#34;,
-      &#34;data&#34;: {}
-  }</pre></div>
-<p>失败时：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">  {
-      &#34;code&#34;: -1000,
-      &#34;msg&#34;: &#34;用户名或密码错误&#34;
-  }</pre></div>
-<p><code>data</code>是真正需要返回的数据，并且只会在请求成功时才存在，<code>msg</code>只用在开发环境，并且只为了开发人员识别。客户端逻辑只允许识别<code>code</code>，并且不允许直接将<code>msg</code>的内容展示给用户。如果这个错误很复杂，无法使用一段话描述清楚，也可以在添加一个<code>doc</code>字段，包含指向该错误的文档的链接。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
+    &#34;code&#34;: 100,
+    &#34;msg&#34;: &#34;成功&#34;,
+    &#34;data&#34;: {}
+}
+</code></pre></div><p>失败时：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
+    &#34;code&#34;: -1000,
+    &#34;msg&#34;: &#34;用户名或密码错误&#34;
+}
+</code></pre></div><p><code>data</code>是真正需要返回的数据，并且只会在请求成功时才存在，<code>msg</code>只用在开发环境，并且只为了开发人员识别。客户端逻辑只允许识别<code>code</code>，并且不允许直接将<code>msg</code>的内容展示给用户。如果这个错误很复杂，无法使用一段话描述清楚，也可以在添加一个<code>doc</code>字段，包含指向该错误的文档的链接。</p>
+</li>
+</ul>
 <h3 id="分页">分页</h3>
-
 <p>分页布局一般分为两种，一种是在 Web 端比较常见的有底部分页栏的电梯式分页，另一种是在 APP 中比较常见的上拉加载更多的流式分页。这两种分页的 API 到底该如何设计呢？</p>
-
 <p><strong>1. 电梯式分页需要提供<code>page</code>（页数）和<code>pre_page</code>（每页的数量）</strong></p>
-
 <p>例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/users/?page=2&amp;pre_page=20</pre></div>
-<p>而服务端则需要额外返回<code>total_count</code>（总记录数），以及可选的当前页数、每页的数量（这两个与客户端提交的相同）、总页数、是否有下一页、是否有上一页（这三个都可以通过总记录数计算出）。例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">{
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/?page=2&amp;pre_page=20
+</code></pre></div><p>而服务端则需要额外返回<code>total_count</code>（总记录数），以及可选的当前页数、每页的数量（这两个与客户端提交的相同）、总页数、是否有下一页、是否有上一页（这三个都可以通过总记录数计算出）。例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
     &#34;pagination&#34;: {
        &#34;previous&#34;: 1,
        &#34;next&#34;: 3,
@@ -408,40 +373,34 @@ version=v1</pre></div>
        &#34;pages&#34;: 10
     },
     &#34;data&#34;: {}
-}</pre></div>
-<p>流式布局也完全可以使用这种方式，并且不需要查询总记录数（好处是减少一次数据库操作，坏处时客户端需要多请求一次才能判断是否到最后一页）。但是会出现数据重复和缺失的情况，所以更推荐使用游标分页。</p>
-
+}
+</code></pre></div><p>流式布局也完全可以使用这种方式，并且不需要查询总记录数（好处是减少一次数据库操作，坏处时客户端需要多请求一次才能判断是否到最后一页）。但是会出现数据重复和缺失的情况，所以更推荐使用游标分页。</p>
 <p><strong>2. 游标分页需要提供<code>cursor</code>(下一页的起点游标) 和<code>limit</code>(数量) 参数</strong></p>
-
 <p>例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/articles/?cursor=2015-01-01 15:20:30&amp;limit=10</pre></div>
-<p>如果文章列表默认是以创建时间为倒序排列的，那么<code>cursor</code>就是当前列表最后一条的创建时间（第一页为当前时间）。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/articles/?cursor=2015-01-01 15:20:30&amp;limit=10
+</code></pre></div><p>如果文章列表默认是以创建时间为倒序排列的，那么<code>cursor</code>就是当前列表最后一条的创建时间（第一页为当前时间）。</p>
 <p>服务端需要返回的数据也很简单，只需要以此游标为起点的总记录数和下一个起点游标就可以了。例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">{
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
     &#34;pagination&#34;: {
        &#34;next&#34;: &#34;2015-01-01 12:20:30&#34;,
        &#34;limit&#34;: 10,
        &#34;total&#34;: 100,
     },
     &#34;data&#34;: {}
-}</pre></div>
-<p>如果<code>total</code>小于<code>limit</code>，就说明已经没有数据了。</p>
-
+}
+</code></pre></div><p>如果<code>total</code>小于<code>limit</code>，就说明已经没有数据了。</p>
 <p>流式布局的分页 API 还有一种情况很常见，就是下拉刷新的增量更新。它的业务逻辑正好和游标分页相反，但是参数基本一样：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/articles/?cursor=2015-01-01 15:20:30&amp;limit=20</pre></div>
-<p>返回数据有两种可能，一种是增量更新的数据小于指定的数量，就直接将全部数据返回（这个数量可以设置的相对大一些），客户端会将这些增量更新的数据添加在已有列表的顶部。但是如果增量更新的数据要大于指定的数量，就会只返回最新的 n 条数据作为第一页，这时候客户端需要清空之前的列表。例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">{
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/articles/?cursor=2015-01-01 15:20:30&amp;limit=20
+</code></pre></div><p>返回数据有两种可能，一种是增量更新的数据小于指定的数量，就直接将全部数据返回（这个数量可以设置的相对大一些），客户端会将这些增量更新的数据添加在已有列表的顶部。但是如果增量更新的数据要大于指定的数量，就会只返回最新的 n 条数据作为第一页，这时候客户端需要清空之前的列表。例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
     &#34;pagination&#34;: {
        &#34;limit&#34;: 20,
        &#34;total&#34;: 100,
     },
     &#34;data&#34;: {}
-}</pre></div>
-<p>如果<code>total</code>大于<code>limit</code>，说明增量的数据太多所以只返回了第一页，需要清空旧的列表。</p>
-
+}
+</code></pre></div><p>如果<code>total</code>大于<code>limit</code>，说明增量的数据太多所以只返回了第一页，需要清空旧的列表。</p>
 <h3 id="相关阅读">相关阅读：</h3>
-
 <ul>
 <li>推荐一本书<a href="https://pages.apigee.com/rs/apigee/images/api-design-ebook-2012-03.pdf">Brain Mulloy’s nice paper</a></li>
 <li><a href="https://developer.github.com/v3/">Github Developer REST API v3</a></li>
@@ -613,7 +572,7 @@ version=v1</pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hexo on 梁波的技术博客</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Hexo on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 22 Nov 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://flygopher.top/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 22 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://flygopher.top/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>jekyll迁移到hexo历程</title>
       <link>http://flygopher.top/post/migrate-blog-to-hexo/</link>
@@ -18,7 +14,6 @@
       
       <guid>http://flygopher.top/post/migrate-blog-to-hexo/</guid>
       <description>&lt;h3 id=&#34;迁移历程&#34;&gt;迁移历程&lt;/h3&gt;
-
 &lt;p&gt;从2016年开始一直坚持写博客，很多都是工作，学习的总结，可以让自己加深记忆，也便于分享。从此也患上了主题选择困难症，在网上查阅博客的时候，一旦发现自己特别喜欢的主题，就会尝试切换主题。从最初的&lt;a href=&#34;https://github.com/theme-next/hexo-theme-next&#34;&gt;Hexo Next&lt;/a&gt;，到&lt;a href=&#34;https://github.com/Huxpro/huxpro.github.io&#34;&gt;Jekyll Hux&lt;/a&gt;，以及现在的&lt;a href=&#34;https://github.com/chaooo/hexo-theme-BlueLake&#34;&gt;Hexo BlueLake&lt;/a&gt;。下来来介绍下如何使用BlueLake主题。&lt;/p&gt;</description>
     </item>
     

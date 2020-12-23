@@ -11,13 +11,10 @@
   <meta name="twitter:title" content="每天一个Linux命令（4）：df、du 查看磁盘空间" />
   
   <meta name="description" content="df命令用于显示磁盘分区上的可使用的磁盘空间。默认显示单位为KB。可以利用该命令来获取硬盘被占用了多少空间，目前还剩下多少空间等信息。
-
 du命令用来查看某个目录或文件所占空间大小。默认显示单位KB。">
   <meta property="og:description" content="df命令用于显示磁盘分区上的可使用的磁盘空间。默认显示单位为KB。可以利用该命令来获取硬盘被占用了多少空间，目前还剩下多少空间等信息。
-
 du命令用来查看某个目录或文件所占空间大小。默认显示单位KB。">
   <meta name="twitter:description" content="df命令用于显示磁盘分区上的可使用的磁盘空间。默认显示单位为KB。可以利用该命令来获取硬盘被占用了多少空间，目前还剩下多少空间等信息。
-
 du命令用来查看某个目录或文件所占空间大小。默认显示单位KB。">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -28,7 +25,7 @@ du命令用来查看某个目录或文件所占空间大小。默认显示单位
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/linux-command-disk/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -39,8 +36,7 @@ du命令用来查看某个目录或文件所占空间大小。默认显示单位
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -175,7 +171,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 January 11, 2019
+    
   
   
 </span>
@@ -230,15 +226,12 @@ if (!doNotTrack) {
           
 
           <p>df命令用于显示磁盘分区上的可使用的磁盘空间。默认显示单位为KB。可以利用该命令来获取硬盘被占用了多少空间，目前还剩下多少空间等信息。</p>
-
 <p>du命令用来查看某个目录或文件所占空间大小。默认显示单位KB。</p>
-
 <h2 id="df命令">df命令</h2>
-
 <h3 id="1-语法">1. 语法</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">df (选项) (参数)</pre></div>
-<h3 id="2-选项">2. 选项</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">-a或--all：包含全部的文件系统；
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">df (选项) (参数)
+</code></pre></div><h3 id="2-选项">2. 选项</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">-a或--all：包含全部的文件系统；
 --block-size=&lt;区块大小&gt;：以指定的区块大小来显示区块数目；
 -h或--human-readable：以可读性较高的方式来显示信息；
 -H或--si：与-h参数相同，但在计算时是以1000 Bytes为换算单位而非1024 Bytes；
@@ -253,37 +246,33 @@ if (!doNotTrack) {
 -T或--print-type：显示文件系统的类型；
 -x&lt;文件系统类型&gt;或--exclude-type=&lt;文件系统类型&gt;：不要显示指定文件系统类型的磁盘信息；
 --help：显示帮助；
---version：显示版本信息。</pre></div>
-<h3 id="3-参数">3. 参数</h3>
-
+--version：显示版本信息。
+</code></pre></div><h3 id="3-参数">3. 参数</h3>
 <p>文件：指定文件系统上的文件。</p>
-
 <h3 id="4-栗子">4. 栗子</h3>
-
 <p>1）查看系统磁盘设备，默认是KB为单位：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@4383b9267a03 /]# df
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@4383b9267a03 /]# df
 Filesystem     1K-blocks    Used Available Use% Mounted on
 overlay         61255492 7455824  50658344  13% /
 tmpfs              65536       0     65536   0% /dev
 tmpfs            1023516       0   1023516   0% /sys/fs/cgroup
 /dev/sda1       61255492 7455824  50658344  13% /etc/hosts
 shm                65536       0     65536   0% /dev/shm
-tmpfs            1023516    8396   1015120   1% /run</pre></div>
-<p>2）使用<code>-h</code>选项以KB以上的单位来显示，可读性高：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@4383b9267a03 /]# df -h
+tmpfs            1023516    8396   1015120   1% /run
+</code></pre></div><p>2）使用<code>-h</code>选项以KB以上的单位来显示，可读性高：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@4383b9267a03 /]# df -h
 Filesystem      Size  Used Avail Use% Mounted on
 overlay          59G  7.2G   49G  13% /
 tmpfs            64M     0   64M   0% /dev
 tmpfs          1000M     0 1000M   0% /sys/fs/cgroup
 /dev/sda1        59G  7.2G   49G  13% /etc/hosts
 shm              64M     0   64M   0% /dev/shm
-tmpfs          1000M  8.2M  992M   1% /run</pre></div>
-<h2 id="du-命令">du 命令</h2>
-
+tmpfs          1000M  8.2M  992M   1% /run
+</code></pre></div><h2 id="du-命令">du 命令</h2>
 <h3 id="1-语法-1">1. 语法</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">du [选项] [文件]</pre></div>
-<h3 id="2-选项-1">2. 选项</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">-a或-all 显示全部文件与目录的大小。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">du [选项] [文件]
+</code></pre></div><h3 id="2-选项-1">2. 选项</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">-a或-all 显示全部文件与目录的大小。
 -b或-bytes 显示目录或文件大小时，以byte为单位。
 -c或--total 除了显示个别目录或文件的大小外，同时也显示所有目录或文件的总和。
 -k或--kilobytes 以KB(1024bytes)为单位输出。
@@ -297,33 +286,31 @@ tmpfs          1000M  8.2M  992M   1% /run</pre></div>
 --exclude=&lt;目录或文件&gt; 略过指定的目录或文件。
 -D或--dereference-args 显示指定符号链接的源文件大小。
 -H或--si 与-h参数相同，但是K，M，G是以1000为换算单位。
--l或--count-links 重复计算硬件链接的文件。</pre></div>
-<h3 id="3-栗子">3. 栗子</h3>
-
+-l或--count-links 重复计算硬件链接的文件。
+</code></pre></div><h3 id="3-栗子">3. 栗子</h3>
 <p>1）显示目录或者文件所占空间：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@4383b9267a03 systemd]# du
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@4383b9267a03 systemd]# du
 4	./user
 4	./system/default.target.wants
 4	./system/getty.target.wants
 4	./system/system-update.target.wants
 4	./system/multi-user.target.wants
 20	./system
-52	.</pre></div>
-<p>只显示当前目录下面的子目录的目录大小和当前目录的总的大小，最下面的52为当前目录的总大小</p>
-
+52	.
+</code></pre></div><p>只显示当前目录下面的子目录的目录大小和当前目录的总的大小，最下面的52为当前目录的总大小</p>
 <p>2）查看指定目录的所占空间：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@4383b9267a03 systemd]# du system
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@4383b9267a03 systemd]# du system
 4	system/default.target.wants
 4	system/getty.target.wants
 4	system/system-update.target.wants
 4	system/multi-user.target.wants
-20	system</pre></div>
-<p>3）显示多个文件所占空间：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@4383b9267a03 systemd]# du bootchart.conf user.conf
+20	system
+</code></pre></div><p>3）显示多个文件所占空间：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@4383b9267a03 systemd]# du bootchart.conf user.conf
 4	bootchart.conf
-4	user.conf</pre></div>
-<p>4）列表显示总和的大小且易读:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">[root@4383b9267a03 systemd]# du -sh *
+4	user.conf
+</code></pre></div><p>4）列表显示总和的大小且易读:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@4383b9267a03 systemd]# du -sh *
 4.0K	bootchart.conf
 4.0K	coredump.conf
 4.0K	journald.conf
@@ -331,9 +318,9 @@ tmpfs          1000M  8.2M  992M   1% /run</pre></div>
 20K	system
 4.0K	system.conf
 4.0K	user
-4.0K	user.conf</pre></div>
-<p>5）和 sort 结合对文件排序</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"># 查看当前目录下的所有文件和文件夹大小，并从大到小排序
+4.0K	user.conf
+</code></pre></div><p>5）和 sort 结合对文件排序</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 查看当前目录下的所有文件和文件夹大小，并从大到小排序
 du -sh * | sort -nr
 
 这个命令对吗？
@@ -358,7 +345,8 @@ du -h * | grep G | sort -nr
 52	systemd
 48	yum
 44	rc.d
-36	yum.repos.d</pre></div>
+36	yum.repos.d
+</code></pre></div>
 
           
   
@@ -527,7 +515,7 @@ du -h * | grep G | sort -nr
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

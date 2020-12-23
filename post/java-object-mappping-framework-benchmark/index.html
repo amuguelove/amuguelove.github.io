@@ -11,36 +11,25 @@
   <meta name="twitter:title" content="使用JMH对Java Object Mapping框架做性能对比" />
   
   <meta name="description" content="JMH概述
-
 JMH 是一个由 OpenJDK/Oracle 里面那群开发了 Java 编译器的大牛们所开发的 Micro Benchmark Framework 。何谓 Micro Benchmark 呢？简单地说就是在 method 层面上的 benchmark，精度可以精确到微秒级。可以看出 JMH 主要使用在当你已经找出了热点函数，而需要对热点函数进行进一步的优化时，就可以使用 JMH 对优化的效果进行定量的分析。
-
 比较典型的使用场景还有：
-
 
 想定量地知道某个函数需要执行多长时间，以及执行时间和输入 n 的相关性
 一个函数有两种不同实现（例如实现 A 使用了 FixedThreadPool，实现 B 使用了 ForkJoinPool），不知道哪种实现性能更好
 
-
 尽管 JMH 是一个相当不错的 Micro Benchmark Framework，但很无奈的是网上能够找到的文档比较少，而官方也没有提供比较详细的文档，对使用造成了一定的障碍。但是有个好消息是官方的 Code Sample 写得非常浅显易懂，推荐在需要详细了解 JMH 的用法时可以通读一遍——本文则会介绍 JMH 最典型的用法和部分常用选项。
-
 我Fork了一份到github，可以提供大家参考一下，使用gradle构建。jmh-gradle-samples">
   <meta property="og:description" content="JMH概述
-
 JMH 是一个由 OpenJDK/Oracle 里面那群开发了 Java 编译器的大牛们所开发的 Micro Benchmark Framework 。何谓 Micro Benchmark 呢？简单地说就是在 method 层面上的 benchmark，精度可以精确到微秒级。可以看出 JMH 主要使用在当你已经找出了热点函数，而需要对热点函数进行进一步的优化时，就可以使用 JMH 对优化的效果进行定量的分析。
-
 比较典型的使用场景还有：
-
 
 想定量地知道某个函数需要执行多长时间，以及执行时间和输入 n 的相关性
 一个函数有两种不同实现（例如实现 A 使用了 FixedThreadPool，实现 B 使用了 ForkJoinPool），不知道哪种实现性能更好
 
-
 尽管 JMH 是一个相当不错的 Micro Benchmark Framework，但很无奈的是网上能够找到的文档比较少，而官方也没有提供比较详细的文档，对使用造成了一定的障碍。但是有个好消息是官方的 Code Sample 写得非常浅显易懂，推荐在需要详细了解 JMH 的用法时可以通读一遍——本文则会介绍 JMH 最典型的用法和部分常用选项。
-
 我Fork了一份到github，可以提供大家参考一下，使用gradle构建。jmh-gradle-samples">
   <meta name="twitter:description" content="JMH概述
-
-JMH 是一个由 OpenJDK/Oracle 里面那群开发了 Java 编译器的大牛们所开发的 Micro Benchmark Framework 。何谓 Micro Benchmark 呢？简单地说就是在 method 层面上的 benchmark，精度可以精确到微秒级。可以看出 JMH 主要使用在当你已经找出了热点函数，而需要对热点函数进行进一步的优化时，就可以使用 JMH 对 …">
+JMH 是一个由 OpenJDK/Oracle 里面那群开发了 Java 编译器的大牛们所开发的 Micro Benchmark Framework 。何谓 Micro Benchmark 呢？简单地说就是在 method 层面上的 benchmark，精度可以精确到微秒级。可以看出 JMH 主要使用在当你已经找出了热点函数，而需要对热点函数进行进一步的优化时，就可以使用 JMH 对优 …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
@@ -50,7 +39,7 @@ JMH 是一个由 OpenJDK/Oracle 里面那群开发了 Java 编译器的大牛们
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/java-object-mappping-framework-benchmark/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -61,8 +50,7 @@ JMH 是一个由 OpenJDK/Oracle 里面那群开发了 Java 编译器的大牛们
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -197,7 +185,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 March 23, 2020
+    
   
   
 </span>
@@ -243,58 +231,60 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#jmh概述">JMH概述</a></li>
-<li><a href="#jmh基本概念">JMH基本概念</a>
-<ul>
-<li><a href="#mode">Mode</a></li>
-<li><a href="#iteration">Iteration</a></li>
-<li><a href="#invocation">Invocation</a></li>
-<li><a href="#operation">Operation</a></li>
-<li><a href="#warmup">Warmup</a></li>
-</ul></li>
-<li><a href="#jmh相关注解">JMH相关注解</a>
-<ul>
-<li><a href="#benchmark">@Benchmark</a></li>
-<li><a href="#warmup-1">@Warmup</a></li>
-<li><a href="#measurement">@Measurement</a></li>
-<li><a href="#benchmarkmode">@BenchmarkMode</a></li>
-<li><a href="#state">@State</a></li>
-<li><a href="#outputtimeunit">@OutputTimeUnit</a></li>
-<li><a href="#fork">@Fork</a></li>
-<li><a href="#param">@Param</a></li>
-<li><a href="#threads">@Threads</a></li>
-<li><a href="#setup">@Setup</a></li>
-<li><a href="#teardown">TearDown</a></li>
-</ul></li>
-<li><a href="#启动选项">启动选项</a>
-<ul>
-<li><a href="#include">include</a></li>
-<li><a href="#fork-1">fork</a></li>
-<li><a href="#warmupiterations">warmupIterations</a></li>
-<li><a href="#measurementiterations">measurementIterations</a></li>
-</ul></li>
-<li><a href="#运行结果">运行结果</a></li>
-<li><a href="#配置的优先级">配置的优先级</a></li>
-<li><a href="#java对象mapping框架性能对比">Java对象Mapping框架性能对比</a></li>
-<li><a href="#简单测试">简单测试</a>
-<ul>
-<li><a href="#throughput">Throughput：</a></li>
-<li><a href="#averagetime">AverageTime:</a></li>
-<li><a href="#singleshottime">SingleShotTime</a></li>
-<li><a href="#sampletime-ms-per-operation">SampleTime（ms per operation）</a></li>
-</ul></li>
-<li><a href="#真实项目测试">真实项目测试：</a>
-<ul>
-<li><a href="#throughput-1">Throughput：</a></li>
-<li><a href="#averagetime-1">AverageTime:</a></li>
-<li><a href="#singleshottime-1">SingleShotTime</a></li>
-<li><a href="#sampletime-ms-per-operation-1">SampleTime（ms per operation）</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#jmh概述">JMH概述</a></li>
+    <li><a href="#jmh基本概念">JMH基本概念</a>
+      <ul>
+        <li><a href="#mode">Mode</a></li>
+        <li><a href="#iteration">Iteration</a></li>
+        <li><a href="#invocation">Invocation</a></li>
+        <li><a href="#operation">Operation</a></li>
+        <li><a href="#warmup">Warmup</a></li>
+      </ul>
+    </li>
+    <li><a href="#jmh相关注解">JMH相关注解</a>
+      <ul>
+        <li><a href="#benchmark">@Benchmark</a></li>
+        <li><a href="#warmup-1">@Warmup</a></li>
+        <li><a href="#measurement">@Measurement</a></li>
+        <li><a href="#benchmarkmode">@BenchmarkMode</a></li>
+        <li><a href="#state">@State</a></li>
+        <li><a href="#outputtimeunit">@OutputTimeUnit</a></li>
+        <li><a href="#fork">@Fork</a></li>
+        <li><a href="#param">@Param</a></li>
+        <li><a href="#threads">@Threads</a></li>
+        <li><a href="#setup">@Setup</a></li>
+        <li><a href="#teardown">TearDown</a></li>
+      </ul>
+    </li>
+    <li><a href="#启动选项">启动选项</a>
+      <ul>
+        <li><a href="#include">include</a></li>
+        <li><a href="#fork-1">fork</a></li>
+        <li><a href="#warmupiterations">warmupIterations</a></li>
+        <li><a href="#measurementiterations">measurementIterations</a></li>
+      </ul>
+    </li>
+    <li><a href="#运行结果">运行结果</a></li>
+    <li><a href="#配置的优先级">配置的优先级</a></li>
+    <li><a href="#java对象mapping框架性能对比">Java对象Mapping框架性能对比</a></li>
+    <li><a href="#简单测试">简单测试</a>
+      <ul>
+        <li><a href="#throughput">Throughput：</a></li>
+        <li><a href="#averagetime">AverageTime:</a></li>
+        <li><a href="#singleshottime">SingleShotTime</a></li>
+        <li><a href="#sampletimems-per-operation">SampleTime（ms per operation）</a></li>
+      </ul>
+    </li>
+    <li><a href="#真实项目测试">真实项目测试：</a>
+      <ul>
+        <li><a href="#throughput-1">Throughput：</a></li>
+        <li><a href="#averagetime-1">AverageTime:</a></li>
+        <li><a href="#singleshottime-1">SingleShotTime</a></li>
+        <li><a href="#sampletimems-per-operation-1">SampleTime（ms per operation）</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </aside>
 
@@ -313,26 +303,17 @@ if (!doNotTrack) {
           
 
           <h2 id="jmh概述">JMH概述</h2>
-
 <p>JMH 是一个由 OpenJDK/Oracle 里面那群开发了 Java 编译器的大牛们所开发的 Micro Benchmark Framework 。何谓 Micro Benchmark 呢？简单地说就是在 <strong>method</strong> 层面上的 benchmark，精度可以精确到微秒级。可以看出 JMH 主要使用在当你已经找出了热点函数，而需要对热点函数进行进一步的优化时，就可以使用 JMH 对优化的效果进行定量的分析。</p>
-
 <p>比较典型的使用场景还有：</p>
-
 <ul>
 <li>想定量地知道某个函数需要执行多长时间，以及执行时间和输入 n 的相关性</li>
 <li>一个函数有两种不同实现（例如实现 A 使用了 FixedThreadPool，实现 B 使用了 ForkJoinPool），不知道哪种实现性能更好</li>
 </ul>
-
 <p>尽管 JMH 是一个相当不错的 Micro Benchmark Framework，但很无奈的是网上能够找到的文档比较少，而官方也没有提供比较详细的文档，对使用造成了一定的障碍。但是有个好消息是官方的 <a href="http://hg.openjdk.java.net/code-tools/jmh/file/tip/jmh-samples/src/main/java/org/openjdk/jmh/samples/">Code Sample</a> 写得非常浅显易懂，推荐在需要详细了解 JMH 的用法时可以通读一遍——本文则会介绍 JMH 最典型的用法和部分常用选项。</p>
-
 <p>我Fork了一份到github，可以提供大家参考一下，使用gradle构建。<a href="https://github.com/amuguelove/jmh-gradle-samples">jmh-gradle-samples</a></p>
-
 <h2 id="jmh基本概念">JMH基本概念</h2>
-
 <h3 id="mode">Mode</h3>
-
 <p><em>Mode</em> 表示 JMH 进行 Benchmark 时所使用的模式。通常是测量的维度不同，或是测量的方式不同。目前 JMH 共有四种模式：</p>
-
 <ul>
 <li><code>Throughput</code>: 整体吞吐量，例如“1秒内可以执行多少次调用”。</li>
 <li><code>AverageTime</code>: 调用的平均时间，例如“每次调用平均耗时xxx毫秒”。</li>
@@ -340,142 +321,94 @@ if (!doNotTrack) {
 <li><code>SingleShotTime</code>: 以上模式都是默认一次 iteration 是 1s，唯有 <code>SingleShotTime</code> 是<strong>只运行一次</strong>。往往同时把 warmup 次数设为0，用于测试冷启动时的性能。</li>
 <li><code>All</code>: 顾名思义，所有模式，这个在内部测试中常用</li>
 </ul>
-
 <h3 id="iteration">Iteration</h3>
-
 <p><em>Iteration</em> 是 JMH 进行测试的最小单位，包含一组invocations。在大部分模式下，一次 <em>iteration</em> 代表的是一秒，JMH 会在这一秒内不断调用需要 benchmark 的方法，然后根据模式对其采样，计算吞吐量，计算平均执行时间等。</p>
-
 <h3 id="invocation">Invocation</h3>
-
 <p>一次benchmark方法调用</p>
-
 <h3 id="operation">Operation</h3>
-
 <p>benchmark方法中，被测量操作的执行。如果被测试的操作在benchmark方法中循环执行，可以使用<code>@OperationsPerInvocation</code>表明循环次数，使测试结果为单次operation的性能。</p>
-
 <h3 id="warmup">Warmup</h3>
-
 <p><em>Warmup</em> 是指在实际进行 benchmark 前先进行预热的行为。为什么需要预热？因为 JVM 的 JIT 机制的存在，如果某个函数被调用多次之后，JVM 会尝试将其编译成为机器码从而提高执行速度。所以为了让 benchmark 的结果更加接近真实情况就需要进行预热。</p>
-
 <h2 id="jmh相关注解">JMH相关注解</h2>
-
 <p>现在来解释一下上面例子中使用到的注解，其实很多注解的意义完全可以望文生义 :)</p>
-
 <h3 id="benchmark">@Benchmark</h3>
-
 <p>表示该方法是需要进行 benchmark 的对象，用法和 JUnit 的 <code>@Test</code> 类似。</p>
-
 <h3 id="warmup-1">@Warmup</h3>
-
 <p>@Warmup用来配置预热的内容，可用于类或者方法上，越靠近执行方法的地方越准确。一般配置warmup的参数有这些：</p>
-
 <ul>
 <li>iterations：预热的次数。</li>
 <li>time：每次预热的时间。</li>
 <li>timeUnit：时间单位，默认是s。</li>
 <li>batchSize：批处理大小，每次操作调用几次方法。</li>
 </ul>
-
 <h3 id="measurement">@Measurement</h3>
-
 <p>用来控制实际执行的内容，配置的选项和warmup一样。</p>
-
 <h3 id="benchmarkmode">@BenchmarkMode</h3>
-
 <p><code>Mode</code> 如之前所说，表示 JMH 进行 Benchmark 时所使用的模式。</p>
-
 <p>@BenchmarkMode主要是表示测量的纬度，有以下这些纬度可供选择：</p>
-
 <ul>
 <li>Mode.Throughput 吞吐量纬度</li>
 <li>Mode.AverageTime 平均时间</li>
 <li>Mode.SampleTime 抽样检测</li>
 <li>Mode.SingleShotTime 检测一次调用</li>
 </ul>
-
 <h3 id="state">@State</h3>
-
 <p><code>State</code> 用于声明某个类是一个“状态”，然后接受一个 <code>Scope</code> 参数用来表示该状态的共享范围。因为很多 benchmark 会需要一些表示状态的类，JMH 允许你把这些类以依赖注入的方式注入到 benchmark 函数里。<code>Scope</code> 主要分为两种。</p>
-
 <ul>
 <li>Scope.Benchmark 该状态的意思是会在所有的Benchmark的工作线程中共享变量内容。</li>
 <li>Scope.Group 同一个Group的线程可以享有同样的变量</li>
 <li>Scope.Thread 每隔线程都享有一份变量的副本，线程之间对于变量的修改不会相互影响。</li>
 </ul>
-
 <p>关于<code>State</code>的用法，官方的 code sample 里有比较好的<a href="http://hg.openjdk.java.net/code-tools/jmh/file/cb9aa824b55a/jmh-samples/src/main/java/org/openjdk/jmh/samples/JMHSample_03_States.java">例子</a>。</p>
-
 <h3 id="outputtimeunit">@OutputTimeUnit</h3>
-
 <p>@OutputTimeUnit代表测量的单位，比如秒级别，毫秒级别，微妙级别等等。一般都使用微妙和毫秒级别的稍微多一点。该注解可以用在方法级别和类级别，当用在类级别的时候会被更加精确的方法级别的注解覆盖，原则就是离目标更近的注解更容易生效。</p>
-
 <h3 id="fork">@Fork</h3>
-
 <p>用于配置JMH运行时fork的Java进程。使用单独的进程可以避免测试结果之间互相影响。</p>
-
 <ul>
 <li>value： fork的进程数量</li>
 <li>warmups： 每个进程执行Warmup的轮数</li>
 <li>jvm：进程使用的JVM</li>
 <li>jvm参数通过以下三个属性，按照从上到下的顺序拼接：
-
 <ul>
 <li>jvmArgsPrepend</li>
 <li>jvmArgs</li>
 <li>jvmArgsAppend</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p>默认fork的进程数配置在<code>org.openjdk.jmh.runner.Defaults</code>类中：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">/**
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/**
  * Number of forks in which we measure the workload.
  */
-public static final int MEASUREMENT_FORKS = 5;</pre></div>
-<h3 id="param">@Param</h3>
-
+public static final int MEASUREMENT_FORKS = 5;
+</code></pre></div><h3 id="param">@Param</h3>
 <p>在很多情况下，我们需要测试不同的参数的不同结果，但是测试的了逻辑又都是一样的，因此如果我们编写镀铬benchmark的话会造成逻辑的冗余，幸好JMH提供了@Param参数来帮助我们处理这个事情，被@Param注解标示的参数组会一次被benchmark消费到。</p>
-
 <h3 id="threads">@Threads</h3>
-
 <p>测试线程的数量，可以配置在方法或者类上，代表执行测试的线程数量。</p>
-
 <h3 id="setup">@Setup</h3>
-
 <p>@Setup 方法注解，会在执行 benchmark 之前被执行，正如其名，主要用于初始化</p>
-
 <h3 id="teardown">TearDown</h3>
-
 <p>@TearDown 方法注解，与@Setup 相对的，会在所有 benchmark 执行结束以后执行，主要用于资源的回收等。</p>
-
 <h2 id="启动选项">启动选项</h2>
-
 <p>解释完了注解，再来看看 JMH 在启动前设置的参数。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Options <span style="color:#50fa7b">opt</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> OptionsBuilder()
-        .<span style="color:#50fa7b">include</span>(FirstBenchmark.<span style="color:#50fa7b">class</span>.<span style="color:#50fa7b">getSimpleName</span>())
-        .<span style="color:#50fa7b">forks</span>(1)
-        .<span style="color:#50fa7b">warmupIterations</span>(5)
-        .<span style="color:#50fa7b">measurementIterations</span>(5)
-        .<span style="color:#50fa7b">build</span>();
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Options opt <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> OptionsBuilder<span style="color:#ff79c6">()</span>
+        <span style="color:#ff79c6">.</span><span style="color:#50fa7b">include</span><span style="color:#ff79c6">(</span>FirstBenchmark<span style="color:#ff79c6">.</span><span style="color:#50fa7b">class</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">getSimpleName</span><span style="color:#ff79c6">())</span>
+        <span style="color:#ff79c6">.</span><span style="color:#50fa7b">forks</span><span style="color:#ff79c6">(</span>1<span style="color:#ff79c6">)</span>
+        <span style="color:#ff79c6">.</span><span style="color:#50fa7b">warmupIterations</span><span style="color:#ff79c6">(</span>5<span style="color:#ff79c6">)</span>
+        <span style="color:#ff79c6">.</span><span style="color:#50fa7b">measurementIterations</span><span style="color:#ff79c6">(</span>5<span style="color:#ff79c6">)</span>
+        <span style="color:#ff79c6">.</span><span style="color:#50fa7b">build</span><span style="color:#ff79c6">();</span>
 
-<span style="color:#ff79c6">new</span> Runner(opt).<span style="color:#50fa7b">run</span>();</code></pre></div>
-<h3 id="include">include</h3>
-
+<span style="color:#ff79c6">new</span> Runner<span style="color:#ff79c6">(</span>opt<span style="color:#ff79c6">).</span><span style="color:#50fa7b">run</span><span style="color:#ff79c6">();</span>
+</code></pre></div><h3 id="include">include</h3>
 <p>benchmark 所在的类的名字，注意这里是<strong>使用正则表达式对所有类进行匹配</strong>的。</p>
-
 <h3 id="fork-1">fork</h3>
-
 <p>进行 fork 的次数。如果 fork 数是2的话，则 JMH 会 fork 出两个进程来进行测试。</p>
-
 <h3 id="warmupiterations">warmupIterations</h3>
-
 <p>预热的迭代次数。</p>
-
 <h3 id="measurementiterations">measurementIterations</h3>
-
 <p>实际测量的迭代次数。</p>
-
 <h2 id="运行结果">运行结果</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&gt; Task :JMHSample_03_States.main()
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&gt; Task :JMHSample_03_States.main()
 # JMH version: 1.23
 # VM version: JDK 1.8.0_181, Java HotSpot(TM) 64-Bit Server VM, 25.181-b13
 # VM invoker: /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/bin/java
@@ -548,17 +481,12 @@ Do not assume the numbers tell you what you want them to tell.
 
 Benchmark                             Mode  Cnt          Score           Error  Units
 JMHSample_03_States.measureShared    thrpt    5   40373553.016 ±    966832.718  ops/s
-JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154  ops/s</pre></div>
-<p>启动参数可以配置，但是也有默认值，可以参考类：<code>org.openjdk.jmh.runner.Defaults</code></p>
-
+JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154  ops/s
+</code></pre></div><p>启动参数可以配置，但是也有默认值，可以参考类：<code>org.openjdk.jmh.runner.Defaults</code></p>
 <h2 id="配置的优先级">配置的优先级</h2>
-
 <p>OptionsBuilder &gt; 方法注解 &gt; 类注解</p>
-
 <h2 id="java对象mapping框架性能对比">Java对象Mapping框架性能对比</h2>
-
 <p>Mapping框架使用的版本，一下都是基于2020-03-23最新的版本：</p>
-
 <table>
 <thead>
 <tr>
@@ -567,26 +495,22 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
 <th>发布时间</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>dozer</td>
 <td>5.5.1</td>
 <td>2014-04</td>
 </tr>
-
 <tr>
 <td>orika</td>
 <td>1.5.4</td>
 <td>2019-02</td>
 </tr>
-
 <tr>
 <td>mapstruct</td>
 <td>1.3.1.Final</td>
 <td>2019-09</td>
 </tr>
-
 <tr>
 <td>modelmapper</td>
 <td>2.3.6</td>
@@ -594,19 +518,12 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
 </tr>
 </tbody>
 </table>
-
 <p>机器：</p>
-
 <p>MacBook Pro (15-inch, 2018)</p>
-
 <p>下面进行两组测试，一组简单代码测试，一组真实项目测试。</p>
-
-<p>代码：<a href="https://github.com/amuguelove/java-mapping-frameworks-benchmark">https://github.com/amuguelove/java-mapping-frameworks-benchmark</a></p>
-
+<p>代码：https://github.com/amuguelove/java-mapping-frameworks-benchmark</p>
 <h2 id="简单测试">简单测试</h2>
-
 <h3 id="throughput">Throughput：</h3>
-
 <table>
 <thead>
 <tr>
@@ -614,32 +531,26 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
 <th>Throughput（operations per milliseconds）</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>dozer</td>
 <td>796</td>
 </tr>
-
 <tr>
 <td>mapstruct</td>
 <td>184902</td>
 </tr>
-
 <tr>
 <td>modelmapper</td>
 <td>1171</td>
 </tr>
-
 <tr>
 <td>orika</td>
 <td>2428</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="averagetime">AverageTime:</h3>
-
 <table>
 <thead>
 <tr>
@@ -647,32 +558,26 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
 <th>AverageTime（milliseconds per operation）</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>dozer</td>
 <td>0.001</td>
 </tr>
-
 <tr>
 <td>mapstruct</td>
 <td>10⁻⁵</td>
 </tr>
-
 <tr>
 <td>modelmapper</td>
 <td>0.001</td>
 </tr>
-
 <tr>
 <td>orika</td>
 <td>10⁻³</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="singleshottime">SingleShotTime</h3>
-
 <table>
 <thead>
 <tr>
@@ -680,32 +585,26 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
 <th>SingleShotTime（milliseconds per operation）</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>dozer</td>
 <td>10.871</td>
 </tr>
-
 <tr>
 <td>mapstruct</td>
 <td>0.418</td>
 </tr>
-
 <tr>
 <td>modelmapper</td>
 <td>5.393</td>
 </tr>
-
 <tr>
 <td>orika</td>
 <td>4.362</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="sampletime-ms-per-operation">SampleTime（ms per operation）</h3>
-
+<h3 id="sampletimems-per-operation">SampleTime（ms per operation）</h3>
 <table>
 <thead>
 <tr>
@@ -715,7 +614,6 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
 <th>P1.00</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>dozer</td>
@@ -723,21 +621,18 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
 <td>0.005</td>
 <td>1.288</td>
 </tr>
-
 <tr>
 <td>mapstruct</td>
 <td>10⁻⁴</td>
 <td>10⁻⁴</td>
 <td>1.270</td>
 </tr>
-
 <tr>
 <td>modelmapper</td>
 <td>0.001</td>
 <td>0.003</td>
 <td>1.239</td>
 </tr>
-
 <tr>
 <td>orika</td>
 <td>0.001</td>
@@ -746,11 +641,8 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
 </tr>
 </tbody>
 </table>
-
 <h2 id="真实项目测试">真实项目测试：</h2>
-
 <h3 id="throughput-1">Throughput：</h3>
-
 <table>
 <thead>
 <tr>
@@ -758,32 +650,26 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
 <th>Throughput（operations per milliseconds）</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>dozer</td>
 <td>13</td>
 </tr>
-
 <tr>
 <td>mapstruct</td>
 <td>6587</td>
 </tr>
-
 <tr>
 <td>modelmapper</td>
 <td>13</td>
 </tr>
-
 <tr>
 <td>orika</td>
 <td>355</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="averagetime-1">AverageTime:</h3>
-
 <table>
 <thead>
 <tr>
@@ -791,32 +677,26 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
 <th>AverageTime（milliseconds per operation）</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>dozer</td>
 <td>0.068</td>
 </tr>
-
 <tr>
 <td>mapstruct</td>
 <td>10⁻⁴</td>
 </tr>
-
 <tr>
 <td>modelmapper</td>
 <td>0.060</td>
 </tr>
-
 <tr>
 <td>orika</td>
 <td>0.003</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="singleshottime-1">SingleShotTime</h3>
-
 <table>
 <thead>
 <tr>
@@ -824,32 +704,26 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
 <th>SingleShotTime（milliseconds per operation）</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>dozer</td>
 <td>20.794</td>
 </tr>
-
 <tr>
 <td>mapstruct</td>
 <td>0.769</td>
 </tr>
-
 <tr>
 <td>modelmapper</td>
 <td>20.267</td>
 </tr>
-
 <tr>
 <td>orika</td>
 <td>31.194</td>
 </tr>
 </tbody>
 </table>
-
-<h3 id="sampletime-ms-per-operation-1">SampleTime（ms per operation）</h3>
-
+<h3 id="sampletimems-per-operation-1">SampleTime（ms per operation）</h3>
 <table>
 <thead>
 <tr>
@@ -859,7 +733,6 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
 <th>P1.00</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>dozer</td>
@@ -867,21 +740,18 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
 <td>0.182</td>
 <td>2.302</td>
 </tr>
-
 <tr>
 <td>mapstruct</td>
 <td>10⁻⁴</td>
 <td>0.002</td>
 <td>2.101</td>
 </tr>
-
 <tr>
 <td>modelmapper</td>
 <td>0.053</td>
 <td>0.169</td>
 <td>2.245</td>
 </tr>
-
 <tr>
 <td>orika</td>
 <td>0.002</td>
@@ -890,7 +760,6 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
 </tr>
 </tbody>
 </table>
-
 <p><strong>综上：mapstruct的性能要好于其他的mapping框架。</strong></p>
 
           
@@ -1035,7 +904,7 @@ JMHSample_03_States.measureUnshared  thrpt    5  584788851.881 ± 114160199.154 
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

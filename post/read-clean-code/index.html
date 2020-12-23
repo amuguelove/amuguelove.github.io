@@ -10,21 +10,15 @@
   <meta property="og:title" content="代码整洁之道" />
   <meta name="twitter:title" content="代码整洁之道" />
   
-  <meta name="description" content="最近因为一些契机，花了2到3天看完《代码简洁之道》这本书，英文名为：Clean Code。
-
+  <meta name="description" content="最近因为一些契机，花了2到3天看完**《代码简洁之道》**这本书，英文名为：Clean Code。
 开篇就有有这么简单一句话：“阅读这本书有两种原因：第一，你是个程序员；第二，你想成为更好的程序员”。是的，没错，我想成为更好的程序员。所以我决定好好阅读下这本书。
-
 回想2019年，确实是我最忙碌的一年，做过几个项目，其中部分涉及到架构，但是大部分时间都关注在如何实现业务代码，没有更好的关注到代码本身的细节。虽然经常了解到关于整洁代码相关的知识，在工作中也或多或少的用到，比如每天的code review以及TDD开发等等。但是确实不够系统，大多时间忙于完成业务，通过阅读本书，以及其中大量简洁代码的指南，受益匪浅。">
-  <meta property="og:description" content="最近因为一些契机，花了2到3天看完《代码简洁之道》这本书，英文名为：Clean Code。
-
+  <meta property="og:description" content="最近因为一些契机，花了2到3天看完**《代码简洁之道》**这本书，英文名为：Clean Code。
 开篇就有有这么简单一句话：“阅读这本书有两种原因：第一，你是个程序员；第二，你想成为更好的程序员”。是的，没错，我想成为更好的程序员。所以我决定好好阅读下这本书。
-
 回想2019年，确实是我最忙碌的一年，做过几个项目，其中部分涉及到架构，但是大部分时间都关注在如何实现业务代码，没有更好的关注到代码本身的细节。虽然经常了解到关于整洁代码相关的知识，在工作中也或多或少的用到，比如每天的code review以及TDD开发等等。但是确实不够系统，大多时间忙于完成业务，通过阅读本书，以及其中大量简洁代码的指南，受益匪浅。">
-  <meta name="twitter:description" content="最近因为一些契机，花了2到3天看完《代码简洁之道》这本书，英文名为：Clean Code。
-
+  <meta name="twitter:description" content="最近因为一些契机，花了2到3天看完**《代码简洁之道》**这本书，英文名为：Clean Code。
 开篇就有有这么简单一句话：“阅读这本书有两种原因：第一，你是个程序员；第二，你想成为更好的程序员”。是的，没错，我想成为更好的程序员。所以我决定好好阅读下这本书。
-
-回想2019年，确实是我最忙碌的一年，做过几个项目，其中部分涉及到架构，但是大部分时间都关注在如何实现业务代码，没有更好的关注到代码本身的细 …">
+回想2019年，确实是我最忙碌的一年，做过几个项目，其中部分涉及到架构，但是大部分时间都关注在如何实现业务代码，没有更好的关注到代码本身 …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
@@ -34,7 +28,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/read-clean-code/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -45,8 +39,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -181,7 +174,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 April 3, 2020
+    
   
   
 </span>
@@ -227,24 +220,22 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li><a href="#简洁代码">简洁代码</a>
-<ul>
-<li><a href="#什么才是简洁的代码">什么才是简洁的代码？</a></li>
-<li><a href="#如何写出简洁的代码">如何写出简洁的代码</a>
-<ul>
-<li><a href="#有意义的命名">有意义的命名</a></li>
-<li><a href="#函数">函数</a></li>
-<li><a href="#注释">注释</a></li>
-<li><a href="#格式">格式</a></li>
-<li><a href="#对象和数据结构">对象和数据结构</a></li>
-<li><a href="#错误处理">错误处理</a></li>
-<li><a href="#边界">边界</a></li>
-<li><a href="#单元测试">单元测试</a></li>
-<li><a href="#类">类</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#什么才是简洁的代码">什么才是简洁的代码？</a></li>
+    <li><a href="#如何写出简洁的代码">如何写出简洁的代码</a>
+      <ul>
+        <li><a href="#有意义的命名">有意义的命名</a></li>
+        <li><a href="#函数">函数</a></li>
+        <li><a href="#注释">注释</a></li>
+        <li><a href="#格式">格式</a></li>
+        <li><a href="#对象和数据结构">对象和数据结构</a></li>
+        <li><a href="#错误处理">错误处理</a></li>
+        <li><a href="#边界">边界</a></li>
+        <li><a href="#单元测试">单元测试</a></li>
+        <li><a href="#类">类</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </aside>
 
@@ -262,67 +253,44 @@ if (!doNotTrack) {
           
           
 
-          <p>最近因为一些契机，花了2到3天看完<strong>《代码简洁之道》</strong>这本书，英文名为：<code>Clean Code</code>。</p>
-
+          <p>最近因为一些契机，花了2到3天看完**《代码简洁之道》**这本书，英文名为：<code>Clean Code</code>。</p>
 <p>开篇就有有这么简单一句话：“阅读这本书有两种原因：第一，你是个程序员；第二，你想成为更好的程序员”。是的，没错，我想成为更好的程序员。所以我决定好好阅读下这本书。</p>
-
 <p>回想2019年，确实是我最忙碌的一年，做过几个项目，其中部分涉及到架构，但是大部分时间都关注在如何实现业务代码，没有更好的关注到代码本身的细节。虽然经常了解到关于整洁代码相关的知识，在工作中也或多或少的用到，比如每天的<code>code review</code>以及<code>TDD</code>开发等等。但是确实不够系统，大多时间忙于完成业务，通过阅读本书，以及其中大量简洁代码的指南，受益匪浅。</p>
-
 <h1 id="简洁代码">简洁代码</h1>
-
 <p>那么到底<code>“什么才是简洁的代码？”</code>   <code>“我怎么才能写出简洁的代码呢？”</code></p>
-
 <h2 id="什么才是简洁的代码">什么才是简洁的代码？</h2>
-
 <p>有多少程序员，就有多少定义。</p>
-
 <p>C++之父- <strong>Bjarne Stroustrup</strong>：</p>
-
 <blockquote>
 <p>我喜欢优雅和高效的代码。代码逻辑应当直截了当，交缺陷难以隐藏；尽量较少依赖关系，使之便于维护；一句某种分层战略完善错误处理代码；性能调至最优，省得引诱别人做没规矩的优化，搞出一堆混乱来。<code>整洁的代码只做好一件事</code>。</p>
 </blockquote>
-
 <p>软件设计的许多原则最终都会归结为最后这句警语。</p>
-
 <p><strong>Grady Booch</strong>, Object Oriented Analysis and Design with Applications：</p>
-
 <blockquote>
 <p>简洁的代码简单直接，<code>整洁的代码如同优美的散文</code>。整洁的代码从不隐藏设计者的意图，充满了干净利落的抽象和直接了当的控制语句。</p>
 </blockquote>
-
 <p>Eclipse战略教父 - <strong>Dave Thomas</strong>：</p>
-
 <blockquote>
 <p>整洁的代码应可由作者之外的开发者阅读和增补。它应当有单元测试和验收测试。它使用有意义的命名。它只提供一种而非多种做一件事的途径。它只有尽量少的依赖关系，而且要明确地定义和提供清晰、尽量少的API。代码应通过其字面表达含义，因为不同的语言导致并非所有必须信息均可通过代码自身清晰表达。</p>
 </blockquote>
-
 <p><strong>Michael Feathers</strong>, Working Effectively with Legacy Code:</p>
-
 <blockquote>
 <p>我可以列出我留意到的整洁代码的所有特点，但其中有一条根本性的。整洁的代码总是看起来像是某位特别在意它的人写的。几乎没有改进的余地。代码作者什么都想到了，如果你企图改进它，总会回到原点，赞叹某人留给你的代码&ndash;全心投入的某人留下的代码。</p>
 </blockquote>
-
 <p><strong>Ron Jeffries</strong>, Extreme Programming installed：</p>
-
 <blockquote>
 <p>简单的代码，依其重要顺序：</p>
-
 <ul>
 <li>能通过所有测试</li>
 <li>没有重复代码</li>
 <li>体现系统中的全部设计理念</li>
 <li>包括尽量少的实体，比如类、方法、函数等。</li>
 </ul>
-
 <p>减少重复代码，提高表达力，提早构建简单抽象，这就是我写简洁代码的方法。</p>
 </blockquote>
-
 <p>不要重复代码，只做一件事，表达力，小规模抽象。</p>
-
 <h2 id="如何写出简洁的代码">如何写出简洁的代码</h2>
-
 <h3 id="有意义的命名">有意义的命名</h3>
-
 <ul>
 <li>不要名副其实：例如参数名称太模糊</li>
 <li>避免误导：例如变量使用UNIX平台的专有名词</li>
@@ -339,9 +307,7 @@ if (!doNotTrack) {
 <li>使用解决方案领域名称</li>
 <li>添加有意义的语境，不要添加没用的语境</li>
 </ul>
-
 <h3 id="函数">函数</h3>
-
 <ul>
 <li>短小</li>
 <li>只做一件事</li>
@@ -363,42 +329,30 @@ if (!doNotTrack) {
 <li>抽离Try/Catch代码块</li>
 <li>别重复自己</li>
 </ul>
-
 <h3 id="注释">注释</h3>
-
 <p><strong>如果代码有足够的表达力，就不那么需要注释&mdash;或许根本不需要。</strong></p>
-
 <ul>
 <li>注释不能美化糟糕的代码</li>
 <li>用代码来阐述</li>
 <li>好的注释：法律信息，提供信息的注释，对意图的解释，阐释，警示，TODO注释，放大，公共API中的Javadoc</li>
 <li>坏注释：喃喃自语，多余的注释，误导性注释，循规式注释，日志式注释，废话注释，能用函数名或者变量名就别用注释，位置标记，括号后面的注释，归属和签名，注释掉的代码，HTML注释，非本地信息，信息过多，不明显的联系</li>
 </ul>
-
 <h3 id="格式">格式</h3>
-
 <p>保持良好的代码格式，选用一套管理代码格式的简单规则，贯彻它。如果在团队中，那么需要统一采用一套简单的格式规则。</p>
-
 <ul>
 <li>垂直格式：行数不宜过多；概念间垂直方向上的区膈；垂直方向上的靠近；垂直距离（例如相关函数放在一起）；垂直顺序（自上而下展示函数调用依赖顺序）</li>
 <li>横向格式：代码不要太宽（不要超过120个字）；水平方向上的区隔和靠近（如空格的使用，乘法因子之间不需要加空格）；水平对齐；缩进；空范围（while或者if语句的语句体为空）</li>
 </ul>
-
 <h3 id="对象和数据结构">对象和数据结构</h3>
-
 <p>对象暴露欣慰，隐藏数据。便于添加新对象类型而无需修改既有行为，同时也难以在既有对象中添加新行为。数据结构暴露数据，没有明显的行为。便于向既有数据结构添加新行为，同时也难以想既有函数添加新数据结构。</p>
-
 <ul>
 <li>数据、对象的反对称性（数据结构暴露其数据，没有提供有意义的函数；对象把数据隐藏于抽象之后，暴露操作数据的函数）</li>
 <li>得墨忒耳定律：模块不应了解它所操作对象的内部情形</li>
 <li>数据转送对象DTO：精炼的数据结构，是一个只有变量，没有函数的对象</li>
 <li>Active Record：特殊的DTO，会拥有类似save，find方法，一般都是对数据库表的直接翻译，不应该有业务规则方法</li>
 </ul>
-
 <h3 id="错误处理">错误处理</h3>
-
 <p>简洁的代码是可读的，但也要强固。可读和强固并不冲突。如果将错误处理隔离看待，独立于逻辑之外，就能写出强固而整洁的代码。</p>
-
 <ul>
 <li>使用异常而非返回码</li>
 <li>先写Try-Catch-Finally语句</li>
@@ -409,62 +363,57 @@ if (!doNotTrack) {
 <li>别返回null值</li>
 <li>别传递null值</li>
 </ul>
-
 <h3 id="边界">边界</h3>
-
 <p>将外来代码干净利落地整合进自己的系统，需要保持边界的整洁。</p>
-
 <ul>
 <li>隐藏边界上的接口</li>
 <li>将已知和未知分隔开来</li>
 <li>边界上的代码需要清晰的分隔和定义了期望的测试</li>
 </ul>
-
 <h3 id="单元测试">单元测试</h3>
-
 <p>TDD三定律：</p>
-
 <blockquote>
 <ul>
-<li><p>定律一 在编写不能通过的单元测试前，不可编写生产代码。</p></li>
-
-<li><p>定律二 只可编写刚好无法通过的单元测试，不能编译也算不过。</p></li>
-
-<li><p>定律三 只可编写刚好足以通过当前失败测试的生产代码。</p></li>
+<li>
+<p>定律一	在编写不能通过的单元测试前，不可编写生产代码。</p>
+</li>
+<li>
+<p>定律二	只可编写刚好无法通过的单元测试，不能编译也算不过。</p>
+</li>
+<li>
+<p>定律三	只可编写刚好足以通过当前失败测试的生产代码。</p>
+</li>
 </ul>
 </blockquote>
-
 <p>我们编写测试刚好不通过时，说明我们需要编写生产代码来实现某些功能，这时我们就要着手去编写代码。</p>
-
 <p>整洁测试的要素：<strong>可读性，可读性，可读性</strong>。重要事说三遍。</p>
-
 <p>每个测试一个断言，每个测试一个概念。</p>
-
 <p>测试的5条（FIRST）准则：</p>
-
 <blockquote>
 <ul>
-<li><p>快速（Fast）    测试应该够快快。</p></li>
-
-<li><p>独立（Independent） 测试应该相互独立。</p></li>
-
-<li><p>可重复（Repeatable） 测试应当在任何环境下重复通过。</p></li>
-
-<li><p>自我验证（Self-Validating） 测试应该有布尔值输出。</p></li>
-
-<li><p>及时（Timely） 测试应及时编写。</p></li>
+<li>
+<p>快速（Fast）	测试应该够快快。</p>
+</li>
+<li>
+<p>独立（Independent） 测试应该相互独立。</p>
+</li>
+<li>
+<p>可重复（Repeatable） 测试应当在任何环境下重复通过。</p>
+</li>
+<li>
+<p>自我验证（Self-Validating） 测试应该有布尔值输出。</p>
+</li>
+<li>
+<p>及时（Timely） 测试应及时编写。</p>
+</li>
 </ul>
 </blockquote>
-
 <h3 id="类">类</h3>
-
 <ul>
 <li>类应该短小（单一权责原则；内聚；保持内聚就会得到许多短小的类）</li>
 <li>为了修改而组织（SOLID原则）</li>
 </ul>
-
 <p>到这为止把，这里只是列出比较基本的，详情可以阅读书籍。</p>
-
 <blockquote>
 <p><strong>纸上得来终觉浅，绝知此事要躬行。</strong> ——出自《冬夜读书示子聿》</p>
 </blockquote>
@@ -618,7 +567,7 @@ if (!doNotTrack) {
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

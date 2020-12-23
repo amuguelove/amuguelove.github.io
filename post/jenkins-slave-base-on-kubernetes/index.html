@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/jenkins-slave-base-on-kubernetes/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,8 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -169,7 +168,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 March 27, 2020
+    
   
   
 </span>
@@ -206,6 +205,8 @@ if (!doNotTrack) {
               
                   <a href="http://flygopher.top/tags/devops/">devops</a> &nbsp;
               
+                  <a href="http://flygopher.top/tags/ci/">CI</a> &nbsp;
+              
             </h5>
             
         </div>
@@ -215,15 +216,12 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#安装jenkins-master">安装Jenkins Master</a></li>
-<li><a href="#配置jenknis-slave">配置Jenknis Slave</a></li>
-<li><a href="#测试">测试</a></li>
-<li><a href="#参考">参考</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#安装jenkins-master">安装Jenkins Master</a></li>
+    <li><a href="#配置jenknis-slave">配置Jenknis Slave</a></li>
+    <li><a href="#测试">测试</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
 </nav>
 </aside>
 
@@ -242,11 +240,9 @@ if (!doNotTrack) {
           
 
           <p>搭建<code>CI/CD</code>可以使用的工具不少，例如：<code>Jenkins</code>、<code>Gitlab CI</code>等等，这里会使用大家最新熟悉的<code>Jenkins</code>来做<code>CI/CD</code>的工具。不少人都是基于虚拟机来搭建的，基于<code>Kubernetes</code>搭建的Jenkins Slave会有什么效果呢？</p>
-
 <h2 id="安装jenkins-master">安装Jenkins Master</h2>
-
 <p>直接进入正题，<strong>新建一个Deployment:</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">---
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -293,11 +289,10 @@ spec:
           emptyDir: {}
         - name: docker-socket
           hostPath:
-            path: /var/run/docker.sock</pre></div>
-<p>注意：<code>ccr.ccs.tencentyun.com/my-registry/jenkins:lts-k8s</code>是我基于jenkins/jenkins:lts镜像定制的，公开的镜像，内置了比较主流的插件，使用<code>admin/password</code>就可以登录。</p>
-
+            path: /var/run/docker.sock
+</code></pre></div><p>注意：<code>ccr.ccs.tencentyun.com/my-registry/jenkins:lts-k8s</code>是我基于jenkins/jenkins:lts镜像定制的，公开的镜像，内置了比较主流的插件，使用<code>admin/password</code>就可以登录。</p>
 <p><strong>新建一个Service：</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: v1
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: v1
 kind: Service
 metadata:
   name: jenkins
@@ -314,11 +309,10 @@ spec:
     targetPort: 8080
   - name: agent
     port: 50000
-    targetPort: 50000</pre></div>
-<p>注意：我这里使用的是<code>LoadBalancer</code>，简单方便的话也可以使用<code>NodePort</code>的形式来暴露Jenkins的web服务，需要指定固定的node端口。这里还需要暴露一个agent端口，主要用于Jenkins的master和slave之间的通信。我这里使用的腾讯云的<code>TKE</code>服务，<code>LoadBalancer</code>会自动分别一个外网IP地址。</p>
-
+    targetPort: 50000
+</code></pre></div><p>注意：我这里使用的是<code>LoadBalancer</code>，简单方便的话也可以使用<code>NodePort</code>的形式来暴露Jenkins的web服务，需要指定固定的node端口。这里还需要暴露一个agent端口，主要用于Jenkins的master和slave之间的通信。我这里使用的腾讯云的<code>TKE</code>服务，<code>LoadBalancer</code>会自动分别一个外网IP地址。</p>
 <p><strong>新建角色权限：</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">apiVersion: v1
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: jenkins
@@ -362,71 +356,46 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: jenkins
-    namespace: default</pre></div>
-<p>之后执行安装命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">kubectl apply -f .</pre></div>
-<p>等待服务的启动，可以通过<code>kubectl get svc</code>获取到<code>jenkins</code> service的外网IP地址，就可以访问Jenkins web服务了。</p>
-
+    namespace: default
+</code></pre></div><p>之后执行安装命令：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubectl apply -f .
+</code></pre></div><p>等待服务的启动，可以通过<code>kubectl get svc</code>获取到<code>jenkins</code> service的外网IP地址，就可以访问Jenkins web服务了。</p>
 <h2 id="配置jenknis-slave">配置Jenknis Slave</h2>
-
 <p>接下来我们就需要来配置 Jenkins，让它能够动态的生成 Slave 的 Pod。</p>
-
 <p><strong>第一步：安装Kubernetes Plugin</strong>，点击 Manage Jenkins -&gt; Manage Plugins -&gt; Available -&gt; Kubernetes plugin 勾选安装即可。</p>
-
-<p><img src="http://flygopher.top/img/post/jenkins-slave-step1.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/jenkins-slave-step1.png" alt=""></p>
 <p><strong>第二步：填写 Kubernetes Cloud Details</strong>，点击 Manage Jenkins —&gt; Configure System —&gt; (拖到最下方)Add a new cloud —&gt; 选择 Kubernetes</p>
-
-<p><img src="http://flygopher.top/img/post/jenkins-slave-step2.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/jenkins-slave-step2.png" alt=""></p>
 <p>这里需要点击<code>Test Connection</code>去验证是否可以连接你的<code>Kubernetes</code>集群。</p>
-
 <p><strong>第三步：填写Pod Template和Container Template</strong></p>
-
-<p><img src="http://flygopher.top/img/post/jenkins-slave-step3.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/jenkins-slave-step3.png" alt=""></p>
 <p>注意这里的名称最好都一致，例如我这边都使用<code>jnlp-agent</code>，之前因为名字不同导致无法完美运行。</p>
-
 <p><strong>第四步：添加卷信息</strong></p>
-
-<p><img src="http://flygopher.top/img/post/jenkins-slave-step4.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/jenkins-slave-step4.png" alt=""></p>
 <p>可以看到这里分别挂载了主机的docker，kubectl等工具。如果碰到没有权限执行<code>/var/run/docker.sock</code>，因为</p>
-
 <p>在腾讯云TKE 集群中的每个 node 节点系统里都有一个 docker.sock 文件，slave pod 在执行 docker build 时将会连接该文件。在此之前，需逐个登录到每个节点上，依次执行以下命令对 docker build 进行授权：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">chmod 666 /var/run/docker.sock</pre></div>
-<p><strong>第五步：配置权限</strong></p>
-
-<p><img src="http://flygopher.top/img/post/jenkins-slave-step5.png" alt="" /></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">chmod 666 /var/run/docker.sock
+</code></pre></div><p><strong>第五步：配置权限</strong></p>
+<p><img src="http://flygopher.top/img/post/jenkins-slave-step5.png" alt=""></p>
 <p>这里填写<code>jenkins</code>，是我们在jenkins master中创建的一个Service Account。如果不填的话，会导致执行<code>kubectl</code>命令会出现权限不足。</p>
-
 <h2 id="测试">测试</h2>
-
 <p>新建一个Freestyle的Item：</p>
-
-<p><img src="http://flygopher.top/img/post/jenkins-slave-test1.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/jenkins-slave-test1.png" alt=""></p>
 <p>填写在Container Template中的Label：</p>
-
-<p><img src="http://flygopher.top/img/post/jenkins-slave-test2.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/jenkins-slave-test2.png" alt=""></p>
 <p>添加一个Build Shell：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">echo &#39;=== 测试动态jenkins slave === &#39;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">echo &#39;=== 测试动态jenkins slave === &#39;
 
 echo &#39;=== 打印docker信息 ===&#39;
 docker info
 
 echo &#39;=== 获取pods ===&#39;
-kubectl get pods</pre></div>
-<p><img src="http://flygopher.top/img/post/jenkins-slave-test3.png" alt="" /></p>
-
+kubectl get pods
+</code></pre></div><p><img src="http://flygopher.top/img/post/jenkins-slave-test3.png" alt=""></p>
 <p>在Jenkins web中点击立即构建<code>Build Now</code>，在控制观察kuberntes Pod的状态：</p>
-
-<p><img src="http://flygopher.top/img/post/jenkins-slave-test4.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/jenkins-slave-test4.png" alt=""></p>
 <p>执行完毕后，控制台会有如下输出：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Building remotely on jnlp-agent-l58sk (jnlp-agent) in workspace /home/jenkins/agent/workspace/jnlp-demo
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Building remotely on jnlp-agent-l58sk (jnlp-agent) in workspace /home/jenkins/agent/workspace/jnlp-demo
 [jnlp-demo] $ /bin/sh -xe /tmp/jenkins4069627081916824161.sh
 + echo === 测试动态jenkins slave === 
 === 测试动态jenkins slave === 
@@ -485,13 +454,10 @@ Live Restore Enabled: true
 NAME                       READY   STATUS    RESTARTS   AGE
 jenkins-587dc776c6-79hlg   1/1     Running   0          23m
 jnlp-agent-l58sk           2/2     Running   0          17s
-Finished: SUCCESS</pre></div>
-<p>到这里基于Kubernetes的动态Jenkins Slave就搭建完毕了。这里演示了一个简单的demo，如果在项目中有<code>Jenkinsfile</code>，可以定义node属性，指定使用<code>jnlp-agent</code>即可使用slave构建你的项目了。</p>
-
-<hr>
-
+Finished: SUCCESS
+</code></pre></div><p>到这里基于Kubernetes的动态Jenkins Slave就搭建完毕了。这里演示了一个简单的demo，如果在项目中有<code>Jenkinsfile</code>，可以定义node属性，指定使用<code>jnlp-agent</code>即可使用slave构建你的项目了。</p>
+<!-- raw HTML omitted -->
 <h2 id="参考">参考</h2>
-
 <p><a href="https://cloud.tencent.com/document/product/457/41396#proof">TKE 集群侧及 Jenkins 侧配置</a></p>
 
           
@@ -636,7 +602,7 @@ Finished: SUCCESS</pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

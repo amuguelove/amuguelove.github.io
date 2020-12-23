@@ -11,38 +11,23 @@
   <meta name="twitter:title" content="使用Docker构建应用 | 第一篇：Docker安装" />
   
   <meta name="description" content="如果你是MacOS系统，可以直接去官网下载dmg文件，下载地址
-
 CentOS 7 安装 Docker CE
-
 警告：切勿在没有配置 Docker YUM 源的情况下直接使用 yum 命令安装 Docker.
-
 1. 准备工作
-
 1.1 系统要求
-
 Docker CE 支持 64 位版本 CentOS 7，并且要求内核版本不低于 3.10。 CentOS 7 满足最低内核的要求，但由于内核版本比较低，部分功能（如 overlay2 存储层驱动）无法使用，并且部分功能可能不太稳定。">
   <meta property="og:description" content="如果你是MacOS系统，可以直接去官网下载dmg文件，下载地址
-
 CentOS 7 安装 Docker CE
-
 警告：切勿在没有配置 Docker YUM 源的情况下直接使用 yum 命令安装 Docker.
-
 1. 准备工作
-
 1.1 系统要求
-
 Docker CE 支持 64 位版本 CentOS 7，并且要求内核版本不低于 3.10。 CentOS 7 满足最低内核的要求，但由于内核版本比较低，部分功能（如 overlay2 存储层驱动）无法使用，并且部分功能可能不太稳定。">
   <meta name="twitter:description" content="如果你是MacOS系统，可以直接去官网下载dmg文件，下载地址
-
 CentOS 7 安装 Docker CE
-
 警告：切勿在没有配置 Docker YUM 源的情况下直接使用 yum 命令安装 Docker.
-
 1. 准备工作
-
 1.1 系统要求
-
-Docker CE 支持 64 位版本 CentOS 7，并且要求内核版本不低于 3.10。 CentOS 7 满足最低内核的要求，但由于内核版本比较 …">
+Docker CE 支持 64 位版本 CentOS 7，并且要求内核版本不低于 3.10。 CentOS 7 满足最低内核的要求，但由于内核版本比较低，部分功 …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
@@ -52,7 +37,7 @@ Docker CE 支持 64 位版本 CentOS 7，并且要求内核版本不低于 3.10�
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/docker-install/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -63,8 +48,7 @@ Docker CE 支持 64 位版本 CentOS 7，并且要求内核版本不低于 3.10�
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -199,7 +183,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 November 23, 2018
+    
   
   
 </span>
@@ -241,27 +225,21 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#centos-7-安装-docker-ce">CentOS 7 安装 Docker CE</a>
-<ul>
-<li><a href="#1-准备工作">1. 准备工作</a>
-<ul>
-<li><a href="#1-1-系统要求">1.1 系统要求</a></li>
-<li><a href="#1-2-卸载旧版本">1.2 卸载旧版本</a></li>
-</ul></li>
-<li><a href="#2-使用-yum-安装">2. 使用 yum 安装</a></li>
-<li><a href="#3-安装-docker-ce">3. 安装 Docker CE</a></li>
-<li><a href="#4-使用脚本自动安装">4. 使用脚本自动安装</a></li>
-<li><a href="#5-启动-docker-ce">5. 启动 Docker CE</a></li>
-<li><a href="#6-建立-docker-用户组">6. 建立 docker 用户组</a></li>
-<li><a href="#7-测试-docker-是否安装正确">7. 测试 Docker 是否安装正确</a></li>
-<li><a href="#8-卸载docker-ce">8. 卸载Docker CE</a></li>
-</ul></li>
-<li><a href="#参考文档">参考文档</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#centos-7-安装-docker-ce">CentOS 7 安装 Docker CE</a>
+      <ul>
+        <li><a href="#1-准备工作">1. 准备工作</a></li>
+        <li><a href="#2-使用-yum-安装">2. 使用 yum 安装</a></li>
+        <li><a href="#3-安装-docker-ce">3. 安装 Docker CE</a></li>
+        <li><a href="#4-使用脚本自动安装">4. 使用脚本自动安装</a></li>
+        <li><a href="#5-启动-docker-ce">5. 启动 Docker CE</a></li>
+        <li><a href="#6-建立-docker-用户组">6. 建立 docker 用户组</a></li>
+        <li><a href="#7-测试-docker-是否安装正确">7. 测试 Docker 是否安装正确</a></li>
+        <li><a href="#8-卸载docker-ce">8. 卸载Docker CE</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考文档">参考文档</a></li>
+  </ul>
 </nav>
 </aside>
 
@@ -280,21 +258,14 @@ if (!doNotTrack) {
           
 
           <p>如果你是<code>MacOS</code>系统，可以直接去官网下载<code>dmg</code>文件，<a href="https://www.docker.com/get-started">下载地址</a></p>
-
 <h2 id="centos-7-安装-docker-ce">CentOS 7 安装 Docker CE</h2>
-
 <p><strong>警告：切勿在没有配置 Docker YUM 源的情况下直接使用 yum 命令安装 Docker.</strong></p>
-
 <h3 id="1-准备工作">1. 准备工作</h3>
-
-<h4 id="1-1-系统要求">1.1 系统要求</h4>
-
+<h4 id="11-系统要求">1.1 系统要求</h4>
 <p>Docker CE 支持 64 位版本 CentOS 7，并且要求内核版本不低于 3.10。 CentOS 7 满足最低内核的要求，但由于内核版本比较低，部分功能（如 <code>overlay2</code> 存储层驱动）无法使用，并且部分功能可能不太稳定。</p>
-
-<h4 id="1-2-卸载旧版本">1.2 卸载旧版本</h4>
-
+<h4 id="12-卸载旧版本">1.2 卸载旧版本</h4>
 <p>旧版本的 Docker 称为 <code>docker</code> 或者 <code>docker-engine</code>，使用以下命令卸载旧版本：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo yum remove docker \
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sudo yum remove docker \
                   docker-client \
                   docker-client-latest \
                   docker-common \
@@ -303,17 +274,15 @@ if (!doNotTrack) {
                   docker-logrotate \
                   docker-selinux \
                   docker-engine-selinux \
-                  docker-engine</pre></div>
-<h3 id="2-使用-yum-安装">2. 使用 yum 安装</h3>
-
+                  docker-engine
+</code></pre></div><h3 id="2-使用-yum-安装">2. 使用 yum 安装</h3>
 <p>执行以下命令安装依赖包：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo yum install -y yum-utils \
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sudo yum install -y yum-utils \
            device-mapper-persistent-data \
-           lvm2</pre></div>
-<p>鉴于国内网络问题，强烈建议使用国内源，官方源请在注释中查看。</p>
-
+           lvm2
+</code></pre></div><p>鉴于国内网络问题，强烈建议使用国内源，官方源请在注释中查看。</p>
 <p>执行下面的命令添加 <code>yum</code> 软件源：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo yum-config-manager \
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sudo yum-config-manager \
     --add-repo \
     https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
 
@@ -321,38 +290,32 @@ if (!doNotTrack) {
 # 官方源
 # $ sudo yum-config-manager \
 #     --add-repo \
-#     https://download.docker.com/linux/centos/docker-ce.repo</pre></div>
-<p>如果需要测试版本的 Docker CE 请使用以下命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo yum-config-manager --enable docker-ce-test</pre></div>
-<p>如果需要每日构建版本的 Docker CE 请使用以下命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo yum-config-manager --enable docker-ce-nightly</pre></div>
-<h3 id="3-安装-docker-ce">3. 安装 Docker CE</h3>
-
+#     https://download.docker.com/linux/centos/docker-ce.repo
+</code></pre></div><p>如果需要测试版本的 Docker CE 请使用以下命令：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sudo yum-config-manager --enable docker-ce-test
+</code></pre></div><p>如果需要每日构建版本的 Docker CE 请使用以下命令：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sudo yum-config-manager --enable docker-ce-nightly
+</code></pre></div><h3 id="3-安装-docker-ce">3. 安装 Docker CE</h3>
 <p>更新 <code>yum</code> 软件源缓存，并安装 <code>docker-ce</code>。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo yum makecache fast
-$ sudo yum install docker-ce</pre></div>
-<h3 id="4-使用脚本自动安装">4. 使用脚本自动安装</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sudo yum makecache fast
+$ sudo yum install docker-ce
+</code></pre></div><h3 id="4-使用脚本自动安装">4. 使用脚本自动安装</h3>
 <p>在测试或开发环境中 Docker 官方为了简化安装流程，提供了一套便捷的安装脚本，CentOS 系统上可以使用这套脚本安装：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ curl -fsSL get.docker.com -o get-docker.sh
-$ sudo sh get-docker.sh --mirror Aliyun</pre></div>
-<p>执行这个命令后，脚本就会自动的将一切准备工作做好，并且把 Docker CE 的 Edge 版本安装在系统中。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ curl -fsSL get.docker.com -o get-docker.sh
+$ sudo sh get-docker.sh --mirror Aliyun
+</code></pre></div><p>执行这个命令后，脚本就会自动的将一切准备工作做好，并且把 Docker CE 的 Edge 版本安装在系统中。</p>
 <h3 id="5-启动-docker-ce">5. 启动 Docker CE</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo systemctl enable docker
-$ sudo systemctl start docker</pre></div>
-<h3 id="6-建立-docker-用户组">6. 建立 docker 用户组</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sudo systemctl enable docker
+$ sudo systemctl start docker
+</code></pre></div><h3 id="6-建立-docker-用户组">6. 建立 docker 用户组</h3>
 <p>默认情况下，<code>docker</code> 命令会使用 <a href="https://en.wikipedia.org/wiki/Unix_domain_socket">Unix socket</a> 与 Docker 引擎通讯。而只有 <code>root</code> 用户和 <code>docker</code> 组的用户才可以访问 Docker 引擎的 Unix socket。出于安全考虑，一般 Linux 系统上不会直接使用 <code>root</code> 用户。因此，更好地做法是将需要使用 <code>docker</code> 的用户加入 <code>docker</code> 用户组。</p>
-
 <p>建立 <code>docker</code> 组：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo groupadd docker</pre></div>
-<p>将当前用户加入 <code>docker</code> 组：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ sudo usermod -aG docker $USER</pre></div>
-<p>退出当前终端并重新登录，进行如下测试。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sudo groupadd docker
+</code></pre></div><p>将当前用户加入 <code>docker</code> 组：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sudo usermod -aG docker $USER
+</code></pre></div><p>退出当前终端并重新登录，进行如下测试。</p>
 <h3 id="7-测试-docker-是否安装正确">7. 测试 Docker 是否安装正确</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ docker run hello-world
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker run hello-world
 
 Unable to find image &#39;hello-world:latest&#39; locally
 latest: Pulling from library/hello-world
@@ -379,17 +342,15 @@ Share images, automate workflows, and more with a free Docker ID:
  https://hub.docker.com/
 
 For more examples and ideas, visit:
- https://docs.docker.com/get-started/</pre></div>
-<p>若能正常输出以上信息，则说明安装成功。</p>
-
+ https://docs.docker.com/get-started/
+</code></pre></div><p>若能正常输出以上信息，则说明安装成功。</p>
 <h3 id="8-卸载docker-ce">8. 卸载Docker CE</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">// uninstall the docker package
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// uninstall the docker package
 $ sudo yum remove docker-ce
 
 // delete docker data (Images, containers, volumes, or customized configuration files...)
-$ sudo rm -rf /var/lib/docker</pre></div>
-<h2 id="参考文档">参考文档</h2>
-
+$ sudo rm -rf /var/lib/docker
+</code></pre></div><h2 id="参考文档">参考文档</h2>
 <ul>
 <li><a href="https://docs.docker.com/install/linux/docker-ce/centos/">Docker 官方 CentOS 安装文档</a>。</li>
 </ul>
@@ -561,7 +522,7 @@ $ sudo rm -rf /var/lib/docker</pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

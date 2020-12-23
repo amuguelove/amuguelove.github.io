@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker on 梁波的技术博客</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Docker on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 07 Apr 2020 00:00:00 +0800</lastBuildDate>
-    
-	<atom:link href="http://flygopher.top/categories/docker/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 07 Apr 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker最佳实践</title>
       <link>http://flygopher.top/post/docker-best-practice/</link>
@@ -27,9 +23,7 @@
       
       <guid>http://flygopher.top/post/docker-underlying-technology/</guid>
       <description>&lt;p&gt;Docker最初实现是基于 &lt;a href=&#34;https://linuxcontainers.org/lxc/introduction/&#34;&gt;LXC&lt;/a&gt;，从 0.7 版本以后开始去除 &lt;code&gt;LXC&lt;/code&gt;，转而使用自行开发的 &lt;a href=&#34;https://github.com/docker/libcontainer&#34;&gt;libcontainer&lt;/a&gt;，从 1.11 开始，则进一步演进为使用 &lt;a href=&#34;https://github.com/opencontainers/runc&#34;&gt;runC&lt;/a&gt; 和 &lt;a href=&#34;https://github.com/containerd/containerd&#34;&gt;containerd&lt;/a&gt;。&lt;/p&gt;
-
 &lt;p&gt;Docker 本质就是宿主机的一个进程，Docker 是通过 &lt;code&gt;namespace&lt;/code&gt; 实现资源隔离，通过&lt;code&gt;cgroup&lt;/code&gt; 实现资源限制，通过写时复制技术（copy-on-write）实现了高效的文件操作。&lt;/p&gt;
-
 &lt;p&gt;传统的虚拟机通过在宿主主机中运行 hypervisor 来模拟一整套完整的硬件环境提供给虚拟机的操作系统。虚拟机系统看到的环境是可限制的，也是彼此隔离的。 这种直接的做法实现了对资源最完整的封装，但很多时候往往意味着系统资源的浪费。 例如，以宿主机和虚拟机系统都为 Linux 系统为例，虚拟机中运行的应用其实可以利用宿主机系统中的运行环境。&lt;/p&gt;</description>
     </item>
     
@@ -58,7 +52,6 @@
       
       <guid>http://flygopher.top/post/docker-image-introdution/</guid>
       <description>&lt;h2 id=&#34;1-什么是docker镜像&#34;&gt;1. 什么是Docker镜像&lt;/h2&gt;
-
 &lt;p&gt;&lt;code&gt;镜像&lt;/code&gt;是一个只读的层（&lt;code&gt;layer&lt;/code&gt;），由文件系统叠加构成。而&lt;code&gt;镜像&lt;/code&gt;又是&lt;code&gt;容器&lt;/code&gt;(Container)的构成单元，我们一般会将应用构建成标准的&lt;code&gt;镜像&lt;/code&gt;组件，一或多个&lt;code&gt;镜像&lt;/code&gt;叠加又构成了&lt;code&gt;容器&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     
@@ -69,14 +62,12 @@
       
       <guid>http://flygopher.top/post/dockerfile-introdution/</guid>
       <description>&lt;h2 id=&#34;1-dockerfile文件格式&#34;&gt;1. Dockerfile文件格式&lt;/h2&gt;
-
 &lt;p&gt;&lt;code&gt;Dockerfile&lt;/code&gt;文件格式如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;# Comment
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# Comment
 INSTRUCTION arguments
 # 注释
-指令 参数&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;Dockerfile&lt;/code&gt;文件中指令不区分大小写，但为了更易区分，约定使用&lt;code&gt;大写&lt;/code&gt;形式。&lt;/p&gt;
-
+指令 参数
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Dockerfile&lt;/code&gt;文件中指令不区分大小写，但为了更易区分，约定使用&lt;code&gt;大写&lt;/code&gt;形式。&lt;/p&gt;
 &lt;p&gt;Docker 会依次执行&lt;code&gt;Dockerfile&lt;/code&gt;中的指令，文件中的第一条指令必须是&lt;code&gt;FROM&lt;/code&gt;，&lt;code&gt;FROM&lt;/code&gt;指令用于指定一个基础镜像。&lt;/p&gt;</description>
     </item>
     
@@ -87,15 +78,10 @@ INSTRUCTION arguments
       
       <guid>http://flygopher.top/post/docker-install/</guid>
       <description>&lt;p&gt;如果你是&lt;code&gt;MacOS&lt;/code&gt;系统，可以直接去官网下载&lt;code&gt;dmg&lt;/code&gt;文件，&lt;a href=&#34;https://www.docker.com/get-started&#34;&gt;下载地址&lt;/a&gt;&lt;/p&gt;
-
 &lt;h2 id=&#34;centos-7-安装-docker-ce&#34;&gt;CentOS 7 安装 Docker CE&lt;/h2&gt;
-
 &lt;p&gt;&lt;strong&gt;警告：切勿在没有配置 Docker YUM 源的情况下直接使用 yum 命令安装 Docker.&lt;/strong&gt;&lt;/p&gt;
-
 &lt;h3 id=&#34;1-准备工作&#34;&gt;1. 准备工作&lt;/h3&gt;
-
-&lt;h4 id=&#34;1-1-系统要求&#34;&gt;1.1 系统要求&lt;/h4&gt;
-
+&lt;h4 id=&#34;11-系统要求&#34;&gt;1.1 系统要求&lt;/h4&gt;
 &lt;p&gt;Docker CE 支持 64 位版本 CentOS 7，并且要求内核版本不低于 3.10。 CentOS 7 满足最低内核的要求，但由于内核版本比较低，部分功能（如 &lt;code&gt;overlay2&lt;/code&gt; 存储层驱动）无法使用，并且部分功能可能不太稳定。&lt;/p&gt;</description>
     </item>
     

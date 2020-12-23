@@ -11,20 +11,14 @@
   <meta name="twitter:title" content="SpringBoot2干货系列 | 第二篇：Spring AOP 哪些事儿" />
   
   <meta name="description" content="AOP(Aspect-Oriented Programming) 即面向方面编程.  它是一种在运行时,动态地将代码切入到类的指定方法、指定位置上的编程思想. 用于切入到指定类指定方法的代码片段叫做切面, 而切入到哪些类中的哪些方法叫做切入点.
-
 AOP是OOP的有益补充，OOP从横向上区分出了一个个类，AOP则从纵向上向指定类的指定方法中动态地切入代码. 它使OOP变得更加立体.
-
 Java中的动态代理或CGLib就是AOP的体现.">
   <meta property="og:description" content="AOP(Aspect-Oriented Programming) 即面向方面编程.  它是一种在运行时,动态地将代码切入到类的指定方法、指定位置上的编程思想. 用于切入到指定类指定方法的代码片段叫做切面, 而切入到哪些类中的哪些方法叫做切入点.
-
 AOP是OOP的有益补充，OOP从横向上区分出了一个个类，AOP则从纵向上向指定类的指定方法中动态地切入代码. 它使OOP变得更加立体.
-
 Java中的动态代理或CGLib就是AOP的体现.">
   <meta name="twitter:description" content="AOP(Aspect-Oriented Programming) 即面向方面编程.  它是一种在运行时,动态地将代码切入到类的指定方法、指定位置上的编程思想. 用于切入到指定类指定方法的代码片段叫做切面, 而切入到哪些类中的哪些方法叫做切入点.
-
 AOP是OOP的有益补充，OOP从横向上区分出了一个个类，AOP则从纵向上向指定类的指定方法中动态地切入代码. 它使OOP变得更加立体.
-
-Java中的 …">
+Java中的动态 …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
@@ -34,7 +28,7 @@ Java中的 …">
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/springboot2-aop/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -45,8 +39,7 @@ Java中的 …">
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -181,7 +174,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 December 26, 2018
+    
   
   
 </span>
@@ -225,16 +218,13 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#1-为什么使用aop">1.  为什么使用AOP</a></li>
-<li><a href="#2-aop术语">2.  AOP术语</a></li>
-<li><a href="#3-切点详解">3.  切点详解</a></li>
-<li><a href="#4-aop开发详解">4.  AOP开发详解</a></li>
-<li><a href="#5-高级-aop统一处理web请求日志">5.  高级：AOP统一处理Web请求日志</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#1--为什么使用aop">1.  为什么使用AOP</a></li>
+    <li><a href="#2--aop术语">2.  AOP术语</a></li>
+    <li><a href="#3--切点详解">3.  切点详解</a></li>
+    <li><a href="#4--aop开发详解">4.  AOP开发详解</a></li>
+    <li><a href="#5--高级aop统一处理web请求日志">5.  高级：AOP统一处理Web请求日志</a></li>
+  </ul>
 </nav>
 </aside>
 
@@ -253,152 +243,153 @@ if (!doNotTrack) {
           
 
           <p>AOP(Aspect-Oriented Programming) 即面向方面编程.  它是一种在运行时,动态地将代码切入到类的指定方法、指定位置上的编程思想. 用于切入到指定类指定方法的代码片段叫做切面, 而切入到哪些类中的哪些方法叫做切入点.</p>
-
 <p>AOP是OOP的有益补充，OOP从横向上区分出了一个个类，AOP则从纵向上向指定类的指定方法中动态地切入代码. 它使OOP变得更加立体.</p>
-
 <p>Java中的动态代理或CGLib就是AOP的体现.</p>
-
-<h2 id="1-为什么使用aop">1.  为什么使用AOP</h2>
-
+<h2 id="1--为什么使用aop">1.  为什么使用AOP</h2>
 <ul>
-<li><p><code>AOP</code>最为典型的应用实际就是数据库事务的管控。</p></li>
-
-<li><p><code>AOP</code>还可以减少大量重复的工具。</p></li>
+<li>
+<p><code>AOP</code>最为典型的应用实际就是数据库事务的管控。</p>
+</li>
+<li>
+<p><code>AOP</code>还可以减少大量重复的工具。</p>
+</li>
 </ul>
-
 <p>使用Spring AOP可以处理一些无法使用OOP实现的业务逻辑。其实，通过约定，可以将一些业务逻辑织入流程中，并且可以将一些通用的逻辑抽取出来，然后给予默认实现，这样你就只需要完成部分的功能就可以了。</p>
-
-<h2 id="2-aop术语">2.  AOP术语</h2>
-
+<h2 id="2--aop术语">2.  AOP术语</h2>
 <ul>
-<li><p>切面（aspect）：是一个可以定义切点、各类通知和引入的内容。</p></li>
-
-<li><p>连接点（join point）：对应的是具体被拦截的对象，因为Spring只支持芳芳，所以被拦截的对象往往就是指特定的方法。</p></li>
-
-<li><p>切点（point cut）：有时候，我们的切面不单单应用于单个方法，也可以是多个类的不同方法，这时，可以通过正则表达式和指示器的规则去定义。</p></li>
-
-<li><p>通知（advice）：按照约定的流程防范，在连接点执⾏行行的动作，如：前置通知（before advice）、后置通知（after advice）、环绕通知（around advice）、事后返回通知（afterReturning advice）和异常通知（afterThrowing advice），它会更具约定织入流程中，需要弄明白它们在流程中的顺序和运行的条件。</p></li>
-
-<li><p>目标对象（target）：即被代理对象。</p></li>
-
-<li><p>AOP代理对象（AOP proxy）：AOP 代理理对象，可以是 JDK 动态代理理，也可以是 CGLIB 代理理</p></li>
-
-<li><p>引入（introduction）：是指引入新的类和方法，增强现有Bean的功能。</p></li>
-
-<li><p>织入（weaving）：它是一个通过动态代理技术，为原有服务对象生成动态对象，然后将与切点定义匹配的连接点拦截，并按约定将各类通知织入约定流程的过程。</p></li>
+<li>
+<p>切面（aspect）：是一个可以定义切点、各类通知和引入的内容。</p>
+</li>
+<li>
+<p>连接点（join point）：对应的是具体被拦截的对象，因为Spring只支持芳芳，所以被拦截的对象往往就是指特定的方法。</p>
+</li>
+<li>
+<p>切点（point cut）：有时候，我们的切面不单单应用于单个方法，也可以是多个类的不同方法，这时，可以通过正则表达式和指示器的规则去定义。</p>
+</li>
+<li>
+<p>通知（advice）：按照约定的流程防范，在连接点执⾏行行的动作，如：前置通知（before advice）、后置通知（after advice）、环绕通知（around advice）、事后返回通知（afterReturning advice）和异常通知（afterThrowing advice），它会更具约定织入流程中，需要弄明白它们在流程中的顺序和运行的条件。</p>
+</li>
+<li>
+<p>目标对象（target）：即被代理对象。</p>
+</li>
+<li>
+<p>AOP代理对象（AOP proxy）：AOP 代理理对象，可以是 JDK 动态代理理，也可以是 CGLIB 代理理</p>
+</li>
+<li>
+<p>引入（introduction）：是指引入新的类和方法，增强现有Bean的功能。</p>
+</li>
+<li>
+<p>织入（weaving）：它是一个通过动态代理技术，为原有服务对象生成动态对象，然后将与切点定义匹配的连接点拦截，并按约定将各类通知织入约定流程的过程。</p>
+</li>
 </ul>
-
-<h2 id="3-切点详解">3.  切点详解</h2>
-
-<p>匹配连接点的断言，在AOP中通知和一个切入点表达式关联。例如，TestAspect中的所有通知所关注的连接点，都由切入点表达式execution(* com.spring.service.<em>.</em>(..))来决定。</p>
-
+<h2 id="3--切点详解">3.  切点详解</h2>
+<p>匹配连接点的断言，在AOP中通知和一个切入点表达式关联。例如，TestAspect中的所有通知所关注的连接点，都由切入点表达式execution(* com.spring.service.*.*(..))来决定。</p>
 <p><strong>切入点表达式：</strong></p>
-
 <ul>
-<li><p>execution：用于匹配方法执行的连接点；</p></li>
-
-<li><p>within：用于匹配指定类型内的方法执行；</p></li>
-
-<li><p>this：用于匹配当前AOP代理对象类型的执行方法；注意是AOP代理对象的类型匹配，这样就可能包括引入接口也类型匹配；注意this中使用的表达式必须是完整类名，不支持通配符；</p></li>
-
-<li><p>target：用于匹配当前目标对象类型的执行方法；注意是目标对象的类型匹配，这样就不包括引入接口也类型匹配；注意target中使用的表达式必须是完整类名，不支持通配符；</p></li>
-
-<li><p>args：用于匹配当前执行的方法传入的参数为指定类型的执行方法；参数类型列表中的参数必须是完整类名，通配符不支持；args属于动态切入点，这种切入点开销非常大，非特殊情况最好不要使用；</p></li>
-
-<li><p>@within：用于匹配所以持有指定注解类型内的方法；注解类型也必须是完整类名；</p></li>
-
-<li><p>@target：用于匹配当前目标对象类型的执行方法，其中目标对象持有指定的注解；注解类型也必须是完整类名；</p></li>
-
-<li><p>@args：用于匹配当前执行的方法传入的参数持有指定注解的执行；注解类型也必须是完整类名；</p></li>
-
-<li><p>@annotation：用于匹配当前执行方法持有指定注解的方法；注解类型也必须是完整类名；</p></li>
-
-<li><p>bean：Spring AOP扩展的，AspectJ没有对于指示符，用于匹配特定名称的Bean对象的执行方法；</p></li>
-
-<li><p>reference pointcut：表示引用其他命名切入点，只有注解风格支持，XML风格不支持。</p></li>
+<li>
+<p>execution：用于匹配方法执行的连接点；</p>
+</li>
+<li>
+<p>within：用于匹配指定类型内的方法执行；</p>
+</li>
+<li>
+<p>this：用于匹配当前AOP代理对象类型的执行方法；注意是AOP代理对象的类型匹配，这样就可能包括引入接口也类型匹配；注意this中使用的表达式必须是完整类名，不支持通配符；</p>
+</li>
+<li>
+<p>target：用于匹配当前目标对象类型的执行方法；注意是目标对象的类型匹配，这样就不包括引入接口也类型匹配；注意target中使用的表达式必须是完整类名，不支持通配符；</p>
+</li>
+<li>
+<p>args：用于匹配当前执行的方法传入的参数为指定类型的执行方法；参数类型列表中的参数必须是完整类名，通配符不支持；args属于动态切入点，这种切入点开销非常大，非特殊情况最好不要使用；</p>
+</li>
+<li>
+<p>@within：用于匹配所以持有指定注解类型内的方法；注解类型也必须是完整类名；</p>
+</li>
+<li>
+<p>@target：用于匹配当前目标对象类型的执行方法，其中目标对象持有指定的注解；注解类型也必须是完整类名；</p>
+</li>
+<li>
+<p>@args：用于匹配当前执行的方法传入的参数持有指定注解的执行；注解类型也必须是完整类名；</p>
+</li>
+<li>
+<p>@annotation：用于匹配当前执行方法持有指定注解的方法；注解类型也必须是完整类名；</p>
+</li>
+<li>
+<p>bean：Spring AOP扩展的，AspectJ没有对于指示符，用于匹配特定名称的Bean对象的执行方法；</p>
+</li>
+<li>
+<p>reference pointcut：表示引用其他命名切入点，只有注解风格支持，XML风格不支持。</p>
+</li>
 </ul>
-
-<h2 id="4-aop开发详解">4.  AOP开发详解</h2>
-
+<h2 id="4--aop开发详解">4.  AOP开发详解</h2>
 <p>本文根据Spring Boot建议注解开发的特点，这里只讨论@Aspect注解方式实现AOP。</p>
-
 <p><strong>4.1 代码清单1： 用户服务</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">  @Service
-  public class UserService {
-  
-      public void sayHello(String name) {
-          System.out.println(&#34;Hello &#34; + name);
-      }
-  }</pre></div>
-<p><strong>4.2 代码清单2: 定义切面</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">  @Aspect
-  @Component
-  public class MyAspect {
-  
-      @Pointcut(&#34;execution(public * me.flygopher.springboot2.user.UserService.sayHello(..))&#34;)
-      public void pointCut() {}
-  
-      @Before(&#34;pointCut()&#34;)
-      public void before() {
-          System.out.println(&#34;MyAspect before ...&#34;);
-      }
-  
-      @After(&#34;pointCut()&#34;)
-      public void after() {
-          System.out.println(&#34;MyAspect after ...&#34;);
-      }
-  
-      @AfterReturning(&#34;pointCut()&#34;)
-      public void afterReturning() {
-          System.out.println(&#34;MyAspect after returning ...&#34;);
-      }
-  
-      @AfterThrowing(&#34;pointCut()&#34;)
-      public void afterThrowing() {
-          System.out.println(&#34;MyAspect after throwing ...&#34;);
-      }
-  
-      @Around(&#34;pointCut()&#34;)
-      public void around(ProceedingJoinPoint jp) throws Throwable {
-          System.out.println(&#34;MyAspect around before ...&#34;);
-  
-          jp.proceed();
-  
-          System.out.println(&#34;MyAspect around after ...&#34;);
-      }
-  }</pre></div>
-<p><strong>1) 实现AOP的切面主要有以下几个要素：</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Service
+public class UserService {
 
+    public void sayHello(String name) {
+        System.out.println(&#34;Hello &#34; + name);
+    }
+}
+</code></pre></div><p><strong>4.2 代码清单2: 定义切面</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Aspect
+@Component
+public class MyAspect {
+
+    @Pointcut(&#34;execution(public * me.flygopher.springboot2.user.UserService.sayHello(..))&#34;)
+    public void pointCut() {}
+
+    @Before(&#34;pointCut()&#34;)
+    public void before() {
+        System.out.println(&#34;MyAspect before ...&#34;);
+    }
+
+    @After(&#34;pointCut()&#34;)
+    public void after() {
+        System.out.println(&#34;MyAspect after ...&#34;);
+    }
+
+    @AfterReturning(&#34;pointCut()&#34;)
+    public void afterReturning() {
+        System.out.println(&#34;MyAspect after returning ...&#34;);
+    }
+
+    @AfterThrowing(&#34;pointCut()&#34;)
+    public void afterThrowing() {
+        System.out.println(&#34;MyAspect after throwing ...&#34;);
+    }
+
+    @Around(&#34;pointCut()&#34;)
+    public void around(ProceedingJoinPoint jp) throws Throwable {
+        System.out.println(&#34;MyAspect around before ...&#34;);
+
+        jp.proceed();
+
+        System.out.println(&#34;MyAspect around after ...&#34;);
+    }
+}
+</code></pre></div><p><strong>1) 实现AOP的切面主要有以下几个要素：</strong></p>
 <ul>
 <li>使用<code>@Aspect</code>注解将一个java类定义为切面类</li>
 <li>使用<code>@Pointcut</code>定义一个切入点，可以是一个规则表达式，比如下例中某个package下的所有函数，也可以是一个注解等。</li>
 <li>根据需要在切入点不同位置的切入内容
-
 <ul>
 <li>使用<code>@Before</code>在切入点开始处切入内容</li>
 <li>使用<code>@After</code>在切入点结尾处切入内容</li>
 <li>使用<code>@AfterReturning</code>在切入点return内容之后切入内容（可以用来对处理返回值做一些加工处理）</li>
 <li>使用<code>@Around</code>在切入点前后切入内容，并自己控制何时执行切入点自身的内容</li>
 <li>使用<code>@AfterThrowing</code>用来处理当切入内容部分抛出异常之后的处理逻辑</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p><strong>2) 举一个复杂一点的execution例子:</strong></p>
-
 <p><code>@Pointcut(&quot;execution(public * me.flygopher.springboot2..*Controller.*(..))&quot;)</code></p>
-
 <p>简单解释下：</p>
-
 <p>”*“表示任意字符串</p>
-
 <p>包名后面的”..“ 表示当前包及子包，</p>
-
 <p>.*(..) 表示任何方法名，括号表示参数，两个点表示任何参数类型</p>
-
 <p>除了使用<code>execution</code>还有一种另一种用法就是<code>@annotation</code>。</p>
-
 <p><strong>4.3 代码清单3: 测试方法</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@RunWith(SpringRunner.class)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserServiceTest {
 
@@ -409,23 +400,23 @@ public class UserServiceTest {
     public void shouldPrintAspectInfoWhenCallSayHelloMethod() {
         userService.sayHello(&#34;liangbo&#34;);
     }
-}</pre></div>
-<p>运行后的结果如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">MyAspect around before ...
+}
+</code></pre></div><p>运行后的结果如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">MyAspect around before ...
 MyAspect before ...
 Hello liangbo
 MyAspect around after ...
 MyAspect after ...
-MyAspect after returning ...</pre></div>
-<p>需要注意下around环绕通知，它的结果并不是我期待的结果，我期待的结果应该如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">MyAspect before ...
+MyAspect after returning ...
+</code></pre></div><p>需要注意下around环绕通知，它的结果并不是我期待的结果，我期待的结果应该如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">MyAspect before ...
 MyAspect around before ...
 Hello liangbo
 MyAspect around after ...
 MyAspect after ...
-MyAspect after returning ...</pre></div>
-<p><strong>4.4 代码清单4: 引入多个切面</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Aspect
+MyAspect after returning ...
+</code></pre></div><p><strong>4.4 代码清单4: 引入多个切面</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Aspect
 @Component
 @Order(-1)
 public class MyAspect2 {
@@ -461,9 +452,9 @@ public class MyAspect2 {
 
         System.out.println(&#34;MyAspect2 around after ...&#34;);
     }
-}</pre></div>
-<p>测试结果如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">MyAspect2 around before ...
+}
+</code></pre></div><p>测试结果如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">MyAspect2 around before ...
 MyAspect2 before ...
 MyAspect around before ...
 MyAspect before ...
@@ -473,13 +464,11 @@ MyAspect after ...
 MyAspect after returning ...
 MyAspect2 around after ...
 MyAspect2 after ...
-MyAspect2 after returning ...</pre></div>
-<p>注意可以使用注解@Order定义切面执行的顺序，数值越小，before先执行，after后执行。</p>
-
-<h2 id="5-高级-aop统一处理web请求日志">5.  高级：AOP统一处理Web请求日志</h2>
-
+MyAspect2 after returning ...
+</code></pre></div><p>注意可以使用注解@Order定义切面执行的顺序，数值越小，before先执行，after后执行。</p>
+<h2 id="5--高级aop统一处理web请求日志">5.  高级：AOP统一处理Web请求日志</h2>
 <p>实现如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">@Aspect
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Aspect
 @Component
 @Slf4j
 public class WebLogAspect {
@@ -511,7 +500,8 @@ public class WebLogAspect {
                 request.getMethod(),
                 System.currentTimeMillis() - startTime.get());
     }
-}</pre></div>
+}
+</code></pre></div>
 
           
   
@@ -680,7 +670,7 @@ public class WebLogAspect {
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

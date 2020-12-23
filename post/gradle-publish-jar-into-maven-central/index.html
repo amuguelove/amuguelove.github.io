@@ -11,20 +11,14 @@
   <meta name="twitter:title" content="Gradle发布Java Library到Maven中央仓库" />
   
   <meta name="description" content="最近打算将一些基础的Jar包上传到Maven中央仓库，方便在自己项目中引用。本文将结合Gradle的两个插件maven-publish和 signing来讲解如何发布一个Jar包。
-
 在开始之前，先对OSSRH做下了解是很必要的。
-
 OSSRH：Sonatype Open Source Software Repository Hosting Service，为开源软件提供maven仓库托管服务。你可以在上面部署snapshot、release等，最后你可以申请把你的release同步到Maven Central Repository（Maven中央仓库）。">
   <meta property="og:description" content="最近打算将一些基础的Jar包上传到Maven中央仓库，方便在自己项目中引用。本文将结合Gradle的两个插件maven-publish和 signing来讲解如何发布一个Jar包。
-
 在开始之前，先对OSSRH做下了解是很必要的。
-
 OSSRH：Sonatype Open Source Software Repository Hosting Service，为开源软件提供maven仓库托管服务。你可以在上面部署snapshot、release等，最后你可以申请把你的release同步到Maven Central Repository（Maven中央仓库）。">
   <meta name="twitter:description" content="最近打算将一些基础的Jar包上传到Maven中央仓库，方便在自己项目中引用。本文将结合Gradle的两个插件maven-publish和 signing来讲解如何发布一个Jar包。
-
 在开始之前，先对OSSRH做下了解是很必要的。
-
-OSSRH：Sonatype Open Source Software Repository Hosting Service，为开源软件提供maven仓库托管服务。你 …">
+OSSRH：Sonatype Open Source Software Repository Hosting Service，为开源软件提供maven仓库托管服务。你可以 …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
@@ -34,7 +28,7 @@ OSSRH：Sonatype Open Source Software Repository Hosting Service，为开源软�
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/post/gradle-publish-jar-into-maven-central/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -45,8 +39,7 @@ OSSRH：Sonatype Open Source Software Repository Hosting Service，为开源软�
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -181,7 +174,7 @@ if (!doNotTrack) {
                 
                   <span class="post-meta">
   
-    发表于 March 19, 2020
+    
   
   
 </span>
@@ -225,24 +218,22 @@ if (!doNotTrack) {
             
 <aside class="toc">
   <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#注册sonatype-jira账号">注册Sonatype JIRA账号</a></li>
-<li><a href="#创建issue">创建Issue</a></li>
-<li><a href="#等待回复">等待回复</a></li>
-<li><a href="#ossrh对提交文件的要求">OSSRH对提交文件的要求</a></li>
-<li><a href="#gpg">GPG</a></li>
-<li><a href="#配置gradle插件">配置Gradle插件</a>
-<ul>
-<li><a href="#build-gradle参数">build.gradle参数</a></li>
-</ul></li>
-<li><a href="#提交到sonatype仓库">提交到Sonatype仓库</a></li>
-<li><a href="#到sonatype-oss发布">到Sonatype OSS发布</a></li>
-<li><a href="#新版本更新">新版本更新</a></li>
-<li><a href="#参考">参考</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#注册sonatype-jira账号">注册Sonatype JIRA账号</a></li>
+    <li><a href="#创建issue">创建Issue</a></li>
+    <li><a href="#等待回复">等待回复</a></li>
+    <li><a href="#ossrh对提交文件的要求">OSSRH对提交文件的要求</a></li>
+    <li><a href="#gpg">GPG</a></li>
+    <li><a href="#配置gradle插件">配置Gradle插件</a>
+      <ul>
+        <li><a href="#buildgradle参数">build.gradle参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#提交到sonatype仓库">提交到Sonatype仓库</a></li>
+    <li><a href="#到sonatype-oss发布">到Sonatype OSS发布</a></li>
+    <li><a href="#新版本更新">新版本更新</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
 </nav>
 </aside>
 
@@ -261,83 +252,66 @@ if (!doNotTrack) {
           
 
           <p>最近打算将一些基础的Jar包上传到<code>Maven</code>中央仓库，方便在自己项目中引用。本文将结合<code>Gradle</code>的两个插件<code>maven-publish</code>和 <code>signing</code>来讲解如何发布一个Jar包。</p>
-
 <p>在开始之前，先对<code>OSSRH</code>做下了解是很必要的。</p>
-
 <p><code>OSSRH</code>：<code>Sonatype Open Source Software Repository Hosting Service</code>，为开源软件提供maven仓库托管服务。你可以在上面部署<code>snapshot</code>、<code>release</code>等，最后你可以申请把你的release同步到<code>Maven Central Repository</code>（<code>Maven中央仓库</code>）。</p>
-
 <h2 id="注册sonatype-jira账号">注册Sonatype JIRA账号</h2>
-
 <blockquote>
 <p>JIRA是Atlassian公司出品的项目与事务跟踪工具，被广泛应用于缺陷跟踪、客户服务、需求收集、流程审批、任务跟踪、项目跟踪和敏捷管理等工作领域。</p>
 </blockquote>
-
-<p>网址：<a href="https://issues.sonatype.org/">https://issues.sonatype.org/</a></p>
-
+<p>网址：https://issues.sonatype.org/</p>
 <p>注册好了之后，记住用户名和密码，下面会用到。</p>
-
 <h2 id="创建issue">创建Issue</h2>
-
-<p>地址：<a href="https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&amp;pid=10134">https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&amp;pid=10134</a></p>
-
-<p><img src="http://flygopher.top/img/post/gradle-publish-jar-01.png" alt="" /></p>
-
+<p>地址：https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&amp;pid=10134</p>
+<p><img src="http://flygopher.top/img/post/gradle-publish-jar-01.png" alt=""></p>
 <ul>
-<li><p><code>Summary</code>：简单的写一个描述即可</p></li>
-
-<li><p><code>Group Id</code>：</p>
-
+<li>
+<p><code>Summary</code>：简单的写一个描述即可</p>
+</li>
+<li>
+<p><code>Group Id</code>：</p>
 <ul>
 <li>自己有域名
 可以使用子域名作为<code>Group Id</code> 。
 <strong>注意：不能瞎编一个，因为后面审核人员会来审核你是否是该域名的拥有者</strong></li>
 <li>自己没域名
 可以借助github，例：我的用户名为<code>amuguelove</code>，那么就用<code>com.github.amuguelove</code>作为作为<code>Group Id</code>，例如：我就是这样提供的，审核人员会让你新建一个仓库来验证你是否是github账号的拥有者。</li>
-</ul></li>
-
-<li><p><code>Project URL</code>：最好与<code>Group Id</code>有一定关联性，例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">Project URL: https://github.com/amuguelove/spring-boot-projects
-Group Id: com.github.amuguelove</pre></div></li>
-
-<li><p><code>SCM url</code>：版本仓库的拉取地址</p></li>
 </ul>
-
-<p>可以看考一下我成功了的例子：<a href="https://issues.sonatype.org/browse/OSSRH-55962">https://issues.sonatype.org/browse/OSSRH-55962</a></p>
-
+</li>
+<li>
+<p><code>Project URL</code>：最好与<code>Group Id</code>有一定关联性，例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Project URL: https://github.com/amuguelove/spring-boot-projects
+Group Id: com.github.amuguelove
+</code></pre></div></li>
+<li>
+<p><code>SCM url</code>：版本仓库的拉取地址</p>
+</li>
+</ul>
+<p>可以看考一下我成功了的例子：https://issues.sonatype.org/browse/OSSRH-55962</p>
 <h2 id="等待回复">等待回复</h2>
-
 <p>提交<code>Issue</code>后，如果存在问题，审核者会在jira中指出，可以直接回复，见下图。</p>
-
 <p>如果一切顺利，那么你会收到审核人员，这样的一个评论：</p>
-
-<p><img src="http://flygopher.top/img/post/gradle-publish-jar-02.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/gradle-publish-jar-02.png" alt=""></p>
 <h2 id="ossrh对提交文件的要求">OSSRH对提交文件的要求</h2>
-
 <p>为了确保中央存储库中可用组件的质量水平，<code>OSSRH</code>对提交的文件有明确的要求。</p>
-
 <p>一个基础的提交，应该包含一下文件：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">example-1.0.0.pom
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">example-1.0.0.pom
 example-1.0.0.pom.asc
 example-1.0.0.jar
 example-1.0.0.jar.asc
 example-1.0.0-sources.jar
 example-1.0.0-sources.jar.asc
 example-1.0.0-javadoc.jar
-example-1.0.0-javadoc.jar.asc</pre></div>
-<p>下面我们会使用Gradle构建工具来帮助我们来生成。</p>
-
+example-1.0.0-javadoc.jar.asc
+</code></pre></div><p>下面我们会使用Gradle构建工具来帮助我们来生成。</p>
 <h2 id="gpg">GPG</h2>
-
 <p><code>OSX</code>下可以通过brew来安装<code>gpg</code>命令行工具。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ brew update
-$ brew install -v gpg</pre></div>
-<p>也可以去官网下载安装，地址：<a href="https://gpgtools.org/">https://gpgtools.org/</a></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ brew update
+$ brew install -v gpg
+</code></pre></div><p>也可以去官网下载安装，地址：https://gpgtools.org/</p>
 <p><strong>新建一个密钥</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">gpg --generate-key</pre></div>
-<p><strong>查看已经生成的密钥</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ gpg -k
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">gpg --generate-key
+</code></pre></div><p><strong>查看已经生成的密钥</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ gpg -k
 
 /Users/bo.liang/.gnupg/pubring.kbx
 ----------------------------------
@@ -350,33 +324,29 @@ sub   rsa4096 2014-04-08 [S] [expires: 2024-01-02]
 pub   rsa2048 2020-03-19 [SC] [expires: 2022-03-19]
       CD62FE125D651206FBC76C88DF58A148A2AAA46C
 uid           [ultimate] liangbo &lt;bo.liang0212@gmail.com&gt;
-sub   rsa2048 2020-03-19 [E] [expires: 2022-03-19]</pre></div>
-<p><strong><code>CD62FE125D651206FBC76C88DF58A148A2AAA46C</code></strong>，是<code>密钥指纹</code>(用来做唯一识别)，后面8位<strong><code>A2AAA46C</code></strong>叫做<code>标识</code>或<code>KEY ID</code>，在后面需要加到Gradle插件配置中。</p>
-
+sub   rsa2048 2020-03-19 [E] [expires: 2022-03-19]
+</code></pre></div><p><strong><code>CD62FE125D651206FBC76C88DF58A148A2AAA46C</code></strong>，是<code>密钥指纹</code>(用来做唯一识别)，后面8位**<code>A2AAA46C</code>**叫做<code>标识</code>或<code>KEY ID</code>，在后面需要加到Gradle插件配置中。</p>
 <p><strong>导出私钥文件</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ gpg --export-secret-keys [密钥指纹] &gt; secret.gpg
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ gpg --export-secret-keys [密钥指纹] &gt; secret.gpg
 
 例如：
 [16:56:48] bo.liang:gnupg $ gpg --export-secret-keys A2AAA46C &gt; secret.gpg
 [17:00:06] bo.liang:gnupg $ pwd
-/Users/bo.liang/Documents/workspace/myProjects/gnupg</pre></div>
-<p>会生成一个二进制的私钥文件，后面需要配置到gradle中，让<code>signing</code>插件帮我们给文件批量签名。</p>
+/Users/bo.liang/Documents/workspace/myProjects/gnupg
 
+</code></pre></div><p>会生成一个二进制的私钥文件，后面需要配置到gradle中，让<code>signing</code>插件帮我们给文件批量签名。</p>
 <p><strong>上传公钥到公钥服务器</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">$ gpg --keyserver keyserver.ubuntu.com --send-keys [密钥指纹]</pre></div>
-<p>在sonatype的仓库提交后，会需要一个校验步骤
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ gpg --keyserver keyserver.ubuntu.com --send-keys [密钥指纹]
+</code></pre></div><p>在sonatype的仓库提交后，会需要一个校验步骤
 会需要从<code>多个</code>公钥服务器上下载匹配的公钥，然后来校验你上传的文件的签名。</p>
-
 <p>以下是sonatype会去拉取的公钥服务器列表。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">keys.gnupg.net
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">keys.gnupg.net
 pool.sks-keyservers.net
-keyserver.ubuntu.com</pre></div>
-<p>准备好了以上几项，我们就可以开始撸Gradle了</p>
-
+keyserver.ubuntu.com
+</code></pre></div><p>准备好了以上几项，我们就可以开始撸Gradle了</p>
 <h2 id="配置gradle插件">配置Gradle插件</h2>
-
-<h3 id="build-gradle参数">build.gradle参数</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">plugins {
+<h3 id="buildgradle参数">build.gradle参数</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">plugins {
     id &#34;java-library&#34;
     id &#34;maven-publish&#34;
     id &#34;signing&#34;
@@ -469,66 +439,40 @@ publishing {
 
 signing {
     sign publishing.publications.mavenJava
-}</pre></div>
-<p>在项目根目录或者gradle根目录新增<code>gradle.properties</code>（我推荐在本地的gradle根目录新建，毕竟有敏感信息）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">signing.keyId=密钥keyId(后8位)
+}
+</code></pre></div><p>在项目根目录或者gradle根目录新增<code>gradle.properties</code>（我推荐在本地的gradle根目录新建，毕竟有敏感信息）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">signing.keyId=密钥keyId(后8位)
 signing.password=密钥password（gpg新建秘钥时输入的密码）
 signing.secretKeyRingFile=私钥keyRingFile路径
 
 sonatypeUsername=sonatype账号
-sonatypePassword=sonatype密码</pre></div>
-<h2 id="提交到sonatype仓库">提交到Sonatype仓库</h2>
-
+sonatypePassword=sonatype密码
+</code></pre></div><h2 id="提交到sonatype仓库">提交到Sonatype仓库</h2>
 <p>首先，用Gradle执行<code>publishToMavenLocal</code>任务，先在本地发布下，看看生成了哪些文件，或还有什么问题</p>
-
 <p>然后，用Gradle执行<code>publish</code>任务，发布到指定的maven仓库</p>
-
 <p>如果没有报错，那么恭喜你，已经成功提交到了sonatype的仓库中</p>
-
 <p>但是提交成功，并不代表发布成功。</p>
-
 <h2 id="到sonatype-oss发布">到Sonatype OSS发布</h2>
-
-<p>用你之前注册的账号密码，登录：<a href="https://oss.sonatype.org/">https://oss.sonatype.org/</a></p>
-
+<p>用你之前注册的账号密码，登录：https://oss.sonatype.org/</p>
 <p>登录后查看左侧的<code>Build Promotion</code>-&gt;<code>Staging Repositories</code></p>
-
-<p><img src="http://flygopher.top/img/post/gradle-publish-jar-03.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/gradle-publish-jar-03.png" alt=""></p>
 <p>点击<code>Close</code>按钮后，中央仓库会验证你上传的文件签名，回去公钥服务器拉取公钥，如果验证失败会提示你，根据提示修改你的操作。</p>
-
 <p>需要等待一会，等它执行完毕，状态会从<code>open</code>变成<code>closed</code></p>
-
 <p>一般情况下，感觉如果顺利<code>close</code>后，再次选中点击<code>Release</code>，耐心等待一会，就大功告成了！</p>
-
 <p>可以在侧边栏<code>Artifact Search</code>中搜索下你的<code>groupId</code>，此时应该能看到对应的构件名称和版本了</p>
-
 <p><strong>但是！！！</strong></p>
-
 <p>目前为止你的Jar包还无法在Maven Search页面找到，根据上面审核人员的提示需要2个小时，但是我实际的等待不止两个小时。看来从sonatype同步到中央仓库，的确是需要一定的时间。</p>
-
 <p>但是文件其实会比索引同步得早，所以你可以先到 <a href="https://repo1.maven.org/maven2/">https://repo1.maven.org/maven2/</a> 上按照坐标找下，是否能找到你的包。如果能找到，那你就可以开始引用它了。</p>
-
 <p>之后可以间隔不同的时间去 <a href="https://search.maven.org/">https://search.maven.org/</a> 上搜一下。</p>
-
-<p><img src="http://flygopher.top/img/post/gradle-publish-jar-04.png" alt="" /></p>
-
+<p><img src="http://flygopher.top/img/post/gradle-publish-jar-04.png" alt=""></p>
 <h2 id="新版本更新">新版本更新</h2>
-
 <p>你可以在<code>groupId范围内</code>发布<code>任意名称</code>的构件</p>
-
-<hr>
-
+<!-- raw HTML omitted -->
 <h2 id="参考">参考</h2>
-
 <p><a href="https://medium.com/@nmauti/sign-and-publish-on-maven-central-a-project-with-the-new-maven-publish-gradle-plugin-22a72a4bfd4b">Sign and publish on Maven Central a Project with the new maven-publish Gradle plugin</a></p>
-
 <p><a href="https://central.sonatype.org/pages/ossrh-guide.html">OSSRH Guide</a></p>
-
 <p><a href="https://docs.gradle.org/current/userguide/publishing_maven.html">Maven Publish Plugin</a></p>
-
 <p><a href="https://docs.gradle.org/current/userguide/signing_plugin.html">The Sign Plugin</a></p>
-
 <p><a href="https://help.github.com/en/github/authenticating-to-github/generating-a-new-gpg-key">Generating a new GPG key</a></p>
 
           
@@ -673,7 +617,7 @@ sonatypePassword=sonatype密码</pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

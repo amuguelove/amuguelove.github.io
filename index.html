@@ -21,7 +21,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.58.3" />
+  <meta name="generator" content="Hugo 0.79.0" />
   <link rel="canonical" href="http://flygopher.top/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -32,8 +32,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.40346b24cc8f36f9e5e3351d62a303e74158b59c2c3c0ba141d1969901b1e4f7.css' integrity='sha256-QDRrJMyPNvnl4zUdYqMD50FYtZwsPAuhQdGWmQGx5Pc='>
-  -->
+  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -204,7 +203,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 October 31, 2020
+    
   
   
 </span>
@@ -213,7 +212,6 @@ if (!doNotTrack) {
               <div class="post-entry">
                 
                   <p>在使用<code>Kubernetes</code>的时候，因为有太多的资源、太多的版本、太多的组了，这些都非常容易产生混淆。如果我们通过 YAML 文件定义过 Deployment 这样的资源清单文件的话，那么你应该会看到<code>apiVersion: apps/v1beta2</code>、<code>apiVersion: apps/v1</code>等等这样的信息，那么我们到底应该使用哪一个呢？哪一个才是正确的呢？如何检查<code>Kubernetes</code>集群支持哪些？其实我们使用<code>kubectl</code>工具就可以来解决我们的这些疑惑。</p>
-
 <p>当前我使用的<code>Kubernetes</code>的版本是<code>1.18,8</code>。</p>
                   <a href="http://flygopher.top/post/how-to-use-k8s-api-resources/" class="post-read-more">[阅读全文]</a>
                 
@@ -242,7 +240,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 October 30, 2020
+    
   
   
 </span>
@@ -251,22 +249,19 @@ if (!doNotTrack) {
               <div class="post-entry">
                 
                   <p>最近我在快速提交代码到Github远程仓库的时候，发现提交了一些非必须文件，如缓存文件，而且这些文件比较大，影响了CI工具拉取github仓库的状态（CI工具网速不够快），导致无法将最新的提交触发CI。</p>
-
 <p>这里快速介绍一种快速的方法：</p>
-
 <p>第一步：快速找到你要回滚的<code>git commit id</code>；</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">git log</pre></div>
-<p>第二步：将本地变更回滚（切记使用&ndash;soft，这样会保存你工作区的变更，只是移除了暂存区的代码，不要使用&ndash;hard）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">git reset --soft commit-id-xxxxxx</pre></div>
-<p>第三步：缓存你工作区的变更</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">git stash</pre></div>
-<p>第四步：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">git push --force --no-verify</pre></div>
-<p>这时候github远程仓库，已经回滚到你reset的commitId了。切记如果这时候有别人最新的提交也是会回滚的。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git log
+</code></pre></div><p>第二步：将本地变更回滚（切记使用&ndash;soft，这样会保存你工作区的变更，只是移除了暂存区的代码，不要使用&ndash;hard）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git reset --soft commit-id-xxxxxx
+</code></pre></div><p>第三步：缓存你工作区的变更</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git stash
+</code></pre></div><p>第四步：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git push --force --no-verify
+</code></pre></div><p>这时候github远程仓库，已经回滚到你reset的commitId了。切记如果这时候有别人最新的提交也是会回滚的。</p>
 <p>第五步：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">git stash pop</pre></div>
-<p>这样你又可以修改本地的修改，之后再次提交就好了。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git stash pop
+</code></pre></div><p>这样你又可以修改本地的修改，之后再次提交就好了。</p>
                 
               </div>
 
@@ -304,7 +299,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 October 15, 2020
+    
   
   
 </span>
@@ -313,7 +308,6 @@ if (!doNotTrack) {
               <div class="post-entry">
                 
                   <p>现在安装 Kubernetes 集群已经变得越来越简单了，出现了很多方案，各种方案都有自己适合的使用场景。虽然我们可以很快速在云环境下面启动一个 Kubernetes 集群，但是对于开发人员通常更喜欢能够快速上手的东西，<a href="https://kind.sigs.k8s.io/">Kubernetes in Docker（Kind）</a>这个工具就可以通过创建容器来作为 Kubernetes 的节点，我们只需要在机器上安装 Docker 就可以使用，它允许我们在很短的时间内就启动一个多节点的集群，而不依赖任何其他工具或云服务商。</p>
-
 <p>前面的文章也讲过如何在本地使用Vagrant来快速搭建Kubernetes集群，但还是有点麻烦，而且需要自己去定制Vagrant Box，有一定的技术门槛。</p>
                   <a href="http://flygopher.top/post/setup-kubernetes-cluster-with-kind/" class="post-read-more">[阅读全文]</a>
                 
@@ -350,7 +344,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 October 11, 2020
+    
   
   
 </span>
@@ -359,9 +353,7 @@ if (!doNotTrack) {
               <div class="post-entry">
                 
                   <p>很多人在学习Kubernetes之前，都会苦恼如何搭建一个集群环境呢？你可以使用新版的Docker快速搭建一个单Master的集群，你也可以购买云厂商的集群服务；使用Docker安装集群非常的简单，但是只能是单master节点；购买云厂商的集群服务可以拥有所有的集群功能，而且任意购买云存储，外网LoadBalancer等，但是费用昂贵，因为k8s集群对机器的要求还是不低的。那有没有其他的选择呢？下面给大家介绍我是如何在本地快速搭建k8s集群的。</p>
-
 <p>使用Vagrant定制Centos7 Box，里面包含了Linux参数优化，Docker，Kubectl，Kubeadm，Kubelet等。这样就可以通过这个Vagrant Box启动多个节点的k8s集群了。</p>
-
 <p>最近花了点时间将所有的配置都脚本化，可以通过CLI的方式快速构建基础Box或者删除。</p>
                   <a href="http://flygopher.top/post/customize-vagrant-box/" class="post-read-more">[阅读全文]</a>
                 
@@ -396,7 +388,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 October 10, 2020
+    
   
   
 </span>
@@ -405,7 +397,6 @@ if (!doNotTrack) {
               <div class="post-entry">
                 
                   <p>花了2天的时间看完这本书：《凤凰项目（沙盘特别版）》，感触颇深。和所有讲DevOps相关的书不同，感觉就在读小说一样，而且非常的励志，讲述了一家陷入困境的传统制造业公司，怎么凭借凤凰项目（或者独角兽项目）起死回生的。IT运维在其中发挥了只管重要的作用。</p>
-
 <p>最近这半年来，我大部分的工作也集中在开发运维上，在这个过程中，也接触到了很多DevOps相关的知识和实践，虽然书中很多东西比较旧，但是还是有很多只得借鉴的地方。 读这本书的时候，有很多地方产生了共鸣，一度让我回忆起了之前参与公司的TWI中的课程，关于敏捷和精益的部分，尤其是精益思想。</p>
                   <a href="http://flygopher.top/post/read-the-phoenix-project/" class="post-read-more">[阅读全文]</a>
                 
@@ -440,7 +431,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 September 28, 2020
+    
   
   
 </span>
@@ -449,10 +440,8 @@ if (!doNotTrack) {
               <div class="post-entry">
                 
                   <p>现在的Web应用启用<code>HTTPS</code>服务是真的非常有必要的。一些正规机构颁发的<code>CA</code>证书费用又特别高，不过比较幸运的是也有免费的午餐 - <code>Let's Encrypt</code>，虽然只有90天的证书有效期，但是我们完全可以在证书失效之前，重新生成证书替换掉。在<code>Kubernetes</code>集群中就更方便了，我们可以通过 Kubernetes Ingress 和 Let’s Encrypt 实现外部服务的自动化 HTTPS。</p>
-
 <p>Cert-Manager 是一个云原生证书管理开源项目，用于在 Kubernetes 集群中提供 HTTPS 证书并自动续期，支持 Let’s Encrypt / HashiCorp / Vault 这些免费证书的签发。</p>
-
-<p><img src="http://flygopher.top/img/post/cert-manager-structrue.svg" alt="Cert Manager Structrue" /></p>
+<p><img src="http://flygopher.top/img/post/cert-manager-structrue.svg" alt="Cert Manager Structrue"></p>
                   <a href="http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/" class="post-read-more">[阅读全文]</a>
                 
               </div>
@@ -490,7 +479,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 September 27, 2020
+    
   
   
 </span>
@@ -538,7 +527,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 September 26, 2020
+    
   
   
 </span>
@@ -582,7 +571,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 September 1, 2020
+    
   
   
 </span>
@@ -590,7 +579,7 @@ if (!doNotTrack) {
 
               <div class="post-entry">
                 
-                  <p>一个正则表达式通常被称为一个<strong>模式</strong>（pattern），为用来描述或者匹配一系列符合某个<a href="https://zh.wikipedia.org/wiki/句法">句法</a>规则的<a href="https://zh.wikipedia.org/wiki/字符串">字符串</a>。例如：Handel、Händel和Haendel这三个字符串，都可以由<code>H(a|ä|ae)ndel</code>这个模式来描述。大部分正则表达式的形式都有如下的结构：</p>
+                  <p>一个正则表达式通常被称为一个<strong>模式</strong>（pattern），为用来描述或者匹配一系列符合某个<a href="https://zh.wikipedia.org/wiki/%E5%8F%A5%E6%B3%95">句法</a>规则的<a href="https://zh.wikipedia.org/wiki/%E5%AD%97%E7%AC%A6%E4%B8%B2">字符串</a>。例如：Handel、Händel和Haendel这三个字符串，都可以由<code>H(a|ä|ae)ndel</code>这个模式来描述。大部分正则表达式的形式都有如下的结构：</p>
                   <a href="http://flygopher.top/post/sample-regexp/" class="post-read-more">[阅读全文]</a>
                 
               </div>
@@ -616,7 +605,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 August 29, 2020
+    
   
   
 </span>
@@ -652,7 +641,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 April 8, 2020
+    
   
   
 </span>
@@ -692,7 +681,7 @@ if (!doNotTrack) {
 
               <span class="post-meta">
   
-    发表于 April 8, 2020
+    
   
   
 </span>
@@ -701,12 +690,9 @@ if (!doNotTrack) {
               <div class="post-entry">
                 
                   <p>Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 <a href="https://www.cncf.io/about">CNCF</a>。你可以通过阅读 <a href="https://kubernetes.io/zh/docs/home/">官方文档</a>了解Kubernetes和其基础概念。</p>
-
 <p>接下来这篇文章将介绍如何使用二进制部署<code>Kubernetes v1.14.8</code>。通过这种<code>hard-way</code>的方式来帮助你更好的了解Kubernetes。</p>
-
 <p>Kubernetes Cluster搭建的过程，可以参考<a href="https://github.com/opsnull/follow-me-install-kubernetes-cluster">和我一步步部署 kubernetes 集群</a>。我将其中的脚本整理好了，并通过<a href="https://www.vagrantup.com/">Vagrant</a>和<a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>在本地快速创建k8s集群。</p>
-
-<p>Github地址如下: <a href="https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.14.8">https://github.com/amuguelove/setup-kubernetes-cluster/tree/v1.14.8</a></p>
+<p>Github地址如下: <a href="https://github.com/amuguelove/k8s-setup-tutorial/tree/v1.14.8">https://github.com/amuguelove/k8s-setup-tutorial/tree/v1.14.8</a></p>
                   <a href="http://flygopher.top/post/local-install-ha-kubernetes-cluster/" class="post-read-more">[阅读全文]</a>
                 
               </div>
@@ -729,100 +715,34 @@ if (!doNotTrack) {
 
         <div align="center" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-
 <ul class="pagination">
-    
-    <li class="page-item">
-        <a href="http://flygopher.top/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
-    
-    <li class="page-item disabled">
+  <li class="page-item">
+    <a href="http://flygopher.top/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+  </li>
+  <li class="page-item disabled">
     <a  class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item active"><a class="page-link" href="http://flygopher.top/">1</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="http://flygopher.top/page/2/">2</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="http://flygopher.top/page/3/">3</a></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item disabled"><span aria-hidden="true">&nbsp;&hellip;&nbsp;</span></li>
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-        
-        
-    
-    
-    <li class="page-item"><a class="page-link" href="http://flygopher.top/page/7/">7</a></li>
-    
-    
-    <li class="page-item">
+  </li>
+  <li class="page-item active">
+    <a class="page-link" href="http://flygopher.top/">1</a>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="http://flygopher.top/page/2/">2</a>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="http://flygopher.top/page/3/">3</a>
+  </li>
+  <li class="page-item disabled">
+    <span aria-hidden="true">&nbsp;&hellip;&nbsp;</span>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="http://flygopher.top/page/7/">7</a>
+  </li>
+  <li class="page-item">
     <a href="http://flygopher.top/page/2/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="http://flygopher.top/page/7/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-    
+  </li>
+  <li class="page-item">
+    <a href="http://flygopher.top/page/7/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+  </li>
 </ul>
 
 
@@ -1033,6 +953,10 @@ if (!doNotTrack) {
             
             
             <a href="http://flygopher.top/tags/cert-manager"><i class="fa fa-tags"></i> cert-manager(1)</a>
+            
+            
+            
+            <a href="http://flygopher.top/tags/ci"><i class="fa fa-tags"></i> ci(1)</a>
             
             
             
@@ -1317,7 +1241,7 @@ if (!doNotTrack) {
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.58.3</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>

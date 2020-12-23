@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>wrk on 梁波的技术博客</title>
@@ -6,11 +6,7 @@
     <description>Recent content in wrk on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 07 Apr 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://flygopher.top/tags/wrk/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 07 Apr 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://flygopher.top/tags/wrk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Http性能压测工具 | wrk</title>
       <link>http://flygopher.top/post/http-performance-tool-wrk/</link>
@@ -18,27 +14,26 @@
       
       <guid>http://flygopher.top/post/http-performance-tool-wrk/</guid>
       <description>&lt;p&gt;简单的 http 性能测试工具，记录一下使用方法。&lt;/p&gt;
-
 &lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
-
 &lt;h4 id=&#34;macos&#34;&gt;MacOS&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;brew install wrk&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&#34;ubuntu-debian&#34;&gt;Ubuntu/Debian&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;sudo apt-get install build-essential libssl-dev git -y
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;brew install wrk
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;ubuntudebian&#34;&gt;Ubuntu/Debian&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo apt-get install build-essential libssl-dev git -y
 git clone https://github.com/wg/wrk.git wrk
 cd wrk
 sudo make
 # move the executable to somewhere in your PATH, ex:
-sudo cp wrk /usr/local/bin&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&#34;centos-redhat-fedora&#34;&gt;CentOS / RedHat / Fedora&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;sudo yum groupinstall &amp;#39;Development Tools&amp;#39;
+sudo cp wrk /usr/local/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;centos--redhat--fedora&#34;&gt;CentOS / RedHat / Fedora&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo yum groupinstall &amp;#39;Development Tools&amp;#39;
 sudo yum install openssl-devel
 sudo yum install git
 git clone https://github.com/wg/wrk.git wrk
 cd wrk
 make
 # move the executable to somewhere in your PATH
-sudo cp wrk /somewhere/in/your/PATH&lt;/pre&gt;&lt;/div&gt;</description>
+sudo cp wrk /somewhere/in/your/PATH
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>

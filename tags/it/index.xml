@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>IT on 梁波的技术博客</title>
@@ -6,11 +6,7 @@
     <description>Recent content in IT on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0800</lastBuildDate>
-    
-	<atom:link href="http://flygopher.top/tags/it/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/tags/it/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>凤凰项目读后感</title>
       <link>http://flygopher.top/post/read-the-phoenix-project/</link>
@@ -18,7 +14,6 @@
       
       <guid>http://flygopher.top/post/read-the-phoenix-project/</guid>
       <description>&lt;p&gt;花了2天的时间看完这本书：《凤凰项目（沙盘特别版）》，感触颇深。和所有讲DevOps相关的书不同，感觉就在读小说一样，而且非常的励志，讲述了一家陷入困境的传统制造业公司，怎么凭借凤凰项目（或者独角兽项目）起死回生的。IT运维在其中发挥了只管重要的作用。&lt;/p&gt;
-
 &lt;p&gt;最近这半年来，我大部分的工作也集中在开发运维上，在这个过程中，也接触到了很多DevOps相关的知识和实践，虽然书中很多东西比较旧，但是还是有很多只得借鉴的地方。 读这本书的时候，有很多地方产生了共鸣，一度让我回忆起了之前参与公司的TWI中的课程，关于敏捷和精益的部分，尤其是精益思想。&lt;/p&gt;</description>
     </item>
     
