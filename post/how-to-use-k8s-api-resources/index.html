@@ -271,7 +271,7 @@ if (!doNotTrack) {
           
 
           <p>在使用<code>Kubernetes</code>的时候，因为有太多的资源、太多的版本、太多的组了，这些都非常容易产生混淆。如果我们通过 YAML 文件定义过 Deployment 这样的资源清单文件的话，那么你应该会看到<code>apiVersion: apps/v1beta2</code>、<code>apiVersion: apps/v1</code>等等这样的信息，那么我们到底应该使用哪一个呢？哪一个才是正确的呢？如何检查<code>Kubernetes</code>集群支持哪些？其实我们使用<code>kubectl</code>工具就可以来解决我们的这些疑惑。</p>
-<p>当前我使用的<code>Kubernetes</code>的版本是<code>1.18,8</code>。</p>
+<p>当前我使用的<code>Kubernetes</code>的版本是<code>1.18.8</code>。</p>
 <h2 id="api-resources">API Resources</h2>
 <p>通过以下的命令来获取<code>Kubernetes</code>集群支持的所有 API 资源：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl api-resources -o wide
