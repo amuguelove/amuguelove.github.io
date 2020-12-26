@@ -164,6 +164,33 @@ if (!doNotTrack) {
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://flygopher.top/post/java8-stream/">
+                <h2 class="post-title">Java8新特性（二）：Stream流式处理</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 October 2, 2018
+              </p>
+              <div class="post-entry">
+                
+                  <p>Stream 作为 Java 8 的一大亮点，它与 java.io 包里的 InputStream 和 OutputStream 是完全不同的概念。它也不同于 StAX 对 XML 解析的 Stream，也不是 Amazon Kinesis 对大数据实时处理的 Stream。Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的 Lambda 表达式，极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用 fork/join 并行方式来拆分任务和加速处理过程。</p>
+                  <a href="http://flygopher.top/post/java8-stream/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/java/">Java</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://flygopher.top/post/java8-lambda/">
                 <h2 class="post-title">Java8新特性（一）：Lambda表达式</h2>
 
@@ -171,7 +198,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 October 1, 2018
               </p>
               <div class="post-entry">
                 
@@ -224,7 +251,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 October 1, 2018
               </p>
               <div class="post-entry">
                 
@@ -256,7 +283,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 September 27, 2018
               </p>
               <div class="post-entry">
                 
@@ -285,7 +312,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 May 27, 2018
               </p>
               <div class="post-entry">
                 
@@ -316,7 +343,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 May 23, 2018
               </p>
               <div class="post-entry">
                 
@@ -344,7 +371,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 May 11, 2018
               </p>
               <div class="post-entry">
                 
@@ -377,7 +404,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 April 7, 2018
               </p>
               <div class="post-entry">
                 
@@ -426,7 +453,7 @@ sudo cp wrk /somewhere/in/your/PATH
               </a>
 
               <p class="post-meta">
-                
+                发表于 January 10, 2018
               </p>
               <div class="post-entry">
                 
@@ -474,7 +501,7 @@ dir /var/lib/redis
               </a>
 
               <p class="post-meta">
-                
+                发表于 August 12, 2017
               </p>
               <div class="post-entry">
                 
@@ -502,7 +529,7 @@ dir /var/lib/redis
               </a>
 
               <p class="post-meta">
-                
+                发表于 April 29, 2017
               </p>
               <div class="post-entry">
                 
@@ -532,7 +559,7 @@ dir /var/lib/redis
               </a>
 
               <p class="post-meta">
-                
+                发表于 March 26, 2017
               </p>
               <div class="post-entry">
                 
@@ -573,49 +600,6 @@ public class ProxyTest {
 }
 </code></pre></div>
                   <a href="http://flygopher.top/post/dynamic-proxy-pattern/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/design-patterns/">Design Patterns</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/singleton-pattern/">
-                <h2 class="post-title">设计模式之单例模式</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                
-              </p>
-              <div class="post-entry">
-                
-                  <p>单例模式 (Singleton) 也叫单态模式，是设计模式中最为简单的一种模式。</p>
-<h3 id="第一种懒汉-线程不安全">第一种（懒汉, 线程不安全）</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public class Singleton {
-
-    private static Singleton instance;
-
-    private Singleton() {
-    }
-
-    public static Singleton getInstance() {
-        if (instance == null) {
-            instance = new Singleton();
-        }
-        return instance;
-    }
-}
-</code></pre></div><p>这种写法 lazy loading 很明显, 但是致命的是在多线程不能正常工作。</p>
-                  <a href="http://flygopher.top/post/singleton-pattern/" class="post-read-more">[阅读全文]</a>
                 
               </div>
 

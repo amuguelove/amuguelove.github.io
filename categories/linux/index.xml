@@ -6,7 +6,16 @@
     <description>Recent content in Linux on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 09 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://flygopher.top/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Dec 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>升级OpenSSL解决CVE-2020-1971漏洞</title>
+      <link>http://flygopher.top/post/centos-upgrade-openssl/</link>
+      <pubDate>Sat, 26 Dec 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/centos-upgrade-openssl/</guid>
+      <description>&lt;p&gt;2020年12月08日，OpenSSL官方发布安全公告，披露&lt;code&gt;CVE-2020-1971&lt;/code&gt; OpenSSL GENERAL_NAME_cmp 拒绝服务漏洞。当两个GENERAL_NAME都包含同一个EDIPARTYNAME时，由于GENERAL_NAME_cmp函数未能正确处理，从而导致空指针引用，并可能导致拒绝服务。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Shell脚本快速上手</title>
       <link>http://flygopher.top/post/shell-scripts-quickstart/</link>

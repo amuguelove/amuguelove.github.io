@@ -164,6 +164,41 @@ if (!doNotTrack) {
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://flygopher.top/post/centos-upgrade-openssl/">
+                <h2 class="post-title">升级OpenSSL解决CVE-2020-1971漏洞</h2>
+
+                
+                  <h3 class="post-subtitle">
+                    OpenSSL 1.1.1i
+                  </h3>
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 December 26, 2020
+              </p>
+              <div class="post-entry">
+                
+                  <p>2020年12月08日，OpenSSL官方发布安全公告，披露<code>CVE-2020-1971</code> OpenSSL GENERAL_NAME_cmp 拒绝服务漏洞。当两个GENERAL_NAME都包含同一个EDIPARTYNAME时，由于GENERAL_NAME_cmp函数未能正确处理，从而导致空指针引用，并可能导致拒绝服务。</p>
+                  <a href="http://flygopher.top/post/centos-upgrade-openssl/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/openssl/">openssl</a>&nbsp;
+                  
+                    #<a href="http://flygopher.top/tags/centos/">centos</a>&nbsp;
+                  
+                    #<a href="http://flygopher.top/tags/linux/">linux</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://flygopher.top/post/how-to-use-k8s-api-resources/">
                 <h2 class="post-title">Kubernetes API资源的使用</h2>
 
@@ -175,7 +210,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 October 31, 2020
               </p>
               <div class="post-entry">
                 
@@ -205,7 +240,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 October 30, 2020
               </p>
               <div class="post-entry">
                 
@@ -246,7 +281,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 October 15, 2020
               </p>
               <div class="post-entry">
                 
@@ -284,7 +319,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 October 11, 2020
               </p>
               <div class="post-entry">
                 
@@ -321,7 +356,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 October 10, 2020
               </p>
               <div class="post-entry">
                 
@@ -357,7 +392,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 September 28, 2020
               </p>
               <div class="post-entry">
                 
@@ -398,7 +433,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 September 27, 2020
               </p>
               <div class="post-entry">
                 
@@ -439,7 +474,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 September 26, 2020
               </p>
               <div class="post-entry">
                 
@@ -476,7 +511,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 September 1, 2020
               </p>
               <div class="post-entry">
                 
@@ -503,7 +538,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 August 29, 2020
               </p>
               <div class="post-entry">
                 
@@ -532,7 +567,7 @@ if (!doNotTrack) {
               </a>
 
               <p class="post-meta">
-                
+                发表于 April 8, 2020
               </p>
               <div class="post-entry">
                 
@@ -549,40 +584,6 @@ if (!doNotTrack) {
                     #<a href="http://flygopher.top/tags/kubernetes/">kubernetes</a>&nbsp;
                   
                     #<a href="http://flygopher.top/tags/kubeadm/">kubeadm</a>&nbsp;
-                  
-                    #<a href="http://flygopher.top/tags/vagrant/">vagrant</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/local-install-ha-kubernetes-cluster/">
-                <h2 class="post-title">使用二进制搭建kubernetes三节点高可用集群</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                
-              </p>
-              <div class="post-entry">
-                
-                  <p>Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 <a href="https://www.cncf.io/about">CNCF</a>。你可以通过阅读 <a href="https://kubernetes.io/zh/docs/home/">官方文档</a>了解Kubernetes和其基础概念。</p>
-<p>接下来这篇文章将介绍如何使用二进制部署<code>Kubernetes v1.14.8</code>。通过这种<code>hard-way</code>的方式来帮助你更好的了解Kubernetes。</p>
-<p>Kubernetes Cluster搭建的过程，可以参考<a href="https://github.com/opsnull/follow-me-install-kubernetes-cluster">和我一步步部署 kubernetes 集群</a>。我将其中的脚本整理好了，并通过<a href="https://www.vagrantup.com/">Vagrant</a>和<a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>在本地快速创建k8s集群。</p>
-<p>Github地址如下: <a href="https://github.com/amuguelove/k8s-setup-tutorial/tree/v1.14.8">https://github.com/amuguelove/k8s-setup-tutorial/tree/v1.14.8</a></p>
-                  <a href="http://flygopher.top/post/local-install-ha-kubernetes-cluster/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/devops/">devops</a>&nbsp;
-                  
-                    #<a href="http://flygopher.top/tags/kubernetes/">kubernetes</a>&nbsp;
                   
                     #<a href="http://flygopher.top/tags/vagrant/">vagrant</a>&nbsp;
                   
