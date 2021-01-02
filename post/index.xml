@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ingress-nginx在TKE上的最佳实践</title>
+      <link>http://flygopher.top/post/ingress-nginx-on-tke/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/ingress-nginx-on-tke/</guid>
+      <description>&lt;p&gt;Nginx Ingress 有多种部署方式，本文将介绍 Nginx Ingress 在 TKE 上的一些部署方案，这几种方案的原理、各自优缺点以及一些选型和使用上的建议。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>ingress-nginx的安装使用</title>
       <link>http://flygopher.top/post/install-ingress-nginx/</link>
