@@ -6,7 +6,22 @@
     <description>Recent content in kubernetes on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 31 Oct 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ingress-nginx的安装使用</title>
+      <link>http://flygopher.top/post/install-ingress-nginx/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/install-ingress-nginx/</guid>
+      <description>&lt;p&gt;开源的 Ingress Controller 的实现使用量最大的莫过于 Ingress Nginx 了，可作为反向代理将外部流量导入集群内部，将 Kubernetes 内部的 Service 暴露给外部，在 Ingress 对象中通过域名匹配 Service，这样就可以直接通过域名访问到集群内部的服务了。&lt;/p&gt;
+&lt;p&gt;实际 Ingress Nginx 有两种实现：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes/ingress-nginx&#34;&gt;https://github.com/kubernetes/ingress-nginx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/nginxinc/kubernetes-ingress&#34;&gt;https://github.com/nginxinc/kubernetes-ingress&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;第一种是 Kubernetes 开源社区的实现，第二种是 Nginx 官方的实现，我们通常用的是 Kubernetes 社区的实现，这也是本文所关注的重点。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Kubernetes API资源的使用</title>
       <link>http://flygopher.top/post/how-to-use-k8s-api-resources/</link>

@@ -192,6 +192,75 @@ if (!doNotTrack) {
 
 
             <article class="post-preview">
+              <a href="http://flygopher.top/post/dynamic-proxy-pattern/">
+                <h2 class="post-title">设计模式之动态代理</h2>
+                
+              </a>
+
+              <span class="post-meta">
+  
+    发表于 March 26, 2017
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>代理实现可以分为静态代理和动态代理, 下面使用jdk和cglib来分别说明。</p>
+<h2 id="静态代理">静态代理</h2>
+<p>具体实现：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public interface Subject {
+    void request();
+}
+
+class RealSubject implements Subject {
+    public void request(){
+        System.out.println(&#34;Call RealSubject&#34;);
+    }
+}
+
+class Proxy implements Subject {
+    private Subject subject;
+
+    public Proxy(Subject subject) {
+        this.subject = subject;
+    }
+
+    public void request() {
+        System.out.println(&#34;begin&#34;);
+        subject.request();
+        System.out.println(&#34;end&#34;);
+    }
+}
+
+public class ProxyTest {
+
+    public static void main(String args[]) {
+        RealSubject subject = new RealSubject();
+        Proxy p = new Proxy(subject);
+        p.request();
+    }
+}
+</code></pre></div>
+                  <a href="http://flygopher.top/post/dynamic-proxy-pattern/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://flygopher.top/tags/design-patterns/">Design Patterns</a>&nbsp;
+                
+                </span>
+              
+            </article>
+
+          
+
+
+
+            <article class="post-preview">
               <a href="http://flygopher.top/post/singleton-pattern/">
                 <h2 class="post-title">设计模式之单例模式</h2>
                 
@@ -241,6 +310,17 @@ if (!doNotTrack) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
             <article class="post-preview">
               <a href="http://flygopher.top/post/git-common-commands/">
                 <h2 class="post-title">Git常用指令整理</h2>
@@ -284,17 +364,6 @@ git push -u origin master
             </article>
 
           
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -407,6 +476,7 @@ git push -u origin master
 </ul>
 
 
+          
           
           
           
@@ -533,7 +603,7 @@ git push -u origin master
             
           
             
-            <li><a href="http://flygopher.top/categories/kubernetes">kubernetes(8)</a></li>
+            <li><a href="http://flygopher.top/categories/kubernetes">kubernetes(9)</a></li>
             
           
             
@@ -669,6 +739,10 @@ git push -u origin master
             
             
             
+            <a href="http://flygopher.top/tags/helm"><i class="fa fa-tags"></i> helm(1)</a>
+            
+            
+            
             <a href="http://flygopher.top/tags/hexo"><i class="fa fa-tags"></i> hexo(1)</a>
             
             
@@ -689,7 +763,7 @@ git push -u origin master
             
             
             
-            <a href="http://flygopher.top/tags/ingress"><i class="fa fa-tags"></i> ingress(1)</a>
+            <a href="http://flygopher.top/tags/ingress"><i class="fa fa-tags"></i> ingress(2)</a>
             
             
             
@@ -725,7 +799,7 @@ git push -u origin master
             
             
             
-            <a href="http://flygopher.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(9)</a>
+            <a href="http://flygopher.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(10)</a>
             
             
             
@@ -750,6 +824,10 @@ git push -u origin master
             
             
             <a href="http://flygopher.top/tags/mysql"><i class="fa fa-tags"></i> mysql(1)</a>
+            
+            
+            
+            <a href="http://flygopher.top/tags/nginx"><i class="fa fa-tags"></i> nginx(1)</a>
             
             
             
@@ -810,6 +888,10 @@ git push -u origin master
             
             
             <a href="http://flygopher.top/tags/tools"><i class="fa fa-tags"></i> tools(2)</a>
+            
+            
+            
+            <a href="http://flygopher.top/tags/traefik"><i class="fa fa-tags"></i> traefik(1)</a>
             
             
             

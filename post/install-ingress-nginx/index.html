@@ -6,24 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>升级OpenSSL解决CVE-2020-1971漏洞-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="升级OpenSSL解决CVE-2020-1971漏洞" />
-  <meta name="twitter:title" content="升级OpenSSL解决CVE-2020-1971漏洞" />
+  <title>ingress-nginx的安装使用-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="ingress-nginx的安装使用" />
+  <meta name="twitter:title" content="ingress-nginx的安装使用" />
   
-  <meta name="description" content="OpenSSL 1.1.1i">
-  <meta property="og:description" content="OpenSSL 1.1.1i">
-  <meta name="twitter:description" content="OpenSSL 1.1.1i">
+  <meta name="description" content="开源的 Ingress Controller 的实现使用量最大的莫过于 Ingress Nginx 了，可作为反向代理将外部流量导入集群内部，将 Kubernetes 内部的 Service 暴露给外部，在 Ingress 对象中通过域名匹配 Service，这样就可以直接通过域名访问到集群内部的服务了。
+实际 Ingress Nginx 有两种实现：
+
+https://github.com/kubernetes/ingress-nginx
+https://github.com/nginxinc/kubernetes-ingress
+
+第一种是 Kubernetes 开源社区的实现，第二种是 Nginx 官方的实现，我们通常用的是 Kubernetes 社区的实现，这也是本文所关注的重点。">
+  <meta property="og:description" content="开源的 Ingress Controller 的实现使用量最大的莫过于 Ingress Nginx 了，可作为反向代理将外部流量导入集群内部，将 Kubernetes 内部的 Service 暴露给外部，在 Ingress 对象中通过域名匹配 Service，这样就可以直接通过域名访问到集群内部的服务了。
+实际 Ingress Nginx 有两种实现：
+
+https://github.com/kubernetes/ingress-nginx
+https://github.com/nginxinc/kubernetes-ingress
+
+第一种是 Kubernetes 开源社区的实现，第二种是 Nginx 官方的实现，我们通常用的是 Kubernetes 社区的实现，这也是本文所关注的重点。">
+  <meta name="twitter:description" content="开源的 Ingress Controller 的实现使用量最大的莫过于 Ingress Nginx 了，可作为反向代理将外部流量导入集群内部，将 Kubernetes 内部的 Service 暴露给外部，在 Ingress 对象中通过域名匹配 Service，这样就可以直接通过域名访问到集群内部的服务了。
+实际 Ingress Nginx 有两种实现： …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flygopher.top/post/centos-upgrade-openssl/" />
+  <meta property="og:url" content="http://flygopher.top/post/install-ingress-nginx/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.79.0" />
-  <link rel="canonical" href="http://flygopher.top/post/centos-upgrade-openssl/" />
+  <link rel="canonical" href="http://flygopher.top/post/install-ingress-nginx/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
@@ -152,7 +165,7 @@ if (!doNotTrack) {
 
 
   
-    <div id="header-big-imgs" data-num-img=1 data-img-src-1="http://flygopher.top/img/bigimg/cofee.jpg" ></div>
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="http://flygopher.top/img/bigimg/ingress-nginx.jpg" ></div>
   
 
   <header class="header-section has-img">
@@ -163,16 +176,12 @@ if (!doNotTrack) {
           <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
               <div class="post-heading">
-                <h1>升级OpenSSL解决CVE-2020-1971漏洞</h1>
-                  
-                    
-                      <h2 class="post-subheading">OpenSSL 1.1.1i</h2>
-                    
+                <h1>ingress-nginx的安装使用</h1>
                   
                   
                     <span class="post-meta">
   
-    发表于 December 26, 2020
+    发表于 December 31, 2020
   
   
 </span>
@@ -194,16 +203,12 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>升级OpenSSL解决CVE-2020-1971漏洞</h1>
-                
-                  
-                    <h2 class="post-subheading">OpenSSL 1.1.1i</h2>
-                  
+              <h1>ingress-nginx的安装使用</h1>
                 
                 
                   <span class="post-meta">
   
-    发表于 December 26, 2020
+    发表于 December 31, 2020
   
   
 </span>
@@ -234,11 +239,15 @@ if (!doNotTrack) {
             
             <h5 id="tags" style="margin-top: 30px;">标签:
               
-                  <a href="http://flygopher.top/tags/openssl/">openssl</a> &nbsp;
+                  <a href="http://flygopher.top/tags/kubernetes/">kubernetes</a> &nbsp;
               
-                  <a href="http://flygopher.top/tags/centos/">centos</a> &nbsp;
+                  <a href="http://flygopher.top/tags/ingress/">ingress</a> &nbsp;
               
-                  <a href="http://flygopher.top/tags/linux/">linux</a> &nbsp;
+                  <a href="http://flygopher.top/tags/nginx/">nginx</a> &nbsp;
+              
+                  <a href="http://flygopher.top/tags/helm/">helm</a> &nbsp;
+              
+                  <a href="http://flygopher.top/tags/traefik/">traefik</a> &nbsp;
               
             </h5>
             
@@ -250,12 +259,7 @@ if (!doNotTrack) {
 <aside class="toc">
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#漏洞描述">漏洞描述</a></li>
-    <li><a href="#修复建议">修复建议</a></li>
-    <li><a href="#查看当前环境">查看当前环境</a></li>
-    <li><a href="#安装编译环境">安装编译环境</a></li>
-    <li><a href="#安装openssl">安装OpenSSL</a></li>
-    <li><a href="#最后验证">最后验证</a></li>
+    <li><a href="#参考">参考</a></li>
   </ul>
 </nav>
 </aside>
@@ -274,44 +278,72 @@ if (!doNotTrack) {
           
           
 
-          <p>2020年12月08日，OpenSSL官方发布安全公告，披露<code>CVE-2020-1971</code> OpenSSL GENERAL_NAME_cmp 拒绝服务漏洞。当两个GENERAL_NAME都包含同一个EDIPARTYNAME时，由于GENERAL_NAME_cmp函数未能正确处理，从而导致空指针引用，并可能导致拒绝服务。</p>
-<h2 id="漏洞描述">漏洞描述</h2>
-<p>OpenSSL是一个开放源代码的软件库包，应用程序可以使用这个包来进行安全通信，避免窃听，同时确认另一端连接者的身份。这个包广泛被应用在互联网的网页服务器上。</p>
-<p><strong>漏洞编号：</strong> CVE-2020-1971</p>
-<p><strong>漏洞等级：</strong> 高危</p>
-<p><strong>受影响的版本：</strong></p>
-<p>OpenSSL 1.1.1 ～ 1.1.1h</p>
-<p>OpenSSL 1.0.2 ～ 1.0.2w</p>
-<p><strong>安全版本：</strong></p>
-<p>OpenSSL 1.1.1i</p>
-<p>OpenSSL 1.0.2x</p>
-<h2 id="修复建议">修复建议</h2>
-<p>建议所有用户升级到最新版本。</p>
-<p>下载链接：
-<a href="https://www.openssl.org/source/">https://www.openssl.org/source/</a></p>
-<p>以下适用于CentOS Linux系统</p>
-<h2 id="查看当前环境">查看当前环境</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># openssl version
-OpenSSL 1.0.2k-fips  26 Jan 2017
+          <p>开源的 Ingress Controller 的实现使用量最大的莫过于 Ingress Nginx 了，可作为反向代理将外部流量导入集群内部，将 Kubernetes 内部的 Service 暴露给外部，在 Ingress 对象中通过域名匹配 Service，这样就可以直接通过域名访问到集群内部的服务了。</p>
+<p>实际 Ingress Nginx 有两种实现：</p>
+<ol>
+<li><a href="https://github.com/kubernetes/ingress-nginx">https://github.com/kubernetes/ingress-nginx</a></li>
+<li><a href="https://github.com/nginxinc/kubernetes-ingress">https://github.com/nginxinc/kubernetes-ingress</a></li>
+</ol>
+<p>第一种是 Kubernetes 开源社区的实现，第二种是 Nginx 官方的实现，我们通常用的是 Kubernetes 社区的实现，这也是本文所关注的重点。</p>
+<h1 id="安装">安装</h1>
+<p>我们这里通过<code>Helm</code>来简化 nginx-ingress 的安装，所以确保 Helm 能够正常使用。由于部署ingress-nginx 所在的节点需要能够访问外网，这样域名可以解析到这些节点上直接使用，需要让 nginx-ingress 绑定节点的 80 和 443 端口。</p>
+<p>如果你的K8S集群是自己部署的，可以选择能够外网访问的边缘节点，ingress-nginx通过 DasemonSet 和 hostPort 来进行部署，并通过 nodeSelector 来筛选有外网 IP 的<strong>边缘节点</strong>。</p>
+<p>如果你的K8S集群是在云厂商购买的，可以直接部署，ingress-controller可以通过LoadBalancer提供外网访问服务。</p>
+<p>这里我采用的云厂商的K8S集群，部署ingress-nginx的详细文档可以参考：<a href="https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx">https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx</a></p>
+<p>1）添加Helm Repo：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+</code></pre></div><p>2）安装ingress-nginx chart:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubectl create namespace ingress
+helm install ingress-nginx ingress-nginx/ingress-nginx -n ingress --version 3.9.0
+</code></pre></div><p>3）你也可以新建custom.yaml文件来覆盖 nginx-ingress Chart 包的一些默认参数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">controller:
+  image:
+    repository: docker.io/amuguelove/ingress-nginx
+    tag: &#34;v0.41.0&#34;
+    digest:
+    pullPolicy: IfNotPresent
 
-# which openssl
-/usr/bin/openssl
-</code></pre></div><h2 id="安装编译环境">安装编译环境</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">yum update
-yum install wget tar make gcc perl pcre-devel zlib-devel
-</code></pre></div><h2 id="安装openssl">安装OpenSSL</h2>
-<p>下载最新版本OpenSSL：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">wget https://www.openssl.org/source/openssl-1.1.1i.tar.gz
-tar zxvf openssl-1.1.1i.tar.gz
-cd openssl-1.1.1i
-</code></pre></div><p>编译：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">./config --prefix=/usr --openssldir=/etc/ssl --libdir=lib no-shared zlib-dynamic
-make
-make install
-</code></pre></div><h2 id="最后验证">最后验证</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># openssl version
-OpenSSL 1.1.1i  8 Dec 2020
-</code></pre></div>
+  extraArgs:
+    enable-ssl-passthrough: &#34;true&#34;
+  
+  config:
+    server-tokens: &#34;false&#34;    
+</code></pre></div><p>这时你可以使用如何命令：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">helm update --install -f custom.yaml ingress-nginx ingress-nginx/ingress-nginx -n ingress --version 3.9.0
+</code></pre></div><p>4）安装完成后可以通过下面的命令查看 ingress-ingress 的 Pod 使用运行成功：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ helm list -n ingress
+NAME         	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART              	APP VERSION
+ingress-nginx	ingress  	7       	2020-12-31 18:13:13.216027 +0800 CST	deployed	ingress-nginx-3.9.0	0.41.0
+
+$ kubectl get pods -n ingress
+NAME                                        READY   STATUS    RESTARTS   AGE
+ingress-nginx-controller-565bcc4954-nls96   1/1     Running   0          141m
+</code></pre></div><p>安装过程中需要用到<code>k8s.gcr.io/ingress-nginx/controller</code>的镜像，大家可以先本地翻墙pull 下来后重新打上 tag，推送到Dockerhub。也可以使用我打包的，镜像地址如下：docker.io/amuguelove/ingress-nginx</p>
+<h1 id="使用">使用</h1>
+<p>上面的 ingress-ingress 安装成功后，添加 <code>kubernetes.io/ingress.class: nginx</code> 注解到 Ingress资源。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: my-nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx # 重点
+spec:
+  rules:
+    - host: nginx.qcloud.com
+      http:
+        paths:
+          - backend:
+              serviceName: my-nginx
+              servicePort: 80
+            path: /
+</code></pre></div><p>注意我们在 Ingress 资源对象中添加了一个 annotations：<code>kubernetes.io/ingress.class: &quot;nginx&quot;</code>，这就是指定让这个 Ingress 通过 ingress-nginx 来处理。</p>
+<p>若域名是自己随便定义的，可以在本地<code>/etc/hosts</code>中添加对应的隐射也可以，然后就可以通过域名进行访问了。</p>
+<p>除此之外，我们还可以利用<code>cert-manager</code>来进行 HTTPS 自动化，可以参考前面的文章：<a href="https://amuguelove.github.io/post/automatic-kubernetes-ingress-https-with-lets-encrypt/">kubernetes Ingress 自动化 HTTPS</a></p>
+<!-- raw HTML omitted -->
+<h2 id="参考">参考</h2>
+<p><a href="https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx">Ingress Nginx Helm Chart</a></p>
+<p><a href="https://github.com/kubernetes/ingress-nginx">Ingress Nginx Github</a></p>
 
           
   
@@ -372,7 +404,23 @@ OpenSSL 1.1.1i  8 Dec 2020
 <h3>相关文章</h3>
 <ul style="margin-bottom: 25px;">
     
+    <li><a href="http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/">kubernetes Ingress 自动化 HTTPS</a></li>
+    
+    <li><a href="http://flygopher.top/post/how-to-use-k8s-api-resources/">Kubernetes API资源的使用</a></li>
+    
+    <li><a href="http://flygopher.top/post/setup-kubernetes-cluster-with-kind/">使用Kind快速构建Kubernetes集群</a></li>
+    
     <li><a href="http://flygopher.top/post/customize-vagrant-box/">Vagrant定制Box</a></li>
+    
+    <li><a href="http://flygopher.top/post/kubernetes-storage2/">kubernetes持久化存储（二）</a></li>
+    
+    <li><a href="http://flygopher.top/post/kubernetes-storage1/">kubernetes持久化存储（一）</a></li>
+    
+    <li><a href="http://flygopher.top/post/kubeadm-install-kubernetes-cluster/">使用kubeadm搭建Kubernetes集群</a></li>
+    
+    <li><a href="http://flygopher.top/post/local-install-ha-kubernetes-cluster/">使用二进制搭建kubernetes三节点高可用集群</a></li>
+    
+    <li><a href="http://flygopher.top/post/jenkins-slave-base-on-kubernetes/">基于kubernetes的动态jenkins slave</a></li>
     
 </ul>
 
@@ -382,13 +430,9 @@ OpenSSL 1.1.1i  8 Dec 2020
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://flygopher.top/post/how-to-use-k8s-api-resources/" data-toggle="tooltip" data-placement="top" title="Kubernetes API资源的使用">&larr; 前一篇</a>
+              <a href="http://flygopher.top/post/centos-upgrade-openssl/" data-toggle="tooltip" data-placement="top" title="升级OpenSSL解决CVE-2020-1971漏洞">&larr; 前一篇</a>
             </li>
           
-          
-            <li class="next">
-              <a href="http://flygopher.top/post/install-ingress-nginx/" data-toggle="tooltip" data-placement="top" title="ingress-nginx的安装使用">后一篇 &rarr;</a>
-            </li>
           
         </ul>
         
