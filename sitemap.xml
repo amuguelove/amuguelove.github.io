@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>http://flygopher.top/post/ingress-nginx-high-concurrency/</loc>
+    <lastmod>2021-01-02T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://flygopher.top/post/ingress-nginx-on-tke/</loc>
     <lastmod>2021-01-02T00:00:00+08:00</lastmod>
   </url>
