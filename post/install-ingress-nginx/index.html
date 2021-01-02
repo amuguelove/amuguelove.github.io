@@ -259,7 +259,9 @@ if (!doNotTrack) {
 <aside class="toc">
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#参考">参考</a></li>
+    <li><a href="#安装">安装</a></li>
+    <li><a href="#使用">使用</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
   </ul>
 </nav>
 </aside>
@@ -285,7 +287,7 @@ if (!doNotTrack) {
 <li><a href="https://github.com/nginxinc/kubernetes-ingress">https://github.com/nginxinc/kubernetes-ingress</a></li>
 </ol>
 <p>第一种是 Kubernetes 开源社区的实现，第二种是 Nginx 官方的实现，我们通常用的是 Kubernetes 社区的实现，这也是本文所关注的重点。</p>
-<h1 id="安装">安装</h1>
+<h2 id="安装">安装</h2>
 <p>我们这里通过<code>Helm</code>来简化 nginx-ingress 的安装，所以确保 Helm 能够正常使用。由于部署ingress-nginx 所在的节点需要能够访问外网，这样域名可以解析到这些节点上直接使用，需要让 nginx-ingress 绑定节点的 80 和 443 端口。</p>
 <p>如果你的K8S集群是自己部署的，可以选择能够外网访问的边缘节点，ingress-nginx通过 DasemonSet 和 hostPort 来进行部署，并通过 nodeSelector 来筛选有外网 IP 的<strong>边缘节点</strong>。</p>
 <p>如果你的K8S集群是在云厂商购买的，可以直接部署，ingress-controller可以通过LoadBalancer提供外网访问服务。</p>
@@ -320,7 +322,7 @@ $ kubectl get pods -n ingress
 NAME                                        READY   STATUS    RESTARTS   AGE
 ingress-nginx-controller-565bcc4954-nls96   1/1     Running   0          141m
 </code></pre></div><p>安装过程中需要用到<code>k8s.gcr.io/ingress-nginx/controller</code>的镜像，大家可以先本地翻墙pull 下来后重新打上 tag，推送到Dockerhub。也可以使用我打包的，镜像地址如下：docker.io/amuguelove/ingress-nginx</p>
-<h1 id="使用">使用</h1>
+<h2 id="使用">使用</h2>
 <p>上面的 ingress-ingress 安装成功后，添加 <code>kubernetes.io/ingress.class: nginx</code> 注解到 Ingress资源。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: extensions/v1beta1
 kind: Ingress
@@ -341,9 +343,11 @@ spec:
 <p>若域名是自己随便定义的，可以在本地<code>/etc/hosts</code>中添加对应的隐射也可以，然后就可以通过域名进行访问了。</p>
 <p>除此之外，我们还可以利用<code>cert-manager</code>来进行 HTTPS 自动化，可以参考前面的文章：<a href="https://amuguelove.github.io/post/automatic-kubernetes-ingress-https-with-lets-encrypt/">kubernetes Ingress 自动化 HTTPS</a></p>
 <!-- raw HTML omitted -->
-<h2 id="参考">参考</h2>
-<p><a href="https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx">Ingress Nginx Helm Chart</a></p>
-<p><a href="https://github.com/kubernetes/ingress-nginx">Ingress Nginx Github</a></p>
+<h2 id="参考资料">参考资料</h2>
+<ol>
+<li>Ingress Nginx Chart: <a href="https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx">https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx</a></li>
+<li>Ingress Nginx Github: <a href="https://github.com/kubernetes/ingress-nginx">https://github.com/kubernetes/ingress-nginx</a></li>
+</ol>
 
           
   
