@@ -164,6 +164,36 @@ if (!doNotTrack) {
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://flygopher.top/post/springboot-load-configure-locations/">
+                <h2 class="post-title">SpringBoot配置文件加载的路径和优先级</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 March 18, 2020
+              </p>
+              <div class="post-entry">
+                
+                  <p>很多人对<code>SpringBoot</code>文件加载的位置和优先级有点疑惑，下面通过源码看下到底是如何加载的。</p>
+<p>我们先来看下<code>SpringBoot</code>加载<code>PropertySource</code>的顺序是如何的呢？可以<a href="https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config">参考官网</a>：https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config</p>
+<p><img src="http://flygopher.top/img/post/springboot-configuration-1.png" alt=""></p>
+<p>配置加载的优先级从高到低，其中高优先级可以覆盖低优先级的配置。</p>
+                  <a href="http://flygopher.top/post/springboot-load-configure-locations/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/springboot/">springboot</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://flygopher.top/post/jpa-id-generated-strategy/">
                 <h2 class="post-title">JPA ID生成策略</h2>
 
@@ -499,35 +529,6 @@ if (!doNotTrack) {
                 <span class="post-meta">
                   
                     #<a href="http://flygopher.top/tags/mongo/">mongo</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/migrate-blog-to-hugo/">
-                <h2 class="post-title">博客迁移到hugo</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 November 3, 2019
-              </p>
-              <div class="post-entry">
-                
-                  <p>博客正式迁移到Hugo，并使用Emacs Org-mode + ox-hugo来写博客，顺便学习Emacs。</p>
-                  <a href="http://flygopher.top/post/migrate-blog-to-hugo/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/hugo/">Hugo</a>&nbsp;
-                  
-                    #<a href="http://flygopher.top/tags/emacs/">Emacs</a>&nbsp;
                   
                 </span>
               

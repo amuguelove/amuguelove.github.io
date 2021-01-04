@@ -6,27 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>ingress-nginx 高并发实践-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="ingress-nginx 高并发实践" />
-  <meta name="twitter:title" content="ingress-nginx 高并发实践" />
+  <title>ingress-nginx 性能压测-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="ingress-nginx 性能压测" />
+  <meta name="twitter:title" content="ingress-nginx 性能压测" />
   
-  <meta name="description" content="Nginx Ingress Controller 基于 Nginx 实现 Kubernetes Ingress API。Nginx 是一款高性能网关，在实际生产环境运行时，需要对参数进行调优，以保证其充分发挥高性能的优势。
-本文将介绍针对 Nginx Ingress 全局配置与内核参数调优的方法及其原理，让 Nginx Ingress 更好的适配高并发业务场景。">
-  <meta property="og:description" content="Nginx Ingress Controller 基于 Nginx 实现 Kubernetes Ingress API。Nginx 是一款高性能网关，在实际生产环境运行时，需要对参数进行调优，以保证其充分发挥高性能的优势。
-本文将介绍针对 Nginx Ingress 全局配置与内核参数调优的方法及其原理，让 Nginx Ingress 更好的适配高并发业务场景。">
-  <meta name="twitter:description" content="Nginx Ingress Controller 基于 Nginx 实现 Kubernetes Ingress API。Nginx 是一款高性能网关，在实际生产环境运行时，需要对参数进行调优，以保证其充分发挥高性能的优势。
-本文将介绍针对 Nginx Ingress 全局配置与内核参数调优的方法及其原理，让 Nginx Ingress 更好的适配高并发业务场景。">
+  <meta name="description" content="Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。">
+  <meta property="og:description" content="Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。">
+  <meta name="twitter:description" content="Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flygopher.top/post/ingress-nginx-high-concurrency/" />
+  <meta property="og:url" content="http://flygopher.top/post/ingress-nginx-benchmark/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.79.0" />
-  <link rel="canonical" href="http://flygopher.top/post/ingress-nginx-high-concurrency/" />
+  <link rel="canonical" href="http://flygopher.top/post/ingress-nginx-benchmark/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
@@ -166,7 +163,7 @@ if (!doNotTrack) {
           <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
               <div class="post-heading">
-                <h1>ingress-nginx 高并发实践</h1>
+                <h1>ingress-nginx 性能压测</h1>
                   
                   
                     <span class="post-meta">
@@ -193,7 +190,7 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>ingress-nginx 高并发实践</h1>
+              <h1>ingress-nginx 性能压测</h1>
                 
                 
                   <span class="post-meta">
@@ -235,7 +232,7 @@ if (!doNotTrack) {
               
                   <a href="http://flygopher.top/tags/nginx/">nginx</a> &nbsp;
               
-                  <a href="http://flygopher.top/tags/helm/">helm</a> &nbsp;
+                  <a href="http://flygopher.top/tags/benchmark/">benchmark</a> &nbsp;
               
                   <a href="http://flygopher.top/tags/tke/">tke</a> &nbsp;
               
@@ -249,23 +246,18 @@ if (!doNotTrack) {
 <aside class="toc">
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#内核参数调优">内核参数调优</a>
+    <li><a href="#测试方案">测试方案</a></li>
+    <li><a href="#硬件配置">硬件配置</a></li>
+    <li><a href="#测试环境">测试环境</a></li>
+    <li><a href="#性能测试">性能测试</a>
       <ul>
-        <li><a href="#调高连接队列的大小">调高连接队列的大小</a></li>
-        <li><a href="#扩大源端口范围">扩大源端口范围</a></li>
-        <li><a href="#time_wait-复用">TIME_WAIT 复用</a></li>
-        <li><a href="#调大最大文件句柄数">调大最大文件句柄数</a></li>
-        <li><a href="#配置示例">配置示例</a></li>
+        <li><a href="#方案1压测后端nginx">方案1：压测后端Nginx</a></li>
+        <li><a href="#方案2压测经过nginx代理">方案2：压测经过Nginx代理</a></li>
+        <li><a href="#方案3-压测经过ingress">方案3： 压测经过Ingress</a></li>
+        <li><a href="#不同方案性能对比">不同方案性能对比</a></li>
       </ul>
     </li>
-    <li><a href="#全局配置调优">全局配置调优</a>
-      <ul>
-        <li><a href="#调高-keepalive-连接最大请求数">调高 keepalive 连接最大请求数</a></li>
-        <li><a href="#调高-keepalive-最大空闲连接数">调高 keepalive 最大空闲连接数</a></li>
-        <li><a href="#调高单个-worker-最大连接数">调高单个 worker 最大连接数</a></li>
-        <li><a href="#配置示例-1">配置示例</a></li>
-      </ul>
-    </li>
+    <li><a href="#配置文件">配置文件</a></li>
     <li><a href="#参考资料">参考资料</a></li>
   </ul>
 </nav>
@@ -285,88 +277,162 @@ if (!doNotTrack) {
           
           
 
-          <p>Nginx Ingress Controller 基于 Nginx 实现 Kubernetes Ingress API。Nginx 是一款高性能网关，在实际生产环境运行时，需要对参数进行调优，以保证其充分发挥高性能的优势。</p>
-<p>本文将介绍针对 Nginx Ingress 全局配置与内核参数调优的方法及其原理，让 Nginx Ingress 更好的适配高并发业务场景。</p>
-<h2 id="内核参数调优">内核参数调优</h2>
-<p>您可通过以下方式对 Nginx Ingress 进行内核参数调优，并可使用 initContainers 方式设置内核参数，详情请参见如下：</p>
-<h3 id="调高连接队列的大小">调高连接队列的大小</h3>
-<p>在高并发环境下，如果连接队列过小，则可能导致队列溢出，使部分连接无法建立。进程监听 socket 的连接队列大小受限于内核参数 <code>net.core.somaxconn</code>，调整 somaxconn 内核参数的值即可增加 Nginx Ingress 连接队列。</p>
-<p>进程调用 listen 系统监听端口时会传入一个 backlog 参数，该参数决定 socket 连接队列大小，且其值不大于 somaxconn 取值。Go 程序标准库在 listen 时，默认直接读取 somaxconn 作为队列大小，但 Nginx 监听 socket 时并不会读取 somaxconn，而是读取 <code>nginx.conf</code> 。在 <code>nginx.conf</code> 中的 listen 端口配置项中，可以通过 backlog 参数配置连接队列大小，来决定 Nginx listen 端口的连接队列大小。配置示例如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">server {
-    listen  80  backlog=1024;
-    ...
-</code></pre></div><p>如果未配置 backlog 值，则该值默认为511。backlog 参数详细说明如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">backlog=number
-   sets the backlog parameter in the listen() call that limits the maximum length for the queue of pending connections. By default, backlog is set to -1 on FreeBSD, DragonFly BSD, and macOS, and to 511 on other platforms.
-</code></pre></div><p>在默认配置下，即便 somaxconn 的值配置超过511，但 Nginx 所监听端口的连接队列最大只有511，因此在高并发环境下可能导致连接队列溢出。</p>
-<p>而 Nginx Ingress 不同，Nginx Ingress Controller 会自动读取 somaxconn 的值作为 backlog 参数，并写到生成的 <a href="https://github.com/kubernetes/ingress-nginx/blob/controller-v0.34.1/internal/ingress/controller/nginx.go#L592">nginx.conf</a> 中，因此 Nginx Ingress 的连接队列大小只取决于 somaxconn 的大小，该取值在 TKE 中默认为4096。
-在高并发环境下，建议执行以下命令，将 somaxconn 设为65535：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sysctl -w net.core.somaxconn=65535
-</code></pre></div><h3 id="扩大源端口范围">扩大源端口范围</h3>
-<p>高并发环境将导致 Nginx Ingress 使用大量源端口与 upstream 建立连接，源端口范围从 <code>net.ipv4.ip_local_port_range</code> 内核参数中定义的区间随机选取。在高并发环境下，端口范围小容易导致源端口耗尽，使得部分连接异常。
-TKE 环境创建的 Pod 源端口范围默认为32768 - 60999，建议执行以下命令扩大源端口范围，调整为1024 - 65535：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sysctl -w net.ipv4.ip_local_port_range=&#34;1024 65535&#34;
-</code></pre></div><h3 id="time_wait-复用">TIME_WAIT 复用</h3>
-<p>如果短连接并发量较高，所在 netns 中 TIME_WAIT 状态的连接将同样较多，而 TIME_WAIT 连接默认要等 2MSL 时长才释放，将长时间占用源端口，当这种状态连接数量累积到超过一定量之后可能会导致无法新建连接。</p>
-<p>建议执行以下命令，为 Nginx Ingress 开启 TIME_WAIT 复用，即允许将 TIME_WAIT 连接重新用于新的 TCP 连接：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sysctl -w net.ipv4.tcp_tw_reuse=1
-</code></pre></div><h3 id="调大最大文件句柄数">调大最大文件句柄数</h3>
-<p>Nginx 作为反向代理，每个请求将与 client 和 upstream server 分别建立一个连接，即占据两个文件句柄，因此理论上 Nginx 能同时处理的连接数最多是系统最大文件句柄数限制的一半。</p>
-<p>系统最大文件句柄数由 <code>fs.file-max</code> 内核参数控制，TKE 默认值为838860。建议执行以下命令，将最大文件句柄数设置为1048576：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sysctl -w fs.file-max=1048576
-</code></pre></div><h3 id="配置示例">配置示例</h3>
-<p>给 Nginx Ingress Controller 的 Pod 添加 initContainers 并设置内核参数。可参考以下代码示例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">initContainers:
-- name: setsysctl
-    image: busybox
-    securityContext:
-        privileged: true
-    command:
-    - sh
-    - -c
-    - |
-        sysctl -w net.core.somaxconn=65535
-        sysctl -w net.ipv4.ip_local_port_range=&#34;1024 65535&#34;
-        sysctl -w net.ipv4.tcp_tw_reuse=1
-        sysctl -w fs.file-max=1048576
-</code></pre></div><h2 id="全局配置调优">全局配置调优</h2>
-<p>除了内核参数需要调优，您可以通过以下方式对 Nginx 全局配置进行调优：</p>
-<h3 id="调高-keepalive-连接最大请求数">调高 keepalive 连接最大请求数</h3>
-<p>Nginx 针对 client 和 upstream 的 keepalive 连接，具备 keepalive_requests 参数来控制单个 keepalive 连接的最大请求数，默认值均为100。当一个 keepalive 连接中请求次数超过默认值时，将断开并重新建立连接。</p>
-<p>如果是内网 Ingress，单个 client 的 QPS 可能较大，例如达到10000QPS，Nginx 将可能频繁断开跟 client 建立的 keepalive 连接，并产生大量 TIME_WAIT 状态连接。为避免产生大量的 TIME_WAIT 连接，建议您在高并发环境中增大 Nginx 与 client 的 keepalive 连接的最大请求数量，在 Nginx Ingress 的配置对应 <code>keep-alive-requests</code>，可以设置为10000，详情请参见 <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#keep-alive-requests">keep-alive-requests</a>。</p>
-<p>同样，Nginx 针对 upstream 的 keepalive 连接的请求数量的配置是 <code>upstream-keepalive-requests</code>，配置方法请参见 <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#upstream-keepalive-requests">upstream-keepalive-requests</a>。</p>
-<blockquote>
-<p>注意：</p>
-<p>在非高并发环境，不必配此参数。如果将其调高，可能导致负载不均，因 Nginx 与 upstream 保持的 keepalive 连接过久，导致连接发生调度的次数减少，连接过于“固化”，将使流量负载不均衡。</p>
-</blockquote>
-<h3 id="调高-keepalive-最大空闲连接数">调高 keepalive 最大空闲连接数</h3>
-<p>Nginx 针对 upstream 可配置参数 keepalive。该参数为最大空闲连接数，默认值为32。在高并发环境下将产生大量请求和连接，而实际生产环境中请求并不是完全均匀，有些建立的连接可能会短暂空闲，在空闲连接数多了之后关闭空闲连接，将可能导致 Nginx 与 upstream 频繁断连和建连，引发 TIME_WAIT 飙升。
-在高并发环境下，建议将 keepalive 值配置为1000，详情请参见 <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#upstream-keepalive-connections">upstream-keepalive-connections</a>。</p>
-<h3 id="调高单个-worker-最大连接数">调高单个 worker 最大连接数</h3>
-<p><code>max-worker-connections</code> 控制每个 worker 进程可以打开的最大连接数，TKE 环境默认为16384。在高并发环境下建议调高该参数值，例如配置为65536，调高该值可以让 Nginx 拥有处理更多连接的能力，详情请参见 <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#max-worker-connections">max-worker-connections</a>。</p>
-<h3 id="配置示例-1">配置示例</h3>
-<p>Nginx 全局配置通过 configmap 配置（Nginx Ingress Controller 会读取并自动加载该配置）。可参考以下代码示例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: nginx-ingress-controller
-# nginx ingress 性能优化: https://www.nginx.com/blog/tuning-nginx/
-data:
-  # nginx 与 client 保持的一个长连接能处理的请求数量，默认100，高并发场景建议调高。
-  # 参考: https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#keep-alive-requests
-  keep-alive-requests: &#34;10000&#34;
-  # nginx 与 upstream 保持长连接的最大空闲连接数 (不是最大连接数)，默认 32，在高并发下场景下调大，避免频繁建联导致 TIME_WAIT 飙升。
-  # 参考: https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#upstream-keepalive-connections
-  upstream-keepalive-connections: &#34;200&#34;
-  # 每个 worker 进程可以打开的最大连接数，默认 16384。
-  # 参考: https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#max-worker-connections
-  max-worker-connections: &#34;65536&#34;
-</code></pre></div><h2 id="参考资料">参考资料</h2>
+          <p>Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。</p>
+<h2 id="测试方案">测试方案</h2>
+<p>通过wrk压测后端nginx服务，对比ingress-nginx和原生nginx以及直连后端性能的差异，如下图:</p>
+<p><img src="http://flygopher.top/img/post/ingress-nginx-benchmark1.png" alt=""></p>
+<ul>
+<li>方案1：压测后端Nginx，通过直连POD IP，Service IP以及External IP等方式</li>
+<li>方案2：压测经过Nginx代理，通过直连POD IP，Service IP以及External IP等方式</li>
+<li>方案3：压测经过Ingress，通过域名以及不同CPU和worker的性能差距</li>
+</ul>
+<h2 id="硬件配置">硬件配置</h2>
+<ul>
+<li>CPU：2.5GHz Intel® Xeon® Cascade Lake 处理器，睿频3.1GHz，8 cores</li>
+<li>Memory: 32GB</li>
+</ul>
+<h2 id="测试环境">测试环境</h2>
+<ul>
+<li>wrk： 0896020 [epoll] Copyright (C) 2012 Will Glozer</li>
+<li>nginx：1.19.4</li>
+<li>k8s：1.18.4</li>
+<li>centos：7.9.2009</li>
+<li>Linux：Linux version 4.14.105-19-0012 (<a href="mailto:root@TENCENT64.site">root@TENCENT64.site</a>) (gcc version 4.8.2 20140120 (Red Hat 4.8.2-16)</li>
+</ul>
+<p>wrk的安装可以参考如下文章：<a href="https://amuguelove.github.io/post/http-performance-tool-wrk/">Http性能压测工具 | wrk</a></p>
+<h2 id="性能测试">性能测试</h2>
+<p>通过wrk测试，主要关注RPS（每秒请求量）：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">wrk -t8 -c200 -d30s --latency &lt;待测试地址&gt;
+</code></pre></div><p>如Ingress测试命令：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">wrk -t8 -c200 -d30s --latency http://nginx.qcloud.com/1kb.bin
+</code></pre></div><p>以下表格数据的单位都是RPS</p>
+<h3 id="方案1压测后端nginx">方案1：压测后端Nginx</h3>
+<p>分别对POD IP，Service IP以及External IP进行多次测试取平均值：</p>
+<table>
+<thead>
+<tr>
+<th>直连POD IP</th>
+<th>Service IP</th>
+<th>External IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>184301.41</td>
+<td>164534.72</td>
+<td>166734.20</td>
+</tr>
+</tbody>
+</table>
+<h3 id="方案2压测经过nginx代理">方案2：压测经过Nginx代理</h3>
+<p>分别对POD IP，Service IP以及External IP进行多次测试取平均值：</p>
+<table>
+<thead>
+<tr>
+<th>直连POD IP</th>
+<th>Service IP</th>
+<th>External IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>86305.15</td>
+<td>80890.86</td>
+<td>80651.81</td>
+</tr>
+</tbody>
+</table>
+<h3 id="方案3-压测经过ingress">方案3： 压测经过Ingress</h3>
+<p>对比默认配置下，ingress-ingress的性能：</p>
+<table>
+<thead>
+<tr>
+<th>默认配置（process worker: auto）</th>
+<th>优化配置（8 wrokers）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>31143.15</td>
+<td>36255.13</td>
+</tr>
+</tbody>
+</table>
+<p>对比不同CPU，不同worker数量的性能差异，以下ingress-nginx已做性能调优：</p>
+<table>
+<thead>
+<tr>
+<th>CPU</th>
+<th>Worker</th>
+<th>RPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>11347.38</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>17564.26</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>29761.89</td>
+</tr>
+<tr>
+<td>8</td>
+<td>8</td>
+<td>41613.75</td>
+</tr>
+</tbody>
+</table>
+<h3 id="不同方案性能对比">不同方案性能对比</h3>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>访问方式</th>
+<th>RPS</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>后端Nginx</td>
+<td>External IP</td>
+<td>166734</td>
+<td></td>
+</tr>
+<tr>
+<td>经过Nginx代理</td>
+<td>External IP</td>
+<td>80651</td>
+<td>开启keepalive, 关闭log</td>
+</tr>
+<tr>
+<td>ingress-nginx（原始）</td>
+<td>域名</td>
+<td>31143</td>
+<td></td>
+</tr>
+<tr>
+<td>ingress-nginx（优化）</td>
+<td>域名</td>
+<td>36255</td>
+<td>调整worker，access-log, keepalive等</td>
+</tr>
+</tbody>
+</table>
+<p>以上测试的影响因素还有很多，但是可以看出ingress-nginx的rps对比后端Nginx相差挺大的，而且最新版本的ingress-nginx优化过后的性能提升也不明显。</p>
+<h2 id="配置文件">配置文件</h2>
+<p>本文测试文件见：<a href="https://github.com/DevOpsDays2020/ingress-nginx-benchmark">https://github.com/DevOpsDays2020/ingress-nginx-benchmark</a></p>
+<h2 id="参考资料">参考资料</h2>
 <ol>
-<li>Nginx Ingress 高并发实践：<a href="https://cloud.tencent.com/document/product/457/48142">https://cloud.tencent.com/document/product/457/48142</a></li>
-<li>Nginx Ingress 配置参考：<a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/">https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/</a></li>
-<li>Tuning NGINX for Performance：<a href="https://www.nginx.com/blog/tuning-nginx/">https://www.nginx.com/blog/tuning-nginx/</a></li>
-<li>ngx_http_upstream_module 官方文档：<a href="http://nginx.org/en/docs/http/ngx_http_upstream_module.html">http://nginx.org/en/docs/http/ngx_http_upstream_module.html</a></li>
+<li>ingress nginx benchmark：<a href="https://qingwave.github.io/ingress-benchmark/">https://qingwave.github.io/ingress-benchmark/</a></li>
 </ol>
 
           
@@ -428,9 +494,9 @@ data:
 <h3>相关文章</h3>
 <ul style="margin-bottom: 25px;">
     
-    <li><a href="http://flygopher.top/post/ingress-nginx-on-tke/">ingress-nginx在TKE上部署的最佳实践</a></li>
+    <li><a href="http://flygopher.top/post/ingress-nginx-high-concurrency/">ingress-nginx 高并发实践</a></li>
     
-    <li><a href="http://flygopher.top/post/ingress-nginx-benchmark/">ingress-nginx 性能压测</a></li>
+    <li><a href="http://flygopher.top/post/ingress-nginx-on-tke/">ingress-nginx在TKE上部署的最佳实践</a></li>
     
     <li><a href="http://flygopher.top/post/install-ingress-nginx/">ingress-nginx的安装使用</a></li>
     
@@ -456,13 +522,9 @@ data:
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://flygopher.top/post/ingress-nginx-on-tke/" data-toggle="tooltip" data-placement="top" title="ingress-nginx在TKE上部署的最佳实践">&larr; 前一篇</a>
+              <a href="http://flygopher.top/post/ingress-nginx-high-concurrency/" data-toggle="tooltip" data-placement="top" title="ingress-nginx 高并发实践">&larr; 前一篇</a>
             </li>
           
-          
-            <li class="next">
-              <a href="http://flygopher.top/post/ingress-nginx-benchmark/" data-toggle="tooltip" data-placement="top" title="ingress-nginx 性能压测">后一篇 &rarr;</a>
-            </li>
           
         </ul>
         

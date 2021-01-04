@@ -8,6 +8,15 @@
     <language>zh-cn</language>
     <lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>ingress-nginx 性能压测</title>
+      <link>http://flygopher.top/post/ingress-nginx-benchmark/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/ingress-nginx-benchmark/</guid>
+      <description>&lt;p&gt;Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>ingress-nginx 高并发实践</title>
       <link>http://flygopher.top/post/ingress-nginx-high-concurrency/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0800</pubDate>

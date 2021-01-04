@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://flygopher.top/tags/benchmark/</loc>
+    <lastmod>2021-01-02T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://flygopher.top/categories/</loc>
     <lastmod>2021-01-02T00:00:00+08:00</lastmod>
   </url>
@@ -14,6 +19,11 @@
   
   <url>
     <loc>http://flygopher.top/tags/ingress/</loc>
+    <lastmod>2021-01-02T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flygopher.top/post/ingress-nginx-benchmark/</loc>
     <lastmod>2021-01-02T00:00:00+08:00</lastmod>
   </url>
   
