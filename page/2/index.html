@@ -192,6 +192,54 @@ if (!doNotTrack) {
 
 
             <article class="post-preview">
+              <a href="http://flygopher.top/post/kubernetes-storage2/">
+                <h2 class="post-title">kubernetes持久化存储（二）</h2>
+                
+                  <h3 class="post-subtitle">
+                  StorageClass的使用
+                  </h3>
+                
+              </a>
+
+              <span class="post-meta">
+  
+    发表于 September 27, 2020
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>前面的文章里我们学习了 <code>PV</code> 和 <code>PVC</code> 的使用方法，但是前面的 PV 都是静态的，什么意思呢？就是我要使用的一个 PVC 的话就必须手动去创建一个 PV，我们也说过这种方式在很大程度上并不能满足我们的需求，比如我们有一个应用需要对存储的并发度要求比较高，而另外一个应用对读写速度又要求比较高，特别是对于 <code>StatefulSet</code> 类型的应用简单的来使用静态的 PV 就很不合适了，这种情况下我们就需要用到动态 PV，也就是我们今天要讲解的 <code>StorageClass</code>。</p>
+                  <a href="http://flygopher.top/post/kubernetes-storage2/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://flygopher.top/tags/kubernetes/">kubernetes</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/volume/">volume</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/pv/">pv</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/pvc/">pvc</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/storageclass/">storageclass</a>&nbsp;
+                
+                  #<a href="http://flygopher.top/tags/devops/">devops</a>&nbsp;
+                
+                </span>
+              
+            </article>
+
+          
+
+
+
+            <article class="post-preview">
               <a href="http://flygopher.top/post/kubernetes-storage1/">
                 <h2 class="post-title">kubernetes持久化存储（一）</h2>
                 
@@ -239,6 +287,17 @@ if (!doNotTrack) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
             <article class="post-preview">
               <a href="http://flygopher.top/post/sample-regexp/">
                 <h2 class="post-title">正则表达式入门</h2>
@@ -270,17 +329,6 @@ if (!doNotTrack) {
             </article>
 
           
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -636,68 +684,6 @@ if (!doNotTrack) {
             </article>
 
           
-
-
-
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/springboot-load-configure-principle/">
-                <h2 class="post-title">SpringBoot的自动装配原理分析</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 March 18, 2020
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>在Spring Boot应用中的自动装配是通过<code>@EnableAutoConfiguration</code> 注解进行开启的。<code>@EnableAutoConfiguration</code> 可以帮助 Spring Boot 应用将所有符合条件的 <code>@Configuration</code> 配置类的 bean 都加载到 Spring IoC 容器中。</p>
-<p>我们看下<code>@SpringBootApplication</code>注解，默认是启动<code>@EnableAutoConfiguration</code> 的。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Inherited
-@SpringBootConfiguration
-@EnableAutoConfiguration
-@ComponentScan(excludeFilters = { @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
-		@Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
-public @interface SpringBootApplication {
-
-	@AliasFor(annotation = EnableAutoConfiguration.class)
-	Class&lt;?&gt;[] exclude() default {};
-
-	@AliasFor(annotation = EnableAutoConfiguration.class)
-	String[] excludeName() default {};
-
-	@AliasFor(annotation = ComponentScan.class, attribute = &#34;basePackages&#34;)
-	String[] scanBasePackages() default {};
-
-	@AliasFor(annotation = ComponentScan.class, attribute = &#34;basePackageClasses&#34;)
-	Class&lt;?&gt;[] scanBasePackageClasses() default {};
-
-	@AliasFor(annotation = Configuration.class)
-	boolean proxyBeanMethods() default true;
-
-}
-</code></pre></div>
-                  <a href="http://flygopher.top/post/springboot-load-configure-principle/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flygopher.top/tags/springboot/">springboot</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
         </div>
 
         <div align="center" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -867,7 +853,7 @@ public @interface SpringBootApplication {
             
           
             
-            <li><a href="http://flygopher.top/categories/kubernetes">kubernetes(12)</a></li>
+            <li><a href="http://flygopher.top/categories/kubernetes">kubernetes(13)</a></li>
             
           
             
@@ -931,7 +917,7 @@ public @interface SpringBootApplication {
             
             
             
-            <a href="http://flygopher.top/tags/benchmark"><i class="fa fa-tags"></i> benchmark(1)</a>
+            <a href="http://flygopher.top/tags/benchmark"><i class="fa fa-tags"></i> benchmark(2)</a>
             
             
             
@@ -1031,7 +1017,7 @@ public @interface SpringBootApplication {
             
             
             
-            <a href="http://flygopher.top/tags/ingress"><i class="fa fa-tags"></i> ingress(5)</a>
+            <a href="http://flygopher.top/tags/ingress"><i class="fa fa-tags"></i> ingress(6)</a>
             
             
             
@@ -1067,7 +1053,7 @@ public @interface SpringBootApplication {
             
             
             
-            <a href="http://flygopher.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(13)</a>
+            <a href="http://flygopher.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(14)</a>
             
             
             
@@ -1095,7 +1081,7 @@ public @interface SpringBootApplication {
             
             
             
-            <a href="http://flygopher.top/tags/nginx"><i class="fa fa-tags"></i> nginx(4)</a>
+            <a href="http://flygopher.top/tags/nginx"><i class="fa fa-tags"></i> nginx(5)</a>
             
             
             
@@ -1151,7 +1137,7 @@ public @interface SpringBootApplication {
             
             
             
-            <a href="http://flygopher.top/tags/tke"><i class="fa fa-tags"></i> tke(3)</a>
+            <a href="http://flygopher.top/tags/tke"><i class="fa fa-tags"></i> tke(4)</a>
             
             
             
@@ -1163,7 +1149,7 @@ public @interface SpringBootApplication {
             
             
             
-            <a href="http://flygopher.top/tags/traefik"><i class="fa fa-tags"></i> traefik(1)</a>
+            <a href="http://flygopher.top/tags/traefik"><i class="fa fa-tags"></i> traefik(2)</a>
             
             
             

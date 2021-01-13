@@ -6,7 +6,16 @@
     <description>Recent content on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 04 Jan 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>不同ingress controller的性能测试</title>
+      <link>http://flygopher.top/post/ingress-controllers-benchmark/</link>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/ingress-controllers-benchmark/</guid>
+      <description>&lt;p&gt;Ingress Controller有很多实现方式，如Kubernetes官方，Nginx官方，Kong，Traefik等等，下面对以下三种不同的Ingress Controller进行性能测试，Kubernetes Ingress VS Nginx Ingress（Nginx官方出品）VS Traefix Ingress。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>ingress-nginx 性能压测</title>
       <link>http://flygopher.top/post/ingress-nginx-benchmark/</link>

@@ -6,24 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>ingress-nginx 性能压测-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="ingress-nginx 性能压测" />
-  <meta name="twitter:title" content="ingress-nginx 性能压测" />
+  <title>不同ingress controller的性能测试-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="不同ingress controller的性能测试" />
+  <meta name="twitter:title" content="不同ingress controller的性能测试" />
   
-  <meta name="description" content="Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。">
-  <meta property="og:description" content="Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。">
-  <meta name="twitter:description" content="Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。">
+  <meta name="description" content="Ingress Controller有很多实现方式，如Kubernetes官方，Nginx官方，Kong，Traefik等等，下面对以下三种不同的Ingress Controller进行性能测试，Kubernetes Ingress VS Nginx Ingress（Nginx官方出品）VS Traefix Ingress。">
+  <meta property="og:description" content="Ingress Controller有很多实现方式，如Kubernetes官方，Nginx官方，Kong，Traefik等等，下面对以下三种不同的Ingress Controller进行性能测试，Kubernetes Ingress VS Nginx Ingress（Nginx官方出品）VS Traefix Ingress。">
+  <meta name="twitter:description" content="Ingress Controller有很多实现方式，如Kubernetes官方，Nginx官方，Kong，Traefik等等，下面对以下三种不同的Ingress Controller进行性能测试，Kubernetes Ingress VS Nginx Ingress（Nginx官方出品）VS Traefix Ingress。">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flygopher.top/post/ingress-nginx-benchmark/" />
+  <meta property="og:url" content="http://flygopher.top/post/ingress-controllers-benchmark/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.79.0" />
-  <link rel="canonical" href="http://flygopher.top/post/ingress-nginx-benchmark/" />
+  <link rel="canonical" href="http://flygopher.top/post/ingress-controllers-benchmark/" />
   <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
@@ -163,12 +163,12 @@ if (!doNotTrack) {
           <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
               <div class="post-heading">
-                <h1>ingress-nginx 性能压测</h1>
+                <h1>不同ingress controller的性能测试</h1>
                   
                   
                     <span class="post-meta">
   
-    发表于 January 4, 2021
+    发表于 January 13, 2021
   
   
 </span>
@@ -190,12 +190,12 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>ingress-nginx 性能压测</h1>
+              <h1>不同ingress controller的性能测试</h1>
                 
                 
                   <span class="post-meta">
   
-    发表于 January 4, 2021
+    发表于 January 13, 2021
   
   
 </span>
@@ -236,6 +236,8 @@ if (!doNotTrack) {
               
                   <a href="http://flygopher.top/tags/tke/">tke</a> &nbsp;
               
+                  <a href="http://flygopher.top/tags/traefik/">traefik</a> &nbsp;
+              
             </h5>
             
         </div>
@@ -246,17 +248,17 @@ if (!doNotTrack) {
 <aside class="toc">
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#测试方案">测试方案</a></li>
     <li><a href="#硬件配置">硬件配置</a></li>
     <li><a href="#测试环境">测试环境</a></li>
     <li><a href="#性能测试">性能测试</a>
       <ul>
-        <li><a href="#方案1压测后端nginx">方案1：压测后端Nginx</a></li>
-        <li><a href="#方案2压测经过nginx代理">方案2：压测经过Nginx代理</a></li>
-        <li><a href="#方案3-压测经过ingress">方案3： 压测经过Ingress</a></li>
-        <li><a href="#不同方案性能对比">不同方案性能对比</a></li>
+        <li><a href="#后端nginx-server部署">后端Nginx Server部署</a></li>
+        <li><a href="#kubernetes-ingress-压测">Kubernetes Ingress 压测</a></li>
+        <li><a href="#nginx-ingress-压测">Nginx Ingress 压测</a></li>
+        <li><a href="#traefix-ingress-压测">Traefix Ingress 压测</a></li>
       </ul>
     </li>
+    <li><a href="#最后">最后</a></li>
     <li><a href="#配置文件">配置文件</a></li>
     <li><a href="#参考资料">参考资料</a></li>
   </ul>
@@ -277,15 +279,7 @@ if (!doNotTrack) {
           
           
 
-          <p>Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。</p>
-<h2 id="测试方案">测试方案</h2>
-<p>通过wrk压测后端nginx服务，对比ingress-nginx和原生nginx以及直连后端性能的差异，如下图:</p>
-<p><img src="http://flygopher.top/img/post/ingress-nginx-benchmark1.png" alt=""></p>
-<ul>
-<li>方案1：压测后端Nginx，通过直连POD IP，Service IP以及External IP等方式</li>
-<li>方案2：压测经过Nginx代理，通过直连POD IP，Service IP以及External IP等方式</li>
-<li>方案3：压测经过Ingress，通过域名以及不同CPU和worker的性能差距</li>
-</ul>
+          <p>Ingress Controller有很多实现方式，如Kubernetes官方，Nginx官方，Kong，Traefik等等，下面对以下三种不同的Ingress Controller进行性能测试，Kubernetes Ingress VS Nginx Ingress（Nginx官方出品）VS Traefix Ingress。</p>
 <h2 id="硬件配置">硬件配置</h2>
 <ul>
 <li>CPU：2.5GHz Intel® Xeon® Cascade Lake 处理器，睿频3.1GHz，8 cores</li>
@@ -293,6 +287,7 @@ if (!doNotTrack) {
 </ul>
 <h2 id="测试环境">测试环境</h2>
 <ul>
+<li>2台上述硬件配置的服务器</li>
 <li>wrk： 0896020 [epoll] Copyright (C) 2012 Will Glozer</li>
 <li>nginx：1.19.4</li>
 <li>k8s：1.18.4</li>
@@ -301,138 +296,277 @@ if (!doNotTrack) {
 </ul>
 <p>wrk的安装可以参考如下文章：<a href="https://amuguelove.github.io/post/http-performance-tool-wrk/">Http性能压测工具 | wrk</a></p>
 <h2 id="性能测试">性能测试</h2>
-<p>通过wrk测试，主要关注RPS（每秒请求量）：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">wrk -t8 -c200 -d30s --latency &lt;待测试地址&gt;
-</code></pre></div><p>如Ingress测试命令：</p>
+<h3 id="后端nginx-server部署">后端Nginx Server部署</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: my-nginx
+  labels:
+    app: my-nginx
+spec:
+  selector:
+    matchLabels:
+      app: my-nginx
+  template:
+    metadata:
+      labels:
+        app: my-nginx
+    spec:
+      initContainers:
+        - name: setsysctl
+          image: busybox
+          securityContext:
+            privileged: true
+          command:
+            - sh
+            - -c
+            - |
+              sysctl -w net.core.somaxconn=65535
+              sysctl -w net.ipv4.ip_local_port_range=&#34;1024 65535&#34;
+              sysctl -w net.ipv4.tcp_tw_reuse=1
+              sysctl -w fs.file-max=1048576
+      containers:
+        - image: nginx:1.19.4
+          imagePullPolicy: Always
+          name: my-nginx
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - name: app-config-volume
+              mountPath: /etc/nginx/conf.d
+            - name: main-config-volume
+              mountPath: /etc/nginx
+            - name: binary-payload
+              mountPath: /usr/share/nginx/bin
+      volumes:
+        - name: app-config-volume
+          configMap:
+            name: app-conf
+        - name: main-config-volume
+          configMap:
+            name: main-conf
+        - name: binary-payload
+          configMap:
+            name: binary
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-conf
+data:
+  app.conf: |
+    server {
+      listen 80;
+      location / {
+        root /usr/share/nginx/bin;
+      }
+
+      location = /status {
+        stub_status;
+      }
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: main-conf
+data:
+  nginx.conf: |+
+    user  nginx;
+    worker_processes  8;
+    worker_rlimit_nofile 102400;
+    error_log  /var/log/nginx/error.log notice;
+    pid        /var/run/nginx.pid;
+    events {
+        worker_connections  100000;
+    }
+    http {
+        log_format  main  &#39;$remote_addr - $remote_user [$time_local] &#34;$request&#34; &#39;
+                          &#39;$status $body_bytes_sent &#34;$http_referer&#34; &#39;
+                          &#39;&#34;$http_user_agent&#34; &#34;$http_x_forwarded_for&#34;&#39;;
+        sendfile  on;
+        tcp_nopush  on;
+        tcp_nodelay on;
+        access_log off;
+        #access_log  /var/log/nginx/access.log  main;
+        include /etc/nginx/conf.d/*.conf;
+    }
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: binary
+data:
+  1kb.bin: &#34;\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0&#34;
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nginx
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: my-nginx
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: my-nginx
+  annotations:
+    kubernetes.io/ingress.class: traefik  # nginx or traefik
+spec:
+  rules:
+    - host: nginx.qcloud.com
+      http:
+        paths:
+          - backend:
+              serviceName: my-nginx
+              servicePort: 80
+            path: /
+
+</code></pre></div><p>使用<code>Daemonset</code>部署2个Nginx Pod。</p>
+<p>直接对Nginx服务的Service IP进行压测：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># wrk -t8 -c200 -d30s --latency http://172.19.254.47/1kb.bin
+Running 30s test @ http://172.19.255.146/1kb.bin
+  8 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.66ms    2.89ms  76.32ms   90.05%
+    Req/Sec    26.79k     7.00k   49.73k    67.91%
+  Latency Distribution
+     50%  538.00us
+     75%    1.62ms
+     90%    4.54ms
+     99%   13.31ms
+  6403242 requests in 30.09s, 7.39GB read
+Requests/sec: 212793.38
+Transfer/sec:    251.63MB
+</code></pre></div><p>其中RPS大约为212793左右。</p>
+<h3 id="kubernetes-ingress-压测">Kubernetes Ingress 压测</h3>
+<p>部署文件配置（采用Helm部署）：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">controller:
+  image:
+    repository: docker.io/amuguelove/ingress-nginx
+    tag: &#34;v0.41.0&#34;
+    digest:
+    pullPolicy: IfNotPresent
+
+  config:
+    server-tokens: &#34;false&#34;
+    disable-access-log: &#34;true&#34;
+
+    keep-alive-requests: &#34;10000&#34;
+    upstream-keepalive-requests: &#34;10000&#34;
+    upstream-keepalive-connections: &#34;1000&#34;
+    max-worker-connections: &#34;65536&#34;
+
+  extraInitContainers:
+    - name: setsysctl
+      image: busybox
+      securityContext:
+        privileged: true
+      command:
+        - sh
+        - -c
+        - |
+          sysctl -w net.core.somaxconn=65535
+          sysctl -w net.ipv4.ip_local_port_range=&#34;1024 65535&#34;
+          sysctl -w net.ipv4.tcp_tw_reuse=1
+          sysctl -w fs.file-max=1048576
+</code></pre></div><p>性能压测：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># wrk -t8 -c200 -d30s --latency http://nginx.qcloud.com/1kb.bin
+Running 30s test @ http://nginx.qcloud.com/1kb.bin
+  8 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     5.23ms    5.90ms  78.82ms   87.22%
+    Req/Sec     6.35k     1.18k   12.18k    68.35%
+  Latency Distribution
+     50%    3.29ms
+     75%    7.28ms
+     90%   12.46ms
+     99%   27.85ms
+  1518457 requests in 30.08s, 1.72GB read
+Requests/sec:  50474.50
+Transfer/sec:     58.63MB
+</code></pre></div><p>其中RPS大约为50474左右。</p>
+<h3 id="nginx-ingress-压测">Nginx Ingress 压测</h3>
+<p>部署文件配置（采用Helm部署）：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">controller:
+  kind: daemonset
+
+  config:
+    entries:
+      server-tokens: &#34;false&#34;
+      disable-access-log: &#34;true&#34;
+
+      keep-alive-requests: &#34;10000&#34;
+      upstream-keepalive-requests: &#34;10000&#34;
+      upstream-keepalive-connections: &#34;1000&#34;
+      max-worker-connections: &#34;65536&#34;
+</code></pre></div><p>性能压测：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># wrk -t8 -c200 -d30s --latency http://nginx.qcloud.com/1kb.bin
+Running 30s test @ http://nginx.qcloud.com/1kb.bin
+  8 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     6.11ms    7.36ms 227.84ms   92.47%
+    Req/Sec     4.74k   794.04    10.76k    72.04%
+  Latency Distribution
+     50%    4.53ms
+     75%    7.80ms
+     90%   12.04ms
+     99%   25.63ms
+  1133947 requests in 30.09s, 1.30GB read
+Requests/sec:  37686.72
+Transfer/sec:     44.31MB
+</code></pre></div><p>其中RPS大约为37686左右。</p>
+<h3 id="traefix-ingress-压测">Traefix Ingress 压测</h3>
+<p>部署文件配置（采用Helm部署）：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">deployment:
+  enabled: true
+  kind: DaemonSet # DaemonSet or Deployment
+
+  initContainers:
+    - name: setsysctl
+      image: busybox
+      securityContext:
+        privileged: true
+      command:
+        - sh
+        - -c
+        - |
+          sysctl -w net.core.somaxconn=65535
+          sysctl -w net.ipv4.ip_local_port_range=&#34;1024 65535&#34;
+          sysctl -w net.ipv4.tcp_tw_reuse=1
+          sysctl -w fs.file-max=1048576
+
+providers:
+  kubernetesIngress:
+    enabled: true
+    publishedService:
+      enabled: true
+</code></pre></div><p>性能测试（忘记截取wrk日志。。。）：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">wrk -t8 -c200 -d30s --latency http://nginx.qcloud.com/1kb.bin
-</code></pre></div><p>以下表格数据的单位都是RPS</p>
-<h3 id="方案1压测后端nginx">方案1：压测后端Nginx</h3>
-<p>分别对POD IP，Service IP以及External IP进行多次测试取平均值：</p>
-<table>
-<thead>
-<tr>
-<th>直连POD IP</th>
-<th>Service IP</th>
-<th>External IP</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>184301.41</td>
-<td>164534.72</td>
-<td>166734.20</td>
-</tr>
-</tbody>
-</table>
-<h3 id="方案2压测经过nginx代理">方案2：压测经过Nginx代理</h3>
-<p>分别对POD IP，Service IP以及External IP进行多次测试取平均值：</p>
-<table>
-<thead>
-<tr>
-<th>直连POD IP</th>
-<th>Service IP</th>
-<th>External IP</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>86305.15</td>
-<td>80890.86</td>
-<td>80651.81</td>
-</tr>
-</tbody>
-</table>
-<h3 id="方案3-压测经过ingress">方案3： 压测经过Ingress</h3>
-<p>对比默认配置下，ingress-ingress的性能：</p>
-<table>
-<thead>
-<tr>
-<th>默认配置（process worker: auto）</th>
-<th>优化配置（8 wrokers）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>31143.15</td>
-<td>36255.13</td>
-</tr>
-</tbody>
-</table>
-<p>对比不同CPU，不同worker数量的性能差异，以下ingress-nginx已做性能调优：</p>
-<table>
-<thead>
-<tr>
-<th>CPU</th>
-<th>Worker</th>
-<th>RPS</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>11347.38</td>
-</tr>
-<tr>
-<td>2</td>
-<td>2</td>
-<td>17564.26</td>
-</tr>
-<tr>
-<td>4</td>
-<td>4</td>
-<td>29761.89</td>
-</tr>
-<tr>
-<td>8</td>
-<td>8</td>
-<td>41613.75</td>
-</tr>
-</tbody>
-</table>
-<h3 id="不同方案性能对比">不同方案性能对比</h3>
-<table>
-<thead>
-<tr>
-<th>方案</th>
-<th>访问方式</th>
-<th>RPS</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>后端Nginx</td>
-<td>External IP</td>
-<td>166734</td>
-<td></td>
-</tr>
-<tr>
-<td>经过Nginx代理</td>
-<td>External IP</td>
-<td>80651</td>
-<td>开启keepalive, 关闭log</td>
-</tr>
-<tr>
-<td>ingress-nginx（原始）</td>
-<td>域名</td>
-<td>31143</td>
-<td></td>
-</tr>
-<tr>
-<td>ingress-nginx（优化）</td>
-<td>域名</td>
-<td>36255</td>
-<td>调整worker，access-log, keepalive等</td>
-</tr>
-</tbody>
-</table>
-<p>以上测试的影响因素还有很多，但是可以看出ingress-nginx的rps对比后端Nginx相差挺大的，而且最新版本的ingress-nginx优化过后的性能提升也不明显。</p>
+
+三次结果为：
+53439.33
+53290.16
+53026.58
+</code></pre></div><p>其中RPS大约为53439左右。</p>
+<h2 id="最后">最后</h2>
+<p>使用Ingress做访问入口代理，性能有较大的损耗。其中测试下来，Ingress的性能如下：Traefik Ingress &gt; Kubernetes Ingress &gt; Nginx Ingress。</p>
 <h2 id="配置文件">配置文件</h2>
-<p>本文测试文件见：<a href="https://github.com/DevOpsDays2020/ingress-nginx-benchmark">https://github.com/DevOpsDays2020/ingress-nginx-benchmark</a></p>
+<p>本文测试文件见: <a href="https://github.com/DevOpsDays2020/ingress-benchmark/tree/master/ingress-controller">https://github.com/DevOpsDays2020/ingress-benchmark/tree/master/ingress-controller</a></p>
 <h2 id="参考资料">参考资料</h2>
 <ol>
-<li>ingress nginx benchmark：<a href="https://qingwave.github.io/ingress-benchmark/">https://qingwave.github.io/ingress-benchmark/</a></li>
+<li>Kubernete Ingress Helm Chart: <a href="https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx">https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx</a></li>
+<li>Nginx Ingress Helm Chart: <a href="https://artifacthub.io/packages/helm/nginx/nginx-ingress">https://artifacthub.io/packages/helm/nginx/nginx-ingress</a></li>
+<li>Traefix Ingress Helm Chart: <a href="https://artifacthub.io/packages/helm/traefik/traefik">https://artifacthub.io/packages/helm/traefik/traefik</a></li>
 </ol>
 
           
@@ -494,6 +628,8 @@ if (!doNotTrack) {
 <h3>相关文章</h3>
 <ul style="margin-bottom: 25px;">
     
+    <li><a href="http://flygopher.top/post/ingress-nginx-benchmark/">ingress-nginx 性能压测</a></li>
+    
     <li><a href="http://flygopher.top/post/ingress-nginx-high-concurrency/">ingress-nginx 高并发实践</a></li>
     
     <li><a href="http://flygopher.top/post/ingress-nginx-on-tke/">ingress-nginx在TKE上部署的最佳实践</a></li>
@@ -512,8 +648,6 @@ if (!doNotTrack) {
     
     <li><a href="http://flygopher.top/post/kubernetes-storage1/">kubernetes持久化存储（一）</a></li>
     
-    <li><a href="http://flygopher.top/post/kubeadm-install-kubernetes-cluster/">使用kubeadm搭建Kubernetes集群</a></li>
-    
 </ul>
 
         
@@ -522,13 +656,9 @@ if (!doNotTrack) {
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://flygopher.top/post/ingress-nginx-high-concurrency/" data-toggle="tooltip" data-placement="top" title="ingress-nginx 高并发实践">&larr; 前一篇</a>
+              <a href="http://flygopher.top/post/ingress-nginx-benchmark/" data-toggle="tooltip" data-placement="top" title="ingress-nginx 性能压测">&larr; 前一篇</a>
             </li>
           
-          
-            <li class="next">
-              <a href="http://flygopher.top/post/ingress-controllers-benchmark/" data-toggle="tooltip" data-placement="top" title="不同ingress controller的性能测试">后一篇 &rarr;</a>
-            </li>
           
         </ul>
         
