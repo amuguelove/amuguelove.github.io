@@ -6,7 +6,43 @@
     <description>Recent content in Tags on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>iCloud</title>
+      <link>http://flygopher.top/tags/icloud/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/tags/icloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MacOS</title>
+      <link>http://flygopher.top/tags/macos/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/tags/macos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>typora</title>
+      <link>http://flygopher.top/tags/typora/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/tags/typora/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>upic</title>
+      <link>http://flygopher.top/tags/upic/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/tags/upic/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>benchmark</title>
       <link>http://flygopher.top/tags/benchmark/</link>
@@ -490,15 +526,6 @@
       <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>http://flygopher.top/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>MacOS</title>
-      <link>http://flygopher.top/tags/macos/</link>
-      <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://flygopher.top/tags/macos/</guid>
       <description></description>
     </item>
     

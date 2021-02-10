@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>upic on 梁波的技术博客</title>
+    <link>http://flygopher.top/tags/upic/</link>
+    <description>Recent content in upic on 梁波的技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/tags/upic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Typora&#43;iCloud&#43;uPic搭建Markdown写作神器</title>
+      <link>http://flygopher.top/post/writing_with_typora/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0800</pubDate>
+      
+      <guid>http://flygopher.top/post/writing_with_typora/</guid>
+      <description>&lt;p&gt;我非常喜欢记录笔记，也使用过很多写笔记的APP，从&lt;code&gt;印象笔记&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;Notion&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;Emacs&lt;/code&gt;  &amp;ndash;&amp;gt; &lt;code&gt;Bear&lt;/code&gt;&amp;ndash;&amp;gt; &lt;code&gt;印象笔记&lt;/code&gt;，由于个人在不同阶段有不同记录笔记的需求，导致时常会去寻找满足所有需求的笔记APP。迁移笔记也是非常的痛苦，尤其是Markdown笔记迁移到非Markdown笔记APP。&lt;/p&gt;
+&lt;p&gt;个人喜欢使用Markdown写作，个人博客就是在Mac系统上使用Typora写完后，直接推送到Github Pages就行了，但是Typora是本地的Markdown编辑器，无法同步到移动端。&lt;/p&gt;
+&lt;p&gt;最近发现可以使用Typora + iCloud + uPic来记录我的笔记和博客了：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用Typora这种简洁高效的Markdown Editor来记录笔记和博客&lt;/li&gt;
+&lt;li&gt;使用iCloud同步md文件到不同的客户端（如：Mac，iPhone等）&lt;/li&gt;
+&lt;li&gt;使用uPic自动上传图片&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这样就可以解决了我所有的记笔记的痛点了：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以使用Markdown语法来记录笔记&lt;/li&gt;
+&lt;li&gt;在MacOS本地使用Typora写笔记高效方便，启动快，不用考虑文件同步丢失等问题&lt;/li&gt;
+&lt;li&gt;体验不再割裂，笔记和博客都使用Typora书写&lt;/li&gt;
+&lt;li&gt;Markdown文件通过iCloud同步，实现多客户端同步，解决了我时常内购了笔记APP又切换APP导致的浪费&lt;/li&gt;
+&lt;li&gt;uPic解决了我图床问题，之前笔记的图片存在本机，博客的图片存储github上&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

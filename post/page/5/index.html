@@ -164,6 +164,40 @@ if (!doNotTrack) {
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://flygopher.top/post/macos-golang-environment-setup/">
+                <h2 class="post-title">Mac下安装Golang并配置环境</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 December 18, 2018
+              </p>
+              <div class="post-entry">
+                
+                  <p>在MacOS上主要有如下两种方法安装</p>
+<h3 id="一homebrew">一、HomeBrew</h3>
+<p><code>homebrew</code>是Mac系统下面目前使用最多的管理软件的工具，目前已支持Go，可以通过命令直接安装Go。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">brew update &amp;&amp; brew upgrade
+brew install go
+</code></pre></div><p>这样安装之后通过命令行输入<code>go</code>就可以看到相关的信息。输入<code>go env</code>查看环境信息。</p>
+                  <a href="http://flygopher.top/post/macos-golang-environment-setup/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flygopher.top/tags/golang/">Golang</a>&nbsp;
+                  
+                    #<a href="http://flygopher.top/tags/macos/">MacOS</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://flygopher.top/post/docker-container-stats/">
                 <h2 class="post-title">使用Docker构建应用 | 第五篇：查看Dokcer容器使用的资源</h2>
 
@@ -478,41 +512,6 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
 <p>（3）故障转移，如果master node挂掉了，会自动转移到slave node上</p>
 <p>（4）配置中心，如果故障转移发生了，通知client客户端新的master地址</p>
                   <a href="http://flygopher.top/post/redis-sentinel-setup/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flygopher.top/tags/redis/">Redis</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flygopher.top/post/redis-master-slave-setup/">
-                <h2 class="post-title">深入学习Redis：Redis一主两从搭建</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 October 19, 2018
-              </p>
-              <div class="post-entry">
-                
-                  <p><code>redis</code>的一主多从的搭建很简单，但是一般需要搭配<code>redis sentinel</code>哨兵集群，将会在下篇文章介绍。</p>
-<h3 id="配置">配置</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">master：192.168.56.101
-
-slave1：192.168.56.102
-
-slave2：192.168.56.103
-</code></pre></div><p>如何搭建虚拟机集群环境，可以参考：<a href="http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/">Vagrant搭建虚拟机集群</a><br>
-如何部署Redis单机服务，可以参考：<a href="http://flygopher.top/post/redis-install-on-centos7/">Redis深入学习（一）：Linux CentOS 7 安装Redis 4.0.11</a></p>
-                  <a href="http://flygopher.top/post/redis-master-slave-setup/" class="post-read-more">[阅读全文]</a>
                 
               </div>
 
