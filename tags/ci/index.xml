@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CI on 梁波的技术博客</title>
-    <link>http://flygopher.top/tags/ci/</link>
+    <link>http://flyeric.top/tags/ci/</link>
     <description>Recent content in CI on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 27 Mar 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/tags/ci/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Mar 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/tags/ci/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>基于kubernetes的动态jenkins slave</title>
-      <link>http://flygopher.top/post/jenkins-slave-base-on-kubernetes/</link>
+      <link>http://flyeric.top/post/jenkins-slave-base-on-kubernetes/</link>
       <pubDate>Fri, 27 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/jenkins-slave-base-on-kubernetes/</guid>
+      <guid>http://flyeric.top/post/jenkins-slave-base-on-kubernetes/</guid>
       <description>&lt;p&gt;搭建&lt;code&gt;CI/CD&lt;/code&gt;可以使用的工具不少，例如：&lt;code&gt;Jenkins&lt;/code&gt;、&lt;code&gt;Gitlab CI&lt;/code&gt;等等，这里会使用大家最新熟悉的&lt;code&gt;Jenkins&lt;/code&gt;来做&lt;code&gt;CI/CD&lt;/code&gt;的工具。不少人都是基于虚拟机来搭建的，基于&lt;code&gt;Kubernetes&lt;/code&gt;搭建的Jenkins Slave会有什么效果呢？&lt;/p&gt;</description>
     </item>
     

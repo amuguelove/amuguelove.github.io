@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Http on 梁波的技术博客</title>
-    <link>http://flygopher.top/categories/http/</link>
+    <link>http://flyeric.top/categories/http/</link>
     <description>Recent content in Http on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 04 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://flygopher.top/categories/http/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/categories/http/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Apache HttpClient 三个超时时间的区别</title>
-      <link>http://flygopher.top/post/apache-httpclient-timeout-diff/</link>
+      <link>http://flyeric.top/post/apache-httpclient-timeout-diff/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/apache-httpclient-timeout-diff/</guid>
+      <guid>http://flyeric.top/post/apache-httpclient-timeout-diff/</guid>
       <description>&lt;p&gt;如何区分Apache HttpClient中配置的三个超时时间。&lt;/p&gt;</description>
     </item>
     

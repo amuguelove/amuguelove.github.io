@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>梁波的技术博客</title>
-    <link>http://flygopher.top/</link>
+    <link>http://flyeric.top/</link>
     <description>Recent content on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Typora&#43;iCloud&#43;uPic搭建Markdown写作神器</title>
-      <link>http://flygopher.top/post/writing_with_typora/</link>
+      <link>http://flyeric.top/post/writing_with_typora/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/writing_with_typora/</guid>
+      <guid>http://flyeric.top/post/writing_with_typora/</guid>
       <description>&lt;p&gt;我非常喜欢记录笔记，也使用过很多写笔记的APP，从&lt;code&gt;印象笔记&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;Notion&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;Emacs&lt;/code&gt;  &amp;ndash;&amp;gt; &lt;code&gt;Bear&lt;/code&gt;&amp;ndash;&amp;gt; &lt;code&gt;印象笔记&lt;/code&gt;，由于个人在不同阶段有不同记录笔记的需求，导致时常会去寻找满足所有需求的笔记APP。迁移笔记也是非常的痛苦，尤其是Markdown笔记迁移到非Markdown笔记APP。&lt;/p&gt;
 &lt;p&gt;个人喜欢使用Markdown写作，个人博客就是在Mac系统上使用Typora写完后，直接推送到Github Pages就行了，但是Typora是本地的Markdown编辑器，无法同步到移动端。&lt;/p&gt;
 &lt;p&gt;最近发现可以使用Typora + iCloud + uPic来记录我的笔记和博客了：&lt;/p&gt;
@@ -33,47 +33,47 @@
     
     <item>
       <title>不同ingress controller的性能测试</title>
-      <link>http://flygopher.top/post/ingress-controllers-benchmark/</link>
+      <link>http://flyeric.top/post/ingress-controllers-benchmark/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/ingress-controllers-benchmark/</guid>
+      <guid>http://flyeric.top/post/ingress-controllers-benchmark/</guid>
       <description>&lt;p&gt;Ingress Controller有很多实现方式，如Kubernetes官方，Nginx官方，Kong，Traefik等等，下面对以下三种不同的Ingress Controller进行性能测试，Kubernetes Ingress VS Nginx Ingress（Nginx官方出品）VS Traefix Ingress。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ingress-nginx 性能压测</title>
-      <link>http://flygopher.top/post/ingress-nginx-benchmark/</link>
+      <link>http://flyeric.top/post/ingress-nginx-benchmark/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/ingress-nginx-benchmark/</guid>
+      <guid>http://flyeric.top/post/ingress-nginx-benchmark/</guid>
       <description>&lt;p&gt;Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ingress-nginx 高并发实践</title>
-      <link>http://flygopher.top/post/ingress-nginx-high-concurrency/</link>
+      <link>http://flyeric.top/post/ingress-nginx-high-concurrency/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/ingress-nginx-high-concurrency/</guid>
+      <guid>http://flyeric.top/post/ingress-nginx-high-concurrency/</guid>
       <description>&lt;p&gt;Nginx Ingress Controller 基于 Nginx 实现 Kubernetes Ingress API。Nginx 是一款高性能网关，在实际生产环境运行时，需要对参数进行调优，以保证其充分发挥高性能的优势。&lt;/p&gt;
 &lt;p&gt;本文将介绍针对 Nginx Ingress 全局配置与内核参数调优的方法及其原理，让 Nginx Ingress 更好的适配高并发业务场景。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ingress-nginx在TKE上部署的最佳实践</title>
-      <link>http://flygopher.top/post/ingress-nginx-on-tke/</link>
+      <link>http://flyeric.top/post/ingress-nginx-on-tke/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/ingress-nginx-on-tke/</guid>
+      <guid>http://flyeric.top/post/ingress-nginx-on-tke/</guid>
       <description>&lt;p&gt;Nginx Ingress 有多种部署方式，本文将介绍 Nginx Ingress 在 TKE 上的一些部署方案，这几种方案的原理、各自优缺点以及一些选型和使用上的建议。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ingress-nginx的安装使用</title>
-      <link>http://flygopher.top/post/install-ingress-nginx/</link>
+      <link>http://flyeric.top/post/install-ingress-nginx/</link>
       <pubDate>Thu, 31 Dec 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/install-ingress-nginx/</guid>
+      <guid>http://flyeric.top/post/install-ingress-nginx/</guid>
       <description>&lt;p&gt;开源的 Ingress Controller 的实现使用量最大的莫过于 Ingress Nginx 了，可作为反向代理将外部流量导入集群内部，将 Kubernetes 内部的 Service 暴露给外部，在 Ingress 对象中通过域名匹配 Service，这样就可以直接通过域名访问到集群内部的服务了。&lt;/p&gt;
 &lt;p&gt;实际 Ingress Nginx 有两种实现：&lt;/p&gt;
 &lt;ol&gt;
@@ -85,29 +85,29 @@
     
     <item>
       <title>升级OpenSSL解决CVE-2020-1971漏洞</title>
-      <link>http://flygopher.top/post/centos-upgrade-openssl/</link>
+      <link>http://flyeric.top/post/centos-upgrade-openssl/</link>
       <pubDate>Sat, 26 Dec 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/centos-upgrade-openssl/</guid>
+      <guid>http://flyeric.top/post/centos-upgrade-openssl/</guid>
       <description>&lt;p&gt;2020年12月08日，OpenSSL官方发布安全公告，披露&lt;code&gt;CVE-2020-1971&lt;/code&gt; OpenSSL GENERAL_NAME_cmp 拒绝服务漏洞。当两个GENERAL_NAME都包含同一个EDIPARTYNAME时，由于GENERAL_NAME_cmp函数未能正确处理，从而导致空指针引用，并可能导致拒绝服务。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Kubernetes API资源的使用</title>
-      <link>http://flygopher.top/post/how-to-use-k8s-api-resources/</link>
+      <link>http://flyeric.top/post/how-to-use-k8s-api-resources/</link>
       <pubDate>Sat, 31 Oct 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/how-to-use-k8s-api-resources/</guid>
+      <guid>http://flyeric.top/post/how-to-use-k8s-api-resources/</guid>
       <description>&lt;p&gt;在使用&lt;code&gt;Kubernetes&lt;/code&gt;的时候，因为有太多的资源、太多的版本、太多的组了，这些都非常容易产生混淆。如果我们通过 YAML 文件定义过 Deployment 这样的资源清单文件的话，那么你应该会看到&lt;code&gt;apiVersion: apps/v1beta2&lt;/code&gt;、&lt;code&gt;apiVersion: apps/v1&lt;/code&gt;等等这样的信息，那么我们到底应该使用哪一个呢？哪一个才是正确的呢？如何检查&lt;code&gt;Kubernetes&lt;/code&gt;集群支持哪些？其实我们使用&lt;code&gt;kubectl&lt;/code&gt;工具就可以来解决我们的这些疑惑。&lt;/p&gt;
 &lt;p&gt;当前我使用的&lt;code&gt;Kubernetes&lt;/code&gt;的版本是&lt;code&gt;1.18.8&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>删除Github远程提交记录</title>
-      <link>http://flygopher.top/post/delete-github-remote-commits/</link>
+      <link>http://flyeric.top/post/delete-github-remote-commits/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/delete-github-remote-commits/</guid>
+      <guid>http://flyeric.top/post/delete-github-remote-commits/</guid>
       <description>&lt;p&gt;最近我在快速提交代码到Github远程仓库的时候，发现提交了一些非必须文件，如缓存文件，而且这些文件比较大，影响了CI工具拉取github仓库的状态（CI工具网速不够快），导致无法将最新的提交触发CI。&lt;/p&gt;
 &lt;p&gt;这里快速介绍一种快速的方法：&lt;/p&gt;
 &lt;p&gt;第一步：快速找到你要回滚的&lt;code&gt;git commit id&lt;/code&gt;；&lt;/p&gt;
@@ -126,20 +126,20 @@
     
     <item>
       <title>使用Kind快速构建Kubernetes集群</title>
-      <link>http://flygopher.top/post/setup-kubernetes-cluster-with-kind/</link>
+      <link>http://flyeric.top/post/setup-kubernetes-cluster-with-kind/</link>
       <pubDate>Thu, 15 Oct 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/setup-kubernetes-cluster-with-kind/</guid>
+      <guid>http://flyeric.top/post/setup-kubernetes-cluster-with-kind/</guid>
       <description>&lt;p&gt;现在安装 Kubernetes 集群已经变得越来越简单了，出现了很多方案，各种方案都有自己适合的使用场景。虽然我们可以很快速在云环境下面启动一个 Kubernetes 集群，但是对于开发人员通常更喜欢能够快速上手的东西，&lt;a href=&#34;https://kind.sigs.k8s.io/&#34;&gt;Kubernetes in Docker（Kind）&lt;/a&gt;这个工具就可以通过创建容器来作为 Kubernetes 的节点，我们只需要在机器上安装 Docker 就可以使用，它允许我们在很短的时间内就启动一个多节点的集群，而不依赖任何其他工具或云服务商。&lt;/p&gt;
 &lt;p&gt;前面的文章也讲过如何在本地使用Vagrant来快速搭建Kubernetes集群，但还是有点麻烦，而且需要自己去定制Vagrant Box，有一定的技术门槛。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Vagrant定制Box</title>
-      <link>http://flygopher.top/post/customize-vagrant-box/</link>
+      <link>http://flyeric.top/post/customize-vagrant-box/</link>
       <pubDate>Sun, 11 Oct 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/customize-vagrant-box/</guid>
+      <guid>http://flyeric.top/post/customize-vagrant-box/</guid>
       <description>&lt;p&gt;很多人在学习Kubernetes之前，都会苦恼如何搭建一个集群环境呢？你可以使用新版的Docker快速搭建一个单Master的集群，你也可以购买云厂商的集群服务；使用Docker安装集群非常的简单，但是只能是单master节点；购买云厂商的集群服务可以拥有所有的集群功能，而且任意购买云存储，外网LoadBalancer等，但是费用昂贵，因为k8s集群对机器的要求还是不低的。那有没有其他的选择呢？下面给大家介绍我是如何在本地快速搭建k8s集群的。&lt;/p&gt;
 &lt;p&gt;使用Vagrant定制Centos7 Box，里面包含了Linux参数优化，Docker，Kubectl，Kubeadm，Kubelet等。这样就可以通过这个Vagrant Box启动多个节点的k8s集群了。&lt;/p&gt;
 &lt;p&gt;最近花了点时间将所有的配置都脚本化，可以通过CLI的方式快速构建基础Box或者删除。&lt;/p&gt;</description>
@@ -147,76 +147,76 @@
     
     <item>
       <title>凤凰项目读后感</title>
-      <link>http://flygopher.top/post/read-the-phoenix-project/</link>
+      <link>http://flyeric.top/post/read-the-phoenix-project/</link>
       <pubDate>Sat, 10 Oct 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/read-the-phoenix-project/</guid>
+      <guid>http://flyeric.top/post/read-the-phoenix-project/</guid>
       <description>&lt;p&gt;花了2天的时间看完这本书：《凤凰项目（沙盘特别版）》，感触颇深。和所有讲DevOps相关的书不同，感觉就在读小说一样，而且非常的励志，讲述了一家陷入困境的传统制造业公司，怎么凭借凤凰项目（或者独角兽项目）起死回生的。IT运维在其中发挥了只管重要的作用。&lt;/p&gt;
 &lt;p&gt;最近这半年来，我大部分的工作也集中在开发运维上，在这个过程中，也接触到了很多DevOps相关的知识和实践，虽然书中很多东西比较旧，但是还是有很多只得借鉴的地方。 读这本书的时候，有很多地方产生了共鸣，一度让我回忆起了之前参与公司的TWI中的课程，关于敏捷和精益的部分，尤其是精益思想。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>kubernetes Ingress 自动化 HTTPS</title>
-      <link>http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</link>
+      <link>http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</link>
       <pubDate>Mon, 28 Sep 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</guid>
+      <guid>http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</guid>
       <description>&lt;p&gt;现在的Web应用启用&lt;code&gt;HTTPS&lt;/code&gt;服务是真的非常有必要的。一些正规机构颁发的&lt;code&gt;CA&lt;/code&gt;证书费用又特别高，不过比较幸运的是也有免费的午餐 - &lt;code&gt;Let&#39;s Encrypt&lt;/code&gt;，虽然只有90天的证书有效期，但是我们完全可以在证书失效之前，重新生成证书替换掉。在&lt;code&gt;Kubernetes&lt;/code&gt;集群中就更方便了，我们可以通过 Kubernetes Ingress 和 Let’s Encrypt 实现外部服务的自动化 HTTPS。&lt;/p&gt;
 &lt;p&gt;Cert-Manager 是一个云原生证书管理开源项目，用于在 Kubernetes 集群中提供 HTTPS 证书并自动续期，支持 Let’s Encrypt / HashiCorp / Vault 这些免费证书的签发。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/cert-manager-structrue.svg&#34; alt=&#34;Cert Manager Structrue&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;http://flyeric.top/img/post/cert-manager-structrue.svg&#34; alt=&#34;Cert Manager Structrue&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>kubernetes持久化存储（二）</title>
-      <link>http://flygopher.top/post/kubernetes-storage2/</link>
+      <link>http://flyeric.top/post/kubernetes-storage2/</link>
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/kubernetes-storage2/</guid>
+      <guid>http://flyeric.top/post/kubernetes-storage2/</guid>
       <description>&lt;p&gt;前面的文章里我们学习了 &lt;code&gt;PV&lt;/code&gt; 和 &lt;code&gt;PVC&lt;/code&gt; 的使用方法，但是前面的 PV 都是静态的，什么意思呢？就是我要使用的一个 PVC 的话就必须手动去创建一个 PV，我们也说过这种方式在很大程度上并不能满足我们的需求，比如我们有一个应用需要对存储的并发度要求比较高，而另外一个应用对读写速度又要求比较高，特别是对于 &lt;code&gt;StatefulSet&lt;/code&gt; 类型的应用简单的来使用静态的 PV 就很不合适了，这种情况下我们就需要用到动态 PV，也就是我们今天要讲解的 &lt;code&gt;StorageClass&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>kubernetes持久化存储（一）</title>
-      <link>http://flygopher.top/post/kubernetes-storage1/</link>
+      <link>http://flyeric.top/post/kubernetes-storage1/</link>
       <pubDate>Sat, 26 Sep 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/kubernetes-storage1/</guid>
+      <guid>http://flyeric.top/post/kubernetes-storage1/</guid>
       <description>&lt;p&gt;Kubernetes提供了可靠的存储来保存应用的持久化数据，这样容器在重建后，依然可以使用之前的数据。但是显然存储资源和 CPU 资源以及内存资源有很大不同，为了屏蔽底层的技术实现细节，让用户更加方便的使用，&lt;code&gt;Kubernetes&lt;/code&gt; 便引入了 &lt;code&gt;PV&lt;/code&gt; 和 &lt;code&gt;PVC&lt;/code&gt; 两个重要的资源对象来实现对存储的管理。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>正则表达式入门</title>
-      <link>http://flygopher.top/post/sample-regexp/</link>
+      <link>http://flyeric.top/post/sample-regexp/</link>
       <pubDate>Tue, 01 Sep 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/sample-regexp/</guid>
+      <guid>http://flyeric.top/post/sample-regexp/</guid>
       <description>&lt;p&gt;一个正则表达式通常被称为一个&lt;strong&gt;模式&lt;/strong&gt;（pattern），为用来描述或者匹配一系列符合某个&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%8F%A5%E6%B3%95&#34;&gt;句法&lt;/a&gt;规则的&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%AD%97%E7%AC%A6%E4%B8%B2&#34;&gt;字符串&lt;/a&gt;。例如：Handel、Händel和Haendel这三个字符串，都可以由&lt;code&gt;H(a|ä|ae)ndel&lt;/code&gt;这个模式来描述。大部分正则表达式的形式都有如下的结构：&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>浅谈HTTPS原理</title>
-      <link>http://flygopher.top/post/sample-https-principle/</link>
+      <link>http://flyeric.top/post/sample-https-principle/</link>
       <pubDate>Sat, 29 Aug 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/sample-https-principle/</guid>
+      <guid>http://flyeric.top/post/sample-https-principle/</guid>
       <description>&lt;p&gt;我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取。所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用kubeadm搭建Kubernetes集群</title>
-      <link>http://flygopher.top/post/kubeadm-install-kubernetes-cluster/</link>
+      <link>http://flyeric.top/post/kubeadm-install-kubernetes-cluster/</link>
       <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/kubeadm-install-kubernetes-cluster/</guid>
+      <guid>http://flyeric.top/post/kubeadm-install-kubernetes-cluster/</guid>
       <description>&lt;p&gt;之前使用二进制Hard-Way模式搭建了Kubernetes三节点集群，今天采用Kubeadm 来快速搭建Kubernetes V1.16.8集群。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用二进制搭建kubernetes三节点高可用集群</title>
-      <link>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</link>
+      <link>http://flyeric.top/post/local-install-ha-kubernetes-cluster/</link>
       <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</guid>
+      <guid>http://flyeric.top/post/local-install-ha-kubernetes-cluster/</guid>
       <description>&lt;p&gt;Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 &lt;a href=&#34;https://www.cncf.io/about&#34;&gt;CNCF&lt;/a&gt;。你可以通过阅读 &lt;a href=&#34;https://kubernetes.io/zh/docs/home/&#34;&gt;官方文档&lt;/a&gt;了解Kubernetes和其基础概念。&lt;/p&gt;
 &lt;p&gt;接下来这篇文章将介绍如何使用二进制部署&lt;code&gt;Kubernetes v1.14.8&lt;/code&gt;。通过这种&lt;code&gt;hard-way&lt;/code&gt;的方式来帮助你更好的了解Kubernetes。&lt;/p&gt;
 &lt;p&gt;Kubernetes Cluster搭建的过程，可以参考&lt;a href=&#34;https://github.com/opsnull/follow-me-install-kubernetes-cluster&#34;&gt;和我一步步部署 kubernetes 集群&lt;/a&gt;。我将其中的脚本整理好了，并通过&lt;a href=&#34;https://www.vagrantup.com/&#34;&gt;Vagrant&lt;/a&gt;和&lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;VirtualBox&lt;/a&gt;在本地快速创建k8s集群。&lt;/p&gt;
@@ -225,19 +225,19 @@
     
     <item>
       <title>Docker最佳实践</title>
-      <link>http://flygopher.top/post/docker-best-practice/</link>
+      <link>http://flyeric.top/post/docker-best-practice/</link>
       <pubDate>Tue, 07 Apr 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/docker-best-practice/</guid>
+      <guid>http://flyeric.top/post/docker-best-practice/</guid>
       <description>&lt;p&gt;了解了用于构建 Dockerfile 的基本方法后，我们在编写 Dockerfile 的时候并没有一些强制要求，导致很多构建的镜像不符合一些最佳实践，典型的就是镜像构建的层数非常多，对一些基本指令的区别不是很清楚。下面介绍 Dockerfile 在实际使用中的一些最佳的实践方式。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Docker的底层技术</title>
-      <link>http://flygopher.top/post/docker-underlying-technology/</link>
+      <link>http://flyeric.top/post/docker-underlying-technology/</link>
       <pubDate>Mon, 06 Apr 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/docker-underlying-technology/</guid>
+      <guid>http://flyeric.top/post/docker-underlying-technology/</guid>
       <description>&lt;p&gt;Docker最初实现是基于 &lt;a href=&#34;https://linuxcontainers.org/lxc/introduction/&#34;&gt;LXC&lt;/a&gt;，从 0.7 版本以后开始去除 &lt;code&gt;LXC&lt;/code&gt;，转而使用自行开发的 &lt;a href=&#34;https://github.com/docker/libcontainer&#34;&gt;libcontainer&lt;/a&gt;，从 1.11 开始，则进一步演进为使用 &lt;a href=&#34;https://github.com/opencontainers/runc&#34;&gt;runC&lt;/a&gt; 和 &lt;a href=&#34;https://github.com/containerd/containerd&#34;&gt;containerd&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;Docker 本质就是宿主机的一个进程，Docker 是通过 &lt;code&gt;namespace&lt;/code&gt; 实现资源隔离，通过&lt;code&gt;cgroup&lt;/code&gt; 实现资源限制，通过写时复制技术（copy-on-write）实现了高效的文件操作。&lt;/p&gt;
 &lt;p&gt;传统的虚拟机通过在宿主主机中运行 hypervisor 来模拟一整套完整的硬件环境提供给虚拟机的操作系统。虚拟机系统看到的环境是可限制的，也是彼此隔离的。 这种直接的做法实现了对资源最完整的封装，但很多时候往往意味着系统资源的浪费。 例如，以宿主机和虚拟机系统都为 Linux 系统为例，虚拟机中运行的应用其实可以利用宿主机系统中的运行环境。&lt;/p&gt;</description>
@@ -245,10 +245,10 @@
     
     <item>
       <title>代码整洁之道</title>
-      <link>http://flygopher.top/post/read-clean-code/</link>
+      <link>http://flyeric.top/post/read-clean-code/</link>
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/read-clean-code/</guid>
+      <guid>http://flyeric.top/post/read-clean-code/</guid>
       <description>&lt;p&gt;最近因为一些契机，花了2到3天看完**《代码简洁之道》**这本书，英文名为：&lt;code&gt;Clean Code&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;开篇就有有这么简单一句话：“阅读这本书有两种原因：第一，你是个程序员；第二，你想成为更好的程序员”。是的，没错，我想成为更好的程序员。所以我决定好好阅读下这本书。&lt;/p&gt;
 &lt;p&gt;回想2019年，确实是我最忙碌的一年，做过几个项目，其中部分涉及到架构，但是大部分时间都关注在如何实现业务代码，没有更好的关注到代码本身的细节。虽然经常了解到关于整洁代码相关的知识，在工作中也或多或少的用到，比如每天的&lt;code&gt;code review&lt;/code&gt;以及&lt;code&gt;TDD&lt;/code&gt;开发等等。但是确实不够系统，大多时间忙于完成业务，通过阅读本书，以及其中大量简洁代码的指南，受益匪浅。&lt;/p&gt;</description>
@@ -256,19 +256,19 @@
     
     <item>
       <title>基于kubernetes的动态jenkins slave</title>
-      <link>http://flygopher.top/post/jenkins-slave-base-on-kubernetes/</link>
+      <link>http://flyeric.top/post/jenkins-slave-base-on-kubernetes/</link>
       <pubDate>Fri, 27 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/jenkins-slave-base-on-kubernetes/</guid>
+      <guid>http://flyeric.top/post/jenkins-slave-base-on-kubernetes/</guid>
       <description>&lt;p&gt;搭建&lt;code&gt;CI/CD&lt;/code&gt;可以使用的工具不少，例如：&lt;code&gt;Jenkins&lt;/code&gt;、&lt;code&gt;Gitlab CI&lt;/code&gt;等等，这里会使用大家最新熟悉的&lt;code&gt;Jenkins&lt;/code&gt;来做&lt;code&gt;CI/CD&lt;/code&gt;的工具。不少人都是基于虚拟机来搭建的，基于&lt;code&gt;Kubernetes&lt;/code&gt;搭建的Jenkins Slave会有什么效果呢？&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用JMH对Java Object Mapping框架做性能对比</title>
-      <link>http://flygopher.top/post/java-object-mappping-framework-benchmark/</link>
+      <link>http://flyeric.top/post/java-object-mappping-framework-benchmark/</link>
       <pubDate>Mon, 23 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/java-object-mappping-framework-benchmark/</guid>
+      <guid>http://flyeric.top/post/java-object-mappping-framework-benchmark/</guid>
       <description>&lt;h2 id=&#34;jmh概述&#34;&gt;JMH概述&lt;/h2&gt;
 &lt;p&gt;JMH 是一个由 OpenJDK/Oracle 里面那群开发了 Java 编译器的大牛们所开发的 Micro Benchmark Framework 。何谓 Micro Benchmark 呢？简单地说就是在 &lt;strong&gt;method&lt;/strong&gt; 层面上的 benchmark，精度可以精确到微秒级。可以看出 JMH 主要使用在当你已经找出了热点函数，而需要对热点函数进行进一步的优化时，就可以使用 JMH 对优化的效果进行定量的分析。&lt;/p&gt;
 &lt;p&gt;比较典型的使用场景还有：&lt;/p&gt;
@@ -282,10 +282,10 @@
     
     <item>
       <title>Gradle发布Java Library到Maven中央仓库</title>
-      <link>http://flygopher.top/post/gradle-publish-jar-into-maven-central/</link>
+      <link>http://flyeric.top/post/gradle-publish-jar-into-maven-central/</link>
       <pubDate>Thu, 19 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/gradle-publish-jar-into-maven-central/</guid>
+      <guid>http://flyeric.top/post/gradle-publish-jar-into-maven-central/</guid>
       <description>&lt;p&gt;最近打算将一些基础的Jar包上传到&lt;code&gt;Maven&lt;/code&gt;中央仓库，方便在自己项目中引用。本文将结合&lt;code&gt;Gradle&lt;/code&gt;的两个插件&lt;code&gt;maven-publish&lt;/code&gt;和 &lt;code&gt;signing&lt;/code&gt;来讲解如何发布一个Jar包。&lt;/p&gt;
 &lt;p&gt;在开始之前，先对&lt;code&gt;OSSRH&lt;/code&gt;做下了解是很必要的。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;OSSRH&lt;/code&gt;：&lt;code&gt;Sonatype Open Source Software Repository Hosting Service&lt;/code&gt;，为开源软件提供maven仓库托管服务。你可以在上面部署&lt;code&gt;snapshot&lt;/code&gt;、&lt;code&gt;release&lt;/code&gt;等，最后你可以申请把你的release同步到&lt;code&gt;Maven Central Repository&lt;/code&gt;（&lt;code&gt;Maven中央仓库&lt;/code&gt;）。&lt;/p&gt;</description>
@@ -293,10 +293,10 @@
     
     <item>
       <title>SpringBoot的自动装配原理分析</title>
-      <link>http://flygopher.top/post/springboot-load-configure-principle/</link>
+      <link>http://flyeric.top/post/springboot-load-configure-principle/</link>
       <pubDate>Wed, 18 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/springboot-load-configure-principle/</guid>
+      <guid>http://flyeric.top/post/springboot-load-configure-principle/</guid>
       <description>&lt;p&gt;在Spring Boot应用中的自动装配是通过&lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; 注解进行开启的。&lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; 可以帮助 Spring Boot 应用将所有符合条件的 &lt;code&gt;@Configuration&lt;/code&gt; 配置类的 bean 都加载到 Spring IoC 容器中。&lt;/p&gt;
 &lt;p&gt;我们看下&lt;code&gt;@SpringBootApplication&lt;/code&gt;注解，默认是启动&lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; 的。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;@Target(ElementType.TYPE)
@@ -330,22 +330,22 @@ public @interface SpringBootApplication {
     
     <item>
       <title>SpringBoot配置文件加载的路径和优先级</title>
-      <link>http://flygopher.top/post/springboot-load-configure-locations/</link>
+      <link>http://flyeric.top/post/springboot-load-configure-locations/</link>
       <pubDate>Wed, 18 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/springboot-load-configure-locations/</guid>
+      <guid>http://flyeric.top/post/springboot-load-configure-locations/</guid>
       <description>&lt;p&gt;很多人对&lt;code&gt;SpringBoot&lt;/code&gt;文件加载的位置和优先级有点疑惑，下面通过源码看下到底是如何加载的。&lt;/p&gt;
 &lt;p&gt;我们先来看下&lt;code&gt;SpringBoot&lt;/code&gt;加载&lt;code&gt;PropertySource&lt;/code&gt;的顺序是如何的呢？可以&lt;a href=&#34;https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config&#34;&gt;参考官网&lt;/a&gt;：https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-external-config&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/springboot-configuration-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://flyeric.top/img/post/springboot-configuration-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;配置加载的优先级从高到低，其中高优先级可以覆盖低优先级的配置。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JPA ID生成策略</title>
-      <link>http://flygopher.top/post/jpa-id-generated-strategy/</link>
+      <link>http://flyeric.top/post/jpa-id-generated-strategy/</link>
       <pubDate>Fri, 13 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/jpa-id-generated-strategy/</guid>
+      <guid>http://flyeric.top/post/jpa-id-generated-strategy/</guid>
       <description>&lt;p&gt;&lt;strong&gt;JPA&lt;/strong&gt; 为对象关系映射提供了了⼀一种基于 &lt;strong&gt;POJO&lt;/strong&gt; 的持久化模型&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;简化数据持久化代码的开发⼯工作&lt;/li&gt;
@@ -361,11 +361,11 @@ public @interface SpringBootApplication {
     
     <item>
       <title>Git协同工作流的选择</title>
-      <link>http://flygopher.top/post/git-flow-choose/</link>
+      <link>http://flyeric.top/post/git-flow-choose/</link>
       <pubDate>Wed, 11 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/git-flow-choose/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/git-flow-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+      <guid>http://flyeric.top/post/git-flow-choose/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://flyeric.top/img/post/git-flow-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;与传统的代码版本管理工具相比，Git 有很多的优势，因而越来越成为程序员喜欢的版本管理工具。我觉得，Git 这个代码版本管理工具最大的优势有以下几个。&lt;/li&gt;
 &lt;li&gt;Git 是一个分布式的版本管理工具，而且可以是单机版的，所以，你在没有网络的时候同样可以提交（commit）代码。&lt;/li&gt;
@@ -377,46 +377,46 @@ public @interface SpringBootApplication {
     
     <item>
       <title>Mongo的索引机制</title>
-      <link>http://flygopher.top/post/mongo-index/</link>
+      <link>http://flyeric.top/post/mongo-index/</link>
       <pubDate>Mon, 09 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/mongo-index/</guid>
+      <guid>http://flyeric.top/post/mongo-index/</guid>
       <description>&lt;p&gt;索引是对数据库表中一列或多列的值进行排序的一种数据结构，可以让我们查询数据库变得更快。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mongo数据备份以及恢复</title>
-      <link>http://flygopher.top/post/mongo-dump-restore/</link>
+      <link>http://flyeric.top/post/mongo-dump-restore/</link>
       <pubDate>Sun, 08 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/mongo-dump-restore/</guid>
+      <guid>http://flyeric.top/post/mongo-dump-restore/</guid>
       <description>&lt;p&gt;MongoDB支持副本集，为何还需要备份呢？备份的主要目的有：1）防止硬件故障引起的数据丢失； 2）防止人为错误误删数据；3）时间回溯；4）监管要求。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mongo开发最佳实践</title>
-      <link>http://flygopher.top/post/mongo-best-practice/</link>
+      <link>http://flyeric.top/post/mongo-best-practice/</link>
       <pubDate>Sat, 07 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/mongo-best-practice/</guid>
+      <guid>http://flyeric.top/post/mongo-best-practice/</guid>
       <description>&lt;p&gt;Mongo开发的最佳实践总结。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mongo事务处理</title>
-      <link>http://flygopher.top/post/mongo-transaction/</link>
+      <link>http://flyeric.top/post/mongo-transaction/</link>
       <pubDate>Fri, 06 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/mongo-transaction/</guid>
+      <guid>http://flyeric.top/post/mongo-transaction/</guid>
       <description>&lt;p&gt;MongoDB 4.0引入了事务功能，支持多文档的ACID特性。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mongo的模型设计</title>
-      <link>http://flygopher.top/post/mongo-pattern-design/</link>
+      <link>http://flyeric.top/post/mongo-pattern-design/</link>
       <pubDate>Thu, 05 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/mongo-pattern-design/</guid>
+      <guid>http://flyeric.top/post/mongo-pattern-design/</guid>
       <description>&lt;h2 id=&#34;数据模型&#34;&gt;数据模型&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;什么是数据模型?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;1）数据模型是一组由符号、文本组成的集合，用以准确表达信息，达到有效交流、沟通 的目的。&lt;/p&gt;
@@ -429,19 +429,19 @@ public @interface SpringBootApplication {
     
     <item>
       <title>Mongo复制集的搭建</title>
-      <link>http://flygopher.top/post/mongo-replica-sets-install/</link>
+      <link>http://flyeric.top/post/mongo-replica-sets-install/</link>
       <pubDate>Wed, 04 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/mongo-replica-sets-install/</guid>
+      <guid>http://flyeric.top/post/mongo-replica-sets-install/</guid>
       <description>&lt;p&gt;在本地机器上运行3个实例来搭建一个最简单的复制集。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mongo复制集机制及原理</title>
-      <link>http://flygopher.top/post/mongo-replica-sets/</link>
+      <link>http://flyeric.top/post/mongo-replica-sets/</link>
       <pubDate>Tue, 03 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/mongo-replica-sets/</guid>
+      <guid>http://flyeric.top/post/mongo-replica-sets/</guid>
       <description>&lt;h2 id=&#34;复制集的作用&#34;&gt;复制集的作用&lt;/h2&gt;
 &lt;p&gt;MongoDB 复制集的主要意义在于实现服务高可用。&lt;/p&gt;
 &lt;p&gt;它的现实依赖于两个方面的功能:&lt;/p&gt;
@@ -459,10 +459,10 @@ public @interface SpringBootApplication {
     
     <item>
       <title>Mongo聚合查询</title>
-      <link>http://flygopher.top/post/mongo-aggregate-operation/</link>
+      <link>http://flyeric.top/post/mongo-aggregate-operation/</link>
       <pubDate>Mon, 02 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/mongo-aggregate-operation/</guid>
+      <guid>http://flyeric.top/post/mongo-aggregate-operation/</guid>
       <description>&lt;p&gt;MongoDB 聚合框架(Aggregation Framework)是一个计算框架，它可以:&lt;/p&gt;
 &lt;p&gt;1）作用在一个或者几个集合上；&lt;/p&gt;
 &lt;p&gt;2）对集合中的数据进行一系列的运算；&lt;/p&gt;
@@ -475,105 +475,105 @@ public @interface SpringBootApplication {
     
     <item>
       <title>MongoDB介绍以及基本操作</title>
-      <link>http://flygopher.top/post/mongodb-base-operation/</link>
+      <link>http://flyeric.top/post/mongodb-base-operation/</link>
       <pubDate>Sun, 01 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/mongodb-base-operation/</guid>
+      <guid>http://flyeric.top/post/mongodb-base-operation/</guid>
       <description>&lt;p&gt;MongoDB 是一个高性能，开源，无模式的文档型数据库，是当前noSql数据库产品中最热门的一种。它在许多场景下用于替代传统的关系型数据库或键值对存储方式，MongoDB是用C++开发，MongoDB的官方网址：https://www.mongodb.com/&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>博客迁移到hugo</title>
-      <link>http://flygopher.top/post/migrate-blog-to-hugo/</link>
+      <link>http://flyeric.top/post/migrate-blog-to-hugo/</link>
       <pubDate>Sun, 03 Nov 2019 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/migrate-blog-to-hugo/</guid>
+      <guid>http://flyeric.top/post/migrate-blog-to-hugo/</guid>
       <description>&lt;p&gt;博客正式迁移到Hugo，并使用Emacs Org-mode + ox-hugo来写博客，顺便学习Emacs。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MySQL基础</title>
-      <link>http://flygopher.top/post/mysql-base/</link>
+      <link>http://flyeric.top/post/mysql-base/</link>
       <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/mysql-base/</guid>
+      <guid>http://flyeric.top/post/mysql-base/</guid>
       <description>&lt;h3 id=&#34;并发控制&#34;&gt;并发控制&lt;/h3&gt;
 &lt;p&gt;无论何时，只要有多个查询需要在同一时刻修改数据，都会产生并发控制的问题。这里主要讨论MySQL在两个层面的并发控制：服务器层和存储引擎层。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Shell脚本快速上手</title>
-      <link>http://flygopher.top/post/shell-scripts-quickstart/</link>
+      <link>http://flyeric.top/post/shell-scripts-quickstart/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/shell-scripts-quickstart/</guid>
+      <guid>http://flyeric.top/post/shell-scripts-quickstart/</guid>
       <description>&lt;p&gt;Shell是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务。Ken Thompson的sh是第一种Unix Shell，Windows Explorer是一个典型的图形界面Shell。&lt;/p&gt;
 &lt;p&gt;Shell脚本（shell script），是一种为shell编写的脚本程序。业界所说的shell通常都是指shell脚本，但是，shell和shell script是两个不同的概念。由于习惯的原因，简洁起见，本文出现的“shell编程”都是指shell脚本编程，不是指开发shell自身（如Windows Explorer扩展开发）。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Apache HttpClient 三个超时时间的区别</title>
-      <link>http://flygopher.top/post/apache-httpclient-timeout-diff/</link>
+      <link>http://flyeric.top/post/apache-httpclient-timeout-diff/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/apache-httpclient-timeout-diff/</guid>
+      <guid>http://flyeric.top/post/apache-httpclient-timeout-diff/</guid>
       <description>&lt;p&gt;如何区分Apache HttpClient中配置的三个超时时间。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>每天一个Linux命令（4）：df、du 查看磁盘空间</title>
-      <link>http://flygopher.top/post/linux-command-disk/</link>
+      <link>http://flyeric.top/post/linux-command-disk/</link>
       <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/linux-command-disk/</guid>
+      <guid>http://flyeric.top/post/linux-command-disk/</guid>
       <description>&lt;p&gt;df命令用于显示磁盘分区上的可使用的磁盘空间。默认显示单位为KB。可以利用该命令来获取硬盘被占用了多少空间，目前还剩下多少空间等信息。&lt;/p&gt;
 &lt;p&gt;du命令用来查看某个目录或文件所占空间大小。默认显示单位KB。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>每天一个Linux命令（3）：grep 文本搜索</title>
-      <link>http://flygopher.top/post/linux-command-grep/</link>
+      <link>http://flyeric.top/post/linux-command-grep/</link>
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/linux-command-grep/</guid>
+      <guid>http://flyeric.top/post/linux-command-grep/</guid>
       <description>&lt;p&gt;grep是强大的文本搜索工具&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SpringBoot2干货系列 | 第三篇：Spring Transaction 哪些事儿</title>
-      <link>http://flygopher.top/post/springboot2-transaction/</link>
+      <link>http://flyeric.top/post/springboot2-transaction/</link>
       <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/springboot2-transaction/</guid>
+      <guid>http://flyeric.top/post/springboot2-transaction/</guid>
       <description>&lt;p&gt;事务管理是Spring框架中最为常用的功能之一，我们在使用Spring Boot开发应用时，大部分情况下也都需要使用事务。&lt;/p&gt;
 &lt;p&gt;事务的作用就是为了保证用户的每一个操作都是可靠的，事务中的每一步操作都必须成功执行，只要有发生异常就回退到事务开始未进行操作的状态。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>每天一个Linux命令（2）：scp 跨机远程拷贝</title>
-      <link>http://flygopher.top/post/linux-command-scp/</link>
+      <link>http://flyeric.top/post/linux-command-scp/</link>
       <pubDate>Tue, 08 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/linux-command-scp/</guid>
+      <guid>http://flyeric.top/post/linux-command-scp/</guid>
       <description>&lt;p&gt;scp是secure copy的简写，用于在Linux下进行远程拷贝文件的命令，和它类似的命令有cp，不过cp只是在本机进行拷贝不能跨服务器，而且scp传输是加密的。当你服务器硬盘变为只读 read only system时，用scp可以帮你把文件移出来。&lt;/p&gt;
 &lt;p&gt;另外，scp还非常不占资源，不会提高多少系统负荷，在这一点上，rsync就远远不及它了。虽然 rsync比scp会快一点，但当小文件众多的情况下，rsync会导致硬盘I/O非常高，而scp基本不影响系统正常使用。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>每天一个Linux命令（1）：crontab 定时任务</title>
-      <link>http://flygopher.top/post/linux-command-crontab/</link>
+      <link>http://flyeric.top/post/linux-command-crontab/</link>
       <pubDate>Mon, 07 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/linux-command-crontab/</guid>
+      <guid>http://flyeric.top/post/linux-command-crontab/</guid>
       <description>&lt;p&gt;crontab用于提交和管理用户的需要周期性执行的任务&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SpringBoot2干货系列 | 第二篇：Spring AOP 哪些事儿</title>
-      <link>http://flygopher.top/post/springboot2-aop/</link>
+      <link>http://flyeric.top/post/springboot2-aop/</link>
       <pubDate>Wed, 26 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/springboot2-aop/</guid>
+      <guid>http://flyeric.top/post/springboot2-aop/</guid>
       <description>&lt;p&gt;AOP(Aspect-Oriented Programming) 即面向方面编程.  它是一种在运行时,动态地将代码切入到类的指定方法、指定位置上的编程思想. 用于切入到指定类指定方法的代码片段叫做切面, 而切入到哪些类中的哪些方法叫做切入点.&lt;/p&gt;
 &lt;p&gt;AOP是OOP的有益补充，OOP从横向上区分出了一个个类，AOP则从纵向上向指定类的指定方法中动态地切入代码. 它使OOP变得更加立体.&lt;/p&gt;
 &lt;p&gt;Java中的动态代理或CGLib就是AOP的体现.&lt;/p&gt;</description>
@@ -581,10 +581,10 @@ public @interface SpringBootApplication {
     
     <item>
       <title>Mac下安装Golang并配置环境</title>
-      <link>http://flygopher.top/post/macos-golang-environment-setup/</link>
+      <link>http://flyeric.top/post/macos-golang-environment-setup/</link>
       <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/macos-golang-environment-setup/</guid>
+      <guid>http://flyeric.top/post/macos-golang-environment-setup/</guid>
       <description>&lt;p&gt;在MacOS上主要有如下两种方法安装&lt;/p&gt;
 &lt;h3 id=&#34;一homebrew&#34;&gt;一、HomeBrew&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;homebrew&lt;/code&gt;是Mac系统下面目前使用最多的管理软件的工具，目前已支持Go，可以通过命令直接安装Go。&lt;/p&gt;
@@ -595,38 +595,38 @@ brew install go
     
     <item>
       <title>使用Docker构建应用 | 第五篇：查看Dokcer容器使用的资源</title>
-      <link>http://flygopher.top/post/docker-container-stats/</link>
+      <link>http://flyeric.top/post/docker-container-stats/</link>
       <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/docker-container-stats/</guid>
+      <guid>http://flyeric.top/post/docker-container-stats/</guid>
       <description>&lt;p&gt;在容器的使用过程中，如果能及时的掌握容器使用的系统资源，无论对开发还是运维工作都是非常有益的。幸运的是 docker 自己就提供了这样的命令：docker stats。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用Docker构建应用 | 第四篇：Docker容器</title>
-      <link>http://flygopher.top/post/docker-container-introdution/</link>
+      <link>http://flyeric.top/post/docker-container-introdution/</link>
       <pubDate>Mon, 26 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/docker-container-introdution/</guid>
+      <guid>http://flyeric.top/post/docker-container-introdution/</guid>
       <description>&lt;p&gt;&lt;code&gt;容器&lt;/code&gt;(Container)是&lt;code&gt;Docker&lt;/code&gt;的核心组件之一，它是用于运行&lt;code&gt;镜像&lt;/code&gt;的一个沙箱环境，是一个从&lt;code&gt;镜像&lt;/code&gt;创建的应用运行实例，&lt;code&gt;镜像&lt;/code&gt;打包、构建完成后最终都会运行于&lt;code&gt;容器&lt;/code&gt;中。&lt;code&gt;容器&lt;/code&gt;具有良好的隔离性，&lt;code&gt;容器&lt;/code&gt;之间是相互隔离、互不可见。本文将介绍&lt;code&gt;Docker&lt;/code&gt;容器的创建与管理，并以容器的生命周期为主线介绍容器的创建、管理、停止，到最终删除。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用Docker构建应用 | 第三篇：Docker镜像</title>
-      <link>http://flygopher.top/post/docker-image-introdution/</link>
+      <link>http://flyeric.top/post/docker-image-introdution/</link>
       <pubDate>Sun, 25 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/docker-image-introdution/</guid>
+      <guid>http://flyeric.top/post/docker-image-introdution/</guid>
       <description>&lt;h2 id=&#34;1-什么是docker镜像&#34;&gt;1. 什么是Docker镜像&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;镜像&lt;/code&gt;是一个只读的层（&lt;code&gt;layer&lt;/code&gt;），由文件系统叠加构成。而&lt;code&gt;镜像&lt;/code&gt;又是&lt;code&gt;容器&lt;/code&gt;(Container)的构成单元，我们一般会将应用构建成标准的&lt;code&gt;镜像&lt;/code&gt;组件，一或多个&lt;code&gt;镜像&lt;/code&gt;叠加又构成了&lt;code&gt;容器&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用Docker构建应用 | 第二篇：Dockerfile详解</title>
-      <link>http://flygopher.top/post/dockerfile-introdution/</link>
+      <link>http://flyeric.top/post/dockerfile-introdution/</link>
       <pubDate>Sat, 24 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/dockerfile-introdution/</guid>
+      <guid>http://flyeric.top/post/dockerfile-introdution/</guid>
       <description>&lt;h2 id=&#34;1-dockerfile文件格式&#34;&gt;1. Dockerfile文件格式&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;Dockerfile&lt;/code&gt;文件格式如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# Comment
@@ -639,10 +639,10 @@ INSTRUCTION arguments
     
     <item>
       <title>使用Docker构建应用 | 第一篇：Docker安装</title>
-      <link>http://flygopher.top/post/docker-install/</link>
+      <link>http://flyeric.top/post/docker-install/</link>
       <pubDate>Fri, 23 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/docker-install/</guid>
+      <guid>http://flyeric.top/post/docker-install/</guid>
       <description>&lt;p&gt;如果你是&lt;code&gt;MacOS&lt;/code&gt;系统，可以直接去官网下载&lt;code&gt;dmg&lt;/code&gt;文件，&lt;a href=&#34;https://www.docker.com/get-started&#34;&gt;下载地址&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;centos-7-安装-docker-ce&#34;&gt;CentOS 7 安装 Docker CE&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;警告：切勿在没有配置 Docker YUM 源的情况下直接使用 yum 命令安装 Docker.&lt;/strong&gt;&lt;/p&gt;
@@ -653,10 +653,10 @@ INSTRUCTION arguments
     
     <item>
       <title>关于作者</title>
-      <link>http://flygopher.top/page/about/</link>
+      <link>http://flyeric.top/page/about/</link>
       <pubDate>Thu, 22 Nov 2018 20:17:15 +0000</pubDate>
       
-      <guid>http://flygopher.top/page/about/</guid>
+      <guid>http://flyeric.top/page/about/</guid>
       <description>现居四川成都，ThoughtWorks软件咨询师，前eleme高级Java工程师。有丰富的Web开发经验，在公司中担任过开发、运维、DevOps等角色，拥有一定的敏捷团队工作经验。目前专注于改善改进持续交付流程、DevOps、云服务、容器化及Serverless。
 目前专注于：
  Java 并发编程 - JVM 性能优化 Golang 高性能编程 CI/CD - 持续集成与持续交付 Docker &amp;amp; Kubernetes &amp;amp; Micor Service - 容器编排和微服务治理 Cloud (IaaS &amp;amp; PaaS &amp;amp; SaaS) - 公有云和私有云 Serverless - 无服务器架构  本博客创建于2016年9月，主要分享技术文章和生活琐事，把琐碎的，零散的碎片整理出来。
@@ -665,30 +665,30 @@ INSTRUCTION arguments
     
     <item>
       <title>jekyll迁移到hexo历程</title>
-      <link>http://flygopher.top/post/migrate-blog-to-hexo/</link>
+      <link>http://flyeric.top/post/migrate-blog-to-hexo/</link>
       <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/migrate-blog-to-hexo/</guid>
+      <guid>http://flyeric.top/post/migrate-blog-to-hexo/</guid>
       <description>&lt;h3 id=&#34;迁移历程&#34;&gt;迁移历程&lt;/h3&gt;
 &lt;p&gt;从2016年开始一直坚持写博客，很多都是工作，学习的总结，可以让自己加深记忆，也便于分享。从此也患上了主题选择困难症，在网上查阅博客的时候，一旦发现自己特别喜欢的主题，就会尝试切换主题。从最初的&lt;a href=&#34;https://github.com/theme-next/hexo-theme-next&#34;&gt;Hexo Next&lt;/a&gt;，到&lt;a href=&#34;https://github.com/Huxpro/huxpro.github.io&#34;&gt;Jekyll Hux&lt;/a&gt;，以及现在的&lt;a href=&#34;https://github.com/chaooo/hexo-theme-BlueLake&#34;&gt;Hexo BlueLake&lt;/a&gt;。下来来介绍下如何使用BlueLake主题。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SpringBoot2干货系列 | 第一篇：Spring Boot Admin 2 监控</title>
-      <link>http://flygopher.top/post/spring-boot-admin/</link>
+      <link>http://flyeric.top/post/spring-boot-admin/</link>
       <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/spring-boot-admin/</guid>
+      <guid>http://flyeric.top/post/spring-boot-admin/</guid>
       <description>&lt;p&gt;Spring Boot Admin 在 Spring Boot Actuator 的基础上提供简洁的可视化 WEB UI，是用来管理 Spring Boot 应用程序的一个简单的界面，提供的功能参考：&lt;a href=&#34;https://github.com/codecentric/spring-boot-admin&#34;&gt;Spring Boot Admin Github&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在本文中，我们将介绍配置 Spring Boot Admin（以下简称 SBA）服务端的步骤以及如何将一个 Spring Boot 应用注册为它的客户端。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用Gradle构建多模块项目</title>
-      <link>http://flygopher.top/post/gradle-setup-multi-projects/</link>
+      <link>http://flyeric.top/post/gradle-setup-multi-projects/</link>
       <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/gradle-setup-multi-projects/</guid>
+      <guid>http://flyeric.top/post/gradle-setup-multi-projects/</guid>
       <description>&lt;p&gt;之前一直使用&lt;code&gt;Maven&lt;/code&gt;进行多模块项目开发，有如下好处：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;代码拆分，层次、结构清晰，利于维护&lt;/li&gt;
@@ -699,19 +699,19 @@ INSTRUCTION arguments
     
     <item>
       <title>Java基础类型占用字节数</title>
-      <link>http://flygopher.top/post/java-basic-class-bytes/</link>
+      <link>http://flyeric.top/post/java-basic-class-bytes/</link>
       <pubDate>Tue, 06 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/java-basic-class-bytes/</guid>
+      <guid>http://flyeric.top/post/java-basic-class-bytes/</guid>
       <description>&lt;p&gt;在Java中一共有8种基本数据类型，其中有4种整型，2种浮点型，1种用于表示Unicode编码的字符但愿的字符类型和一种表示真值的boolean类型。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>深入学习Redis：Redis常见问题以及优化方案</title>
-      <link>http://flygopher.top/post/redis-problem-optimization/</link>
+      <link>http://flyeric.top/post/redis-problem-optimization/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/redis-problem-optimization/</guid>
+      <guid>http://flyeric.top/post/redis-problem-optimization/</guid>
       <description>&lt;h2 id=&#34;常见问题以及优化方案&#34;&gt;常见问题以及优化方案&lt;/h2&gt;
 &lt;h4 id=&#34;1-fork耗时导致高并发请求延时&#34;&gt;1. fork耗时导致高并发请求延时&lt;/h4&gt;
 &lt;p&gt;一般来说，如果父进程内存有1个G的数据，那么fork可能会耗费在20ms左右，如果是10G~30G，那么就会耗费20 * 10，甚至20 * 30，也就是几百毫秒的时间 。&lt;br&gt;
@@ -723,10 +723,10 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
     
     <item>
       <title>深入学习Redis：Redis经典三节点哨兵集群搭建</title>
-      <link>http://flygopher.top/post/redis-sentinel-setup/</link>
+      <link>http://flyeric.top/post/redis-sentinel-setup/</link>
       <pubDate>Sat, 20 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/redis-sentinel-setup/</guid>
+      <guid>http://flyeric.top/post/redis-sentinel-setup/</guid>
       <description>&lt;h3 id=&#34;redis哨兵介绍&#34;&gt;Redis哨兵介绍&lt;/h3&gt;
 &lt;p&gt;哨兵是redis集群架构中非常重要的一个组件，主要功能如下&lt;/p&gt;
 &lt;p&gt;（1）集群监控，负责监控redis master和slave进程是否正常工作&lt;/p&gt;
@@ -737,10 +737,10 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
     
     <item>
       <title>深入学习Redis：Redis一主两从搭建</title>
-      <link>http://flygopher.top/post/redis-master-slave-setup/</link>
+      <link>http://flyeric.top/post/redis-master-slave-setup/</link>
       <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/redis-master-slave-setup/</guid>
+      <guid>http://flyeric.top/post/redis-master-slave-setup/</guid>
       <description>&lt;p&gt;&lt;code&gt;redis&lt;/code&gt;的一主多从的搭建很简单，但是一般需要搭配&lt;code&gt;redis sentinel&lt;/code&gt;哨兵集群，将会在下篇文章介绍。&lt;/p&gt;
 &lt;h3 id=&#34;配置&#34;&gt;配置&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;master：192.168.56.101
@@ -748,16 +748,16 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
 slave1：192.168.56.102
 
 slave2：192.168.56.103
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如何搭建虚拟机集群环境，可以参考：&lt;a href=&#34;http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/&#34;&gt;Vagrant搭建虚拟机集群&lt;/a&gt;&lt;br&gt;
-如何部署Redis单机服务，可以参考：&lt;a href=&#34;http://flygopher.top/post/redis-install-on-centos7/&#34;&gt;Redis深入学习（一）：Linux CentOS 7 安装Redis 4.0.11&lt;/a&gt;&lt;/p&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如何搭建虚拟机集群环境，可以参考：&lt;a href=&#34;http://flyeric.top/post/vagrant-setup-virtual-machine-cluster/&#34;&gt;Vagrant搭建虚拟机集群&lt;/a&gt;&lt;br&gt;
+如何部署Redis单机服务，可以参考：&lt;a href=&#34;http://flyeric.top/post/redis-install-on-centos7/&#34;&gt;Redis深入学习（一）：Linux CentOS 7 安装Redis 4.0.11&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>深入学习Redis：CentOS 7 安装Redis 4.0.11以及生产环境启动配置</title>
-      <link>http://flygopher.top/post/redis-install-on-centos7/</link>
+      <link>http://flyeric.top/post/redis-install-on-centos7/</link>
       <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/redis-install-on-centos7/</guid>
+      <guid>http://flyeric.top/post/redis-install-on-centos7/</guid>
       <description>&lt;h3 id=&#34;redis简介&#34;&gt;Redis简介&lt;/h3&gt;
 &lt;p&gt;Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。&lt;br&gt;
 Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
@@ -776,10 +776,10 @@ Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
     
     <item>
       <title>MacOS环境变量加载顺序</title>
-      <link>http://flygopher.top/post/macos-profile-load-order/</link>
+      <link>http://flyeric.top/post/macos-profile-load-order/</link>
       <pubDate>Tue, 16 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/macos-profile-load-order/</guid>
+      <guid>http://flyeric.top/post/macos-profile-load-order/</guid>
       <description>&lt;h4 id=&#34;配置文件加载顺序&#34;&gt;配置文件加载顺序　&lt;/h4&gt;
 &lt;p&gt;OS X系统的配置文件，加载顺序为：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;/etc/profile
@@ -793,10 +793,10 @@ Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
     
     <item>
       <title>搭建Gradle开发环境</title>
-      <link>http://flygopher.top/post/gradle-environment-setup/</link>
+      <link>http://flyeric.top/post/gradle-environment-setup/</link>
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/gradle-environment-setup/</guid>
+      <guid>http://flyeric.top/post/gradle-environment-setup/</guid>
       <description>&lt;h3 id=&#34;背景介绍&#34;&gt;背景介绍&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Gradle 是基于 JVM 的构建工具，是基于 Ant 、Maven、ivy 概念的一款通用灵活的构建工具，基于 Groovy 脚本构建，目前支持 Java、Groovy、Kotlin 和 Scala 语言，能够满足日常开发中复杂构建需求的开源工具。&lt;/p&gt;
@@ -806,37 +806,37 @@ Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
     
     <item>
       <title>Java8新特性（四）：新的时间和日期API</title>
-      <link>http://flygopher.top/post/java8-new-date-api/</link>
+      <link>http://flyeric.top/post/java8-new-date-api/</link>
       <pubDate>Sat, 06 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/java8-new-date-api/</guid>
+      <guid>http://flyeric.top/post/java8-new-date-api/</guid>
       <description>&lt;p&gt;Java 8另一个新增的重要特性就是引入了新的时间和日期API，它们被包含在&lt;code&gt;java.time&lt;/code&gt;包中。借助新的时间和日期API可以以更简洁的方法处理时间和日期。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java8新特性（三）：Optional类</title>
-      <link>http://flygopher.top/post/java8-optional/</link>
+      <link>http://flyeric.top/post/java8-optional/</link>
       <pubDate>Fri, 05 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/java8-optional/</guid>
+      <guid>http://flyeric.top/post/java8-optional/</guid>
       <description>&lt;p&gt;Optional 是 JDK1.8 中的一个很流弊的新特性，每个接触JAVA的都遇到过 NPE(NullPointerException)，1.8中Optional 帮助我们很好的避免了这一现象。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java8新特性（二）：Stream流式处理</title>
-      <link>http://flygopher.top/post/java8-stream/</link>
+      <link>http://flyeric.top/post/java8-stream/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/java8-stream/</guid>
+      <guid>http://flyeric.top/post/java8-stream/</guid>
       <description>&lt;p&gt;Stream 作为 Java 8 的一大亮点，它与 java.io 包里的 InputStream 和 OutputStream 是完全不同的概念。它也不同于 StAX 对 XML 解析的 Stream，也不是 Amazon Kinesis 对大数据实时处理的 Stream。Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的 Lambda 表达式，极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用 fork/join 并行方式来拆分任务和加速处理过程。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java8新特性（一）：Lambda表达式</title>
-      <link>http://flygopher.top/post/java8-lambda/</link>
+      <link>http://flyeric.top/post/java8-lambda/</link>
       <pubDate>Mon, 01 Oct 2018 18:23:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/java8-lambda/</guid>
+      <guid>http://flyeric.top/post/java8-lambda/</guid>
       <description>&lt;h2 id=&#34;新特性列表&#34;&gt;新特性列表&lt;/h2&gt;
 &lt;p&gt;以下是Java8中的引入的部分新特性。关于Java8新特性更详细的介绍可参考&lt;a href=&#34;http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html&#34;&gt;这里&lt;/a&gt;。&lt;/p&gt;
 &lt;ul&gt;
@@ -868,31 +868,31 @@ Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
     
     <item>
       <title>iTerm2&#43;zsh打造漂亮好用的终端环境</title>
-      <link>http://flygopher.top/post/custom-iterm2-zsh/</link>
+      <link>http://flyeric.top/post/custom-iterm2-zsh/</link>
       <pubDate>Mon, 01 Oct 2018 10:34:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/custom-iterm2-zsh/</guid>
+      <guid>http://flyeric.top/post/custom-iterm2-zsh/</guid>
       <description>&lt;p&gt;注：适用于使用MacOS开发的Developer&lt;/p&gt;
 &lt;p&gt;身为程序开发者，很大一部分的时间是在用&lt;code&gt;Command Line&lt;/code&gt;做事，如果能把&lt;code&gt;Command Line&lt;/code&gt;调整得好用又炫酷的模样，不只是效率提升很懂，用起来爽度也比较高。&lt;/p&gt;
 &lt;p&gt;最后大概会是这个样子：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/post-detail-zsh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;http://flyeric.top/img/post/post-detail-zsh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Vagrant搭建虚拟机集群</title>
-      <link>http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/</link>
+      <link>http://flyeric.top/post/vagrant-setup-virtual-machine-cluster/</link>
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/</guid>
+      <guid>http://flyeric.top/post/vagrant-setup-virtual-machine-cluster/</guid>
       <description>&lt;p&gt;本文将将介绍如何使用Vagrant+VirtualBox搭建多节点Centos7虚拟机集群&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>RESTful API最佳实践的一些理解</title>
-      <link>http://flygopher.top/post/restful-api-best-practice/</link>
+      <link>http://flyeric.top/post/restful-api-best-practice/</link>
       <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/restful-api-best-practice/</guid>
+      <guid>http://flyeric.top/post/restful-api-best-practice/</guid>
       <description>&lt;h3 id=&#34;什么是restful&#34;&gt;什么是RESTful&lt;/h3&gt;
 &lt;p&gt;简单的说：RESTful是一种架构的规范与约束、原则，符合这种规范的架构就是RESTful架构。&lt;/p&gt;
 &lt;p&gt;先看REST是什么意思，英文Representational state transfer 表述性状态转移 其实就是对 资源 的表述性状态转移。&lt;/p&gt;
@@ -902,20 +902,20 @@ Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
     
     <item>
       <title>认识Java序列化</title>
-      <link>http://flygopher.top/post/java-serialization/</link>
+      <link>http://flyeric.top/post/java-serialization/</link>
       <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/java-serialization/</guid>
+      <guid>http://flyeric.top/post/java-serialization/</guid>
       <description>&lt;h3 id=&#34;引言&#34;&gt;引言&lt;/h3&gt;
 &lt;p&gt;将 Java 对象序列化为二进制文件的 Java 序列化技术是 Java 系列技术中一个较为重要的技术点，在大部分情况下，开发人员只需要了解被序列化的类需要实现 Serializable 接口，使用 ObjectInputStream 和 ObjectOutputStream 进行对象的读写。然而在有些情况下，光知道这些还远远不够，文章列举了笔者遇到的一些真实情境，它们与 Java 序列化相关，通过分析情境出现的原因，使读者轻松牢记 Java 序列化中的一些高级认识。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Redis实现分布式锁</title>
-      <link>http://flygopher.top/post/reids-distributed-lock/</link>
+      <link>http://flyeric.top/post/reids-distributed-lock/</link>
       <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/reids-distributed-lock/</guid>
+      <guid>http://flyeric.top/post/reids-distributed-lock/</guid>
       <description>&lt;h3 id=&#34;常用的分布式锁实现方式&#34;&gt;常用的分布式锁实现方式&lt;/h3&gt;
 &lt;p&gt;分布式锁一般有三种实现方式：&lt;/p&gt;
 &lt;ol&gt;
@@ -927,10 +927,10 @@ Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
     
     <item>
       <title>Http性能压测工具 | wrk</title>
-      <link>http://flygopher.top/post/http-performance-tool-wrk/</link>
+      <link>http://flyeric.top/post/http-performance-tool-wrk/</link>
       <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/http-performance-tool-wrk/</guid>
+      <guid>http://flyeric.top/post/http-performance-tool-wrk/</guid>
       <description>&lt;p&gt;简单的 http 性能测试工具，记录一下使用方法。&lt;/p&gt;
 &lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
 &lt;h4 id=&#34;macos&#34;&gt;MacOS&lt;/h4&gt;
@@ -956,10 +956,10 @@ sudo cp wrk /somewhere/in/your/PATH
     
     <item>
       <title>Redis持久化介绍</title>
-      <link>http://flygopher.top/post/reids-persistence-intro/</link>
+      <link>http://flyeric.top/post/reids-persistence-intro/</link>
       <pubDate>Wed, 10 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/reids-persistence-intro/</guid>
+      <guid>http://flyeric.top/post/reids-persistence-intro/</guid>
       <description>&lt;p&gt;简单介绍一下Redis两种持久化策略RDB和AOF的区别。&lt;/p&gt;
 &lt;p&gt;一些简单的配置，比如端口号&lt;code&gt;port&lt;/code&gt;, 日志位置&lt;code&gt;logfile&lt;/code&gt;等基本配置可自行配置。&lt;/p&gt;
 &lt;h2 id=&#34;快照rdb持久化配置&#34;&gt;快照RDB持久化配置：&lt;/h2&gt;
@@ -986,20 +986,20 @@ dir /var/lib/redis
     
     <item>
       <title>iTerm2保持ssh连接不断开</title>
-      <link>http://flygopher.top/post/iterm2-ssh-no-disconnect/</link>
+      <link>http://flyeric.top/post/iterm2-ssh-no-disconnect/</link>
       <pubDate>Sat, 12 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/iterm2-ssh-no-disconnect/</guid>
+      <guid>http://flyeric.top/post/iterm2-ssh-no-disconnect/</guid>
       <description>&lt;h3 id=&#34;iterm2连接ssh一个蛋疼的问题&#34;&gt;iTerm2连接ssh一个蛋疼的问题&lt;/h3&gt;
 &lt;p&gt;在mbp笔记本上安装了iTerm2来替换自带的终端，简洁易用，让人一下子就喜欢上，但是使用iTerm2进行ssh连接时，空闲一段时间，连接就会断掉&amp;hellip;&amp;hellip; 下面就来介绍如何解决iTerm2短连的问题。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>再见上海</title>
-      <link>http://flygopher.top/post/goodbye-shanghai/</link>
+      <link>http://flyeric.top/post/goodbye-shanghai/</link>
       <pubDate>Sat, 29 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/goodbye-shanghai/</guid>
+      <guid>http://flyeric.top/post/goodbye-shanghai/</guid>
       <description>&lt;p&gt;当我写下这篇文章时，基本上进入离开上海的倒计时了。&lt;/p&gt;
 &lt;p&gt;13年4月份来到上海，转眼间就过去4年了。还记得第一次来到上海，感觉从乡村来到大城市，一切都是那么新鲜，第一次看到如此宽敞的马路，第一次做地铁，第一次看到如此多的高楼大厦，第一次看到如此多的人，感觉生活当如是。慢慢地自己的视野大了，也就习惯了。每天坐着公交、地铁，人如鱼潮，大家急匆匆地来往在上班回家的路上。这应该是大部分外来人的生活写照吧。&lt;/p&gt;
 &lt;p&gt;其实打心底里还是喜欢上海的，学习就业机会多，教育医疗资源多。但是来到这里，能够认识大家，其中有大学同学，公司交好的同事，这才是一生中最值得怀念的回忆。期间陆陆续续很多人离开，难免有些唏嘘和伤感。&lt;/p&gt;
@@ -1009,10 +1009,10 @@ dir /var/lib/redis
     
     <item>
       <title>设计模式之动态代理</title>
-      <link>http://flygopher.top/post/dynamic-proxy-pattern/</link>
+      <link>http://flyeric.top/post/dynamic-proxy-pattern/</link>
       <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/dynamic-proxy-pattern/</guid>
+      <guid>http://flyeric.top/post/dynamic-proxy-pattern/</guid>
       <description>&lt;p&gt;代理实现可以分为静态代理和动态代理, 下面使用jdk和cglib来分别说明。&lt;/p&gt;
 &lt;h2 id=&#34;静态代理&#34;&gt;静态代理&lt;/h2&gt;
 &lt;p&gt;具体实现：&lt;/p&gt;
@@ -1053,10 +1053,10 @@ public class ProxyTest {
     
     <item>
       <title>设计模式之单例模式</title>
-      <link>http://flygopher.top/post/singleton-pattern/</link>
+      <link>http://flyeric.top/post/singleton-pattern/</link>
       <pubDate>Sat, 18 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/singleton-pattern/</guid>
+      <guid>http://flyeric.top/post/singleton-pattern/</guid>
       <description>&lt;p&gt;单例模式 (Singleton) 也叫单态模式，是设计模式中最为简单的一种模式。&lt;/p&gt;
 &lt;h3 id=&#34;第一种懒汉-线程不安全&#34;&gt;第一种（懒汉, 线程不安全）&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;public class Singleton {
@@ -1078,10 +1078,10 @@ public class ProxyTest {
     
     <item>
       <title>Git常用指令整理</title>
-      <link>http://flygopher.top/post/git-common-commands/</link>
+      <link>http://flyeric.top/post/git-common-commands/</link>
       <pubDate>Mon, 13 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/git-common-commands/</guid>
+      <guid>http://flyeric.top/post/git-common-commands/</guid>
       <description>&lt;p&gt;整理的一些常用的Git指令&lt;/p&gt;
 &lt;h3 id=&#34;创建仓库&#34;&gt;创建仓库&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;echo &amp;quot;# comments&amp;quot; &amp;gt;&amp;gt; README.md
@@ -1099,19 +1099,19 @@ git push -u origin master
     
     <item>
       <title>Git 生成多个 SSH Key</title>
-      <link>http://flygopher.top/post/generate-multi-ssh-key/</link>
+      <link>http://flyeric.top/post/generate-multi-ssh-key/</link>
       <pubDate>Sat, 07 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/generate-multi-ssh-key/</guid>
+      <guid>http://flyeric.top/post/generate-multi-ssh-key/</guid>
       <description>&lt;p&gt;当有多个git账号的时候，比如一个github，用于自己进行一些开发活动，再来一个gitlab，一般是公司内部的git。这两者你的邮箱如果不同的话，就会涉及到一个问题，生成第二个git的key的时候会覆盖第一个的key，导致必然有一个用不了。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>博客终于正式开张啦～</title>
-      <link>http://flygopher.top/post/first-blog/</link>
+      <link>http://flyeric.top/post/first-blog/</link>
       <pubDate>Sun, 25 Sep 2016 19:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/first-blog/</guid>
+      <guid>http://flyeric.top/post/first-blog/</guid>
       <description>万事开头难，第一次总是有更多的纪念意义。
 经过几番折腾，花了一个周末的时间，在github pages上终于把自己的个人博客搭建好了。
 本来9月13号我购买了一年的阿里云服务器，用Java搭建好了，结果因为购买服务器是国内的，备案一直没有弄下来，购买的域名也无法使用，也不能退，花的RMB就这样打水漂啦啦啦～

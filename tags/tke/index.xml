@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tke on 梁波的技术博客</title>
-    <link>http://flygopher.top/tags/tke/</link>
+    <link>http://flyeric.top/tags/tke/</link>
     <description>Recent content in tke on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/tags/tke/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/tags/tke/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>不同ingress controller的性能测试</title>
-      <link>http://flygopher.top/post/ingress-controllers-benchmark/</link>
+      <link>http://flyeric.top/post/ingress-controllers-benchmark/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/ingress-controllers-benchmark/</guid>
+      <guid>http://flyeric.top/post/ingress-controllers-benchmark/</guid>
       <description>&lt;p&gt;Ingress Controller有很多实现方式，如Kubernetes官方，Nginx官方，Kong，Traefik等等，下面对以下三种不同的Ingress Controller进行性能测试，Kubernetes Ingress VS Nginx Ingress（Nginx官方出品）VS Traefix Ingress。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ingress-nginx 性能压测</title>
-      <link>http://flygopher.top/post/ingress-nginx-benchmark/</link>
+      <link>http://flyeric.top/post/ingress-nginx-benchmark/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/ingress-nginx-benchmark/</guid>
+      <guid>http://flyeric.top/post/ingress-nginx-benchmark/</guid>
       <description>&lt;p&gt;Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ingress-nginx 高并发实践</title>
-      <link>http://flygopher.top/post/ingress-nginx-high-concurrency/</link>
+      <link>http://flyeric.top/post/ingress-nginx-high-concurrency/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/ingress-nginx-high-concurrency/</guid>
+      <guid>http://flyeric.top/post/ingress-nginx-high-concurrency/</guid>
       <description>&lt;p&gt;Nginx Ingress Controller 基于 Nginx 实现 Kubernetes Ingress API。Nginx 是一款高性能网关，在实际生产环境运行时，需要对参数进行调优，以保证其充分发挥高性能的优势。&lt;/p&gt;
 &lt;p&gt;本文将介绍针对 Nginx Ingress 全局配置与内核参数调优的方法及其原理，让 Nginx Ingress 更好的适配高并发业务场景。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ingress-nginx在TKE上部署的最佳实践</title>
-      <link>http://flygopher.top/post/ingress-nginx-on-tke/</link>
+      <link>http://flyeric.top/post/ingress-nginx-on-tke/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/ingress-nginx-on-tke/</guid>
+      <guid>http://flyeric.top/post/ingress-nginx-on-tke/</guid>
       <description>&lt;p&gt;Nginx Ingress 有多种部署方式，本文将介绍 Nginx Ingress 在 TKE 上的一些部署方案，这几种方案的原理、各自优缺点以及一些选型和使用上的建议。&lt;/p&gt;</description>
     </item>
     

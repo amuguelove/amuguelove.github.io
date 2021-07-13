@@ -20,17 +20,17 @@ Docker 本质就是宿主机的一个进程，Docker 是通过 namespace 实现�
 Docker 本质就是宿主机的一个进程，Docker 是通过 namespace 实现资源隔离，通过cgroup 实现资源限制，通过写时复制技术（copy-on-write）实现了高效的文件操作。
 传统 …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
-  <link href='http://flygopher.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta property="og:image" content="http://flygopher.top/img/avatar.jpg" />
-  <meta name="twitter:image" content="http://flygopher.top/img/avatar.jpg" />
+  <link href='http://flyeric.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://flyeric.top/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://flyeric.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flygopher.top/post/docker-underlying-technology/" />
+  <meta property="og:url" content="http://flyeric.top/post/docker-underlying-technology/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.79.0" />
-  <link rel="canonical" href="http://flygopher.top/post/docker-underlying-technology/" />
-  <link rel="alternate" href="http://flygopher.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+  <link rel="canonical" href="http://flyeric.top/post/docker-underlying-technology/" />
+  <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -39,7 +39,7 @@ Docker 本质就是宿主机的一个进程，Docker 是通过 namespace 实现�
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flygopher.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
 
 
 
@@ -78,7 +78,7 @@ if (!doNotTrack) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://flygopher.top/" title="梁波的技术博客">
+      <a class="navbar-brand" href="http://flyeric.top/" title="梁波的技术博客">
 
         梁波的技术博客
       </a>
@@ -89,7 +89,7 @@ if (!doNotTrack) {
         
           
             <li>
-              <a title="首页" href="http://flygopher.top/">首页</a>
+              <a title="首页" href="http://flyeric.top/">首页</a>
             </li>
           
         
@@ -98,17 +98,17 @@ if (!doNotTrack) {
               <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
               <div class="navlinks-children">
                 
-                  <a href="http://flygopher.top/archives">Archive</a>
+                  <a href="http://flyeric.top/archives">Archive</a>
                 
-                  <a href="http://flygopher.top/categories">Categories</a>
+                  <a href="http://flyeric.top/categories">Categories</a>
                 
-                  <a href="http://flygopher.top/tags">tags</a>
+                  <a href="http://flyeric.top/tags">tags</a>
                 
-                  <a href="http://flygopher.top/tags/java">java</a>
+                  <a href="http://flyeric.top/tags/java">java</a>
                 
-                  <a href="http://flygopher.top/tags/springboot">springboot</a>
+                  <a href="http://flyeric.top/tags/springboot">springboot</a>
                 
-                  <a href="http://flygopher.top/tags/kubernetes">kubernetes</a>
+                  <a href="http://flyeric.top/tags/kubernetes">kubernetes</a>
                 
               </div>
             </li>
@@ -131,7 +131,7 @@ if (!doNotTrack) {
         
           
             <li>
-              <a title="关于" href="http://flygopher.top/page/about/">关于</a>
+              <a title="关于" href="http://flyeric.top/page/about/">关于</a>
             </li>
           
         
@@ -205,9 +205,9 @@ if (!doNotTrack) {
             
             <h5 id="tags" style="margin-top: 30px;">标签:
               
-                  <a href="http://flygopher.top/tags/docker/">docker</a> &nbsp;
+                  <a href="http://flyeric.top/tags/docker/">docker</a> &nbsp;
               
-                  <a href="http://flygopher.top/tags/container/">container</a> &nbsp;
+                  <a href="http://flyeric.top/tags/container/">container</a> &nbsp;
               
             </h5>
             
@@ -245,8 +245,8 @@ if (!doNotTrack) {
 <p>Docker 使用 C/S （客户端/服务器）体系的架构，Docker 客户端与 Docker 守护进程（Dockerd）通信，Docker 守护进程负责构建，运行和分发 Docker 容器。</p>
 <p>Docker 守护进程一般在宿主主机后台运行，等待接收来自客户端的消息。</p>
 <p>Docker 客户端则为用户提供一系列可执行命令，使用 REST API 通过UNIX套接字或网络接口实现跟 Docker 守护进程交互。</p>
-<p><img src="http://flygopher.top/img/post/docker-tech-01.png" alt="">
-<img src="http://flygopher.top/img/post/docker-tech-02.png" alt=""></p>
+<p><img src="http://flyeric.top/img/post/docker-tech-01.png" alt="">
+<img src="http://flyeric.top/img/post/docker-tech-02.png" alt=""></p>
 <h1 id="namespaces">Namespaces</h1>
 <p>命名空间 (namespaces) 是 Linux 为我们提供的用于分离进程树、网络接口、挂载点以及进程间通信等资源的方法。这样每个容器都有自己单独的命名空间，运行在其中的应用都像是在独立的操作系统中运行一样。命名空间保证了容器之间彼此互不影响。</p>
 <p>Docker 在 Linux 上使用以下几个命名空间（上面说的各个方面）：</p>
@@ -301,7 +301,7 @@ if (!doNotTrack) {
 <p>写时复制是一种共享和复制文件的策略，可以最大程度地提高效率，如果文件或目录位于镜像的较低层中，而另一层（包括可写层）需要对其进行读取访问，则它直接使用现有文件即可。另一层第一次需要修改文件时（在构建镜像或运行容器时），将文件复制到该层并进行修改。这样可以将 I/O 和每个后续层的大小最小化。</p>
 </blockquote>
 <p>下面显示了基于 Ubuntu 15.04 镜像运行的容器层的结构：</p>
-<p><img src="http://flygopher.top/img/post/docker-tech-03.png" alt=""></p>
+<p><img src="http://flyeric.top/img/post/docker-tech-03.png" alt=""></p>
 <p>容器和镜像之间的主要区别就是容器在镜像顶部由一个可写层，在容器中的所有操作都会存储在这个容器层中，删除容器后，容器层也会被删除，但是镜像不会变化。正因为每个容器都有自己的可写容器层，所有更改都存储在自己的容器层中，所以多个容器之间可以共享同一基础镜像的访问，但仍然具有自己的数据状态。</p>
 <h2 id="参考">参考</h2>
 <p><a href="https://yeasy.gitbooks.io/docker_practice/">Docker - 入门到实践</a></p>
@@ -317,7 +317,7 @@ if (!doNotTrack) {
 <div class="zs-modal-box">
     <div class="zs-modal-head">
         <button type="button" class="close">×</button>
-        <span class="author"><img src="http://flygopher.top/img/avatar.jpg"/></span>
+        <span class="author"><img src="http://flyeric.top/img/avatar.jpg"/></span>
         <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
     </div>
     <div class="zs-modal-body">
@@ -332,11 +332,11 @@ if (!doNotTrack) {
         <div class="zs-modal-pay">
             <button class="btn btn-bred" id="pay-text">2元</button>
             <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
-            <img src="http://flygopher.top/img/wechat-2.png" id="pay-image"/>
+            <img src="http://flyeric.top/img/wechat-2.png" id="pay-image"/>
         </div>
     </div>
     <div class="zs-modal-footer">
-        <span class="zs-wechat"><img src="http://flygopher.top/img/wechat-btn.png"/></span>
+        <span class="zs-wechat"><img src="http://flyeric.top/img/wechat-btn.png"/></span>
     </div>
 </div>
           
@@ -368,12 +368,12 @@ if (!doNotTrack) {
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://flygopher.top/post/read-clean-code/" data-toggle="tooltip" data-placement="top" title="代码整洁之道">&larr; 前一篇</a>
+              <a href="http://flyeric.top/post/read-clean-code/" data-toggle="tooltip" data-placement="top" title="代码整洁之道">&larr; 前一篇</a>
             </li>
           
           
             <li class="next">
-              <a href="http://flygopher.top/post/docker-best-practice/" data-toggle="tooltip" data-placement="top" title="Docker最佳实践">后一篇 &rarr;</a>
+              <a href="http://flyeric.top/post/docker-best-practice/" data-toggle="tooltip" data-placement="top" title="Docker最佳实践">后一篇 &rarr;</a>
             </li>
           
         </ul>
@@ -413,7 +413,7 @@ if (!doNotTrack) {
           
           
           <li>
-            <a href="http://flygopher.top/index.xml" title="RSS">
+            <a href="http://flyeric.top/index.xml" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -428,11 +428,11 @@ if (!doNotTrack) {
 
           
             &nbsp;&bull;&nbsp;
-            <a href="http://flygopher.top/">梁波的技术博客</a>
+            <a href="http://flyeric.top/">梁波的技术博客</a>
             &nbsp;&bull;&nbsp;
-            <a href="http://flygopher.top/sitemap.xml">网站地图</a>
+            <a href="http://flyeric.top/sitemap.xml">网站地图</a>
             &nbsp;&bull;&nbsp;
-            <a href="http://flygopher.top/archives/">归档</a>
+            <a href="http://flyeric.top/archives/">归档</a>
           &nbsp; &bull;&nbsp;
           
         </p>
@@ -457,7 +457,7 @@ if (!doNotTrack) {
 </footer>
 
 
-<script src='http://flygopher.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

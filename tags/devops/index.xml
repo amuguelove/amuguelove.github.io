@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>devops on 梁波的技术博客</title>
-    <link>http://flygopher.top/tags/devops/</link>
+    <link>http://flyeric.top/tags/devops/</link>
     <description>Recent content in devops on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Oct 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Oct 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用Kind快速构建Kubernetes集群</title>
-      <link>http://flygopher.top/post/setup-kubernetes-cluster-with-kind/</link>
+      <link>http://flyeric.top/post/setup-kubernetes-cluster-with-kind/</link>
       <pubDate>Thu, 15 Oct 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/setup-kubernetes-cluster-with-kind/</guid>
+      <guid>http://flyeric.top/post/setup-kubernetes-cluster-with-kind/</guid>
       <description>&lt;p&gt;现在安装 Kubernetes 集群已经变得越来越简单了，出现了很多方案，各种方案都有自己适合的使用场景。虽然我们可以很快速在云环境下面启动一个 Kubernetes 集群，但是对于开发人员通常更喜欢能够快速上手的东西，&lt;a href=&#34;https://kind.sigs.k8s.io/&#34;&gt;Kubernetes in Docker（Kind）&lt;/a&gt;这个工具就可以通过创建容器来作为 Kubernetes 的节点，我们只需要在机器上安装 Docker 就可以使用，它允许我们在很短的时间内就启动一个多节点的集群，而不依赖任何其他工具或云服务商。&lt;/p&gt;
 &lt;p&gt;前面的文章也讲过如何在本地使用Vagrant来快速搭建Kubernetes集群，但还是有点麻烦，而且需要自己去定制Vagrant Box，有一定的技术门槛。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Vagrant定制Box</title>
-      <link>http://flygopher.top/post/customize-vagrant-box/</link>
+      <link>http://flyeric.top/post/customize-vagrant-box/</link>
       <pubDate>Sun, 11 Oct 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/customize-vagrant-box/</guid>
+      <guid>http://flyeric.top/post/customize-vagrant-box/</guid>
       <description>&lt;p&gt;很多人在学习Kubernetes之前，都会苦恼如何搭建一个集群环境呢？你可以使用新版的Docker快速搭建一个单Master的集群，你也可以购买云厂商的集群服务；使用Docker安装集群非常的简单，但是只能是单master节点；购买云厂商的集群服务可以拥有所有的集群功能，而且任意购买云存储，外网LoadBalancer等，但是费用昂贵，因为k8s集群对机器的要求还是不低的。那有没有其他的选择呢？下面给大家介绍我是如何在本地快速搭建k8s集群的。&lt;/p&gt;
 &lt;p&gt;使用Vagrant定制Centos7 Box，里面包含了Linux参数优化，Docker，Kubectl，Kubeadm，Kubelet等。这样就可以通过这个Vagrant Box启动多个节点的k8s集群了。&lt;/p&gt;
 &lt;p&gt;最近花了点时间将所有的配置都脚本化，可以通过CLI的方式快速构建基础Box或者删除。&lt;/p&gt;</description>
@@ -30,47 +30,47 @@
     
     <item>
       <title>凤凰项目读后感</title>
-      <link>http://flygopher.top/post/read-the-phoenix-project/</link>
+      <link>http://flyeric.top/post/read-the-phoenix-project/</link>
       <pubDate>Sat, 10 Oct 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/read-the-phoenix-project/</guid>
+      <guid>http://flyeric.top/post/read-the-phoenix-project/</guid>
       <description>&lt;p&gt;花了2天的时间看完这本书：《凤凰项目（沙盘特别版）》，感触颇深。和所有讲DevOps相关的书不同，感觉就在读小说一样，而且非常的励志，讲述了一家陷入困境的传统制造业公司，怎么凭借凤凰项目（或者独角兽项目）起死回生的。IT运维在其中发挥了只管重要的作用。&lt;/p&gt;
 &lt;p&gt;最近这半年来，我大部分的工作也集中在开发运维上，在这个过程中，也接触到了很多DevOps相关的知识和实践，虽然书中很多东西比较旧，但是还是有很多只得借鉴的地方。 读这本书的时候，有很多地方产生了共鸣，一度让我回忆起了之前参与公司的TWI中的课程，关于敏捷和精益的部分，尤其是精益思想。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>kubernetes持久化存储（二）</title>
-      <link>http://flygopher.top/post/kubernetes-storage2/</link>
+      <link>http://flyeric.top/post/kubernetes-storage2/</link>
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/kubernetes-storage2/</guid>
+      <guid>http://flyeric.top/post/kubernetes-storage2/</guid>
       <description>&lt;p&gt;前面的文章里我们学习了 &lt;code&gt;PV&lt;/code&gt; 和 &lt;code&gt;PVC&lt;/code&gt; 的使用方法，但是前面的 PV 都是静态的，什么意思呢？就是我要使用的一个 PVC 的话就必须手动去创建一个 PV，我们也说过这种方式在很大程度上并不能满足我们的需求，比如我们有一个应用需要对存储的并发度要求比较高，而另外一个应用对读写速度又要求比较高，特别是对于 &lt;code&gt;StatefulSet&lt;/code&gt; 类型的应用简单的来使用静态的 PV 就很不合适了，这种情况下我们就需要用到动态 PV，也就是我们今天要讲解的 &lt;code&gt;StorageClass&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>kubernetes持久化存储（一）</title>
-      <link>http://flygopher.top/post/kubernetes-storage1/</link>
+      <link>http://flyeric.top/post/kubernetes-storage1/</link>
       <pubDate>Sat, 26 Sep 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/kubernetes-storage1/</guid>
+      <guid>http://flyeric.top/post/kubernetes-storage1/</guid>
       <description>&lt;p&gt;Kubernetes提供了可靠的存储来保存应用的持久化数据，这样容器在重建后，依然可以使用之前的数据。但是显然存储资源和 CPU 资源以及内存资源有很大不同，为了屏蔽底层的技术实现细节，让用户更加方便的使用，&lt;code&gt;Kubernetes&lt;/code&gt; 便引入了 &lt;code&gt;PV&lt;/code&gt; 和 &lt;code&gt;PVC&lt;/code&gt; 两个重要的资源对象来实现对存储的管理。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用kubeadm搭建Kubernetes集群</title>
-      <link>http://flygopher.top/post/kubeadm-install-kubernetes-cluster/</link>
+      <link>http://flyeric.top/post/kubeadm-install-kubernetes-cluster/</link>
       <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/kubeadm-install-kubernetes-cluster/</guid>
+      <guid>http://flyeric.top/post/kubeadm-install-kubernetes-cluster/</guid>
       <description>&lt;p&gt;之前使用二进制Hard-Way模式搭建了Kubernetes三节点集群，今天采用Kubeadm 来快速搭建Kubernetes V1.16.8集群。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用二进制搭建kubernetes三节点高可用集群</title>
-      <link>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</link>
+      <link>http://flyeric.top/post/local-install-ha-kubernetes-cluster/</link>
       <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</guid>
+      <guid>http://flyeric.top/post/local-install-ha-kubernetes-cluster/</guid>
       <description>&lt;p&gt;Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 &lt;a href=&#34;https://www.cncf.io/about&#34;&gt;CNCF&lt;/a&gt;。你可以通过阅读 &lt;a href=&#34;https://kubernetes.io/zh/docs/home/&#34;&gt;官方文档&lt;/a&gt;了解Kubernetes和其基础概念。&lt;/p&gt;
 &lt;p&gt;接下来这篇文章将介绍如何使用二进制部署&lt;code&gt;Kubernetes v1.14.8&lt;/code&gt;。通过这种&lt;code&gt;hard-way&lt;/code&gt;的方式来帮助你更好的了解Kubernetes。&lt;/p&gt;
 &lt;p&gt;Kubernetes Cluster搭建的过程，可以参考&lt;a href=&#34;https://github.com/opsnull/follow-me-install-kubernetes-cluster&#34;&gt;和我一步步部署 kubernetes 集群&lt;/a&gt;。我将其中的脚本整理好了，并通过&lt;a href=&#34;https://www.vagrantup.com/&#34;&gt;Vagrant&lt;/a&gt;和&lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;VirtualBox&lt;/a&gt;在本地快速创建k8s集群。&lt;/p&gt;
@@ -79,10 +79,10 @@
     
     <item>
       <title>基于kubernetes的动态jenkins slave</title>
-      <link>http://flygopher.top/post/jenkins-slave-base-on-kubernetes/</link>
+      <link>http://flyeric.top/post/jenkins-slave-base-on-kubernetes/</link>
       <pubDate>Fri, 27 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/jenkins-slave-base-on-kubernetes/</guid>
+      <guid>http://flyeric.top/post/jenkins-slave-base-on-kubernetes/</guid>
       <description>&lt;p&gt;搭建&lt;code&gt;CI/CD&lt;/code&gt;可以使用的工具不少，例如：&lt;code&gt;Jenkins&lt;/code&gt;、&lt;code&gt;Gitlab CI&lt;/code&gt;等等，这里会使用大家最新熟悉的&lt;code&gt;Jenkins&lt;/code&gt;来做&lt;code&gt;CI/CD&lt;/code&gt;的工具。不少人都是基于虚拟机来搭建的，基于&lt;code&gt;Kubernetes&lt;/code&gt;搭建的Jenkins Slave会有什么效果呢？&lt;/p&gt;</description>
     </item>
     

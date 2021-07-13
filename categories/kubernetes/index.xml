@@ -2,54 +2,54 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kubernetes on 梁波的技术博客</title>
-    <link>http://flygopher.top/categories/kubernetes/</link>
+    <link>http://flyeric.top/categories/kubernetes/</link>
     <description>Recent content in kubernetes on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>不同ingress controller的性能测试</title>
-      <link>http://flygopher.top/post/ingress-controllers-benchmark/</link>
+      <link>http://flyeric.top/post/ingress-controllers-benchmark/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/ingress-controllers-benchmark/</guid>
+      <guid>http://flyeric.top/post/ingress-controllers-benchmark/</guid>
       <description>&lt;p&gt;Ingress Controller有很多实现方式，如Kubernetes官方，Nginx官方，Kong，Traefik等等，下面对以下三种不同的Ingress Controller进行性能测试，Kubernetes Ingress VS Nginx Ingress（Nginx官方出品）VS Traefix Ingress。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ingress-nginx 性能压测</title>
-      <link>http://flygopher.top/post/ingress-nginx-benchmark/</link>
+      <link>http://flyeric.top/post/ingress-nginx-benchmark/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/ingress-nginx-benchmark/</guid>
+      <guid>http://flyeric.top/post/ingress-nginx-benchmark/</guid>
       <description>&lt;p&gt;Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ingress-nginx 高并发实践</title>
-      <link>http://flygopher.top/post/ingress-nginx-high-concurrency/</link>
+      <link>http://flyeric.top/post/ingress-nginx-high-concurrency/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/ingress-nginx-high-concurrency/</guid>
+      <guid>http://flyeric.top/post/ingress-nginx-high-concurrency/</guid>
       <description>&lt;p&gt;Nginx Ingress Controller 基于 Nginx 实现 Kubernetes Ingress API。Nginx 是一款高性能网关，在实际生产环境运行时，需要对参数进行调优，以保证其充分发挥高性能的优势。&lt;/p&gt;
 &lt;p&gt;本文将介绍针对 Nginx Ingress 全局配置与内核参数调优的方法及其原理，让 Nginx Ingress 更好的适配高并发业务场景。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ingress-nginx在TKE上部署的最佳实践</title>
-      <link>http://flygopher.top/post/ingress-nginx-on-tke/</link>
+      <link>http://flyeric.top/post/ingress-nginx-on-tke/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/ingress-nginx-on-tke/</guid>
+      <guid>http://flyeric.top/post/ingress-nginx-on-tke/</guid>
       <description>&lt;p&gt;Nginx Ingress 有多种部署方式，本文将介绍 Nginx Ingress 在 TKE 上的一些部署方案，这几种方案的原理、各自优缺点以及一些选型和使用上的建议。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ingress-nginx的安装使用</title>
-      <link>http://flygopher.top/post/install-ingress-nginx/</link>
+      <link>http://flyeric.top/post/install-ingress-nginx/</link>
       <pubDate>Thu, 31 Dec 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/install-ingress-nginx/</guid>
+      <guid>http://flyeric.top/post/install-ingress-nginx/</guid>
       <description>&lt;p&gt;开源的 Ingress Controller 的实现使用量最大的莫过于 Ingress Nginx 了，可作为反向代理将外部流量导入集群内部，将 Kubernetes 内部的 Service 暴露给外部，在 Ingress 对象中通过域名匹配 Service，这样就可以直接通过域名访问到集群内部的服务了。&lt;/p&gt;
 &lt;p&gt;实际 Ingress Nginx 有两种实现：&lt;/p&gt;
 &lt;ol&gt;
@@ -61,68 +61,68 @@
     
     <item>
       <title>Kubernetes API资源的使用</title>
-      <link>http://flygopher.top/post/how-to-use-k8s-api-resources/</link>
+      <link>http://flyeric.top/post/how-to-use-k8s-api-resources/</link>
       <pubDate>Sat, 31 Oct 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/how-to-use-k8s-api-resources/</guid>
+      <guid>http://flyeric.top/post/how-to-use-k8s-api-resources/</guid>
       <description>&lt;p&gt;在使用&lt;code&gt;Kubernetes&lt;/code&gt;的时候，因为有太多的资源、太多的版本、太多的组了，这些都非常容易产生混淆。如果我们通过 YAML 文件定义过 Deployment 这样的资源清单文件的话，那么你应该会看到&lt;code&gt;apiVersion: apps/v1beta2&lt;/code&gt;、&lt;code&gt;apiVersion: apps/v1&lt;/code&gt;等等这样的信息，那么我们到底应该使用哪一个呢？哪一个才是正确的呢？如何检查&lt;code&gt;Kubernetes&lt;/code&gt;集群支持哪些？其实我们使用&lt;code&gt;kubectl&lt;/code&gt;工具就可以来解决我们的这些疑惑。&lt;/p&gt;
 &lt;p&gt;当前我使用的&lt;code&gt;Kubernetes&lt;/code&gt;的版本是&lt;code&gt;1.18.8&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用Kind快速构建Kubernetes集群</title>
-      <link>http://flygopher.top/post/setup-kubernetes-cluster-with-kind/</link>
+      <link>http://flyeric.top/post/setup-kubernetes-cluster-with-kind/</link>
       <pubDate>Thu, 15 Oct 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/setup-kubernetes-cluster-with-kind/</guid>
+      <guid>http://flyeric.top/post/setup-kubernetes-cluster-with-kind/</guid>
       <description>&lt;p&gt;现在安装 Kubernetes 集群已经变得越来越简单了，出现了很多方案，各种方案都有自己适合的使用场景。虽然我们可以很快速在云环境下面启动一个 Kubernetes 集群，但是对于开发人员通常更喜欢能够快速上手的东西，&lt;a href=&#34;https://kind.sigs.k8s.io/&#34;&gt;Kubernetes in Docker（Kind）&lt;/a&gt;这个工具就可以通过创建容器来作为 Kubernetes 的节点，我们只需要在机器上安装 Docker 就可以使用，它允许我们在很短的时间内就启动一个多节点的集群，而不依赖任何其他工具或云服务商。&lt;/p&gt;
 &lt;p&gt;前面的文章也讲过如何在本地使用Vagrant来快速搭建Kubernetes集群，但还是有点麻烦，而且需要自己去定制Vagrant Box，有一定的技术门槛。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>kubernetes Ingress 自动化 HTTPS</title>
-      <link>http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</link>
+      <link>http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</link>
       <pubDate>Mon, 28 Sep 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</guid>
+      <guid>http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</guid>
       <description>&lt;p&gt;现在的Web应用启用&lt;code&gt;HTTPS&lt;/code&gt;服务是真的非常有必要的。一些正规机构颁发的&lt;code&gt;CA&lt;/code&gt;证书费用又特别高，不过比较幸运的是也有免费的午餐 - &lt;code&gt;Let&#39;s Encrypt&lt;/code&gt;，虽然只有90天的证书有效期，但是我们完全可以在证书失效之前，重新生成证书替换掉。在&lt;code&gt;Kubernetes&lt;/code&gt;集群中就更方便了，我们可以通过 Kubernetes Ingress 和 Let’s Encrypt 实现外部服务的自动化 HTTPS。&lt;/p&gt;
 &lt;p&gt;Cert-Manager 是一个云原生证书管理开源项目，用于在 Kubernetes 集群中提供 HTTPS 证书并自动续期，支持 Let’s Encrypt / HashiCorp / Vault 这些免费证书的签发。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/cert-manager-structrue.svg&#34; alt=&#34;Cert Manager Structrue&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;http://flyeric.top/img/post/cert-manager-structrue.svg&#34; alt=&#34;Cert Manager Structrue&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>kubernetes持久化存储（二）</title>
-      <link>http://flygopher.top/post/kubernetes-storage2/</link>
+      <link>http://flyeric.top/post/kubernetes-storage2/</link>
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/kubernetes-storage2/</guid>
+      <guid>http://flyeric.top/post/kubernetes-storage2/</guid>
       <description>&lt;p&gt;前面的文章里我们学习了 &lt;code&gt;PV&lt;/code&gt; 和 &lt;code&gt;PVC&lt;/code&gt; 的使用方法，但是前面的 PV 都是静态的，什么意思呢？就是我要使用的一个 PVC 的话就必须手动去创建一个 PV，我们也说过这种方式在很大程度上并不能满足我们的需求，比如我们有一个应用需要对存储的并发度要求比较高，而另外一个应用对读写速度又要求比较高，特别是对于 &lt;code&gt;StatefulSet&lt;/code&gt; 类型的应用简单的来使用静态的 PV 就很不合适了，这种情况下我们就需要用到动态 PV，也就是我们今天要讲解的 &lt;code&gt;StorageClass&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>kubernetes持久化存储（一）</title>
-      <link>http://flygopher.top/post/kubernetes-storage1/</link>
+      <link>http://flyeric.top/post/kubernetes-storage1/</link>
       <pubDate>Sat, 26 Sep 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/kubernetes-storage1/</guid>
+      <guid>http://flyeric.top/post/kubernetes-storage1/</guid>
       <description>&lt;p&gt;Kubernetes提供了可靠的存储来保存应用的持久化数据，这样容器在重建后，依然可以使用之前的数据。但是显然存储资源和 CPU 资源以及内存资源有很大不同，为了屏蔽底层的技术实现细节，让用户更加方便的使用，&lt;code&gt;Kubernetes&lt;/code&gt; 便引入了 &lt;code&gt;PV&lt;/code&gt; 和 &lt;code&gt;PVC&lt;/code&gt; 两个重要的资源对象来实现对存储的管理。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用kubeadm搭建Kubernetes集群</title>
-      <link>http://flygopher.top/post/kubeadm-install-kubernetes-cluster/</link>
+      <link>http://flyeric.top/post/kubeadm-install-kubernetes-cluster/</link>
       <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/kubeadm-install-kubernetes-cluster/</guid>
+      <guid>http://flyeric.top/post/kubeadm-install-kubernetes-cluster/</guid>
       <description>&lt;p&gt;之前使用二进制Hard-Way模式搭建了Kubernetes三节点集群，今天采用Kubeadm 来快速搭建Kubernetes V1.16.8集群。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用二进制搭建kubernetes三节点高可用集群</title>
-      <link>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</link>
+      <link>http://flyeric.top/post/local-install-ha-kubernetes-cluster/</link>
       <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/local-install-ha-kubernetes-cluster/</guid>
+      <guid>http://flyeric.top/post/local-install-ha-kubernetes-cluster/</guid>
       <description>&lt;p&gt;Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 &lt;a href=&#34;https://www.cncf.io/about&#34;&gt;CNCF&lt;/a&gt;。你可以通过阅读 &lt;a href=&#34;https://kubernetes.io/zh/docs/home/&#34;&gt;官方文档&lt;/a&gt;了解Kubernetes和其基础概念。&lt;/p&gt;
 &lt;p&gt;接下来这篇文章将介绍如何使用二进制部署&lt;code&gt;Kubernetes v1.14.8&lt;/code&gt;。通过这种&lt;code&gt;hard-way&lt;/code&gt;的方式来帮助你更好的了解Kubernetes。&lt;/p&gt;
 &lt;p&gt;Kubernetes Cluster搭建的过程，可以参考&lt;a href=&#34;https://github.com/opsnull/follow-me-install-kubernetes-cluster&#34;&gt;和我一步步部署 kubernetes 集群&lt;/a&gt;。我将其中的脚本整理好了，并通过&lt;a href=&#34;https://www.vagrantup.com/&#34;&gt;Vagrant&lt;/a&gt;和&lt;a href=&#34;https://www.virtualbox.org/wiki/Downloads&#34;&gt;VirtualBox&lt;/a&gt;在本地快速创建k8s集群。&lt;/p&gt;
@@ -131,10 +131,10 @@
     
     <item>
       <title>基于kubernetes的动态jenkins slave</title>
-      <link>http://flygopher.top/post/jenkins-slave-base-on-kubernetes/</link>
+      <link>http://flyeric.top/post/jenkins-slave-base-on-kubernetes/</link>
       <pubDate>Fri, 27 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/jenkins-slave-base-on-kubernetes/</guid>
+      <guid>http://flyeric.top/post/jenkins-slave-base-on-kubernetes/</guid>
       <description>&lt;p&gt;搭建&lt;code&gt;CI/CD&lt;/code&gt;可以使用的工具不少，例如：&lt;code&gt;Jenkins&lt;/code&gt;、&lt;code&gt;Gitlab CI&lt;/code&gt;等等，这里会使用大家最新熟悉的&lt;code&gt;Jenkins&lt;/code&gt;来做&lt;code&gt;CI/CD&lt;/code&gt;的工具。不少人都是基于虚拟机来搭建的，基于&lt;code&gt;Kubernetes&lt;/code&gt;搭建的Jenkins Slave会有什么效果呢？&lt;/p&gt;</description>
     </item>
     

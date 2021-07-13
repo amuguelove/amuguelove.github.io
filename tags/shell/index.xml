@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Shell on 梁波的技术博客</title>
-    <link>http://flygopher.top/tags/shell/</link>
+    <link>http://flyeric.top/tags/shell/</link>
     <description>Recent content in Shell on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 09 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://flygopher.top/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/shell/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Shell脚本快速上手</title>
-      <link>http://flygopher.top/post/shell-scripts-quickstart/</link>
+      <link>http://flyeric.top/post/shell-scripts-quickstart/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/shell-scripts-quickstart/</guid>
+      <guid>http://flyeric.top/post/shell-scripts-quickstart/</guid>
       <description>&lt;p&gt;Shell是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务。Ken Thompson的sh是第一种Unix Shell，Windows Explorer是一个典型的图形界面Shell。&lt;/p&gt;
 &lt;p&gt;Shell脚本（shell script），是一种为shell编写的脚本程序。业界所说的shell通常都是指shell脚本，但是，shell和shell script是两个不同的概念。由于习惯的原因，简洁起见，本文出现的“shell编程”都是指shell脚本编程，不是指开发shell自身（如Windows Explorer扩展开发）。&lt;/p&gt;</description>
     </item>

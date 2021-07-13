@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MacOS on 梁波的技术博客</title>
-    <link>http://flygopher.top/categories/macos/</link>
+    <link>http://flyeric.top/categories/macos/</link>
     <description>Recent content in MacOS on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 16 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://flygopher.top/categories/macos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/categories/macos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MacOS环境变量加载顺序</title>
-      <link>http://flygopher.top/post/macos-profile-load-order/</link>
+      <link>http://flyeric.top/post/macos-profile-load-order/</link>
       <pubDate>Tue, 16 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/macos-profile-load-order/</guid>
+      <guid>http://flyeric.top/post/macos-profile-load-order/</guid>
       <description>&lt;h4 id=&#34;配置文件加载顺序&#34;&gt;配置文件加载顺序　&lt;/h4&gt;
 &lt;p&gt;OS X系统的配置文件，加载顺序为：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;/etc/profile

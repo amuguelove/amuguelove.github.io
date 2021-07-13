@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Redis on 梁波的技术博客</title>
-    <link>http://flygopher.top/categories/redis/</link>
+    <link>http://flyeric.top/categories/redis/</link>
     <description>Recent content in Redis on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 23 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://flygopher.top/categories/redis/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/categories/redis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>深入学习Redis：Redis常见问题以及优化方案</title>
-      <link>http://flygopher.top/post/redis-problem-optimization/</link>
+      <link>http://flyeric.top/post/redis-problem-optimization/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/redis-problem-optimization/</guid>
+      <guid>http://flyeric.top/post/redis-problem-optimization/</guid>
       <description>&lt;h2 id=&#34;常见问题以及优化方案&#34;&gt;常见问题以及优化方案&lt;/h2&gt;
 &lt;h4 id=&#34;1-fork耗时导致高并发请求延时&#34;&gt;1. fork耗时导致高并发请求延时&lt;/h4&gt;
 &lt;p&gt;一般来说，如果父进程内存有1个G的数据，那么fork可能会耗费在20ms左右，如果是10G~30G，那么就会耗费20 * 10，甚至20 * 30，也就是几百毫秒的时间 。&lt;br&gt;
@@ -24,10 +24,10 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
     
     <item>
       <title>深入学习Redis：Redis经典三节点哨兵集群搭建</title>
-      <link>http://flygopher.top/post/redis-sentinel-setup/</link>
+      <link>http://flyeric.top/post/redis-sentinel-setup/</link>
       <pubDate>Sat, 20 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/redis-sentinel-setup/</guid>
+      <guid>http://flyeric.top/post/redis-sentinel-setup/</guid>
       <description>&lt;h3 id=&#34;redis哨兵介绍&#34;&gt;Redis哨兵介绍&lt;/h3&gt;
 &lt;p&gt;哨兵是redis集群架构中非常重要的一个组件，主要功能如下&lt;/p&gt;
 &lt;p&gt;（1）集群监控，负责监控redis master和slave进程是否正常工作&lt;/p&gt;
@@ -38,10 +38,10 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
     
     <item>
       <title>深入学习Redis：Redis一主两从搭建</title>
-      <link>http://flygopher.top/post/redis-master-slave-setup/</link>
+      <link>http://flyeric.top/post/redis-master-slave-setup/</link>
       <pubDate>Fri, 19 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/redis-master-slave-setup/</guid>
+      <guid>http://flyeric.top/post/redis-master-slave-setup/</guid>
       <description>&lt;p&gt;&lt;code&gt;redis&lt;/code&gt;的一主多从的搭建很简单，但是一般需要搭配&lt;code&gt;redis sentinel&lt;/code&gt;哨兵集群，将会在下篇文章介绍。&lt;/p&gt;
 &lt;h3 id=&#34;配置&#34;&gt;配置&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;master：192.168.56.101
@@ -49,16 +49,16 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
 slave1：192.168.56.102
 
 slave2：192.168.56.103
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如何搭建虚拟机集群环境，可以参考：&lt;a href=&#34;http://flygopher.top/post/vagrant-setup-virtual-machine-cluster/&#34;&gt;Vagrant搭建虚拟机集群&lt;/a&gt;&lt;br&gt;
-如何部署Redis单机服务，可以参考：&lt;a href=&#34;http://flygopher.top/post/redis-install-on-centos7/&#34;&gt;Redis深入学习（一）：Linux CentOS 7 安装Redis 4.0.11&lt;/a&gt;&lt;/p&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如何搭建虚拟机集群环境，可以参考：&lt;a href=&#34;http://flyeric.top/post/vagrant-setup-virtual-machine-cluster/&#34;&gt;Vagrant搭建虚拟机集群&lt;/a&gt;&lt;br&gt;
+如何部署Redis单机服务，可以参考：&lt;a href=&#34;http://flyeric.top/post/redis-install-on-centos7/&#34;&gt;Redis深入学习（一）：Linux CentOS 7 安装Redis 4.0.11&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>深入学习Redis：CentOS 7 安装Redis 4.0.11以及生产环境启动配置</title>
-      <link>http://flygopher.top/post/redis-install-on-centos7/</link>
+      <link>http://flyeric.top/post/redis-install-on-centos7/</link>
       <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/redis-install-on-centos7/</guid>
+      <guid>http://flyeric.top/post/redis-install-on-centos7/</guid>
       <description>&lt;h3 id=&#34;redis简介&#34;&gt;Redis简介&lt;/h3&gt;
 &lt;p&gt;Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。&lt;br&gt;
 Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
@@ -77,10 +77,10 @@ Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
     
     <item>
       <title>Redis实现分布式锁</title>
-      <link>http://flygopher.top/post/reids-distributed-lock/</link>
+      <link>http://flyeric.top/post/reids-distributed-lock/</link>
       <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/reids-distributed-lock/</guid>
+      <guid>http://flyeric.top/post/reids-distributed-lock/</guid>
       <description>&lt;h3 id=&#34;常用的分布式锁实现方式&#34;&gt;常用的分布式锁实现方式&lt;/h3&gt;
 &lt;p&gt;分布式锁一般有三种实现方式：&lt;/p&gt;
 &lt;ol&gt;
@@ -92,10 +92,10 @@ Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
     
     <item>
       <title>Redis持久化介绍</title>
-      <link>http://flygopher.top/post/reids-persistence-intro/</link>
+      <link>http://flyeric.top/post/reids-persistence-intro/</link>
       <pubDate>Wed, 10 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/reids-persistence-intro/</guid>
+      <guid>http://flyeric.top/post/reids-persistence-intro/</guid>
       <description>&lt;p&gt;简单介绍一下Redis两种持久化策略RDB和AOF的区别。&lt;/p&gt;
 &lt;p&gt;一些简单的配置，比如端口号&lt;code&gt;port&lt;/code&gt;, 日志位置&lt;code&gt;logfile&lt;/code&gt;等基本配置可自行配置。&lt;/p&gt;
 &lt;h2 id=&#34;快照rdb持久化配置&#34;&gt;快照RDB持久化配置：&lt;/h2&gt;

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>grep on 梁波的技术博客</title>
-    <link>http://flygopher.top/tags/grep/</link>
+    <link>http://flyeric.top/tags/grep/</link>
     <description>Recent content in grep on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 10 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://flygopher.top/tags/grep/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/grep/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>每天一个Linux命令（3）：grep 文本搜索</title>
-      <link>http://flygopher.top/post/linux-command-grep/</link>
+      <link>http://flyeric.top/post/linux-command-grep/</link>
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/linux-command-grep/</guid>
+      <guid>http://flyeric.top/post/linux-command-grep/</guid>
       <description>&lt;p&gt;grep是强大的文本搜索工具&lt;/p&gt;</description>
     </item>
     

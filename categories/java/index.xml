@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on 梁波的技术博客</title>
-    <link>http://flygopher.top/categories/java/</link>
+    <link>http://flyeric.top/categories/java/</link>
     <description>Recent content in Java on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 23 Mar 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Mar 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/categories/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用JMH对Java Object Mapping框架做性能对比</title>
-      <link>http://flygopher.top/post/java-object-mappping-framework-benchmark/</link>
+      <link>http://flyeric.top/post/java-object-mappping-framework-benchmark/</link>
       <pubDate>Mon, 23 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/java-object-mappping-framework-benchmark/</guid>
+      <guid>http://flyeric.top/post/java-object-mappping-framework-benchmark/</guid>
       <description>&lt;h2 id=&#34;jmh概述&#34;&gt;JMH概述&lt;/h2&gt;
 &lt;p&gt;JMH 是一个由 OpenJDK/Oracle 里面那群开发了 Java 编译器的大牛们所开发的 Micro Benchmark Framework 。何谓 Micro Benchmark 呢？简单地说就是在 &lt;strong&gt;method&lt;/strong&gt; 层面上的 benchmark，精度可以精确到微秒级。可以看出 JMH 主要使用在当你已经找出了热点函数，而需要对热点函数进行进一步的优化时，就可以使用 JMH 对优化的效果进行定量的分析。&lt;/p&gt;
 &lt;p&gt;比较典型的使用场景还有：&lt;/p&gt;
@@ -26,46 +26,46 @@
     
     <item>
       <title>Java基础类型占用字节数</title>
-      <link>http://flygopher.top/post/java-basic-class-bytes/</link>
+      <link>http://flyeric.top/post/java-basic-class-bytes/</link>
       <pubDate>Tue, 06 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/java-basic-class-bytes/</guid>
+      <guid>http://flyeric.top/post/java-basic-class-bytes/</guid>
       <description>&lt;p&gt;在Java中一共有8种基本数据类型，其中有4种整型，2种浮点型，1种用于表示Unicode编码的字符但愿的字符类型和一种表示真值的boolean类型。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java8新特性（四）：新的时间和日期API</title>
-      <link>http://flygopher.top/post/java8-new-date-api/</link>
+      <link>http://flyeric.top/post/java8-new-date-api/</link>
       <pubDate>Sat, 06 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/java8-new-date-api/</guid>
+      <guid>http://flyeric.top/post/java8-new-date-api/</guid>
       <description>&lt;p&gt;Java 8另一个新增的重要特性就是引入了新的时间和日期API，它们被包含在&lt;code&gt;java.time&lt;/code&gt;包中。借助新的时间和日期API可以以更简洁的方法处理时间和日期。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java8新特性（三）：Optional类</title>
-      <link>http://flygopher.top/post/java8-optional/</link>
+      <link>http://flyeric.top/post/java8-optional/</link>
       <pubDate>Fri, 05 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/java8-optional/</guid>
+      <guid>http://flyeric.top/post/java8-optional/</guid>
       <description>&lt;p&gt;Optional 是 JDK1.8 中的一个很流弊的新特性，每个接触JAVA的都遇到过 NPE(NullPointerException)，1.8中Optional 帮助我们很好的避免了这一现象。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java8新特性（二）：Stream流式处理</title>
-      <link>http://flygopher.top/post/java8-stream/</link>
+      <link>http://flyeric.top/post/java8-stream/</link>
       <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/java8-stream/</guid>
+      <guid>http://flyeric.top/post/java8-stream/</guid>
       <description>&lt;p&gt;Stream 作为 Java 8 的一大亮点，它与 java.io 包里的 InputStream 和 OutputStream 是完全不同的概念。它也不同于 StAX 对 XML 解析的 Stream，也不是 Amazon Kinesis 对大数据实时处理的 Stream。Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的 Lambda 表达式，极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用 fork/join 并行方式来拆分任务和加速处理过程。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Java8新特性（一）：Lambda表达式</title>
-      <link>http://flygopher.top/post/java8-lambda/</link>
+      <link>http://flyeric.top/post/java8-lambda/</link>
       <pubDate>Mon, 01 Oct 2018 18:23:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/java8-lambda/</guid>
+      <guid>http://flyeric.top/post/java8-lambda/</guid>
       <description>&lt;h2 id=&#34;新特性列表&#34;&gt;新特性列表&lt;/h2&gt;
 &lt;p&gt;以下是Java8中的引入的部分新特性。关于Java8新特性更详细的介绍可参考&lt;a href=&#34;http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html&#34;&gt;这里&lt;/a&gt;。&lt;/p&gt;
 &lt;ul&gt;
@@ -97,10 +97,10 @@
     
     <item>
       <title>认识Java序列化</title>
-      <link>http://flygopher.top/post/java-serialization/</link>
+      <link>http://flyeric.top/post/java-serialization/</link>
       <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/java-serialization/</guid>
+      <guid>http://flyeric.top/post/java-serialization/</guid>
       <description>&lt;h3 id=&#34;引言&#34;&gt;引言&lt;/h3&gt;
 &lt;p&gt;将 Java 对象序列化为二进制文件的 Java 序列化技术是 Java 系列技术中一个较为重要的技术点，在大部分情况下，开发人员只需要了解被序列化的类需要实现 Serializable 接口，使用 ObjectInputStream 和 ObjectOutputStream 进行对象的读写。然而在有些情况下，光知道这些还远远不够，文章列举了笔者遇到的一些真实情境，它们与 Java 序列化相关，通过分析情境出现的原因，使读者轻松牢记 Java 序列化中的一些高级认识。&lt;/p&gt;</description>
     </item>

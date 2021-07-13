@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tools on 梁波的技术博客</title>
-    <link>http://flygopher.top/categories/tools/</link>
+    <link>http://flyeric.top/categories/tools/</link>
     <description>Recent content in Tools on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/categories/tools/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/categories/tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Typora&#43;iCloud&#43;uPic搭建Markdown写作神器</title>
-      <link>http://flygopher.top/post/writing_with_typora/</link>
+      <link>http://flyeric.top/post/writing_with_typora/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/writing_with_typora/</guid>
+      <guid>http://flyeric.top/post/writing_with_typora/</guid>
       <description>&lt;p&gt;我非常喜欢记录笔记，也使用过很多写笔记的APP，从&lt;code&gt;印象笔记&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;Notion&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;Emacs&lt;/code&gt;  &amp;ndash;&amp;gt; &lt;code&gt;Bear&lt;/code&gt;&amp;ndash;&amp;gt; &lt;code&gt;印象笔记&lt;/code&gt;，由于个人在不同阶段有不同记录笔记的需求，导致时常会去寻找满足所有需求的笔记APP。迁移笔记也是非常的痛苦，尤其是Markdown笔记迁移到非Markdown笔记APP。&lt;/p&gt;
 &lt;p&gt;个人喜欢使用Markdown写作，个人博客就是在Mac系统上使用Typora写完后，直接推送到Github Pages就行了，但是Typora是本地的Markdown编辑器，无法同步到移动端。&lt;/p&gt;
 &lt;p&gt;最近发现可以使用Typora + iCloud + uPic来记录我的笔记和博客了：&lt;/p&gt;
@@ -33,22 +33,22 @@
     
     <item>
       <title>iTerm2&#43;zsh打造漂亮好用的终端环境</title>
-      <link>http://flygopher.top/post/custom-iterm2-zsh/</link>
+      <link>http://flyeric.top/post/custom-iterm2-zsh/</link>
       <pubDate>Mon, 01 Oct 2018 10:34:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/custom-iterm2-zsh/</guid>
+      <guid>http://flyeric.top/post/custom-iterm2-zsh/</guid>
       <description>&lt;p&gt;注：适用于使用MacOS开发的Developer&lt;/p&gt;
 &lt;p&gt;身为程序开发者，很大一部分的时间是在用&lt;code&gt;Command Line&lt;/code&gt;做事，如果能把&lt;code&gt;Command Line&lt;/code&gt;调整得好用又炫酷的模样，不只是效率提升很懂，用起来爽度也比较高。&lt;/p&gt;
 &lt;p&gt;最后大概会是这个样子：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/post-detail-zsh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;http://flyeric.top/img/post/post-detail-zsh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Http性能压测工具 | wrk</title>
-      <link>http://flygopher.top/post/http-performance-tool-wrk/</link>
+      <link>http://flyeric.top/post/http-performance-tool-wrk/</link>
       <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/http-performance-tool-wrk/</guid>
+      <guid>http://flyeric.top/post/http-performance-tool-wrk/</guid>
       <description>&lt;p&gt;简单的 http 性能测试工具，记录一下使用方法。&lt;/p&gt;
 &lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
 &lt;h4 id=&#34;macos&#34;&gt;MacOS&lt;/h4&gt;
@@ -74,10 +74,10 @@ sudo cp wrk /somewhere/in/your/PATH
     
     <item>
       <title>iTerm2保持ssh连接不断开</title>
-      <link>http://flygopher.top/post/iterm2-ssh-no-disconnect/</link>
+      <link>http://flyeric.top/post/iterm2-ssh-no-disconnect/</link>
       <pubDate>Sat, 12 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/iterm2-ssh-no-disconnect/</guid>
+      <guid>http://flyeric.top/post/iterm2-ssh-no-disconnect/</guid>
       <description>&lt;h3 id=&#34;iterm2连接ssh一个蛋疼的问题&#34;&gt;iTerm2连接ssh一个蛋疼的问题&lt;/h3&gt;
 &lt;p&gt;在mbp笔记本上安装了iTerm2来替换自带的终端，简洁易用，让人一下子就喜欢上，但是使用iTerm2进行ssh连接时，空闲一段时间，连接就会断掉&amp;hellip;&amp;hellip; 下面就来介绍如何解决iTerm2短连的问题。&lt;/p&gt;</description>
     </item>

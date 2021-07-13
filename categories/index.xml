@@ -2,206 +2,206 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 梁波的技术博客</title>
-    <link>http://flygopher.top/categories/</link>
+    <link>http://flyeric.top/categories/</link>
     <description>Recent content in Categories on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tools</title>
-      <link>http://flygopher.top/categories/tools/</link>
+      <link>http://flyeric.top/categories/tools/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/categories/tools/</guid>
+      <guid>http://flyeric.top/categories/tools/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kubernetes</title>
-      <link>http://flygopher.top/categories/kubernetes/</link>
+      <link>http://flyeric.top/categories/kubernetes/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/categories/kubernetes/</guid>
+      <guid>http://flyeric.top/categories/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>http://flygopher.top/categories/linux/</link>
+      <link>http://flyeric.top/categories/linux/</link>
       <pubDate>Sat, 26 Dec 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/categories/linux/</guid>
+      <guid>http://flyeric.top/categories/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>http://flygopher.top/categories/git/</link>
+      <link>http://flyeric.top/categories/git/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/categories/git/</guid>
+      <guid>http://flyeric.top/categories/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vagrant</title>
-      <link>http://flygopher.top/categories/vagrant/</link>
+      <link>http://flyeric.top/categories/vagrant/</link>
       <pubDate>Sun, 11 Oct 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/categories/vagrant/</guid>
+      <guid>http://flyeric.top/categories/vagrant/</guid>
       <description></description>
     </item>
     
     <item>
       <title>book</title>
-      <link>http://flygopher.top/categories/book/</link>
+      <link>http://flyeric.top/categories/book/</link>
       <pubDate>Sat, 10 Oct 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/categories/book/</guid>
+      <guid>http://flyeric.top/categories/book/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RegExp</title>
-      <link>http://flygopher.top/categories/regexp/</link>
+      <link>http://flyeric.top/categories/regexp/</link>
       <pubDate>Tue, 01 Sep 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/categories/regexp/</guid>
+      <guid>http://flyeric.top/categories/regexp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>https</title>
-      <link>http://flygopher.top/categories/https/</link>
+      <link>http://flyeric.top/categories/https/</link>
       <pubDate>Sat, 29 Aug 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/categories/https/</guid>
+      <guid>http://flyeric.top/categories/https/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>http://flygopher.top/categories/docker/</link>
+      <link>http://flyeric.top/categories/docker/</link>
       <pubDate>Tue, 07 Apr 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/categories/docker/</guid>
+      <guid>http://flyeric.top/categories/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
-      <link>http://flygopher.top/categories/java/</link>
+      <link>http://flyeric.top/categories/java/</link>
       <pubDate>Mon, 23 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/categories/java/</guid>
+      <guid>http://flyeric.top/categories/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gradle</title>
-      <link>http://flygopher.top/categories/gradle/</link>
+      <link>http://flyeric.top/categories/gradle/</link>
       <pubDate>Thu, 19 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/categories/gradle/</guid>
+      <guid>http://flyeric.top/categories/gradle/</guid>
       <description></description>
     </item>
     
     <item>
       <title>springboot</title>
-      <link>http://flygopher.top/categories/springboot/</link>
+      <link>http://flyeric.top/categories/springboot/</link>
       <pubDate>Wed, 18 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/categories/springboot/</guid>
+      <guid>http://flyeric.top/categories/springboot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mongo</title>
-      <link>http://flygopher.top/categories/mongo/</link>
+      <link>http://flyeric.top/categories/mongo/</link>
       <pubDate>Mon, 09 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/categories/mongo/</guid>
+      <guid>http://flyeric.top/categories/mongo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>生活杂记</title>
-      <link>http://flygopher.top/categories/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</link>
+      <link>http://flyeric.top/categories/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</link>
       <pubDate>Sun, 03 Nov 2019 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/categories/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</guid>
+      <guid>http://flyeric.top/categories/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MySQL</title>
-      <link>http://flygopher.top/categories/mysql/</link>
+      <link>http://flyeric.top/categories/mysql/</link>
       <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/categories/mysql/</guid>
+      <guid>http://flyeric.top/categories/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Http</title>
-      <link>http://flygopher.top/categories/http/</link>
+      <link>http://flyeric.top/categories/http/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/categories/http/</guid>
+      <guid>http://flyeric.top/categories/http/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Golang</title>
-      <link>http://flygopher.top/categories/golang/</link>
+      <link>http://flyeric.top/categories/golang/</link>
       <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/categories/golang/</guid>
+      <guid>http://flyeric.top/categories/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hexo</title>
-      <link>http://flygopher.top/categories/hexo/</link>
+      <link>http://flyeric.top/categories/hexo/</link>
       <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/categories/hexo/</guid>
+      <guid>http://flyeric.top/categories/hexo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Redis</title>
-      <link>http://flygopher.top/categories/redis/</link>
+      <link>http://flyeric.top/categories/redis/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/categories/redis/</guid>
+      <guid>http://flyeric.top/categories/redis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MacOS</title>
-      <link>http://flygopher.top/categories/macos/</link>
+      <link>http://flyeric.top/categories/macos/</link>
       <pubDate>Tue, 16 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/categories/macos/</guid>
+      <guid>http://flyeric.top/categories/macos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Restful</title>
-      <link>http://flygopher.top/categories/restful/</link>
+      <link>http://flyeric.top/categories/restful/</link>
       <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/categories/restful/</guid>
+      <guid>http://flyeric.top/categories/restful/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Design Patterns</title>
-      <link>http://flygopher.top/categories/design-patterns/</link>
+      <link>http://flyeric.top/categories/design-patterns/</link>
       <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/categories/design-patterns/</guid>
+      <guid>http://flyeric.top/categories/design-patterns/</guid>
       <description></description>
     </item>
     

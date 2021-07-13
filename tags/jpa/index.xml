@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>jpa on 梁波的技术博客</title>
-    <link>http://flygopher.top/tags/jpa/</link>
+    <link>http://flyeric.top/tags/jpa/</link>
     <description>Recent content in jpa on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 13 Mar 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flygopher.top/tags/jpa/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Mar 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/tags/jpa/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JPA ID生成策略</title>
-      <link>http://flygopher.top/post/jpa-id-generated-strategy/</link>
+      <link>http://flyeric.top/post/jpa-id-generated-strategy/</link>
       <pubDate>Fri, 13 Mar 2020 00:00:00 +0800</pubDate>
       
-      <guid>http://flygopher.top/post/jpa-id-generated-strategy/</guid>
+      <guid>http://flyeric.top/post/jpa-id-generated-strategy/</guid>
       <description>&lt;p&gt;&lt;strong&gt;JPA&lt;/strong&gt; 为对象关系映射提供了了⼀一种基于 &lt;strong&gt;POJO&lt;/strong&gt; 的持久化模型&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;简化数据持久化代码的开发⼯工作&lt;/li&gt;

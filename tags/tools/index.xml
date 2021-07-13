@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tools on 梁波的技术博客</title>
-    <link>http://flygopher.top/tags/tools/</link>
+    <link>http://flyeric.top/tags/tools/</link>
     <description>Recent content in Tools on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 01 Oct 2018 10:34:00 +0000</lastBuildDate><atom:link href="http://flygopher.top/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Oct 2018 10:34:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>iTerm2&#43;zsh打造漂亮好用的终端环境</title>
-      <link>http://flygopher.top/post/custom-iterm2-zsh/</link>
+      <link>http://flyeric.top/post/custom-iterm2-zsh/</link>
       <pubDate>Mon, 01 Oct 2018 10:34:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/custom-iterm2-zsh/</guid>
+      <guid>http://flyeric.top/post/custom-iterm2-zsh/</guid>
       <description>&lt;p&gt;注：适用于使用MacOS开发的Developer&lt;/p&gt;
 &lt;p&gt;身为程序开发者，很大一部分的时间是在用&lt;code&gt;Command Line&lt;/code&gt;做事，如果能把&lt;code&gt;Command Line&lt;/code&gt;调整得好用又炫酷的模样，不只是效率提升很懂，用起来爽度也比较高。&lt;/p&gt;
 &lt;p&gt;最后大概会是这个样子：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://flygopher.top/img/post/post-detail-zsh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;http://flyeric.top/img/post/post-detail-zsh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>iTerm2保持ssh连接不断开</title>
-      <link>http://flygopher.top/post/iterm2-ssh-no-disconnect/</link>
+      <link>http://flyeric.top/post/iterm2-ssh-no-disconnect/</link>
       <pubDate>Sat, 12 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://flygopher.top/post/iterm2-ssh-no-disconnect/</guid>
+      <guid>http://flyeric.top/post/iterm2-ssh-no-disconnect/</guid>
       <description>&lt;h3 id=&#34;iterm2连接ssh一个蛋疼的问题&#34;&gt;iTerm2连接ssh一个蛋疼的问题&lt;/h3&gt;
 &lt;p&gt;在mbp笔记本上安装了iTerm2来替换自带的终端，简洁易用，让人一下子就喜欢上，但是使用iTerm2进行ssh连接时，空闲一段时间，连接就会断掉&amp;hellip;&amp;hellip; 下面就来介绍如何解决iTerm2短连的问题。&lt;/p&gt;</description>
     </item>
