@@ -6,13 +6,29 @@
     <description>Recent content on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Jul 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Elastic 可观测性实现云原生应用监控(1/4)</title>
+      <link>http://flyeric.top/post/elastic-stack-monitoring-01/</link>
+      <pubDate>Thu, 15 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>http://flyeric.top/post/elastic-stack-monitoring-01/</guid>
+      <description>&lt;p&gt;在本系列文章中，我们将学习如何使用 Elastic Stack 来实现对云原生应用的监控。该解决方案具有完备的日志、指标、APM 和可用性采集能力，可以在大规模/云原生的环境下，完成服务质量目标（SLO）的管理。
+总的来说主要包括3个方面：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Metrics：通过收集系统各个组件的时序数据，比如 CPU、内存、磁盘、网络等信息，通常可以用来显示系统的整体状况以及检测某个时间的异常行为；&lt;/li&gt;
+&lt;li&gt;Logging：通过日志收集工具（如Filebeat，Fluentd等）收集系统日志，将用户的数据索引到 Elasticsearch 中并在 Kibana 中进行可视化；&lt;/li&gt;
+&lt;li&gt;Tracing：通过使用APM（应用性能监控）工具收集服务执行的每一个请求和步骤（比如 HTTP 调用、数据库查询等），通过追踪这些数据，我们可以检测到服务的性能，并相应地改进或修复我们的系统。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210715125202838.png&#34; alt=&#34;image-20210715125202838&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Typora&#43;iCloud&#43;uPic搭建Markdown写作神器</title>
-      <link>http://flyeric.top/post/writing_with_typora/</link>
+      <link>http://flyeric.top/post/writing-with-typora/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0800</pubDate>
       
-      <guid>http://flyeric.top/post/writing_with_typora/</guid>
+      <guid>http://flyeric.top/post/writing-with-typora/</guid>
       <description>&lt;p&gt;我非常喜欢记录笔记，也使用过很多写笔记的APP，从&lt;code&gt;印象笔记&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;Notion&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;Emacs&lt;/code&gt;  &amp;ndash;&amp;gt; &lt;code&gt;Bear&lt;/code&gt;&amp;ndash;&amp;gt; &lt;code&gt;印象笔记&lt;/code&gt;，由于个人在不同阶段有不同记录笔记的需求，导致时常会去寻找满足所有需求的笔记APP。迁移笔记也是非常的痛苦，尤其是Markdown笔记迁移到非Markdown笔记APP。&lt;/p&gt;
 &lt;p&gt;个人喜欢使用Markdown写作，个人博客就是在Mac系统上使用Typora写完后，直接推送到Github Pages就行了，但是Typora是本地的Markdown编辑器，无法同步到移动端。&lt;/p&gt;
 &lt;p&gt;最近发现可以使用Typora + iCloud + uPic来记录我的笔记和博客了：&lt;/p&gt;

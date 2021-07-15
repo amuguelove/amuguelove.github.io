@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  
+  <title>使用 Elastic 可观测性实现云原生应用监控(1/4)-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="使用 Elastic 可观测性实现云原生应用监控(1/4)" />
+  <meta name="twitter:title" content="使用 Elastic 可观测性实现云原生应用监控(1/4)" />
+  
+  <meta name="description" content="搭建ElasticSearch集群和Kibana应用">
+  <meta property="og:description" content="搭建ElasticSearch集群和Kibana应用">
+  <meta name="twitter:description" content="搭建ElasticSearch集群和Kibana应用">
+  <meta name="author" content="{Description { .Site.Author.name }}"/>
+  <link href='http://flyeric.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://flyeric.top/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://flyeric.top/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="http://flyeric.top/post/elastic-stack-monitoring-01/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="梁波的技术博客" />
+  
+  <meta name="generator" content="Hugo 0.79.0" />
+  <link rel="canonical" href="http://flyeric.top/post/elastic-stack-monitoring-01/" />
+  <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+        integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-158970182-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://flyeric.top/" title="梁波的技术博客">
+
+        梁波的技术博客
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="http://flyeric.top/">首页</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="http://flyeric.top/archives">Archive</a>
+                
+                  <a href="http://flyeric.top/categories">Categories</a>
+                
+                  <a href="http://flyeric.top/tags">tags</a>
+                
+                  <a href="http://flyeric.top/tags/java">java</a>
+                
+                  <a href="http://flyeric.top/tags/springboot">springboot</a>
+                
+                  <a href="http://flyeric.top/tags/kubernetes">kubernetes</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">学习</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://github.com/amuguelove">Github</a>
+                
+                  <a href="https://kubernetes.io/zh/docs/tutorials/kubernetes-basics/">k8s基础知识</a>
+                
+                  <a href="https://k8s.imroc.io/">Kubernetes实践指南</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="关于" href="http://flyeric.top/page/about/">关于</a>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+    
+  
+  
+  
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/austin-distel-DfjJMVhwH_8-unsplash.jpg" ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>使用 Elastic 可观测性实现云原生应用监控(1/4)</h1>
+                  
+                    
+                      <h2 class="post-subheading">搭建ElasticSearch集群和Kibana应用</h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+    发表于 July 15, 2021
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>使用 Elastic 可观测性实现云原生应用监控(1/4)</h1>
+                
+                  
+                    <h2 class="post-subheading">搭建ElasticSearch集群和Kibana应用</h2>
+                  
+                
+                
+                  <span class="post-meta">
+  
+    发表于 July 15, 2021
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="http://flyeric.top/tags/elastic/">elastic</a> &nbsp;
+              
+                  <a href="http://flyeric.top/tags/elasticsearch/">elasticsearch</a> &nbsp;
+              
+                  <a href="http://flyeric.top/tags/kibana/">kibana</a> &nbsp;
+              
+                  <a href="http://flyeric.top/tags/kubernetes/">kubernetes</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+          
+          
+          
+
+          <p>在本系列文章中，我们将学习如何使用 Elastic Stack 来实现对云原生应用的监控。该解决方案具有完备的日志、指标、APM 和可用性采集能力，可以在大规模/云原生的环境下，完成服务质量目标（SLO）的管理。
+总的来说主要包括3个方面：</p>
+<ul>
+<li>Metrics：通过收集系统各个组件的时序数据，比如 CPU、内存、磁盘、网络等信息，通常可以用来显示系统的整体状况以及检测某个时间的异常行为；</li>
+<li>Logging：通过日志收集工具（如Filebeat，Fluentd等）收集系统日志，将用户的数据索引到 Elasticsearch 中并在 Kibana 中进行可视化；</li>
+<li>Tracing：通过使用APM（应用性能监控）工具收集服务执行的每一个请求和步骤（比如 HTTP 调用、数据库查询等），通过追踪这些数据，我们可以检测到服务的性能，并相应地改进或修复我们的系统。</li>
+</ul>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210715125202838.png" alt="image-20210715125202838"></p>
+<p>为啥我们需要实现软件系统的可观察性呢？</p>
+<h1 id="当今软件环境复杂性所提出的要求">当今软件环境复杂性所提出的要求</h1>
+<p>谈及当今的部署环境，我们有许多方面需要考虑。无论是本地部署数据中心、公共云基础架构还是混合架构，我们都可用于运行应用程序和服务。当今任何一个典型环境中都具备一个编排层（例如 Kubernetes），用于实现应用程序的自动部署和扩展。我们已经有可用于运行应用程序的事物，例如容器、虚拟机或裸机。在开发应用程序时，我们容易对第三方系统产生依赖，例如外部服务、数据库或我们所在组织中其他团队编写的组件。</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/infrastructure-monitoring-needs.png" alt="img"></p>
+<p>为确保应用程序正常运行，我们需要监测其中所有不同组件。这些组件会产生大量监测数据，不仅包括<a href="https://www.elastic.co/cn/log-monitoring">日志</a>和<a href="https://www.elastic.co/cn/infrastructure-monitoring">指标</a>，还包括 <a href="https://www.elastic.co/cn/apm">APM</a> 和<a href="https://www.elastic.co/cn/uptime-monitoring">运行时间</a>数据。</p>
+<p>接下来我们就来学习下如何使用 Elastic Stack构建云原生应用监控。这里的试验环境是 Kubernetes v1.18.4 版本的集群，第一篇我们将创建ElasticSearch集群以及Kibaba可视化应用，下面创建一个名为 elastic 的命名空间，方便将所有的资源对象都部署在一起：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714220041705.png" alt="image-20210714220041705"></p>
+<h1 id="elasticsearch-安装">ElasticSearch 安装</h1>
+<p>这里只演示单节点全部Role的部署，若想要安装企业级的ElasticSearch集群，可以参考下图，针对不同Role：master，ingress，data分别启动ElasticSearch应用，每个角色可以分配自己的资源，如Replicas，CPU，Memory，Storage等。</p>
+<p><strong>修改ElasticSearch官方Helm Values文件，并保存为es-values.yaml</strong></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714214724173.png" alt="image-20210714214724173"></p>
+<p><strong>使用Helm安装ElasticSearch：</strong></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714215056773.png" alt="image-20210714215056773"></p>
+<p><strong>创建连接ElasticSearch的认证账号信息：</strong></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714231843946.png" alt="image-20210714231843946"></p>
+<p>如果出现镜像无法下载的情况，在<code>es-values.yaml</code>中加入mirror的镜像：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">image: &#34;amuguelove/elasticsearch&#34;
+imageTag: &#34;7.13.0&#34;
+</code></pre></div><p>同理下面的官方Kibana镜像。</p>
+<p><strong>出现如下日志，status changed from [YELLOW] to [GERRN]，证明ElasticSearch安装成功：</strong></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714222436919.png" alt="image-20210714222436919"></p>
+<h1 id="kibana安装">Kibana安装</h1>
+<p><strong>修改Kibana官方Helm Values文件，并保存为kibana-values.yaml：</strong></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714220626668.png" alt="image-20210714220626668"></p>
+<p><strong>Helm安装脚本：</strong></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714220712229.png" alt="image-20210714220712229"></p>
+<p>查看Pod启动情况：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714231925344.png" alt="image-20210714231925344"></p>
+<p>如下图所示，使用上面我们创建的 Secret 对象的用户和密码即可登录：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714232727803.png" alt="image-20210714232727803"></p>
+<p>登录成功后会自动跳转到 Kibana 首页：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714232143369.png" alt="image-20210714232143369"></p>
+<p>显示Kibana版本：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714233158985.png" alt="image-20210714233158985"></p>
+<p>还可以通过 左上角图标 → Stack Monitoring 页面查看整个集群的健康状态：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714232424012.png" alt="image-20210714232424012"></p>
+<p>到此为止我们成功安装了 ElasticSearch 与 Kibana，它们将为我们来存储和可视化我们的应用数据（日志，监控指标和追踪）服务。</p>
+<p>在下一篇文章中，我们将来学习如何安装和配置 Fluentd/Fluent Bit，并将日志传入ElasticSearch中，Kibana可视化出来。</p>
+<h1 id="reference">Reference</h1>
+<ol>
+<li>Elastic 官网：<a href="https://www.elastic.co/">https://www.elastic.co</a></li>
+<li>Elastic 可观测性：<a href="https://www.elastic.co/cn/observability">https://www.elastic.co/cn/observability</a></li>
+<li>Helm 官网：<a href="https://helm.sh/">https://helm.sh</a></li>
+<li>借助Elastic可观测性解决方案检测基础架构和微服务：<a href="https://www.elastic.co/cn/blog/monitoring-infrastructure-and-microservices-with-elastic-observability">https://www.elastic.co/cn/blog/monitoring-infrastructure-and-microservices-with-elastic-observability</a></li>
+</ol>
+
+          
+  
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="http://flyeric.top/img/avatar.jpg"/></span>
+        <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
+    </div>
+    <div class="zs-modal-body">
+        <div class="zs-modal-btns">
+            <button class="btn btn-blink" data-num="2">2元</button>
+            <button class="btn btn-blink" data-num="5">5元</button>
+            <button class="btn btn-blink" data-num="10">10元</button>
+            <button class="btn btn-blink" data-num="50">50元</button>
+            <button class="btn btn-blink" data-num="100">100元</button>
+            <button class="btn btn-blink" data-num="1">任意金额</button>
+        </div>
+        <div class="zs-modal-pay">
+            <button class="btn btn-bred" id="pay-text">2元</button>
+            <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+            <img src="http://flyeric.top/img/wechat-2.png" id="pay-image"/>
+        </div>
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="http://flyeric.top/img/wechat-btn.png"/></span>
+    </div>
+</div>
+          
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+    <a href="#" class="social-share-icon icon-twitter"></a>
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+    <a href="#" class="social-share-icon icon-facebook"></a>
+    <a href="#" class="social-share-icon icon-qq"></a>
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="http://flyeric.top/post/ingress-controllers-benchmark/">不同ingress controller的性能测试</a></li>
+    
+    <li><a href="http://flyeric.top/post/ingress-nginx-benchmark/">ingress-nginx 性能压测</a></li>
+    
+    <li><a href="http://flyeric.top/post/ingress-nginx-high-concurrency/">ingress-nginx 高并发实践</a></li>
+    
+    <li><a href="http://flyeric.top/post/ingress-nginx-on-tke/">ingress-nginx在TKE上部署的最佳实践</a></li>
+    
+    <li><a href="http://flyeric.top/post/install-ingress-nginx/">ingress-nginx的安装使用</a></li>
+    
+    <li><a href="http://flyeric.top/post/how-to-use-k8s-api-resources/">Kubernetes API资源的使用</a></li>
+    
+    <li><a href="http://flyeric.top/post/setup-kubernetes-cluster-with-kind/">使用Kind快速构建Kubernetes集群</a></li>
+    
+    <li><a href="http://flyeric.top/post/customize-vagrant-box/">Vagrant定制Box</a></li>
+    
+    <li><a href="http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/">kubernetes Ingress 自动化 HTTPS</a></li>
+    
+    <li><a href="http://flyeric.top/post/kubernetes-storage2/">kubernetes持久化存储（二）</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://flyeric.top/post/writing-with-typora/" data-toggle="tooltip" data-placement="top" title="Typora&#43;iCloud&#43;uPic搭建Markdown写作神器">&larr; 前一篇</a>
+            </li>
+          
+          
+        </ul>
+        
+  
+        
+  
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bo.liang0212@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="https://github.com/amuguelove" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          <li>
+            <a href="http://flyeric.top/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          &bull;&nbsp;
+          &copy;2016-2021
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://flyeric.top/">梁波的技术博客</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flyeric.top/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://flyeric.top/archives/">归档</a>
+            &nbsp;&bull;&nbsp;
+            <a href="http://www.beian.miit.gov.cn/" target="_blank">蜀ICP备2021017173号-1</a>
+          
+        </p>
+        <p class="text-center text-muted">
+          <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+          <span id="busuanzi_container_site_pv" style="display:none">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+          </span>
+          &nbsp;&bull;&nbsp;
+          <span id="busuanzi_container_site_uv" style="display:none">
+            访客数<span id="busuanzi_value_site_uv"></span>人次
+          </span>
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-158970182-1');
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script >
+$(document).ready(function() {
+  var int = setInterval(fixCount, 50);  
+  
+  var initPVCount = 10314;
+  var initUVCount = 6321;
+  function fixCount() {
+    if ($("#busuanzi_container_site_pv").css("display") != "none") {
+        $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + initPVCount); 
+        clearInterval(int); 
+    }
+    if ($("#busuanzi_container_site_uv").css("display") != "none") {
+      $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + initUVCount);
+      clearInterval(int); 
+    }
+  }
+});
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+$('.carousel').slick({
+    dots: true,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear',
+    centerMode: true,
+    prevArrow: '<button type="button" class="slick-prev"></button>',
+    nextArrow: '<button type="button" class="slick-next"></button>',
+});
+</script>
+
+  </body>
+</html>
+

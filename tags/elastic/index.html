@@ -6,21 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>kubernetes-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="kubernetes" />
-  <meta name="twitter:title" content="kubernetes" />
+  <title>elastic-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="elastic" />
+  <meta name="twitter:title" content="elastic" />
   
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flyeric.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flyeric.top/img/avatar.jpg" />
   <meta name="twitter:image" content="http://flyeric.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flyeric.top/categories/kubernetes/" />
+  <meta property="og:url" content="http://flyeric.top/tags/elastic/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.79.0" />
-  <link rel="canonical" href="http://flyeric.top/categories/kubernetes/" />
+  <link rel="canonical" href="http://flyeric.top/tags/elastic/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
@@ -147,7 +147,7 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="page-heading">
-              <h1>#kubernetes</h1>
+              <h1>#elastic</h1>
               <hr class="small">
             </div>
           </div>
@@ -164,66 +164,43 @@ if (!doNotTrack) {
         <div class="posts-list">
           
             <article class="post-preview">
-              <a href="http://flyeric.top/post/local-install-ha-kubernetes-cluster/">
-                <h2 class="post-title">使用二进制搭建kubernetes三节点高可用集群</h2>
+              <a href="http://flyeric.top/post/elastic-stack-monitoring-01/">
+                <h2 class="post-title">使用 Elastic 可观测性实现云原生应用监控(1/4)</h2>
 
+                
+                  <h3 class="post-subtitle">
+                    搭建ElasticSearch集群和Kibana应用
+                  </h3>
                 
               </a>
 
               <p class="post-meta">
-                发表于 April 8, 2020
+                发表于 July 15, 2021
               </p>
               <div class="post-entry">
                 
-                  <p>Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 <a href="https://www.cncf.io/about">CNCF</a>。你可以通过阅读 <a href="https://kubernetes.io/zh/docs/home/">官方文档</a>了解Kubernetes和其基础概念。</p>
-<p>接下来这篇文章将介绍如何使用二进制部署<code>Kubernetes v1.14.8</code>。通过这种<code>hard-way</code>的方式来帮助你更好的了解Kubernetes。</p>
-<p>Kubernetes Cluster搭建的过程，可以参考<a href="https://github.com/opsnull/follow-me-install-kubernetes-cluster">和我一步步部署 kubernetes 集群</a>。我将其中的脚本整理好了，并通过<a href="https://www.vagrantup.com/">Vagrant</a>和<a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>在本地快速创建k8s集群。</p>
-<p>Github地址如下: <a href="https://github.com/amuguelove/k8s-setup-tutorial/tree/v1.14.8">https://github.com/amuguelove/k8s-setup-tutorial/tree/v1.14.8</a></p>
-                  <a href="http://flyeric.top/post/local-install-ha-kubernetes-cluster/" class="post-read-more">[阅读全文]</a>
+                  <p>在本系列文章中，我们将学习如何使用 Elastic Stack 来实现对云原生应用的监控。该解决方案具有完备的日志、指标、APM 和可用性采集能力，可以在大规模/云原生的环境下，完成服务质量目标（SLO）的管理。
+总的来说主要包括3个方面：</p>
+<ul>
+<li>Metrics：通过收集系统各个组件的时序数据，比如 CPU、内存、磁盘、网络等信息，通常可以用来显示系统的整体状况以及检测某个时间的异常行为；</li>
+<li>Logging：通过日志收集工具（如Filebeat，Fluentd等）收集系统日志，将用户的数据索引到 Elasticsearch 中并在 Kibana 中进行可视化；</li>
+<li>Tracing：通过使用APM（应用性能监控）工具收集服务执行的每一个请求和步骤（比如 HTTP 调用、数据库查询等），通过追踪这些数据，我们可以检测到服务的性能，并相应地改进或修复我们的系统。</li>
+</ul>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210715125202838.png" alt="image-20210715125202838"></p>
+                  <a href="http://flyeric.top/post/elastic-stack-monitoring-01/" class="post-read-more">[阅读全文]</a>
                 
               </div>
 
               
                 <span class="post-meta">
                   
-                    #<a href="http://flyeric.top/tags/devops/">devops</a>&nbsp;
+                    #<a href="http://flyeric.top/tags/elastic/">elastic</a>&nbsp;
+                  
+                    #<a href="http://flyeric.top/tags/elasticsearch/">elasticsearch</a>&nbsp;
+                  
+                    #<a href="http://flyeric.top/tags/kibana/">kibana</a>&nbsp;
                   
                     #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/vagrant/">vagrant</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flyeric.top/post/jenkins-slave-base-on-kubernetes/">
-                <h2 class="post-title">基于kubernetes的动态jenkins slave</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 March 27, 2020
-              </p>
-              <div class="post-entry">
-                
-                  <p>搭建<code>CI/CD</code>可以使用的工具不少，例如：<code>Jenkins</code>、<code>Gitlab CI</code>等等，这里会使用大家最新熟悉的<code>Jenkins</code>来做<code>CI/CD</code>的工具。不少人都是基于虚拟机来搭建的，基于<code>Kubernetes</code>搭建的Jenkins Slave会有什么效果呢？</p>
-                  <a href="http://flyeric.top/post/jenkins-slave-base-on-kubernetes/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/jenkins/">jenkins</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/devops/">devops</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/ci/">CI</a>&nbsp;
                   
                 </span>
               
@@ -231,15 +208,6 @@ if (!doNotTrack) {
             </article>
           
         </div>
-        
-          <ul class="pager main-pager">
-            
-              <li class="previous">
-                <a href="http://flyeric.top/categories/kubernetes/page/1">&larr; 上一页</a>
-              </li>
-            
-            
-          </ul>
         
       </div>
     </div>
