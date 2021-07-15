@@ -6,11 +6,11 @@
     <description>Recent content in Posts on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 14 Jul 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Jul 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用 Elastic 可观测性实现云原生应用监控(1/4)</title>
       <link>http://flyeric.top/post/elastic-stack-monitoring-01/</link>
-      <pubDate>Wed, 14 Jul 2021 00:00:00 +0800</pubDate>
+      <pubDate>Thu, 15 Jul 2021 00:00:00 +0800</pubDate>
       
       <guid>http://flyeric.top/post/elastic-stack-monitoring-01/</guid>
       <description>&lt;p&gt;在本系列文章中，我们将学习如何使用 Elastic Stack 来实现对云原生应用的监控。该解决方案具有完备的日志、指标、APM 和可用性采集能力，可以在大规模/云原生的环境下，完成服务质量目标（SLO）的管理。
