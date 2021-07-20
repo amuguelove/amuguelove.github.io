@@ -192,6 +192,53 @@ if (!doNotTrack) {
 
 
             <article class="post-preview">
+              <a href="http://flyeric.top/post/elastic-stack-monitoring-02/">
+                <h2 class="post-title">使用 Elastic 可观测性实现云原生应用监控(2/4)</h2>
+                
+                  <h3 class="post-subtitle">
+                  使用Fluent Bit采集K8S应用日志
+                  </h3>
+                
+              </a>
+
+              <span class="post-meta">
+  
+    发表于 July 19, 2021
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>本篇文章将学习如何使用 Fluent Bit 采集 Kubernetes 集群的应用日志，并将日志数据输出到ElasticSearch中，使用Kibana将其可视化出来。日志收集工具还有很多，如：Fluentd，Filebeat，Promtail等等。其中 Fluent Bit，Fluentd和 Filebeat 都使用过，基本上都能满足项目上对于日志采集的需求。个人比较首推Fluent Bit，主要是因为其资源占用非常少，采集效率高，设计优雅，配置简单。可以看下下图中，Fluent Bit 的 Data pipeline：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/assets%252F-LKKSx-3LBTCtaHbg0gl%252F-LKKTm4Y55lytnFhqfG1%252F-LKKTwUrRtRcGfkhN7YV%252Flogging_pipeline_input.png" alt="img"></p>
+                  <a href="http://flyeric.top/post/elastic-stack-monitoring-02/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://flyeric.top/tags/fluent-bit/">fluent bit</a>&nbsp;
+                
+                  #<a href="http://flyeric.top/tags/elastic/">elastic</a>&nbsp;
+                
+                  #<a href="http://flyeric.top/tags/elasticsearch/">elasticsearch</a>&nbsp;
+                
+                  #<a href="http://flyeric.top/tags/kibana/">kibana</a>&nbsp;
+                
+                  #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
+                
+                </span>
+              
+            </article>
+
+          
+
+
+
+            <article class="post-preview">
               <a href="http://flyeric.top/post/elastic-stack-monitoring-01/">
                 <h2 class="post-title">使用 Elastic 可观测性实现云原生应用监控(1/4)</h2>
                 
@@ -239,6 +286,17 @@ if (!doNotTrack) {
             </article>
 
           
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -294,17 +352,6 @@ if (!doNotTrack) {
             </article>
 
           
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -696,54 +743,6 @@ if (!doNotTrack) {
             </article>
 
           
-
-
-
-            <article class="post-preview">
-              <a href="http://flyeric.top/post/customize-vagrant-box/">
-                <h2 class="post-title">Vagrant定制Box</h2>
-                
-                  <h3 class="post-subtitle">
-                  为Kubernetes定制Centos7 Box
-                  </h3>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 October 11, 2020
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>很多人在学习Kubernetes之前，都会苦恼如何搭建一个集群环境呢？你可以使用新版的Docker快速搭建一个单Master的集群，你也可以购买云厂商的集群服务；使用Docker安装集群非常的简单，但是只能是单master节点；购买云厂商的集群服务可以拥有所有的集群功能，而且任意购买云存储，外网LoadBalancer等，但是费用昂贵，因为k8s集群对机器的要求还是不低的。那有没有其他的选择呢？下面给大家介绍我是如何在本地快速搭建k8s集群的。</p>
-<p>使用Vagrant定制Centos7 Box，里面包含了Linux参数优化，Docker，Kubectl，Kubeadm，Kubelet等。这样就可以通过这个Vagrant Box启动多个节点的k8s集群了。</p>
-<p>最近花了点时间将所有的配置都脚本化，可以通过CLI的方式快速构建基础Box或者删除。</p>
-                  <a href="http://flyeric.top/post/customize-vagrant-box/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flyeric.top/tags/vagrant/">vagrant</a>&nbsp;
-                
-                  #<a href="http://flyeric.top/tags/devops/">devops</a>&nbsp;
-                
-                  #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
-                
-                  #<a href="http://flyeric.top/tags/kubeadm/">kubeadm</a>&nbsp;
-                
-                  #<a href="http://flyeric.top/tags/centos7/">centos7</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
         </div>
 
         <div align="center" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -913,7 +912,7 @@ if (!doNotTrack) {
             
           
             
-            <li><a href="http://flyeric.top/categories/kubernetes">kubernetes(14)</a></li>
+            <li><a href="http://flyeric.top/categories/kubernetes">kubernetes(15)</a></li>
             
           
             
@@ -1029,15 +1028,19 @@ if (!doNotTrack) {
             
             
             
-            <a href="http://flyeric.top/tags/elastic"><i class="fa fa-tags"></i> elastic(1)</a>
+            <a href="http://flyeric.top/tags/elastic"><i class="fa fa-tags"></i> elastic(2)</a>
             
             
             
-            <a href="http://flyeric.top/tags/elasticsearch"><i class="fa fa-tags"></i> elasticsearch(1)</a>
+            <a href="http://flyeric.top/tags/elasticsearch"><i class="fa fa-tags"></i> elasticsearch(2)</a>
             
             
             
             <a href="http://flyeric.top/tags/emacs"><i class="fa fa-tags"></i> emacs(1)</a>
+            
+            
+            
+            <a href="http://flyeric.top/tags/fluent-bit"><i class="fa fa-tags"></i> fluent-bit(1)</a>
             
             
             
@@ -1117,7 +1120,7 @@ if (!doNotTrack) {
             
             
             
-            <a href="http://flyeric.top/tags/kibana"><i class="fa fa-tags"></i> kibana(1)</a>
+            <a href="http://flyeric.top/tags/kibana"><i class="fa fa-tags"></i> kibana(2)</a>
             
             
             
@@ -1129,7 +1132,7 @@ if (!doNotTrack) {
             
             
             
-            <a href="http://flyeric.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(15)</a>
+            <a href="http://flyeric.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(16)</a>
             
             
             

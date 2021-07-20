@@ -6,24 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>使用 Elastic 可观测性实现云原生应用监控(1/4)-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="使用 Elastic 可观测性实现云原生应用监控(1/4)" />
-  <meta name="twitter:title" content="使用 Elastic 可观测性实现云原生应用监控(1/4)" />
+  <title>使用 Elastic 可观测性实现云原生应用监控(2/4)-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="使用 Elastic 可观测性实现云原生应用监控(2/4)" />
+  <meta name="twitter:title" content="使用 Elastic 可观测性实现云原生应用监控(2/4)" />
   
-  <meta name="description" content="搭建ElasticSearch集群和Kibana应用">
-  <meta property="og:description" content="搭建ElasticSearch集群和Kibana应用">
-  <meta name="twitter:description" content="搭建ElasticSearch集群和Kibana应用">
+  <meta name="description" content="使用Fluent Bit采集K8S应用日志">
+  <meta property="og:description" content="使用Fluent Bit采集K8S应用日志">
+  <meta name="twitter:description" content="使用Fluent Bit采集K8S应用日志">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flyeric.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flyeric.top/img/avatar.jpg" />
   <meta name="twitter:image" content="http://flyeric.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flyeric.top/post/elastic-stack-monitoring-01/" />
+  <meta property="og:url" content="http://flyeric.top/post/elastic-stack-monitoring-02/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.79.0" />
-  <link rel="canonical" href="http://flyeric.top/post/elastic-stack-monitoring-01/" />
+  <link rel="canonical" href="http://flyeric.top/post/elastic-stack-monitoring-02/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
@@ -152,7 +152,7 @@ if (!doNotTrack) {
 
 
   
-    <div id="header-big-imgs" data-num-img=1 data-img-src-1="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/austin-distel-DfjJMVhwH_8-unsplash.jpg" ></div>
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/martin-shreder-5Xwaj9gaR0g-unsplash.jpg" ></div>
   
 
   <header class="header-section has-img">
@@ -163,16 +163,16 @@ if (!doNotTrack) {
           <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
               <div class="post-heading">
-                <h1>使用 Elastic 可观测性实现云原生应用监控(1/4)</h1>
+                <h1>使用 Elastic 可观测性实现云原生应用监控(2/4)</h1>
                   
                     
-                      <h2 class="post-subheading">搭建ElasticSearch集群和Kibana应用</h2>
+                      <h2 class="post-subheading">使用Fluent Bit采集K8S应用日志</h2>
                     
                   
                   
                     <span class="post-meta">
   
-    发表于 July 15, 2021
+    发表于 July 19, 2021
   
   
 </span>
@@ -194,16 +194,16 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>使用 Elastic 可观测性实现云原生应用监控(1/4)</h1>
+              <h1>使用 Elastic 可观测性实现云原生应用监控(2/4)</h1>
                 
                   
-                    <h2 class="post-subheading">搭建ElasticSearch集群和Kibana应用</h2>
+                    <h2 class="post-subheading">使用Fluent Bit采集K8S应用日志</h2>
                   
                 
                 
                   <span class="post-meta">
   
-    发表于 July 15, 2021
+    发表于 July 19, 2021
   
   
 </span>
@@ -234,6 +234,8 @@ if (!doNotTrack) {
             
             <h5 id="tags" style="margin-top: 30px;">标签:
               
+                  <a href="http://flyeric.top/tags/fluent-bit/">fluent bit</a> &nbsp;
+              
                   <a href="http://flyeric.top/tags/elastic/">elastic</a> &nbsp;
               
                   <a href="http://flyeric.top/tags/elasticsearch/">elasticsearch</a> &nbsp;
@@ -263,58 +265,49 @@ if (!doNotTrack) {
           
           
 
-          <p>在本系列文章中，我们将学习如何使用 Elastic Stack 来实现对云原生应用的监控。该解决方案具有完备的日志、指标、APM 和可用性采集能力，可以在大规模/云原生的环境下，完成服务质量目标（SLO）的管理。
-总的来说主要包括3个方面：</p>
-<ul>
-<li>Metrics：通过收集系统各个组件的时序数据，比如 CPU、内存、磁盘、网络等信息，通常可以用来显示系统的整体状况以及检测某个时间的异常行为；</li>
-<li>Logging：通过日志收集工具（如Filebeat，Fluentd等）收集系统日志，将用户的数据索引到 Elasticsearch 中并在 Kibana 中进行可视化；</li>
-<li>Tracing：通过使用APM（应用性能监控）工具收集服务执行的每一个请求和步骤（比如 HTTP 调用、数据库查询等），通过追踪这些数据，我们可以检测到服务的性能，并相应地改进或修复我们的系统。</li>
-</ul>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210715125202838.png" alt="image-20210715125202838"></p>
-<p>为啥我们需要实现软件系统的可观察性呢？</p>
-<h1 id="当今软件环境复杂性所提出的要求">当今软件环境复杂性所提出的要求</h1>
-<p>谈及当今的部署环境，我们有许多方面需要考虑。无论是本地部署数据中心、公共云基础架构还是混合架构，我们都可用于运行应用程序和服务。当今任何一个典型环境中都具备一个编排层（例如 Kubernetes），用于实现应用程序的自动部署和扩展。我们已经有可用于运行应用程序的事物，例如容器、虚拟机或裸机。在开发应用程序时，我们容易对第三方系统产生依赖，例如外部服务、数据库或我们所在组织中其他团队编写的组件。</p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/infrastructure-monitoring-needs.png" alt="img"></p>
-<p>为确保应用程序正常运行，我们需要监测其中所有不同组件。这些组件会产生大量监测数据，不仅包括<a href="https://www.elastic.co/cn/log-monitoring">日志</a>和<a href="https://www.elastic.co/cn/infrastructure-monitoring">指标</a>，还包括 <a href="https://www.elastic.co/cn/apm">APM</a> 和<a href="https://www.elastic.co/cn/uptime-monitoring">运行时间</a>数据。</p>
-<p>接下来我们就来学习下如何使用 Elastic Stack构建云原生应用监控。这里的试验环境是 Kubernetes v1.18.4 版本的集群，第一篇我们将创建ElasticSearch集群以及Kibaba可视化应用，下面创建一个名为 elastic 的命名空间，方便将所有的资源对象都部署在一起：</p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714220041705.png" alt="image-20210714220041705"></p>
-<h1 id="elasticsearch-安装">ElasticSearch 安装</h1>
-<p>这里只演示单节点全部Role的部署，若想要安装企业级的ElasticSearch集群，可以参考下图，针对不同Role：master，ingress，data分别启动ElasticSearch应用，每个角色可以分配自己的资源，如Replicas，CPU，Memory，Storage等。</p>
-<p><strong>修改ElasticSearch官方Helm Values文件，并保存为es-values.yaml</strong></p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714214724173.png" alt="image-20210714214724173"></p>
-<p><strong>使用Helm安装ElasticSearch：</strong></p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714215056773.png" alt="image-20210714215056773"></p>
-<p><strong>创建连接ElasticSearch的认证账号信息：</strong></p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714231843946.png" alt="image-20210714231843946"></p>
-<p>如果出现镜像无法下载的情况，在<code>es-values.yaml</code>中加入mirror的镜像：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">image: &#34;amuguelove/elasticsearch&#34;
-imageTag: &#34;7.13.0&#34;
-</code></pre></div><p>同理下面的官方Kibana镜像。</p>
-<p><strong>出现如下日志，status changed from [YELLOW] to [GERRN]，证明ElasticSearch安装成功：</strong></p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714222436919.png" alt="image-20210714222436919"></p>
-<h1 id="kibana安装">Kibana安装</h1>
-<p><strong>修改Kibana官方Helm Values文件，并保存为kibana-values.yaml：</strong></p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714220626668.png" alt="image-20210714220626668"></p>
-<p><strong>Helm安装脚本：</strong></p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714220712229.png" alt="image-20210714220712229"></p>
-<p>查看Pod启动情况：</p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714231925344.png" alt="image-20210714231925344"></p>
-<p>如下图所示，使用上面我们创建的 Secret 对象的用户和密码即可登录：</p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714232727803.png" alt="image-20210714232727803"></p>
-<p>登录成功后会自动跳转到 Kibana 首页：</p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714232143369.png" alt="image-20210714232143369"></p>
-<p>显示Kibana版本：</p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714233158985.png" alt="image-20210714233158985"></p>
-<p>还可以通过 左上角图标 → Stack Monitoring 页面查看整个集群的健康状态：</p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714232424012.png" alt="image-20210714232424012"></p>
-<p>到此为止我们成功安装了 ElasticSearch 与 Kibana，它们将为我们来存储和可视化我们的应用数据（日志，监控指标和追踪）服务。</p>
-<p>在下一篇文章中，我们将来学习如何安装和配置 Fluentd/Fluent Bit，并将日志传入ElasticSearch中，Kibana可视化出来。</p>
+          <p>本篇文章将学习如何使用 Fluent Bit 采集 Kubernetes 集群的应用日志，并将日志数据输出到ElasticSearch中，使用Kibana将其可视化出来。日志收集工具还有很多，如：Fluentd，Filebeat，Promtail等等。其中 Fluent Bit，Fluentd和 Filebeat 都使用过，基本上都能满足项目上对于日志采集的需求。个人比较首推Fluent Bit，主要是因为其资源占用非常少，采集效率高，设计优雅，配置简单。可以看下下图中，Fluent Bit 的 Data pipeline：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/assets%252F-LKKSx-3LBTCtaHbg0gl%252F-LKKTm4Y55lytnFhqfG1%252F-LKKTwUrRtRcGfkhN7YV%252Flogging_pipeline_input.png" alt="img"></p>
+<h2 id="fluent-bit-vs-fluentd-vs-filebeat">Fluent Bit vs Fluentd vs FileBeat</h2>
+<p>三款日志采集工具的资源占用情况如下：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210719211856708.png" alt="image-20210719211856708"></p>
+<p>以下是官方Fluentd和Fluent Bit的对比图：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210719210416796.png" alt="image-20210719210416796"></p>
+<h2 id="fluent-bit-安装">Fluent Bit 安装</h2>
+<p>修改 Fluent Bit 官方Helm Values 文件，并保存为：<code>fluent-bit-values.yaml</code>:</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210719233054607.png" alt="image-20210719233054607"></p>
+<p>安装成功后：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210719225211982.png" alt="image-20210719225211982"></p>
+<h2 id="在kibana中验证日志采集">在Kibana中验证日志采集</h2>
+<p>执行 <code>test-pod.yaml </code>文件，方便使用Kibana查看日志：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210719230401477.png" alt="image-20210719230401477"></p>
+<p>可以看到Fluent Bit开始监听该容器，并采集日志：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210719225236371.png" alt="image-20210719225236371"></p>
+<h3 id="在kibana上添加index-pattern">在Kibana上添加Index Pattern</h3>
+<p><strong>登陆在第一篇中已经安装好的 Kibana，添加 <code>Index Pattern</code>：</strong></p>
+<p>1）填写 <code>Index Pattern Name</code></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210719230129220.png" alt="image-20210719230129220"></p>
+<p>2）配置 time field：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210719230145253.png" alt="image-20210719230145253"></p>
+<p>3）添加成功：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210719230214267.png" alt="image-20210719230214267"></p>
+<p>接下来在<code>Discover</code>中，选择<code>Index：k8s-dev</code>查看日志：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210719230524837.png" alt="image-20210719230524837"></p>
+<h2 id="测试多行日志">测试多行日志</h2>
+<p>运行如下我准备好的镜像，里面会自动打印正常日志和堆栈错误日志：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubectl run -it --rm k8s-example-service --image=amuguelove/example-service:2021-07-19-232202-master --restart=Never
+</code></pre></div><p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210719232720768.png" alt="image-20210719232720768"></p>
+<p>查看上图中第二条日志的详情，可以在<code>stack_trace</code>字段看到异常堆栈的详细信息：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210719232921375.png" alt="image-20210719232921375"></p>
+<p>到这里日志采集系统就到这里结束了。日志采集工具选择哪一种需要结合项目的实际情况，就目前来说<code>Fluent Bit</code>的插件比较少，支持目前比较主流的一些数据存储，如ElasticSearch，Kafaka，Loki等。</p>
+<p>最后，说一下关于多行日志的问题。在实际项目中最关键的难点还是在如何采集多行日志，有的做法是使用采集工具的插件，先识别第一行日志的前缀，然后正则匹配剩下的部分，个人不是特别看好这种方式，1）是采集效率低，损耗性能；2）通用性不高，因为不同语言的多行日志的规则不同，如PHP，Ruby，Java等，它们的异常格式都不同，无法使用统一的正则去匹配。</p>
+<p><strong>个人比较推荐的方式是项目本身通过<code>JSON</code>的格式去输出项目日志，1）避免了多行日志的问题，2）可以在<code>ElasticSearch</code>中直接生成Index，方便快速查询。</strong></p>
 <h1 id="reference">Reference</h1>
 <ol>
 <li>Elastic 官网：<a href="https://www.elastic.co/">https://www.elastic.co</a></li>
 <li>Elastic 可观测性：<a href="https://www.elastic.co/cn/observability">https://www.elastic.co/cn/observability</a></li>
-<li>Helm 官网：<a href="https://helm.sh/">https://helm.sh</a></li>
-<li>借助Elastic可观测性解决方案检测基础架构和微服务：<a href="https://www.elastic.co/cn/blog/monitoring-infrastructure-and-microservices-with-elastic-observability">https://www.elastic.co/cn/blog/monitoring-infrastructure-and-microservices-with-elastic-observability</a></li>
+<li>Fluent Bit 官网：<a href="https://fluentbit.io/">https://fluentbit.io/</a></li>
+<li>Fluentd 官网：<a href="https://www.fluentd.org/">https://www.fluentd.org/</a></li>
+<li>FileBeat 官网：<a href="https://www.elastic.co/beats/filebeat">https://www.elastic.co/beats/filebeat</a></li>
 </ol>
 
           
@@ -376,6 +369,8 @@ imageTag: &#34;7.13.0&#34;
 <h3>相关文章</h3>
 <ul style="margin-bottom: 25px;">
     
+    <li><a href="http://flyeric.top/post/elastic-stack-monitoring-01/">使用 Elastic 可观测性实现云原生应用监控(1/4)</a></li>
+    
     <li><a href="http://flyeric.top/post/ingress-controllers-benchmark/">不同ingress controller的性能测试</a></li>
     
     <li><a href="http://flyeric.top/post/ingress-nginx-benchmark/">ingress-nginx 性能压测</a></li>
@@ -394,8 +389,6 @@ imageTag: &#34;7.13.0&#34;
     
     <li><a href="http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/">kubernetes Ingress 自动化 HTTPS</a></li>
     
-    <li><a href="http://flyeric.top/post/kubernetes-storage2/">kubernetes持久化存储（二）</a></li>
-    
 </ul>
 
         
@@ -404,13 +397,9 @@ imageTag: &#34;7.13.0&#34;
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://flyeric.top/post/writing-with-typora/" data-toggle="tooltip" data-placement="top" title="Typora&#43;iCloud&#43;uPic搭建Markdown写作神器">&larr; 前一篇</a>
+              <a href="http://flyeric.top/post/elastic-stack-monitoring-01/" data-toggle="tooltip" data-placement="top" title="使用 Elastic 可观测性实现云原生应用监控(1/4)">&larr; 前一篇</a>
             </li>
           
-          
-            <li class="next">
-              <a href="http://flyeric.top/post/elastic-stack-monitoring-02/" data-toggle="tooltip" data-placement="top" title="使用 Elastic 可观测性实现云原生应用监控(2/4)">后一篇 &rarr;</a>
-            </li>
           
         </ul>
         

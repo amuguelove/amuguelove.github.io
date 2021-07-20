@@ -6,21 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>kubernetes-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="kubernetes" />
-  <meta name="twitter:title" content="kubernetes" />
+  <title>fluent bit-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="fluent bit" />
+  <meta name="twitter:title" content="fluent bit" />
   
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flyeric.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flyeric.top/img/avatar.jpg" />
   <meta name="twitter:image" content="http://flyeric.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flyeric.top/categories/kubernetes/" />
+  <meta property="og:url" content="http://flyeric.top/tags/fluent-bit/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.79.0" />
-  <link rel="canonical" href="http://flyeric.top/categories/kubernetes/" />
+  <link rel="canonical" href="http://flyeric.top/tags/fluent-bit/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
@@ -147,7 +147,7 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="page-heading">
-              <h1>#kubernetes</h1>
+              <h1>#fluent bit</h1>
               <hr class="small">
             </div>
           </div>
@@ -164,99 +164,39 @@ if (!doNotTrack) {
         <div class="posts-list">
           
             <article class="post-preview">
-              <a href="http://flyeric.top/post/kubeadm-install-kubernetes-cluster/">
-                <h2 class="post-title">使用kubeadm搭建Kubernetes集群</h2>
+              <a href="http://flyeric.top/post/elastic-stack-monitoring-02/">
+                <h2 class="post-title">使用 Elastic 可观测性实现云原生应用监控(2/4)</h2>
 
+                
+                  <h3 class="post-subtitle">
+                    使用Fluent Bit采集K8S应用日志
+                  </h3>
                 
               </a>
 
               <p class="post-meta">
-                发表于 April 8, 2020
+                发表于 July 19, 2021
               </p>
               <div class="post-entry">
                 
-                  <p>之前使用二进制Hard-Way模式搭建了Kubernetes三节点集群，今天采用Kubeadm 来快速搭建Kubernetes V1.16.8集群。</p>
-                  <a href="http://flyeric.top/post/kubeadm-install-kubernetes-cluster/" class="post-read-more">[阅读全文]</a>
+                  <p>本篇文章将学习如何使用 Fluent Bit 采集 Kubernetes 集群的应用日志，并将日志数据输出到ElasticSearch中，使用Kibana将其可视化出来。日志收集工具还有很多，如：Fluentd，Filebeat，Promtail等等。其中 Fluent Bit，Fluentd和 Filebeat 都使用过，基本上都能满足项目上对于日志采集的需求。个人比较首推Fluent Bit，主要是因为其资源占用非常少，采集效率高，设计优雅，配置简单。可以看下下图中，Fluent Bit 的 Data pipeline：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/assets%252F-LKKSx-3LBTCtaHbg0gl%252F-LKKTm4Y55lytnFhqfG1%252F-LKKTwUrRtRcGfkhN7YV%252Flogging_pipeline_input.png" alt="img"></p>
+                  <a href="http://flyeric.top/post/elastic-stack-monitoring-02/" class="post-read-more">[阅读全文]</a>
                 
               </div>
 
               
                 <span class="post-meta">
                   
-                    #<a href="http://flyeric.top/tags/devops/">devops</a>&nbsp;
+                    #<a href="http://flyeric.top/tags/fluent-bit/">fluent bit</a>&nbsp;
+                  
+                    #<a href="http://flyeric.top/tags/elastic/">elastic</a>&nbsp;
+                  
+                    #<a href="http://flyeric.top/tags/elasticsearch/">elasticsearch</a>&nbsp;
+                  
+                    #<a href="http://flyeric.top/tags/kibana/">kibana</a>&nbsp;
                   
                     #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/kubeadm/">kubeadm</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/vagrant/">vagrant</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flyeric.top/post/local-install-ha-kubernetes-cluster/">
-                <h2 class="post-title">使用二进制搭建kubernetes三节点高可用集群</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 April 8, 2020
-              </p>
-              <div class="post-entry">
-                
-                  <p>Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 <a href="https://www.cncf.io/about">CNCF</a>。你可以通过阅读 <a href="https://kubernetes.io/zh/docs/home/">官方文档</a>了解Kubernetes和其基础概念。</p>
-<p>接下来这篇文章将介绍如何使用二进制部署<code>Kubernetes v1.14.8</code>。通过这种<code>hard-way</code>的方式来帮助你更好的了解Kubernetes。</p>
-<p>Kubernetes Cluster搭建的过程，可以参考<a href="https://github.com/opsnull/follow-me-install-kubernetes-cluster">和我一步步部署 kubernetes 集群</a>。我将其中的脚本整理好了，并通过<a href="https://www.vagrantup.com/">Vagrant</a>和<a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>在本地快速创建k8s集群。</p>
-<p>Github地址如下: <a href="https://github.com/amuguelove/k8s-setup-tutorial/tree/v1.14.8">https://github.com/amuguelove/k8s-setup-tutorial/tree/v1.14.8</a></p>
-                  <a href="http://flyeric.top/post/local-install-ha-kubernetes-cluster/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flyeric.top/tags/devops/">devops</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/vagrant/">vagrant</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flyeric.top/post/jenkins-slave-base-on-kubernetes/">
-                <h2 class="post-title">基于kubernetes的动态jenkins slave</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 March 27, 2020
-              </p>
-              <div class="post-entry">
-                
-                  <p>搭建<code>CI/CD</code>可以使用的工具不少，例如：<code>Jenkins</code>、<code>Gitlab CI</code>等等，这里会使用大家最新熟悉的<code>Jenkins</code>来做<code>CI/CD</code>的工具。不少人都是基于虚拟机来搭建的，基于<code>Kubernetes</code>搭建的Jenkins Slave会有什么效果呢？</p>
-                  <a href="http://flyeric.top/post/jenkins-slave-base-on-kubernetes/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/jenkins/">jenkins</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/devops/">devops</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/ci/">CI</a>&nbsp;
                   
                 </span>
               
@@ -264,15 +204,6 @@ if (!doNotTrack) {
             </article>
           
         </div>
-        
-          <ul class="pager main-pager">
-            
-              <li class="previous">
-                <a href="http://flyeric.top/categories/kubernetes/page/1">&larr; 上一页</a>
-              </li>
-            
-            
-          </ul>
         
       </div>
     </div>

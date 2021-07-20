@@ -6,7 +6,17 @@
     <description>Recent content in kubernetes on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Jul 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Jul 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Elastic 可观测性实现云原生应用监控(2/4)</title>
+      <link>http://flyeric.top/post/elastic-stack-monitoring-02/</link>
+      <pubDate>Mon, 19 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>http://flyeric.top/post/elastic-stack-monitoring-02/</guid>
+      <description>&lt;p&gt;本篇文章将学习如何使用 Fluent Bit 采集 Kubernetes 集群的应用日志，并将日志数据输出到ElasticSearch中，使用Kibana将其可视化出来。日志收集工具还有很多，如：Fluentd，Filebeat，Promtail等等。其中 Fluent Bit，Fluentd和 Filebeat 都使用过，基本上都能满足项目上对于日志采集的需求。个人比较首推Fluent Bit，主要是因为其资源占用非常少，采集效率高，设计优雅，配置简单。可以看下下图中，Fluent Bit 的 Data pipeline：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/assets%252F-LKKSx-3LBTCtaHbg0gl%252F-LKKTm4Y55lytnFhqfG1%252F-LKKTwUrRtRcGfkhN7YV%252Flogging_pipeline_input.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>使用 Elastic 可观测性实现云原生应用监控(1/4)</title>
       <link>http://flyeric.top/post/elastic-stack-monitoring-01/</link>

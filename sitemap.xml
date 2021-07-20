@@ -4,51 +4,61 @@
   
   <url>
     <loc>http://flyeric.top/categories/</loc>
-    <lastmod>2021-07-15T00:00:00+08:00</lastmod>
+    <lastmod>2021-07-19T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flyeric.top/tags/elastic/</loc>
-    <lastmod>2021-07-15T00:00:00+08:00</lastmod>
+    <lastmod>2021-07-19T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flyeric.top/tags/elasticsearch/</loc>
-    <lastmod>2021-07-15T00:00:00+08:00</lastmod>
+    <lastmod>2021-07-19T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flyeric.top/tags/fluent-bit/</loc>
+    <lastmod>2021-07-19T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flyeric.top/tags/kibana/</loc>
-    <lastmod>2021-07-15T00:00:00+08:00</lastmod>
+    <lastmod>2021-07-19T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flyeric.top/tags/kubernetes/</loc>
-    <lastmod>2021-07-15T00:00:00+08:00</lastmod>
+    <lastmod>2021-07-19T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flyeric.top/categories/kubernetes/</loc>
-    <lastmod>2021-07-15T00:00:00+08:00</lastmod>
+    <lastmod>2021-07-19T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flyeric.top/post/</loc>
-    <lastmod>2021-07-15T00:00:00+08:00</lastmod>
+    <lastmod>2021-07-19T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flyeric.top/tags/</loc>
-    <lastmod>2021-07-15T00:00:00+08:00</lastmod>
+    <lastmod>2021-07-19T00:00:00+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://flyeric.top/post/elastic-stack-monitoring-01/</loc>
-    <lastmod>2021-07-15T00:00:00+08:00</lastmod>
+    <loc>http://flyeric.top/post/elastic-stack-monitoring-02/</loc>
+    <lastmod>2021-07-19T00:00:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://flyeric.top/</loc>
+    <lastmod>2021-07-19T00:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://flyeric.top/post/elastic-stack-monitoring-01/</loc>
     <lastmod>2021-07-15T00:00:00+08:00</lastmod>
   </url>
   
