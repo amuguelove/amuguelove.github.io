@@ -13,5 +13,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: http://flygopher.top/sitemap.xml
-Sitemap: http://flygopher.top/baidusitemap.xml
+Sitemap: http://flyeric.top/sitemap.xml
+Sitemap: http://flyeric.top/baidusitemap.xml

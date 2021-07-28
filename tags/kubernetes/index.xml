@@ -6,7 +6,17 @@
     <description>Recent content in kubernetes on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 19 Jul 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Jul 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Elastic 可观测性实现云原生应用监控(3/4)</title>
+      <link>http://flyeric.top/post/elastic-stack-monitoring-03/</link>
+      <pubDate>Wed, 28 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>http://flyeric.top/post/elastic-stack-monitoring-03/</guid>
+      <description>&lt;p&gt;&lt;code&gt;MetricBeat&lt;/code&gt; 是一种轻量型的指标采集器，是 Elastic Stack 的一部分，因此能够与 Elasticsearch 和 Kibana 无缝协作。&lt;code&gt;Metricbeat&lt;/code&gt; 能够以一种轻量型的方式，从系统和服务收集指标，输送各种系统和服务统计数据。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Metricbeat&lt;/code&gt; 提供多种内部模块，这些模块可从多项服务（诸如 Apache、Jolokia、NGINX、MongoDB、MySQL、PostgreSQL、Prometheus &lt;a href=&#34;https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-modules.html&#34;&gt;等等&lt;/a&gt;）中收集指标。安装简单，完全零依赖性。只需在配置文件中启用您所需的模块即可。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>使用 Elastic 可观测性实现云原生应用监控(2/4)</title>
       <link>http://flyeric.top/post/elastic-stack-monitoring-02/</link>
