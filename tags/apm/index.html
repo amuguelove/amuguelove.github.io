@@ -6,21 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>elastic-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="elastic" />
-  <meta name="twitter:title" content="elastic" />
+  <title>apm-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="apm" />
+  <meta name="twitter:title" content="apm" />
   
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flyeric.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flyeric.top/img/avatar.jpg" />
   <meta name="twitter:image" content="http://flyeric.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flyeric.top/tags/elastic/" />
+  <meta property="og:url" content="http://flyeric.top/tags/apm/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.79.0" />
-  <link rel="canonical" href="http://flyeric.top/tags/elastic/" />
+  <link rel="canonical" href="http://flyeric.top/tags/apm/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
@@ -147,7 +147,7 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="page-heading">
-              <h1>#elastic</h1>
+              <h1>#apm</h1>
               <hr class="small">
             </div>
           </div>
@@ -193,126 +193,6 @@ if (!doNotTrack) {
                     #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
                   
                     #<a href="http://flyeric.top/tags/apm/">apm</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flyeric.top/post/elastic-stack-monitoring-03/">
-                <h2 class="post-title">使用 Elastic 可观测性实现云原生应用监控(3/4)</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    使用Metricbeat对K8S集群进行指标监控
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 July 28, 2021
-              </p>
-              <div class="post-entry">
-                
-                  <p><code>MetricBeat</code> 是一种轻量型的指标采集器，是 Elastic Stack 的一部分，因此能够与 Elasticsearch 和 Kibana 无缝协作。<code>Metricbeat</code> 能够以一种轻量型的方式，从系统和服务收集指标，输送各种系统和服务统计数据。</p>
-<p><code>Metricbeat</code> 提供多种内部模块，这些模块可从多项服务（诸如 Apache、Jolokia、NGINX、MongoDB、MySQL、PostgreSQL、Prometheus <a href="https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-modules.html">等等</a>）中收集指标。安装简单，完全零依赖性。只需在配置文件中启用您所需的模块即可。</p>
-                  <a href="http://flyeric.top/post/elastic-stack-monitoring-03/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flyeric.top/tags/elastic/">elastic</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/metricbeat/">metricbeat</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flyeric.top/post/elastic-stack-monitoring-02/">
-                <h2 class="post-title">使用 Elastic 可观测性实现云原生应用监控(2/4)</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    使用Fluent Bit采集K8S应用日志
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 July 19, 2021
-              </p>
-              <div class="post-entry">
-                
-                  <p>本篇文章将学习如何使用 Fluent Bit 采集 Kubernetes 集群的应用日志，并将日志数据输出到ElasticSearch中，使用Kibana将其可视化出来。日志收集工具还有很多，如：Fluentd，Filebeat，Promtail等等。其中 Fluent Bit，Fluentd和 Filebeat 都使用过，基本上都能满足项目上对于日志采集的需求。个人比较首推Fluent Bit，主要是因为其资源占用非常少，采集效率高，设计优雅，配置简单。可以看下下图中，Fluent Bit 的 Data pipeline：</p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/assets%252F-LKKSx-3LBTCtaHbg0gl%252F-LKKTm4Y55lytnFhqfG1%252F-LKKTwUrRtRcGfkhN7YV%252Flogging_pipeline_input.png" alt="img"></p>
-                  <a href="http://flyeric.top/post/elastic-stack-monitoring-02/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flyeric.top/tags/fluent-bit/">fluent bit</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/elastic/">elastic</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/elasticsearch/">elasticsearch</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/kibana/">kibana</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flyeric.top/post/elastic-stack-monitoring-01/">
-                <h2 class="post-title">使用 Elastic 可观测性实现云原生应用监控(1/4)</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    搭建ElasticSearch集群和Kibana应用
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 July 15, 2021
-              </p>
-              <div class="post-entry">
-                
-                  <p>在本系列文章中，我们将学习如何使用 Elastic Stack 来实现对云原生应用的监控。该解决方案具有完备的日志、指标、APM 和可用性采集能力，可以在大规模/云原生的环境下，完成服务质量目标（SLO）的管理。
-总的来说主要包括3个方面：</p>
-<ul>
-<li>Metrics：通过收集系统各个组件的时序数据，比如 CPU、内存、磁盘、网络等信息，通常可以用来显示系统的整体状况以及检测某个时间的异常行为；</li>
-<li>Logging：通过日志收集工具（如Filebeat，Fluentd等）收集系统日志，将用户的数据索引到 Elasticsearch 中并在 Kibana 中进行可视化；</li>
-<li>Tracing：通过使用APM（应用性能监控）工具收集服务执行的每一个请求和步骤（比如 HTTP 调用、数据库查询等），通过追踪这些数据，我们可以检测到服务的性能，并相应地改进或修复我们的系统。</li>
-</ul>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210715125202838.png" alt="image-20210715125202838"></p>
-                  <a href="http://flyeric.top/post/elastic-stack-monitoring-01/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flyeric.top/tags/elastic/">elastic</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/elasticsearch/">elasticsearch</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/kibana/">kibana</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
                   
                 </span>
               

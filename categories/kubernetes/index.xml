@@ -6,7 +6,17 @@
     <description>Recent content in kubernetes on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 28 Jul 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Aug 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Elastic 可观测性实现云原生应用监控(4/4)</title>
+      <link>http://flyeric.top/post/elastic-stack-monitoring-04/</link>
+      <pubDate>Mon, 09 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>http://flyeric.top/post/elastic-stack-monitoring-04/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Elastic APM&lt;/code&gt; 是一款免费开源的应用程序性能监测工具，我们可以借助免费且开放的 Elastic APM 扩展至应用程序指标。精确查看您的应用程序都在哪里耗时了，然后便可快速修复问题，这样对发布的代码可以保持十足信心。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/apm-architecture-cloud.png&#34; alt=&#34;Architecture of Elastic APM&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>使用 Elastic 可观测性实现云原生应用监控(3/4)</title>
       <link>http://flyeric.top/post/elastic-stack-monitoring-03/</link>

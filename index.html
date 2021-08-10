@@ -192,6 +192,49 @@ if (!doNotTrack) {
 
 
             <article class="post-preview">
+              <a href="http://flyeric.top/post/elastic-stack-monitoring-04/">
+                <h2 class="post-title">使用 Elastic 可观测性实现云原生应用监控(4/4)</h2>
+                
+                  <h3 class="post-subtitle">
+                  使用APM对部署在K8S集群的应用程序进行性能监测
+                  </h3>
+                
+              </a>
+
+              <span class="post-meta">
+  
+    发表于 August 9, 2021
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p><code>Elastic APM</code> 是一款免费开源的应用程序性能监测工具，我们可以借助免费且开放的 Elastic APM 扩展至应用程序指标。精确查看您的应用程序都在哪里耗时了，然后便可快速修复问题，这样对发布的代码可以保持十足信心。</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/apm-architecture-cloud.png" alt="Architecture of Elastic APM"></p>
+                  <a href="http://flyeric.top/post/elastic-stack-monitoring-04/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://flyeric.top/tags/elastic/">elastic</a>&nbsp;
+                
+                  #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
+                
+                  #<a href="http://flyeric.top/tags/apm/">apm</a>&nbsp;
+                
+                </span>
+              
+            </article>
+
+          
+
+
+
+            <article class="post-preview">
               <a href="http://flyeric.top/post/elastic-stack-monitoring-03/">
                 <h2 class="post-title">使用 Elastic 可观测性实现云原生应用监控(3/4)</h2>
                 
@@ -231,6 +274,17 @@ if (!doNotTrack) {
             </article>
 
           
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -278,17 +332,6 @@ if (!doNotTrack) {
             </article>
 
           
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -697,54 +740,6 @@ if (!doNotTrack) {
             </article>
 
           
-
-
-
-            <article class="post-preview">
-              <a href="http://flyeric.top/post/delete-github-remote-commits/">
-                <h2 class="post-title">删除Github远程提交记录</h2>
-                
-              </a>
-
-              <span class="post-meta">
-  
-    发表于 October 30, 2020
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>最近我在快速提交代码到Github远程仓库的时候，发现提交了一些非必须文件，如缓存文件，而且这些文件比较大，影响了CI工具拉取github仓库的状态（CI工具网速不够快），导致无法将最新的提交触发CI。</p>
-<p>这里快速介绍一种快速的方法：</p>
-<p>第一步：快速找到你要回滚的<code>git commit id</code>；</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git log
-</code></pre></div><p>第二步：将本地变更回滚（切记使用&ndash;soft，这样会保存你工作区的变更，只是移除了暂存区的代码，不要使用&ndash;hard）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git reset --soft commit-id-xxxxxx
-</code></pre></div><p>第三步：缓存你工作区的变更</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git stash
-</code></pre></div><p>第四步：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git push --force --no-verify
-</code></pre></div><p>这时候github远程仓库，已经回滚到你reset的commitId了。切记如果这时候有别人最新的提交也是会回滚的。</p>
-<p>第五步：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git stash pop
-</code></pre></div><p>这样你又可以修改本地的修改，之后再次提交就好了。</p>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://flyeric.top/tags/git/">git</a>&nbsp;
-                
-                  #<a href="http://flyeric.top/tags/github/">github</a>&nbsp;
-                
-                </span>
-              
-            </article>
-
-          
         </div>
 
         <div align="center" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -914,7 +909,7 @@ if (!doNotTrack) {
             
           
             
-            <li><a href="http://flyeric.top/categories/kubernetes">kubernetes(16)</a></li>
+            <li><a href="http://flyeric.top/categories/kubernetes">kubernetes(17)</a></li>
             
           
             
@@ -978,6 +973,10 @@ if (!doNotTrack) {
             
             
             
+            <a href="http://flyeric.top/tags/apm"><i class="fa fa-tags"></i> apm(1)</a>
+            
+            
+            
             <a href="http://flyeric.top/tags/benchmark"><i class="fa fa-tags"></i> benchmark(2)</a>
             
             
@@ -1030,7 +1029,7 @@ if (!doNotTrack) {
             
             
             
-            <a href="http://flyeric.top/tags/elastic"><i class="fa fa-tags"></i> elastic(3)</a>
+            <a href="http://flyeric.top/tags/elastic"><i class="fa fa-tags"></i> elastic(4)</a>
             
             
             
@@ -1134,7 +1133,7 @@ if (!doNotTrack) {
             
             
             
-            <a href="http://flyeric.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(17)</a>
+            <a href="http://flyeric.top/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes(18)</a>
             
             
             
