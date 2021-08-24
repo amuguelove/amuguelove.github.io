@@ -402,7 +402,7 @@ spec:
 NAME                     READY   SECRET                   AGE
 nginx-demo-tls           True    nginx-demo-tls	          5h20m
 </code></pre></div><p>到这里我们就完成了使用<code>Let's Encrypt</code>实现<code>Kubernetes Ingress</code>自动化 HTTPS。</p>
-<p>但是若大家在该工具实现自动化HTTPS的同时，一定要有 Plan B 可以快速通过人工的方式部署K8S Ingress所需的证书，之前我就出现过<code>Let's Encrypt</code> 生产环境达到速率限制，不得不等待一周再去重新颁发的情况。</p>
+<p>但是若大家在使用该工具实现自动化HTTPS的同时，一定要有 Plan B 可以快速通过人工的方式部署K8S Ingress所需的证书，之前我就出现过<code>Let's Encrypt</code> 生产环境达到速率限制，不得不等待一周再去重新颁发的情况。</p>
 <h1 id="参考">参考</h1>
 <p><a href="https://cert-manager.io/docs/installation/kubernetes/">Cert Manager 官网</a></p>
 <p><a href="https://github.com/jetstack/cert-manager">Cert Manager Github</a></p>
