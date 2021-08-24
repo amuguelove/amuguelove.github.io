@@ -234,6 +234,15 @@ if (!doNotTrack) {
       </ul>
     </li>
   </ul>
+
+  <ul>
+    <li><a href="#颁发速率限制">颁发速率限制</a>
+      <ul>
+        <li><a href="#测试环境">测试环境</a></li>
+        <li><a href="#生产环境">生产环境</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </aside>
 
@@ -252,7 +261,7 @@ if (!doNotTrack) {
           
 
           <p>现在的Web应用启用<code>HTTPS</code>服务是真的非常有必要的。一些正规机构颁发的<code>CA</code>证书费用又特别高，就算有免费的工具颁发证书，通过人工的方式手动注入到K8S比较麻烦，而且还需要到期后进行人工续期，若管理的证书过多，还无法颁发泛域名的话，那就更加麻烦了。</p>
-<p>不过比较幸运的是也有免费的午餐 - <code>Let's Encrypt</code>，虽然只有90天的证书有效期，但是我们完全可以在证书失效之前，重新生成证书替换掉。在<code>Kubernetes</code>集群中就更方便了，我们可以通过 Kubernetes Ingress 和 Let’s Encrypt 实现外部服务的自动化 HTTPS。</p>
+<p>这里介绍一下免费的午餐 - <code>Let's Encrypt</code>，虽然只有90天的证书有效期，但是我们完全可以在证书失效之前，重新生成证书替换掉。在<code>Kubernetes</code>集群中就更方便了，我们可以通过 Kubernetes Ingress 和 Let’s Encrypt 实现外部服务的自动化 HTTPS。</p>
 <p>Cert-Manager 是一个云原生证书管理开源项目，用于在 Kubernetes 集群中提供 HTTPS 证书并自动续期，支持 Let’s Encrypt / HashiCorp / Vault 这些免费证书的签发。</p>
 <p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/cert-manager-structrue.svg" alt="cert-manager-structrue"></p>
 <h2 id="ssl证书类型对比">SSL证书类型对比</h2>
@@ -315,6 +324,25 @@ spec:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl create -f cluster-issuer-letsencrypt-prod.yaml
 clusterissuer.certmanager.k8s.io &#34;letsencrypt-prod&#34; created
 </code></pre></div><p>注意：上面配置的是生产环境，你还可以配置staging环境来测试。<a href="https://letsencrypt.org/zh-cn/docs/staging-environment/">Let’s Encrypt 测试环境与生产环境的区别</a></p>
+<h2 id="颁发速率限制">颁发速率限制</h2>
+<p>下面是<code>Let's Encrypt</code> 测试环境和生产环境速率限制的对比：</p>
+<h3 id="测试环境">测试环境</h3>
+<p><a href="https://community.letsencrypt.org/t/staging-endpoint-for-acme-v2/49605">ACME V2 测试环境</a>为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">https://acme-staging-v02.api.letsencrypt.org/directory
+</code></pre></div><ul>
+<li><strong>每个注册域名允许颁发的证书数量</strong>限制为每周 30000 张。</li>
+<li><strong>重复证书</strong>限制为每周 30000 张。</li>
+<li>每小时允许 60 次<strong>验证失败</strong>。</li>
+<li><strong>每个 IP 地址注册账户数量</strong>限制为每个 IP 每 3 小时允许注册 50 个账户。</li>
+<li>对于 ACME v2，<strong>新订单</strong>限制为每个帐户每 3 小时 1500 个。</li>
+</ul>
+<h3 id="生产环境">生产环境</h3>
+<ul>
+<li><strong>每个注册域名的证书数量</strong>（每周 50 张）</li>
+<li>续期证书遵守特殊规则：它们不计入您的<strong>每个注册域名的证书数量</strong>的限制，但它们受到每周最多 5 张<strong>重复证书</strong>的限制（一张证书包含的域名与以前某张证书的完全相同，它会被视为对之前证书的续期证书或重复证书）</li>
+<li>每个账户每小时每域名有最多<strong>验证失败</strong> 5 次的限制。</li>
+</ul>
+<p>切记在使用我们的正式环境以前，强烈建议您使用测试环境进行测试性部署，这将允许您在颁发受信任的证书前确保一切正常，并且降低您受到速率限制的可能性。</p>
 <h1 id="验证">验证</h1>
 <p>上面我们已经安装了<code>Cert manager</code>，定义了<code>ClusterIssuer</code>，接下来我们来配置 HTTPS 去访问我们的 Nginx服务，Nginx 的部署我们这里就不多说了，直接添加一个 Ingress 资源对象即可：(nginx-ingress.yaml)</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: networking.k8s.io/v1beta1
@@ -347,6 +375,7 @@ spec:
 NAME                     READY   SECRET                   AGE
 nginx-demo-tls           True    nginx-demo-tls	          5h20m
 </code></pre></div><p>到这里我们就完成了使用<code>Let's Encrypt</code>实现<code>Kubernetes Ingress</code>自动化 HTTPS。</p>
+<p>但是若大家在该工具实现自动化HTTPS的同时，一定要有 Plan B 可以快速通过人工的方式部署K8S Ingress所需的证书，之前我就出现过<code>Let's Encrypt</code> 生产环境达到速率限制，不得不等待一周再去重新颁发的情况。</p>
 <h1 id="参考">参考</h1>
 <p><a href="https://cert-manager.io/docs/installation/kubernetes/">Cert Manager 官网</a></p>
 <p><a href="https://github.com/jetstack/cert-manager">Cert Manager Github</a></p>
