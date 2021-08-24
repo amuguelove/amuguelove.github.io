@@ -287,72 +287,32 @@ if (!doNotTrack) {
           
           
 
-          <p>现在的Web应用启用<code>HTTPS</code>服务是真的非常有必要的。一些正规机构颁发的<code>CA</code>证书费用又特别高，就算有免费的工具颁发证书，通过人工的方式手动注入到K8S比较麻烦，而且还需要到期后进行人工续期，若管理的证书过多，还无法颁发泛域名的话，那就更加麻烦了。</p>
-<p>这里介绍一下免费的午餐 - <code>Let's Encrypt</code>，虽然只有90天的证书有效期，但是我们完全可以在证书失效之前，重新生成证书替换掉。在<code>Kubernetes</code>集群中就更方便了，我们可以通过 Kubernetes Ingress 和 Let’s Encrypt 实现外部服务的自动化 HTTPS。</p>
+          <p>现在的Web应用启用<code>HTTPS</code>服务是真的非常有必要的。一些正规机构颁发的CA证书费用又特别高，就算有免费的工具颁发证书，通过人工的方式手动注入到K8S比较麻烦，而且还需要到期后进行人工续期，若管理的证书过多，还无法颁发泛域名的话，那就更加麻烦了。</p>
+<p>这里介绍一下免费的午餐 - <code>Let's Encrypt</code>，虽然只有90天的证书有效期，但是我们完全可以在证书失效之前，重新生成证书替换掉。在Kubernetes集群中就更方便了，我们可以通过 Kubernetes Ingress 和 Let’s Encrypt 实现外部服务的自动化 HTTPS。</p>
 <p>Cert-Manager 是一个云原生证书管理开源项目，用于在 Kubernetes 集群中提供 HTTPS 证书并自动续期，支持 Let’s Encrypt / HashiCorp / Vault 这些免费证书的签发。</p>
 <p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/cert-manager-structrue.svg" alt="cert-manager-structrue"></p>
 <h2 id="ssl证书类型对比">SSL证书类型对比</h2>
 <p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210824213412097.png" alt="image-20210824213412097"></p>
 <p>注意：使用Let’s Encrypt颁发的证书属于DV。</p>
 <h2 id="部署">部署</h2>
-<p>我们这里用来管理 SSL/TLS 证书的组件是<code>Cert manager</code>，它对于每一个 ingress endpoint 将会自动创建一个新的证书，当 certificates 过期时还能自动更新，除此之外，Cert manager 也可以和其它的 providers 一起工作，例如 HashiCorp Vault。这里我们介绍两种部署方式：</p>
+<p>我们这里用来管理 SSL/TLS 证书的组件是Cert manager，它对于每一个 ingress endpoint 将会自动创建一个新的证书，当 certificates 过期时还能自动更新，除此之外，Cert manager 也可以和其它的 providers 一起工作，例如 HashiCorp Vault。这里我们介绍两种部署方式：</p>
 <h3 id="yaml文件部署">Yaml文件部署</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Kubernetes 1.16+
-$ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.2/cert-manager.yaml
-
-# Kubernetes &lt;1.16
-$ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.2/cert-manager-legacy.yaml
-</code></pre></div><h3 id="helm3-部署">Helm3 部署</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubectl create namespace cert-manager
-
-helm repo add jetstack https://charts.jetstack.io
-helm repo update
-
-helm upgrade --install \
-  cert-manager jetstack/cert-manager \
-  --namespace cert-manager \
-  --version v1.0.2 \
-  --set ingressShim.defaultIssuerName=letsencrypt-prod \
-  --set ingressShim.defaultIssuerKind=ClusterIssuer \
-  --set installCRDs=true
-</code></pre></div><p>在使用的时候我们需要配置一个缺省的<a href="http://docs.cert-manager.io/en/latest/reference/clusterissuers.html">cluster issuer</a>，当部署<code>Cert manager</code>的时候，用于支持<code>kubernetes.io/tls-acme: &quot;true&quot;</code>annotation 来自动化 TLS。</p>
-<p>安装完成后，然后查看<code>Pod</code>运行状态：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl get pods -n cert-manager
-NAME                                      READY   STATUS    RESTARTS   AGE
-cert-manager-74fdd7bc8f-bhj6v             1/1     Running   0          6h48m
-cert-manager-cainjector-8665f9998-k7bx6   1/1     Running   0          6h48m
-cert-manager-webhook-677b8cbf67-2w48n     1/1     Running   0          6h48m
-</code></pre></div><p>除此之外，安装完成后<code>Cert manager</code>还提供了一些<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Kubernetes custom resources</a>：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl get crd -n cert-manager
-NAME                                  CREATED AT
-certificaterequests.cert-manager.io   2020-09-28T05:44:55Z
-certificates.cert-manager.io          2020-09-28T05:44:55Z
-challenges.acme.cert-manager.io       2020-09-28T05:44:56Z
-clusterissuers.cert-manager.io        2020-09-28T05:44:56Z
-issuers.cert-manager.io               2020-09-28T05:44:58Z
-orders.acme.cert-manager.io           2020-09-28T05:44:58Z
-</code></pre></div><h2 id="证书签发服务">证书签发服务</h2>
-<p><code>Cert manager</code>安装后，接下来需要定义上面的<code>letsencrypt-prod</code>这个<code>cluster issuer</code>，这里使用上面的<code>clusterissuers.certmanager.k8s.io</code>这个<code>CRD</code>来定义：（cluster-issuer-letsencrypt-prod.yaml）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
-metadata:
-  name: letsencrypt-prod
-spec:
-  acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
-    email: bo.liang0212@gmail.com
-    privateKeySecretRef:
-      name: letsencrypt-prod
-    solvers:
-      - http01:
-          ingress:
-            class: nginx
-</code></pre></div><p>然后直接创建这个<code>ClusterIssuer</code>资源：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl create -f cluster-issuer-letsencrypt-prod.yaml
-clusterissuer.certmanager.k8s.io &#34;letsencrypt-prod&#34; created
-</code></pre></div><p>注意：上面配置的是生产环境，你还可以配置staging环境来测试。<a href="https://letsencrypt.org/zh-cn/docs/staging-environment/">Let’s Encrypt 测试环境与生产环境的区别</a></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210824222619294.png" alt="image-20210824222619294"></p>
+<h3 id="helm3-部署">Helm3 部署</h3>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210824222608931.png" alt="image-20210824222608931"></p>
+<p>在使用的时候我们需要配置一个缺省的<a href="http://docs.cert-manager.io/en/latest/reference/clusterissuers.html">cluster issuer</a>，当部署 Cert manager 的时候，用于支持<code>kubernetes.io/tls-acme: &quot;true&quot;</code>annotation 来自动化 TLS。</p>
+<p>安装完成后，然后查看Pod运行状态：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210824222456744.png" alt="image-20210824222456744"></p>
+<p>除此之外，安装完成后<code>Cert manager</code>还提供了一些<a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">Kubernetes custom resources</a>：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210824222344367.png" alt="image-20210824222344367"></p>
+<h2 id="证书签发服务">证书签发服务</h2>
+<p>Cert manager安装后，接下来需要定义上面的 letsencrypt-prod 这个 cluster issuer，这里使用上面的<code>clusterissuers.certmanager.k8s.io</code>这个CRD来定义：（cluster-issuer-letsencrypt-prod.yaml）</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210824222329501.png" alt="image-20210824222329501"></p>
+<p>然后直接创建这个 ClusterIssuer 资源：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210824222313432.png" alt="image-20210824222313432"></p>
+<p>注意：上面配置的是生产环境，你还可以配置staging环境来测试。<a href="https://letsencrypt.org/zh-cn/docs/staging-environment/">Let’s Encrypt 测试环境与生产环境的区别</a></p>
 <h2 id="颁发速率限制">颁发速率限制</h2>
-<p>下面是<code>Let's Encrypt</code> 测试环境和生产环境速率限制的对比：</p>
+<p>下面是 Let&rsquo;s Encrypt 测试环境和生产环境速率限制的对比：</p>
 <h3 id="测试环境">测试环境</h3>
 <p><a href="https://community.letsencrypt.org/t/staging-endpoint-for-acme-v2/49605">ACME V2 测试环境</a>为：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">https://acme-staging-v02.api.letsencrypt.org/directory
@@ -371,38 +331,17 @@ clusterissuer.certmanager.k8s.io &#34;letsencrypt-prod&#34; created
 </ul>
 <p>切记在使用我们的正式环境以前，强烈建议您使用测试环境进行测试性部署，这将允许您在颁发受信任的证书前确保一切正常，并且降低您受到速率限制的可能性。</p>
 <h2 id="验证">验证</h2>
-<p>上面我们已经安装了<code>Cert manager</code>，定义了<code>ClusterIssuer</code>，接下来我们来配置 HTTPS 去访问我们的 Nginx服务，Nginx 的部署我们这里就不多说了，直接添加一个 Ingress 资源对象即可：(nginx-ingress.yaml)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-	name: nginx
-  annotations:
-  	kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: &#34;true&#34;
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-spec:
-  rules:
-  - http:
-      paths:
-      - backend:
-          serviceName: nginx
-          servicePort: 80
-    host: &#34;nginx-demo.qcloud.com&#34;
-  tls:
-    - hosts:
-      - nginx-demo.qcloud.com
-      secretName: nginx-demo-tls
-</code></pre></div><p>这里需要注意的是上面我们添加的<code>annotations</code>非常重要，这个将告诉 Cert Manager 去生成证书，然后由于我们这里要使用 HTTPS，所以我们需要添加一个 tls 证书，而证书就是通过<code>nginx-demo-tls</code>这个 Secret 对象来提供的，要注意的是这个 Secret 对象并不是我们手动创建的，而是 Cert Manager 自动创建的证书对应的对应。然后直接创建这个资源对象即可：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ kubectl create -f nginx-ingress.yaml
-</code></pre></div><blockquote>
+<p>上面我们已经安装了 Cert manager，定义了 ClusterIssuer ，接下来我们来配置 HTTPS 去访问我们的 Nginx服务，Nginx 的部署我们这里就不多说了，直接添加一个 Ingress 资源对象即可：(nginx-ingress.yaml)</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210824222250842.png" alt="image-20210824222250842"></p>
+<p>这里需要注意的是上面我们添加的<code>annotations</code>非常重要，这个将告诉 Cert Manager 去生成证书，然后由于我们这里要使用 HTTPS，所以我们需要添加一个 tls 证书，而证书就是通过<code>nginx-demo-tls</code>这个 Secret 对象来提供的，要注意的是这个 Secret 对象并不是我们手动创建的，而是 Cert Manager 自动创建的证书对应的对应。然后直接创建这个资源对象即可：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210824222222908.png" alt="image-20210824222222908"></p>
+<blockquote>
 <p>当然如果需要在公网中进行访问，我们还需要将我们这里的域名解析到 Ingress Controller 所在的任意一个节点，或者在本地的<code>/etc/hosts</code>中加上映射也是可以的。</p>
 </blockquote>
 <p>之后 Cert-manager 会读取注解并创建证书，使用以下命令查看：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl get certificate
-NAME                     READY   SECRET                   AGE
-nginx-demo-tls           True    nginx-demo-tls	          5h20m
-</code></pre></div><p>到这里我们就完成了使用<code>Let's Encrypt</code>实现<code>Kubernetes Ingress</code>自动化 HTTPS。</p>
-<p>但是若大家在使用该工具实现自动化HTTPS的同时，一定要有 Plan B 可以快速通过人工的方式部署K8S Ingress所需的证书，之前我就出现过<code>Let's Encrypt</code> 生产环境达到速率限制，不得不等待一周再去重新颁发的情况。</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210824222159351.png" alt="image-20210824222159351"></p>
+<p>到这里我们就完成了使用 Let&rsquo;s Encrypt 实现 Kubernetes Ingress 自动化 HTTPS。</p>
+<p>但是若大家在使用该工具实现自动化HTTPS的同时，一定要有 Plan B 可以快速通过人工的方式部署K8S Ingress所需的证书，之前我就出现过 Let&rsquo;s Encrypt 生产环境达到速率限制，不得不等待一周再去重新颁发的情况。</p>
 <h1 id="参考">参考</h1>
 <p><a href="https://cert-manager.io/docs/installation/kubernetes/">Cert Manager 官网</a></p>
 <p><a href="https://github.com/jetstack/cert-manager">Cert Manager Github</a></p>
