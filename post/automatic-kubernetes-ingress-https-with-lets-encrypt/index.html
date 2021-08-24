@@ -224,24 +224,20 @@ if (!doNotTrack) {
   <nav id="TableOfContents">
   <ul>
     <li><a href="#ssl证书类型对比">SSL证书类型对比</a></li>
-  </ul>
-
-  <ul>
-    <li>
+    <li><a href="#部署">部署</a>
       <ul>
         <li><a href="#yaml文件部署">Yaml文件部署</a></li>
         <li><a href="#helm3-部署">Helm3 部署</a></li>
       </ul>
     </li>
-  </ul>
-
-  <ul>
+    <li><a href="#证书签发服务">证书签发服务</a></li>
     <li><a href="#颁发速率限制">颁发速率限制</a>
       <ul>
         <li><a href="#测试环境">测试环境</a></li>
         <li><a href="#生产环境">生产环境</a></li>
       </ul>
     </li>
+    <li><a href="#验证">验证</a></li>
   </ul>
 </nav>
 </aside>
@@ -267,7 +263,7 @@ if (!doNotTrack) {
 <h2 id="ssl证书类型对比">SSL证书类型对比</h2>
 <p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210824213412097.png" alt="image-20210824213412097"></p>
 <p>注意：使用Let’s Encrypt颁发的证书属于DV。</p>
-<h1 id="部署">部署</h1>
+<h2 id="部署">部署</h2>
 <p>我们这里用来管理 SSL/TLS 证书的组件是<code>Cert manager</code>，它对于每一个 ingress endpoint 将会自动创建一个新的证书，当 certificates 过期时还能自动更新，除此之外，Cert manager 也可以和其它的 providers 一起工作，例如 HashiCorp Vault。这里我们介绍两种部署方式：</p>
 <h3 id="yaml文件部署">Yaml文件部署</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Kubernetes 1.16+
@@ -304,7 +300,7 @@ challenges.acme.cert-manager.io       2020-09-28T05:44:56Z
 clusterissuers.cert-manager.io        2020-09-28T05:44:56Z
 issuers.cert-manager.io               2020-09-28T05:44:58Z
 orders.acme.cert-manager.io           2020-09-28T05:44:58Z
-</code></pre></div><h1 id="证书签发服务">证书签发服务</h1>
+</code></pre></div><h2 id="证书签发服务">证书签发服务</h2>
 <p><code>Cert manager</code>安装后，接下来需要定义上面的<code>letsencrypt-prod</code>这个<code>cluster issuer</code>，这里使用上面的<code>clusterissuers.certmanager.k8s.io</code>这个<code>CRD</code>来定义：（cluster-issuer-letsencrypt-prod.yaml）</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -343,7 +339,7 @@ clusterissuer.certmanager.k8s.io &#34;letsencrypt-prod&#34; created
 <li>每个账户每小时每域名有最多<strong>验证失败</strong> 5 次的限制。</li>
 </ul>
 <p>切记在使用我们的正式环境以前，强烈建议您使用测试环境进行测试性部署，这将允许您在颁发受信任的证书前确保一切正常，并且降低您受到速率限制的可能性。</p>
-<h1 id="验证">验证</h1>
+<h2 id="验证">验证</h2>
 <p>上面我们已经安装了<code>Cert manager</code>，定义了<code>ClusterIssuer</code>，接下来我们来配置 HTTPS 去访问我们的 Nginx服务，Nginx 的部署我们这里就不多说了，直接添加一个 Ingress 资源对象即可：(nginx-ingress.yaml)</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
