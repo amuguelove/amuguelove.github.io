@@ -10,9 +10,9 @@
   <meta property="og:title" content="kubernetes Ingress 自动化 HTTPS" />
   <meta name="twitter:title" content="kubernetes Ingress 自动化 HTTPS" />
   
-  <meta name="description" content="使用Cert Manager为Kubernetes Ingress自动签发证书">
-  <meta property="og:description" content="使用Cert Manager为Kubernetes Ingress自动签发证书">
-  <meta name="twitter:description" content="使用Cert Manager为Kubernetes Ingress自动签发证书">
+  <meta name="description" content="使用Cert Manager为Kubernetes Ingress自动签发SSL证书">
+  <meta property="og:description" content="使用Cert Manager为Kubernetes Ingress自动签发SSL证书">
+  <meta name="twitter:description" content="使用Cert Manager为Kubernetes Ingress自动签发SSL证书">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flyeric.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flyeric.top/img/avatar.jpg" />
@@ -166,7 +166,7 @@ if (!doNotTrack) {
               <h1>kubernetes Ingress 自动化 HTTPS</h1>
                 
                   
-                    <h2 class="post-subheading">使用Cert Manager为Kubernetes Ingress自动签发证书</h2>
+                    <h2 class="post-subheading">使用Cert Manager为Kubernetes Ingress自动签发SSL证书</h2>
                   
                 
                 
@@ -223,6 +223,10 @@ if (!doNotTrack) {
 <aside class="toc">
   <nav id="TableOfContents">
   <ul>
+    <li><a href="#ssl证书类型对比">SSL证书类型对比</a></li>
+  </ul>
+
+  <ul>
     <li>
       <ul>
         <li><a href="#yaml文件部署">Yaml文件部署</a></li>
@@ -249,7 +253,10 @@ if (!doNotTrack) {
 
           <p>现在的Web应用启用<code>HTTPS</code>服务是真的非常有必要的。一些正规机构颁发的<code>CA</code>证书费用又特别高，不过比较幸运的是也有免费的午餐 - <code>Let's Encrypt</code>，虽然只有90天的证书有效期，但是我们完全可以在证书失效之前，重新生成证书替换掉。在<code>Kubernetes</code>集群中就更方便了，我们可以通过 Kubernetes Ingress 和 Let’s Encrypt 实现外部服务的自动化 HTTPS。</p>
 <p>Cert-Manager 是一个云原生证书管理开源项目，用于在 Kubernetes 集群中提供 HTTPS 证书并自动续期，支持 Let’s Encrypt / HashiCorp / Vault 这些免费证书的签发。</p>
-<p><img src="http://flyeric.top/img/post/cert-manager-structrue.svg" alt="Cert Manager Structrue"></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/cert-manager-structrue.svg" alt="cert-manager-structrue"></p>
+<h2 id="ssl证书类型对比">SSL证书类型对比</h2>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210824213412097.png" alt="image-20210824213412097"></p>
+<p>注意：使用Let’s Encrypt颁发的证书属于DV。</p>
 <h1 id="部署">部署</h1>
 <p>我们这里用来管理 SSL/TLS 证书的组件是<code>Cert manager</code>，它对于每一个 ingress endpoint 将会自动创建一个新的证书，当 certificates 过期时还能自动更新，除此之外，Cert manager 也可以和其它的 providers 一起工作，例如 HashiCorp Vault。这里我们介绍两种部署方式：</p>
 <h3 id="yaml文件部署">Yaml文件部署</h3>
@@ -296,7 +303,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: xxx@gmail.com
+    email: bo.liang0212@gmail.com
     privateKeySecretRef:
       name: letsencrypt-prod
     solvers:
