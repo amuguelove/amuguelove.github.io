@@ -6,21 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>Posts-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="Posts" />
-  <meta name="twitter:title" content="Posts" />
+  <title>github actions-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="github actions" />
+  <meta name="twitter:title" content="github actions" />
   
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flyeric.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flyeric.top/img/avatar.jpg" />
   <meta name="twitter:image" content="http://flyeric.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flyeric.top/post/" />
+  <meta property="og:url" content="http://flyeric.top/tags/github-actions/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.79.0" />
-  <link rel="canonical" href="http://flyeric.top/post/" />
+  <link rel="canonical" href="http://flyeric.top/tags/github-actions/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
@@ -147,7 +147,7 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="page-heading">
-              <h1>Posts</h1>
+              <h1>#github actions</h1>
               <hr class="small">
             </div>
           </div>
@@ -164,98 +164,36 @@ if (!doNotTrack) {
         <div class="posts-list">
           
             <article class="post-preview">
-              <a href="http://flyeric.top/post/git-common-commands/">
-                <h2 class="post-title">Git常用指令整理</h2>
+              <a href="http://flyeric.top/post/github-actions-learning/">
+                <h2 class="post-title">GitHub Actions初探</h2>
 
+                
+                  <h3 class="post-subtitle">
+                    使用Github Actions构建流水线并使用Helm部署制品到K8S
+                  </h3>
                 
               </a>
 
               <p class="post-meta">
-                发表于 March 13, 2017
+                发表于 September 3, 2021
               </p>
               <div class="post-entry">
                 
-                  <p>整理的一些常用的Git指令</p>
-<h3 id="创建仓库">创建仓库</h3>
-<pre><code>echo &quot;# comments&quot; &gt;&gt; README.md
-git init
-git add README.md
-git commit -m &quot;first commit&quot;
-git remote add origin git@github.com:your_username/your_project.git
-git push -u origin master
-</code></pre>
-<p>若仓库存在直接push </p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git remote add origin git@github.com:your_username/your_project.git
-git push -u origin master
-</code></pre></div>
-                  <a href="http://flyeric.top/post/git-common-commands/" class="post-read-more">[阅读全文]</a>
+                  <p>GitHub Actions 是 Github 在2018年10月份推出的持续集成服务。可免费使用，你可以在 GitHub Actions 的仓库中自动化、自定义和执行软件开发工作流程。 可以发现、创建和共享操作以执行您喜欢的任何作业（包括 CI/CD），并将操作合并到完全自定义的工作流程中。</p>
+<p>本文是一个简单的教程，演示如何使用 GitHub Actions 自动构建SpringBoot应用流水线并使用Helm部署到K8S集群。</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/20191203184227.png" alt="GitHub Actions"></p>
+                  <a href="http://flyeric.top/post/github-actions-learning/" class="post-read-more">[阅读全文]</a>
                 
               </div>
 
               
                 <span class="post-meta">
                   
-                    #<a href="http://flyeric.top/tags/git/">Git</a>&nbsp;
+                    #<a href="http://flyeric.top/tags/github-actions/">github actions</a>&nbsp;
                   
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flyeric.top/post/generate-multi-ssh-key/">
-                <h2 class="post-title">Git 生成多个 SSH Key</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 January 7, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <p>当有多个git账号的时候，比如一个github，用于自己进行一些开发活动，再来一个gitlab，一般是公司内部的git。这两者你的邮箱如果不同的话，就会涉及到一个问题，生成第二个git的key的时候会覆盖第一个的key，导致必然有一个用不了。</p>
-                  <a href="http://flyeric.top/post/generate-multi-ssh-key/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
+                    #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
                   
-                    #<a href="http://flyeric.top/tags/git/">Git</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/ssh/">SSH</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://flyeric.top/post/first-blog/">
-                <h2 class="post-title">博客终于正式开张啦～</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 September 25, 2016
-              </p>
-              <div class="post-entry">
-                
-                  <p>万事开头难，第一次总是有更多的纪念意义。</p>
-<p>经过几番折腾，花了一个周末的时间，在github pages上终于把自己的个人博客搭建好了。</p>
-<p>本来9月13号我购买了一年的阿里云服务器，用Java搭建好了，结果因为购买服务器是国内的，备案一直没有弄下来，购买的域名也无法使用，也不能退，花的RMB就这样打水漂啦啦啦～</p>
-<p>最近接触的东西挺多的，加上之前一直挺喜欢写点东西的，使用过各种第三方博客，但是很多没有坚持下来，不够纯粹，达不到自己想要的，所以才下定决心把个人博客弄起来，希望自己能够坚持下去，加油！</p>
-<!-- raw HTML omitted -->
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flyeric.top/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/">生活杂记</a>&nbsp;
+                    #<a href="http://flyeric.top/tags/ci/">ci</a>&nbsp;
                   
                 </span>
               
@@ -263,15 +201,6 @@ git push -u origin master
             </article>
           
         </div>
-        
-          <ul class="pager main-pager">
-            
-              <li class="previous">
-                <a href="http://flyeric.top/post/page/7">&larr; 上一页</a>
-              </li>
-            
-            
-          </ul>
         
       </div>
     </div>
