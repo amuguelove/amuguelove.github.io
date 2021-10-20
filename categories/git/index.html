@@ -19,7 +19,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/categories/git/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -30,7 +30,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -178,16 +178,16 @@ if (!doNotTrack) {
                   <p>最近我在快速提交代码到Github远程仓库的时候，发现提交了一些非必须文件，如缓存文件，而且这些文件比较大，影响了CI工具拉取github仓库的状态（CI工具网速不够快），导致无法将最新的提交触发CI。</p>
 <p>这里快速介绍一种快速的方法：</p>
 <p>第一步：快速找到你要回滚的<code>git commit id</code>；</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git log
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git log
 </code></pre></div><p>第二步：将本地变更回滚（切记使用&ndash;soft，这样会保存你工作区的变更，只是移除了暂存区的代码，不要使用&ndash;hard）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git reset --soft commit-id-xxxxxx
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git reset --soft commit-id-xxxxxx
 </code></pre></div><p>第三步：缓存你工作区的变更</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git stash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git stash
 </code></pre></div><p>第四步：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git push --force --no-verify
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git push --force --no-verify
 </code></pre></div><p>这时候github远程仓库，已经回滚到你reset的commitId了。切记如果这时候有别人最新的提交也是会回滚的。</p>
 <p>第五步：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git stash pop
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git stash pop
 </code></pre></div><p>这样你又可以修改本地的修改，之后再次提交就好了。</p>
                 
               </div>
@@ -260,7 +260,7 @@ git remote add origin git@github.com:your_username/your_project.git
 git push -u origin master
 </code></pre>
 <p>若仓库存在直接push </p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git remote add origin git@github.com:your_username/your_project.git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git remote add origin git@github.com:your_username/your_project.git
 git push -u origin master
 </code></pre></div>
                   <a href="http://flyeric.top/post/git-common-commands/" class="post-read-more">[阅读全文]</a>
@@ -374,7 +374,7 @@ git push -u origin master
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -383,7 +383,7 @@ git push -u origin master
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

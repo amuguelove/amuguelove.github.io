@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/post/mongo-replica-sets-install/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,7 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -262,7 +262,7 @@ if (!doNotTrack) {
 </li>
 <li>
 <p>Linux/MacOS:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mkdir -p ~/data/db{1,2,3}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mkdir -p ~/data/db{1,2,3}
 </code></pre></div></li>
 </ul>
 <h2 id="准备配置文件">准备配置文件</h2>
@@ -273,19 +273,19 @@ if (!doNotTrack) {
 </li>
 <li>
 <p>不同的数据目录</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">~/data/db1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">~/data/db1
 ~/data/db2
 ~/data/db3
 </code></pre></div></li>
 <li>
 <p>不同日志文件路径。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">~/data/db1/mongod.log
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">~/data/db1/mongod.log
 ~/data/db2/mongod.log
 ~/data/db3/mongod.log
 </code></pre></div></li>
 </ul>
 <p><strong>配置文件如下：</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># ~/data/db1/mongod.conf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># ~/data/db1/mongod.conf
 
 systemLog:
   destination: file
@@ -301,22 +301,22 @@ replication:
 processManagement:
   fork: true
 </code></pre></div><h2 id="启动mongodb进程">启动MongoDB进程</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongod -f ~/data/db1/mongod.conf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongod -f ~/data/db1/mongod.conf
 mongod -f ~/data/db2/mongod.conf 
 mongod -f ~/data/db3/mongod.conf
 </code></pre></div><h2 id="查看mongodb进程">查看MongoDB进程</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">bo.liang          8911   0.1  0.2  5576252  27356   ??  S     7:21PM   0:00.56 mongod -f /Users/bo.liang/data/db3/mongod.conf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">bo.liang          8911   0.1  0.2  5576252  27356   ??  S     7:21PM   0:00.56 mongod -f /Users/bo.liang/data/db3/mongod.conf
 bo.liang          8760   0.1  0.2  5601200  30796   ??  S     7:19PM   0:00.96 mongod -f /Users/bo.liang/data/db1/mongod.conf
 bo.liang          8889   0.1  0.2  5593800  27668   ??  S     7:21PM   0:00.58 mongod -f /Users/bo.liang/data/db2/mongod.conf
 </code></pre></div><h2 id="配置复制集">配置复制集</h2>
 <h3 id="方法1">方法1</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongo localhost:28017
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongo localhost:28017
 
 rs.initiate()
 rs.add(&#34;HOSTNAME:28018&#34;)
 rs.add(&#34;HOSTNAME:28019&#34;)
 </code></pre></div><p>注意:此方式hostname 需要能被解析</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&gt; hostname -f
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&gt; hostname -f
 CNbo.liang
 
 所以：
@@ -326,7 +326,7 @@ rs.add(&#34;CNbo.liang:28019&#34;)
 或者
 rs.add(&#34;127.0.0.1:28018&#34;)
 rs.add(&#34;127.0.0.1:28019&#34;)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">rs0:PRIMARY&gt; rs.status()
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">rs0:PRIMARY&gt; rs.status()
 {
 	&#34;set&#34; : &#34;rs0&#34;,
 	&#34;date&#34; : ISODate(&#34;2020-03-10T11:29:47.821Z&#34;),
@@ -469,7 +469,7 @@ rs.add(&#34;127.0.0.1:28019&#34;)
 	&#34;operationTime&#34; : Timestamp(1583839785, 1)
 }
 </code></pre></div><h3 id="方法2">方法2</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongo localhost:28017
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongo localhost:28017
 
 rs.initiate({
 	_id: &#34;rs0&#34;, 
@@ -486,13 +486,13 @@ rs.initiate({
 })
 </code></pre></div><h2 id="验证">验证</h2>
 <h3 id="mongodb-主节点进行写入">MongoDB 主节点进行写入</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongo localhost:28017
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongo localhost:28017
 
 db.test.insert({ a:1 })
 
 db.test.insert({ a:2 })
 </code></pre></div><h3 id="mongodb-从节点进行读">MongoDB 从节点进行读</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongo localhost:28018
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mongo localhost:28018
 rs.slaveOk()
 db.test.find()
 </code></pre></div><h2 id="总结">总结</h2>
@@ -670,7 +670,7 @@ db.test.find()
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -679,7 +679,7 @@ db.test.find()
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

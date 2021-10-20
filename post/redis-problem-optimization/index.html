@@ -38,7 +38,7 @@ redis单机QPS一般在几万，fork可能一下子就会拖慢几万条操作�
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/post/redis-problem-optimization/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -49,7 +49,7 @@ redis单机QPS一般在几万，fork可能一下子就会拖慢几万条操作�
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -257,11 +257,11 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
 <p>如果一下子让多个slave从master去执行全量复制，一份大的rdb同时发送到多个slave，会导致网络带宽被严重占用 。<br>
 如果一个master真的要挂载多个slave，那尽量用树状结构，不要用星型结构。</p>
 <h4 id="5--vmovercommit_memory-配置">5.  <code>vm.overcommit_memory</code> 配置</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">0: 检查有没有足够内存，没有的话申请内存失败 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">0: 检查有没有足够内存，没有的话申请内存失败 
 1: 允许使用内存直到用完为止 
 2: 内存地址空间不能超过swap + 50% 
 </code></pre></div><p>如果是0的话，可能导致类似fork等操作执行失败，申请不到足够的内存空间。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat /proc/sys/vm/overcommit_memory
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat /proc/sys/vm/overcommit_memory
 echo &#34;vm.overcommit_memory=1&#34; &gt;&gt; /etc/sysctl.conf
 sysctl vm.overcommit_memory=1
 </code></pre></div><h4 id="6-swappiness">6. <code>swappiness</code></h4>
@@ -269,12 +269,12 @@ sysctl vm.overcommit_memory=1
 如果linux内核版本&lt;3.5，那么swappiness设置为0，这样系统宁愿swap也不会oom killer（杀掉进程）；<br>
 如果linux内核版本&gt;=3.5，那么swappiness设置为1，这样系统宁愿swap也不会oom killer。<br>
 保证redis不会被杀掉 。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat /proc/sys/vm/swappiness 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat /proc/sys/vm/swappiness 
 echo 0 &gt; /proc/sys/vm/swappiness 
 echo vm.swappiness=0 &gt;&gt; /etc/sysctl.conf 
 </code></pre></div><h4 id="7-设置最大打开文件句柄">7. 设置最大打开文件句柄</h4>
 <p>单个进程最多允许打开的文件句柄数（包括socket连接数）是有限制的，当大于这个系统限制时，程序会抛出大量的无法打开文件的报错。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># ulimit -a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># ulimit -a
 core file size          (blocks, -c) unlimited
 data seg size           (kbytes, -d) unlimited
 file size               (blocks, -f) unlimited
@@ -291,20 +291,20 @@ virtual memory          (kbytes, -v) unlimited
 file locks                      (-x) unlimited
 </code></pre></div><p>其中open files表示的是单个进程最多允许打开的文件句柄数（soket连接数也算在内），默认值是1024。对于一般的程序来说，这个值是足够的，但是对于很多需要打开大量文件或者大量socket连接的程序来说，这个值就不够了。</p>
 <p>设置每个进程的最大打开数，<strong>非root用户只能越设置越小，不能越设置越大</strong>：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// 切换到root
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// 切换到root
 sudo su - 
 ulimit -n 10240 10240 
 </code></pre></div><p><em>任何用户对ulimit -n的修改只在当前环境有效，退出后失效，重新登录新来后，ulimit -n由limits.conf决定。</em></p>
 <p>可以使用如下命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">echo fs.file-max=6553560 &gt;&gt; /etc/sysctl.conf 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">echo fs.file-max=6553560 &gt;&gt; /etc/sysctl.conf 
 echo &#34;* soft nofile 10240&#34;  &gt;&gt; /etc/security/limits.conf 
 echo &#34;* hard nofile 10240&#34;  &gt;&gt; /etc/security/limits.conf 
 </code></pre></div><p>修改之后，不需重启服务器，只需退出当前ssh远程连接，重新登录之后重启相关程序即可生效。</p>
 <h4 id="8-tcp-backlog">8. <code>tcp backlog</code></h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat /proc/sys/net/core/somaxconn
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat /proc/sys/net/core/somaxconn
 echo net.core.somaxconn=511 &gt;&gt; /etc/sysctl.conf
 </code></pre></div><p><strong>注意以上修改/etc/sysctl.conf，可以执行如下命令生效：</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo sysctl -p
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo sysctl -p
 </code></pre></div>
 
           
@@ -475,7 +475,7 @@ echo net.core.somaxconn=511 &gt;&gt; /etc/sysctl.conf
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -484,7 +484,7 @@ echo net.core.somaxconn=511 &gt;&gt; /etc/sysctl.conf
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/post/linux-command-grep/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,7 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -230,7 +230,7 @@ if (!doNotTrack) {
 <h3 id="2-命令功能">2. 命令功能</h3>
 <p><strong>grep</strong> （global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。用于过滤/搜索的特定字符。可使用正则表达式能多种命令配合使用，使用上十分灵活。</p>
 <h3 id="3-命令参数">3. 命令参数</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">-a --text  # 不要忽略二进制数据。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">-a --text  # 不要忽略二进制数据。
 -A &lt;显示行数&gt;   --after-context=&lt;显示行数&gt;   # 除了显示符合范本样式的那一行之外，并显示该行之后的内容。
 -b --byte-offset                           # 在显示符合范本样式的那一行之外，并显示该行之前的内容。
 -B&lt;显示行数&gt;   --before-context=&lt;显示行数&gt;   # 除了显示符合样式的那一行之外，并显示该行之前的内容。
@@ -293,7 +293,7 @@ FILE	    # 指定将对其进行模式搜索的文件的名称。如果未给出
 </tbody>
 </table>
 <h3 id="5-规则表达式">5. 规则表达式</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">^  # 锚定行的开始 如：&#39;^grep&#39;匹配所有以grep开头的行。    
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">^  # 锚定行的开始 如：&#39;^grep&#39;匹配所有以grep开头的行。    
 
 $  # 锚定行的结束 如：&#39;grep$&#39;匹配所有以grep结尾的行。    
 
@@ -328,26 +328,26 @@ x\{m,n\}  # 重复字符x，至少m次，不多于n次，如：&#39;o\{5,10\}&#3
 <ul>
 <li>若使用包含以下模式匹配字符的模式：*, ^, ?, [, ], (, ), { 和 }，请输入：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">grep &#34;^[a-zA-Z]&#34; pgm.s 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">grep &#34;^[a-zA-Z]&#34; pgm.s 
 </code></pre></div><p>这将显示 pgm.s 中第一个字符为字母的所有行。</p>
 <ul>
 <li>若显示所有与模式不匹配的行，请输入</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">grep -v &#34;^#&#34; pgm.s
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">grep -v &#34;^#&#34; pgm.s
 </code></pre></div><p>这将显示 pgm.s 中首字母不是 #（井字符）的所有行。</p>
 <ul>
 <li>若显示文件 file1 中与abc 或 xyz 字符串匹配的所有行，请输入：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">grep -E &#34;abc|xyz&#34; file1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">grep -E &#34;abc|xyz&#34; file1
 </code></pre></div><ul>
 <li>若在名为 test2 的文件中搜索 $（美元符号），请输入：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">grep \\$ test2
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">grep \\$ test2
 </code></pre></div><p>为了强制 shell 将 $（单反斜杠和美元符号）传递给 <strong>grep</strong> 命令，必须要使用 \（双反斜杠）。\（单反斜杠）字符可通知 <strong>grep</strong> 命令将其后的字符（本例中为 $）视作原义字符而不是表达式字符。如果使用 <strong>fgrep</strong> 命令，那么可以不必使用反斜杠之类的转义字符。</p>
 <ul>
 <li>通过 <strong>/tmp</strong> 递归地搜索以找到含有字 IBM 的文件，请输入：</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">grep –r IBM /tmp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">grep –r IBM /tmp
 </code></pre></div>
 
           
@@ -518,7 +518,7 @@ x\{m,n\}  # 重复字符x，至少m次，不多于n次，如：&#39;o\{5,10\}&#3
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -527,7 +527,7 @@ x\{m,n\}  # 重复字符x，至少m次，不多于n次，如：&#39;o\{5,10\}&#3
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

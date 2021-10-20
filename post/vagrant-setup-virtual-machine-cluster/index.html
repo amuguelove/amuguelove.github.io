@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/post/vagrant-setup-virtual-machine-cluster/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,7 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -346,7 +346,7 @@ if (!doNotTrack) {
 </tr>
 <tr>
 <td><code>config.vm.box_download_checksum</code></td>
-<td>由<code>config.vm.box_url</code>指定的box的校验。如果未指定，则不会执行校验和比较。如果指定，Vagrant会将下载的box校验与这个值和错误进行比较，如果指定了此选项，则还必须指定`config.vm.box_download_checksum_type。 |</td>
+<td>由<code>config.vm.box_url</code>指定的box的校验。如果未指定，则不会执行校验和比较。如果指定，Vagrant会将下载的box校验与这个值和错误进行比较，如果指定了此选项，则还必须指定`config.vm.box_download_checksum_type。</td>
 </tr>
 <tr>
 <td><code>config.vm.box_download_checksum_type</code></td>
@@ -523,10 +523,10 @@ if (!doNotTrack) {
 <p>比如：<code>~/Document/vagrant</code></p>
 <p>使用命令：<code>vagrant init</code>初始化，会自动生成<code>Vagrantfile</code>文件</p>
 <p><strong>2. 下载centos系统</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant box add centos/7
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant box add centos/7
 </code></pre></div><p>　<a href="https://app.vagrantup.com/boxes/search">Vagrant Box的中央仓库地址</a></p>
 <p><strong>3. 配置<code>Vagrantfile</code>文件，创建一个3个节点的虚拟机</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Vagrant.configure(&#34;2&#34;) do |config|
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Vagrant.configure(&#34;2&#34;) do |config|
    (1..3).each do |i|
         config.vm.define &#34;node#{i}&#34; do |node|
             # 设置虚拟机的Box
@@ -578,39 +578,39 @@ end
 <h3 id="启动虚拟机">启动虚拟机</h3>
 <p>之前介绍的，就是本地搭建集群所需掌握的 Vagrantfile 文件格式的基本内容了。下面介绍如何从这个配置文件来启动这组虚拟机。</p>
 <p>将上面的文件保存为 <code>Vagranfile</code>，然后在 Vagranfile 文件所在目录执行：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant up
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant up
 </code></pre></div><p>这时候整个集群启动完毕了。</p>
 <h2 id="使用虚拟机">使用虚拟机</h2>
 <p>前面说过要连接虚拟机，是要使用虚拟机的 hostname，比如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant ssh node1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant ssh node1
 </code></pre></div><p>这句命令会以 vagrant 的用户登录到 deploy 虚拟机节点，然后可以用 <code>sudo su</code> 命令获得 root 权限。</p>
 <p>用一下指令可以查看虚拟机的 ssh 配置详细情况：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant ssh-config
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant ssh-config
 </code></pre></div><p>当我们想暂时关闭虚拟机时可以：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant halt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant halt
 </code></pre></div><p>这个命令会关掉整组虚拟机，要是我们只想关掉 deploy 可以用：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant halt node1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant halt node1
 </code></pre></div><p>当我们玩腻了，想要删掉虚拟机可以：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant destroy
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vagrant destroy
 </code></pre></div><p>Vagrant 会每台机子询问是否删除。</p>
 <h3 id="免密登陆">免密登陆</h3>
 <p>（1）配置hosts</p>
 <p>每台机器上都做如下配置：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vi /etc/hosts
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vi /etc/hosts
 
 增加如下内容：
 192.168.56.101 node1
 192.168.56.102 node2
 192.168.56.103 node3
 </code></pre></div><p>(2) 生成秘钥</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ssh-keygen -t rsa
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ssh-keygen -t rsa
 </code></pre></div><p>默认的路径在<code>/home/vagrant/.ssh/</code></p>
 <p>复制到其他虚拟机即可实现免密登陆：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ssh-copy-id vagrant@node1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ssh-copy-id vagrant@node1
 ssh-copy-id vagrant@node2
 ssh-copy-id vagrant@node3
 </code></pre></div><p>如果免密登陆失败，是ssh密码校验没有开启，可以如下操作：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vi /etc/ssh/sshd_config
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">vi /etc/ssh/sshd_config
 开启如下配置：
 PasswordAuthentication yes
 systemctl restart sshd
@@ -784,7 +784,7 @@ systemctl restart sshd
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -793,7 +793,7 @@ systemctl restart sshd
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

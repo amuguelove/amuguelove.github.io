@@ -6,11 +6,11 @@
     <description>Recent content in Categories on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>kubernetes</title>
       <link>http://flyeric.top/categories/kubernetes/</link>
-      <pubDate>Fri, 03 Sep 2021 00:00:00 +0800</pubDate>
+      <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/categories/kubernetes/</guid>
       <description></description>
@@ -19,7 +19,7 @@
     <item>
       <title>Tools</title>
       <link>http://flyeric.top/categories/tools/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/categories/tools/</guid>
       <description></description>
@@ -28,7 +28,7 @@
     <item>
       <title>Linux</title>
       <link>http://flyeric.top/categories/linux/</link>
-      <pubDate>Sat, 26 Dec 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 26 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/categories/linux/</guid>
       <description></description>
@@ -37,7 +37,7 @@
     <item>
       <title>Git</title>
       <link>http://flyeric.top/categories/git/</link>
-      <pubDate>Fri, 30 Oct 2020 00:00:00 +0800</pubDate>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/categories/git/</guid>
       <description></description>
@@ -46,7 +46,7 @@
     <item>
       <title>Vagrant</title>
       <link>http://flyeric.top/categories/vagrant/</link>
-      <pubDate>Sun, 11 Oct 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/categories/vagrant/</guid>
       <description></description>
@@ -55,7 +55,7 @@
     <item>
       <title>book</title>
       <link>http://flyeric.top/categories/book/</link>
-      <pubDate>Sat, 10 Oct 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/categories/book/</guid>
       <description></description>
@@ -64,7 +64,7 @@
     <item>
       <title>RegExp</title>
       <link>http://flyeric.top/categories/regexp/</link>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 +0800</pubDate>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/categories/regexp/</guid>
       <description></description>
@@ -73,7 +73,7 @@
     <item>
       <title>https</title>
       <link>http://flyeric.top/categories/https/</link>
-      <pubDate>Sat, 29 Aug 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 29 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/categories/https/</guid>
       <description></description>
@@ -82,7 +82,7 @@
     <item>
       <title>Docker</title>
       <link>http://flyeric.top/categories/docker/</link>
-      <pubDate>Tue, 07 Apr 2020 00:00:00 +0800</pubDate>
+      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/categories/docker/</guid>
       <description></description>
@@ -91,7 +91,7 @@
     <item>
       <title>Java</title>
       <link>http://flyeric.top/categories/java/</link>
-      <pubDate>Mon, 23 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/categories/java/</guid>
       <description></description>
@@ -100,7 +100,7 @@
     <item>
       <title>Gradle</title>
       <link>http://flyeric.top/categories/gradle/</link>
-      <pubDate>Thu, 19 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/categories/gradle/</guid>
       <description></description>
@@ -109,7 +109,7 @@
     <item>
       <title>springboot</title>
       <link>http://flyeric.top/categories/springboot/</link>
-      <pubDate>Wed, 18 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 18 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/categories/springboot/</guid>
       <description></description>
@@ -118,7 +118,7 @@
     <item>
       <title>mongo</title>
       <link>http://flyeric.top/categories/mongo/</link>
-      <pubDate>Mon, 09 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/categories/mongo/</guid>
       <description></description>
@@ -127,7 +127,7 @@
     <item>
       <title>生活杂记</title>
       <link>http://flyeric.top/categories/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</link>
-      <pubDate>Sun, 03 Nov 2019 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/categories/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</guid>
       <description></description>

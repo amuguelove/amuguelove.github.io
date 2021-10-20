@@ -6,11 +6,11 @@
     <description>Recent content in Tools on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/categories/tools/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/categories/tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Typora&#43;iCloud&#43;uPic搭建Markdown写作神器</title>
       <link>http://flyeric.top/post/writing-with-typora/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/writing-with-typora/</guid>
       <description>&lt;p&gt;我非常喜欢记录笔记，也使用过很多写笔记的APP，从&lt;code&gt;印象笔记&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;Notion&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;Emacs&lt;/code&gt;  &amp;ndash;&amp;gt; &lt;code&gt;Bear&lt;/code&gt;&amp;ndash;&amp;gt; &lt;code&gt;印象笔记&lt;/code&gt;，由于个人在不同阶段有不同记录笔记的需求，导致时常会去寻找满足所有需求的笔记APP。迁移笔记也是非常的痛苦，尤其是Markdown笔记迁移到非Markdown笔记APP。&lt;/p&gt;
@@ -52,16 +52,16 @@
       <description>&lt;p&gt;简单的 http 性能测试工具，记录一下使用方法。&lt;/p&gt;
 &lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
 &lt;h4 id=&#34;macos&#34;&gt;MacOS&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;brew install wrk
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;brew install wrk
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;ubuntudebian&#34;&gt;Ubuntu/Debian&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo apt-get install build-essential libssl-dev git -y
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo apt-get install build-essential libssl-dev git -y
 git clone https://github.com/wg/wrk.git wrk
 cd wrk
 sudo make
 # move the executable to somewhere in your PATH, ex:
 sudo cp wrk /usr/local/bin
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;centos--redhat--fedora&#34;&gt;CentOS / RedHat / Fedora&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo yum groupinstall &amp;#39;Development Tools&amp;#39;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo yum groupinstall &amp;#39;Development Tools&amp;#39;
 sudo yum install openssl-devel
 sudo yum install git
 git clone https://github.com/wg/wrk.git wrk

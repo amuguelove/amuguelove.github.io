@@ -37,7 +37,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/post/redis-sentinel-setup/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -48,7 +48,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -288,23 +288,23 @@ if (!doNotTrack) {
 <p>（3）复制offset</p>
 <p>（4）run id</p>
 <p>如果一个slave跟master断开连接已经超过了down-after-milliseconds的10倍，外加master宕机的时长，那么slave就被认为不适合选举为master 。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">(down-after-milliseconds * 10) + milliseconds_since_master_is_in_SDOWN_state 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">(down-after-milliseconds * 10) + milliseconds_since_master_is_in_SDOWN_state 
 </code></pre></div><p>接下来会对slave进行排序</p>
 <p>（1）按照slave优先级进行排序，slave priority越低，优先级就越高</p>
 <p>（2）如果slave priority相同，那么看replica offset，哪个slave复制了越多的数据，offset越靠后，优先级就越高</p>
 <p>（3）如果上面两个条件都相同，那么选择一个run id比较小的那个slave</p>
 <h3 id="redis-sentinel-配置">Redis Sentinel 配置</h3>
 <p><strong>1）准备工作</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mkdir /etc/sentinel/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mkdir /etc/sentinel/
 mkdir -p /var/sentinel/26379
 mkdir -p /var/log/sentinel/
 
 iptables -A INPUT -p tcp --dport  26379 -j ACCEPT
 </code></pre></div><p><strong>2）添加配置文件</strong></p>
 <p>可以参考官方文档，<a href="http://download.redis.io/redis-stable/sentinel.conf">Redis Sentinel 官方文档</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/etc/sentinel/26379.conf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/etc/sentinel/26379.conf
 </code></pre></div><p>加入如下配置：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">port 26379
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">port 26379
 bind 192.168.56.101
 dir /var/sentinel/26379
 daemonize yes
@@ -316,17 +316,17 @@ sentinel down-after-milliseconds mymaster 30000
 sentinel failover-timeout mymaster 60000
 sentinel parallel-syncs mymaster 1
 </code></pre></div><p>如果你加上了安全校验，还需要添加：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sentinel auth-pass mymaster &lt;password&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sentinel auth-pass mymaster &lt;password&gt;
 </code></pre></div><p>每一个哨兵都可以去监控多个maser-slaves的主从架构，只需要<code>&lt;master-name&gt;</code>不同就行。</p>
 <p><code>down-after-milliseconds</code>: 超过多少毫秒跟一个redis实例断了连接，哨兵就可能认为这个redis实例挂了。</p>
 <p><code>failover-timeout</code>: 执行故障转移的timeout超时时长。</p>
 <p><code>parallel-syncs</code>: 新的master别切换之后，同时有多少个slave被切换到去连接新master，重新做同步，数字越低，花费的时间越多。</p>
 <h3 id="启动">启动</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/usr/local/bin/redis-sentinel /etc/sentinel/26379.conf 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/usr/local/bin/redis-sentinel /etc/sentinel/26379.conf 
 </code></pre></div><p>以上配置操作在3台机器做相同的操作即可，需要修改下<code>bind</code>参数，改成每台机器的ip地址即可。</p>
 <p>最后，可以将<code>Redis Sentinel</code>改成自启动，可自行百度。</p>
 <h3 id="检查哨兵状态">检查哨兵状态</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">redis-cli -h 192.168.56.101 -a yourPassword -p 26379
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">redis-cli -h 192.168.56.101 -a yourPassword -p 26379
 
 sentinel master mymaster 
 sentinel slaves mymaster 
@@ -502,7 +502,7 @@ sentinel get-master-addr-by-name mymaster
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -511,7 +511,7 @@ sentinel get-master-addr-by-name mymaster
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

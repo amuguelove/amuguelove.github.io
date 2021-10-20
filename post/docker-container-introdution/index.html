@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/post/docker-container-introdution/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,7 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -251,15 +251,15 @@ if (!doNotTrack) {
 <h3 id="11-新建并启动">1.1 新建并启动</h3>
 <p>所需要的命令主要为 <code>docker run</code>。</p>
 <p>例如，下面的命令输出一个 “Hello World”，之后终止容器。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker run ubuntu:14.04 /bin/echo &#39;Hello world&#39;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker run ubuntu:14.04 /bin/echo &#39;Hello world&#39;
 Hello world
 </code></pre></div><p>这跟在本地直接执行 <code>/bin/echo 'hello world'</code> 几乎感觉不出任何区别。</p>
 <p>下面的命令则启动一个 bash 终端，允许用户进行交互。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker run -t -i ubuntu:14.04 /bin/bash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker run -t -i ubuntu:14.04 /bin/bash
 root@af8bae53bdd3:/#
 </code></pre></div><p>其中，<code>-t</code> 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上， <code>-i</code> 则让容器的标准输入保持打开。</p>
 <p>在交互模式下，用户可以通过所创建的终端来输入命令，例如</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">root@af8bae53bdd3:/# pwd
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">root@af8bae53bdd3:/# pwd
 /
 root@af8bae53bdd3:/# ls
 bin boot dev etc home lib lib64 media mnt opt proc root run sbin srv sys tmp usr var
@@ -276,7 +276,7 @@ bin boot dev etc home lib lib64 media mnt opt proc root run sbin srv sys tmp usr
 <h3 id="12-启动已终止容器">1.2 启动已终止容器</h3>
 <p>可以利用 <code>docker container start</code> 命令，直接将一个已经终止的容器启动运行。</p>
 <p>容器的核心为所执行的应用程序，所需要的资源都是应用程序运行所必需的。除此之外，并没有其它的资源。可以在伪终端中利用 <code>ps</code> 或 <code>top</code> 来查看进程信息。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">root@ba267838cc1b:/# ps
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">root@ba267838cc1b:/# ps
   PID TTY          TIME CMD
     1 ?        00:00:00 bash
    11 ?        00:00:00 ps
@@ -285,23 +285,23 @@ bin boot dev etc home lib lib64 media mnt opt proc root run sbin srv sys tmp usr
 <p>更多的时候，需要让 Docker 在后台运行而不是直接把执行命令的结果输出在当前宿主机下。此时，可以通过添加 <code>-d</code> 参数来实现。</p>
 <p>下面举两个例子来说明一下。</p>
 <p>如果不使用 <code>-d</code> 参数运行容器。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker run ubuntu:18.04 /bin/sh -c &#34;while true; do echo hello world; sleep 1; done&#34;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker run ubuntu:18.04 /bin/sh -c &#34;while true; do echo hello world; sleep 1; done&#34;
 hello world
 hello world
 hello world
 hello world
 </code></pre></div><p>容器会把输出的结果 (STDOUT) 打印到宿主机上面</p>
 <p>如果使用了 <code>-d</code> 参数运行容器。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker run -d ubuntu:18.04 /bin/sh -c &#34;while true; do echo hello world; sleep 1; done&#34;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker run -d ubuntu:18.04 /bin/sh -c &#34;while true; do echo hello world; sleep 1; done&#34;
 77b2dc01fe0f3f1265df143181e7b9af5e05279a884f4776ee75350ea9d8017a
 </code></pre></div><p>此时容器会在后台运行并不会把输出的结果 (STDOUT) 打印到宿主机上面(输出结果可以用 <code>docker logs</code>查看)。</p>
 <p><strong>注：</strong> 容器是否会长久运行，是和 <code>docker run</code> 指定的命令有关，和 <code>-d</code> 参数无关。</p>
 <p>使用 <code>-d</code> 参数启动后会返回一个唯一的 id，也可以通过 <code>docker container ls</code> 命令来查看容器信息。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker container ls
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker container ls
 CONTAINER ID  IMAGE         COMMAND               CREATED        STATUS       PORTS NAMES
 77b2dc01fe0f  ubuntu:18.04  /bin/sh -c &#39;while tr  2 minutes ago  Up 1 minute        agitated_wright
 </code></pre></div><p>要获取容器的输出信息，可以通过 <code>docker container logs</code> 命令。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker container logs [container ID or NAMES]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker container logs [container ID or NAMES]
 hello world
 hello world
 hello world
@@ -311,7 +311,7 @@ hello world
 <p>此外，当 Docker 容器中指定的应用终结时，容器也自动终止。</p>
 <p>例如对于上一章节中只启动了一个终端的容器，用户通过 <code>exit</code> 命令或 <code>Ctrl+d</code> 来退出终端时，所创建的容器立刻终止。</p>
 <p>终止状态的容器可以用 <code>docker container ls -a</code> 命令看到。例如</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">docker container ls -a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">docker container ls -a
 CONTAINER ID        IMAGE                    COMMAND                CREATED             STATUS                          PORTS               NAMES
 ba267838cc1b        ubuntu:14.04             &#34;/bin/bash&#34;            30 minutes ago      Exited (0) About a minute ago                       trusting_newton
 98e5efa7d997        training/webapp:latest   &#34;python app.py&#34;        About an hour ago   Exited (0) 34 minutes ago                           backstabbing_pike
@@ -322,7 +322,7 @@ ba267838cc1b        ubuntu:14.04             &#34;/bin/bash&#34;            30 m
 <p>某些时候需要进入容器进行操作，包括使用 <code>docker attach</code> 命令或 <code>docker exec</code> 命令，推荐大家使用 <code>docker exec</code> 命令，原因会在下面说明。</p>
 <h3 id="41-attach-命令">4.1 <code>attach</code> 命令</h3>
 <p><code>docker attach</code> 是 Docker 自带的命令。下面示例如何使用该命令。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker run -dit ubuntu
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker run -dit ubuntu
 243c32535da7d142fb0e6df616a3c3ada0b8ab417937c853a9e1c251f499f550
 
 $ docker container ls
@@ -337,7 +337,7 @@ root@243c32535da7:/#
 <p><code>docker exec</code> 后边可以跟多个参数，这里主要说明 <code>-i</code> <code>-t</code> 参数。</p>
 <p>只用 <code>-i</code> 参数时，由于没有分配伪终端，界面没有我们熟悉的 Linux 命令提示符，但命令执行结果仍然可以返回。</p>
 <p>当 <code>-i</code> <code>-t</code> 参数一起使用时，则可以看到我们熟悉的 Linux 命令提示符。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker run -dit ubuntu
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker run -dit ubuntu
 69d137adef7a8a689cbcb059e94da5489d3cddd240ff675c640c8d96e84fe1f6
 
 $ docker container ls
@@ -357,12 +357,12 @@ root@69d137adef7a:/#
 <p>更多参数说明请使用 <code>docker exec --help</code> 查看。</p>
 <h2 id="5-删除容器">5. 删除容器</h2>
 <p>可以使用 <code>docker container rm</code> 来删除一个处于终止状态的容器。例如</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker container rm  trusting_newton
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker container rm  trusting_newton
 trusting_newton
 </code></pre></div><p>如果要删除一个运行中的容器，可以添加 <code>-f</code> 参数。Docker 会发送 <code>SIGKILL</code> 信号给容器。</p>
 <h2 id="清理所有处于终止状态的容器">清理所有处于终止状态的容器</h2>
 <p>用 <code>docker container ls -a</code> 命令可以查看所有已经创建的包括终止状态的容器，如果数量太多要一个个删除可能会很麻烦，用下面的命令可以清理掉所有处于终止状态的容器。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker container prune
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker container prune
 </code></pre></div>
 
           
@@ -533,7 +533,7 @@ trusting_newton
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -542,7 +542,7 @@ trusting_newton
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

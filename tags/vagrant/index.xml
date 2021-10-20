@@ -6,11 +6,11 @@
     <description>Recent content in Vagrant on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 11 Oct 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Vagrant定制Box</title>
       <link>http://flyeric.top/post/customize-vagrant-box/</link>
-      <pubDate>Sun, 11 Oct 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/customize-vagrant-box/</guid>
       <description>&lt;p&gt;很多人在学习Kubernetes之前，都会苦恼如何搭建一个集群环境呢？你可以使用新版的Docker快速搭建一个单Master的集群，你也可以购买云厂商的集群服务；使用Docker安装集群非常的简单，但是只能是单master节点；购买云厂商的集群服务可以拥有所有的集群功能，而且任意购买云存储，外网LoadBalancer等，但是费用昂贵，因为k8s集群对机器的要求还是不低的。那有没有其他的选择呢？下面给大家介绍我是如何在本地快速搭建k8s集群的。&lt;/p&gt;
@@ -21,7 +21,7 @@
     <item>
       <title>使用kubeadm搭建Kubernetes集群</title>
       <link>http://flyeric.top/post/kubeadm-install-kubernetes-cluster/</link>
-      <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/kubeadm-install-kubernetes-cluster/</guid>
       <description>&lt;p&gt;之前使用二进制Hard-Way模式搭建了Kubernetes三节点集群，今天采用Kubeadm 来快速搭建Kubernetes V1.16.8集群。&lt;/p&gt;</description>
@@ -30,7 +30,7 @@
     <item>
       <title>使用二进制搭建kubernetes三节点高可用集群</title>
       <link>http://flyeric.top/post/local-install-ha-kubernetes-cluster/</link>
-      <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/local-install-ha-kubernetes-cluster/</guid>
       <description>&lt;p&gt;Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 &lt;a href=&#34;https://www.cncf.io/about&#34;&gt;CNCF&lt;/a&gt;。你可以通过阅读 &lt;a href=&#34;https://kubernetes.io/zh/docs/home/&#34;&gt;官方文档&lt;/a&gt;了解Kubernetes和其基础概念。&lt;/p&gt;

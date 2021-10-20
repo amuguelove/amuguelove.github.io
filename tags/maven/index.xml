@@ -6,11 +6,11 @@
     <description>Recent content in maven on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 19 Mar 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/tags/maven/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/maven/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Gradle发布Java Library到Maven中央仓库</title>
       <link>http://flyeric.top/post/gradle-publish-jar-into-maven-central/</link>
-      <pubDate>Thu, 19 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/gradle-publish-jar-into-maven-central/</guid>
       <description>&lt;p&gt;最近打算将一些基础的Jar包上传到&lt;code&gt;Maven&lt;/code&gt;中央仓库，方便在自己项目中引用。本文将结合&lt;code&gt;Gradle&lt;/code&gt;的两个插件&lt;code&gt;maven-publish&lt;/code&gt;和 &lt;code&gt;signing&lt;/code&gt;来讲解如何发布一个Jar包。&lt;/p&gt;

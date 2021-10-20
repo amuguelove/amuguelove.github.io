@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/post/customize-vagrant-box/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,7 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -255,7 +255,7 @@ if (!doNotTrack) {
 <p><img src="http://flyeric.top/img/post/vagrant-box.png" alt=""></p>
 <h2 id="vagrantfile配置文件">Vagrantfile配置文件</h2>
 <p>Vagrant会将项目根目录下所有文件同步到目标节点的<code>/vagrant</code>目录，在Vagrantfile配置文件中，以centos7，版本2004.01为基础镜像，执行执行<code>init-centos.sh</code>脚本来定制化Box。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># -*- mode: ruby -*-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># -*- mode: ruby -*-
 # vi: set ft=ruby :
 
 Vagrant.configure(&#34;2&#34;) do |config|
@@ -268,7 +268,7 @@ Vagrant.configure(&#34;2&#34;) do |config|
     config.vm.provision &#34;shell&#34;, path: &#34;init-centos.sh&#34;
 end
 </code></pre></div><h2 id="init-centossh脚本">init-centos.sh脚本</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ff79c6">#!/usr/bin/env bash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ff79c6">#!/usr/bin/env bash
 </span><span style="color:#ff79c6"></span>
 <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;### 0.update yum repos&#39;</span>
 rm /etc/yum.repos.d/CentOS-Base.repo
@@ -363,10 +363,10 @@ rm -f /var/log/wtmp /var/log/btmp <span style="color:#6272a4"># 清除日志</sp
 shutdown -h now <span style="color:#6272a4"># 立即关机</span>
 </code></pre></div><h2 id="定制box">定制Box</h2>
 <p>执行项目的Makefile脚本，注意查看控制台日志的输出。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">make build
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">make build
 </code></pre></div><h2 id="测试">测试</h2>
 <p>在项目根目录执行如下脚本测试：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 进入test目录
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 进入test目录
 cd test
 
 # 使用定制Box，启动Vagrant
@@ -381,7 +381,7 @@ vagrant halt &amp;&amp; vagrant destroy -f
 </code></pre></div><p>到这里定制Vagrant Box就结束了。</p>
 <h2 id="最后">最后</h2>
 <p>通过这个Vagrant Box，我终于可以快速的创建k8s集群了，并且可以切换不同的版本，目前使用的是1.18.4。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@node1 ~]# kubectl get nodes
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@node1 ~]# kubectl get nodes
 NAME    STATUS   ROLES    AGE    VERSION
 node1   Ready    master   124m   v1.18.4
 node2   Ready    &lt;none&gt;   120m   v1.18.4
@@ -553,7 +553,7 @@ node2   Ready    &lt;none&gt;   120m   v1.18.4
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -562,7 +562,7 @@ node2   Ready    &lt;none&gt;   120m   v1.18.4
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

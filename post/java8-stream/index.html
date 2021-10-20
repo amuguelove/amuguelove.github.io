@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/post/java8-stream/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,7 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -249,7 +249,7 @@ if (!doNotTrack) {
 <p>这类的操作。</p>
 <p>但在当今这个数据大爆炸的时代，在数据来源多样化、数据海量化的今天，很多时候不得不脱离 RDBMS，或者以底层返回的数据为基础进行更上层的数据统计。而 Java 的集合 API 中，仅仅有极少量的辅助型方法，更多的时候是程序员需要用 Iterator 来遍历集合，完成相关的聚合应用逻辑。这是一种远不够高效、笨拙的方法。在 Java 7 中，如果要发现 type 为 grocery 的所有交易，然后返回以交易值降序排序好的交易 ID 集合，我们需要这样写：</p>
 <p><strong>清单 1. Java 7 的排序、取值实现</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;Transaction&gt; groceryTransactions = new Arraylist&lt;&gt;();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;Transaction&gt; groceryTransactions = new Arraylist&lt;&gt;();
 for(Transaction t: transactions){
   if(t.getType() == Transaction.GROCERY){
     groceryTransactions.add(t);
@@ -268,14 +268,14 @@ for(Transaction t: groceryTransactions){
 }
 </code></pre></div><p>而在 Java 8 使用 Stream，代码更加简洁易读；而且使用并发模式，程序执行速度更快。</p>
 <p><strong>清单 2. Java 8 的排序、取值实现</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;Integer&gt; transactionsIds = transactions.parallelStream()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;Integer&gt; transactionsIds = transactions.parallelStream()
   .filter(t -&gt; t.getType() == Transaction.GROCERY)
   .sorted(comparing(Transaction::getValue)
   .reversed())
   .map(Transaction::getId)
   .collect(toList());
 </code></pre></div><p>需要注意的是，流只能遍历一次，遍历结束后，这个流就被关闭掉了。如果要重新遍历，可以从数据源（集合）中重新获取一个流。如果你对一个流遍历两次，就会抛出<code>java.lang.IllegalStateException</code>异常：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;String&gt; list = Arrays.asList(&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;String&gt; list = Arrays.asList(&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;);
 Stream&lt;String&gt; stream = list.stream();
 stream.forEach(System.out::println);
 stream.forEach(System.out::println); // 这里会抛出java.lang.IllegalStateException异常，因为流已经被关闭
@@ -300,19 +300,19 @@ stream.forEach(System.out::println); // 这里会抛出java.lang.IllegalStateExc
 <p><strong>有多种方式生成 Stream Source：</strong></p>
 <p><strong>1.由值创建流</strong></p>
 <p>使用静态方法<code>Stream.of()</code>创建流，该方法接收一个变长参数：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Stream&lt;Stream&gt; stream = Stream.of(&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Stream&lt;Stream&gt; stream = Stream.of(&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;);
 </code></pre></div><p>也可以使用静态方法<code>Stream.empty()</code>创建一个空的流：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Stream&lt;Stream&gt; stream = Stream.empty();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Stream&lt;Stream&gt; stream = Stream.empty();
 </code></pre></div><p><strong>2.由数组或集合创建流</strong></p>
 <p>使用静态方法<code>Arrays.stream()</code>从数组创建一个流，该方法接收一个数组参数：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">String[] strs = {&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;};
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">String[] strs = {&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;};
 Stream&lt;Stream&gt; stream = Arrays.stream(strs);
 </code></pre></div><p><strong>3.通过文件生成流</strong></p>
 <p>使用<code>java.nio.file.Files</code>类中的很多静态方法都可以获取流，比如<code>Files.lines()</code>方法，该方法接收一个<code>java.nio.file.Path</code>对象，返回一个由文件行构成的字符串流：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Stream&lt;String&gt; stream = Files.lines(Paths.get(&#34;text.txt&#34;), Charset.defaultCharset());
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Stream&lt;String&gt; stream = Files.lines(Paths.get(&#34;text.txt&#34;), Charset.defaultCharset());
 </code></pre></div><p><strong>4.通过函数创建流</strong></p>
 <p><code>java.util.stream.Stream</code>中有两个静态方法用于从函数生成流，他们分别是<code>Stream.generate()</code>和<code>Stream.iterate()</code>：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// iteartor
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// iteartor
 Stream.iterate(0, n -&gt; n + 2).limit(51)
   .forEach(System.out::println);
 
@@ -320,10 +320,10 @@ Stream.iterate(0, n -&gt; n + 2).limit(51)
 Stream.generate(() -&gt; &#34;Hello Man!&#34;).limit(10).forEach(System.out::println);
 </code></pre></div><p>第一个方法会打印100以内的所有偶数，第二个方法打印10个<code>Hello Man!</code>。值得注意的是，这两个方法生成的流都是无限流，没有固定大小，可以无穷的计算下去，在上面的代码中我们使用了<code>limit()</code>来避免打印无穷个值。</p>
 <p>一般来说，<code>iterate()</code>用于生成一系列值，比如生成以当前时间开始之后的10天的日期：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Stream.iterate(LocalDate.now(), date -&gt; date.plusDays(1))
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Stream.iterate(LocalDate.now(), date -&gt; date.plusDays(1))
   .limit(10).forEach(System.out::println);
 </code></pre></div><p><code>generate()</code>方法用于生成一些随机数，比如生成10个UUID：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Stream.generate(() -&gt; UUID.randomUUID().toString()).limit(10)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Stream.generate(() -&gt; UUID.randomUUID().toString()).limit(10)
   .forEach(System.out::println);
 </code></pre></div><p>流的操作类型分为两种：</p>
 <ul>
@@ -342,7 +342,7 @@ Stream.generate(() -&gt; &#34;Hello Man!&#34;).limit(10).forEach(System.out::pri
 <h4 id="流的构造与转换">流的构造与转换</h4>
 <p>下面提供最常见的几种构造 Stream 的样例。</p>
 <p><strong>清单 4. 构造流的几种常见方法</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// 1. Individual values
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// 1. Individual values
 Stream stream = Stream.of(&#34;a&#34;, &#34;b&#34;, &#34;c&#34;);
 
 // 2. Arrays
@@ -357,11 +357,11 @@ stream = list.stream();
 <p>IntStream、LongStream、DoubleStream。当然我们也可以用 Stream<!-- raw HTML omitted -->、Stream<!-- raw HTML omitted --> &gt;、Stream<!-- raw HTML omitted -->，但是 boxing 和 unboxing 会很耗时，所以特别为这三种基本数值型提供了对应的 Stream。</p>
 <p>Java 8 中还没有提供其它数值型 Stream，因为这将导致扩增的内容较多。而常规的数值型聚合运算可以通过上面三种 Stream 进行。</p>
 <p><strong>清单 5. 数值流的构造</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">IntStream.of(new int[]{1, 2, 3}).forEach(System.out::println);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">IntStream.of(new int[]{1, 2, 3}).forEach(System.out::println);
 IntStream.range(1, 3).forEach(System.out::println);
 IntStream.rangeClosed(1, 3).forEach(System.out::println);
 </code></pre></div><p><strong>清单 6. 流转换为其它数据结构</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// 1. Array
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// 1. Array
 String[] strArray1 = stream.toArray(String[]::new);
 
 // 2. Collection
@@ -391,19 +391,19 @@ String str = stream.collect(Collectors.joining()).toString();
 <p><strong>map/flatMap</strong></p>
 <p>我们先来看 map。如果你熟悉 scala 这类函数式语言，对这个方法应该很了解，它的作用就是把 input Stream 的每一个元素，映射成 output Stream 的另外一个元素。</p>
 <p><strong>清单 7. 转换大写</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;String&gt; output = wordList.stream()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;String&gt; output = wordList.stream()
   .map(String::toUpperCase)
   .collect(Collectors.toList());
 </code></pre></div><p>这段代码把所有的单词转换为大写。</p>
 <p><strong>清单 8. 平方数</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;Integer&gt; nums = Arrays.asList(1, 2, 3, 4);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;Integer&gt; nums = Arrays.asList(1, 2, 3, 4);
 List&lt;Integer&gt; squareNums = nums.stream()
   .map(n -&gt; n * n)
   .collect(Collectors.toList());
 </code></pre></div><p>这段代码生成一个整数 list 的平方数 {1, 4, 9, 16}。</p>
 <p>从上面例子可以看出，map 生成的是个 1:1 映射，每个输入元素，都按照规则转换成为另外一个元素。还有一些场景，是一对多映射关系的，这时需要 flatMap。</p>
 <p><strong>清单 9. 一对多</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Stream&lt;List&lt;Integer&gt;&gt; inputStream = Stream.of(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Stream&lt;List&lt;Integer&gt;&gt; inputStream = Stream.of(
   Arrays.asList(1),
   Arrays.asList(2, 3),
   Arrays.asList(4, 5, 6)
@@ -414,11 +414,11 @@ Stream&lt;Integer&gt; outputStream = inputStream
 <p><strong>filter</strong></p>
 <p>filter 对原始 Stream 进行某项测试，通过测试的元素被留下来生成一个新 Stream。</p>
 <p><strong>清单 10. 留下偶数</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Integer[] sixNums = {1, 2, 3, 4, 5, 6};
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Integer[] sixNums = {1, 2, 3, 4, 5, 6};
 Integer[] evens = Stream.of(sixNums).filter(n -&gt; n%2 == 0).toArray(Integer[]::new);
 </code></pre></div><p>经过条件“被 2 整除”的 filter，剩下的数字为 {2, 4, 6}。</p>
 <p><strong>清单 11. 把单词挑出来</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;String&gt; output = reader.lines()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;String&gt; output = reader.lines()
   .flatMap(line -&gt; Stream.of(line.split(REGEXP)))
   .filter(word -&gt; word.length() &gt; 0)
   .collect(Collectors.toList());
@@ -426,7 +426,7 @@ Integer[] evens = Stream.of(sixNums).filter(n -&gt; n%2 == 0).toArray(Integer[]:
 <p><strong>forEach/peek</strong></p>
 <p>forEach 方法接收一个 Lambda 表达式，然后在 Stream 的每一个元素上执行该表达式。</p>
 <p><strong>清单 12. 打印姓名（forEach 和 pre-java8 的对比）</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// Java 8
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// Java 8
 roster.stream()
   .filter(p -&gt; p.getGender() == Person.Sex.MALE)
   .forEach(p -&gt; System.out.println(p.getName()));
@@ -440,11 +440,11 @@ for (Person p : roster) {
 </code></pre></div><p>对一个人员集合遍历，找出男性并打印姓名。可以看出来，forEach 是为 Lambda 而设计的，保持了最紧凑的风格。而且 Lambda 表达式本身是可以重用的，非常方便。当需要为多核系统优化时，可以 parallelStream().forEach()，只是此时原有元素的次序没法保证，并行的情况下将改变串行时操作的行为，此时 forEach 本身的实现不需要调整，而 Java8 以前的 for 循环 code 可能需要加入额外的多线程逻辑。</p>
 <p>但一般认为，forEach 和常规 for 循环的差异不涉及到性能，它们仅仅是函数式风格与传统 Java 风格的差别。</p>
 <p>另外一点需要注意，forEach 是 terminal 操作，因此它执行后，Stream 的元素就被“消费”掉了，你无法对一个 Stream 进行两次 terminal 运算。下面的代码是错误的：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">stream.forEach(element -&gt; doOneThing(element));
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">stream.forEach(element -&gt; doOneThing(element));
 stream.forEach(element -&gt; doAnotherThing(element));
 </code></pre></div><p>相反，具有相似功能的 intermediate 操作 peek 可以达到上述目的。如下是出现在该 api javadoc 上的一个示例。</p>
 <p><strong>清单 13. peek 对每个元素执行操作并返回一个新的 Stream</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Stream.of(&#34;one&#34;, &#34;two&#34;, &#34;three&#34;, &#34;four&#34;)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Stream.of(&#34;one&#34;, &#34;two&#34;, &#34;three&#34;, &#34;four&#34;)
   .filter(e -&gt; e.length() &gt; 3)
   .peek(e -&gt; System.out.println(&#34;Filtered value: &#34; + e))
   .map(String::toUpperCase)
@@ -455,7 +455,7 @@ stream.forEach(element -&gt; doAnotherThing(element));
 <p>这是一个 <code>termimal</code> 兼 <code>short-circuiting</code> 操作，它总是返回 Stream 的第一个元素，或者空。</p>
 <p>这里比较重点的是它的返回值类型：<code>Optional</code>。这也是一个模仿 Scala 语言中的概念，作为一个容器，它可能含有某值，或者不包含。使用它的目的是尽可能避免 NullPointerException。</p>
 <p><strong>清单 14. Optional 的两个用例</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">String strA = &#34; abcd &#34;, strB = null;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">String strA = &#34; abcd &#34;, strB = null;
 print(strA);
 print(&#34;&#34;);
 print(strB);
@@ -484,12 +484,12 @@ public static int getLength(String text) {
 <p>Stream 中的<code> findAny</code>、<code>max/min</code>、<code>reduce</code> 等方法等返回 <code>Optional</code> 值。还有例如 <code>IntStream.average()</code> 返回 <code>OptionalDouble</code> 等等。</p>
 <p><strong>reduce</strong></p>
 <p>这个方法的主要作用是把 Stream 元素组合起来。它提供一个起始值（种子），然后依照运算规则（BinaryOperator），和前面 Stream 的第一个、第二个、第 n 个元素组合。从这个意义上说，字符串拼接、数值的 <code>sum</code>、<code>min</code>、<code>max</code>、<code>average</code> 都是特殊的 <code>reduce</code>。例如 Stream 的 <code>sum</code> 就相当于</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Integer sum = integers.reduce(0, (a, b) -&gt; a+b); 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Integer sum = integers.reduce(0, (a, b) -&gt; a+b); 
 或
 Integer sum = integers.reduce(0, Integer::sum);
 </code></pre></div><p>也有没有起始值的情况，这时会把 Stream 的前面两个元素组合起来，返回的是 <code>Optional</code>。</p>
 <p><strong>清单 15. reduce 的用例</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// 字符串连接，concat = &#34;ABCD&#34;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// 字符串连接，concat = &#34;ABCD&#34;
 String concat = Stream.of(&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;).reduce(&#34;&#34;, String::concat); 
 
 // 求最小值，minValue = -3.0
@@ -509,7 +509,7 @@ concat = Stream.of(&#34;a&#34;, &#34;B&#34;, &#34;c&#34;, &#34;D&#34;, &#34;e&#3
 <p><strong>limit/skip</strong></p>
 <p>limit 返回 Stream 的前面 n 个元素；skip 则是扔掉前 n 个元素（它是由一个叫 subStream 的方法改名而来）。</p>
 <p><strong>清单 16. limit 和 skip 对运行次数的影响</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public void testLimitAndSkip() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public void testLimitAndSkip() {
   List&lt;Person&gt; persons = new ArrayList();
   for (int i = 1; i &lt;= 10000; i++) {
     Person person = new Person(i, &#34;name&#34; + i);
@@ -535,7 +535,7 @@ private class Person {
   }
 }
 </code></pre></div><p>输出结果为：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">name1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">name1
 name2
 name3
 name4
@@ -549,7 +549,7 @@ name10
 </code></pre></div><p>这是一个有 10，000 个元素的 Stream，但在 short-circuiting 操作 limit 和 skip 的作用下，管道中 map 操作指定的 getName() 方法的执行次数为 limit 所限定的 10 次，而最终返回结果在跳过前 3 个元素后只有后面 7 个返回。</p>
 <p>有一种情况是 limit/skip 无法达到 short-circuiting 目的的，就是把它们放在 Stream 的排序操作后，原因跟 sorted 这个 intermediate 操作有关：此时系统并不知道 Stream 排序后的次序如何，所以 sorted 中的操作看上去就像完全没有被 limit 或者 skip 一样。</p>
 <p><strong>清单 17. limit 和 skip 对 sorted 后的运行次数无影响</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;Person&gt; persons = new ArrayList();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;Person&gt; persons = new ArrayList();
 for (int i = 1; i &lt;= 5; i++) {
   Person person = new Person(i, &#34;name&#34; + i);
    persons.add(person);
@@ -560,7 +560,7 @@ List&lt;Person&gt; personList2 = persons.stream()
   .limit(2).collect(Collectors.toList());
 System.out.println(personList2);
 </code></pre></div><p>上面的示例对清单 13 做了微调，首先对 5 个元素的 Stream 排序，然后进行 limit 操作。输出结果为：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">name2
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">name2
 name1
 name3
 name2
@@ -574,7 +574,7 @@ name4
 <p><strong>sorted</strong></p>
 <p>对 Stream 的排序通过 sorted 进行，它比数组的排序更强之处在于你可以首先对 Stream 进行各类 map、filter、limit、skip 甚至 distinct 来减少元素数量后，再排序，这能帮助程序明显缩短执行时间。我们对清单 17 进行优化：</p>
 <p><strong>清单 18. 优化：排序前进行 limit 和 skip</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;Person&gt; persons = new ArrayList();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;Person&gt; persons = new ArrayList();
 for (int i = 1; i &lt;= 5; i++) {
   Person person = new Person(i, &#34;name&#34; + i);
   persons.add(person);
@@ -585,14 +585,14 @@ List&lt;Person&gt; personList2 = persons.stream().limit(2)
   .collect(Collectors.toList());
 System.out.println(personList2);
 </code></pre></div><p>结果会简单很多：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">name2
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">name2
 name1
 [stream.StreamDW$Person@6ce253f1, stream.StreamDW$Person@53d8d10a]
 </code></pre></div><p>当然，这种优化是有 business logic 上的局限性的：即不要求排序后再取值。</p>
 <p><strong>min/max/distinct</strong></p>
 <p>min 和 max 的功能也可以通过对 Stream 元素先排序，再 findFirst 来实现，但前者的性能会更好，为 O(n)，而 sorted 的成本是 O(n log n)。同时它们作为特殊的 reduce 方法被独立出来也是因为求最大最小值是很常见的操作。</p>
 <p><strong>清单 19. 找出最长一行的长度</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">BufferedReader br = new BufferedReader(new FileReader(&#34;c:\\SUService.log&#34;));
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">BufferedReader br = new BufferedReader(new FileReader(&#34;c:\\SUService.log&#34;));
 int longest = br.lines()
   .mapToInt(String::length)
   .max().getAsInt();
@@ -600,7 +600,7 @@ br.close();
 System.out.println(longest);
 </code></pre></div><p>下面的例子则使用 distinct 来找出不重复的单词。</p>
 <p><strong>清单 20. 找出全文的单词，转小写，并排序</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;String&gt; words = br.lines()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;String&gt; words = br.lines()
   .flatMap(line -&gt; Stream.of(line.split(&#34; &#34;)))
    .filter(word -&gt; word.length() &gt; 0)
    .map(String::toLowerCase)
@@ -618,7 +618,7 @@ System.out.println(words);
 </ul>
 <p>它们都不是要遍历全部元素才能返回结果。例如 allMatch 只要一个元素不满足条件，就 skip 剩下的所有元素，返回 false。对清单 13 中的 Person 类稍做修改，加入一个 age 属性和 getAge 方法。</p>
 <p><strong>清单 21. 使用 Match</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;Person&gt; persons = new ArrayList();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">List&lt;Person&gt; persons = new ArrayList();
 persons.add(new Person(1, &#34;name&#34; + 1, 10));
 persons.add(new Person(2, &#34;name&#34; + 2, 21));
 persons.add(new Person(3, &#34;name&#34; + 3, 34));
@@ -633,13 +633,13 @@ boolean isThereAnyChild = persons.stream()
   .anyMatch(p -&gt; p.getAge() &lt; 12);
 System.out.println(&#34;Any child? &#34; + isThereAnyChild);
 </code></pre></div><p>输出结果：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">All are adult? false
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">All are adult? false
 Any child? true
 </code></pre></div><h3 id="进阶用-collectors-来进行-reduction-操作">进阶：用 Collectors 来进行 reduction 操作</h3>
 <p><code>java.util.stream.Collectors</code> 类的主要作用就是辅助进行各类有用的 <code>reduction</code> 操作，例如转变输出为 Collection，把 Stream 元素进行归组。</p>
 <p><strong>groupingBy/partitioningBy</strong></p>
 <p><strong>清单 25. 按照年龄归组</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Map&lt;Integer, List&lt;Person&gt;&gt; personGroups = Stream.generate(new PersonSupplier())
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Map&lt;Integer, List&lt;Person&gt;&gt; personGroups = Stream.generate(new PersonSupplier())
   .limit(100)
   .collect(Collectors.groupingBy(Person::getAge));
 
@@ -649,7 +649,7 @@ while (it.hasNext()) {
   System.out.println(&#34;Age &#34; + persons.getKey() + &#34; = &#34; + persons.getValue().size());
 }
 </code></pre></div><p>上面的 code，首先生成 100 人的信息，然后按照年龄归组，相同年龄的人放到同一个 list 中，可以看到如下的输出：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Age 0 = 2
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Age 0 = 2
 Age 1 = 2
 Age 5 = 2
 Age 8 = 1
@@ -657,13 +657,13 @@ Age 9 = 1
 Age 11 = 2
 ……
 </code></pre></div><p><strong>清单 26. 按照未成年人和成年人归组</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Map&lt;Boolean, List&lt;Person&gt;&gt; children = Stream.generate(new PersonSupplier())
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Map&lt;Boolean, List&lt;Person&gt;&gt; children = Stream.generate(new PersonSupplier())
 	.limit(100)
 	.collect(Collectors.partitioningBy(p -&gt; p.getAge() &lt; 18));
 System.out.println(&#34;Children number: &#34; + children.get(true).size());
 System.out.println(&#34;Adult number: &#34; + children.get(false).size());
 </code></pre></div><p>输出结果：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Children number: 23 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Children number: 23 
 Adult number: 77
 </code></pre></div><p>在使用条件“年龄小于 18”进行分组后可以看到，不到 18 岁的未成年人是一组，成年人是另外一组。partitioningBy 其实是一种特殊的 groupingBy，它依照条件测试的是否两种结果来构造返回的数据结构，get(true) 和 get(false) 能即为全部的元素对象。</p>
 
@@ -835,7 +835,7 @@ Adult number: 77
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -844,7 +844,7 @@ Adult number: 77
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

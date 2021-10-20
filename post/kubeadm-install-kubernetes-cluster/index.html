@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/post/kubeadm-install-kubernetes-cluster/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,7 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -337,7 +337,7 @@ if (!doNotTrack) {
 <h2 id="基础组件安装">基础组件安装</h2>
 <h3 id="docker安装">Docker安装</h3>
 <p>需要在每个node节点上执行：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">
 yum install -y yum-utils device-mapper-persistent-data lvm2
 
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
@@ -360,7 +360,7 @@ EOF
 systemctl start docker
 systemctl enable docker
 </code></pre></div><p>修改cgroup驱动为systemd：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">docker info | grep Cgroup
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">docker info | grep Cgroup
 
 vi /usr/lib/systemd/system/docker.service
 
@@ -371,7 +371,7 @@ systemctl daemon-reload
 systemctl restart docker
 </code></pre></div><h3 id="kubeadm等组件安装">Kubeadm等组件安装</h3>
 <p>每个node节点都需要执行：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
 baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
@@ -382,7 +382,7 @@ gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
         http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 EOF
 </code></pre></div><p>安装V1.16.8版本的kubeadm工具：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># --disableexcludes 禁掉除了kubernetes之外的别的仓库
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># --disableexcludes 禁掉除了kubernetes之外的别的仓库
 yum install -y kubelet-1.16.8 kubeadm-1.16.8 kubectl-1.16.8 --disableexcludes=kubernetes
 
 # 查看安装结果
@@ -392,9 +392,9 @@ yum install -y kubelet-1.16.8 kubeadm-1.16.8 kubectl-1.16.8 --disableexcludes=ku
 systemctl enable --now kubelet
 </code></pre></div><h2 id="初始化集群">初始化集群</h2>
 <p>在 master 节点配置 kubeadm 初始化文件，可以通过如下命令导出默认的初始化配置：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubeadm config print init-defaults &gt; kubeadm-init.yaml
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubeadm config print init-defaults &gt; kubeadm-init.yaml
 </code></pre></div><p>然后根据我们自己的需求修改配置，比如修改 imageRepository 的值，kube-proxy 的模式为 ipvs，另外需要注意的是我们这里是准备安装 flannel 网络插件的，需要将 networking.podSubnet 设置为<code>10.244.0.0/16</code>：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: kubeadm.k8s.io/v1beta2
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">apiVersion: kubeadm.k8s.io/v1beta2
 bootstrapTokens:
   - groups:
       - system:bootstrappers:kubeadm:default-node-token
@@ -440,7 +440,7 @@ apiVersion: kubeproxy.config.k8s.io/v1alpha1
 kind: KubeProxyConfiguration
 mode: ipvs  # kube-proxy 模式
 </code></pre></div><p>然后执行初始化：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@node1 kubernetes]# kubeadm init --config kubeadm-init.yaml
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@node1 kubernetes]# kubeadm init --config kubeadm-init.yaml
 [init] Using Kubernetes version: v1.16.8
 [preflight] Running pre-flight checks
 [preflight] Pulling images required for setting up a Kubernetes cluster
@@ -514,13 +514,13 @@ Then you can join any number of worker nodes by running the following on each as
 kubeadm join 192.168.56.101:6443 --token abcdef.0123456789abcdef \
     --discovery-token-ca-cert-hash sha256:4ca68042acf53047772dc21e036c130692c3b140262d751adbe438aefd85fc3a
 </code></pre></div><p>拷贝 kubeconfig 文件：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mkdir -p $HOME/.kube
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 </code></pre></div><h2 id="添加节点">添加节点</h2>
 <p>记住初始化集群上面的配置和操作要提前做好，将 master 节点上面的 <code>$HOME/.kube/config</code> 文件拷贝到 node 节点对应的文件中，安装 kubeadm、kubelet、kubectl（可选），然后执行上面初始化完成后提示的 join 命令即可。</p>
 <h3 id="添加master节点">添加master节点</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 拷贝证书，在node1 master节点执行
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 拷贝证书，在node1 master节点执行
 ssh root@node2 &#34;mkdir -p /etc/kubernetes/pki/etcd&#34;
 scp /etc/kubernetes/pki/ca.* root@node2:/etc/kubernetes/pki/
 scp /etc/kubernetes/pki/sa.* root@node2:/etc/kubernetes/pki/
@@ -534,20 +534,20 @@ kubeadm join 192.168.56.101:6443 --token abcdef.0123456789abcdef \
     --control-plane
 
 </code></pre></div><h3 id="添加worker节点">添加Worker节点</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 在node3节点执行
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 在node3节点执行
 kubeadm join 192.168.56.101:6443 --token abcdef.0123456789abcdef \
     --discovery-token-ca-cert-hash sha256:4ca68042acf53047772dc21e036c130692c3b140262d751adbe438aefd85fc3a
 </code></pre></div><blockquote>
 <p>如果忘记了上面的 join 命令或者旧的token过期，可以使用命令 <code>kubeadm token create --print-join-command</code> 重新获取。</p>
 </blockquote>
 <p>执行成功后运行 get nodes 命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl get nodes
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ kubectl get nodes
 NAME          STATUS     ROLES    AGE    VERSION
 node1   			NotReady   master   5m    v1.16.8
 node2    			NotReady   master   30s   v1.16.8
 node2    			NotReady   &lt;none&gt;   10s   v1.16.8
 </code></pre></div><p>可以看到是 NotReady 状态，这是因为还没有安装网络插件，接下来安装网络插件:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ wget https://raw.githubusercontent.com/coreos/flannel/2140ac876ef134e0ed5af15c65e414cf26827915/Documentation/kube-flannel.yml
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ wget https://raw.githubusercontent.com/coreos/flannel/2140ac876ef134e0ed5af15c65e414cf26827915/Documentation/kube-flannel.yml
 
 # 因为有节点是多网卡，所以需要在资源清单文件中指定内网网卡
 # 搜索到名为 kube-flannel-ds-amd64 的 DaemonSet，在kube-flannel容器下面
@@ -565,7 +565,7 @@ containers:
 ......
 $ kubectl apply -f kube-flannel.yml  # 安装 flannel 网络插件
 </code></pre></div><p>稍等片刻，查看状态：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@node1 kubernetes]# kubectl get node -o wide
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@node1 kubernetes]# kubectl get node -o wide
 NAME    STATUS   ROLES    AGE   VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE                KERNEL-VERSION                CONTAINER-RUNTIME
 node1   Ready    master   9h    v1.16.8   192.168.56.101   &lt;none&gt;        CentOS Linux 7 (Core)   4.4.214-1.el7.elrepo.x86_64   docker://18.9.9
 node2   Ready    master   9h    v1.16.8   192.168.56.102   &lt;none&gt;        CentOS Linux 7 (Core)   4.4.214-1.el7.elrepo.x86_64   docker://18.9.9
@@ -576,17 +576,17 @@ node3   Ready    &lt;none&gt;   9h    v1.16.8   192.168.56.103   &lt;none&gt;   
 </blockquote>
 <h2 id="dashboard">Dashboard</h2>
 <p>安装最新的 2.0+ 版本的 Dashboard：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta5/aio/deploy/recommended.yaml
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta5/aio/deploy/recommended.yaml
 
 kubectl apply -f recommended.yaml
 </code></pre></div><p>新版本的 Dashboard 会被默认安装在 kubernetes-dashboard 这个命名空间下面：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@node1 kubernetes]# kubectl get pods -n kubernetes-dashboard
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[root@node1 kubernetes]# kubectl get pods -n kubernetes-dashboard
 NAME                                         READY   STATUS    RESTARTS   AGE
 dashboard-metrics-scraper-76585494d8-nhmg5   1/1     Running   0          9h
 kubernetes-dashboard-6b86b44f87-zdts4        1/1     Running   1          9h
 </code></pre></div><p>使用<code>kubectl port-forward</code>命令转发到本地4443端口进行访问，接下来就可以通过Firefox中访问<code>192.168.56.101:4443</code>。</p>
 <p>这时候创建一个具有全局所有权限的用户来登录Dashboard：(dashboard-admin.yaml)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kind: ClusterRoleBinding
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
   name: dashboard-admin
@@ -608,7 +608,7 @@ metadata:
   name: dashboard-admin
   namespace: kubernetes-dashboard
 </code></pre></div><p>直接创建：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 创建权限用户
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 创建权限用户
 kubectl apply -f dashboard-admin.yaml
 
 # 获取token
@@ -620,7 +620,7 @@ echo ${DASHBOARD_LOGIN_TOKEN}
 <p><img src="http://flyeric.top/img/post/kubeadm-dashboard.png" alt=""></p>
 <h2 id="清理">清理</h2>
 <p>如果你的集群安装过程中遇到了其他问题，我们可以使用下面的命令来进行重置：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubeadm reset
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubeadm reset
 ifconfig cni0 down &amp;&amp; ip link delete cni0
 ifconfig flannel.1 down &amp;&amp; ip link delete flannel.1
 rm -rf /var/lib/cni/
@@ -778,7 +778,7 @@ rm -rf /var/lib/cni/
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -787,7 +787,7 @@ rm -rf /var/lib/cni/
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

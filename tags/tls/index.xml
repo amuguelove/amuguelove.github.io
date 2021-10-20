@@ -6,11 +6,11 @@
     <description>Recent content in tls on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 28 Sep 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/tags/tls/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/tls/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>kubernetes Ingress 自动化 HTTPS</title>
       <link>http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</link>
-      <pubDate>Mon, 28 Sep 2020 00:00:00 +0800</pubDate>
+      <pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</guid>
       <description>&lt;p&gt;现在的Web应用启用&lt;code&gt;HTTPS&lt;/code&gt;服务是真的非常有必要的。一些正规机构颁发的CA证书费用又特别高，就算有免费的工具颁发证书，通过人工的方式手动注入到K8S比较麻烦，而且还需要到期后进行人工续期，若管理的证书过多，还无法颁发泛域名的话，那就更加麻烦了。&lt;/p&gt;

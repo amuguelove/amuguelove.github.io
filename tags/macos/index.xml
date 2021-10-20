@@ -6,11 +6,11 @@
     <description>Recent content in MacOS on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/macos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Typora&#43;iCloud&#43;uPic搭建Markdown写作神器</title>
       <link>http://flyeric.top/post/writing-with-typora/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/writing-with-typora/</guid>
       <description>&lt;p&gt;我非常喜欢记录笔记，也使用过很多写笔记的APP，从&lt;code&gt;印象笔记&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;Notion&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;Emacs&lt;/code&gt;  &amp;ndash;&amp;gt; &lt;code&gt;Bear&lt;/code&gt;&amp;ndash;&amp;gt; &lt;code&gt;印象笔记&lt;/code&gt;，由于个人在不同阶段有不同记录笔记的需求，导致时常会去寻找满足所有需求的笔记APP。迁移笔记也是非常的痛苦，尤其是Markdown笔记迁移到非Markdown笔记APP。&lt;/p&gt;
@@ -40,7 +40,7 @@
       <description>&lt;p&gt;在MacOS上主要有如下两种方法安装&lt;/p&gt;
 &lt;h3 id=&#34;一homebrew&#34;&gt;一、HomeBrew&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;homebrew&lt;/code&gt;是Mac系统下面目前使用最多的管理软件的工具，目前已支持Go，可以通过命令直接安装Go。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;brew update &amp;amp;&amp;amp; brew upgrade
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;brew update &amp;amp;&amp;amp; brew upgrade
 brew install go
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样安装之后通过命令行输入&lt;code&gt;go&lt;/code&gt;就可以看到相关的信息。输入&lt;code&gt;go env&lt;/code&gt;查看环境信息。&lt;/p&gt;</description>
     </item>
@@ -53,7 +53,7 @@ brew install go
       <guid>http://flyeric.top/post/macos-profile-load-order/</guid>
       <description>&lt;h4 id=&#34;配置文件加载顺序&#34;&gt;配置文件加载顺序　&lt;/h4&gt;
 &lt;p&gt;OS X系统的配置文件，加载顺序为：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;/etc/profile
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;/etc/profile
 /etc/paths 
 ~/.bash_profile 
 ~/.bash_login 

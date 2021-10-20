@@ -34,7 +34,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/post/restful-api-best-practice/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -45,7 +45,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -251,9 +251,9 @@ if (!doNotTrack) {
 <h3 id="版本">版本</h3>
 <p>API 的版本号和客户端 APP 的版本号是毫无关系的，不要让 APP 将它们用于提交应用市场的版本号传递到服务器，而是提供类似于<code>v1</code>、<code>v2</code>之类的 API 版本号。版本号只允许枚举，不允许判断区间。</p>
 <p>版本号拼接在 URL 中或是放在 Header 中都可以。例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">api.xxx.com/v1/users
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">api.xxx.com/v1/users
 </code></pre></div><p>或：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">api.xxx.com/users
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">api.xxx.com/users
 
 version=v1
 </code></pre></div><h3 id="路径">路径</h3>
@@ -305,13 +305,13 @@ version=v1
 </ul>
 <h3 id="过滤信息">过滤信息</h3>
 <p>搜索：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/?query=xxx
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/?query=xxx
 </code></pre></div><p>过滤：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/?gender=1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/?gender=1
 </code></pre></div><p>对于某些特定且复杂的业务逻辑，不要试图让客户端用复杂的查询参数表示，而是在 URL 使用别名：：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/recommend
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/recommend
 </code></pre></div><p>分页：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/?offset=10&amp;limit=10
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/?offset=10&amp;limit=10
 
 /articles/?cursor=2015-01-01 15:20:30&amp;limit=10
 
@@ -344,13 +344,13 @@ version=v1
 <p>500：系统错误</p>
 <p>仅仅使用 HTTP 状态码没有办法明确的表达错误信息，所以可以在里面再包一层自定义的返回码，例如：</p>
 <p>成功时：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
     &#34;code&#34;: 100,
     &#34;msg&#34;: &#34;成功&#34;,
     &#34;data&#34;: {}
 }
 </code></pre></div><p>失败时：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
     &#34;code&#34;: -1000,
     &#34;msg&#34;: &#34;用户名或密码错误&#34;
 }
@@ -361,9 +361,9 @@ version=v1
 <p>分页布局一般分为两种，一种是在 Web 端比较常见的有底部分页栏的电梯式分页，另一种是在 APP 中比较常见的上拉加载更多的流式分页。这两种分页的 API 到底该如何设计呢？</p>
 <p><strong>1. 电梯式分页需要提供<code>page</code>（页数）和<code>pre_page</code>（每页的数量）</strong></p>
 <p>例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/?page=2&amp;pre_page=20
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/users/?page=2&amp;pre_page=20
 </code></pre></div><p>而服务端则需要额外返回<code>total_count</code>（总记录数），以及可选的当前页数、每页的数量（这两个与客户端提交的相同）、总页数、是否有下一页、是否有上一页（这三个都可以通过总记录数计算出）。例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
     &#34;pagination&#34;: {
        &#34;previous&#34;: 1,
        &#34;next&#34;: 3,
@@ -377,10 +377,10 @@ version=v1
 </code></pre></div><p>流式布局也完全可以使用这种方式，并且不需要查询总记录数（好处是减少一次数据库操作，坏处时客户端需要多请求一次才能判断是否到最后一页）。但是会出现数据重复和缺失的情况，所以更推荐使用游标分页。</p>
 <p><strong>2. 游标分页需要提供<code>cursor</code>(下一页的起点游标) 和<code>limit</code>(数量) 参数</strong></p>
 <p>例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/articles/?cursor=2015-01-01 15:20:30&amp;limit=10
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/articles/?cursor=2015-01-01 15:20:30&amp;limit=10
 </code></pre></div><p>如果文章列表默认是以创建时间为倒序排列的，那么<code>cursor</code>就是当前列表最后一条的创建时间（第一页为当前时间）。</p>
 <p>服务端需要返回的数据也很简单，只需要以此游标为起点的总记录数和下一个起点游标就可以了。例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
     &#34;pagination&#34;: {
        &#34;next&#34;: &#34;2015-01-01 12:20:30&#34;,
        &#34;limit&#34;: 10,
@@ -390,9 +390,9 @@ version=v1
 }
 </code></pre></div><p>如果<code>total</code>小于<code>limit</code>，就说明已经没有数据了。</p>
 <p>流式布局的分页 API 还有一种情况很常见，就是下拉刷新的增量更新。它的业务逻辑正好和游标分页相反，但是参数基本一样：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/articles/?cursor=2015-01-01 15:20:30&amp;limit=20
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/articles/?cursor=2015-01-01 15:20:30&amp;limit=20
 </code></pre></div><p>返回数据有两种可能，一种是增量更新的数据小于指定的数量，就直接将全部数据返回（这个数量可以设置的相对大一些），客户端会将这些增量更新的数据添加在已有列表的顶部。但是如果增量更新的数据要大于指定的数量，就会只返回最新的 n 条数据作为第一页，这时候客户端需要清空之前的列表。例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{
     &#34;pagination&#34;: {
        &#34;limit&#34;: 20,
        &#34;total&#34;: 100,
@@ -573,7 +573,7 @@ version=v1
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -582,7 +582,7 @@ version=v1
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

@@ -6,11 +6,11 @@
     <description>Recent content in Posts on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitHub Actions 初探</title>
       <link>http://flyeric.top/post/github-actions-learning/</link>
-      <pubDate>Fri, 03 Sep 2021 00:00:00 +0800</pubDate>
+      <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/github-actions-learning/</guid>
       <description>&lt;p&gt;GitHub Actions 是 Github 在2018年10月份推出的持续集成服务。可免费使用，你可以在 GitHub Actions 的仓库中自动化、自定义和执行软件开发工作流程。 可以发现、创建和共享操作以执行您喜欢的任何作业（包括 CI/CD），并将操作合并到完全自定义的工作流程中。&lt;/p&gt;
@@ -21,7 +21,7 @@
     <item>
       <title>使用 Elastic 可观测性实现云原生应用监控(4/4)</title>
       <link>http://flyeric.top/post/elastic-stack-monitoring-04/</link>
-      <pubDate>Mon, 09 Aug 2021 00:00:00 +0800</pubDate>
+      <pubDate>Mon, 09 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/elastic-stack-monitoring-04/</guid>
       <description>&lt;p&gt;&lt;code&gt;Elastic APM&lt;/code&gt; 是一款免费开源的应用程序性能监测工具，我们可以借助免费且开放的 Elastic APM 扩展至应用程序指标。精确查看您的应用程序都在哪里耗时了，然后便可快速修复问题，这样对发布的代码可以保持十足信心。&lt;/p&gt;
@@ -31,7 +31,7 @@
     <item>
       <title>使用 Elastic 可观测性实现云原生应用监控(3/4)</title>
       <link>http://flyeric.top/post/elastic-stack-monitoring-03/</link>
-      <pubDate>Wed, 28 Jul 2021 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/elastic-stack-monitoring-03/</guid>
       <description>&lt;p&gt;&lt;code&gt;MetricBeat&lt;/code&gt; 是一种轻量型的指标采集器，是 Elastic Stack 的一部分，因此能够与 Elasticsearch 和 Kibana 无缝协作。&lt;code&gt;Metricbeat&lt;/code&gt; 能够以一种轻量型的方式，从系统和服务收集指标，输送各种系统和服务统计数据。&lt;/p&gt;
@@ -41,7 +41,7 @@
     <item>
       <title>使用 Elastic 可观测性实现云原生应用监控(2/4)</title>
       <link>http://flyeric.top/post/elastic-stack-monitoring-02/</link>
-      <pubDate>Mon, 19 Jul 2021 00:00:00 +0800</pubDate>
+      <pubDate>Mon, 19 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/elastic-stack-monitoring-02/</guid>
       <description>&lt;p&gt;本篇文章将学习如何使用 Fluent Bit 采集 Kubernetes 集群的应用日志，并将日志数据输出到ElasticSearch中，使用Kibana将其可视化出来。日志收集工具还有很多，如：Fluentd，Filebeat，Promtail等等。其中 Fluent Bit，Fluentd和 Filebeat 都使用过，基本上都能满足项目上对于日志采集的需求。个人比较首推Fluent Bit，主要是因为其资源占用非常少，采集效率高，设计优雅，配置简单。可以看下下图中，Fluent Bit 的 Data pipeline：&lt;/p&gt;
@@ -51,7 +51,7 @@
     <item>
       <title>使用 Elastic 可观测性实现云原生应用监控(1/4)</title>
       <link>http://flyeric.top/post/elastic-stack-monitoring-01/</link>
-      <pubDate>Thu, 15 Jul 2021 00:00:00 +0800</pubDate>
+      <pubDate>Thu, 15 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/elastic-stack-monitoring-01/</guid>
       <description>&lt;p&gt;在本系列文章中，我们将学习如何使用 Elastic Stack 来实现对云原生应用的监控。该解决方案具有完备的日志、指标、APM 和可用性采集能力，可以在大规模/云原生的环境下，完成服务质量目标（SLO）的管理。
@@ -67,7 +67,7 @@
     <item>
       <title>Typora&#43;iCloud&#43;uPic搭建Markdown写作神器</title>
       <link>http://flyeric.top/post/writing-with-typora/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/writing-with-typora/</guid>
       <description>&lt;p&gt;我非常喜欢记录笔记，也使用过很多写笔记的APP，从&lt;code&gt;印象笔记&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;Notion&lt;/code&gt; &amp;ndash;&amp;gt; &lt;code&gt;Emacs&lt;/code&gt;  &amp;ndash;&amp;gt; &lt;code&gt;Bear&lt;/code&gt;&amp;ndash;&amp;gt; &lt;code&gt;印象笔记&lt;/code&gt;，由于个人在不同阶段有不同记录笔记的需求，导致时常会去寻找满足所有需求的笔记APP。迁移笔记也是非常的痛苦，尤其是Markdown笔记迁移到非Markdown笔记APP。&lt;/p&gt;
@@ -91,7 +91,7 @@
     <item>
       <title>不同ingress controller的性能测试</title>
       <link>http://flyeric.top/post/ingress-controllers-benchmark/</link>
-      <pubDate>Wed, 13 Jan 2021 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/ingress-controllers-benchmark/</guid>
       <description>&lt;p&gt;Ingress Controller有很多实现方式，如Kubernetes官方，Nginx官方，Kong，Traefik等等，下面对以下三种不同的Ingress Controller进行性能测试，Kubernetes Ingress VS Nginx Ingress（Nginx官方出品）VS Traefix Ingress。&lt;/p&gt;</description>
@@ -100,7 +100,7 @@
     <item>
       <title>ingress-nginx 性能压测</title>
       <link>http://flyeric.top/post/ingress-nginx-benchmark/</link>
-      <pubDate>Mon, 04 Jan 2021 00:00:00 +0800</pubDate>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/ingress-nginx-benchmark/</guid>
       <description>&lt;p&gt;Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。&lt;/p&gt;</description>
@@ -109,7 +109,7 @@
     <item>
       <title>ingress-nginx 高并发实践</title>
       <link>http://flyeric.top/post/ingress-nginx-high-concurrency/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/ingress-nginx-high-concurrency/</guid>
       <description>&lt;p&gt;Nginx Ingress Controller 基于 Nginx 实现 Kubernetes Ingress API。Nginx 是一款高性能网关，在实际生产环境运行时，需要对参数进行调优，以保证其充分发挥高性能的优势。&lt;/p&gt;
@@ -119,7 +119,7 @@
     <item>
       <title>ingress-nginx在TKE上部署的最佳实践</title>
       <link>http://flyeric.top/post/ingress-nginx-on-tke/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/ingress-nginx-on-tke/</guid>
       <description>&lt;p&gt;Nginx Ingress 有多种部署方式，本文将介绍 Nginx Ingress 在 TKE 上的一些部署方案，这几种方案的原理、各自优缺点以及一些选型和使用上的建议。&lt;/p&gt;</description>
@@ -128,7 +128,7 @@
     <item>
       <title>ingress-nginx的安装使用</title>
       <link>http://flyeric.top/post/install-ingress-nginx/</link>
-      <pubDate>Thu, 31 Dec 2020 00:00:00 +0800</pubDate>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/install-ingress-nginx/</guid>
       <description>&lt;p&gt;开源的 Ingress Controller 的实现使用量最大的莫过于 Ingress Nginx 了，可作为反向代理将外部流量导入集群内部，将 Kubernetes 内部的 Service 暴露给外部，在 Ingress 对象中通过域名匹配 Service，这样就可以直接通过域名访问到集群内部的服务了。&lt;/p&gt;
@@ -143,7 +143,7 @@
     <item>
       <title>升级OpenSSL解决CVE-2020-1971漏洞</title>
       <link>http://flyeric.top/post/centos-upgrade-openssl/</link>
-      <pubDate>Sat, 26 Dec 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 26 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/centos-upgrade-openssl/</guid>
       <description>&lt;p&gt;2020年12月08日，OpenSSL官方发布安全公告，披露&lt;code&gt;CVE-2020-1971&lt;/code&gt; OpenSSL GENERAL_NAME_cmp 拒绝服务漏洞。当两个GENERAL_NAME都包含同一个EDIPARTYNAME时，由于GENERAL_NAME_cmp函数未能正确处理，从而导致空指针引用，并可能导致拒绝服务。&lt;/p&gt;</description>
@@ -152,7 +152,7 @@
     <item>
       <title>Kubernetes API资源的使用</title>
       <link>http://flyeric.top/post/how-to-use-k8s-api-resources/</link>
-      <pubDate>Sat, 31 Oct 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/how-to-use-k8s-api-resources/</guid>
       <description>&lt;p&gt;在使用&lt;code&gt;Kubernetes&lt;/code&gt;的时候，因为有太多的资源、太多的版本、太多的组了，这些都非常容易产生混淆。如果我们通过 YAML 文件定义过 Deployment 这样的资源清单文件的话，那么你应该会看到&lt;code&gt;apiVersion: apps/v1beta2&lt;/code&gt;、&lt;code&gt;apiVersion: apps/v1&lt;/code&gt;等等这样的信息，那么我们到底应该使用哪一个呢？哪一个才是正确的呢？如何检查&lt;code&gt;Kubernetes&lt;/code&gt;集群支持哪些？其实我们使用&lt;code&gt;kubectl&lt;/code&gt;工具就可以来解决我们的这些疑惑。&lt;/p&gt;
@@ -162,29 +162,29 @@
     <item>
       <title>删除Github远程提交记录</title>
       <link>http://flyeric.top/post/delete-github-remote-commits/</link>
-      <pubDate>Fri, 30 Oct 2020 00:00:00 +0800</pubDate>
+      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/delete-github-remote-commits/</guid>
       <description>&lt;p&gt;最近我在快速提交代码到Github远程仓库的时候，发现提交了一些非必须文件，如缓存文件，而且这些文件比较大，影响了CI工具拉取github仓库的状态（CI工具网速不够快），导致无法将最新的提交触发CI。&lt;/p&gt;
 &lt;p&gt;这里快速介绍一种快速的方法：&lt;/p&gt;
 &lt;p&gt;第一步：快速找到你要回滚的&lt;code&gt;git commit id&lt;/code&gt;；&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;git log
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;git log
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第二步：将本地变更回滚（切记使用&amp;ndash;soft，这样会保存你工作区的变更，只是移除了暂存区的代码，不要使用&amp;ndash;hard）&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;git reset --soft commit-id-xxxxxx
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;git reset --soft commit-id-xxxxxx
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第三步：缓存你工作区的变更&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;git stash
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;git stash
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第四步：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;git push --force --no-verify
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;git push --force --no-verify
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这时候github远程仓库，已经回滚到你reset的commitId了。切记如果这时候有别人最新的提交也是会回滚的。&lt;/p&gt;
 &lt;p&gt;第五步：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;git stash pop
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;git stash pop
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样你又可以修改本地的修改，之后再次提交就好了。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用Kind快速构建Kubernetes集群</title>
       <link>http://flyeric.top/post/setup-kubernetes-cluster-with-kind/</link>
-      <pubDate>Thu, 15 Oct 2020 00:00:00 +0800</pubDate>
+      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/setup-kubernetes-cluster-with-kind/</guid>
       <description>&lt;p&gt;现在安装 Kubernetes 集群已经变得越来越简单了，出现了很多方案，各种方案都有自己适合的使用场景。虽然我们可以很快速在云环境下面启动一个 Kubernetes 集群，但是对于开发人员通常更喜欢能够快速上手的东西，&lt;a href=&#34;https://kind.sigs.k8s.io/&#34;&gt;Kubernetes in Docker（Kind）&lt;/a&gt;这个工具就可以通过创建容器来作为 Kubernetes 的节点，我们只需要在机器上安装 Docker 就可以使用，它允许我们在很短的时间内就启动一个多节点的集群，而不依赖任何其他工具或云服务商。&lt;/p&gt;
@@ -194,7 +194,7 @@
     <item>
       <title>Vagrant定制Box</title>
       <link>http://flyeric.top/post/customize-vagrant-box/</link>
-      <pubDate>Sun, 11 Oct 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/customize-vagrant-box/</guid>
       <description>&lt;p&gt;很多人在学习Kubernetes之前，都会苦恼如何搭建一个集群环境呢？你可以使用新版的Docker快速搭建一个单Master的集群，你也可以购买云厂商的集群服务；使用Docker安装集群非常的简单，但是只能是单master节点；购买云厂商的集群服务可以拥有所有的集群功能，而且任意购买云存储，外网LoadBalancer等，但是费用昂贵，因为k8s集群对机器的要求还是不低的。那有没有其他的选择呢？下面给大家介绍我是如何在本地快速搭建k8s集群的。&lt;/p&gt;
@@ -205,7 +205,7 @@
     <item>
       <title>凤凰项目读后感</title>
       <link>http://flyeric.top/post/read-the-phoenix-project/</link>
-      <pubDate>Sat, 10 Oct 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/read-the-phoenix-project/</guid>
       <description>&lt;p&gt;花了2天的时间看完这本书：《凤凰项目（沙盘特别版）》，感触颇深。和所有讲DevOps相关的书不同，感觉就在读小说一样，而且非常的励志，讲述了一家陷入困境的传统制造业公司，怎么凭借凤凰项目（或者独角兽项目）起死回生的。IT运维在其中发挥了只管重要的作用。&lt;/p&gt;
@@ -215,7 +215,7 @@
     <item>
       <title>kubernetes Ingress 自动化 HTTPS</title>
       <link>http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</link>
-      <pubDate>Mon, 28 Sep 2020 00:00:00 +0800</pubDate>
+      <pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</guid>
       <description>&lt;p&gt;现在的Web应用启用&lt;code&gt;HTTPS&lt;/code&gt;服务是真的非常有必要的。一些正规机构颁发的CA证书费用又特别高，就算有免费的工具颁发证书，通过人工的方式手动注入到K8S比较麻烦，而且还需要到期后进行人工续期，若管理的证书过多，还无法颁发泛域名的话，那就更加麻烦了。&lt;/p&gt;
@@ -227,7 +227,7 @@
     <item>
       <title>kubernetes持久化存储（二）</title>
       <link>http://flyeric.top/post/kubernetes-storage2/</link>
-      <pubDate>Sun, 27 Sep 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/kubernetes-storage2/</guid>
       <description>&lt;p&gt;前面的文章里我们学习了 &lt;code&gt;PV&lt;/code&gt; 和 &lt;code&gt;PVC&lt;/code&gt; 的使用方法，但是前面的 PV 都是静态的，什么意思呢？就是我要使用的一个 PVC 的话就必须手动去创建一个 PV，我们也说过这种方式在很大程度上并不能满足我们的需求，比如我们有一个应用需要对存储的并发度要求比较高，而另外一个应用对读写速度又要求比较高，特别是对于 &lt;code&gt;StatefulSet&lt;/code&gt; 类型的应用简单的来使用静态的 PV 就很不合适了，这种情况下我们就需要用到动态 PV，也就是我们今天要讲解的 &lt;code&gt;StorageClass&lt;/code&gt;。&lt;/p&gt;</description>
@@ -236,7 +236,7 @@
     <item>
       <title>kubernetes持久化存储（一）</title>
       <link>http://flyeric.top/post/kubernetes-storage1/</link>
-      <pubDate>Sat, 26 Sep 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 26 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/kubernetes-storage1/</guid>
       <description>&lt;p&gt;Kubernetes提供了可靠的存储来保存应用的持久化数据，这样容器在重建后，依然可以使用之前的数据。但是显然存储资源和 CPU 资源以及内存资源有很大不同，为了屏蔽底层的技术实现细节，让用户更加方便的使用，&lt;code&gt;Kubernetes&lt;/code&gt; 便引入了 &lt;code&gt;PV&lt;/code&gt; 和 &lt;code&gt;PVC&lt;/code&gt; 两个重要的资源对象来实现对存储的管理。&lt;/p&gt;</description>
@@ -245,7 +245,7 @@
     <item>
       <title>正则表达式入门</title>
       <link>http://flyeric.top/post/sample-regexp/</link>
-      <pubDate>Tue, 01 Sep 2020 00:00:00 +0800</pubDate>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/sample-regexp/</guid>
       <description>&lt;p&gt;一个正则表达式通常被称为一个&lt;strong&gt;模式&lt;/strong&gt;（pattern），为用来描述或者匹配一系列符合某个&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%8F%A5%E6%B3%95&#34;&gt;句法&lt;/a&gt;规则的&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%AD%97%E7%AC%A6%E4%B8%B2&#34;&gt;字符串&lt;/a&gt;。例如：Handel、Händel和Haendel这三个字符串，都可以由&lt;code&gt;H(a|ä|ae)ndel&lt;/code&gt;这个模式来描述。大部分正则表达式的形式都有如下的结构：&lt;/p&gt;</description>
@@ -254,7 +254,7 @@
     <item>
       <title>浅谈HTTPS原理</title>
       <link>http://flyeric.top/post/sample-https-principle/</link>
-      <pubDate>Sat, 29 Aug 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 29 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/sample-https-principle/</guid>
       <description>&lt;p&gt;我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取。所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。&lt;/p&gt;</description>
@@ -263,7 +263,7 @@
     <item>
       <title>使用kubeadm搭建Kubernetes集群</title>
       <link>http://flyeric.top/post/kubeadm-install-kubernetes-cluster/</link>
-      <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/kubeadm-install-kubernetes-cluster/</guid>
       <description>&lt;p&gt;之前使用二进制Hard-Way模式搭建了Kubernetes三节点集群，今天采用Kubeadm 来快速搭建Kubernetes V1.16.8集群。&lt;/p&gt;</description>
@@ -272,7 +272,7 @@
     <item>
       <title>使用二进制搭建kubernetes三节点高可用集群</title>
       <link>http://flyeric.top/post/local-install-ha-kubernetes-cluster/</link>
-      <pubDate>Wed, 08 Apr 2020 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/local-install-ha-kubernetes-cluster/</guid>
       <description>&lt;p&gt;Kubernetes 是一个开源容器编排引擎，用于容器化应用的自动化部署、扩展和管理。该项目托管在 &lt;a href=&#34;https://www.cncf.io/about&#34;&gt;CNCF&lt;/a&gt;。你可以通过阅读 &lt;a href=&#34;https://kubernetes.io/zh/docs/home/&#34;&gt;官方文档&lt;/a&gt;了解Kubernetes和其基础概念。&lt;/p&gt;
@@ -284,7 +284,7 @@
     <item>
       <title>Docker最佳实践</title>
       <link>http://flyeric.top/post/docker-best-practice/</link>
-      <pubDate>Tue, 07 Apr 2020 00:00:00 +0800</pubDate>
+      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/docker-best-practice/</guid>
       <description>&lt;p&gt;了解了用于构建 Dockerfile 的基本方法后，我们在编写 Dockerfile 的时候并没有一些强制要求，导致很多构建的镜像不符合一些最佳实践，典型的就是镜像构建的层数非常多，对一些基本指令的区别不是很清楚。下面介绍 Dockerfile 在实际使用中的一些最佳的实践方式。&lt;/p&gt;</description>
@@ -293,7 +293,7 @@
     <item>
       <title>Docker的底层技术</title>
       <link>http://flyeric.top/post/docker-underlying-technology/</link>
-      <pubDate>Mon, 06 Apr 2020 00:00:00 +0800</pubDate>
+      <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/docker-underlying-technology/</guid>
       <description>&lt;p&gt;Docker最初实现是基于 &lt;a href=&#34;https://linuxcontainers.org/lxc/introduction/&#34;&gt;LXC&lt;/a&gt;，从 0.7 版本以后开始去除 &lt;code&gt;LXC&lt;/code&gt;，转而使用自行开发的 &lt;a href=&#34;https://github.com/docker/libcontainer&#34;&gt;libcontainer&lt;/a&gt;，从 1.11 开始，则进一步演进为使用 &lt;a href=&#34;https://github.com/opencontainers/runc&#34;&gt;runC&lt;/a&gt; 和 &lt;a href=&#34;https://github.com/containerd/containerd&#34;&gt;containerd&lt;/a&gt;。&lt;/p&gt;
@@ -304,7 +304,7 @@
     <item>
       <title>代码整洁之道</title>
       <link>http://flyeric.top/post/read-clean-code/</link>
-      <pubDate>Fri, 03 Apr 2020 00:00:00 +0800</pubDate>
+      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/read-clean-code/</guid>
       <description>&lt;p&gt;最近因为一些契机，花了2到3天看完**《代码简洁之道》**这本书，英文名为：&lt;code&gt;Clean Code&lt;/code&gt;。&lt;/p&gt;
@@ -315,7 +315,7 @@
     <item>
       <title>基于kubernetes的动态jenkins slave</title>
       <link>http://flyeric.top/post/jenkins-slave-base-on-kubernetes/</link>
-      <pubDate>Fri, 27 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Fri, 27 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/jenkins-slave-base-on-kubernetes/</guid>
       <description>&lt;p&gt;搭建&lt;code&gt;CI/CD&lt;/code&gt;可以使用的工具不少，例如：&lt;code&gt;Jenkins&lt;/code&gt;、&lt;code&gt;Gitlab CI&lt;/code&gt;等等，这里会使用大家最新熟悉的&lt;code&gt;Jenkins&lt;/code&gt;来做&lt;code&gt;CI/CD&lt;/code&gt;的工具。不少人都是基于虚拟机来搭建的，基于&lt;code&gt;Kubernetes&lt;/code&gt;搭建的Jenkins Slave会有什么效果呢？&lt;/p&gt;</description>
@@ -324,7 +324,7 @@
     <item>
       <title>使用JMH对Java Object Mapping框架做性能对比</title>
       <link>http://flyeric.top/post/java-object-mappping-framework-benchmark/</link>
-      <pubDate>Mon, 23 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/java-object-mappping-framework-benchmark/</guid>
       <description>&lt;h2 id=&#34;jmh概述&#34;&gt;JMH概述&lt;/h2&gt;
@@ -341,7 +341,7 @@
     <item>
       <title>Gradle发布Java Library到Maven中央仓库</title>
       <link>http://flyeric.top/post/gradle-publish-jar-into-maven-central/</link>
-      <pubDate>Thu, 19 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/gradle-publish-jar-into-maven-central/</guid>
       <description>&lt;p&gt;最近打算将一些基础的Jar包上传到&lt;code&gt;Maven&lt;/code&gt;中央仓库，方便在自己项目中引用。本文将结合&lt;code&gt;Gradle&lt;/code&gt;的两个插件&lt;code&gt;maven-publish&lt;/code&gt;和 &lt;code&gt;signing&lt;/code&gt;来讲解如何发布一个Jar包。&lt;/p&gt;
@@ -352,12 +352,12 @@
     <item>
       <title>SpringBoot的自动装配原理分析</title>
       <link>http://flyeric.top/post/springboot-load-configure-principle/</link>
-      <pubDate>Wed, 18 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 18 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/springboot-load-configure-principle/</guid>
       <description>&lt;p&gt;在Spring Boot应用中的自动装配是通过&lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; 注解进行开启的。&lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; 可以帮助 Spring Boot 应用将所有符合条件的 &lt;code&gt;@Configuration&lt;/code&gt; 配置类的 bean 都加载到 Spring IoC 容器中。&lt;/p&gt;
 &lt;p&gt;我们看下&lt;code&gt;@SpringBootApplication&lt;/code&gt;注解，默认是启动&lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; 的。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;@Target(ElementType.TYPE)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
@@ -389,7 +389,7 @@ public @interface SpringBootApplication {
     <item>
       <title>SpringBoot配置文件加载的路径和优先级</title>
       <link>http://flyeric.top/post/springboot-load-configure-locations/</link>
-      <pubDate>Wed, 18 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 18 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/springboot-load-configure-locations/</guid>
       <description>&lt;p&gt;很多人对&lt;code&gt;SpringBoot&lt;/code&gt;文件加载的位置和优先级有点疑惑，下面通过源码看下到底是如何加载的。&lt;/p&gt;
@@ -401,7 +401,7 @@ public @interface SpringBootApplication {
     <item>
       <title>JPA ID生成策略</title>
       <link>http://flyeric.top/post/jpa-id-generated-strategy/</link>
-      <pubDate>Fri, 13 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Fri, 13 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/jpa-id-generated-strategy/</guid>
       <description>&lt;p&gt;&lt;strong&gt;JPA&lt;/strong&gt; 为对象关系映射提供了了⼀一种基于 &lt;strong&gt;POJO&lt;/strong&gt; 的持久化模型&lt;/p&gt;
@@ -411,7 +411,7 @@ public @interface SpringBootApplication {
 &lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;JPA&lt;/code&gt;定义了持久化的标准，而&lt;code&gt;Hibernate&lt;/code&gt;是持久化的实现。&lt;code&gt;Spring Data JPA&lt;/code&gt;就是在&lt;code&gt;Hibernate&lt;/code&gt;的基础上封装实现的。&lt;/p&gt;
 &lt;p&gt;JPA提供了很多常用的注解，下面就来讲下关于主键的生成策略，主要的注解有：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;@Id
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;@Id
 @GeneratedValue(strategy, generator)
 @SequenceGenerator(name, sequenceName)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
@@ -420,7 +420,7 @@ public @interface SpringBootApplication {
     <item>
       <title>Git协同工作流的选择</title>
       <link>http://flyeric.top/post/git-flow-choose/</link>
-      <pubDate>Wed, 11 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/git-flow-choose/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;http://flyeric.top/img/post/git-flow-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -436,7 +436,7 @@ public @interface SpringBootApplication {
     <item>
       <title>Mongo的索引机制</title>
       <link>http://flyeric.top/post/mongo-index/</link>
-      <pubDate>Mon, 09 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/mongo-index/</guid>
       <description>&lt;p&gt;索引是对数据库表中一列或多列的值进行排序的一种数据结构，可以让我们查询数据库变得更快。&lt;/p&gt;</description>
@@ -445,7 +445,7 @@ public @interface SpringBootApplication {
     <item>
       <title>Mongo数据备份以及恢复</title>
       <link>http://flyeric.top/post/mongo-dump-restore/</link>
-      <pubDate>Sun, 08 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 08 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/mongo-dump-restore/</guid>
       <description>&lt;p&gt;MongoDB支持副本集，为何还需要备份呢？备份的主要目的有：1）防止硬件故障引起的数据丢失； 2）防止人为错误误删数据；3）时间回溯；4）监管要求。&lt;/p&gt;</description>
@@ -454,7 +454,7 @@ public @interface SpringBootApplication {
     <item>
       <title>Mongo开发最佳实践</title>
       <link>http://flyeric.top/post/mongo-best-practice/</link>
-      <pubDate>Sat, 07 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 07 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/mongo-best-practice/</guid>
       <description>&lt;p&gt;Mongo开发的最佳实践总结。&lt;/p&gt;</description>
@@ -463,7 +463,7 @@ public @interface SpringBootApplication {
     <item>
       <title>Mongo事务处理</title>
       <link>http://flyeric.top/post/mongo-transaction/</link>
-      <pubDate>Fri, 06 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/mongo-transaction/</guid>
       <description>&lt;p&gt;MongoDB 4.0引入了事务功能，支持多文档的ACID特性。&lt;/p&gt;</description>
@@ -472,7 +472,7 @@ public @interface SpringBootApplication {
     <item>
       <title>Mongo的模型设计</title>
       <link>http://flyeric.top/post/mongo-pattern-design/</link>
-      <pubDate>Thu, 05 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/mongo-pattern-design/</guid>
       <description>&lt;h2 id=&#34;数据模型&#34;&gt;数据模型&lt;/h2&gt;
@@ -488,7 +488,7 @@ public @interface SpringBootApplication {
     <item>
       <title>Mongo复制集的搭建</title>
       <link>http://flyeric.top/post/mongo-replica-sets-install/</link>
-      <pubDate>Wed, 04 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/mongo-replica-sets-install/</guid>
       <description>&lt;p&gt;在本地机器上运行3个实例来搭建一个最简单的复制集。&lt;/p&gt;</description>
@@ -497,7 +497,7 @@ public @interface SpringBootApplication {
     <item>
       <title>Mongo复制集机制及原理</title>
       <link>http://flyeric.top/post/mongo-replica-sets/</link>
-      <pubDate>Tue, 03 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/mongo-replica-sets/</guid>
       <description>&lt;h2 id=&#34;复制集的作用&#34;&gt;复制集的作用&lt;/h2&gt;
@@ -518,7 +518,7 @@ public @interface SpringBootApplication {
     <item>
       <title>Mongo聚合查询</title>
       <link>http://flyeric.top/post/mongo-aggregate-operation/</link>
-      <pubDate>Mon, 02 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/mongo-aggregate-operation/</guid>
       <description>&lt;p&gt;MongoDB 聚合框架(Aggregation Framework)是一个计算框架，它可以:&lt;/p&gt;
@@ -534,7 +534,7 @@ public @interface SpringBootApplication {
     <item>
       <title>MongoDB介绍以及基本操作</title>
       <link>http://flyeric.top/post/mongodb-base-operation/</link>
-      <pubDate>Sun, 01 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 01 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/mongodb-base-operation/</guid>
       <description>&lt;p&gt;MongoDB 是一个高性能，开源，无模式的文档型数据库，是当前noSql数据库产品中最热门的一种。它在许多场景下用于替代传统的关系型数据库或键值对存储方式，MongoDB是用C++开发，MongoDB的官方网址：https://www.mongodb.com/&lt;/p&gt;</description>
@@ -543,7 +543,7 @@ public @interface SpringBootApplication {
     <item>
       <title>博客迁移到hugo</title>
       <link>http://flyeric.top/post/migrate-blog-to-hugo/</link>
-      <pubDate>Sun, 03 Nov 2019 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/migrate-blog-to-hugo/</guid>
       <description>&lt;p&gt;博客正式迁移到Hugo，并使用Emacs Org-mode + ox-hugo来写博客，顺便学习Emacs。&lt;/p&gt;</description>
@@ -646,7 +646,7 @@ public @interface SpringBootApplication {
       <description>&lt;p&gt;在MacOS上主要有如下两种方法安装&lt;/p&gt;
 &lt;h3 id=&#34;一homebrew&#34;&gt;一、HomeBrew&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;homebrew&lt;/code&gt;是Mac系统下面目前使用最多的管理软件的工具，目前已支持Go，可以通过命令直接安装Go。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;brew update &amp;amp;&amp;amp; brew upgrade
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;brew update &amp;amp;&amp;amp; brew upgrade
 brew install go
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样安装之后通过命令行输入&lt;code&gt;go&lt;/code&gt;就可以看到相关的信息。输入&lt;code&gt;go env&lt;/code&gt;查看环境信息。&lt;/p&gt;</description>
     </item>
@@ -687,7 +687,7 @@ brew install go
       <guid>http://flyeric.top/post/dockerfile-introdution/</guid>
       <description>&lt;h2 id=&#34;1-dockerfile文件格式&#34;&gt;1. Dockerfile文件格式&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;Dockerfile&lt;/code&gt;文件格式如下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# Comment
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# Comment
 INSTRUCTION arguments
 # 注释
 指令 参数
@@ -789,7 +789,7 @@ fork耗时跟redis主进程的内存有关系，一般控制redis的内存在10G
       <guid>http://flyeric.top/post/redis-master-slave-setup/</guid>
       <description>&lt;p&gt;&lt;code&gt;redis&lt;/code&gt;的一主多从的搭建很简单，但是一般需要搭配&lt;code&gt;redis sentinel&lt;/code&gt;哨兵集群，将会在下篇文章介绍。&lt;/p&gt;
 &lt;h3 id=&#34;配置&#34;&gt;配置&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;master：192.168.56.101
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;master：192.168.56.101
 
 slave1：192.168.56.102
 
@@ -828,7 +828,7 @@ Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
       <guid>http://flyeric.top/post/macos-profile-load-order/</guid>
       <description>&lt;h4 id=&#34;配置文件加载顺序&#34;&gt;配置文件加载顺序　&lt;/h4&gt;
 &lt;p&gt;OS X系统的配置文件，加载顺序为：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;/etc/profile
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;/etc/profile
 /etc/paths 
 ~/.bash_profile 
 ~/.bash_login 
@@ -980,16 +980,16 @@ Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;
       <description>&lt;p&gt;简单的 http 性能测试工具，记录一下使用方法。&lt;/p&gt;
 &lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
 &lt;h4 id=&#34;macos&#34;&gt;MacOS&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;brew install wrk
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;brew install wrk
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;ubuntudebian&#34;&gt;Ubuntu/Debian&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo apt-get install build-essential libssl-dev git -y
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo apt-get install build-essential libssl-dev git -y
 git clone https://github.com/wg/wrk.git wrk
 cd wrk
 sudo make
 # move the executable to somewhere in your PATH, ex:
 sudo cp wrk /usr/local/bin
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;centos--redhat--fedora&#34;&gt;CentOS / RedHat / Fedora&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo yum groupinstall &amp;#39;Development Tools&amp;#39;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo yum groupinstall &amp;#39;Development Tools&amp;#39;
 sudo yum install openssl-devel
 sudo yum install git
 git clone https://github.com/wg/wrk.git wrk
@@ -1009,7 +1009,7 @@ sudo cp wrk /somewhere/in/your/PATH
       <description>&lt;p&gt;简单介绍一下Redis两种持久化策略RDB和AOF的区别。&lt;/p&gt;
 &lt;p&gt;一些简单的配置，比如端口号&lt;code&gt;port&lt;/code&gt;, 日志位置&lt;code&gt;logfile&lt;/code&gt;等基本配置可自行配置。&lt;/p&gt;
 &lt;h2 id=&#34;快照rdb持久化配置&#34;&gt;快照RDB持久化配置：&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# Save the DB on disk:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# Save the DB on disk:
 #  设置sedis进行数据库镜像的频率。
 #  900秒（15分钟）内至少1个key值改变（则进行数据库保存--持久化）。
 #  300秒（5分钟）内至少10个key值改变（则进行数据库保存--持久化）。
@@ -1062,7 +1062,7 @@ dir /var/lib/redis
       <description>&lt;p&gt;代理实现可以分为静态代理和动态代理, 下面使用jdk和cglib来分别说明。&lt;/p&gt;
 &lt;h2 id=&#34;静态代理&#34;&gt;静态代理&lt;/h2&gt;
 &lt;p&gt;具体实现：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;public interface Subject {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;public interface Subject {
     void request();
 }
 
@@ -1105,7 +1105,7 @@ public class ProxyTest {
       <guid>http://flyeric.top/post/singleton-pattern/</guid>
       <description>&lt;p&gt;单例模式 (Singleton) 也叫单态模式，是设计模式中最为简单的一种模式。&lt;/p&gt;
 &lt;h3 id=&#34;第一种懒汉-线程不安全&#34;&gt;第一种（懒汉, 线程不安全）&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;public class Singleton {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;public class Singleton {
 
     private static Singleton instance;
 
@@ -1138,7 +1138,7 @@ git remote add origin git@github.com:your_username/your_project.git
 git push -u origin master
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;若仓库存在直接push &lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;git remote add origin git@github.com:your_username/your_project.git
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;git remote add origin git@github.com:your_username/your_project.git
 git push -u origin master
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>

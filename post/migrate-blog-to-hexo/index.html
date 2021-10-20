@@ -25,7 +25,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/post/migrate-blog-to-hexo/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -36,7 +36,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -230,20 +230,20 @@ if (!doNotTrack) {
 <h3 id="1-安装hexo">1. 安装Hexo</h3>
 <h4 id="11-安装">1.1 安装</h4>
 <p>在安装<a href="https://hexo.io/zh-cn/">Hexo</a>之前，必须确认你已经安装了<a href="http://nodejs.org/">Node.js</a>和<a href="http://git-scm.com/">Git</a>。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">npm install hexo-cli -g
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">npm install hexo-cli -g
 </code></pre></div><h4 id="12-hexo初始化">1.2 Hexo初始化</h4>
 <p>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ mkdir hexo-admin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ mkdir hexo-admin
 $ cd hexo-admin
 $ hexo init
 $ npm install
 </code></pre></div><p>接下来也可以本地预览博客，执行下列命令,然后到浏览器输入localhost:4000看看。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ hexo generate
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ hexo generate
 $ hexo server --debug
 </code></pre></div><p>输入Ctrl+C停止服务。</p>
 <h3 id="2-hexo配置">2. Hexo配置</h3>
 <p>用编辑器打开 hexo-admin/ 下的配置文件_config.yml，下面是我修改的key值：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Site
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Site
 title: 梁波的博客
 subtitle: 专注于Java，Golang，DevOps，Cluster，Distributed
 description: 梁波的博客
@@ -270,7 +270,7 @@ deploy:
 </code></pre></div><p>其中<code>repo</code>请替换成你在github中新建的<code>你github用户名.github.io</code>仓库。</p>
 <h3 id="3-部署到github">3. 部署到Github</h3>
 <p>还需要如下在根目录，输入如下指令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ npm install hexo-deployer-git --save
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ npm install hexo-deployer-git --save
 $ hexo d -g
 </code></pre></div><p>上传到Gihub可能会有如下几个错误：</p>
 <ul>
@@ -282,13 +282,13 @@ $ hexo d -g
 </li>
 <li>
 <p>出现没有用户名和邮箱地址的warning，解决：在根目录的<code>.deploy_git</code>增加用户名和邮箱地址，不建议设置全局Git用户名和邮箱地址。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ cd hexo-admin/.deply_git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ cd hexo-admin/.deply_git
 $ git config user.name &#34;liangbo&#34;
 $ git config user.email &#34;908325713@qq.com&#34;
 </code></pre></div></li>
 </ul>
 <h3 id="4-hexo的一些常用命令">4. Hexo的一些常用命令</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">hexo new &#34;postName&#34; #新建文章
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">hexo new &#34;postName&#34; #新建文章
 hexo new page &#34;pageName&#34; #新建页面
 hexo generate #生成静态页面至public目录
 hexo server #开启预览访问端口（默认端口4000，&#39;ctrl + c&#39;关闭server）
@@ -305,24 +305,24 @@ hexo d == hexo deploy
 </code></pre></div><h3 id="5-安装bluelake主题">5. 安装BlueLake主题</h3>
 <h4 id="51安装主题">5.1安装主题</h4>
 <p>在根目录<code>hexo-admin</code>下打开终端窗口：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git clone https://github.com/chaooo/hexo-theme-BlueLake.git themes/BlueLake
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git clone https://github.com/chaooo/hexo-theme-BlueLake.git themes/BlueLake
 </code></pre></div><h4 id="52-安装主题渲染器">5.2 安装主题渲染器</h4>
 <p>BlueLake是基于<code>jade</code>和<code>stylus</code>写的，所以需要安装<code>hexo-renderer-jade</code>和<code>hexo-renderer-stylus</code>来渲染。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ npm install hexo-renderer-jade@0.3.0 --save
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ npm install hexo-renderer-jade@0.3.0 --save
 $ npm install hexo-renderer-stylus --save
 </code></pre></div><h4 id="53-启用主题">5.3 启用主题</h4>
 <p>打开<code>根_config.yml</code>配置文件，找到theme字段，将其值改为<code>BlueLake</code>(先确认主题文件夹名称是否为BlueLake)。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">theme: BlueLake
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">theme: BlueLake
 </code></pre></div><h4 id="54-验证">5.4 验证</h4>
 <p>首先启动 Hexo 本地站点，并开启调试模式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ hexo s --debug
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ hexo s --debug
 </code></pre></div><p>此时即可使用浏览器访问 <code>http://localhost:4000</code>，检查站点是否正确运行。</p>
 <h3 id="6-bluelake主题配置">6. BlueLake主题配置</h3>
 <h4 id="61-添加about页面">6.1 添加about页面</h4>
 <p>在根目录下打开命令行窗口，生成一个关于我页面：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ hexo new page &#39;about&#39;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ hexo new page &#39;about&#39;
 </code></pre></div><p>打开<code>主题_config.yml</code>，补全关于我页面的详细信息：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># About page 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># About page 
 about:
   photo_url: ## 头像的链接地址
   email: ## 个人邮箱 
@@ -333,11 +333,11 @@ about:
 </code></pre></div><p>当然您也可以自定义重新布局about页面，只需要修改<code>layout/page.jade</code>模板就好。</p>
 <h4 id="62-安装rss订阅和sitemap网站地图插件">6.2 安装RSS订阅和sitemap（网站地图）插件</h4>
 <p>在根目录下打开命令行窗口：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ npm install hexo-generator-feed --save
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ npm install hexo-generator-feed --save
 $ npm install hexo-generator-sitemap --save
 $ npm install hexo-generator-baidu-sitemap --save
 </code></pre></div><p>添加<code>主题_config.yml</code>配置：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Plugins:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Plugins:
   hexo-generator-feed
   hexo-generator-sitemap
   hexo-generator-baidu-sitemap
@@ -353,9 +353,9 @@ baidusitemap:
   path: baidusitemap.xml
 </code></pre></div><h4 id="63-添加本地搜索">6.3 添加本地搜索</h4>
 <p>默认本地搜索是用原生JS写的，但还需要HEXO插件创建的JSON数据文件配合。安装插件<a href="https://github.com/alexbruno/hexo-generator-json-content">hexo-generator-json-content</a>来创建JSON数据文件：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ npm install hexo-generator-json-content@2.2.0 --save
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ npm install hexo-generator-json-content@2.2.0 --save
 </code></pre></div><p>然后在<code>根_config.yml</code>添加配置：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">jsonContent:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">jsonContent:
   meta: false
   pages: false
   posts:
@@ -374,7 +374,7 @@ baidusitemap:
     categories: false
     tags: true
 </code></pre></div><p>最后在<code>主题_config.yml</code>添加配置：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">local_search: true
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">local_search: true
 </code></pre></div><h4 id="64-修改站点图标">6.4 修改站点图标</h4>
 <p>站点图标存放在主题的**<code>Source</code>**目录下，已经默认为您准备了两张图片。您也可以自己设计站点LOGO。</p>
 <p>您需要准备一张ico格式并命名为 <strong>favicon.ico</strong> ，请将其放入hexo目录的<code>source</code>文件夹，建议大小：32px X 32px。<a href="http://www.faviconico.org/favicon">favicon.ico在线制作</a></p>
@@ -555,7 +555,7 @@ baidusitemap:
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -564,7 +564,7 @@ baidusitemap:
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

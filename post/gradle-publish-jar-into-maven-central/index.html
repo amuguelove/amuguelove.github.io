@@ -28,7 +28,7 @@ OSSRH：Sonatype Open Source Software Repository Hosting Service，为开源软�
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/post/gradle-publish-jar-into-maven-central/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -39,7 +39,7 @@ OSSRH：Sonatype Open Source Software Repository Hosting Service，为开源软�
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -279,7 +279,7 @@ if (!doNotTrack) {
 </li>
 <li>
 <p><code>Project URL</code>：最好与<code>Group Id</code>有一定关联性，例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Project URL: https://github.com/amuguelove/spring-boot-projects
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Project URL: https://github.com/amuguelove/spring-boot-projects
 Group Id: com.github.amuguelove
 </code></pre></div></li>
 <li>
@@ -294,7 +294,7 @@ Group Id: com.github.amuguelove
 <h2 id="ossrh对提交文件的要求">OSSRH对提交文件的要求</h2>
 <p>为了确保中央存储库中可用组件的质量水平，<code>OSSRH</code>对提交的文件有明确的要求。</p>
 <p>一个基础的提交，应该包含一下文件：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">example-1.0.0.pom
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">example-1.0.0.pom
 example-1.0.0.pom.asc
 example-1.0.0.jar
 example-1.0.0.jar.asc
@@ -305,13 +305,13 @@ example-1.0.0-javadoc.jar.asc
 </code></pre></div><p>下面我们会使用Gradle构建工具来帮助我们来生成。</p>
 <h2 id="gpg">GPG</h2>
 <p><code>OSX</code>下可以通过brew来安装<code>gpg</code>命令行工具。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ brew update
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ brew update
 $ brew install -v gpg
 </code></pre></div><p>也可以去官网下载安装，地址：https://gpgtools.org/</p>
 <p><strong>新建一个密钥</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">gpg --generate-key
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">gpg --generate-key
 </code></pre></div><p><strong>查看已经生成的密钥</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ gpg -k
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ gpg -k
 
 /Users/bo.liang/.gnupg/pubring.kbx
 ----------------------------------
@@ -327,7 +327,7 @@ uid           [ultimate] liangbo &lt;bo.liang0212@gmail.com&gt;
 sub   rsa2048 2020-03-19 [E] [expires: 2022-03-19]
 </code></pre></div><p><strong><code>CD62FE125D651206FBC76C88DF58A148A2AAA46C</code></strong>，是<code>密钥指纹</code>(用来做唯一识别)，后面8位**<code>A2AAA46C</code>**叫做<code>标识</code>或<code>KEY ID</code>，在后面需要加到Gradle插件配置中。</p>
 <p><strong>导出私钥文件</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ gpg --export-secret-keys [密钥指纹] &gt; secret.gpg
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ gpg --export-secret-keys [密钥指纹] &gt; secret.gpg
 
 例如：
 [16:56:48] bo.liang:gnupg $ gpg --export-secret-keys A2AAA46C &gt; secret.gpg
@@ -336,17 +336,17 @@ sub   rsa2048 2020-03-19 [E] [expires: 2022-03-19]
 
 </code></pre></div><p>会生成一个二进制的私钥文件，后面需要配置到gradle中，让<code>signing</code>插件帮我们给文件批量签名。</p>
 <p><strong>上传公钥到公钥服务器</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ gpg --keyserver keyserver.ubuntu.com --send-keys [密钥指纹]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ gpg --keyserver keyserver.ubuntu.com --send-keys [密钥指纹]
 </code></pre></div><p>在sonatype的仓库提交后，会需要一个校验步骤
 会需要从<code>多个</code>公钥服务器上下载匹配的公钥，然后来校验你上传的文件的签名。</p>
 <p>以下是sonatype会去拉取的公钥服务器列表。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">keys.gnupg.net
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">keys.gnupg.net
 pool.sks-keyservers.net
 keyserver.ubuntu.com
 </code></pre></div><p>准备好了以上几项，我们就可以开始撸Gradle了</p>
 <h2 id="配置gradle插件">配置Gradle插件</h2>
 <h3 id="buildgradle参数">build.gradle参数</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">plugins {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">plugins {
     id &#34;java-library&#34;
     id &#34;maven-publish&#34;
     id &#34;signing&#34;
@@ -441,7 +441,7 @@ signing {
     sign publishing.publications.mavenJava
 }
 </code></pre></div><p>在项目根目录或者gradle根目录新增<code>gradle.properties</code>（我推荐在本地的gradle根目录新建，毕竟有敏感信息）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">signing.keyId=密钥keyId(后8位)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">signing.keyId=密钥keyId(后8位)
 signing.password=密钥password（gpg新建秘钥时输入的密码）
 signing.secretKeyRingFile=私钥keyRingFile路径
 
@@ -618,7 +618,7 @@ sonatypePassword=sonatype密码
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -627,7 +627,7 @@ sonatypePassword=sonatype密码
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

@@ -79,7 +79,7 @@ public @interface SpringBootApplication {
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/post/springboot-load-configure-principle/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -90,7 +90,7 @@ public @interface SpringBootApplication {
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -295,7 +295,7 @@ if (!doNotTrack) {
 
           <p>在Spring Boot应用中的自动装配是通过<code>@EnableAutoConfiguration</code> 注解进行开启的。<code>@EnableAutoConfiguration</code> 可以帮助 Spring Boot 应用将所有符合条件的 <code>@Configuration</code> 配置类的 bean 都加载到 Spring IoC 容器中。</p>
 <p>我们看下<code>@SpringBootApplication</code>注解，默认是启动<code>@EnableAutoConfiguration</code> 的。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Target(ElementType.TYPE)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
@@ -323,7 +323,7 @@ public @interface SpringBootApplication {
 }
 </code></pre></div><h2 id="自动装配的原理">自动装配的原理</h2>
 <p>看下在Spring Boot应用启动时，<code>run</code>方法的代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public ConfigurableApplicationContext run(String... args) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public ConfigurableApplicationContext run(String... args) {
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
 		ConfigurableApplicationContext context = null;
@@ -369,7 +369,7 @@ public @interface SpringBootApplication {
 </code></pre></div><p>注意一下<code>getSpringFactoriesInstances</code>方法，通过<code>SpringFactoriesLoader</code>来加载指定文件的配置。</p>
 <h3 id="spring-factories机制">Spring Factories机制</h3>
 <p>先看下<code>org.springframework.core.io.support.SpringFactoriesLoader</code> 的关键代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public final class SpringFactoriesLoader {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public final class SpringFactoriesLoader {
 	
 	// 配置文件的路径
 	public static final String FACTORIES_RESOURCE_LOCATION = &#34;META-INF/spring.factories&#34;;
@@ -412,7 +412,7 @@ public @interface SpringBootApplication {
 
 }
 </code></pre></div><p>首先我们可以在下 <code>spring-boot-autoconfigure-2.2.4.RELEASE.jar/META-INF/spring.factories</code>找到了 key 为 <code>org.springframework.boot.autoconfigure.EnableAutoConfiguration</code> 部分：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Auto Configure
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 org.springframework.boot.autoconfigure.admin.SpringApplicationAdminJmxAutoConfiguration,\
 org.springframework.boot.autoconfigure.aop.AopAutoConfiguration,\
@@ -426,13 +426,13 @@ org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration,\
 
 ......
 </code></pre></div><p>key 为 <code>org.springframework.boot.autoconfigure.AutoConfigurationImportFilter</code> 部分：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Auto Configuration Import Filters
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Auto Configuration Import Filters
 org.springframework.boot.autoconfigure.AutoConfigurationImportFilter=\
 org.springframework.boot.autoconfigure.condition.OnBeanCondition,\
 org.springframework.boot.autoconfigure.condition.OnClassCondition,\
 org.springframework.boot.autoconfigure.condition.OnWebApplicationCondition
 </code></pre></div><h3 id="autoconfigurationimportselector分析">AutoConfigurationImportSelector分析</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Target(ElementType.TYPE)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
@@ -448,7 +448,7 @@ public @interface EnableAutoConfiguration {
 
 }
 </code></pre></div><p><code>AutoConfigurationImportSelector</code>导入配置的关键代码如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Override
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@Override
 	public String[] selectImports(AnnotationMetadata annotationMetadata) {
 		// 判断环境变量spring.boot.enableautoconfiguration的值是否为true?
 		if (!isEnabled(annotationMetadata)) {
@@ -627,7 +627,7 @@ public @interface EnableAutoConfiguration {
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -636,7 +636,7 @@ public @interface EnableAutoConfiguration {
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

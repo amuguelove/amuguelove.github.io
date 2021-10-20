@@ -6,11 +6,11 @@
     <description>Recent content in Hugo on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 03 Nov 2019 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>博客迁移到hugo</title>
       <link>http://flyeric.top/post/migrate-blog-to-hugo/</link>
-      <pubDate>Sun, 03 Nov 2019 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/migrate-blog-to-hugo/</guid>
       <description>&lt;p&gt;博客正式迁移到Hugo，并使用Emacs Org-mode + ox-hugo来写博客，顺便学习Emacs。&lt;/p&gt;</description>

@@ -22,7 +22,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
-  <meta name="generator" content="Hugo 0.79.0" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="canonical" href="http://flyeric.top/post/docker-best-practice/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
@@ -33,7 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.59131d096cf96e0478c3e2a093b563b25f93306668e9161a4eb1487764cb10d2.css' integrity='sha256-WRMdCWz5bgR4w&#43;Kgk7Vjsl&#43;TMGZo6RYaTrFId2TLENI='>
+  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -271,7 +271,7 @@ if (!doNotTrack) {
 <li>构建你的应用</li>
 </ul>
 <p>比如我们构建一个 Go 应用程序的 Dockerfile 可能类似于这样：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">FROM golang:1.11-alpine AS build
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">FROM golang:1.11-alpine AS build
 
 # 安装项目需要的工具
 # 运行 `docker build --no-cache .` 来更新依赖
@@ -308,7 +308,7 @@ CMD [&#34;--help&#34;]
 </ul>
 <h2 id="对多行参数排序">对多行参数排序</h2>
 <p>只要有可能，就将多行参数按字母顺序排序。这可以帮助你避免重复包含同一个包，更新包列表时也更容易，也更容易阅读和审查。建议在反斜杠符号 <code>\</code> 之前添加一个空格，可以增加可读性。比如下面的例子：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#ff79c6">RUN</span> apt-get update <span style="color:#ff79c6">&amp;&amp;</span> apt-get install -y <span style="color:#f1fa8c">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#ff79c6">RUN</span> apt-get update <span style="color:#ff79c6">&amp;&amp;</span> apt-get install -y <span style="color:#f1fa8c">\
 </span><span style="color:#f1fa8c"></span>  bzr <span style="color:#f1fa8c">\
 </span><span style="color:#f1fa8c"></span>  cvs <span style="color:#f1fa8c">\
 </span><span style="color:#f1fa8c"></span>  git <span style="color:#f1fa8c">\
@@ -321,13 +321,13 @@ CMD [&#34;--help&#34;]
 <h3 id="label">LABEL</h3>
 <p>你可以给镜像添加标签来帮助组织镜像、记录许可信息、辅助自动化构建等。每个标签一行，由 LABEL 开头加上一个或多个标签对。</p>
 <p>下面的示例展示了各种不同的可能格式。<code>#</code>开头的行是注释内容。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Set one or more individual labels
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Set one or more individual labels
 LABEL com.example.version=&#34;0.0.1-beta&#34;
 LABEL vendor=&#34;ACME Incorporated&#34;
 LABEL com.example.release-date=&#34;2015-02-12&#34;
 LABEL com.example.version.is-production=&#34;&#34;
 </code></pre></div><p>一个镜像可以包含多个标签，当然以上内容也可以写成下面这样，但是不是必须的：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Set multiple labels at once, using line-continuation characters to break long lines
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># Set multiple labels at once, using line-continuation characters to break long lines
 LABEL vendor=ACME\ Incorporated \
       com.example.is-production=&#34;&#34; \
       com.example.version=&#34;0.0.1-beta&#34; \
@@ -341,24 +341,24 @@ LABEL vendor=ACME\ Incorporated \
 </li>
 <li>
 <p>永远将 RUN apt-get update 和 apt-get install 组合成一条 RUN 声明，例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">RUN apt-get update &amp;&amp; apt-get install -y \
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">RUN apt-get update &amp;&amp; apt-get install -y \
       package-bar \
       package-baz \
       package-foo
 </code></pre></div></li>
 </ul>
 <p>将 apt-get update 放在一条单独的 RUN 声明中会导致缓存问题以及后续的 apt-get install 失败。比如，假设你有一个 Dockerfile 文件：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">FROM ubuntu:14.04
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">FROM ubuntu:14.04
 RUN apt-get update
 RUN apt-get install -y curl
 </code></pre></div><p>构建镜像后，所有的层都在 Docker 的缓存中。假设你后来又修改了其中的 apt-get install 添加了一个包：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">FROM ubuntu:14.04
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">FROM ubuntu:14.04
 RUN apt-get update
 RUN apt-get install -y curl nginx
 </code></pre></div><p>Docker 发现修改后的 RUN apt-get update 指令和之前的完全一样。所以，apt-get update 不会执行，而是使用之前的缓存镜像。因为 apt-get update 没有运行，后面的 apt-get install 可能安装的是过时的 curl 和 nginx 版本。</p>
 <p>使用<code>RUN apt-get update &amp;&amp; apt-get install -y</code>可以确保你的 Dockerfiles 每次安装的都是包的最新的版本，而且这个过程不需要进一步的编码或额外干预。这项技术叫作<code>cache busting(缓存破坏)</code>。</p>
 <p>下面是一个 RUN 指令的示例模板，展示了所有关于 apt-get 的建议：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">RUN apt-get update &amp;&amp; apt-get install -y \
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">RUN apt-get update &amp;&amp; apt-get install -y \
     aufs-tools \
     automake \
     build-essential \
@@ -381,7 +381,7 @@ RUN apt-get install -y curl nginx
 <h3 id="env">ENV</h3>
 <p>为了方便新程序运行，你可以使用 <code>ENV</code> 指令来为容器中安装的程序更新 PATH 环境变量。例如使用<code>ENV PATH /usr/local/nginx/bin:$PATH</code> 来确保<code>CMD [&quot;nginx&quot;]</code>能正确运行。</p>
 <p>ENV 指令也可用于为你想要容器化的服务提供必要的环境变量，比如 Postgres 需要的 PGDATA。 最后，ENV 也能用于设置常见的版本号，比如下面的示例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ENV PG_MAJOR 9.3
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ENV PG_MAJOR 9.3
 ENV PG_VERSION 9.3.4
 RUN curl -SL http://example.com/postgres-$PG_VERSION.tar.xz | tar -xJC /usr/src/postgress &amp;&amp; …
 ENV PATH /usr/local/postgres-$PG_MAJOR/bin:$PATH
@@ -400,16 +400,16 @@ ENV PATH /usr/local/postgres-$PG_MAJOR/bin:$PATH
 <h3 id="copy-和-add">COPY 和 ADD</h3>
 <p>虽然 <code>ADD</code> 和 <code>COPY</code> 功能类似，但一般优先使用 <code>COPY</code>。因为它比 <code>ADD</code> 更透明。COPY 只支持简单将本地文件拷贝到容器中，而 ADD 有一些并不明显的功能（比如本地 tar 提取和远程 URL 支持）。因此，ADD 的最佳用例是将本地 tar 文件自动提取到镜像中，例如<code>ADD rootfs.tar.xz</code>。</p>
 <p>如果你的 Dockerfile 有多个步骤需要使用上下文中不同的文件。单独 COPY 每个文件，而不是一次性的 COPY 所有文件，这将保证每个步骤的构建缓存只在特定的文件变化时失效。例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">COPY requirements.txt /tmp/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">COPY requirements.txt /tmp/
 RUN pip install --requirement /tmp/requirements.txt
 COPY . /tmp/
 </code></pre></div><p>如果将COPY . /tmp/放置在 RUN 指令之前，只要 . 目录中任何一个文件变化，都会导致后续指令的缓存失效。</p>
 <p>为了让镜像尽量小，最好不要使用 ADD 指令从远程 URL 获取包，而是使用 curl 和 wget。这样你可以在文件提取完之后删掉不再需要的文件来避免在镜像中额外添加一层。比如尽量避免下面的用法：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ADD http://example.com/big.tar.xz /usr/src/things/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ADD http://example.com/big.tar.xz /usr/src/things/
 RUN tar -xJf /usr/src/things/big.tar.xz -C /usr/src/things
 RUN make -C /usr/src/things all
 </code></pre></div><p>而是应该使用下面这种方法：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">RUN mkdir -p /usr/src/things \
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">RUN mkdir -p /usr/src/things \
     &amp;&amp; curl -SL http://example.com/big.tar.xz \
     | tar -xJC /usr/src/things \
     &amp;&amp; make -C /usr/src/things all
@@ -420,15 +420,15 @@ RUN make -C /usr/src/things all
 <p><code>CMD</code> 指令是容器启动以后，<code>默认</code>的执行命令，需要重点理解下这个默认的含义，意思就是如果我们执行 <code>docker run</code> 没有指定任何的执行命令或者 Dockerfile 里面也没有指定 ENTRYPOINT，那么就会使用 CMD 指定的执行命令执行了。这也说明了 ENTRYPOINT 才是容器启动以后真正要执行的命令。</p>
 <p>所以我们经常遇到 <code>CMD 会被覆盖</code> 的情况，为什么会被覆盖呢？主要还是因为 CMD 的定位就是默认，如果不额外指定，那么才会执行 CMD 命令，但是如果我们指定了的话那就不会执行 CMD 命令了，也就是说 CMD 会被覆盖。</p>
 <p>CMD 总共有三种用法：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">CMD [&#34;executable&#34;, &#34;param1&#34;, &#34;param2&#34;]  # exec 形式
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">CMD [&#34;executable&#34;, &#34;param1&#34;, &#34;param2&#34;]  # exec 形式
 CMD [&#34;param1&#34;, &#34;param2&#34;] # 作为 ENTRYPOINT 的默认参数
 CMD command param1 param2  # shell 形式
 </code></pre></div><p>其中 shell 形式，就是没有中括号的形式，命令 command 默认是在<code>/bin/sh -c</code>下执行的，比如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#ff79c6">FROM</span><span style="color:#f1fa8c"> busybox</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#ff79c6">FROM</span><span style="color:#f1fa8c"> busybox</span>
 
 <span style="color:#ff79c6">CMD</span> <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;hello cmd shell form!&#34;</span>
 </code></pre></div><p>我们将上面的 Dockerfile 打包成 cmdshell 镜像，然后直接启动一个容器：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker build -t cmdshell .
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker build -t cmdshell .
 Sending build context to Docker daemon  2.048kB
 Step 1/2 : FROM busybox
  ---&gt; 020584afccce
@@ -441,11 +441,11 @@ Successfully tagged cmdshell:latest
 $ docker run cmdshell
 hello cmd shell form!
 </code></pre></div><p>对于带有中括号的 exec 形式，命令没有在任何 shell 终端环境下，如果我们要执行 shell，必须把 shell 加入到中括号的参数中。将上面的例子修改为：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#ff79c6">FROM</span><span style="color:#f1fa8c"> busybox</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#ff79c6">FROM</span><span style="color:#f1fa8c"> busybox</span>
 
 <span style="color:#ff79c6">CMD</span> [<span style="color:#f1fa8c">&#34;/bin/sh&#34;</span>, <span style="color:#f1fa8c">&#34;-c&#34;</span>, <span style="color:#f1fa8c">&#34;echo &#39;hello cmd exec form!&#39;&#34;</span>]
 </code></pre></div><p>同样将上面的 Dockerfile 打包成 cmdexec 镜像，然后直接启动一个容器：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker build -t cmdexec .
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker build -t cmdexec .
 Sending build context to Docker daemon  2.048kB
 Step 1/2 : FROM busybox
  ---&gt; 020584afccce
@@ -459,23 +459,23 @@ $ docker run cmdexec
 hello cmd <span style="color:#8be9fd;font-style:italic">exec</span> form!
 </code></pre></div><p>需要注意，采用 exec 形式，第一个参数必须是命令的<code>全路径</code>才行。一个 Dockerfile 如果有多个 CMD，只有最后一个生效，官网推荐采用这种方式。</p>
 <p>当然，以上都是体现了 CMD 的 <strong>默认</strong> 行为。如果我们在 run 时指定了命令或者有 ENTRYPOINT CMD 就会被覆盖。比如同样用上面两个镜像，在运行的时候指定一个命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker run cmdexec <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;hello docker&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker run cmdexec <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;hello docker&#39;</span>
 hello docker
 $ docker run cmdshell <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;hello docker&#39;</span>
 hello docker
 </code></pre></div><p>可以看到，最终容器里面执行的是 run 命令后面的命令，而不是 CMD 里面定义的。</p>
 <h4 id="entrypoint-指令httpswwwqikqiakcomk8straindockerdockerfile-practiceentrypoint">ENTRYPOINT 指令<a href="https://www.qikqiak.com/k8strain/docker/dockerfile-practice/#entrypoint">¶</a></h4>
 <p>根据官方定义来说 <code>ENTRYPOINT</code> 才是用于定义容器启动以后的执行程序的，允许将镜像当成命令本身来运行（用 CMD 提供默认选项），从名字也可以理解，是容器的<strong>入口</strong>。ENTRYPOINT 一共有两种用法：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ENTRYPOINT [&#34;executable&#34;, &#34;param1&#34;, &#34;param2&#34;] (exec 形式)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ENTRYPOINT [&#34;executable&#34;, &#34;param1&#34;, &#34;param2&#34;] (exec 形式)
 ENTRYPOINT command param1 param2 (shell 形式)
 </code></pre></div><p>对应命令行 exec 模式，也就是带中括号的。和 CMD 的中括号形式是一致的，但是这里貌似是在shell的环境下执行的，与cmd有区别。如果 run 命令后面有执行命令，那么后面的全部都会作为 ENTRYPOINT 的参数。如果 run 后面没有额外的命令，但是定义了 CMD，那么 CMD 的全部内容就会作为 ENTRYPOINT 的参数，这同时是上面我们提到的 CMD 的第二种用法。所以说 ENTRYPOINT 不会被覆盖。当然如果要在 run 里面覆盖，也是有办法的，使用<code>--entrypoint</code>参数即可。</p>
 <p>比如我们定义如下的 Dockerfile：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#ff79c6">FROM</span><span style="color:#f1fa8c"> busybox</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#ff79c6">FROM</span><span style="color:#f1fa8c"> busybox</span>
 
 <span style="color:#ff79c6">CMD</span> [<span style="color:#f1fa8c">&#34;I am in cmd exec form&#34;</span>]
 <span style="color:#ff79c6">ENTRYPOINT</span> [<span style="color:#f1fa8c">&#34;echo&#34;</span>]
 </code></pre></div><p>将上面的 Dockerfile 打包成镜像 entrypointest，然后直接运行，不带任何参数：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker build -t entrypointest .
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker build -t entrypointest .
 Sending build context to Docker daemon  2.048kB
 Step 1/3 : FROM busybox
  ---&gt; 020584afccce
@@ -492,16 +492,16 @@ Successfully tagged entrypointest:latest
 $ docker run entrypointest
 I am in cmd <span style="color:#8be9fd;font-style:italic">exec</span> form
 </code></pre></div><p>我们可以看到打印的结果是 CMD 里面指定的内容，也就是默认情况将 CMD 部分作为 ENTRYPOINT 的参数了。但是如果我们在运行容器的时候如果指定了运行参数呢：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker run entrypointest I am in run section
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker run entrypointest I am in run section
 I am in run section
 </code></pre></div><p>我们可以看到运行时指定的参数会覆盖掉 CMD 提供的默认参数，但是默认都是执行的 ENTRYPOINT 里面的命令。</p>
 <p>对于 shell 模式的，任何 run 和 CMD 的参数都无法被传入到 ENTRYPOINT 里。官网推荐用上面一种用法。比如我们我们这里定义一个 Dockerfile 如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#ff79c6">FROM</span><span style="color:#f1fa8c"> busybox</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#ff79c6">FROM</span><span style="color:#f1fa8c"> busybox</span>
 
 <span style="color:#ff79c6">CMD</span> [<span style="color:#f1fa8c">&#34;I am in cmd exec form and entrypoint shell form&#34;</span>]
 <span style="color:#ff79c6">ENTRYPOINT</span> echo
 </code></pre></div><p>将上面 Dockerfile 打包成镜像 entrypointshell，然后直接运行：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker build -t entrypointshell .
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker build -t entrypointshell .
 Sending build context to Docker daemon  2.048kB
 Step 1/3 : FROM busybox
  ---&gt; 020584afccce
@@ -517,7 +517,7 @@ Successfully built f9d4e1d1b0a0
 Successfully tagged entrypointshell:latest
 $ docker run entrypointshell
 </code></pre></div><p>我们可以发现 CMD 的参数并没有被打印出来，如果在运行的时候添加上参数呢：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker run entrypointshell I am in run section
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker run entrypointshell I am in run section
 
 $ 
 </code></pre></div><p>我们可以发现也没有将 run 命令后面的参数打印出来。所以一般情况下对于 ENTRYPOINT 来说使用中括号的 exec 形式更好。</p>
@@ -679,7 +679,7 @@ $
         </p>
         
         <p class="credits theme-by text-muted">
-          由 <a href="http://gohugo.io" target="_blank">Hugo v0.79.0</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
+          由 <a href="http://gohugo.io" target="_blank">Hugo v0.88.1</a> 强力驱动 &nbsp;&bull;&nbsp; 主题移植自 <a href="https://github.com/cnych/qikqiak.com" target="_blank">Beautiful Hugo</a>
           
         </p>
       </div>
@@ -688,7 +688,7 @@ $
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.b7dfdd821c9f407aafd1909c145d179393173d1476e753e70269be48968a707d.js' integrity='sha256-t9/dghyfQHqv0ZCcFF0Xk5MXPRR251PnAmm&#43;SJaKcH0='></script>
+<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

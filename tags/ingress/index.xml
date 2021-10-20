@@ -6,11 +6,11 @@
     <description>Recent content in ingress on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/tags/ingress/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/ingress/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>不同ingress controller的性能测试</title>
       <link>http://flyeric.top/post/ingress-controllers-benchmark/</link>
-      <pubDate>Wed, 13 Jan 2021 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/ingress-controllers-benchmark/</guid>
       <description>&lt;p&gt;Ingress Controller有很多实现方式，如Kubernetes官方，Nginx官方，Kong，Traefik等等，下面对以下三种不同的Ingress Controller进行性能测试，Kubernetes Ingress VS Nginx Ingress（Nginx官方出品）VS Traefix Ingress。&lt;/p&gt;</description>
@@ -19,7 +19,7 @@
     <item>
       <title>ingress-nginx 性能压测</title>
       <link>http://flyeric.top/post/ingress-nginx-benchmark/</link>
-      <pubDate>Mon, 04 Jan 2021 00:00:00 +0800</pubDate>
+      <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/ingress-nginx-benchmark/</guid>
       <description>&lt;p&gt;Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。&lt;/p&gt;</description>
@@ -28,7 +28,7 @@
     <item>
       <title>ingress-nginx 高并发实践</title>
       <link>http://flyeric.top/post/ingress-nginx-high-concurrency/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/ingress-nginx-high-concurrency/</guid>
       <description>&lt;p&gt;Nginx Ingress Controller 基于 Nginx 实现 Kubernetes Ingress API。Nginx 是一款高性能网关，在实际生产环境运行时，需要对参数进行调优，以保证其充分发挥高性能的优势。&lt;/p&gt;
@@ -38,7 +38,7 @@
     <item>
       <title>ingress-nginx在TKE上部署的最佳实践</title>
       <link>http://flyeric.top/post/ingress-nginx-on-tke/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/ingress-nginx-on-tke/</guid>
       <description>&lt;p&gt;Nginx Ingress 有多种部署方式，本文将介绍 Nginx Ingress 在 TKE 上的一些部署方案，这几种方案的原理、各自优缺点以及一些选型和使用上的建议。&lt;/p&gt;</description>
@@ -47,7 +47,7 @@
     <item>
       <title>ingress-nginx的安装使用</title>
       <link>http://flyeric.top/post/install-ingress-nginx/</link>
-      <pubDate>Thu, 31 Dec 2020 00:00:00 +0800</pubDate>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/install-ingress-nginx/</guid>
       <description>&lt;p&gt;开源的 Ingress Controller 的实现使用量最大的莫过于 Ingress Nginx 了，可作为反向代理将外部流量导入集群内部，将 Kubernetes 内部的 Service 暴露给外部，在 Ingress 对象中通过域名匹配 Service，这样就可以直接通过域名访问到集群内部的服务了。&lt;/p&gt;
@@ -62,7 +62,7 @@
     <item>
       <title>kubernetes Ingress 自动化 HTTPS</title>
       <link>http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</link>
-      <pubDate>Mon, 28 Sep 2020 00:00:00 +0800</pubDate>
+      <pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</guid>
       <description>&lt;p&gt;现在的Web应用启用&lt;code&gt;HTTPS&lt;/code&gt;服务是真的非常有必要的。一些正规机构颁发的CA证书费用又特别高，就算有免费的工具颁发证书，通过人工的方式手动注入到K8S比较麻烦，而且还需要到期后进行人工续期，若管理的证书过多，还无法颁发泛域名的话，那就更加麻烦了。&lt;/p&gt;

@@ -6,11 +6,11 @@
     <description>Recent content in jpa on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 13 Mar 2020 00:00:00 +0800</lastBuildDate><atom:link href="http://flyeric.top/tags/jpa/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/jpa/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>JPA ID生成策略</title>
       <link>http://flyeric.top/post/jpa-id-generated-strategy/</link>
-      <pubDate>Fri, 13 Mar 2020 00:00:00 +0800</pubDate>
+      <pubDate>Fri, 13 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/post/jpa-id-generated-strategy/</guid>
       <description>&lt;p&gt;&lt;strong&gt;JPA&lt;/strong&gt; 为对象关系映射提供了了⼀一种基于 &lt;strong&gt;POJO&lt;/strong&gt; 的持久化模型&lt;/p&gt;
@@ -20,7 +20,7 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;JPA&lt;/code&gt;定义了持久化的标准，而&lt;code&gt;Hibernate&lt;/code&gt;是持久化的实现。&lt;code&gt;Spring Data JPA&lt;/code&gt;就是在&lt;code&gt;Hibernate&lt;/code&gt;的基础上封装实现的。&lt;/p&gt;
 &lt;p&gt;JPA提供了很多常用的注解，下面就来讲下关于主键的生成策略，主要的注解有：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;@Id
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;@Id
 @GeneratedValue(strategy, generator)
 @SequenceGenerator(name, sequenceName)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
