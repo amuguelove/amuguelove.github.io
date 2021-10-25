@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kafka on 梁波的技术博客</title>
+    <link>http://flyeric.top/tags/kafka/</link>
+    <description>Recent content in kafka on 梁波的技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 25 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/kafka/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>部署Kafka集群</title>
+      <link>http://flyeric.top/post/kafka-cluster-deploy/</link>
+      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://flyeric.top/post/kafka-cluster-deploy/</guid>
+      <description>&lt;p&gt;最近在学习DDD Event Storming以及ETL工具时，对Apache Kafka产生了很大的兴趣，准备搭建一套Development Environment方便以后的学习。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20211025173829211.png&#34; alt=&#34;image-20211025173829211&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

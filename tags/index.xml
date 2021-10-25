@@ -6,7 +6,43 @@
     <description>Recent content in Tags on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 25 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>apache</title>
+      <link>http://flyeric.top/tags/apache/</link>
+      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://flyeric.top/tags/apache/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ETL</title>
+      <link>http://flyeric.top/tags/etl/</link>
+      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://flyeric.top/tags/etl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kafka</title>
+      <link>http://flyeric.top/tags/kafka/</link>
+      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://flyeric.top/tags/kafka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>http://flyeric.top/tags/kubernetes/</link>
+      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://flyeric.top/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>CI</title>
       <link>http://flyeric.top/tags/ci/</link>
@@ -22,15 +58,6 @@
       <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/tags/github-actions/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>http://flyeric.top/tags/kubernetes/</link>
-      <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://flyeric.top/tags/kubernetes/</guid>
       <description></description>
     </item>
     

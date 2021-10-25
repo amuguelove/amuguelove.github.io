@@ -6,24 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   
   
-  <title>GitHub Actions 初探-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
-  <meta property="og:title" content="GitHub Actions 初探" />
-  <meta name="twitter:title" content="GitHub Actions 初探" />
+  <title>部署Kafka集群-梁波的博客|Java|SpringBoot|Golang|Kubernetes|微服务|云原生</title>
+  <meta property="og:title" content="部署Kafka集群" />
+  <meta name="twitter:title" content="部署Kafka集群" />
   
-  <meta name="description" content="使用Github Actions构建流水线并使用Helm部署制品到K8S">
-  <meta property="og:description" content="使用Github Actions构建流水线并使用Helm部署制品到K8S">
-  <meta name="twitter:description" content="使用Github Actions构建流水线并使用Helm部署制品到K8S">
+  <meta name="description" content="Kafka集群部署：K8S &amp; Docker Compose">
+  <meta property="og:description" content="Kafka集群部署：K8S &amp; Docker Compose">
+  <meta name="twitter:description" content="Kafka集群部署：K8S &amp; Docker Compose">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
   <link href='http://flyeric.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://flyeric.top/img/avatar.jpg" />
   <meta name="twitter:image" content="http://flyeric.top/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flyeric.top/post/github-actions-learning/" />
+  <meta property="og:url" content="http://flyeric.top/post/kafka-cluster-deploy/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.88.1" />
-  <link rel="canonical" href="http://flyeric.top/post/github-actions-learning/" />
+  <link rel="canonical" href="http://flyeric.top/post/kafka-cluster-deploy/" />
   <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
@@ -152,7 +152,7 @@ if (!doNotTrack) {
 
 
   
-    <div id="header-big-imgs" data-num-img=1 data-img-src-1="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/roman-synkevych-wX2L8L-fGeA-unsplash.jpg" ></div>
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/ramon-salinero-vEE00Hx5d0Q-unsplash.jpg" ></div>
   
 
   <header class="header-section has-img">
@@ -163,16 +163,16 @@ if (!doNotTrack) {
           <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
               <div class="post-heading">
-                <h1>GitHub Actions 初探</h1>
+                <h1>部署Kafka集群</h1>
                   
                     
-                      <h2 class="post-subheading">使用Github Actions构建流水线并使用Helm部署制品到K8S</h2>
+                      <h2 class="post-subheading">Kafka集群部署：K8S &amp; Docker Compose</h2>
                     
                   
                   
                     <span class="post-meta">
   
-    发表于 September 3, 2021
+    发表于 October 25, 2021
   
   
 </span>
@@ -194,16 +194,16 @@ if (!doNotTrack) {
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>GitHub Actions 初探</h1>
+              <h1>部署Kafka集群</h1>
                 
                   
-                    <h2 class="post-subheading">使用Github Actions构建流水线并使用Helm部署制品到K8S</h2>
+                    <h2 class="post-subheading">Kafka集群部署：K8S &amp; Docker Compose</h2>
                   
                 
                 
                   <span class="post-meta">
   
-    发表于 September 3, 2021
+    发表于 October 25, 2021
   
   
 </span>
@@ -234,11 +234,13 @@ if (!doNotTrack) {
             
             <h5 id="tags" style="margin-top: 30px;">标签:
               
-                  <a href="http://flyeric.top/tags/github-actions/">github actions</a> &nbsp;
+                  <a href="http://flyeric.top/tags/kafka/">kafka</a> &nbsp;
               
                   <a href="http://flyeric.top/tags/kubernetes/">kubernetes</a> &nbsp;
               
-                  <a href="http://flyeric.top/tags/ci/">ci</a> &nbsp;
+                  <a href="http://flyeric.top/tags/apache/">apache</a> &nbsp;
+              
+                  <a href="http://flyeric.top/tags/etl/">ETL</a> &nbsp;
               
             </h5>
             
@@ -261,51 +263,40 @@ if (!doNotTrack) {
           
           
 
-          <p>GitHub Actions 是 Github 在2018年10月份推出的持续集成服务。可免费使用，你可以在 GitHub Actions 的仓库中自动化、自定义和执行软件开发工作流程。 可以发现、创建和共享操作以执行您喜欢的任何作业（包括 CI/CD），并将操作合并到完全自定义的工作流程中。</p>
-<p>本文是一个简单的教程，演示如何使用 GitHub Actions 自动构建SpringBoot应用流水线并使用Helm部署到K8S集群。</p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/20191203184227.png" alt="GitHub Actions"></p>
-<h2 id="基本概念">基本概念</h2>
-<p>1）Workflows（工作流程）:</p>
-<p>工作流程由一项或多项作业组成，可以计划或由事件触发。 工作流程可用于在 GitHub 上构建、测试、打包、发布或部署项目。</p>
-<p>2）Events（事件）:</p>
-<p>事件是触发工作流程的特定活动。 例如，当有推送提交到仓库或者创建议题或拉取请求时，GitHub 就可能产生活动。</p>
-<p>3）Jobs（任务作业）:</p>
-<p>作业是在同一运行服务器上执行的一组步骤。 默认情况下，包含多个作业的工作流程将同时运行这些作业。</p>
-<p>4）Steps（步骤）:</p>
-<p>步骤是可以在作业中运行命令的单个任务。 步骤可以是<em>操作</em>或 shell 命令。 作业中的每个步骤在同一运行器上执行，可让该作业中的操作互相共享数据。</p>
-<p>5）Actions（操作）:</p>
-<p><em>操作</em> 是独立命令，它们组合到<em>步骤</em>以创建<em>作业</em>。 操作是工作流程最小的便携式构建块。 您可以创建自己的操作，也可以使用 GitHub 社区创建的操作。 要在工作流程中使用操作，必须将其作为一个步骤。</p>
-<p>6）Runners（运行器）:</p>
-<p>运行器是安装了 <a href="https://github.com/actions/runner">GitHub Actions 运行器应用程序</a>的服务器。 您可以使用 GitHub 托管的运行器，也可以托管您自己的运行器。 运行器将侦听可用的作业，每次运行一个作业，并将进度、日志和结果报告回 GitHub。 GitHub 托管的运行器基于 Ubuntu Linux、Microsoft Windows 和 macOS，并且工作流程中的每个作业都在新的虚拟环境中运行。</p>
-<p>下面我们开始从0开始创建一个真实项目可运行的Demo：</p>
-<h2 id="配置github-actions-密钥">配置GitHub Actions 密钥</h2>
-<p>在开始GitHub Actions之前我们需要配置一些Secrets，方便在后续的配置文件中使用，可以看到这里配置了Docker Registry以及K8S相关的Secret。</p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210903213601813.png" alt="image-20210903213601813"></p>
-<h2 id="创建一个工作流">创建一个工作流</h2>
-<p>从 GitHub 上的仓库，在 <strong>.github/workflows</strong> 目录中创建一个名为 <strong>ci.yml</strong> 的新文件。</p>
-<p>如下是其内容：</p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210903214946429.png" alt="image-20210903214946429"></p>
-<h2 id="自动触发流水线">自动触发流水线</h2>
-<p>从上面的配置可以看出，在我们push代码之后就会触发workflow：</p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210903215254227.png" alt="image-20210903215254227"></p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210903215326332.png" alt="image-20210903215326332"></p>
-<h2 id="应用部署">应用部署</h2>
-<ol>
-<li>
-<p>Docker制品生成</p>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210903215532955.png" alt="image-20210903215532955"></p>
-</li>
-<li>
-<p>K8S应用部署成功</p>
-</li>
-</ol>
-<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210903215556667.png" alt="image-20210903215556667"></p>
-<p>到这里我们就实现了通过GitHub Actions自动触发流水线生成Docker制品，并通过Helm将该制品部署到K8S集群中。</p>
-<p>Github Demo地址：<a href="https://github.com/amuguelove/scaffold-onion-architecture">https://github.com/amuguelove/scaffold-onion-architecture</a></p>
+          <p>最近在学习DDD Event Storming以及ETL工具时，对Apache Kafka产生了很大的兴趣，准备搭建一套Development Environment方便以后的学习。</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20211025173829211.png" alt="image-20211025173829211"></p>
+<h2 id="部署kafka集群">部署Kafka集群</h2>
+<h3 id="在kubernetes上部署">在Kubernetes上部署</h3>
+<h4 id="部署strimzi-operator">部署Strimzi Operator</h4>
+<p>本文将使用<strong>strimzi</strong> + <strong>Helm</strong>方式部署，简单高效，之后也方便在生产环境中部署。<strong>strimzi</strong>提供了一个Operator来创建Kafka集群，如果想换其他方式，可以选择Bitnami的Kafka Helm Chart。</p>
+<p><strong>首先第一步添加strimzi的helm repo：</strong></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20211025172419836.png" alt="image-20211025172419836"></p>
+<p><strong>之后下载官方的Helm Values，其中很多镜像是quay.io仓库的，导致无法下载，这里已经替换成了个人的docker镜像。</strong></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20211025171923514.png" alt="image-20211025171923514"></p>
+<p><strong>执行如下Helm命令部署strimzi operator：</strong></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20211025172021089.png" alt="image-20211025172021089"></p>
+<h4 id="创建kafka集群">创建Kafka集群</h4>
+<p>将如下脚本，保存为：kafka-persistent-single.yaml</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20211025172859589.png" alt="image-20211025172859589"></p>
+<p><strong>执行如下脚本：</strong></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20211025173046437.png" alt="image-20211025173046437"></p>
+<p><strong>观察POD启动情况：</strong></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20211025130819863-5153670.png" alt="image-20211025130819863"></p>
+<h4 id="验证结果">验证结果</h4>
+<p>生产者消费者的脚本如下：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20211025174447353.png" alt="image-20211025174447353"></p>
+<p>实际演示效果：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20211025145228092-5153681.png" alt="image-20211025145228092"></p>
+<p>以上可以看出Kafka集群已经部署成功，并能成功发送消息以及接收消息。</p>
+<h3 id="docker-compose部署">Docker Compose部署</h3>
+<p>docker-compose.yaml脚本内容如下：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20211025172154377.png" alt="image-20211025172154377"></p>
+<p>使用docker-compose命令启动后，Mac电脑安装Conduktor软件验证，如下图所示：</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20211025154330234-20211025174319230.png" alt="image-20211025154330234"></p>
 <h1 id="reference">Reference</h1>
 <ol>
-<li>GitHub Actions官网：<a href="https://docs.github.com/cn/actions">https://docs.github.com/cn/actions</a></li>
-<li>GitHub Actions Marketplace: <a href="https://github.com/marketplace?type=actions">https://github.com/marketplace?type=actions</a></li>
+<li>Apache Kafka官网：<a href="https://kafka.apache.org/">https://kafka.apache.org/</a></li>
+<li>Strimzi官网：<a href="https://strimzi.io/">https://strimzi.io/</a></li>
 </ol>
 
           
@@ -367,6 +358,8 @@ if (!doNotTrack) {
 <h3>相关文章</h3>
 <ul style="margin-bottom: 25px;">
     
+    <li><a href="http://flyeric.top/post/github-actions-learning/">GitHub Actions 初探</a></li>
+    
     <li><a href="http://flyeric.top/post/ingress-nginx-high-concurrency/">ingress-nginx 高并发实践</a></li>
     
     <li><a href="http://flyeric.top/post/ingress-nginx-on-tke/">ingress-nginx在TKE上部署的最佳实践</a></li>
@@ -385,8 +378,6 @@ if (!doNotTrack) {
     
     <li><a href="http://flyeric.top/post/ingress-nginx-benchmark/">ingress-nginx 性能压测</a></li>
     
-    <li><a href="http://flyeric.top/post/how-to-use-k8s-api-resources/">Kubernetes API资源的使用</a></li>
-    
 </ul>
 
         
@@ -395,13 +386,9 @@ if (!doNotTrack) {
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://flyeric.top/post/elastic-stack-monitoring-04/" data-toggle="tooltip" data-placement="top" title="使用 Elastic 可观测性实现云原生应用监控(4/4)">&larr; 前一篇</a>
+              <a href="http://flyeric.top/post/github-actions-learning/" data-toggle="tooltip" data-placement="top" title="GitHub Actions 初探">&larr; 前一篇</a>
             </li>
           
-          
-            <li class="next">
-              <a href="http://flyeric.top/post/kafka-cluster-deploy/" data-toggle="tooltip" data-placement="top" title="部署Kafka集群">后一篇 &rarr;</a>
-            </li>
           
         </ul>
         
