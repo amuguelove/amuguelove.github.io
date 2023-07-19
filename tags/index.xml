@@ -6,7 +6,70 @@
     <description>Recent content in Tags on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 25 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cd</title>
+      <link>http://flyeric.top/tags/cd/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://flyeric.top/tags/cd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CI</title>
+      <link>http://flyeric.top/tags/ci/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://flyeric.top/tags/ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>devops</title>
+      <link>http://flyeric.top/tags/devops/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://flyeric.top/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>drone</title>
+      <link>http://flyeric.top/tags/drone/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://flyeric.top/tags/drone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github</title>
+      <link>http://flyeric.top/tags/github/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://flyeric.top/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>helm</title>
+      <link>http://flyeric.top/tags/helm/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://flyeric.top/tags/helm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>http://flyeric.top/tags/kubernetes/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://flyeric.top/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>apache</title>
       <link>http://flyeric.top/tags/apache/</link>
@@ -31,24 +94,6 @@
       <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/tags/kafka/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>http://flyeric.top/tags/kubernetes/</link>
-      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://flyeric.top/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>CI</title>
-      <link>http://flyeric.top/tags/ci/</link>
-      <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://flyeric.top/tags/ci/</guid>
       <description></description>
     </item>
     
@@ -197,15 +242,6 @@
     </item>
     
     <item>
-      <title>helm</title>
-      <link>http://flyeric.top/tags/helm/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://flyeric.top/tags/helm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>centos</title>
       <link>http://flyeric.top/tags/centos/</link>
       <pubDate>Sat, 26 Dec 2020 00:00:00 +0000</pubDate>
@@ -247,24 +283,6 @@
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>http://flyeric.top/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>github</title>
-      <link>http://flyeric.top/tags/github/</link>
-      <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://flyeric.top/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>devops</title>
-      <link>http://flyeric.top/tags/devops/</link>
-      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://flyeric.top/tags/devops/</guid>
       <description></description>
     </item>
     

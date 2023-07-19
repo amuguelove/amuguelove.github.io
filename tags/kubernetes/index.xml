@@ -6,7 +6,17 @@
     <description>Recent content in kubernetes on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 25 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes 集群中安装 Drone </title>
+      <link>http://flyeric.top/post/k8s-drone-ci-1/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://flyeric.top/post/k8s-drone-ci-1/</guid>
+      <description>&lt;p&gt;基于云原生的应用大多都离不开CI/CD工具或平台。现有很多优秀的开源工具，如：&lt;a href=&#34;http://flyeric.top/post/jenkins-slave-base-on-kubernetes/&#34;&gt;Jenkins&lt;/a&gt;、&lt;a href=&#34;http://flyeric.top/post/github-actions-learning/&#34;&gt;Github Actions&lt;/a&gt; 等，对于Jenkins来说比较笨重，占用系统资源较多，而GitHub Actions则依赖于GitHub云服务器，无法和本地k8s集群交互。&lt;/p&gt;
+&lt;p&gt;有没有一种工具可以在本地环境运行，资源占用少，方便学习和实践。本文将介绍一个比较轻量级的CI工具 - &lt;a href=&#34;https://www.drone.io/&#34;&gt;Drone&lt;/a&gt;，接下来将采用Helm的方式在Kubernetes中安装 Drone工具。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>部署Kafka集群</title>
       <link>http://flyeric.top/post/kafka-cluster-deploy/</link>

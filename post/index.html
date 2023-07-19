@@ -164,6 +164,50 @@ if (!doNotTrack) {
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://flyeric.top/post/k8s-drone-ci-1/">
+                <h2 class="post-title">Kubernetes 集群中安装 Drone </h2>
+
+                
+                  <h3 class="post-subtitle">
+                    基于 Drone 的 CI/CD（一）
+                  </h3>
+                
+              </a>
+
+              <p class="post-meta">
+                发表于 July 1, 2023
+              </p>
+              <div class="post-entry">
+                
+                  <p>基于云原生的应用大多都离不开CI/CD工具或平台。现有很多优秀的开源工具，如：<a href="http://flyeric.top/post/jenkins-slave-base-on-kubernetes/">Jenkins</a>、<a href="http://flyeric.top/post/github-actions-learning/">Github Actions</a> 等，对于Jenkins来说比较笨重，占用系统资源较多，而GitHub Actions则依赖于GitHub云服务器，无法和本地k8s集群交互。</p>
+<p>有没有一种工具可以在本地环境运行，资源占用少，方便学习和实践。本文将介绍一个比较轻量级的CI工具 - <a href="https://www.drone.io/">Drone</a>，接下来将采用Helm的方式在Kubernetes中安装 Drone工具。</p>
+                  <a href="http://flyeric.top/post/k8s-drone-ci-1/" class="post-read-more">[阅读全文]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
+                  
+                    #<a href="http://flyeric.top/tags/devops/">devops</a>&nbsp;
+                  
+                    #<a href="http://flyeric.top/tags/drone/">drone</a>&nbsp;
+                  
+                    #<a href="http://flyeric.top/tags/ci/">ci</a>&nbsp;
+                  
+                    #<a href="http://flyeric.top/tags/cd/">cd</a>&nbsp;
+                  
+                    #<a href="http://flyeric.top/tags/github/">github</a>&nbsp;
+                  
+                    #<a href="http://flyeric.top/tags/helm/">helm</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://flyeric.top/post/kafka-cluster-deploy/">
                 <h2 class="post-title">部署Kafka集群</h2>
 
@@ -585,47 +629,6 @@ if (!doNotTrack) {
 
             </article>
           
-            <article class="post-preview">
-              <a href="http://flyeric.top/post/install-ingress-nginx/">
-                <h2 class="post-title">ingress-nginx的安装使用</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                发表于 December 31, 2020
-              </p>
-              <div class="post-entry">
-                
-                  <p>开源的 Ingress Controller 的实现使用量最大的莫过于 Ingress Nginx 了，可作为反向代理将外部流量导入集群内部，将 Kubernetes 内部的 Service 暴露给外部，在 Ingress 对象中通过域名匹配 Service，这样就可以直接通过域名访问到集群内部的服务了。</p>
-<p>实际 Ingress Nginx 有两种实现：</p>
-<ol>
-<li><a href="https://github.com/kubernetes/ingress-nginx">https://github.com/kubernetes/ingress-nginx</a></li>
-<li><a href="https://github.com/nginxinc/kubernetes-ingress">https://github.com/nginxinc/kubernetes-ingress</a></li>
-</ol>
-<p>第一种是 Kubernetes 开源社区的实现，第二种是 Nginx 官方的实现，我们通常用的是 Kubernetes 社区的实现，这也是本文所关注的重点。</p>
-                  <a href="http://flyeric.top/post/install-ingress-nginx/" class="post-read-more">[阅读全文]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://flyeric.top/tags/kubernetes/">kubernetes</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/ingress/">ingress</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/nginx/">nginx</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/helm/">helm</a>&nbsp;
-                  
-                    #<a href="http://flyeric.top/tags/traefik/">traefik</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
         </div>
         
           <ul class="pager main-pager">
@@ -678,7 +681,7 @@ if (!doNotTrack) {
         </ul>
         <p class="credits copyright text-muted">
           &bull;&nbsp;
-          &copy;2016-2021
+          &copy;2016-2023
 
           
             &nbsp;&bull;&nbsp;

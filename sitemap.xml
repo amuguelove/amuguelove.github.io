@@ -2,10 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://flyeric.top/tags/apache/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://flyeric.top/categories/</loc>
+    <lastmod>2023-07-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://flyeric.top/tags/cd/</loc>
+    <lastmod>2023-07-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://flyeric.top/tags/ci/</loc>
+    <lastmod>2023-07-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://flyeric.top/tags/devops/</loc>
+    <lastmod>2023-07-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://flyeric.top/tags/drone/</loc>
+    <lastmod>2023-07-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://flyeric.top/tags/github/</loc>
+    <lastmod>2023-07-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://flyeric.top/tags/helm/</loc>
+    <lastmod>2023-07-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://flyeric.top/tags/kubernetes/</loc>
+    <lastmod>2023-07-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://flyeric.top/categories/kubernetes/</loc>
+    <lastmod>2023-07-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://flyeric.top/post/k8s-drone-ci-1/</loc>
+    <lastmod>2023-07-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://flyeric.top/post/</loc>
+    <lastmod>2023-07-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://flyeric.top/tags/</loc>
+    <lastmod>2023-07-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://flyeric.top/</loc>
+    <lastmod>2023-07-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://flyeric.top/tags/apache/</loc>
     <lastmod>2021-10-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://flyeric.top/tags/etl/</loc>
@@ -14,26 +50,8 @@
     <loc>http://flyeric.top/tags/kafka/</loc>
     <lastmod>2021-10-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://flyeric.top/tags/kubernetes/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://flyeric.top/categories/kubernetes/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://flyeric.top/post/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://flyeric.top/tags/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://flyeric.top/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://flyeric.top/post/kafka-cluster-deploy/</loc>
     <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://flyeric.top/tags/ci/</loc>
-    <lastmod>2021-09-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://flyeric.top/tags/github-actions/</loc>
     <lastmod>2021-09-03T00:00:00+00:00</lastmod>
@@ -110,9 +128,6 @@
     <loc>http://flyeric.top/post/ingress-nginx-benchmark/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://flyeric.top/tags/helm/</loc>
-    <lastmod>2021-01-02T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://flyeric.top/post/ingress-nginx-high-concurrency/</loc>
     <lastmod>2021-01-02T00:00:00+00:00</lastmod>
   </url><url>
@@ -149,14 +164,8 @@
     <loc>http://flyeric.top/categories/git/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://flyeric.top/tags/github/</loc>
-    <lastmod>2020-10-30T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://flyeric.top/post/delete-github-remote-commits/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://flyeric.top/tags/devops/</loc>
-    <lastmod>2020-10-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://flyeric.top/tags/docker/</loc>
     <lastmod>2020-10-15T00:00:00+00:00</lastmod>
