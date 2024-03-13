@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>RegExp on 梁波的技术博客</title>
-    <link>http://flyeric.top/tags/regexp/</link>
+    <link>http://amuguelove.github.io/tags/regexp/</link>
     <description>Recent content in RegExp on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 01 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/regexp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/regexp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>正则表达式入门</title>
-      <link>http://flyeric.top/post/sample-regexp/</link>
+      <link>http://amuguelove.github.io/post/sample-regexp/</link>
       <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/sample-regexp/</guid>
+      <guid>http://amuguelove.github.io/post/sample-regexp/</guid>
       <description>&lt;p&gt;一个正则表达式通常被称为一个&lt;strong&gt;模式&lt;/strong&gt;（pattern），为用来描述或者匹配一系列符合某个&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%8F%A5%E6%B3%95&#34;&gt;句法&lt;/a&gt;规则的&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%AD%97%E7%AC%A6%E4%B8%B2&#34;&gt;字符串&lt;/a&gt;。例如：Handel、Händel和Haendel这三个字符串，都可以由&lt;code&gt;H(a|ä|ae)ndel&lt;/code&gt;这个模式来描述。大部分正则表达式的形式都有如下的结构：&lt;/p&gt;</description>
     </item>
     

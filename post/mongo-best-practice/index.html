@@ -14,17 +14,17 @@
   <meta property="og:description" content="Mongo开发的最佳实践总结。">
   <meta name="twitter:description" content="Mongo开发的最佳实践总结。">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
-  <link href='http://flyeric.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta property="og:image" content="http://flyeric.top/img/avatar.jpg" />
-  <meta name="twitter:image" content="http://flyeric.top/img/avatar.jpg" />
+  <link href='http://amuguelove.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://amuguelove.github.io/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://amuguelove.github.io/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flyeric.top/post/mongo-best-practice/" />
+  <meta property="og:url" content="http://amuguelove.github.io/post/mongo-best-practice/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.88.1" />
-  <link rel="canonical" href="http://flyeric.top/post/mongo-best-practice/" />
-  <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+  <link rel="canonical" href="http://amuguelove.github.io/post/mongo-best-practice/" />
+  <link rel="alternate" href="http://amuguelove.github.io/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -33,7 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
+  <link rel="stylesheet" href='http://amuguelove.github.io/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -72,7 +72,7 @@ if (!doNotTrack) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://flyeric.top/" title="梁波的技术博客">
+      <a class="navbar-brand" href="http://amuguelove.github.io/" title="梁波的技术博客">
 
         梁波的技术博客
       </a>
@@ -83,7 +83,7 @@ if (!doNotTrack) {
         
           
             <li>
-              <a title="首页" href="http://flyeric.top/">首页</a>
+              <a title="首页" href="http://amuguelove.github.io/">首页</a>
             </li>
           
         
@@ -92,17 +92,17 @@ if (!doNotTrack) {
               <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
               <div class="navlinks-children">
                 
-                  <a href="http://flyeric.top/archives">Archive</a>
+                  <a href="http://amuguelove.github.io/archives">Archive</a>
                 
-                  <a href="http://flyeric.top/categories">Categories</a>
+                  <a href="http://amuguelove.github.io/categories">Categories</a>
                 
-                  <a href="http://flyeric.top/tags">tags</a>
+                  <a href="http://amuguelove.github.io/tags">tags</a>
                 
-                  <a href="http://flyeric.top/tags/java">java</a>
+                  <a href="http://amuguelove.github.io/tags/java">java</a>
                 
-                  <a href="http://flyeric.top/tags/springboot">springboot</a>
+                  <a href="http://amuguelove.github.io/tags/springboot">springboot</a>
                 
-                  <a href="http://flyeric.top/tags/kubernetes">kubernetes</a>
+                  <a href="http://amuguelove.github.io/tags/kubernetes">kubernetes</a>
                 
               </div>
             </li>
@@ -125,7 +125,7 @@ if (!doNotTrack) {
         
           
             <li>
-              <a title="关于" href="http://flyeric.top/page/about/">关于</a>
+              <a title="关于" href="http://amuguelove.github.io/page/about/">关于</a>
             </li>
           
         
@@ -199,7 +199,7 @@ if (!doNotTrack) {
             
             <h5 id="tags" style="margin-top: 30px;">标签:
               
-                  <a href="http://flyeric.top/tags/mongo/">mongo</a> &nbsp;
+                  <a href="http://amuguelove.github.io/tags/mongo/">mongo</a> &nbsp;
               
             </h5>
             
@@ -377,7 +377,7 @@ db.coll.count({x: 100});
 <div class="zs-modal-box">
     <div class="zs-modal-head">
         <button type="button" class="close">×</button>
-        <span class="author"><img src="http://flyeric.top/img/avatar.jpg"/></span>
+        <span class="author"><img src="http://amuguelove.github.io/img/avatar.jpg"/></span>
         <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
     </div>
     <div class="zs-modal-body">
@@ -392,11 +392,11 @@ db.coll.count({x: 100});
         <div class="zs-modal-pay">
             <button class="btn btn-bred" id="pay-text">2元</button>
             <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
-            <img src="http://flyeric.top/img/wechat-2.png" id="pay-image"/>
+            <img src="http://amuguelove.github.io/img/wechat-2.png" id="pay-image"/>
         </div>
     </div>
     <div class="zs-modal-footer">
-        <span class="zs-wechat"><img src="http://flyeric.top/img/wechat-btn.png"/></span>
+        <span class="zs-wechat"><img src="http://amuguelove.github.io/img/wechat-btn.png"/></span>
     </div>
 </div>
           
@@ -425,25 +425,25 @@ db.coll.count({x: 100});
 <h3>相关文章</h3>
 <ul style="margin-bottom: 25px;">
     
-    <li><a href="http://flyeric.top/post/mongo-transaction/">Mongo事务处理</a></li>
+    <li><a href="http://amuguelove.github.io/post/mongo-transaction/">Mongo事务处理</a></li>
     
-    <li><a href="http://flyeric.top/post/mongo-pattern-design/">Mongo的模型设计</a></li>
+    <li><a href="http://amuguelove.github.io/post/mongo-pattern-design/">Mongo的模型设计</a></li>
     
-    <li><a href="http://flyeric.top/post/mongo-replica-sets-install/">Mongo复制集的搭建</a></li>
+    <li><a href="http://amuguelove.github.io/post/mongo-replica-sets-install/">Mongo复制集的搭建</a></li>
     
-    <li><a href="http://flyeric.top/post/mongo-replica-sets/">Mongo复制集机制及原理</a></li>
+    <li><a href="http://amuguelove.github.io/post/mongo-replica-sets/">Mongo复制集机制及原理</a></li>
     
-    <li><a href="http://flyeric.top/post/mongo-aggregate-operation/">Mongo聚合查询</a></li>
+    <li><a href="http://amuguelove.github.io/post/mongo-aggregate-operation/">Mongo聚合查询</a></li>
     
-    <li><a href="http://flyeric.top/post/mongodb-base-operation/">MongoDB介绍以及基本操作</a></li>
+    <li><a href="http://amuguelove.github.io/post/mongodb-base-operation/">MongoDB介绍以及基本操作</a></li>
     
-    <li><a href="http://flyeric.top/post/migrate-blog-to-hugo/">博客迁移到hugo</a></li>
+    <li><a href="http://amuguelove.github.io/post/migrate-blog-to-hugo/">博客迁移到hugo</a></li>
     
-    <li><a href="http://flyeric.top/post/mysql-base/">MySQL基础</a></li>
+    <li><a href="http://amuguelove.github.io/post/mysql-base/">MySQL基础</a></li>
     
-    <li><a href="http://flyeric.top/post/shell-scripts-quickstart/">Shell脚本快速上手</a></li>
+    <li><a href="http://amuguelove.github.io/post/shell-scripts-quickstart/">Shell脚本快速上手</a></li>
     
-    <li><a href="http://flyeric.top/post/apache-httpclient-timeout-diff/">Apache HttpClient 三个超时时间的区别</a></li>
+    <li><a href="http://amuguelove.github.io/post/apache-httpclient-timeout-diff/">Apache HttpClient 三个超时时间的区别</a></li>
     
 </ul>
 
@@ -453,12 +453,12 @@ db.coll.count({x: 100});
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://flyeric.top/post/mongo-transaction/" data-toggle="tooltip" data-placement="top" title="Mongo事务处理">&larr; 前一篇</a>
+              <a href="http://amuguelove.github.io/post/mongo-transaction/" data-toggle="tooltip" data-placement="top" title="Mongo事务处理">&larr; 前一篇</a>
             </li>
           
           
             <li class="next">
-              <a href="http://flyeric.top/post/mongo-dump-restore/" data-toggle="tooltip" data-placement="top" title="Mongo数据备份以及恢复">后一篇 &rarr;</a>
+              <a href="http://amuguelove.github.io/post/mongo-dump-restore/" data-toggle="tooltip" data-placement="top" title="Mongo数据备份以及恢复">后一篇 &rarr;</a>
             </li>
           
         </ul>
@@ -498,7 +498,7 @@ db.coll.count({x: 100});
           
           
           <li>
-            <a href="http://flyeric.top/index.xml" title="RSS">
+            <a href="http://amuguelove.github.io/index.xml" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -513,11 +513,11 @@ db.coll.count({x: 100});
 
           
             &nbsp;&bull;&nbsp;
-            <a href="http://flyeric.top/">梁波的技术博客</a>
+            <a href="http://amuguelove.github.io/">梁波的技术博客</a>
             &nbsp;&bull;&nbsp;
-            <a href="http://flyeric.top/sitemap.xml">网站地图</a>
+            <a href="http://amuguelove.github.io/sitemap.xml">网站地图</a>
             &nbsp;&bull;&nbsp;
-            <a href="http://flyeric.top/archives/">归档</a>
+            <a href="http://amuguelove.github.io/archives/">归档</a>
             &nbsp;&bull;&nbsp;
             <a href="https://beian.miit.gov.cn/" target="_blank">蜀ICP备2021017173号-1</a>
           
@@ -543,7 +543,7 @@ db.coll.count({x: 100});
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
+<script src='http://amuguelove.github.io/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

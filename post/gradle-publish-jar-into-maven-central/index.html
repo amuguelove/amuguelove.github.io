@@ -20,17 +20,17 @@ OSSRH：Sonatype Open Source Software Repository Hosting Service，为开源软�
 在开始之前，先对OSSRH做下了解是很必要的。
 OSSRH：Sonatype Open Source Software Repository Hosting Service，为开源软件提供maven仓库托管服务。你可以 …">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
-  <link href='http://flyeric.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta property="og:image" content="http://flyeric.top/img/avatar.jpg" />
-  <meta name="twitter:image" content="http://flyeric.top/img/avatar.jpg" />
+  <link href='http://amuguelove.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://amuguelove.github.io/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://amuguelove.github.io/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flyeric.top/post/gradle-publish-jar-into-maven-central/" />
+  <meta property="og:url" content="http://amuguelove.github.io/post/gradle-publish-jar-into-maven-central/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.88.1" />
-  <link rel="canonical" href="http://flyeric.top/post/gradle-publish-jar-into-maven-central/" />
-  <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+  <link rel="canonical" href="http://amuguelove.github.io/post/gradle-publish-jar-into-maven-central/" />
+  <link rel="alternate" href="http://amuguelove.github.io/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -39,7 +39,7 @@ OSSRH：Sonatype Open Source Software Repository Hosting Service，为开源软�
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
+  <link rel="stylesheet" href='http://amuguelove.github.io/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -78,7 +78,7 @@ if (!doNotTrack) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://flyeric.top/" title="梁波的技术博客">
+      <a class="navbar-brand" href="http://amuguelove.github.io/" title="梁波的技术博客">
 
         梁波的技术博客
       </a>
@@ -89,7 +89,7 @@ if (!doNotTrack) {
         
           
             <li>
-              <a title="首页" href="http://flyeric.top/">首页</a>
+              <a title="首页" href="http://amuguelove.github.io/">首页</a>
             </li>
           
         
@@ -98,17 +98,17 @@ if (!doNotTrack) {
               <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
               <div class="navlinks-children">
                 
-                  <a href="http://flyeric.top/archives">Archive</a>
+                  <a href="http://amuguelove.github.io/archives">Archive</a>
                 
-                  <a href="http://flyeric.top/categories">Categories</a>
+                  <a href="http://amuguelove.github.io/categories">Categories</a>
                 
-                  <a href="http://flyeric.top/tags">tags</a>
+                  <a href="http://amuguelove.github.io/tags">tags</a>
                 
-                  <a href="http://flyeric.top/tags/java">java</a>
+                  <a href="http://amuguelove.github.io/tags/java">java</a>
                 
-                  <a href="http://flyeric.top/tags/springboot">springboot</a>
+                  <a href="http://amuguelove.github.io/tags/springboot">springboot</a>
                 
-                  <a href="http://flyeric.top/tags/kubernetes">kubernetes</a>
+                  <a href="http://amuguelove.github.io/tags/kubernetes">kubernetes</a>
                 
               </div>
             </li>
@@ -131,7 +131,7 @@ if (!doNotTrack) {
         
           
             <li>
-              <a title="关于" href="http://flyeric.top/page/about/">关于</a>
+              <a title="关于" href="http://amuguelove.github.io/page/about/">关于</a>
             </li>
           
         
@@ -205,9 +205,9 @@ if (!doNotTrack) {
             
             <h5 id="tags" style="margin-top: 30px;">标签:
               
-                  <a href="http://flyeric.top/tags/gradle/">gradle</a> &nbsp;
+                  <a href="http://amuguelove.github.io/tags/gradle/">gradle</a> &nbsp;
               
-                  <a href="http://flyeric.top/tags/maven/">maven</a> &nbsp;
+                  <a href="http://amuguelove.github.io/tags/maven/">maven</a> &nbsp;
               
             </h5>
             
@@ -262,7 +262,7 @@ if (!doNotTrack) {
 <p>注册好了之后，记住用户名和密码，下面会用到。</p>
 <h2 id="创建issue">创建Issue</h2>
 <p>地址：https://issues.sonatype.org/secure/CreateIssue.jspa?issuetype=21&amp;pid=10134</p>
-<p><img src="http://flyeric.top/img/post/gradle-publish-jar-01.png" alt=""></p>
+<p><img src="http://amuguelove.github.io/img/post/gradle-publish-jar-01.png" alt=""></p>
 <ul>
 <li>
 <p><code>Summary</code>：简单的写一个描述即可</p>
@@ -290,7 +290,7 @@ Group Id: com.github.amuguelove
 <h2 id="等待回复">等待回复</h2>
 <p>提交<code>Issue</code>后，如果存在问题，审核者会在jira中指出，可以直接回复，见下图。</p>
 <p>如果一切顺利，那么你会收到审核人员，这样的一个评论：</p>
-<p><img src="http://flyeric.top/img/post/gradle-publish-jar-02.png" alt=""></p>
+<p><img src="http://amuguelove.github.io/img/post/gradle-publish-jar-02.png" alt=""></p>
 <h2 id="ossrh对提交文件的要求">OSSRH对提交文件的要求</h2>
 <p>为了确保中央存储库中可用组件的质量水平，<code>OSSRH</code>对提交的文件有明确的要求。</p>
 <p>一个基础的提交，应该包含一下文件：</p>
@@ -455,7 +455,7 @@ sonatypePassword=sonatype密码
 <h2 id="到sonatype-oss发布">到Sonatype OSS发布</h2>
 <p>用你之前注册的账号密码，登录：https://oss.sonatype.org/</p>
 <p>登录后查看左侧的<code>Build Promotion</code>-&gt;<code>Staging Repositories</code></p>
-<p><img src="http://flyeric.top/img/post/gradle-publish-jar-03.png" alt=""></p>
+<p><img src="http://amuguelove.github.io/img/post/gradle-publish-jar-03.png" alt=""></p>
 <p>点击<code>Close</code>按钮后，中央仓库会验证你上传的文件签名，回去公钥服务器拉取公钥，如果验证失败会提示你，根据提示修改你的操作。</p>
 <p>需要等待一会，等它执行完毕，状态会从<code>open</code>变成<code>closed</code></p>
 <p>一般情况下，感觉如果顺利<code>close</code>后，再次选中点击<code>Release</code>，耐心等待一会，就大功告成了！</p>
@@ -464,7 +464,7 @@ sonatypePassword=sonatype密码
 <p>目前为止你的Jar包还无法在Maven Search页面找到，根据上面审核人员的提示需要2个小时，但是我实际的等待不止两个小时。看来从sonatype同步到中央仓库，的确是需要一定的时间。</p>
 <p>但是文件其实会比索引同步得早，所以你可以先到 <a href="https://repo1.maven.org/maven2/">https://repo1.maven.org/maven2/</a> 上按照坐标找下，是否能找到你的包。如果能找到，那你就可以开始引用它了。</p>
 <p>之后可以间隔不同的时间去 <a href="https://search.maven.org/">https://search.maven.org/</a> 上搜一下。</p>
-<p><img src="http://flyeric.top/img/post/gradle-publish-jar-04.png" alt=""></p>
+<p><img src="http://amuguelove.github.io/img/post/gradle-publish-jar-04.png" alt=""></p>
 <h2 id="新版本更新">新版本更新</h2>
 <p>你可以在<code>groupId范围内</code>发布<code>任意名称</code>的构件</p>
 <!-- raw HTML omitted -->
@@ -486,7 +486,7 @@ sonatypePassword=sonatype密码
 <div class="zs-modal-box">
     <div class="zs-modal-head">
         <button type="button" class="close">×</button>
-        <span class="author"><img src="http://flyeric.top/img/avatar.jpg"/></span>
+        <span class="author"><img src="http://amuguelove.github.io/img/avatar.jpg"/></span>
         <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
     </div>
     <div class="zs-modal-body">
@@ -501,11 +501,11 @@ sonatypePassword=sonatype密码
         <div class="zs-modal-pay">
             <button class="btn btn-bred" id="pay-text">2元</button>
             <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
-            <img src="http://flyeric.top/img/wechat-2.png" id="pay-image"/>
+            <img src="http://amuguelove.github.io/img/wechat-2.png" id="pay-image"/>
         </div>
     </div>
     <div class="zs-modal-footer">
-        <span class="zs-wechat"><img src="http://flyeric.top/img/wechat-btn.png"/></span>
+        <span class="zs-wechat"><img src="http://amuguelove.github.io/img/wechat-btn.png"/></span>
     </div>
 </div>
           
@@ -537,12 +537,12 @@ sonatypePassword=sonatype密码
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://flyeric.top/post/springboot-load-configure-principle/" data-toggle="tooltip" data-placement="top" title="SpringBoot的自动装配原理分析">&larr; 前一篇</a>
+              <a href="http://amuguelove.github.io/post/springboot-load-configure-principle/" data-toggle="tooltip" data-placement="top" title="SpringBoot的自动装配原理分析">&larr; 前一篇</a>
             </li>
           
           
             <li class="next">
-              <a href="http://flyeric.top/post/java-object-mappping-framework-benchmark/" data-toggle="tooltip" data-placement="top" title="使用JMH对Java Object Mapping框架做性能对比">后一篇 &rarr;</a>
+              <a href="http://amuguelove.github.io/post/java-object-mappping-framework-benchmark/" data-toggle="tooltip" data-placement="top" title="使用JMH对Java Object Mapping框架做性能对比">后一篇 &rarr;</a>
             </li>
           
         </ul>
@@ -582,7 +582,7 @@ sonatypePassword=sonatype密码
           
           
           <li>
-            <a href="http://flyeric.top/index.xml" title="RSS">
+            <a href="http://amuguelove.github.io/index.xml" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -597,11 +597,11 @@ sonatypePassword=sonatype密码
 
           
             &nbsp;&bull;&nbsp;
-            <a href="http://flyeric.top/">梁波的技术博客</a>
+            <a href="http://amuguelove.github.io/">梁波的技术博客</a>
             &nbsp;&bull;&nbsp;
-            <a href="http://flyeric.top/sitemap.xml">网站地图</a>
+            <a href="http://amuguelove.github.io/sitemap.xml">网站地图</a>
             &nbsp;&bull;&nbsp;
-            <a href="http://flyeric.top/archives/">归档</a>
+            <a href="http://amuguelove.github.io/archives/">归档</a>
             &nbsp;&bull;&nbsp;
             <a href="https://beian.miit.gov.cn/" target="_blank">蜀ICP备2021017173号-1</a>
           
@@ -627,7 +627,7 @@ sonatypePassword=sonatype密码
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
+<script src='http://amuguelove.github.io/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

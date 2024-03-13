@@ -2,737 +2,746 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 梁波的技术博客</title>
-    <link>http://flyeric.top/tags/</link>
+    <link>http://amuguelove.github.io/tags/</link>
     <description>Recent content in Tags on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 01 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>cd</title>
-      <link>http://flyeric.top/tags/cd/</link>
+      <link>http://amuguelove.github.io/tags/cd/</link>
       <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/cd/</guid>
+      <guid>http://amuguelove.github.io/tags/cd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CI</title>
-      <link>http://flyeric.top/tags/ci/</link>
+      <link>http://amuguelove.github.io/tags/ci/</link>
       <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/ci/</guid>
+      <guid>http://amuguelove.github.io/tags/ci/</guid>
       <description></description>
     </item>
     
     <item>
       <title>devops</title>
-      <link>http://flyeric.top/tags/devops/</link>
+      <link>http://amuguelove.github.io/tags/devops/</link>
       <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/devops/</guid>
+      <guid>http://amuguelove.github.io/tags/devops/</guid>
       <description></description>
     </item>
     
     <item>
       <title>drone</title>
-      <link>http://flyeric.top/tags/drone/</link>
+      <link>http://amuguelove.github.io/tags/drone/</link>
       <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/drone/</guid>
+      <guid>http://amuguelove.github.io/tags/drone/</guid>
       <description></description>
     </item>
     
     <item>
       <title>github</title>
-      <link>http://flyeric.top/tags/github/</link>
+      <link>http://amuguelove.github.io/tags/github/</link>
       <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/github/</guid>
+      <guid>http://amuguelove.github.io/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
       <title>helm</title>
-      <link>http://flyeric.top/tags/helm/</link>
+      <link>http://amuguelove.github.io/tags/helm/</link>
       <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/helm/</guid>
+      <guid>http://amuguelove.github.io/tags/helm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kubernetes</title>
-      <link>http://flyeric.top/tags/kubernetes/</link>
+      <link>http://amuguelove.github.io/tags/kubernetes/</link>
       <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/kubernetes/</guid>
+      <guid>http://amuguelove.github.io/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>apache</title>
-      <link>http://flyeric.top/tags/apache/</link>
+      <link>http://amuguelove.github.io/tags/apache/</link>
       <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/apache/</guid>
+      <guid>http://amuguelove.github.io/tags/apache/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ETL</title>
-      <link>http://flyeric.top/tags/etl/</link>
+      <link>http://amuguelove.github.io/tags/etl/</link>
       <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/etl/</guid>
+      <guid>http://amuguelove.github.io/tags/etl/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kafka</title>
-      <link>http://flyeric.top/tags/kafka/</link>
+      <link>http://amuguelove.github.io/tags/kafka/</link>
       <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/kafka/</guid>
+      <guid>http://amuguelove.github.io/tags/kafka/</guid>
       <description></description>
     </item>
     
     <item>
       <title>github actions</title>
-      <link>http://flyeric.top/tags/github-actions/</link>
+      <link>http://amuguelove.github.io/tags/github-actions/</link>
       <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/github-actions/</guid>
+      <guid>http://amuguelove.github.io/tags/github-actions/</guid>
       <description></description>
     </item>
     
     <item>
       <title>apm</title>
-      <link>http://flyeric.top/tags/apm/</link>
+      <link>http://amuguelove.github.io/tags/apm/</link>
       <pubDate>Mon, 09 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/apm/</guid>
+      <guid>http://amuguelove.github.io/tags/apm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>elastic</title>
-      <link>http://flyeric.top/tags/elastic/</link>
+      <link>http://amuguelove.github.io/tags/elastic/</link>
       <pubDate>Mon, 09 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/elastic/</guid>
+      <guid>http://amuguelove.github.io/tags/elastic/</guid>
       <description></description>
     </item>
     
     <item>
       <title>metricbeat</title>
-      <link>http://flyeric.top/tags/metricbeat/</link>
+      <link>http://amuguelove.github.io/tags/metricbeat/</link>
       <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/metricbeat/</guid>
+      <guid>http://amuguelove.github.io/tags/metricbeat/</guid>
       <description></description>
     </item>
     
     <item>
       <title>elasticsearch</title>
-      <link>http://flyeric.top/tags/elasticsearch/</link>
+      <link>http://amuguelove.github.io/tags/elasticsearch/</link>
       <pubDate>Mon, 19 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/elasticsearch/</guid>
+      <guid>http://amuguelove.github.io/tags/elasticsearch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>fluent bit</title>
-      <link>http://flyeric.top/tags/fluent-bit/</link>
+      <link>http://amuguelove.github.io/tags/fluent-bit/</link>
       <pubDate>Mon, 19 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/fluent-bit/</guid>
+      <guid>http://amuguelove.github.io/tags/fluent-bit/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kibana</title>
-      <link>http://flyeric.top/tags/kibana/</link>
+      <link>http://amuguelove.github.io/tags/kibana/</link>
       <pubDate>Mon, 19 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/kibana/</guid>
+      <guid>http://amuguelove.github.io/tags/kibana/</guid>
       <description></description>
     </item>
     
     <item>
       <title>iCloud</title>
-      <link>http://flyeric.top/tags/icloud/</link>
+      <link>http://amuguelove.github.io/tags/icloud/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/icloud/</guid>
+      <guid>http://amuguelove.github.io/tags/icloud/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MacOS</title>
-      <link>http://flyeric.top/tags/macos/</link>
+      <link>http://amuguelove.github.io/tags/macos/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/macos/</guid>
+      <guid>http://amuguelove.github.io/tags/macos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>typora</title>
-      <link>http://flyeric.top/tags/typora/</link>
+      <link>http://amuguelove.github.io/tags/typora/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/typora/</guid>
+      <guid>http://amuguelove.github.io/tags/typora/</guid>
       <description></description>
     </item>
     
     <item>
       <title>upic</title>
-      <link>http://flyeric.top/tags/upic/</link>
+      <link>http://amuguelove.github.io/tags/upic/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/upic/</guid>
+      <guid>http://amuguelove.github.io/tags/upic/</guid>
       <description></description>
     </item>
     
     <item>
       <title>benchmark</title>
-      <link>http://flyeric.top/tags/benchmark/</link>
+      <link>http://amuguelove.github.io/tags/benchmark/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/benchmark/</guid>
+      <guid>http://amuguelove.github.io/tags/benchmark/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ingress</title>
-      <link>http://flyeric.top/tags/ingress/</link>
+      <link>http://amuguelove.github.io/tags/ingress/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/ingress/</guid>
+      <guid>http://amuguelove.github.io/tags/ingress/</guid>
       <description></description>
     </item>
     
     <item>
       <title>nginx</title>
-      <link>http://flyeric.top/tags/nginx/</link>
+      <link>http://amuguelove.github.io/tags/nginx/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/nginx/</guid>
+      <guid>http://amuguelove.github.io/tags/nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tke</title>
-      <link>http://flyeric.top/tags/tke/</link>
+      <link>http://amuguelove.github.io/tags/tke/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/tke/</guid>
+      <guid>http://amuguelove.github.io/tags/tke/</guid>
       <description></description>
     </item>
     
     <item>
       <title>traefik</title>
-      <link>http://flyeric.top/tags/traefik/</link>
+      <link>http://amuguelove.github.io/tags/traefik/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/traefik/</guid>
+      <guid>http://amuguelove.github.io/tags/traefik/</guid>
       <description></description>
     </item>
     
     <item>
       <title>centos</title>
-      <link>http://flyeric.top/tags/centos/</link>
+      <link>http://amuguelove.github.io/tags/centos/</link>
       <pubDate>Sat, 26 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/centos/</guid>
+      <guid>http://amuguelove.github.io/tags/centos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>http://flyeric.top/tags/linux/</link>
+      <link>http://amuguelove.github.io/tags/linux/</link>
       <pubDate>Sat, 26 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/linux/</guid>
+      <guid>http://amuguelove.github.io/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>openssl</title>
-      <link>http://flyeric.top/tags/openssl/</link>
+      <link>http://amuguelove.github.io/tags/openssl/</link>
       <pubDate>Sat, 26 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/openssl/</guid>
+      <guid>http://amuguelove.github.io/tags/openssl/</guid>
       <description></description>
     </item>
     
     <item>
       <title>api</title>
-      <link>http://flyeric.top/tags/api/</link>
+      <link>http://amuguelove.github.io/tags/api/</link>
       <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/api/</guid>
+      <guid>http://amuguelove.github.io/tags/api/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>http://flyeric.top/tags/git/</link>
+      <link>http://amuguelove.github.io/tags/git/</link>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/git/</guid>
+      <guid>http://amuguelove.github.io/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>http://flyeric.top/tags/docker/</link>
+      <link>http://amuguelove.github.io/tags/docker/</link>
       <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/docker/</guid>
+      <guid>http://amuguelove.github.io/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kind</title>
-      <link>http://flyeric.top/tags/kind/</link>
+      <link>http://amuguelove.github.io/tags/kind/</link>
       <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/kind/</guid>
+      <guid>http://amuguelove.github.io/tags/kind/</guid>
       <description></description>
     </item>
     
     <item>
       <title>centos7</title>
-      <link>http://flyeric.top/tags/centos7/</link>
+      <link>http://amuguelove.github.io/tags/centos7/</link>
       <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/centos7/</guid>
+      <guid>http://amuguelove.github.io/tags/centos7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kubeadm</title>
-      <link>http://flyeric.top/tags/kubeadm/</link>
+      <link>http://amuguelove.github.io/tags/kubeadm/</link>
       <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/kubeadm/</guid>
+      <guid>http://amuguelove.github.io/tags/kubeadm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vagrant</title>
-      <link>http://flyeric.top/tags/vagrant/</link>
+      <link>http://amuguelove.github.io/tags/vagrant/</link>
       <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/vagrant/</guid>
+      <guid>http://amuguelove.github.io/tags/vagrant/</guid>
       <description></description>
     </item>
     
     <item>
       <title>book</title>
-      <link>http://flyeric.top/tags/book/</link>
+      <link>http://amuguelove.github.io/tags/book/</link>
       <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/book/</guid>
+      <guid>http://amuguelove.github.io/tags/book/</guid>
       <description></description>
     </item>
     
     <item>
       <title>IT</title>
-      <link>http://flyeric.top/tags/it/</link>
+      <link>http://amuguelove.github.io/tags/it/</link>
       <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/it/</guid>
+      <guid>http://amuguelove.github.io/tags/it/</guid>
       <description></description>
     </item>
     
     <item>
       <title>cert-manager</title>
-      <link>http://flyeric.top/tags/cert-manager/</link>
+      <link>http://amuguelove.github.io/tags/cert-manager/</link>
       <pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/cert-manager/</guid>
+      <guid>http://amuguelove.github.io/tags/cert-manager/</guid>
       <description></description>
     </item>
     
     <item>
       <title>https</title>
-      <link>http://flyeric.top/tags/https/</link>
+      <link>http://amuguelove.github.io/tags/https/</link>
       <pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/https/</guid>
+      <guid>http://amuguelove.github.io/tags/https/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tls</title>
-      <link>http://flyeric.top/tags/tls/</link>
+      <link>http://amuguelove.github.io/tags/tls/</link>
       <pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/tls/</guid>
+      <guid>http://amuguelove.github.io/tags/tls/</guid>
       <description></description>
     </item>
     
     <item>
       <title>pv</title>
-      <link>http://flyeric.top/tags/pv/</link>
+      <link>http://amuguelove.github.io/tags/pv/</link>
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/pv/</guid>
+      <guid>http://amuguelove.github.io/tags/pv/</guid>
       <description></description>
     </item>
     
     <item>
       <title>pvc</title>
-      <link>http://flyeric.top/tags/pvc/</link>
+      <link>http://amuguelove.github.io/tags/pvc/</link>
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/pvc/</guid>
+      <guid>http://amuguelove.github.io/tags/pvc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>storageclass</title>
-      <link>http://flyeric.top/tags/storageclass/</link>
+      <link>http://amuguelove.github.io/tags/storageclass/</link>
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/storageclass/</guid>
+      <guid>http://amuguelove.github.io/tags/storageclass/</guid>
       <description></description>
     </item>
     
     <item>
       <title>volume</title>
-      <link>http://flyeric.top/tags/volume/</link>
+      <link>http://amuguelove.github.io/tags/volume/</link>
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/volume/</guid>
+      <guid>http://amuguelove.github.io/tags/volume/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RegExp</title>
-      <link>http://flyeric.top/tags/regexp/</link>
+      <link>http://amuguelove.github.io/tags/regexp/</link>
       <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/regexp/</guid>
+      <guid>http://amuguelove.github.io/tags/regexp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ssl</title>
-      <link>http://flyeric.top/tags/ssl/</link>
+      <link>http://amuguelove.github.io/tags/ssl/</link>
       <pubDate>Sat, 29 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/ssl/</guid>
+      <guid>http://amuguelove.github.io/tags/ssl/</guid>
       <description></description>
     </item>
     
     <item>
       <title>container</title>
-      <link>http://flyeric.top/tags/container/</link>
+      <link>http://amuguelove.github.io/tags/container/</link>
       <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/container/</guid>
+      <guid>http://amuguelove.github.io/tags/container/</guid>
       <description></description>
     </item>
     
     <item>
       <title>clean code</title>
-      <link>http://flyeric.top/tags/clean-code/</link>
+      <link>http://amuguelove.github.io/tags/clean-code/</link>
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/clean-code/</guid>
+      <guid>http://amuguelove.github.io/tags/clean-code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
-      <link>http://flyeric.top/tags/java/</link>
+      <link>http://amuguelove.github.io/tags/java/</link>
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/java/</guid>
+      <guid>http://amuguelove.github.io/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>jenkins</title>
-      <link>http://flyeric.top/tags/jenkins/</link>
+      <link>http://amuguelove.github.io/tags/jenkins/</link>
       <pubDate>Fri, 27 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/jenkins/</guid>
+      <guid>http://amuguelove.github.io/tags/jenkins/</guid>
       <description></description>
     </item>
     
     <item>
       <title>jmh</title>
-      <link>http://flyeric.top/tags/jmh/</link>
+      <link>http://amuguelove.github.io/tags/jmh/</link>
       <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/jmh/</guid>
+      <guid>http://amuguelove.github.io/tags/jmh/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mapping-framework</title>
-      <link>http://flyeric.top/tags/mapping-framework/</link>
+      <link>http://amuguelove.github.io/tags/mapping-framework/</link>
       <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/mapping-framework/</guid>
+      <guid>http://amuguelove.github.io/tags/mapping-framework/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gradle</title>
-      <link>http://flyeric.top/tags/gradle/</link>
+      <link>http://amuguelove.github.io/tags/gradle/</link>
       <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/gradle/</guid>
+      <guid>http://amuguelove.github.io/tags/gradle/</guid>
       <description></description>
     </item>
     
     <item>
       <title>maven</title>
-      <link>http://flyeric.top/tags/maven/</link>
+      <link>http://amuguelove.github.io/tags/maven/</link>
       <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/maven/</guid>
+      <guid>http://amuguelove.github.io/tags/maven/</guid>
       <description></description>
     </item>
     
     <item>
       <title>springboot</title>
-      <link>http://flyeric.top/tags/springboot/</link>
+      <link>http://amuguelove.github.io/tags/springboot/</link>
       <pubDate>Wed, 18 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/springboot/</guid>
+      <guid>http://amuguelove.github.io/tags/springboot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>jpa</title>
-      <link>http://flyeric.top/tags/jpa/</link>
+      <link>http://amuguelove.github.io/tags/jpa/</link>
       <pubDate>Fri, 13 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/jpa/</guid>
+      <guid>http://amuguelove.github.io/tags/jpa/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mongo</title>
-      <link>http://flyeric.top/tags/mongo/</link>
+      <link>http://amuguelove.github.io/tags/mongo/</link>
       <pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/mongo/</guid>
+      <guid>http://amuguelove.github.io/tags/mongo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Emacs</title>
-      <link>http://flyeric.top/tags/emacs/</link>
+      <link>http://amuguelove.github.io/tags/emacs/</link>
       <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/emacs/</guid>
+      <guid>http://amuguelove.github.io/tags/emacs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>http://flyeric.top/tags/hugo/</link>
+      <link>http://amuguelove.github.io/tags/hugo/</link>
       <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/hugo/</guid>
+      <guid>http://amuguelove.github.io/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MySQL</title>
-      <link>http://flyeric.top/tags/mysql/</link>
+      <link>http://amuguelove.github.io/tags/mysql/</link>
       <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/mysql/</guid>
+      <guid>http://amuguelove.github.io/tags/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Shell</title>
-      <link>http://flyeric.top/tags/shell/</link>
+      <link>http://amuguelove.github.io/tags/shell/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/shell/</guid>
+      <guid>http://amuguelove.github.io/tags/shell/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Http</title>
-      <link>http://flyeric.top/tags/http/</link>
+      <link>http://amuguelove.github.io/tags/http/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/http/</guid>
+      <guid>http://amuguelove.github.io/tags/http/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HttpClient</title>
-      <link>http://flyeric.top/tags/httpclient/</link>
+      <link>http://amuguelove.github.io/tags/httpclient/</link>
       <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/httpclient/</guid>
+      <guid>http://amuguelove.github.io/tags/httpclient/</guid>
       <description></description>
     </item>
     
     <item>
       <title>grep</title>
-      <link>http://flyeric.top/tags/grep/</link>
+      <link>http://amuguelove.github.io/tags/grep/</link>
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/grep/</guid>
+      <guid>http://amuguelove.github.io/tags/grep/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Transaction</title>
-      <link>http://flyeric.top/tags/transaction/</link>
+      <link>http://amuguelove.github.io/tags/transaction/</link>
       <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/transaction/</guid>
+      <guid>http://amuguelove.github.io/tags/transaction/</guid>
       <description></description>
     </item>
     
     <item>
       <title>scp</title>
-      <link>http://flyeric.top/tags/scp/</link>
+      <link>http://amuguelove.github.io/tags/scp/</link>
       <pubDate>Tue, 08 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/scp/</guid>
+      <guid>http://amuguelove.github.io/tags/scp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>crontab</title>
-      <link>http://flyeric.top/tags/crontab/</link>
+      <link>http://amuguelove.github.io/tags/crontab/</link>
       <pubDate>Mon, 07 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/crontab/</guid>
+      <guid>http://amuguelove.github.io/tags/crontab/</guid>
       <description></description>
     </item>
     
     <item>
       <title>AOP</title>
-      <link>http://flyeric.top/tags/aop/</link>
+      <link>http://amuguelove.github.io/tags/aop/</link>
       <pubDate>Wed, 26 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/aop/</guid>
+      <guid>http://amuguelove.github.io/tags/aop/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Golang</title>
-      <link>http://flyeric.top/tags/golang/</link>
+      <link>http://amuguelove.github.io/tags/golang/</link>
       <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/golang/</guid>
+      <guid>http://amuguelove.github.io/tags/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hexo</title>
-      <link>http://flyeric.top/tags/hexo/</link>
+      <link>http://amuguelove.github.io/tags/hexo/</link>
       <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/hexo/</guid>
+      <guid>http://amuguelove.github.io/tags/hexo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Redis</title>
-      <link>http://flyeric.top/tags/redis/</link>
+      <link>http://amuguelove.github.io/tags/redis/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/redis/</guid>
+      <guid>http://amuguelove.github.io/tags/redis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>iTerm2</title>
-      <link>http://flyeric.top/tags/iterm2/</link>
+      <link>http://amuguelove.github.io/tags/iterm2/</link>
       <pubDate>Mon, 01 Oct 2018 10:34:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/iterm2/</guid>
+      <guid>http://amuguelove.github.io/tags/iterm2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tools</title>
-      <link>http://flyeric.top/tags/tools/</link>
+      <link>http://amuguelove.github.io/tags/tools/</link>
       <pubDate>Mon, 01 Oct 2018 10:34:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/tools/</guid>
+      <guid>http://amuguelove.github.io/tags/tools/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cluster</title>
-      <link>http://flyeric.top/tags/cluster/</link>
+      <link>http://amuguelove.github.io/tags/cluster/</link>
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/cluster/</guid>
+      <guid>http://amuguelove.github.io/tags/cluster/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Restful</title>
-      <link>http://flyeric.top/tags/restful/</link>
+      <link>http://amuguelove.github.io/tags/restful/</link>
       <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/restful/</guid>
+      <guid>http://amuguelove.github.io/tags/restful/</guid>
       <description></description>
     </item>
     
     <item>
       <title>performance</title>
-      <link>http://flyeric.top/tags/performance/</link>
+      <link>http://amuguelove.github.io/tags/performance/</link>
       <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/performance/</guid>
+      <guid>http://amuguelove.github.io/tags/performance/</guid>
       <description></description>
     </item>
     
     <item>
       <title>wrk</title>
-      <link>http://flyeric.top/tags/wrk/</link>
+      <link>http://amuguelove.github.io/tags/wrk/</link>
       <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/wrk/</guid>
+      <guid>http://amuguelove.github.io/tags/wrk/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>生活杂记</title>
-      <link>http://flyeric.top/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</link>
+      <title>杂记</title>
+      <link>http://amuguelove.github.io/tags/%E6%9D%82%E8%AE%B0/</link>
       <pubDate>Sat, 29 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</guid>
+      <guid>http://amuguelove.github.io/tags/%E6%9D%82%E8%AE%B0/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Design Patterns</title>
-      <link>http://flyeric.top/tags/design-patterns/</link>
+      <link>http://amuguelove.github.io/tags/design-patterns/</link>
       <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/design-patterns/</guid>
+      <guid>http://amuguelove.github.io/tags/design-patterns/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SSH</title>
-      <link>http://flyeric.top/tags/ssh/</link>
+      <link>http://amuguelove.github.io/tags/ssh/</link>
       <pubDate>Sat, 07 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/tags/ssh/</guid>
+      <guid>http://amuguelove.github.io/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>生活杂记</title>
+      <link>http://amuguelove.github.io/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</link>
+      <pubDate>Sun, 25 Sep 2016 19:00:00 +0000</pubDate>
+      
+      <guid>http://amuguelove.github.io/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</guid>
       <description></description>
     </item>
     

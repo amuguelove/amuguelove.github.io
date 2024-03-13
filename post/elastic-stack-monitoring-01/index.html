@@ -14,17 +14,17 @@
   <meta property="og:description" content="搭建ElasticSearch集群和Kibana应用">
   <meta name="twitter:description" content="搭建ElasticSearch集群和Kibana应用">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
-  <link href='http://flyeric.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta property="og:image" content="http://flyeric.top/img/avatar.jpg" />
-  <meta name="twitter:image" content="http://flyeric.top/img/avatar.jpg" />
+  <link href='http://amuguelove.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://amuguelove.github.io/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://amuguelove.github.io/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flyeric.top/post/elastic-stack-monitoring-01/" />
+  <meta property="og:url" content="http://amuguelove.github.io/post/elastic-stack-monitoring-01/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.88.1" />
-  <link rel="canonical" href="http://flyeric.top/post/elastic-stack-monitoring-01/" />
-  <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+  <link rel="canonical" href="http://amuguelove.github.io/post/elastic-stack-monitoring-01/" />
+  <link rel="alternate" href="http://amuguelove.github.io/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -33,7 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
+  <link rel="stylesheet" href='http://amuguelove.github.io/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -72,7 +72,7 @@ if (!doNotTrack) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://flyeric.top/" title="梁波的技术博客">
+      <a class="navbar-brand" href="http://amuguelove.github.io/" title="梁波的技术博客">
 
         梁波的技术博客
       </a>
@@ -83,7 +83,7 @@ if (!doNotTrack) {
         
           
             <li>
-              <a title="首页" href="http://flyeric.top/">首页</a>
+              <a title="首页" href="http://amuguelove.github.io/">首页</a>
             </li>
           
         
@@ -92,17 +92,17 @@ if (!doNotTrack) {
               <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
               <div class="navlinks-children">
                 
-                  <a href="http://flyeric.top/archives">Archive</a>
+                  <a href="http://amuguelove.github.io/archives">Archive</a>
                 
-                  <a href="http://flyeric.top/categories">Categories</a>
+                  <a href="http://amuguelove.github.io/categories">Categories</a>
                 
-                  <a href="http://flyeric.top/tags">tags</a>
+                  <a href="http://amuguelove.github.io/tags">tags</a>
                 
-                  <a href="http://flyeric.top/tags/java">java</a>
+                  <a href="http://amuguelove.github.io/tags/java">java</a>
                 
-                  <a href="http://flyeric.top/tags/springboot">springboot</a>
+                  <a href="http://amuguelove.github.io/tags/springboot">springboot</a>
                 
-                  <a href="http://flyeric.top/tags/kubernetes">kubernetes</a>
+                  <a href="http://amuguelove.github.io/tags/kubernetes">kubernetes</a>
                 
               </div>
             </li>
@@ -125,7 +125,7 @@ if (!doNotTrack) {
         
           
             <li>
-              <a title="关于" href="http://flyeric.top/page/about/">关于</a>
+              <a title="关于" href="http://amuguelove.github.io/page/about/">关于</a>
             </li>
           
         
@@ -234,13 +234,13 @@ if (!doNotTrack) {
             
             <h5 id="tags" style="margin-top: 30px;">标签:
               
-                  <a href="http://flyeric.top/tags/elastic/">elastic</a> &nbsp;
+                  <a href="http://amuguelove.github.io/tags/elastic/">elastic</a> &nbsp;
               
-                  <a href="http://flyeric.top/tags/elasticsearch/">elasticsearch</a> &nbsp;
+                  <a href="http://amuguelove.github.io/tags/elasticsearch/">elasticsearch</a> &nbsp;
               
-                  <a href="http://flyeric.top/tags/kibana/">kibana</a> &nbsp;
+                  <a href="http://amuguelove.github.io/tags/kibana/">kibana</a> &nbsp;
               
-                  <a href="http://flyeric.top/tags/kubernetes/">kubernetes</a> &nbsp;
+                  <a href="http://amuguelove.github.io/tags/kubernetes/">kubernetes</a> &nbsp;
               
             </h5>
             
@@ -272,7 +272,7 @@ if (!doNotTrack) {
 </ul>
 <p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210715125202838.png" alt="image-20210715125202838"></p>
 <p>为啥我们需要实现软件系统的可观察性呢？</p>
-<h1 id="当今软件环境复杂性所提出的要求">当今软件环境复杂性所提出的要求</h1>
+<h2 id="当今软件环境复杂性所提出的要求">当今软件环境复杂性所提出的要求</h2>
 <p>谈及当今的部署环境，我们有许多方面需要考虑。无论是本地部署数据中心、公共云基础架构还是混合架构，我们都可用于运行应用程序和服务。当今任何一个典型环境中都具备一个编排层（例如 Kubernetes），用于实现应用程序的自动部署和扩展。我们已经有可用于运行应用程序的事物，例如容器、虚拟机或裸机。在开发应用程序时，我们容易对第三方系统产生依赖，例如外部服务、数据库或我们所在组织中其他团队编写的组件。</p>
 <p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/infrastructure-monitoring-needs.png" alt="img"></p>
 <p>为确保应用程序正常运行，我们需要监测其中所有不同组件。这些组件会产生大量监测数据，不仅包括<a href="https://www.elastic.co/cn/log-monitoring">日志</a>和<a href="https://www.elastic.co/cn/infrastructure-monitoring">指标</a>，还包括 <a href="https://www.elastic.co/cn/apm">APM</a> 和<a href="https://www.elastic.co/cn/uptime-monitoring">运行时间</a>数据。</p>
@@ -292,7 +292,7 @@ imageTag: &#34;7.13.0&#34;
 </code></pre></div><p>同理下面的官方Kibana镜像。</p>
 <p><strong>出现如下日志，status changed from [YELLOW] to [GERRN]，证明ElasticSearch安装成功：</strong></p>
 <p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714222436919.png" alt="image-20210714222436919"></p>
-<h1 id="kibana安装">Kibana安装</h1>
+<h2 id="kibana安装">Kibana安装</h2>
 <p><strong>修改Kibana官方Helm Values文件，并保存为kibana-values.yaml：</strong></p>
 <p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714220626668.png" alt="image-20210714220626668"></p>
 <p><strong>Helm安装脚本：</strong></p>
@@ -309,7 +309,7 @@ imageTag: &#34;7.13.0&#34;
 <p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/image-20210714232424012.png" alt="image-20210714232424012"></p>
 <p>到此为止我们成功安装了 ElasticSearch 与 Kibana，它们将为我们来存储和可视化我们的应用数据（日志，监控指标和追踪）服务。</p>
 <p>在下一篇文章中，我们将来学习如何安装和配置 Fluentd/Fluent Bit，并将日志传入ElasticSearch中，Kibana可视化出来。</p>
-<h1 id="reference">Reference</h1>
+<h2 id="reference">Reference</h2>
 <ol>
 <li>Elastic 官网：<a href="https://www.elastic.co/">https://www.elastic.co</a></li>
 <li>Elastic 可观测性：<a href="https://www.elastic.co/cn/observability">https://www.elastic.co/cn/observability</a></li>
@@ -328,7 +328,7 @@ imageTag: &#34;7.13.0&#34;
 <div class="zs-modal-box">
     <div class="zs-modal-head">
         <button type="button" class="close">×</button>
-        <span class="author"><img src="http://flyeric.top/img/avatar.jpg"/></span>
+        <span class="author"><img src="http://amuguelove.github.io/img/avatar.jpg"/></span>
         <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
     </div>
     <div class="zs-modal-body">
@@ -343,11 +343,11 @@ imageTag: &#34;7.13.0&#34;
         <div class="zs-modal-pay">
             <button class="btn btn-bred" id="pay-text">2元</button>
             <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
-            <img src="http://flyeric.top/img/wechat-2.png" id="pay-image"/>
+            <img src="http://amuguelove.github.io/img/wechat-2.png" id="pay-image"/>
         </div>
     </div>
     <div class="zs-modal-footer">
-        <span class="zs-wechat"><img src="http://flyeric.top/img/wechat-btn.png"/></span>
+        <span class="zs-wechat"><img src="http://amuguelove.github.io/img/wechat-btn.png"/></span>
     </div>
 </div>
           
@@ -376,25 +376,25 @@ imageTag: &#34;7.13.0&#34;
 <h3>相关文章</h3>
 <ul style="margin-bottom: 25px;">
     
-    <li><a href="http://flyeric.top/post/ingress-controllers-benchmark/">不同ingress controller的性能测试</a></li>
+    <li><a href="http://amuguelove.github.io/post/ingress-controllers-benchmark/">不同ingress controller的性能测试</a></li>
     
-    <li><a href="http://flyeric.top/post/ingress-nginx-benchmark/">ingress-nginx 性能压测</a></li>
+    <li><a href="http://amuguelove.github.io/post/ingress-nginx-benchmark/">ingress-nginx 性能压测</a></li>
     
-    <li><a href="http://flyeric.top/post/ingress-nginx-high-concurrency/">ingress-nginx 高并发实践</a></li>
+    <li><a href="http://amuguelove.github.io/post/ingress-nginx-high-concurrency/">ingress-nginx 高并发实践</a></li>
     
-    <li><a href="http://flyeric.top/post/ingress-nginx-on-tke/">ingress-nginx在TKE上部署的最佳实践</a></li>
+    <li><a href="http://amuguelove.github.io/post/ingress-nginx-on-tke/">ingress-nginx在TKE上部署的最佳实践</a></li>
     
-    <li><a href="http://flyeric.top/post/install-ingress-nginx/">ingress-nginx的安装使用</a></li>
+    <li><a href="http://amuguelove.github.io/post/install-ingress-nginx/">ingress-nginx的安装使用</a></li>
     
-    <li><a href="http://flyeric.top/post/how-to-use-k8s-api-resources/">Kubernetes API资源的使用</a></li>
+    <li><a href="http://amuguelove.github.io/post/how-to-use-k8s-api-resources/">Kubernetes API资源的使用</a></li>
     
-    <li><a href="http://flyeric.top/post/setup-kubernetes-cluster-with-kind/">使用Kind快速构建Kubernetes集群</a></li>
+    <li><a href="http://amuguelove.github.io/post/setup-kubernetes-cluster-with-kind/">使用Kind快速构建Kubernetes集群</a></li>
     
-    <li><a href="http://flyeric.top/post/customize-vagrant-box/">Vagrant定制Box</a></li>
+    <li><a href="http://amuguelove.github.io/post/customize-vagrant-box/">Vagrant定制Box</a></li>
     
-    <li><a href="http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/">kubernetes Ingress 自动化 HTTPS</a></li>
+    <li><a href="http://amuguelove.github.io/post/automatic-kubernetes-ingress-https-with-lets-encrypt/">kubernetes Ingress 自动化 HTTPS</a></li>
     
-    <li><a href="http://flyeric.top/post/kubernetes-storage2/">kubernetes持久化存储（二）</a></li>
+    <li><a href="http://amuguelove.github.io/post/kubernetes-storage2/">kubernetes持久化存储（二）</a></li>
     
 </ul>
 
@@ -404,12 +404,12 @@ imageTag: &#34;7.13.0&#34;
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://flyeric.top/post/writing-with-typora/" data-toggle="tooltip" data-placement="top" title="Typora&#43;iCloud&#43;uPic搭建Markdown写作神器">&larr; 前一篇</a>
+              <a href="http://amuguelove.github.io/post/writing-with-typora/" data-toggle="tooltip" data-placement="top" title="Typora&#43;iCloud&#43;uPic搭建Markdown写作神器">&larr; 前一篇</a>
             </li>
           
           
             <li class="next">
-              <a href="http://flyeric.top/post/elastic-stack-monitoring-02/" data-toggle="tooltip" data-placement="top" title="使用 Elastic 可观测性实现云原生应用监控(2/4)">后一篇 &rarr;</a>
+              <a href="http://amuguelove.github.io/post/elastic-stack-monitoring-02/" data-toggle="tooltip" data-placement="top" title="使用 Elastic 可观测性实现云原生应用监控(2/4)">后一篇 &rarr;</a>
             </li>
           
         </ul>
@@ -449,7 +449,7 @@ imageTag: &#34;7.13.0&#34;
           
           
           <li>
-            <a href="http://flyeric.top/index.xml" title="RSS">
+            <a href="http://amuguelove.github.io/index.xml" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -464,11 +464,11 @@ imageTag: &#34;7.13.0&#34;
 
           
             &nbsp;&bull;&nbsp;
-            <a href="http://flyeric.top/">梁波的技术博客</a>
+            <a href="http://amuguelove.github.io/">梁波的技术博客</a>
             &nbsp;&bull;&nbsp;
-            <a href="http://flyeric.top/sitemap.xml">网站地图</a>
+            <a href="http://amuguelove.github.io/sitemap.xml">网站地图</a>
             &nbsp;&bull;&nbsp;
-            <a href="http://flyeric.top/archives/">归档</a>
+            <a href="http://amuguelove.github.io/archives/">归档</a>
             &nbsp;&bull;&nbsp;
             <a href="https://beian.miit.gov.cn/" target="_blank">蜀ICP备2021017173号-1</a>
           
@@ -494,7 +494,7 @@ imageTag: &#34;7.13.0&#34;
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
+<script src='http://amuguelove.github.io/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

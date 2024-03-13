@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AOP on 梁波的技术博客</title>
-    <link>http://flyeric.top/tags/aop/</link>
+    <link>http://amuguelove.github.io/tags/aop/</link>
     <description>Recent content in AOP on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 26 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/aop/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/aop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SpringBoot2干货系列 | 第二篇：Spring AOP 哪些事儿</title>
-      <link>http://flyeric.top/post/springboot2-aop/</link>
+      <link>http://amuguelove.github.io/post/springboot2-aop/</link>
       <pubDate>Wed, 26 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/springboot2-aop/</guid>
+      <guid>http://amuguelove.github.io/post/springboot2-aop/</guid>
       <description>&lt;p&gt;AOP(Aspect-Oriented Programming) 即面向方面编程.  它是一种在运行时,动态地将代码切入到类的指定方法、指定位置上的编程思想. 用于切入到指定类指定方法的代码片段叫做切面, 而切入到哪些类中的哪些方法叫做切入点.&lt;/p&gt;
 &lt;p&gt;AOP是OOP的有益补充，OOP从横向上区分出了一个个类，AOP则从纵向上向指定类的指定方法中动态地切入代码. 它使OOP变得更加立体.&lt;/p&gt;
 &lt;p&gt;Java中的动态代理或CGLib就是AOP的体现.&lt;/p&gt;</description>

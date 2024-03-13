@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>https on 梁波的技术博客</title>
-    <link>http://flyeric.top/tags/https/</link>
+    <link>http://amuguelove.github.io/tags/https/</link>
     <description>Recent content in https on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 28 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/https/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/https/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>kubernetes Ingress 自动化 HTTPS</title>
-      <link>http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</link>
+      <link>http://amuguelove.github.io/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</link>
       <pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</guid>
+      <guid>http://amuguelove.github.io/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</guid>
       <description>&lt;p&gt;现在的Web应用启用&lt;code&gt;HTTPS&lt;/code&gt;服务是真的非常有必要的。一些正规机构颁发的CA证书费用又特别高，就算有免费的工具颁发证书，通过人工的方式手动注入到K8S比较麻烦，而且还需要到期后进行人工续期，若管理的证书过多，还无法颁发泛域名的话，那就更加麻烦了。&lt;/p&gt;
 &lt;p&gt;这里介绍一下免费的午餐 - &lt;code&gt;Let&#39;s Encrypt&lt;/code&gt;，虽然只有90天的证书有效期，但是我们完全可以在证书失效之前，重新生成证书替换掉。在Kubernetes集群中就更方便了，我们可以通过 Kubernetes Ingress 和 Let’s Encrypt 实现外部服务的自动化 HTTPS。&lt;/p&gt;
 &lt;p&gt;Cert-Manager 是一个云原生证书管理开源项目，用于在 Kubernetes 集群中提供 HTTPS 证书并自动续期，支持 Let’s Encrypt / HashiCorp / Vault 这些免费证书的签发。&lt;/p&gt;
@@ -21,10 +21,10 @@
     
     <item>
       <title>浅谈HTTPS原理</title>
-      <link>http://flyeric.top/post/sample-https-principle/</link>
+      <link>http://amuguelove.github.io/post/sample-https-principle/</link>
       <pubDate>Sat, 29 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/sample-https-principle/</guid>
+      <guid>http://amuguelove.github.io/post/sample-https-principle/</guid>
       <description>&lt;p&gt;我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取。所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。&lt;/p&gt;</description>
     </item>
     

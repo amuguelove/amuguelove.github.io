@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on 梁波的技术博客</title>
-    <link>http://flyeric.top/page/</link>
+    <link>http://amuguelove.github.io/page/</link>
     <description>Recent content in Pages on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 22 Nov 2018 20:17:15 +0000</lastBuildDate><atom:link href="http://flyeric.top/page/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Nov 2018 20:17:15 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/page/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于作者</title>
-      <link>http://flyeric.top/page/about/</link>
+      <link>http://amuguelove.github.io/page/about/</link>
       <pubDate>Thu, 22 Nov 2018 20:17:15 +0000</pubDate>
       
-      <guid>http://flyeric.top/page/about/</guid>
+      <guid>http://amuguelove.github.io/page/about/</guid>
       <description>现居四川成都，架构师一枚。喜欢看看书，写写博客，刷刷Netflix网剧。
 目前专注于：
  Java 并发编程 - JVM 性能优化 CI/CD - 持续集成与持续交付 Kubernetes &amp;amp; Service Mesh - 容器编排服务网格 Cloud (IaaS &amp;amp; PaaS &amp;amp; SaaS) - 公有云和私有云 MicroServices - 微服务架构设计 Serverless - 无服务器架构  本博客创建于2016年9月，主要分享技术文章和生活琐事，把琐碎的，零散的碎片整理出来。

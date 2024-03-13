@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>book on 梁波的技术博客</title>
-    <link>http://flyeric.top/categories/book/</link>
+    <link>http://amuguelove.github.io/categories/book/</link>
     <description>Recent content in book on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/categories/book/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/categories/book/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>凤凰项目读后感</title>
-      <link>http://flyeric.top/post/read-the-phoenix-project/</link>
+      <link>http://amuguelove.github.io/post/read-the-phoenix-project/</link>
       <pubDate>Sat, 10 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/read-the-phoenix-project/</guid>
+      <guid>http://amuguelove.github.io/post/read-the-phoenix-project/</guid>
       <description>&lt;p&gt;花了2天的时间看完这本书：《凤凰项目（沙盘特别版）》，感触颇深。和所有讲DevOps相关的书不同，感觉就在读小说一样，而且非常的励志，讲述了一家陷入困境的传统制造业公司，怎么凭借凤凰项目（或者独角兽项目）起死回生的。IT运维在其中发挥了只管重要的作用。&lt;/p&gt;
 &lt;p&gt;最近这半年来，我大部分的工作也集中在开发运维上，在这个过程中，也接触到了很多DevOps相关的知识和实践，虽然书中很多东西比较旧，但是还是有很多只得借鉴的地方。 读这本书的时候，有很多地方产生了共鸣，一度让我回忆起了之前参与公司的TWI中的课程，关于敏捷和精益的部分，尤其是精益思想。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>代码整洁之道</title>
-      <link>http://flyeric.top/post/read-clean-code/</link>
+      <link>http://amuguelove.github.io/post/read-clean-code/</link>
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/read-clean-code/</guid>
+      <guid>http://amuguelove.github.io/post/read-clean-code/</guid>
       <description>&lt;p&gt;最近因为一些契机，花了2到3天看完**《代码简洁之道》**这本书，英文名为：&lt;code&gt;Clean Code&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;开篇就有有这么简单一句话：“阅读这本书有两种原因：第一，你是个程序员；第二，你想成为更好的程序员”。是的，没错，我想成为更好的程序员。所以我决定好好阅读下这本书。&lt;/p&gt;
 &lt;p&gt;回想2019年，确实是我最忙碌的一年，做过几个项目，其中部分涉及到架构，但是大部分时间都关注在如何实现业务代码，没有更好的关注到代码本身的细节。虽然经常了解到关于整洁代码相关的知识，在工作中也或多或少的用到，比如每天的&lt;code&gt;code review&lt;/code&gt;以及&lt;code&gt;TDD&lt;/code&gt;开发等等。但是确实不够系统，大多时间忙于完成业务，通过阅读本书，以及其中大量简洁代码的指南，受益匪浅。&lt;/p&gt;</description>

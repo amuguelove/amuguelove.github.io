@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on 梁波的技术博客</title>
-    <link>http://flyeric.top/categories/golang/</link>
+    <link>http://amuguelove.github.io/categories/golang/</link>
     <description>Recent content in Golang on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 18 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mac下安装Golang并配置环境</title>
-      <link>http://flyeric.top/post/macos-golang-environment-setup/</link>
+      <link>http://amuguelove.github.io/post/macos-golang-environment-setup/</link>
       <pubDate>Tue, 18 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/macos-golang-environment-setup/</guid>
+      <guid>http://amuguelove.github.io/post/macos-golang-environment-setup/</guid>
       <description>&lt;p&gt;在MacOS上主要有如下两种方法安装&lt;/p&gt;
 &lt;h3 id=&#34;一homebrew&#34;&gt;一、HomeBrew&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;homebrew&lt;/code&gt;是Mac系统下面目前使用最多的管理软件的工具，目前已支持Go，可以通过命令直接安装Go。&lt;/p&gt;

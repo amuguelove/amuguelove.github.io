@@ -2,47 +2,47 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>elastic on 梁波的技术博客</title>
-    <link>http://flyeric.top/tags/elastic/</link>
+    <link>http://amuguelove.github.io/tags/elastic/</link>
     <description>Recent content in elastic on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 09 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/elastic/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/elastic/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用 Elastic 可观测性实现云原生应用监控(4/4)</title>
-      <link>http://flyeric.top/post/elastic-stack-monitoring-04/</link>
+      <link>http://amuguelove.github.io/post/elastic-stack-monitoring-04/</link>
       <pubDate>Mon, 09 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/elastic-stack-monitoring-04/</guid>
+      <guid>http://amuguelove.github.io/post/elastic-stack-monitoring-04/</guid>
       <description>&lt;p&gt;&lt;code&gt;Elastic APM&lt;/code&gt; 是一款免费开源的应用程序性能监测工具，我们可以借助免费且开放的 Elastic APM 扩展至应用程序指标。精确查看您的应用程序都在哪里耗时了，然后便可快速修复问题，这样对发布的代码可以保持十足信心。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/apm-architecture-cloud.png&#34; alt=&#34;Architecture of Elastic APM&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用 Elastic 可观测性实现云原生应用监控(3/4)</title>
-      <link>http://flyeric.top/post/elastic-stack-monitoring-03/</link>
+      <link>http://amuguelove.github.io/post/elastic-stack-monitoring-03/</link>
       <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/elastic-stack-monitoring-03/</guid>
+      <guid>http://amuguelove.github.io/post/elastic-stack-monitoring-03/</guid>
       <description>&lt;p&gt;&lt;code&gt;MetricBeat&lt;/code&gt; 是一种轻量型的指标采集器，是 Elastic Stack 的一部分，因此能够与 Elasticsearch 和 Kibana 无缝协作。&lt;code&gt;Metricbeat&lt;/code&gt; 能够以一种轻量型的方式，从系统和服务收集指标，输送各种系统和服务统计数据。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Metricbeat&lt;/code&gt; 提供多种内部模块，这些模块可从多项服务（诸如 Apache、Jolokia、NGINX、MongoDB、MySQL、PostgreSQL、Prometheus &lt;a href=&#34;https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-modules.html&#34;&gt;等等&lt;/a&gt;）中收集指标。安装简单，完全零依赖性。只需在配置文件中启用您所需的模块即可。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用 Elastic 可观测性实现云原生应用监控(2/4)</title>
-      <link>http://flyeric.top/post/elastic-stack-monitoring-02/</link>
+      <link>http://amuguelove.github.io/post/elastic-stack-monitoring-02/</link>
       <pubDate>Mon, 19 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/elastic-stack-monitoring-02/</guid>
+      <guid>http://amuguelove.github.io/post/elastic-stack-monitoring-02/</guid>
       <description>&lt;p&gt;本篇文章将学习如何使用 Fluent Bit 采集 Kubernetes 集群的应用日志，并将日志数据输出到ElasticSearch中，使用Kibana将其可视化出来。日志收集工具还有很多，如：Fluentd，Filebeat，Promtail等等。其中 Fluent Bit，Fluentd和 Filebeat 都使用过，基本上都能满足项目上对于日志采集的需求。个人比较首推Fluent Bit，主要是因为其资源占用非常少，采集效率高，设计优雅，配置简单。可以看下下图中，Fluent Bit 的 Data pipeline：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/assets%252F-LKKSx-3LBTCtaHbg0gl%252F-LKKTm4Y55lytnFhqfG1%252F-LKKTwUrRtRcGfkhN7YV%252Flogging_pipeline_input.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用 Elastic 可观测性实现云原生应用监控(1/4)</title>
-      <link>http://flyeric.top/post/elastic-stack-monitoring-01/</link>
+      <link>http://amuguelove.github.io/post/elastic-stack-monitoring-01/</link>
       <pubDate>Thu, 15 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/elastic-stack-monitoring-01/</guid>
+      <guid>http://amuguelove.github.io/post/elastic-stack-monitoring-01/</guid>
       <description>&lt;p&gt;在本系列文章中，我们将学习如何使用 Elastic Stack 来实现对云原生应用的监控。该解决方案具有完备的日志、指标、APM 和可用性采集能力，可以在大规模/云原生的环境下，完成服务质量目标（SLO）的管理。
 总的来说主要包括3个方面：&lt;/p&gt;
 &lt;ul&gt;

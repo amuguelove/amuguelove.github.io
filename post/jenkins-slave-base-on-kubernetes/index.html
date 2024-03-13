@@ -14,17 +14,17 @@
   <meta property="og:description" content="搭建CI/CD可以使用的工具不少，例如：Jenkins、Gitlab CI等等，这里会使用大家最新熟悉的Jenkins来做CI/CD的工具。不少人都是基于虚拟机来搭建的，基于Kubernetes搭建的Jenkins Slave会有什么效果呢？">
   <meta name="twitter:description" content="搭建CI/CD可以使用的工具不少，例如：Jenkins、Gitlab CI等等，这里会使用大家最新熟悉的Jenkins来做CI/CD的工具。不少人都是基于虚拟机来搭建的，基于Kubernetes搭建的Jenkins Slave会有什么效果呢？">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
-  <link href='http://flyeric.top/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta property="og:image" content="http://flyeric.top/img/avatar.jpg" />
-  <meta name="twitter:image" content="http://flyeric.top/img/avatar.jpg" />
+  <link href='http://amuguelove.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://amuguelove.github.io/img/avatar.jpg" />
+  <meta name="twitter:image" content="http://amuguelove.github.io/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://flyeric.top/post/jenkins-slave-base-on-kubernetes/" />
+  <meta property="og:url" content="http://amuguelove.github.io/post/jenkins-slave-base-on-kubernetes/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.88.1" />
-  <link rel="canonical" href="http://flyeric.top/post/jenkins-slave-base-on-kubernetes/" />
-  <link rel="alternate" href="http://flyeric.top/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+  <link rel="canonical" href="http://amuguelove.github.io/post/jenkins-slave-base-on-kubernetes/" />
+  <link rel="alternate" href="http://amuguelove.github.io/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -33,7 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://flyeric.top/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
+  <link rel="stylesheet" href='http://amuguelove.github.io/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -72,7 +72,7 @@ if (!doNotTrack) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://flyeric.top/" title="梁波的技术博客">
+      <a class="navbar-brand" href="http://amuguelove.github.io/" title="梁波的技术博客">
 
         梁波的技术博客
       </a>
@@ -83,7 +83,7 @@ if (!doNotTrack) {
         
           
             <li>
-              <a title="首页" href="http://flyeric.top/">首页</a>
+              <a title="首页" href="http://amuguelove.github.io/">首页</a>
             </li>
           
         
@@ -92,17 +92,17 @@ if (!doNotTrack) {
               <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
               <div class="navlinks-children">
                 
-                  <a href="http://flyeric.top/archives">Archive</a>
+                  <a href="http://amuguelove.github.io/archives">Archive</a>
                 
-                  <a href="http://flyeric.top/categories">Categories</a>
+                  <a href="http://amuguelove.github.io/categories">Categories</a>
                 
-                  <a href="http://flyeric.top/tags">tags</a>
+                  <a href="http://amuguelove.github.io/tags">tags</a>
                 
-                  <a href="http://flyeric.top/tags/java">java</a>
+                  <a href="http://amuguelove.github.io/tags/java">java</a>
                 
-                  <a href="http://flyeric.top/tags/springboot">springboot</a>
+                  <a href="http://amuguelove.github.io/tags/springboot">springboot</a>
                 
-                  <a href="http://flyeric.top/tags/kubernetes">kubernetes</a>
+                  <a href="http://amuguelove.github.io/tags/kubernetes">kubernetes</a>
                 
               </div>
             </li>
@@ -125,7 +125,7 @@ if (!doNotTrack) {
         
           
             <li>
-              <a title="关于" href="http://flyeric.top/page/about/">关于</a>
+              <a title="关于" href="http://amuguelove.github.io/page/about/">关于</a>
             </li>
           
         
@@ -199,13 +199,13 @@ if (!doNotTrack) {
             
             <h5 id="tags" style="margin-top: 30px;">标签:
               
-                  <a href="http://flyeric.top/tags/kubernetes/">kubernetes</a> &nbsp;
+                  <a href="http://amuguelove.github.io/tags/kubernetes/">kubernetes</a> &nbsp;
               
-                  <a href="http://flyeric.top/tags/jenkins/">jenkins</a> &nbsp;
+                  <a href="http://amuguelove.github.io/tags/jenkins/">jenkins</a> &nbsp;
               
-                  <a href="http://flyeric.top/tags/devops/">devops</a> &nbsp;
+                  <a href="http://amuguelove.github.io/tags/devops/">devops</a> &nbsp;
               
-                  <a href="http://flyeric.top/tags/ci/">CI</a> &nbsp;
+                  <a href="http://amuguelove.github.io/tags/ci/">CI</a> &nbsp;
               
             </h5>
             
@@ -219,8 +219,7 @@ if (!doNotTrack) {
   <ul>
     <li><a href="#安装jenkins-master">安装Jenkins Master</a></li>
     <li><a href="#配置jenknis-slave">配置Jenknis Slave</a></li>
-    <li><a href="#测试">测试</a></li>
-    <li><a href="#参考">参考</a></li>
+    <li><a href="#验证">验证</a></li>
   </ul>
 </nav>
 </aside>
@@ -363,26 +362,25 @@ subjects:
 <h2 id="配置jenknis-slave">配置Jenknis Slave</h2>
 <p>接下来我们就需要来配置 Jenkins，让它能够动态的生成 Slave 的 Pod。</p>
 <p><strong>第一步：安装Kubernetes Plugin</strong>，点击 Manage Jenkins -&gt; Manage Plugins -&gt; Available -&gt; Kubernetes plugin 勾选安装即可。</p>
-<p><img src="http://flyeric.top/img/post/jenkins-slave-step1.png" alt=""></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/jenkins-slave-step1.png" alt="jenkins-slave-step1"></p>
 <p><strong>第二步：填写 Kubernetes Cloud Details</strong>，点击 Manage Jenkins —&gt; Configure System —&gt; (拖到最下方)Add a new cloud —&gt; 选择 Kubernetes</p>
-<p><img src="http://flyeric.top/img/post/jenkins-slave-step2.png" alt=""></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/jenkins-slave-step2.png" alt="jenkins-slave-step2"></p>
 <p>这里需要点击<code>Test Connection</code>去验证是否可以连接你的<code>Kubernetes</code>集群。</p>
 <p><strong>第三步：填写Pod Template和Container Template</strong></p>
-<p><img src="http://flyeric.top/img/post/jenkins-slave-step3.png" alt=""></p>
-<p>注意这里的名称最好都一致，例如我这边都使用<code>jnlp-agent</code>，之前因为名字不同导致无法完美运行。</p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/jenkins-slave-step3.png" alt="jenkins-slave-step3">注意这里的名称最好都一致，例如我这边都使用<code>jnlp-agent</code>，之前因为名字不同导致无法完美运行。</p>
 <p><strong>第四步：添加卷信息</strong></p>
-<p><img src="http://flyeric.top/img/post/jenkins-slave-step4.png" alt=""></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/jenkins-slave-step4.png" alt="jenkins-slave-step4"></p>
 <p>可以看到这里分别挂载了主机的docker，kubectl等工具。如果碰到没有权限执行<code>/var/run/docker.sock</code>，因为</p>
 <p>在腾讯云TKE 集群中的每个 node 节点系统里都有一个 docker.sock 文件，slave pod 在执行 docker build 时将会连接该文件。在此之前，需逐个登录到每个节点上，依次执行以下命令对 docker build 进行授权：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">chmod 666 /var/run/docker.sock
 </code></pre></div><p><strong>第五步：配置权限</strong></p>
-<p><img src="http://flyeric.top/img/post/jenkins-slave-step5.png" alt=""></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/jenkins-slave-step5.png" alt=""></p>
 <p>这里填写<code>jenkins</code>，是我们在jenkins master中创建的一个Service Account。如果不填的话，会导致执行<code>kubectl</code>命令会出现权限不足。</p>
-<h2 id="测试">测试</h2>
+<h2 id="验证">验证</h2>
 <p>新建一个Freestyle的Item：</p>
-<p><img src="http://flyeric.top/img/post/jenkins-slave-test1.png" alt=""></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/jenkins-slave-test1.png" alt="jenkins-slave-test1"></p>
 <p>填写在Container Template中的Label：</p>
-<p><img src="http://flyeric.top/img/post/jenkins-slave-test2.png" alt=""></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/jenkins-slave-test2.png" alt="jenkins-slave-test2"></p>
 <p>添加一个Build Shell：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">echo &#39;=== 测试动态jenkins slave === &#39;
 
@@ -391,9 +389,9 @@ docker info
 
 echo &#39;=== 获取pods ===&#39;
 kubectl get pods
-</code></pre></div><p><img src="http://flyeric.top/img/post/jenkins-slave-test3.png" alt=""></p>
+</code></pre></div><p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/jenkins-slave-test3.png" alt="jenkins-slave-test3"></p>
 <p>在Jenkins web中点击立即构建<code>Build Now</code>，在控制观察kuberntes Pod的状态：</p>
-<p><img src="http://flyeric.top/img/post/jenkins-slave-test4.png" alt=""></p>
+<p><img src="https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/jenkins-slave-test4.png" alt="jenkins-slave-test4"></p>
 <p>执行完毕后，控制台会有如下输出：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Building remotely on jnlp-agent-l58sk (jnlp-agent) in workspace /home/jenkins/agent/workspace/jnlp-demo
 [jnlp-demo] $ /bin/sh -xe /tmp/jenkins4069627081916824161.sh
@@ -457,7 +455,6 @@ jnlp-agent-l58sk           2/2     Running   0          17s
 Finished: SUCCESS
 </code></pre></div><p>到这里基于Kubernetes的动态Jenkins Slave就搭建完毕了。这里演示了一个简单的demo，如果在项目中有<code>Jenkinsfile</code>，可以定义node属性，指定使用<code>jnlp-agent</code>即可使用slave构建你的项目了。</p>
 <!-- raw HTML omitted -->
-<h2 id="参考">参考</h2>
 <p><a href="https://cloud.tencent.com/document/product/457/41396#proof">TKE 集群侧及 Jenkins 侧配置</a></p>
 
           
@@ -471,7 +468,7 @@ Finished: SUCCESS
 <div class="zs-modal-box">
     <div class="zs-modal-head">
         <button type="button" class="close">×</button>
-        <span class="author"><img src="http://flyeric.top/img/avatar.jpg"/></span>
+        <span class="author"><img src="http://amuguelove.github.io/img/avatar.jpg"/></span>
         <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
     </div>
     <div class="zs-modal-body">
@@ -486,11 +483,11 @@ Finished: SUCCESS
         <div class="zs-modal-pay">
             <button class="btn btn-bred" id="pay-text">2元</button>
             <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
-            <img src="http://flyeric.top/img/wechat-2.png" id="pay-image"/>
+            <img src="http://amuguelove.github.io/img/wechat-2.png" id="pay-image"/>
         </div>
     </div>
     <div class="zs-modal-footer">
-        <span class="zs-wechat"><img src="http://flyeric.top/img/wechat-btn.png"/></span>
+        <span class="zs-wechat"><img src="http://amuguelove.github.io/img/wechat-btn.png"/></span>
     </div>
 </div>
           
@@ -522,12 +519,12 @@ Finished: SUCCESS
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://flyeric.top/post/java-object-mappping-framework-benchmark/" data-toggle="tooltip" data-placement="top" title="使用JMH对Java Object Mapping框架做性能对比">&larr; 前一篇</a>
+              <a href="http://amuguelove.github.io/post/java-object-mappping-framework-benchmark/" data-toggle="tooltip" data-placement="top" title="使用JMH对Java Object Mapping框架做性能对比">&larr; 前一篇</a>
             </li>
           
           
             <li class="next">
-              <a href="http://flyeric.top/post/read-clean-code/" data-toggle="tooltip" data-placement="top" title="代码整洁之道">后一篇 &rarr;</a>
+              <a href="http://amuguelove.github.io/post/read-clean-code/" data-toggle="tooltip" data-placement="top" title="代码整洁之道">后一篇 &rarr;</a>
             </li>
           
         </ul>
@@ -567,7 +564,7 @@ Finished: SUCCESS
           
           
           <li>
-            <a href="http://flyeric.top/index.xml" title="RSS">
+            <a href="http://amuguelove.github.io/index.xml" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -582,11 +579,11 @@ Finished: SUCCESS
 
           
             &nbsp;&bull;&nbsp;
-            <a href="http://flyeric.top/">梁波的技术博客</a>
+            <a href="http://amuguelove.github.io/">梁波的技术博客</a>
             &nbsp;&bull;&nbsp;
-            <a href="http://flyeric.top/sitemap.xml">网站地图</a>
+            <a href="http://amuguelove.github.io/sitemap.xml">网站地图</a>
             &nbsp;&bull;&nbsp;
-            <a href="http://flyeric.top/archives/">归档</a>
+            <a href="http://amuguelove.github.io/archives/">归档</a>
             &nbsp;&bull;&nbsp;
             <a href="https://beian.miit.gov.cn/" target="_blank">蜀ICP备2021017173号-1</a>
           
@@ -612,7 +609,7 @@ Finished: SUCCESS
 </footer>
 
 
-<script src='http://flyeric.top/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
+<script src='http://amuguelove.github.io/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>

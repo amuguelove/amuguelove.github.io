@@ -2,53 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mongo on 梁波的技术博客</title>
-    <link>http://flyeric.top/tags/mongo/</link>
+    <link>http://amuguelove.github.io/tags/mongo/</link>
     <description>Recent content in mongo on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 09 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://flyeric.top/tags/mongo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/mongo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mongo的索引机制</title>
-      <link>http://flyeric.top/post/mongo-index/</link>
+      <link>http://amuguelove.github.io/post/mongo-index/</link>
       <pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/mongo-index/</guid>
+      <guid>http://amuguelove.github.io/post/mongo-index/</guid>
       <description>&lt;p&gt;索引是对数据库表中一列或多列的值进行排序的一种数据结构，可以让我们查询数据库变得更快。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mongo数据备份以及恢复</title>
-      <link>http://flyeric.top/post/mongo-dump-restore/</link>
+      <link>http://amuguelove.github.io/post/mongo-dump-restore/</link>
       <pubDate>Sun, 08 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/mongo-dump-restore/</guid>
+      <guid>http://amuguelove.github.io/post/mongo-dump-restore/</guid>
       <description>&lt;p&gt;MongoDB支持副本集，为何还需要备份呢？备份的主要目的有：1）防止硬件故障引起的数据丢失； 2）防止人为错误误删数据；3）时间回溯；4）监管要求。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mongo开发最佳实践</title>
-      <link>http://flyeric.top/post/mongo-best-practice/</link>
+      <link>http://amuguelove.github.io/post/mongo-best-practice/</link>
       <pubDate>Sat, 07 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/mongo-best-practice/</guid>
+      <guid>http://amuguelove.github.io/post/mongo-best-practice/</guid>
       <description>&lt;p&gt;Mongo开发的最佳实践总结。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mongo事务处理</title>
-      <link>http://flyeric.top/post/mongo-transaction/</link>
+      <link>http://amuguelove.github.io/post/mongo-transaction/</link>
       <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/mongo-transaction/</guid>
+      <guid>http://amuguelove.github.io/post/mongo-transaction/</guid>
       <description>&lt;p&gt;MongoDB 4.0引入了事务功能，支持多文档的ACID特性。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mongo的模型设计</title>
-      <link>http://flyeric.top/post/mongo-pattern-design/</link>
+      <link>http://amuguelove.github.io/post/mongo-pattern-design/</link>
       <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/mongo-pattern-design/</guid>
+      <guid>http://amuguelove.github.io/post/mongo-pattern-design/</guid>
       <description>&lt;h2 id=&#34;数据模型&#34;&gt;数据模型&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;什么是数据模型?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;1）数据模型是一组由符号、文本组成的集合，用以准确表达信息，达到有效交流、沟通 的目的。&lt;/p&gt;
@@ -61,19 +61,19 @@
     
     <item>
       <title>Mongo复制集的搭建</title>
-      <link>http://flyeric.top/post/mongo-replica-sets-install/</link>
+      <link>http://amuguelove.github.io/post/mongo-replica-sets-install/</link>
       <pubDate>Wed, 04 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/mongo-replica-sets-install/</guid>
+      <guid>http://amuguelove.github.io/post/mongo-replica-sets-install/</guid>
       <description>&lt;p&gt;在本地机器上运行3个实例来搭建一个最简单的复制集。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Mongo复制集机制及原理</title>
-      <link>http://flyeric.top/post/mongo-replica-sets/</link>
+      <link>http://amuguelove.github.io/post/mongo-replica-sets/</link>
       <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/mongo-replica-sets/</guid>
+      <guid>http://amuguelove.github.io/post/mongo-replica-sets/</guid>
       <description>&lt;h2 id=&#34;复制集的作用&#34;&gt;复制集的作用&lt;/h2&gt;
 &lt;p&gt;MongoDB 复制集的主要意义在于实现服务高可用。&lt;/p&gt;
 &lt;p&gt;它的现实依赖于两个方面的功能:&lt;/p&gt;
@@ -91,10 +91,10 @@
     
     <item>
       <title>Mongo聚合查询</title>
-      <link>http://flyeric.top/post/mongo-aggregate-operation/</link>
+      <link>http://amuguelove.github.io/post/mongo-aggregate-operation/</link>
       <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/mongo-aggregate-operation/</guid>
+      <guid>http://amuguelove.github.io/post/mongo-aggregate-operation/</guid>
       <description>&lt;p&gt;MongoDB 聚合框架(Aggregation Framework)是一个计算框架，它可以:&lt;/p&gt;
 &lt;p&gt;1）作用在一个或者几个集合上；&lt;/p&gt;
 &lt;p&gt;2）对集合中的数据进行一系列的运算；&lt;/p&gt;
@@ -107,10 +107,10 @@
     
     <item>
       <title>MongoDB介绍以及基本操作</title>
-      <link>http://flyeric.top/post/mongodb-base-operation/</link>
+      <link>http://amuguelove.github.io/post/mongodb-base-operation/</link>
       <pubDate>Sun, 01 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://flyeric.top/post/mongodb-base-operation/</guid>
+      <guid>http://amuguelove.github.io/post/mongodb-base-operation/</guid>
       <description>&lt;p&gt;MongoDB 是一个高性能，开源，无模式的文档型数据库，是当前noSql数据库产品中最热门的一种。它在许多场景下用于替代传统的关系型数据库或键值对存储方式，MongoDB是用C++开发，MongoDB的官方网址：https://www.mongodb.com/&lt;/p&gt;</description>
     </item>
     
