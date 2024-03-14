@@ -2,606 +2,606 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://amuguelove.github.io/categories/</loc>
+    <loc>https://amuguelove.github.io/categories/</loc>
     <lastmod>2023-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/cd/</loc>
+    <loc>https://amuguelove.github.io/tags/cd/</loc>
     <lastmod>2023-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/ci/</loc>
+    <loc>https://amuguelove.github.io/tags/ci/</loc>
     <lastmod>2023-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/devops/</loc>
+    <loc>https://amuguelove.github.io/tags/devops/</loc>
     <lastmod>2023-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/drone/</loc>
+    <loc>https://amuguelove.github.io/tags/drone/</loc>
     <lastmod>2023-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/github/</loc>
+    <loc>https://amuguelove.github.io/tags/github/</loc>
     <lastmod>2023-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/helm/</loc>
+    <loc>https://amuguelove.github.io/tags/helm/</loc>
     <lastmod>2023-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/kubernetes/</loc>
+    <loc>https://amuguelove.github.io/tags/kubernetes/</loc>
     <lastmod>2023-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/kubernetes/</loc>
+    <loc>https://amuguelove.github.io/categories/kubernetes/</loc>
     <lastmod>2023-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/k8s-drone-ci-1/</loc>
+    <loc>https://amuguelove.github.io/post/k8s-drone-ci-1/</loc>
     <lastmod>2023-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/</loc>
+    <loc>https://amuguelove.github.io/post/</loc>
     <lastmod>2023-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/</loc>
+    <loc>https://amuguelove.github.io/tags/</loc>
     <lastmod>2023-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/</loc>
+    <loc>https://amuguelove.github.io/</loc>
     <lastmod>2023-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/apache/</loc>
+    <loc>https://amuguelove.github.io/tags/apache/</loc>
     <lastmod>2021-10-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/etl/</loc>
+    <loc>https://amuguelove.github.io/tags/etl/</loc>
     <lastmod>2021-10-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/kafka/</loc>
+    <loc>https://amuguelove.github.io/tags/kafka/</loc>
     <lastmod>2021-10-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/kafka-cluster-deploy/</loc>
+    <loc>https://amuguelove.github.io/post/kafka-cluster-deploy/</loc>
     <lastmod>2021-10-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/github-actions/</loc>
+    <loc>https://amuguelove.github.io/tags/github-actions/</loc>
     <lastmod>2021-09-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/github-actions-learning/</loc>
+    <loc>https://amuguelove.github.io/post/github-actions-learning/</loc>
     <lastmod>2021-09-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/apm/</loc>
+    <loc>https://amuguelove.github.io/tags/apm/</loc>
     <lastmod>2021-08-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/elastic/</loc>
+    <loc>https://amuguelove.github.io/tags/elastic/</loc>
     <lastmod>2021-08-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/elastic-stack-monitoring-04/</loc>
+    <loc>https://amuguelove.github.io/post/elastic-stack-monitoring-04/</loc>
     <lastmod>2021-08-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/metricbeat/</loc>
+    <loc>https://amuguelove.github.io/tags/metricbeat/</loc>
     <lastmod>2021-07-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/elastic-stack-monitoring-03/</loc>
+    <loc>https://amuguelove.github.io/post/elastic-stack-monitoring-03/</loc>
     <lastmod>2021-07-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/elasticsearch/</loc>
+    <loc>https://amuguelove.github.io/tags/elasticsearch/</loc>
     <lastmod>2021-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/fluent-bit/</loc>
+    <loc>https://amuguelove.github.io/tags/fluent-bit/</loc>
     <lastmod>2021-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/kibana/</loc>
+    <loc>https://amuguelove.github.io/tags/kibana/</loc>
     <lastmod>2021-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/elastic-stack-monitoring-02/</loc>
+    <loc>https://amuguelove.github.io/post/elastic-stack-monitoring-02/</loc>
     <lastmod>2021-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/elastic-stack-monitoring-01/</loc>
+    <loc>https://amuguelove.github.io/post/elastic-stack-monitoring-01/</loc>
     <lastmod>2021-07-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/icloud/</loc>
+    <loc>https://amuguelove.github.io/tags/icloud/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/macos/</loc>
+    <loc>https://amuguelove.github.io/tags/macos/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/tools/</loc>
+    <loc>https://amuguelove.github.io/categories/tools/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/typora/</loc>
+    <loc>https://amuguelove.github.io/tags/typora/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/writing-with-typora/</loc>
+    <loc>https://amuguelove.github.io/post/writing-with-typora/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/upic/</loc>
+    <loc>https://amuguelove.github.io/tags/upic/</loc>
     <lastmod>2021-02-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/benchmark/</loc>
+    <loc>https://amuguelove.github.io/tags/benchmark/</loc>
     <lastmod>2021-01-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/ingress/</loc>
+    <loc>https://amuguelove.github.io/tags/ingress/</loc>
     <lastmod>2021-01-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/nginx/</loc>
+    <loc>https://amuguelove.github.io/tags/nginx/</loc>
     <lastmod>2021-01-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/tke/</loc>
+    <loc>https://amuguelove.github.io/tags/tke/</loc>
     <lastmod>2021-01-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/traefik/</loc>
+    <loc>https://amuguelove.github.io/tags/traefik/</loc>
     <lastmod>2021-01-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/ingress-controllers-benchmark/</loc>
+    <loc>https://amuguelove.github.io/post/ingress-controllers-benchmark/</loc>
     <lastmod>2021-01-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/ingress-nginx-benchmark/</loc>
+    <loc>https://amuguelove.github.io/post/ingress-nginx-benchmark/</loc>
     <lastmod>2021-01-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/ingress-nginx-high-concurrency/</loc>
+    <loc>https://amuguelove.github.io/post/ingress-nginx-high-concurrency/</loc>
     <lastmod>2021-01-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/ingress-nginx-on-tke/</loc>
+    <loc>https://amuguelove.github.io/post/ingress-nginx-on-tke/</loc>
     <lastmod>2021-01-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/install-ingress-nginx/</loc>
+    <loc>https://amuguelove.github.io/post/install-ingress-nginx/</loc>
     <lastmod>2020-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/centos/</loc>
+    <loc>https://amuguelove.github.io/tags/centos/</loc>
     <lastmod>2020-12-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/linux/</loc>
+    <loc>https://amuguelove.github.io/tags/linux/</loc>
     <lastmod>2020-12-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/linux/</loc>
+    <loc>https://amuguelove.github.io/categories/linux/</loc>
     <lastmod>2020-12-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/openssl/</loc>
+    <loc>https://amuguelove.github.io/tags/openssl/</loc>
     <lastmod>2020-12-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/centos-upgrade-openssl/</loc>
+    <loc>https://amuguelove.github.io/post/centos-upgrade-openssl/</loc>
     <lastmod>2020-12-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/api/</loc>
+    <loc>https://amuguelove.github.io/tags/api/</loc>
     <lastmod>2020-10-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/how-to-use-k8s-api-resources/</loc>
+    <loc>https://amuguelove.github.io/post/how-to-use-k8s-api-resources/</loc>
     <lastmod>2020-10-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/git/</loc>
+    <loc>https://amuguelove.github.io/tags/git/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/git/</loc>
+    <loc>https://amuguelove.github.io/categories/git/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/delete-github-remote-commits/</loc>
+    <loc>https://amuguelove.github.io/post/delete-github-remote-commits/</loc>
     <lastmod>2020-10-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/docker/</loc>
+    <loc>https://amuguelove.github.io/tags/docker/</loc>
     <lastmod>2020-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/kind/</loc>
+    <loc>https://amuguelove.github.io/tags/kind/</loc>
     <lastmod>2020-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/setup-kubernetes-cluster-with-kind/</loc>
+    <loc>https://amuguelove.github.io/post/setup-kubernetes-cluster-with-kind/</loc>
     <lastmod>2020-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/centos7/</loc>
+    <loc>https://amuguelove.github.io/tags/centos7/</loc>
     <lastmod>2020-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/kubeadm/</loc>
+    <loc>https://amuguelove.github.io/tags/kubeadm/</loc>
     <lastmod>2020-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/vagrant/</loc>
+    <loc>https://amuguelove.github.io/tags/vagrant/</loc>
     <lastmod>2020-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/vagrant/</loc>
+    <loc>https://amuguelove.github.io/categories/vagrant/</loc>
     <lastmod>2020-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/customize-vagrant-box/</loc>
+    <loc>https://amuguelove.github.io/post/customize-vagrant-box/</loc>
     <lastmod>2020-10-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/book/</loc>
+    <loc>https://amuguelove.github.io/tags/book/</loc>
     <lastmod>2020-10-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/book/</loc>
+    <loc>https://amuguelove.github.io/categories/book/</loc>
     <lastmod>2020-10-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/it/</loc>
+    <loc>https://amuguelove.github.io/tags/it/</loc>
     <lastmod>2020-10-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/read-the-phoenix-project/</loc>
+    <loc>https://amuguelove.github.io/post/read-the-phoenix-project/</loc>
     <lastmod>2020-10-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/cert-manager/</loc>
+    <loc>https://amuguelove.github.io/tags/cert-manager/</loc>
     <lastmod>2020-09-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/https/</loc>
+    <loc>https://amuguelove.github.io/tags/https/</loc>
     <lastmod>2020-09-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</loc>
+    <loc>https://amuguelove.github.io/post/automatic-kubernetes-ingress-https-with-lets-encrypt/</loc>
     <lastmod>2020-09-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/tls/</loc>
+    <loc>https://amuguelove.github.io/tags/tls/</loc>
     <lastmod>2020-09-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/kubernetes-storage2/</loc>
+    <loc>https://amuguelove.github.io/post/kubernetes-storage2/</loc>
     <lastmod>2020-09-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/pv/</loc>
+    <loc>https://amuguelove.github.io/tags/pv/</loc>
     <lastmod>2020-09-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/pvc/</loc>
+    <loc>https://amuguelove.github.io/tags/pvc/</loc>
     <lastmod>2020-09-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/storageclass/</loc>
+    <loc>https://amuguelove.github.io/tags/storageclass/</loc>
     <lastmod>2020-09-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/volume/</loc>
+    <loc>https://amuguelove.github.io/tags/volume/</loc>
     <lastmod>2020-09-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/kubernetes-storage1/</loc>
+    <loc>https://amuguelove.github.io/post/kubernetes-storage1/</loc>
     <lastmod>2020-09-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/regexp/</loc>
+    <loc>https://amuguelove.github.io/tags/regexp/</loc>
     <lastmod>2020-09-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/regexp/</loc>
+    <loc>https://amuguelove.github.io/categories/regexp/</loc>
     <lastmod>2020-09-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/sample-regexp/</loc>
+    <loc>https://amuguelove.github.io/post/sample-regexp/</loc>
     <lastmod>2020-09-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/https/</loc>
+    <loc>https://amuguelove.github.io/categories/https/</loc>
     <lastmod>2020-08-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/ssl/</loc>
+    <loc>https://amuguelove.github.io/tags/ssl/</loc>
     <lastmod>2020-08-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/sample-https-principle/</loc>
+    <loc>https://amuguelove.github.io/post/sample-https-principle/</loc>
     <lastmod>2020-08-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/kubeadm-install-kubernetes-cluster/</loc>
+    <loc>https://amuguelove.github.io/post/kubeadm-install-kubernetes-cluster/</loc>
     <lastmod>2020-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/local-install-ha-kubernetes-cluster/</loc>
+    <loc>https://amuguelove.github.io/post/local-install-ha-kubernetes-cluster/</loc>
     <lastmod>2020-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/container/</loc>
+    <loc>https://amuguelove.github.io/tags/container/</loc>
     <lastmod>2020-04-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/docker/</loc>
+    <loc>https://amuguelove.github.io/categories/docker/</loc>
     <lastmod>2020-04-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/docker-best-practice/</loc>
+    <loc>https://amuguelove.github.io/post/docker-best-practice/</loc>
     <lastmod>2020-04-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/docker-underlying-technology/</loc>
+    <loc>https://amuguelove.github.io/post/docker-underlying-technology/</loc>
     <lastmod>2020-04-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/clean-code/</loc>
+    <loc>https://amuguelove.github.io/tags/clean-code/</loc>
     <lastmod>2020-04-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/java/</loc>
+    <loc>https://amuguelove.github.io/tags/java/</loc>
     <lastmod>2020-04-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/read-clean-code/</loc>
+    <loc>https://amuguelove.github.io/post/read-clean-code/</loc>
     <lastmod>2020-04-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/jenkins/</loc>
+    <loc>https://amuguelove.github.io/tags/jenkins/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/jenkins-slave-base-on-kubernetes/</loc>
+    <loc>https://amuguelove.github.io/post/jenkins-slave-base-on-kubernetes/</loc>
     <lastmod>2020-03-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/java/</loc>
+    <loc>https://amuguelove.github.io/categories/java/</loc>
     <lastmod>2020-03-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/jmh/</loc>
+    <loc>https://amuguelove.github.io/tags/jmh/</loc>
     <lastmod>2020-03-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/mapping-framework/</loc>
+    <loc>https://amuguelove.github.io/tags/mapping-framework/</loc>
     <lastmod>2020-03-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/java-object-mappping-framework-benchmark/</loc>
+    <loc>https://amuguelove.github.io/post/java-object-mappping-framework-benchmark/</loc>
     <lastmod>2020-03-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/gradle/</loc>
+    <loc>https://amuguelove.github.io/tags/gradle/</loc>
     <lastmod>2020-03-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/gradle/</loc>
+    <loc>https://amuguelove.github.io/categories/gradle/</loc>
     <lastmod>2020-03-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/gradle-publish-jar-into-maven-central/</loc>
+    <loc>https://amuguelove.github.io/post/gradle-publish-jar-into-maven-central/</loc>
     <lastmod>2020-03-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/maven/</loc>
+    <loc>https://amuguelove.github.io/tags/maven/</loc>
     <lastmod>2020-03-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/springboot/</loc>
+    <loc>https://amuguelove.github.io/tags/springboot/</loc>
     <lastmod>2020-03-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/springboot/</loc>
+    <loc>https://amuguelove.github.io/categories/springboot/</loc>
     <lastmod>2020-03-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/springboot-load-configure-principle/</loc>
+    <loc>https://amuguelove.github.io/post/springboot-load-configure-principle/</loc>
     <lastmod>2020-03-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/springboot-load-configure-locations/</loc>
+    <loc>https://amuguelove.github.io/post/springboot-load-configure-locations/</loc>
     <lastmod>2020-03-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/jpa/</loc>
+    <loc>https://amuguelove.github.io/tags/jpa/</loc>
     <lastmod>2020-03-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/jpa-id-generated-strategy/</loc>
+    <loc>https://amuguelove.github.io/post/jpa-id-generated-strategy/</loc>
     <lastmod>2020-03-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/git-flow-choose/</loc>
+    <loc>https://amuguelove.github.io/post/git-flow-choose/</loc>
     <lastmod>2020-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/mongo/</loc>
+    <loc>https://amuguelove.github.io/tags/mongo/</loc>
     <lastmod>2020-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/mongo/</loc>
+    <loc>https://amuguelove.github.io/categories/mongo/</loc>
     <lastmod>2020-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/mongo-index/</loc>
+    <loc>https://amuguelove.github.io/post/mongo-index/</loc>
     <lastmod>2020-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/mongo-dump-restore/</loc>
+    <loc>https://amuguelove.github.io/post/mongo-dump-restore/</loc>
     <lastmod>2020-03-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/mongo-best-practice/</loc>
+    <loc>https://amuguelove.github.io/post/mongo-best-practice/</loc>
     <lastmod>2020-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/mongo-transaction/</loc>
+    <loc>https://amuguelove.github.io/post/mongo-transaction/</loc>
     <lastmod>2020-03-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/mongo-pattern-design/</loc>
+    <loc>https://amuguelove.github.io/post/mongo-pattern-design/</loc>
     <lastmod>2020-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/mongo-replica-sets-install/</loc>
+    <loc>https://amuguelove.github.io/post/mongo-replica-sets-install/</loc>
     <lastmod>2020-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/mongo-replica-sets/</loc>
+    <loc>https://amuguelove.github.io/post/mongo-replica-sets/</loc>
     <lastmod>2020-03-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/mongo-aggregate-operation/</loc>
+    <loc>https://amuguelove.github.io/post/mongo-aggregate-operation/</loc>
     <lastmod>2020-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/mongodb-base-operation/</loc>
+    <loc>https://amuguelove.github.io/post/mongodb-base-operation/</loc>
     <lastmod>2020-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/emacs/</loc>
+    <loc>https://amuguelove.github.io/tags/emacs/</loc>
     <lastmod>2020-02-18T11:12:14+08:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/hugo/</loc>
+    <loc>https://amuguelove.github.io/tags/hugo/</loc>
     <lastmod>2020-02-18T11:12:14+08:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/migrate-blog-to-hugo/</loc>
+    <loc>https://amuguelove.github.io/post/migrate-blog-to-hugo/</loc>
     <lastmod>2020-02-18T11:12:14+08:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</loc>
+    <loc>https://amuguelove.github.io/categories/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</loc>
     <lastmod>2020-02-18T11:12:14+08:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/mysql/</loc>
+    <loc>https://amuguelove.github.io/tags/mysql/</loc>
     <lastmod>2019-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/mysql/</loc>
+    <loc>https://amuguelove.github.io/categories/mysql/</loc>
     <lastmod>2019-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/mysql-base/</loc>
+    <loc>https://amuguelove.github.io/post/mysql-base/</loc>
     <lastmod>2019-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/shell/</loc>
+    <loc>https://amuguelove.github.io/tags/shell/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/shell-scripts-quickstart/</loc>
+    <loc>https://amuguelove.github.io/post/shell-scripts-quickstart/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/apache-httpclient-timeout-diff/</loc>
+    <loc>https://amuguelove.github.io/post/apache-httpclient-timeout-diff/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/http/</loc>
+    <loc>https://amuguelove.github.io/tags/http/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/http/</loc>
+    <loc>https://amuguelove.github.io/categories/http/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/httpclient/</loc>
+    <loc>https://amuguelove.github.io/tags/httpclient/</loc>
     <lastmod>2019-03-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/linux-command-disk/</loc>
+    <loc>https://amuguelove.github.io/post/linux-command-disk/</loc>
     <lastmod>2019-01-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/grep/</loc>
+    <loc>https://amuguelove.github.io/tags/grep/</loc>
     <lastmod>2019-01-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/linux-command-grep/</loc>
+    <loc>https://amuguelove.github.io/post/linux-command-grep/</loc>
     <lastmod>2019-01-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/springboot2-transaction/</loc>
+    <loc>https://amuguelove.github.io/post/springboot2-transaction/</loc>
     <lastmod>2019-01-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/transaction/</loc>
+    <loc>https://amuguelove.github.io/tags/transaction/</loc>
     <lastmod>2019-01-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/scp/</loc>
+    <loc>https://amuguelove.github.io/tags/scp/</loc>
     <lastmod>2019-01-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/linux-command-scp/</loc>
+    <loc>https://amuguelove.github.io/post/linux-command-scp/</loc>
     <lastmod>2019-01-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/crontab/</loc>
+    <loc>https://amuguelove.github.io/tags/crontab/</loc>
     <lastmod>2019-01-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/linux-command-crontab/</loc>
+    <loc>https://amuguelove.github.io/post/linux-command-crontab/</loc>
     <lastmod>2019-01-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/aop/</loc>
+    <loc>https://amuguelove.github.io/tags/aop/</loc>
     <lastmod>2018-12-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/springboot2-aop/</loc>
+    <loc>https://amuguelove.github.io/post/springboot2-aop/</loc>
     <lastmod>2018-12-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/golang/</loc>
+    <loc>https://amuguelove.github.io/tags/golang/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/golang/</loc>
+    <loc>https://amuguelove.github.io/categories/golang/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/macos-golang-environment-setup/</loc>
+    <loc>https://amuguelove.github.io/post/macos-golang-environment-setup/</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/docker-container-stats/</loc>
+    <loc>https://amuguelove.github.io/post/docker-container-stats/</loc>
     <lastmod>2018-11-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/docker-container-introdution/</loc>
+    <loc>https://amuguelove.github.io/post/docker-container-introdution/</loc>
     <lastmod>2018-11-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/docker-image-introdution/</loc>
+    <loc>https://amuguelove.github.io/post/docker-image-introdution/</loc>
     <lastmod>2018-11-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/dockerfile-introdution/</loc>
+    <loc>https://amuguelove.github.io/post/dockerfile-introdution/</loc>
     <lastmod>2018-11-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/docker-install/</loc>
+    <loc>https://amuguelove.github.io/post/docker-install/</loc>
     <lastmod>2018-11-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/page/</loc>
+    <loc>https://amuguelove.github.io/page/</loc>
     <lastmod>2018-11-22T20:17:15+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/page/about/</loc>
+    <loc>https://amuguelove.github.io/page/about/</loc>
     <lastmod>2018-11-22T20:17:15+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/hexo/</loc>
+    <loc>https://amuguelove.github.io/tags/hexo/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/hexo/</loc>
+    <loc>https://amuguelove.github.io/categories/hexo/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/migrate-blog-to-hexo/</loc>
+    <loc>https://amuguelove.github.io/post/migrate-blog-to-hexo/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/spring-boot-admin/</loc>
+    <loc>https://amuguelove.github.io/post/spring-boot-admin/</loc>
     <lastmod>2018-11-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/gradle-setup-multi-projects/</loc>
+    <loc>https://amuguelove.github.io/post/gradle-setup-multi-projects/</loc>
     <lastmod>2018-11-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/java-basic-class-bytes/</loc>
+    <loc>https://amuguelove.github.io/post/java-basic-class-bytes/</loc>
     <lastmod>2018-11-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/redis/</loc>
+    <loc>https://amuguelove.github.io/tags/redis/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/redis/</loc>
+    <loc>https://amuguelove.github.io/categories/redis/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/redis-problem-optimization/</loc>
+    <loc>https://amuguelove.github.io/post/redis-problem-optimization/</loc>
     <lastmod>2018-10-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/redis-sentinel-setup/</loc>
+    <loc>https://amuguelove.github.io/post/redis-sentinel-setup/</loc>
     <lastmod>2018-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/redis-master-slave-setup/</loc>
+    <loc>https://amuguelove.github.io/post/redis-master-slave-setup/</loc>
     <lastmod>2018-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/redis-install-on-centos7/</loc>
+    <loc>https://amuguelove.github.io/post/redis-install-on-centos7/</loc>
     <lastmod>2018-10-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/macos/</loc>
+    <loc>https://amuguelove.github.io/categories/macos/</loc>
     <lastmod>2018-10-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/macos-profile-load-order/</loc>
+    <loc>https://amuguelove.github.io/post/macos-profile-load-order/</loc>
     <lastmod>2018-10-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/gradle-environment-setup/</loc>
+    <loc>https://amuguelove.github.io/post/gradle-environment-setup/</loc>
     <lastmod>2018-10-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/java8-new-date-api/</loc>
+    <loc>https://amuguelove.github.io/post/java8-new-date-api/</loc>
     <lastmod>2018-10-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/java8-optional/</loc>
+    <loc>https://amuguelove.github.io/post/java8-optional/</loc>
     <lastmod>2018-10-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/java8-stream/</loc>
+    <loc>https://amuguelove.github.io/post/java8-stream/</loc>
     <lastmod>2018-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/java8-lambda/</loc>
+    <loc>https://amuguelove.github.io/post/java8-lambda/</loc>
     <lastmod>2018-10-01T18:23:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/iterm2/</loc>
+    <loc>https://amuguelove.github.io/tags/iterm2/</loc>
     <lastmod>2018-10-01T10:34:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/custom-iterm2-zsh/</loc>
+    <loc>https://amuguelove.github.io/post/custom-iterm2-zsh/</loc>
     <lastmod>2018-10-01T10:34:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/tools/</loc>
+    <loc>https://amuguelove.github.io/tags/tools/</loc>
     <lastmod>2018-10-01T10:34:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/cluster/</loc>
+    <loc>https://amuguelove.github.io/tags/cluster/</loc>
     <lastmod>2018-09-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/vagrant-setup-virtual-machine-cluster/</loc>
+    <loc>https://amuguelove.github.io/post/vagrant-setup-virtual-machine-cluster/</loc>
     <lastmod>2018-09-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/restful/</loc>
+    <loc>https://amuguelove.github.io/tags/restful/</loc>
     <lastmod>2018-05-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/restful/</loc>
+    <loc>https://amuguelove.github.io/categories/restful/</loc>
     <lastmod>2018-05-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/restful-api-best-practice/</loc>
+    <loc>https://amuguelove.github.io/post/restful-api-best-practice/</loc>
     <lastmod>2018-05-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/java-serialization/</loc>
+    <loc>https://amuguelove.github.io/post/java-serialization/</loc>
     <lastmod>2018-05-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/reids-distributed-lock/</loc>
+    <loc>https://amuguelove.github.io/post/reids-distributed-lock/</loc>
     <lastmod>2018-05-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/http-performance-tool-wrk/</loc>
+    <loc>https://amuguelove.github.io/post/http-performance-tool-wrk/</loc>
     <lastmod>2018-04-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/performance/</loc>
+    <loc>https://amuguelove.github.io/tags/performance/</loc>
     <lastmod>2018-04-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/wrk/</loc>
+    <loc>https://amuguelove.github.io/tags/wrk/</loc>
     <lastmod>2018-04-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/reids-persistence-intro/</loc>
+    <loc>https://amuguelove.github.io/post/reids-persistence-intro/</loc>
     <lastmod>2018-01-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/iterm2-ssh-no-disconnect/</loc>
+    <loc>https://amuguelove.github.io/post/iterm2-ssh-no-disconnect/</loc>
     <lastmod>2017-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/others/</loc>
+    <loc>https://amuguelove.github.io/categories/others/</loc>
     <lastmod>2017-04-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/goodbye-shanghai/</loc>
+    <loc>https://amuguelove.github.io/post/goodbye-shanghai/</loc>
     <lastmod>2017-04-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/%E6%9D%82%E8%AE%B0/</loc>
+    <loc>https://amuguelove.github.io/tags/%E6%9D%82%E8%AE%B0/</loc>
     <lastmod>2017-04-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/design-patterns/</loc>
+    <loc>https://amuguelove.github.io/tags/design-patterns/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/categories/design-patterns/</loc>
+    <loc>https://amuguelove.github.io/categories/design-patterns/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/dynamic-proxy-pattern/</loc>
+    <loc>https://amuguelove.github.io/post/dynamic-proxy-pattern/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/singleton-pattern/</loc>
+    <loc>https://amuguelove.github.io/post/singleton-pattern/</loc>
     <lastmod>2017-03-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/git-common-commands/</loc>
+    <loc>https://amuguelove.github.io/post/git-common-commands/</loc>
     <lastmod>2017-03-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/generate-multi-ssh-key/</loc>
+    <loc>https://amuguelove.github.io/post/generate-multi-ssh-key/</loc>
     <lastmod>2017-01-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/ssh/</loc>
+    <loc>https://amuguelove.github.io/tags/ssh/</loc>
     <lastmod>2017-01-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/post/first-blog/</loc>
+    <loc>https://amuguelove.github.io/post/first-blog/</loc>
     <lastmod>2016-09-25T19:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</loc>
+    <loc>https://amuguelove.github.io/tags/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/</loc>
     <lastmod>2016-09-25T19:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://amuguelove.github.io/archives/</loc>
+    <loc>https://amuguelove.github.io/archives/</loc>
   </url>
 </urlset>

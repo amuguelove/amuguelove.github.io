@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MySQL on 梁波的技术博客</title>
-    <link>http://amuguelove.github.io/tags/mysql/</link>
+    <link>https://amuguelove.github.io/tags/mysql/</link>
     <description>Recent content in MySQL on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 15 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://amuguelove.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MySQL基础</title>
-      <link>http://amuguelove.github.io/post/mysql-base/</link>
+      <link>https://amuguelove.github.io/post/mysql-base/</link>
       <pubDate>Mon, 15 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/mysql-base/</guid>
+      <guid>https://amuguelove.github.io/post/mysql-base/</guid>
       <description>&lt;h3 id=&#34;并发控制&#34;&gt;并发控制&lt;/h3&gt;
 &lt;p&gt;无论何时，只要有多个查询需要在同一时刻修改数据，都会产生并发控制的问题。这里主要讨论MySQL在两个层面的并发控制：服务器层和存储引擎层。&lt;/p&gt;</description>
     </item>

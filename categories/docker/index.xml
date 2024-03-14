@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker on 梁波的技术博客</title>
-    <link>http://amuguelove.github.io/categories/docker/</link>
+    <link>https://amuguelove.github.io/categories/docker/</link>
     <description>Recent content in Docker on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 07 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://amuguelove.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker最佳实践</title>
-      <link>http://amuguelove.github.io/post/docker-best-practice/</link>
+      <link>https://amuguelove.github.io/post/docker-best-practice/</link>
       <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/docker-best-practice/</guid>
+      <guid>https://amuguelove.github.io/post/docker-best-practice/</guid>
       <description>&lt;p&gt;了解了用于构建 Dockerfile 的基本方法后，我们在编写 Dockerfile 的时候并没有一些强制要求，导致很多构建的镜像不符合一些最佳实践，典型的就是镜像构建的层数非常多，对一些基本指令的区别不是很清楚。下面介绍 Dockerfile 在实际使用中的一些最佳的实践方式。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Docker的底层技术</title>
-      <link>http://amuguelove.github.io/post/docker-underlying-technology/</link>
+      <link>https://amuguelove.github.io/post/docker-underlying-technology/</link>
       <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/docker-underlying-technology/</guid>
+      <guid>https://amuguelove.github.io/post/docker-underlying-technology/</guid>
       <description>&lt;p&gt;Docker最初实现是基于 &lt;a href=&#34;https://linuxcontainers.org/lxc/introduction/&#34;&gt;LXC&lt;/a&gt;，从 0.7 版本以后开始去除 &lt;code&gt;LXC&lt;/code&gt;，转而使用自行开发的 &lt;a href=&#34;https://github.com/docker/libcontainer&#34;&gt;libcontainer&lt;/a&gt;，从 1.11 开始，则进一步演进为使用 &lt;a href=&#34;https://github.com/opencontainers/runc&#34;&gt;runC&lt;/a&gt; 和 &lt;a href=&#34;https://github.com/containerd/containerd&#34;&gt;containerd&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;Docker 本质就是宿主机的一个进程，Docker 是通过 &lt;code&gt;namespace&lt;/code&gt; 实现资源隔离，通过&lt;code&gt;cgroup&lt;/code&gt; 实现资源限制，通过写时复制技术（copy-on-write）实现了高效的文件操作。&lt;/p&gt;
 &lt;p&gt;传统的虚拟机通过在宿主主机中运行 hypervisor 来模拟一整套完整的硬件环境提供给虚拟机的操作系统。虚拟机系统看到的环境是可限制的，也是彼此隔离的。 这种直接的做法实现了对资源最完整的封装，但很多时候往往意味着系统资源的浪费。 例如，以宿主机和虚拟机系统都为 Linux 系统为例，虚拟机中运行的应用其实可以利用宿主机系统中的运行环境。&lt;/p&gt;</description>
@@ -29,38 +29,38 @@
     
     <item>
       <title>使用Docker构建应用 | 第五篇：查看Dokcer容器使用的资源</title>
-      <link>http://amuguelove.github.io/post/docker-container-stats/</link>
+      <link>https://amuguelove.github.io/post/docker-container-stats/</link>
       <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/docker-container-stats/</guid>
+      <guid>https://amuguelove.github.io/post/docker-container-stats/</guid>
       <description>&lt;p&gt;在容器的使用过程中，如果能及时的掌握容器使用的系统资源，无论对开发还是运维工作都是非常有益的。幸运的是 docker 自己就提供了这样的命令：docker stats。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用Docker构建应用 | 第四篇：Docker容器</title>
-      <link>http://amuguelove.github.io/post/docker-container-introdution/</link>
+      <link>https://amuguelove.github.io/post/docker-container-introdution/</link>
       <pubDate>Mon, 26 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/docker-container-introdution/</guid>
+      <guid>https://amuguelove.github.io/post/docker-container-introdution/</guid>
       <description>&lt;p&gt;&lt;code&gt;容器&lt;/code&gt;(Container)是&lt;code&gt;Docker&lt;/code&gt;的核心组件之一，它是用于运行&lt;code&gt;镜像&lt;/code&gt;的一个沙箱环境，是一个从&lt;code&gt;镜像&lt;/code&gt;创建的应用运行实例，&lt;code&gt;镜像&lt;/code&gt;打包、构建完成后最终都会运行于&lt;code&gt;容器&lt;/code&gt;中。&lt;code&gt;容器&lt;/code&gt;具有良好的隔离性，&lt;code&gt;容器&lt;/code&gt;之间是相互隔离、互不可见。本文将介绍&lt;code&gt;Docker&lt;/code&gt;容器的创建与管理，并以容器的生命周期为主线介绍容器的创建、管理、停止，到最终删除。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用Docker构建应用 | 第三篇：Docker镜像</title>
-      <link>http://amuguelove.github.io/post/docker-image-introdution/</link>
+      <link>https://amuguelove.github.io/post/docker-image-introdution/</link>
       <pubDate>Sun, 25 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/docker-image-introdution/</guid>
+      <guid>https://amuguelove.github.io/post/docker-image-introdution/</guid>
       <description>&lt;h2 id=&#34;1-什么是docker镜像&#34;&gt;1. 什么是Docker镜像&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;镜像&lt;/code&gt;是一个只读的层（&lt;code&gt;layer&lt;/code&gt;），由文件系统叠加构成。而&lt;code&gt;镜像&lt;/code&gt;又是&lt;code&gt;容器&lt;/code&gt;(Container)的构成单元，我们一般会将应用构建成标准的&lt;code&gt;镜像&lt;/code&gt;组件，一或多个&lt;code&gt;镜像&lt;/code&gt;叠加又构成了&lt;code&gt;容器&lt;/code&gt;。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用Docker构建应用 | 第二篇：Dockerfile详解</title>
-      <link>http://amuguelove.github.io/post/dockerfile-introdution/</link>
+      <link>https://amuguelove.github.io/post/dockerfile-introdution/</link>
       <pubDate>Sat, 24 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/dockerfile-introdution/</guid>
+      <guid>https://amuguelove.github.io/post/dockerfile-introdution/</guid>
       <description>&lt;h2 id=&#34;1-dockerfile文件格式&#34;&gt;1. Dockerfile文件格式&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;Dockerfile&lt;/code&gt;文件格式如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# Comment
@@ -73,10 +73,10 @@ INSTRUCTION arguments
     
     <item>
       <title>使用Docker构建应用 | 第一篇：Docker安装</title>
-      <link>http://amuguelove.github.io/post/docker-install/</link>
+      <link>https://amuguelove.github.io/post/docker-install/</link>
       <pubDate>Fri, 23 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/docker-install/</guid>
+      <guid>https://amuguelove.github.io/post/docker-install/</guid>
       <description>&lt;p&gt;如果你是&lt;code&gt;MacOS&lt;/code&gt;系统，可以直接去官网下载&lt;code&gt;dmg&lt;/code&gt;文件，&lt;a href=&#34;https://www.docker.com/get-started&#34;&gt;下载地址&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;centos-7-安装-docker-ce&#34;&gt;CentOS 7 安装 Docker CE&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;警告：切勿在没有配置 Docker YUM 源的情况下直接使用 yum 命令安装 Docker.&lt;/strong&gt;&lt;/p&gt;

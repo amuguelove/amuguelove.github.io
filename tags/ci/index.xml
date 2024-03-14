@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CI on 梁波的技术博客</title>
-    <link>http://amuguelove.github.io/tags/ci/</link>
+    <link>https://amuguelove.github.io/tags/ci/</link>
     <description>Recent content in CI on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 01 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/ci/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://amuguelove.github.io/tags/ci/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kubernetes 集群中安装 Drone </title>
-      <link>http://amuguelove.github.io/post/k8s-drone-ci-1/</link>
+      <link>https://amuguelove.github.io/post/k8s-drone-ci-1/</link>
       <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/k8s-drone-ci-1/</guid>
+      <guid>https://amuguelove.github.io/post/k8s-drone-ci-1/</guid>
       <description>&lt;p&gt;基于云原生的应用大多都离不开CI/CD工具或平台。现有很多优秀的开源工具，如：&lt;a href=&#34;http://flyeric.top/post/jenkins-slave-base-on-kubernetes/&#34;&gt;Jenkins&lt;/a&gt;、&lt;a href=&#34;http://flyeric.top/post/github-actions-learning/&#34;&gt;Github Actions&lt;/a&gt; 等，对于Jenkins来说比较笨重，占用系统资源较多，而GitHub Actions则依赖于GitHub云服务器，无法和本地k8s集群交互。&lt;/p&gt;
 &lt;p&gt;有没有一种工具可以在本地环境运行，资源占用少，方便学习和实践。本文将介绍一个比较轻量级的CI工具 - &lt;a href=&#34;https://www.drone.io/&#34;&gt;Drone&lt;/a&gt;，接下来将采用Helm的方式在Kubernetes中安装 Drone工具。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>GitHub Actions 初探</title>
-      <link>http://amuguelove.github.io/post/github-actions-learning/</link>
+      <link>https://amuguelove.github.io/post/github-actions-learning/</link>
       <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/github-actions-learning/</guid>
+      <guid>https://amuguelove.github.io/post/github-actions-learning/</guid>
       <description>&lt;p&gt;GitHub Actions 是 Github 在2018年10月份推出的持续集成服务。可免费使用，你可以在 GitHub Actions 的仓库中自动化、自定义和执行软件开发工作流程。 可以发现、创建和共享操作以执行您喜欢的任何作业（包括 CI/CD），并将操作合并到完全自定义的工作流程中。&lt;/p&gt;
 &lt;p&gt;本文是一个简单的教程，演示如何使用 GitHub Actions 自动构建SpringBoot应用流水线并使用Helm部署到K8S集群。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://pic-bed-1256249917.cos.ap-chengdu.myqcloud.com/uPic/20191203184227.png&#34; alt=&#34;GitHub Actions&#34;&gt;&lt;/p&gt;</description>
@@ -30,10 +30,10 @@
     
     <item>
       <title>基于kubernetes的动态jenkins slave</title>
-      <link>http://amuguelove.github.io/post/jenkins-slave-base-on-kubernetes/</link>
+      <link>https://amuguelove.github.io/post/jenkins-slave-base-on-kubernetes/</link>
       <pubDate>Fri, 27 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/jenkins-slave-base-on-kubernetes/</guid>
+      <guid>https://amuguelove.github.io/post/jenkins-slave-base-on-kubernetes/</guid>
       <description>&lt;p&gt;搭建&lt;code&gt;CI/CD&lt;/code&gt;可以使用的工具不少，例如：&lt;code&gt;Jenkins&lt;/code&gt;、&lt;code&gt;Gitlab CI&lt;/code&gt;等等，这里会使用大家最新熟悉的&lt;code&gt;Jenkins&lt;/code&gt;来做&lt;code&gt;CI/CD&lt;/code&gt;的工具。不少人都是基于虚拟机来搭建的，基于&lt;code&gt;Kubernetes&lt;/code&gt;搭建的Jenkins Slave会有什么效果呢？&lt;/p&gt;</description>
     </item>
     

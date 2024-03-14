@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cluster on 梁波的技术博客</title>
-    <link>http://amuguelove.github.io/tags/cluster/</link>
+    <link>https://amuguelove.github.io/tags/cluster/</link>
     <description>Recent content in Cluster on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 27 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/cluster/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://amuguelove.github.io/tags/cluster/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Vagrant搭建虚拟机集群</title>
-      <link>http://amuguelove.github.io/post/vagrant-setup-virtual-machine-cluster/</link>
+      <link>https://amuguelove.github.io/post/vagrant-setup-virtual-machine-cluster/</link>
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/vagrant-setup-virtual-machine-cluster/</guid>
+      <guid>https://amuguelove.github.io/post/vagrant-setup-virtual-machine-cluster/</guid>
       <description>&lt;p&gt;本文将将介绍如何使用Vagrant+VirtualBox搭建多节点Centos7虚拟机集群&lt;/p&gt;</description>
     </item>
     

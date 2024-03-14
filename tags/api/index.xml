@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>api on 梁波的技术博客</title>
-    <link>http://amuguelove.github.io/tags/api/</link>
+    <link>https://amuguelove.github.io/tags/api/</link>
     <description>Recent content in api on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 31 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 31 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://amuguelove.github.io/tags/api/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kubernetes API资源的使用</title>
-      <link>http://amuguelove.github.io/post/how-to-use-k8s-api-resources/</link>
+      <link>https://amuguelove.github.io/post/how-to-use-k8s-api-resources/</link>
       <pubDate>Sat, 31 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/how-to-use-k8s-api-resources/</guid>
+      <guid>https://amuguelove.github.io/post/how-to-use-k8s-api-resources/</guid>
       <description>&lt;p&gt;在使用&lt;code&gt;Kubernetes&lt;/code&gt;的时候，因为有太多的资源、太多的版本、太多的组了，这些都非常容易产生混淆。如果我们通过 YAML 文件定义过 Deployment 这样的资源清单文件的话，那么你应该会看到&lt;code&gt;apiVersion: apps/v1beta2&lt;/code&gt;、&lt;code&gt;apiVersion: apps/v1&lt;/code&gt;等等这样的信息，那么我们到底应该使用哪一个呢？哪一个才是正确的呢？如何检查&lt;code&gt;Kubernetes&lt;/code&gt;集群支持哪些？其实我们使用&lt;code&gt;kubectl&lt;/code&gt;工具就可以来解决我们的这些疑惑。&lt;/p&gt;
 &lt;p&gt;当前我使用的&lt;code&gt;Kubernetes&lt;/code&gt;的版本是&lt;code&gt;1.18.8&lt;/code&gt;。&lt;/p&gt;</description>
     </item>

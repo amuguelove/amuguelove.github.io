@@ -2,74 +2,74 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on 梁波的技术博客</title>
-    <link>http://amuguelove.github.io/tags/linux/</link>
+    <link>https://amuguelove.github.io/tags/linux/</link>
     <description>Recent content in Linux on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 26 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://amuguelove.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>升级OpenSSL解决CVE-2020-1971漏洞</title>
-      <link>http://amuguelove.github.io/post/centos-upgrade-openssl/</link>
+      <link>https://amuguelove.github.io/post/centos-upgrade-openssl/</link>
       <pubDate>Sat, 26 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/centos-upgrade-openssl/</guid>
+      <guid>https://amuguelove.github.io/post/centos-upgrade-openssl/</guid>
       <description>&lt;p&gt;2020年12月08日，OpenSSL官方发布安全公告，披露&lt;code&gt;CVE-2020-1971&lt;/code&gt; OpenSSL GENERAL_NAME_cmp 拒绝服务漏洞。当两个GENERAL_NAME都包含同一个EDIPARTYNAME时，由于GENERAL_NAME_cmp函数未能正确处理，从而导致空指针引用，并可能导致拒绝服务。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Shell脚本快速上手</title>
-      <link>http://amuguelove.github.io/post/shell-scripts-quickstart/</link>
+      <link>https://amuguelove.github.io/post/shell-scripts-quickstart/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/shell-scripts-quickstart/</guid>
+      <guid>https://amuguelove.github.io/post/shell-scripts-quickstart/</guid>
       <description>&lt;p&gt;Shell是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务。Ken Thompson的sh是第一种Unix Shell，Windows Explorer是一个典型的图形界面Shell。&lt;/p&gt;
 &lt;p&gt;Shell脚本（shell script），是一种为shell编写的脚本程序。业界所说的shell通常都是指shell脚本，但是，shell和shell script是两个不同的概念。由于习惯的原因，简洁起见，本文出现的“shell编程”都是指shell脚本编程，不是指开发shell自身（如Windows Explorer扩展开发）。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>每天一个Linux命令（4）：df、du 查看磁盘空间</title>
-      <link>http://amuguelove.github.io/post/linux-command-disk/</link>
+      <link>https://amuguelove.github.io/post/linux-command-disk/</link>
       <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/linux-command-disk/</guid>
+      <guid>https://amuguelove.github.io/post/linux-command-disk/</guid>
       <description>&lt;p&gt;df命令用于显示磁盘分区上的可使用的磁盘空间。默认显示单位为KB。可以利用该命令来获取硬盘被占用了多少空间，目前还剩下多少空间等信息。&lt;/p&gt;
 &lt;p&gt;du命令用来查看某个目录或文件所占空间大小。默认显示单位KB。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>每天一个Linux命令（3）：grep 文本搜索</title>
-      <link>http://amuguelove.github.io/post/linux-command-grep/</link>
+      <link>https://amuguelove.github.io/post/linux-command-grep/</link>
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/linux-command-grep/</guid>
+      <guid>https://amuguelove.github.io/post/linux-command-grep/</guid>
       <description>&lt;p&gt;grep是强大的文本搜索工具&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>每天一个Linux命令（2）：scp 跨机远程拷贝</title>
-      <link>http://amuguelove.github.io/post/linux-command-scp/</link>
+      <link>https://amuguelove.github.io/post/linux-command-scp/</link>
       <pubDate>Tue, 08 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/linux-command-scp/</guid>
+      <guid>https://amuguelove.github.io/post/linux-command-scp/</guid>
       <description>&lt;p&gt;scp是secure copy的简写，用于在Linux下进行远程拷贝文件的命令，和它类似的命令有cp，不过cp只是在本机进行拷贝不能跨服务器，而且scp传输是加密的。当你服务器硬盘变为只读 read only system时，用scp可以帮你把文件移出来。&lt;/p&gt;
 &lt;p&gt;另外，scp还非常不占资源，不会提高多少系统负荷，在这一点上，rsync就远远不及它了。虽然 rsync比scp会快一点，但当小文件众多的情况下，rsync会导致硬盘I/O非常高，而scp基本不影响系统正常使用。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>每天一个Linux命令（1）：crontab 定时任务</title>
-      <link>http://amuguelove.github.io/post/linux-command-crontab/</link>
+      <link>https://amuguelove.github.io/post/linux-command-crontab/</link>
       <pubDate>Mon, 07 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/linux-command-crontab/</guid>
+      <guid>https://amuguelove.github.io/post/linux-command-crontab/</guid>
       <description>&lt;p&gt;crontab用于提交和管理用户的需要周期性执行的任务&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>深入学习Redis：CentOS 7 安装Redis 4.0.11以及生产环境启动配置</title>
-      <link>http://amuguelove.github.io/post/redis-install-on-centos7/</link>
+      <link>https://amuguelove.github.io/post/redis-install-on-centos7/</link>
       <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/redis-install-on-centos7/</guid>
+      <guid>https://amuguelove.github.io/post/redis-install-on-centos7/</guid>
       <description>&lt;h3 id=&#34;redis简介&#34;&gt;Redis简介&lt;/h3&gt;
 &lt;p&gt;Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。&lt;br&gt;
 Redis 与其他 key - value 缓存产品有以下三个特点：&lt;/p&gt;

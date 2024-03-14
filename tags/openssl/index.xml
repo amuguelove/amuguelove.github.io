@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>openssl on 梁波的技术博客</title>
-    <link>http://amuguelove.github.io/tags/openssl/</link>
+    <link>https://amuguelove.github.io/tags/openssl/</link>
     <description>Recent content in openssl on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 26 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/openssl/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://amuguelove.github.io/tags/openssl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>升级OpenSSL解决CVE-2020-1971漏洞</title>
-      <link>http://amuguelove.github.io/post/centos-upgrade-openssl/</link>
+      <link>https://amuguelove.github.io/post/centos-upgrade-openssl/</link>
       <pubDate>Sat, 26 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/centos-upgrade-openssl/</guid>
+      <guid>https://amuguelove.github.io/post/centos-upgrade-openssl/</guid>
       <description>&lt;p&gt;2020年12月08日，OpenSSL官方发布安全公告，披露&lt;code&gt;CVE-2020-1971&lt;/code&gt; OpenSSL GENERAL_NAME_cmp 拒绝服务漏洞。当两个GENERAL_NAME都包含同一个EDIPARTYNAME时，由于GENERAL_NAME_cmp函数未能正确处理，从而导致空指针引用，并可能导致拒绝服务。&lt;/p&gt;</description>
     </item>
     

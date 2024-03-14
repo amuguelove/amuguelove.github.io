@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gradle on 梁波的技术博客</title>
-    <link>http://amuguelove.github.io/tags/gradle/</link>
+    <link>https://amuguelove.github.io/tags/gradle/</link>
     <description>Recent content in Gradle on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 19 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://amuguelove.github.io/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Gradle发布Java Library到Maven中央仓库</title>
-      <link>http://amuguelove.github.io/post/gradle-publish-jar-into-maven-central/</link>
+      <link>https://amuguelove.github.io/post/gradle-publish-jar-into-maven-central/</link>
       <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/gradle-publish-jar-into-maven-central/</guid>
+      <guid>https://amuguelove.github.io/post/gradle-publish-jar-into-maven-central/</guid>
       <description>&lt;p&gt;最近打算将一些基础的Jar包上传到&lt;code&gt;Maven&lt;/code&gt;中央仓库，方便在自己项目中引用。本文将结合&lt;code&gt;Gradle&lt;/code&gt;的两个插件&lt;code&gt;maven-publish&lt;/code&gt;和 &lt;code&gt;signing&lt;/code&gt;来讲解如何发布一个Jar包。&lt;/p&gt;
 &lt;p&gt;在开始之前，先对&lt;code&gt;OSSRH&lt;/code&gt;做下了解是很必要的。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;OSSRH&lt;/code&gt;：&lt;code&gt;Sonatype Open Source Software Repository Hosting Service&lt;/code&gt;，为开源软件提供maven仓库托管服务。你可以在上面部署&lt;code&gt;snapshot&lt;/code&gt;、&lt;code&gt;release&lt;/code&gt;等，最后你可以申请把你的release同步到&lt;code&gt;Maven Central Repository&lt;/code&gt;（&lt;code&gt;Maven中央仓库&lt;/code&gt;）。&lt;/p&gt;</description>
@@ -20,10 +20,10 @@
     
     <item>
       <title>使用Gradle构建多模块项目</title>
-      <link>http://amuguelove.github.io/post/gradle-setup-multi-projects/</link>
+      <link>https://amuguelove.github.io/post/gradle-setup-multi-projects/</link>
       <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/gradle-setup-multi-projects/</guid>
+      <guid>https://amuguelove.github.io/post/gradle-setup-multi-projects/</guid>
       <description>&lt;p&gt;之前一直使用&lt;code&gt;Maven&lt;/code&gt;进行多模块项目开发，有如下好处：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;代码拆分，层次、结构清晰，利于维护&lt;/li&gt;
@@ -34,10 +34,10 @@
     
     <item>
       <title>搭建Gradle开发环境</title>
-      <link>http://amuguelove.github.io/post/gradle-environment-setup/</link>
+      <link>https://amuguelove.github.io/post/gradle-environment-setup/</link>
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/gradle-environment-setup/</guid>
+      <guid>https://amuguelove.github.io/post/gradle-environment-setup/</guid>
       <description>&lt;h3 id=&#34;背景介绍&#34;&gt;背景介绍&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Gradle 是基于 JVM 的构建工具，是基于 Ant 、Maven、ivy 概念的一款通用灵活的构建工具，基于 Groovy 脚本构建，目前支持 Java、Groovy、Kotlin 和 Scala 语言，能够满足日常开发中复杂构建需求的开源工具。&lt;/p&gt;

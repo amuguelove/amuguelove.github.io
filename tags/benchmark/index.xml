@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>benchmark on 梁波的技术博客</title>
-    <link>http://amuguelove.github.io/tags/benchmark/</link>
+    <link>https://amuguelove.github.io/tags/benchmark/</link>
     <description>Recent content in benchmark on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/benchmark/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://amuguelove.github.io/tags/benchmark/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>不同ingress controller的性能测试</title>
-      <link>http://amuguelove.github.io/post/ingress-controllers-benchmark/</link>
+      <link>https://amuguelove.github.io/post/ingress-controllers-benchmark/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/ingress-controllers-benchmark/</guid>
+      <guid>https://amuguelove.github.io/post/ingress-controllers-benchmark/</guid>
       <description>&lt;p&gt;Ingress Controller有很多实现方式，如Kubernetes官方，Nginx官方，Kong，Traefik等等，下面对以下三种不同的Ingress Controller进行性能测试，Kubernetes Ingress VS Nginx Ingress（Nginx官方出品）VS Traefix Ingress。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ingress-nginx 性能压测</title>
-      <link>http://amuguelove.github.io/post/ingress-nginx-benchmark/</link>
+      <link>https://amuguelove.github.io/post/ingress-nginx-benchmark/</link>
       <pubDate>Mon, 04 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/ingress-nginx-benchmark/</guid>
+      <guid>https://amuguelove.github.io/post/ingress-nginx-benchmark/</guid>
       <description>&lt;p&gt;Ingress是目前Kubernetes集群流量接入的重要入口，了解其性能指标有助于用户选用合适的网络方案。&lt;/p&gt;</description>
     </item>
     

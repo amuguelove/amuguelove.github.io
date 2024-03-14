@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>wrk on 梁波的技术博客</title>
-    <link>http://amuguelove.github.io/tags/wrk/</link>
+    <link>https://amuguelove.github.io/tags/wrk/</link>
     <description>Recent content in wrk on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 07 Apr 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/wrk/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Apr 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://amuguelove.github.io/tags/wrk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Http性能压测工具 | wrk</title>
-      <link>http://amuguelove.github.io/post/http-performance-tool-wrk/</link>
+      <link>https://amuguelove.github.io/post/http-performance-tool-wrk/</link>
       <pubDate>Sat, 07 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/http-performance-tool-wrk/</guid>
+      <guid>https://amuguelove.github.io/post/http-performance-tool-wrk/</guid>
       <description>&lt;p&gt;简单的 http 性能测试工具，记录一下使用方法。&lt;/p&gt;
 &lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
 &lt;h4 id=&#34;macos&#34;&gt;MacOS&lt;/h4&gt;

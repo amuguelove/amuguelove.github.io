@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vagrant on 梁波的技术博客</title>
-    <link>http://amuguelove.github.io/categories/vagrant/</link>
+    <link>https://amuguelove.github.io/categories/vagrant/</link>
     <description>Recent content in Vagrant on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 11 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/categories/vagrant/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://amuguelove.github.io/categories/vagrant/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Vagrant定制Box</title>
-      <link>http://amuguelove.github.io/post/customize-vagrant-box/</link>
+      <link>https://amuguelove.github.io/post/customize-vagrant-box/</link>
       <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/customize-vagrant-box/</guid>
+      <guid>https://amuguelove.github.io/post/customize-vagrant-box/</guid>
       <description>&lt;p&gt;很多人在学习Kubernetes之前，都会苦恼如何搭建一个集群环境呢？你可以使用新版的Docker快速搭建一个单Master的集群，你也可以购买云厂商的集群服务；使用Docker安装集群非常的简单，但是只能是单master节点；购买云厂商的集群服务可以拥有所有的集群功能，而且任意购买云存储，外网LoadBalancer等，但是费用昂贵，因为k8s集群对机器的要求还是不低的。那有没有其他的选择呢？下面给大家介绍我是如何在本地快速搭建k8s集群的。&lt;/p&gt;
 &lt;p&gt;使用Vagrant定制Centos7 Box，里面包含了Linux参数优化，Docker，Kubectl，Kubeadm，Kubelet等。这样就可以通过这个Vagrant Box启动多个节点的k8s集群了。&lt;/p&gt;
 &lt;p&gt;最近花了点时间将所有的配置都脚本化，可以通过CLI的方式快速构建基础Box或者删除。&lt;/p&gt;</description>
@@ -20,10 +20,10 @@
     
     <item>
       <title>Vagrant搭建虚拟机集群</title>
-      <link>http://amuguelove.github.io/post/vagrant-setup-virtual-machine-cluster/</link>
+      <link>https://amuguelove.github.io/post/vagrant-setup-virtual-machine-cluster/</link>
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/vagrant-setup-virtual-machine-cluster/</guid>
+      <guid>https://amuguelove.github.io/post/vagrant-setup-virtual-machine-cluster/</guid>
       <description>&lt;p&gt;本文将将介绍如何使用Vagrant+VirtualBox搭建多节点Centos7虚拟机集群&lt;/p&gt;</description>
     </item>
     

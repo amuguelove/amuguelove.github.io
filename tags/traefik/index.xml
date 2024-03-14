@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>traefik on 梁波的技术博客</title>
-    <link>http://amuguelove.github.io/tags/traefik/</link>
+    <link>https://amuguelove.github.io/tags/traefik/</link>
     <description>Recent content in traefik on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://amuguelove.github.io/tags/traefik/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://amuguelove.github.io/tags/traefik/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>不同ingress controller的性能测试</title>
-      <link>http://amuguelove.github.io/post/ingress-controllers-benchmark/</link>
+      <link>https://amuguelove.github.io/post/ingress-controllers-benchmark/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/ingress-controllers-benchmark/</guid>
+      <guid>https://amuguelove.github.io/post/ingress-controllers-benchmark/</guid>
       <description>&lt;p&gt;Ingress Controller有很多实现方式，如Kubernetes官方，Nginx官方，Kong，Traefik等等，下面对以下三种不同的Ingress Controller进行性能测试，Kubernetes Ingress VS Nginx Ingress（Nginx官方出品）VS Traefix Ingress。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>ingress-nginx的安装使用</title>
-      <link>http://amuguelove.github.io/post/install-ingress-nginx/</link>
+      <link>https://amuguelove.github.io/post/install-ingress-nginx/</link>
       <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://amuguelove.github.io/post/install-ingress-nginx/</guid>
+      <guid>https://amuguelove.github.io/post/install-ingress-nginx/</guid>
       <description>&lt;p&gt;开源的 Ingress Controller 的实现使用量最大的莫过于 Ingress Nginx 了，可作为反向代理将外部流量导入集群内部，将 Kubernetes 内部的 Service 暴露给外部，在 Ingress 对象中通过域名匹配 Service，这样就可以直接通过域名访问到集群内部的服务了。&lt;/p&gt;
 &lt;p&gt;实际 Ingress Nginx 有两种实现：&lt;/p&gt;
 &lt;ol&gt;

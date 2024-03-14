@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Archives on 梁波的技术博客</title>
-    <link>http://amuguelove.github.io/archives/</link>
+    <link>https://amuguelove.github.io/archives/</link>
     <description>Recent content in Archives on 梁波的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language><atom:link href="http://amuguelove.github.io/archives/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language><atom:link href="https://amuguelove.github.io/archives/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

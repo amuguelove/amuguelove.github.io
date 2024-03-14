@@ -14,17 +14,17 @@
   <meta property="og:description" content="Nginx Ingress 有多种部署方式，本文将介绍 Nginx Ingress 在 TKE 上的一些部署方案，这几种方案的原理、各自优缺点以及一些选型和使用上的建议。">
   <meta name="twitter:description" content="Nginx Ingress 有多种部署方式，本文将介绍 Nginx Ingress 在 TKE 上的一些部署方案，这几种方案的原理、各自优缺点以及一些选型和使用上的建议。">
   <meta name="author" content="{Description { .Site.Author.name }}"/>
-  <link href='http://amuguelove.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta property="og:image" content="http://amuguelove.github.io/img/avatar.jpg" />
-  <meta name="twitter:image" content="http://amuguelove.github.io/img/avatar.jpg" />
+  <link href='https://amuguelove.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://amuguelove.github.io/img/avatar.jpg" />
+  <meta name="twitter:image" content="https://amuguelove.github.io/img/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="http://amuguelove.github.io/post/ingress-nginx-on-tke/" />
+  <meta property="og:url" content="https://amuguelove.github.io/post/ingress-nginx-on-tke/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="梁波的技术博客" />
   
   <meta name="generator" content="Hugo 0.88.1" />
-  <link rel="canonical" href="http://amuguelove.github.io/post/ingress-nginx-on-tke/" />
-  <link rel="alternate" href="http://amuguelove.github.io/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+  <link rel="canonical" href="https://amuguelove.github.io/post/ingress-nginx-on-tke/" />
+  <link rel="alternate" href="https://amuguelove.github.io/index.xml" type="application/rss+xml" title="梁波的技术博客"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
         integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.5.0/css/fontawesome.min.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -33,7 +33,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-  <link rel="stylesheet" href='http://amuguelove.github.io/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
+  <link rel="stylesheet" href='https://amuguelove.github.io/css/bundle.min.82961a44ff461e374af16eac0a773da5ef9b058f960055023d559545d0714e1b.css' integrity='sha256-gpYaRP9GHjdK8W6sCnc9pe&#43;bBY&#43;WAFUCPVWVRdBxThs='>
 
 
 
@@ -72,7 +72,7 @@ if (!doNotTrack) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://amuguelove.github.io/" title="梁波的技术博客">
+      <a class="navbar-brand" href="https://amuguelove.github.io/" title="梁波的技术博客">
 
         梁波的技术博客
       </a>
@@ -83,7 +83,7 @@ if (!doNotTrack) {
         
           
             <li>
-              <a title="首页" href="http://amuguelove.github.io/">首页</a>
+              <a title="首页" href="https://amuguelove.github.io/">首页</a>
             </li>
           
         
@@ -92,17 +92,17 @@ if (!doNotTrack) {
               <a class="navlinks-parent" href="javascript:void(0)">文章分类</a>
               <div class="navlinks-children">
                 
-                  <a href="http://amuguelove.github.io/archives">Archive</a>
+                  <a href="https://amuguelove.github.io/archives">Archive</a>
                 
-                  <a href="http://amuguelove.github.io/categories">Categories</a>
+                  <a href="https://amuguelove.github.io/categories">Categories</a>
                 
-                  <a href="http://amuguelove.github.io/tags">tags</a>
+                  <a href="https://amuguelove.github.io/tags">tags</a>
                 
-                  <a href="http://amuguelove.github.io/tags/java">java</a>
+                  <a href="https://amuguelove.github.io/tags/java">java</a>
                 
-                  <a href="http://amuguelove.github.io/tags/springboot">springboot</a>
+                  <a href="https://amuguelove.github.io/tags/springboot">springboot</a>
                 
-                  <a href="http://amuguelove.github.io/tags/kubernetes">kubernetes</a>
+                  <a href="https://amuguelove.github.io/tags/kubernetes">kubernetes</a>
                 
               </div>
             </li>
@@ -125,7 +125,7 @@ if (!doNotTrack) {
         
           
             <li>
-              <a title="关于" href="http://amuguelove.github.io/page/about/">关于</a>
+              <a title="关于" href="https://amuguelove.github.io/page/about/">关于</a>
             </li>
           
         
@@ -152,7 +152,7 @@ if (!doNotTrack) {
 
 
   
-    <div id="header-big-imgs" data-num-img=1 data-img-src-1="http://amuguelove.github.io/img/bigimg/ingress-nginx.jpg" ></div>
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="https://amuguelove.github.io/img/bigimg/ingress-nginx.jpg" ></div>
   
 
   <header class="header-section has-img">
@@ -226,15 +226,15 @@ if (!doNotTrack) {
             
             <h5 id="tags" style="margin-top: 30px;">标签:
               
-                  <a href="http://amuguelove.github.io/tags/kubernetes/">kubernetes</a> &nbsp;
+                  <a href="https://amuguelove.github.io/tags/kubernetes/">kubernetes</a> &nbsp;
               
-                  <a href="http://amuguelove.github.io/tags/ingress/">ingress</a> &nbsp;
+                  <a href="https://amuguelove.github.io/tags/ingress/">ingress</a> &nbsp;
               
-                  <a href="http://amuguelove.github.io/tags/nginx/">nginx</a> &nbsp;
+                  <a href="https://amuguelove.github.io/tags/nginx/">nginx</a> &nbsp;
               
-                  <a href="http://amuguelove.github.io/tags/helm/">helm</a> &nbsp;
+                  <a href="https://amuguelove.github.io/tags/helm/">helm</a> &nbsp;
               
-                  <a href="http://amuguelove.github.io/tags/tke/">tke</a> &nbsp;
+                  <a href="https://amuguelove.github.io/tags/tke/">tke</a> &nbsp;
               
             </h5>
             
@@ -284,7 +284,7 @@ if (!doNotTrack) {
           <p>Nginx Ingress 有多种部署方式，本文将介绍 Nginx Ingress 在 TKE 上的一些部署方案，这几种方案的原理、各自优缺点以及一些选型和使用上的建议。</p>
 <h2 id="nginx-ingress-简介">Nginx Ingress 简介</h2>
 <p>Nginx Ingress 是 Kubernetes Ingress 的一种实现。它通过 watch Kubernetes 集群的 Ingress 资源，将 Ingress 规则转换成 Nginx 的配置，让 Nginx 进行7层的流量转发。如下图所示：</p>
-<p><img src="http://amuguelove.github.io/img/post/ingress-nginx-on-tke-1.jpg" alt=""></p>
+<p><img src="https://amuguelove.github.io/img/post/ingress-nginx-on-tke-1.jpg" alt=""></p>
 <p>Nginx Ingress 有以下两种实现方式，本文重点对 Kubernetes 开源社区的实现进行介绍：</p>
 <ul>
 <li><a href="https://github.com/kubernetes/ingress-nginx">Kubernetes 开源社区的实现</a></li>
@@ -299,7 +299,7 @@ if (!doNotTrack) {
 </ol>
 <h3 id="方案1-deployment--lb">方案1： Deployment + LB</h3>
 <p>在 TKE 上部署 Nginx Ingress 最简单的方式是将 Nginx Ingress Controller 以 Deployment 的方式部署，并且为其创建 LoadBalancer 类型的 Service（自动创建负载均衡 CLB 或绑定已有 CLB），使 CLB 接收外部流量，再转发到 Nginx Ingress 内部。如下图所示：</p>
-<p><img src="http://amuguelove.github.io/img/post/ingress-nginx-on-tke-2.jpg" alt=""></p>
+<p><img src="https://amuguelove.github.io/img/post/ingress-nginx-on-tke-2.jpg" alt=""></p>
 <p>当前 TKE 上 LoadBalancer 类型的 Service 默认实现是基于 NodePort，CLB 会绑定各节点的 NodePort 作为后端 rs，将流量转发到节点的 NodePort，然后节点上再通过 Iptables 或 IPVS 将请求路由到 Service 对应的后端 Pod，这里的 Pod 就是 Nginx Ingress Controller 的 Pod。后续如果有节点的增删，CLB 也会自动更新节点 NodePort 的绑定。</p>
 <p>这是最简单的一种方式，可以直接通过下面命令安装:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">kubectl create ns nginx-ingress
@@ -314,7 +314,7 @@ kubectl apply -f https://raw.githubusercontent.com/TencentCloudContainerTeam/man
 </ul>
 <p>在方案2中，提出以下解决方法：
 让 Nginx Ingress 使用 hostNetwork，CLB 直接绑节点 IP + 端口（80,443），不用经过 NodePort。由于使用 hostNetwork，Nginx Ingress 的 pod 就不能被调度到同一节点，为避免端口监听冲突，可提前选取部分节点作为边缘节点，专门用于部署 Nginx Ingress，并为这些节点打上 label，然后 Nginx Ingress 以 DaemonSet 方式部署在这些节点上。架构如下图所示：</p>
-<p><img src="http://amuguelove.github.io/img/post/ingress-nginx-on-tke-3.jpg" alt=""></p>
+<p><img src="https://amuguelove.github.io/img/post/ingress-nginx-on-tke-3.jpg" alt=""></p>
 <p>如需安装 Nginx Ingress，请执行以下步骤：</p>
 <ol>
 <li>
@@ -341,9 +341,9 @@ kubectl apply -f https://raw.githubusercontent.com/TencentCloudContainerTeam/man
 <ul>
 <li>若网络模式是 VPC-CNI，且所有的 Pod 都使用弹性网卡，您可以使用 CLB 直接绑定弹性网卡的 Pod，即绕过 NodePort，不用手动管理 CLB且支持自动扩、缩容。如下图所示：</li>
 </ul>
-<p><img src="http://amuguelove.github.io/img/post/ingress-nginx-on-tke-4.jpg" alt=""></p>
+<p><img src="https://amuguelove.github.io/img/post/ingress-nginx-on-tke-4.jpg" alt=""></p>
 <p>如果你的网络模式是 Global Router(大多集群都是这种模式)，你可以为集群开启 VPC-CNI 的支持，即两种网络模式混用，在集群信息页可打开：</p>
-<p><img src="http://amuguelove.github.io/img/post/ingress-nginx-on-tke-5.jpg" alt=""></p>
+<p><img src="https://amuguelove.github.io/img/post/ingress-nginx-on-tke-5.jpg" alt=""></p>
 <p>确保集群支持 VPC-CNI 之后，可以使用下面命令安装 Nginx Ingress:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create ns nginx-ingress
 kubectl apply -f https://raw.githubusercontent.com/TencentCloudContainerTeam/manifest/master/nginx-ingress/nginx-ingress-deployment-eni.yaml -n nginx-ingress
@@ -403,7 +403,7 @@ metadata:
 <div class="zs-modal-box">
     <div class="zs-modal-head">
         <button type="button" class="close">×</button>
-        <span class="author"><img src="http://amuguelove.github.io/img/avatar.jpg"/></span>
+        <span class="author"><img src="https://amuguelove.github.io/img/avatar.jpg"/></span>
         <p class="tip"><i></i><span>请我喝杯咖啡？</span></p>
     </div>
     <div class="zs-modal-body">
@@ -418,11 +418,11 @@ metadata:
         <div class="zs-modal-pay">
             <button class="btn btn-bred" id="pay-text">2元</button>
             <p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
-            <img src="http://amuguelove.github.io/img/wechat-2.png" id="pay-image"/>
+            <img src="https://amuguelove.github.io/img/wechat-2.png" id="pay-image"/>
         </div>
     </div>
     <div class="zs-modal-footer">
-        <span class="zs-wechat"><img src="http://amuguelove.github.io/img/wechat-btn.png"/></span>
+        <span class="zs-wechat"><img src="https://amuguelove.github.io/img/wechat-btn.png"/></span>
     </div>
 </div>
           
@@ -451,25 +451,25 @@ metadata:
 <h3>相关文章</h3>
 <ul style="margin-bottom: 25px;">
     
-    <li><a href="http://amuguelove.github.io/post/ingress-nginx-high-concurrency/">ingress-nginx 高并发实践</a></li>
+    <li><a href="https://amuguelove.github.io/post/ingress-nginx-high-concurrency/">ingress-nginx 高并发实践</a></li>
     
-    <li><a href="http://amuguelove.github.io/post/install-ingress-nginx/">ingress-nginx的安装使用</a></li>
+    <li><a href="https://amuguelove.github.io/post/install-ingress-nginx/">ingress-nginx的安装使用</a></li>
     
-    <li><a href="http://amuguelove.github.io/post/automatic-kubernetes-ingress-https-with-lets-encrypt/">kubernetes Ingress 自动化 HTTPS</a></li>
+    <li><a href="https://amuguelove.github.io/post/automatic-kubernetes-ingress-https-with-lets-encrypt/">kubernetes Ingress 自动化 HTTPS</a></li>
     
-    <li><a href="http://amuguelove.github.io/post/how-to-use-k8s-api-resources/">Kubernetes API资源的使用</a></li>
+    <li><a href="https://amuguelove.github.io/post/how-to-use-k8s-api-resources/">Kubernetes API资源的使用</a></li>
     
-    <li><a href="http://amuguelove.github.io/post/setup-kubernetes-cluster-with-kind/">使用Kind快速构建Kubernetes集群</a></li>
+    <li><a href="https://amuguelove.github.io/post/setup-kubernetes-cluster-with-kind/">使用Kind快速构建Kubernetes集群</a></li>
     
-    <li><a href="http://amuguelove.github.io/post/customize-vagrant-box/">Vagrant定制Box</a></li>
+    <li><a href="https://amuguelove.github.io/post/customize-vagrant-box/">Vagrant定制Box</a></li>
     
-    <li><a href="http://amuguelove.github.io/post/kubernetes-storage2/">kubernetes持久化存储（二）</a></li>
+    <li><a href="https://amuguelove.github.io/post/kubernetes-storage2/">kubernetes持久化存储（二）</a></li>
     
-    <li><a href="http://amuguelove.github.io/post/kubernetes-storage1/">kubernetes持久化存储（一）</a></li>
+    <li><a href="https://amuguelove.github.io/post/kubernetes-storage1/">kubernetes持久化存储（一）</a></li>
     
-    <li><a href="http://amuguelove.github.io/post/kubeadm-install-kubernetes-cluster/">使用kubeadm搭建Kubernetes集群</a></li>
+    <li><a href="https://amuguelove.github.io/post/kubeadm-install-kubernetes-cluster/">使用kubeadm搭建Kubernetes集群</a></li>
     
-    <li><a href="http://amuguelove.github.io/post/local-install-ha-kubernetes-cluster/">使用二进制搭建kubernetes三节点高可用集群</a></li>
+    <li><a href="https://amuguelove.github.io/post/local-install-ha-kubernetes-cluster/">使用二进制搭建kubernetes三节点高可用集群</a></li>
     
 </ul>
 
@@ -479,12 +479,12 @@ metadata:
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://amuguelove.github.io/post/install-ingress-nginx/" data-toggle="tooltip" data-placement="top" title="ingress-nginx的安装使用">&larr; 前一篇</a>
+              <a href="https://amuguelove.github.io/post/install-ingress-nginx/" data-toggle="tooltip" data-placement="top" title="ingress-nginx的安装使用">&larr; 前一篇</a>
             </li>
           
           
             <li class="next">
-              <a href="http://amuguelove.github.io/post/ingress-nginx-high-concurrency/" data-toggle="tooltip" data-placement="top" title="ingress-nginx 高并发实践">后一篇 &rarr;</a>
+              <a href="https://amuguelove.github.io/post/ingress-nginx-high-concurrency/" data-toggle="tooltip" data-placement="top" title="ingress-nginx 高并发实践">后一篇 &rarr;</a>
             </li>
           
         </ul>
@@ -524,7 +524,7 @@ metadata:
           
           
           <li>
-            <a href="http://amuguelove.github.io/index.xml" title="RSS">
+            <a href="https://amuguelove.github.io/index.xml" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
@@ -539,11 +539,11 @@ metadata:
 
           
             &nbsp;&bull;&nbsp;
-            <a href="http://amuguelove.github.io/">梁波的技术博客</a>
+            <a href="https://amuguelove.github.io/">梁波的技术博客</a>
             &nbsp;&bull;&nbsp;
-            <a href="http://amuguelove.github.io/sitemap.xml">网站地图</a>
+            <a href="https://amuguelove.github.io/sitemap.xml">网站地图</a>
             &nbsp;&bull;&nbsp;
-            <a href="http://amuguelove.github.io/archives/">归档</a>
+            <a href="https://amuguelove.github.io/archives/">归档</a>
             &nbsp;&bull;&nbsp;
             <a href="https://beian.miit.gov.cn/" target="_blank">蜀ICP备2021017173号-1</a>
           
@@ -569,7 +569,7 @@ metadata:
 </footer>
 
 
-<script src='http://amuguelove.github.io/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
+<script src='https://amuguelove.github.io/js/bundle.min.7f06e69a4c2122d35ef2be4884d8b8f3b281f64fbfece3df4d732d4de850150c.js' integrity='sha256-fwbmmkwhItNe8r5IhNi487KB9k&#43;/7OPfTXMtTehQFQw='></script>
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158970182-1"></script>
